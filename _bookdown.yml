@@ -1,0 +1,7 @@
+
+book_filename: "GSNmap_Technical_Manual"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+output_dir: 'docs'

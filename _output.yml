@@ -1,0 +1,20 @@
+bookdown::pdf_book:
+  citation_package: default  
+  css: style.css
+  pandoc_args: [ "--csl", "food-and-agriculture-organization-of-the-united-nations.csl"]
+  includes:
+    in_header: preamble.tex
+    before_body: ["frontcover.tex"]
+    after_body: ["backcover.tex"]
+    latex_engine: xelatex
+  toc: false
+  keep_tex: yes
+  toc_bib: yes
+bookdown::epub_book: default
+bookdown::gitbook:
+  citation_package: none
+  css: style.css
+  pandoc_args: [ "--csl", "food-and-agriculture-organization-of-the-united-nations.csl" ]
+bookdown::word_document2: # Word output
+    toc: true
+    fig_caption: true

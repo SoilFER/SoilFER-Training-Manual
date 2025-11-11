@@ -1,0 +1,1903 @@
+
+
+# Soil Sampling design
+
+1.	Introduction	9
+2.	Sampling schemes for soil spatial survey	12
+2.1.	Selection methods	12
+2.2.	Inference methods	12
+2.3.	Purpose of sampling	12
+2.4.	Sampling design types	12
+3.	 SoilFER Sampling Design	12
+3.1 reparation of soil observations and environmental covariates  
+3.2.	Understanding the methodology	
+
+R chunks followed by explanations
+
+# Sampling design for soil surveys
+
+# Introduction {#introduction}
+
+Soil surveys play a critical role in environmental monitoring, evaluating soil degradation, and formulating sustainable land use strategies [@bui2020]. They offer essential information on soil characteristics, including texture, structure, pH levels, organic matter content, nutrient availability, and other physicochemical attributes of interest. These data are essential for making informed choices about crop selection, fertilizer use, irrigation planning, and soil conservation and management strategies. Therefore, soil information and data are key components in any comprehensive soil survey that supplies necessary information for soil management decisions at local to global scales. In this sense, the Soil Mapping for Resilient Agrifood Systems (SoilFER) framework aims to provide open-access soil information system to support the formulation of digital soil maps, fertilizer recommendations, establish crop suitability, determine soil quality indicators, assess soil health, implement soil conservation practices, and create a national soil spectral library.
+
+State-of-the-art soil sampling protocols incorporate a systematic approach that considers factors such as soil variability, sampling depth, current use of the land, farming activities, and sampling density [@brevik2016; @clay2018; @morton2000; @norris2020]. The SoilFER Sampling Design Technical Manual provides a general guidance on soil sampling design methodologies to ensure precision, reproducibility, and reliability in the proper collection of soil samples for digital soil mapping and monitoring. This manual presents a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling for soil mapping and monitoring within the SoilFER framework. The first and second hierarchical levels select respectively the primary and secondary sampling units using a covariate space coverage sampling method on environmental covariates (model-based), while the hierarchical third-level sampling selects the tertiary sampling units using simple random sampling, without replacement (design-based). This implementation standardizes soil sampling methodologies across the various countries involved in the project.
+
+# Sampling methodologies for soil spatial survey {#sampling-theory}
+
+Soil monitoring and mapping are essential to understand soil variability and manage soil resources efficiently. In this context, it is important to understand the basics of choosing a sampling methodology that best fits the project's objectives, whether focused on mapping, monitoring, or a combination of both. The aim of this section is to provide an overview of sampling design concepts, making them understandable and accessible for both academic and non-academic audiences.
+
+## Selection of the sampling methodology {#selection-methods}
+
+Purposive (also known as traditional or expert) and probability sampling are the most used methods for selecting sampling units in soil surveys. Both methods differ basically in their objectives. In simple terms, expert sampling involves selecting specific points along a slope or landscape feature, either at individual locations or along transects, such as a catena or toposequence. This approach aims to capture the relationships between the variation in soil properties and the different geographical features that make up the landscape. This concept has been widely used as stated in the literature for soil mapping [@borden2020; @gobin2000; @milne1936]. This selection method effectively captures local variations in soil properties and is useful for understanding how these properties change in relation to terrain and hydrological characteristics. However, this sampling method may not always reflect the overall variability of soil properties across the entire study area. Moreover, implementing this approach generally requires significant effort, time, and funding, particularly for large study areas.
+
+On the other hand, probability sampling assigns a known probability of selection to each sampling unit, ensuring that each sampling unit has a chance of being included in the sample. This approach focuses on obtaining representative samples to make unbiased inferences about the entire population under study [@degruijter2006]. This method requires careful planning and implementation to ensure that the sampling design is both unbiased and representative of the population. In addition, its implementation can be more complex compared to the expert sampling method. However, its main advantage is that every sampling unit has a chance of being included in the sample, resulting in a more representative sample of the variability in the study area. Additionally, it allows statistical inferences about the entire population from the sample. This last aspect, if not the most important, allows soil surveyors to monitor and better report the current and future status of soil properties. In general, traditional/expert (non-probabilistic) sampling is less flexible than probabilistic sampling since the latter allows for both types of inference methods, as we will see in the next subsection.
+
+## Inference Methods {#inference-methods}
+
+Two primary statistical inference methods are used in soil survey: design- and model-based inference approaches [@degruijter2006]. Design-based inference utilizes the sample design to make inferences about the entire population including probabilities of the sampling units. This approach is suitable for estimating global quantities, such as means and totals, or local quantities for large domains based on the design of the sampling scheme. Briefly, global quantities encompass the spatial cumulative distribution function of the response variable in the sampling universe, or quantities derived from it, such as quantiles, median, mean, and standard deviation. Local quantities, on the other hand, pertain to individual estimates within sub-areas of the sampling universe, also known as domains. Model-based inference uses statistical models to make inferences about unsampled locations based on the relationships observed in the sampled data. This approach is valuable for predicting soil properties at unsampled locations, especially in areas where sampling is limited. Further information about design- and model-based approaches can be found in @brus2021.
+
+## Purpose of Sampling {#sampling-purpose}
+
+Bounding together selection and inference methods, one can better determine which one of those combinations works best for their project goals. The choice of sampling method in soil survey and monitoring depends on the survey's purpose [@brus2022]. For monitoring soil properties over time, design-based inference and probability sampling selection are suitable. These methods allow for the unbiased estimation of changes in soil properties at specific locations over time. For mapping soil properties across a landscape, model-based inference and non-probabilistic sampling are more appropriate. These methods allow for the spatial prediction of soil properties at unsampled locations based on the relationships observed in the sampled data. Monitoring differs from estimating soil parameters of domains at a given point in time. However, similar to monitoring, design-based inference and probability sampling are the most suitable methods for estimating soil properties within a certain domain. These approaches ensure that the estimates of soil parameters (e.g., mean, variance, mode, median) are unbiased and representative of the study area.
+
+## Sampling Design Types {#design-types}
+
+The sequence of decision-making for a soil survey or monitoring project should follow a logical order to ensure that the objectives of the project are met effectively. Begin by defining the purpose of the project. Determine whether the goal is to monitor changes in soil properties over time or to map them across landscape. Based on the purpose, one can choose an appropriate selection method. After that, one can select the inference method which best suits the project. For instance, if the goal is monitoring, consider probability sampling. For mapping, consider either non-probability or probability methods. Once the purpose, selection and inference methods are defined, one can select the appropriate sampling design.
+
+Before diving into the types of sampling design, it is important to take into consideration the stratification of the sampling universe. Stratification involves dividing the sampling universe into strata or sub-areas based on certain criteria, such as soil-climate types or land-use. This approach can increase the efficiency of the sampling design by obtaining separate estimates for each stratum, leading to more precise estimates for specific regions of interest (ROI). For example, if the ROI has distinct soil types, stratifying the sample by soil type can ensure that each soil type is adequately represented in the sample. Another example is using explanatory variables from remote sensing as a means of spatial coverage and stratification.
+
+We divided the sampling design types into monitoring and mapping (Table \@ref(tab:design-comparison)). For monitoring, one can certainly choose among simple random sampling (SRS), stratified SRS, or two-stage cluster random sampling. In SRS, each sampling unit in the ROI has equal probability of being selected. This approach is straightforward and easy to implement but may not account for spatial variability in soil properties. Stratified simple random sampling divides the ROI into strata based on certain criteria, such as soil-climate types or land-use. Then, SRS is conducted within each stratum. This method ensures that each stratum is adequately represented in the sample, leading to more precise estimates for specific ROI. Finally, two-stage cluster random sampling, the sampling units are grouped into clusters, and then clusters are randomly selected for sampling. This method is useful for large study areas where it may be impractical to sample every unit individually. One interesting method, which is not specifically categorized as simple, stratified, or two-stage cluster random sampling, is called balanced acceptance sampling [@robertson2013]. This methodological approach can be applied within any of these sampling design types to ensure a balanced representation of different strata in the sample. For example, in a simple random sampling design, balanced acceptance sampling (BAS) would involve ensuring that each stratum is adequately represented in the random sample. In a stratified sampling design, BAS would aim to balance the number of sampling points across strata. In a two-stage cluster random sampling design, BAS would involve ensuring a balanced selection of clusters from each stratum. In essence, BAS is a principle or strategy that can be incorporated into various sampling design types to reduce bias in the estimation of soil properties.
+
+If the main goal of a sampling design is to map soil properties, non-probability methods such as conditioned Latin Hypercube sampling [@minasny2006], catena or topo-sequence sampling [@milne1936], grid sampling, or covariate space coverage sampling [@brus2018; @degruijter2006] are the most suitable choices. Conditioned Latin Hypercube sampling (CLHS) selects sampling points that ensure a representative distribution of soil properties across the study area. This approach is particularly useful for capturing spatial variability within the explanatory variables that describe the pattern of the response variable, leading to more accurate soil property maps. Catena or topo-sequence sampling was already discussed in section \@ref(selection-methods). Covariate space coverage sampling (CSCS) selects sampling points to provide complete spatial coverage of the ROI. @ma2020 compared the efficiency of SRS, CLHS, and CSCS, being the latter the most efficient.
+
+In addition to the aforementioned methods, there are sampling approaches designed to produce samples that are evenly distributed across the study area, known as spatially balanced designs. These methods ensure that all areas are considered for inclusion in fieldwork, often requiring fewer samples compared to simple random sampling (SRS). Generalized Random Tessellation Stratified (GRTS) sampling [@stevens1999] and BAS are two popular approaches within the balanced sampling framework. The rationale behind these methods is that for estimating overall properties over a landscape, such as mean soil carbon, the estimate is most reliable when samples cover all areas of interest. While SRS, GRTS, and BAS are among the many sampling methods available, each with its own set of advantages and disadvantages, selecting the most suitable method can be daunting for field scientists. They often need to choose sites for fieldwork while adhering to constraints such as budget and time. For instance, the GRTS method can be used to provide a spatially balanced, probability sample with design-based, unbiased variance estimators with a minimum sample size.
+
+```{r design-comparison, echo=FALSE}
+library(knitr)
+design_types <- data.frame(
+  "Sampling Design" = c("Simple Random (SR)", "Stratified Simple Random (SSR)", 
+                        "Two-Stage Cluster Random (TSCR)", "Conditioned Latin Hypercube (CLH)", 
+                        "Catena/Toposequence (CT)", "Covariate Space Coverage (CSC)",
+                        "Generalized Tessellation Stratified (GRT)", "Balanced Acceptance (BA)"),
+  "Purpose" = c("Monitoring", "Monitoring", "Monitoring", "Mapping", "Mapping", "Mapping", "Both", "Both"),
+  "Pros" = c("Simple, unbiased", "Better precision per stratum", "Cost-effective for large areas",
+             "Environmental representativeness", "Captures terrain relationships", 
+             "Most efficient for mapping", "Spatially balanced", "Reduces bias"),
+  "Cons" = c("May miss rare features", "Requires prior stratification", "Higher variance",
+             "Complex implementation", "Subjective, labor-intensive", "Computationally intensive",
+             "Complex variance estimation", "Requires careful planning")
+)
+
+kable(design_types, caption = "Short description of pros and cons within each soil sampling design type")
+```
+
+### Example: Soils4Africa Sampling Design {#soils4africa-example}
+
+The EU-funded project Soils4Africa aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project's purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:
+
+**Primary Sampling Units (PSUs)**: PSUs constitute the broadest spatial units within the study area, typically defined based on geographical, administrative, ecological boundaries, or soil management types. The size of each PSU is 4 square kilometers (2 × 2 km grid cells). The total number of PSUs selected depends on the sample size and ideally should be sufficient to cover the range of environmental gradients present in the study area.
+
+**Secondary Sampling Units (SSUs)**: Within each PSU, a predefined number of SSUs are selected for detailed sampling. SSUs offer a finer resolution level of sampling within each PSU. The size of an SSU is determined based on the need to capture localized environmental conditions and variability. In this case the size of the SSUs is 1 hectare (100 × 100 m grid cells). This approach involves a random selection of 7 SSUs per PSU to ensure a comprehensive coverage of the PSU's environmental diversity. Four of these SSU are target SSUs and 3 are alternative SSUs to be used as replacement areas due to potential sampling challenges encountered in the field.
+
+**Tertiary Sampling Units (TSUs)**: TSUs represent the most detailed level of sampling, focusing on specific points within SSUs. The number of TSUs within each SSU is 3, one which acts as the primary target point and 2 as replacement points for the primary point.
+
+The sampling design in Soils4Africa proceeds as follows: (i) A first selection of PSUs is made using a stratified random sampling on farming systems strata. The farming system classification data comes from the FAO farming systems map for Africa which provides information for 46 different farming classes or stratum. (ii) Within each of the selected PSUs, a second sampling level is done upon a regular division of the PSU into cells of 1 ha, the SSU. For each PSU, 4 random SSUs are selected for sampling and 3 additional cells are stored as alternative cells. These cells are used as replacements in case some of the target SSUs cannot be sampled for some reason. The selection of SSUs is done by simple random sampling within the PSU. (iii) Within each SSU, 3 simple random sampling points are located. The first point serves as the target point to be sampled and the remaining 2 are stored as replacement points to be used as in the previous step. This Hierarchical Sampling design helps reduce bias in the data, allowing for accurate assessments of soil constraints, quantification of risk factors, and reliable evaluations of changes in soil health/quality.
+
+# SoilFER Sampling Design {#soilfer-design}
+
+The SoilFER soil spatial survey aims to estimate means and totals for a set of target soil properties and quality indicators within three domains: **croplands (85%)**, **grasslands (10%)**, and **forests (5%)** in a country. The percentages for each domain are relative to the total sampling points, considering the sampling density required for high-resolution digital soil maps. Once the purpose was defined, the most suitable selection method identified was probability sampling, which allows for both design- and model-based inference methods. Given the purpose, selection and inference methods, the final step was to choose the appropriate sampling design. Like the Soils4Africa project, the SoilFER project employs three sampling units, which are discrete entities in space, and thus a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling was selected for mapping and monitoring within the SoilFER sampling design.
+
+In the literature, covariate space coverage (CSC) sampling has proven to be more efficient than other approaches for mapping a continuous soil property or class [@brus2018; @degruijter2006; @ma2020; @schmidinger2024]. Therefore, in the SoilFER sampling design, the first stage or first hierarchical level selects the primary sampling units (PSUs) (i.e., 2km × 2km) using a CSC sampling method, or k-means sampling if you will (i.e., model-based). K-means is an unsupervised clustering method used when no response variable is available, partitioning data into k groups by maximizing similarity within groups and differences between them. Like the selection of PSUs, the second hierarchical level selects the secondary sampling units (SSUs) (i.e., 100m × 100m) using CSC sampling and a second set of environmental covariates (i.e., model-based). Lastly, the third hierarchical levels select the tertiary sampling units using simple random sampling without replacement (i.e., design-based). This multi-stage sampling framework enhances both spatial representativeness and statistical reliability.
+
+## Soil Properties {#soil-properties}
+
+Understanding and assessing soil properties are critical for evaluating soil health, guiding fertilizer recommendations, and informing land management decisions. In the SoilFER project, both chemical and physical soil attributes are measured to provide a comprehensive evaluation of soil quality and health (Table \@ref(tab:soil-properties)). Some key chemical properties include soil organic carbon, pH, cation exchange capacity, and nutrient levels such as nitrogen, phosphorus, and potassium. On the physical side, attributes like soil texture, soil depth, rockiness of surface soil, drainage, surface cracks, soil color, soil erosion and gypsum content are analyzed to understand soil structure, compaction, and water infiltration rates. Collectively, these attributes offer valuable insights into the soil's ability to support plant growth, resist erosion, and store carbon, making them indispensable for both mapping soil health and tailoring site-specific fertilizer recommendations.
+
+```{r soil-properties, echo=FALSE}
+properties <- data.frame(
+  Category = c(rep("Chemical", 8), rep("Physical", 8)),
+  Property = c("Soil Organic Carbon", "pH", "Cation Exchange Capacity", "Total Nitrogen",
+               "Available Phosphorus", "Exchangeable Potassium", "Micronutrients", "Electrical Conductivity",
+               "Soil Texture", "Soil Depth", "Rockiness", "Drainage", "Surface Cracks", 
+               "Soil Color", "Erosion", "Gypsum Content"),
+  Unit = c("%", "pH units", "cmol(+)/kg", "%", "mg/kg", "cmol(+)/kg", "mg/kg", "dS/m",
+           "% sand/silt/clay", "cm", "% coverage", "class", "present/absent", 
+           "Munsell", "severity class", "%")
+)
+
+kable(properties, caption = "Some of the chemical and physical soil properties to be quantified in the SoilFER project")
+```
+
+> **Note**: Both wet and dry chemistry (i.e., infrared spectroscopy) will be conducted in the laboratory for soil analysis as part of the SoilFER project. These methods are not listed here, as a standard operating procedure exists for each one of them.
+
+## Environmental Covariates {#env-covariates}
+
+Environmental covariates, also referred to as explanatory or environmental variables or simply covariates, are essential for understanding the spatial variability of soil properties and landscape processes. The SoilFER sampling design incorporates **85 environmental covariates** (Table \@ref(tab:psu-covariates)) to optimise the identification and allocation of PSUs (2km × 2km) across diverse landscapes at a national scale. As SoilFER targets soil mapping at national scale, the first set of environmental covariates have pixel resolution varying from 250 m to 1 km. To align with the PSU size (2km × 2km), these covariates were upscaled to ensure that each PSU is represented by a single aggregated value per covariate. This resolution provides a balance between sufficient spatial detail and computational efficiency, ensuring accurate large-scale mapping while manageable computational processing requirements, ensuring efficient data handling and analysis. Moreover, this comprehensive set of covariates ensures that the selected PSUs capture the full range of environmental conditions and soil diversity within a country. 
+
+Additionally, a second set of **24 environmental covariates** (Table \@ref(tab:ssu-covariates)) is used to refine site selection at farm level. This high-resolution dataset (e.g., ≤ 90 m pixel resolution) was upscaled to match the SSU size (100m × 100m), ensuring that each SSU is characterized by a single representative value for each covariate. This significantly enhances the precision of SSU selection by capturing finer spatial variability. If additional high-resolution environmental covariates are available for a given country, it is highly recommended to incorporate them into the analysis to further improve sampling precision. These two sets of environmental covariates were carefully chosen based on their relevance to soil formation processes, spatial variability, and their role as proxies for key soil properties. Further information on how to retrieve these environmental covariates can be found in the SoilFER GitHub repository.
+
+```{r psu-covariates, echo=FALSE}
+psu_covs <- data.frame(
+  Source = c(rep("CHELSA Climate", 16), rep("MODIS Vegetation", 32), rep("OpenLandMap Terrain", 10),
+             rep("Land Cover", 10), rep("Newhall Soil Climate", 17)),
+  Variable = c("bio1 - Annual Mean Temperature", "bio5 - Max Temp Warmest Month", 
+               "bio6 - Min Temp Coldest Month", "bio12 - Annual Precipitation",
+               "bio13 - Precipitation Wettest Month", "bio14 - Precipitation Driest Month",
+               "bio16 - Precipitation Wettest Quarter", "bio17 - Precipitation Driest Quarter",
+               "ngd10 - Growing Degree Days", "pet_penman_max/mean/min/range",
+               "sfcWind_max/mean/range", "...",
+               "NDVI (4 quarters × mean/SD)", "FPAR (4 quarters × mean/SD)",
+               "LST Day (4 quarters × mean/SD)", "NDLST (4 quarters × mean/SD)", "...",
+               "Elevation", "Slope", "Aspect", "TPI", "TWI", "Geomorphology", "...",
+               "Crop proportion", "Forest cover", "Grassland cover", "...",
+               "Temperature Regime", "Moisture Regime", "Annual Water Balance", "..."),
+  Resolution = c(rep("250-1000m", 16), rep("250-500m", 32), rep("250m", 10), 
+                 rep("250-1000m", 10), rep("~4km", 17))
+)
+
+kable(head(psu_covs, 20), caption = "List of environmental covariates used to delineate the primary sampling units (first 20 shown)")
+```
+
+> **Note**: NSM, Normalized Soil Moisture; SWIR, Shortwave Infrared. Full list contains 85 variables.
+
+```{r ssu-covariates, echo=FALSE}
+ssu_covs <- data.frame(
+  Source = c(rep("SRTM Terrain", 5), rep("Sentinel-2 Spectral", 10), rep("Sentinel-2 Indices", 6),
+             rep("Geomorphology", 3)),
+  Variable = c("Elevation", "Slope", "Aspect", "TPI", "Hillshade",
+               "B2 (Blue)", "B3 (Green)", "B4 (Red)", "B5 (Red Edge 1)", "B6 (Red Edge 2)",
+               "B7 (Red Edge 3)", "B8 (NIR)", "B8A (NIR Narrow)", "B11 (SWIR 1)", "B12 (SWIR 2)",
+               "NDVI", "EVI", "NDBSI", "Brightness Index", "Redness Index", "VNSIR",
+               "Geomorphon Class 1-9", "...", "..."),
+  Resolution = c(rep("90-100m", 5), rep("10-20m", 10), rep("10-20m", 6), rep("90m", 3))
+)
+
+kable(ssu_covs, caption = "List of environmental covariates used to delineate the secondary sampling units")
+```
+
+## Understanding the Methodology {#methodology}
+
+The SoilFER sampling design methodology follows a hierarchical sampling approach with three levels of increasing spatial resolution: Primary Sampling Units (PSUs), Secondary Sampling Units (SSUs), and Tertiary Sampling Units (TSUs) (Figure \@ref(fig:three-stage)). This design is similar to the Soils4Africa project but differs in two key aspects. First, we use covariate space coverage (CSC) to select PSUs [@brus2022], whereas Soils4Africa employed stratified random sampling at this stage. At the first hierarchical level, CSC is used to select PSUs (2km × 2km areas), ensuring a well-distributed spread across the covariate space to maximise environmental variation and represent soil diversity across the region at national scale. Second key aspect, we select SSUs using CSC rather than simple random sampling, as done in Soils4Africa. At this second hierarchical level, CSC is applied to select SSUs (100m × 100m) based on a refined set of environmental covariates at farm scale. It is of note that each project adopted a methodology tailored to its specific objectives/purposes, ensuring that the sampling design aligns with its intended goals. Each PSU contains multiple SSUs, each measuring 100m × 100m, and each SSU consists of three TSUs, each measuring 20m × 20m. This structured yet flexible sampling design captures soil variability across different spatial scales (Figure \@ref(fig:three-stage)).
+
+```{r three-stage, echo=FALSE, fig.cap="Example of a primary sampling unit with seven secondary sampling units, each containing three tertiary sampling units. Target units or points are in green, and replacements are in red.", out.width='100%'}
+knitr::include_graphics("images/figure1_three_stage.png")
+```
+
+### PSU Selection Process {#psu-selection-process}
+
+The process of selecting the PSUs is summarized as follows:
+
+**Step 1: Create 2km × 2km Grid** (Figure \@ref(fig:grid-creation))
+- A 2km × 2km grid covering the entire region of interest (ROI) is created
+- This grid serves as the foundational structure for stratification and spatial analysis
+
+**Step 2: Overlay Land Use and Protected Areas** (Figure \@ref(fig:grid-overlay))
+- Land-use and land cover (LULC) mask layer identifying cropland, forest, or grassland is overlaid
+- Protected area boundaries are incorporated
+- Grid cells where cropland, forest, or grassland cover more than 10% (or specified percentage) are retained
+- This ensures that only PSUs containing target land uses are selected
+
+**Step 3: Apply Covariate Space Coverage** (Figure \@ref(fig:csc-application))
+- PSUs are selected through CSC sampling using 85 environmental covariates
+- Covariates are resampled to 250m resolution
+- Principal Component Analysis (PCA) transforms covariates into PC layers
+- PC layers accounting for up to 99% of variance are retained
+- PC layers are upscaled to 2km × 2km resolution
+
+**Step 4: Determine Optimal Sample Size**
+- Optimal number of PSUs determined using divergence metrics
+- Kullback-Leibler Divergence (KLD) quantifies how well sampled data represent full environmental covariate space
+- Unlike Jensen-Shannon methods, KLD does not overestimate optimal sample size [@saurette2023]
+
+**Step 5: Perform K-means Clustering**
+- K-means clustering creates homogeneous clusters (strata)
+- Number of clusters equals total number of PSUs to be sampled
+- Legacy point data can be incorporated (clusters fixed at legacy locations)
+- Mean Squared Shortest Distance (MSSD) in covariate space is calculated
+- Process repeated 10 times, retaining trial with minimum MSSD
+
+**Step 6: Select Target and Replacement PSUs** (Figure \@ref(fig:psu-selection))
+- PSUs allocated by minimizing MSSD within environmental covariate space
+- Output: N PSUs where N equals total number of samples
+- Replacement PSUs calculated by randomly selecting grid cells within same cluster class
+
+```{r grid-creation, echo=FALSE, fig.cap="A 2×2 km grid is created across the region of interest.", out.width='80%'}
+knitr::include_graphics("images/figure2_grid.png")
+```
+
+```{r grid-overlay, echo=FALSE, fig.cap="The grid is overlaid with legacy point data, crop layer data and protected area boundaries.", out.width='80%'}
+knitr::include_graphics("images/figure3_overlay.png")
+```
+
+```{r csc-application, echo=FALSE, fig.cap="PSUs located in non-protected areas and containing more than 10% or any specified percentage of crop coverage are selected. The Covariate Space Coverage sampling method, incorporating 85 environmental covariates, is applied to identify target and replacement PSUs.", out.width='80%'}
+knitr::include_graphics("images/figure4_csc.png")
+```
+
+```{r psu-selection, echo=FALSE, fig.cap="The selected target and replacement PSUs.", out.width='80%'}
+knitr::include_graphics("images/figure5_selected.png")
+```
+
+### SSU and TSU Selection Process {#ssu-tsu-selection}
+
+**Stage 2: Secondary Sampling Units (SSUs)**
+
+The second stage involves selecting SSUs using Covariate Space Coverage Sampling (CSCS) based on 24 high-resolution environmental covariates. Each SSU represents a 100m × 100m (1 hectare) area divided into 25 regular sampling plots of 20m × 20m (Figure \@ref(fig:ssu-detail)).
+
+**Selection scheme**:
+- 8 SSUs selected from each PSU
+- 4 target SSUs (1-4): where samples will be collected  
+- 4 replacement SSUs (5-8): pre-identified substitutes
+- Replacement SSUs directly linked to targets (one-to-one basis):
+  - SSU 5 replaces SSU 1
+  - SSU 6 replaces SSU 2
+  - SSU 7 replaces SSU 3
+  - SSU 8 replaces SSU 4
+
+If all SSUs within a target PSU are exhausted, missing SSUs must be selected from the designated PSU replacement. The designated PSU replacements were selected with the same spatial variability as their PSU targets.
+
+```{r ssu-detail, echo=FALSE, fig.cap="Single primary sampling unit displaying secondary sampling units (a), and a zoomed-in view of a secondary sampling unit with tertiary sampling units (b).", out.width='100%'}
+knitr::include_graphics("images/figure6_ssu_detail.png")
+```
+
+**Stage 3: Tertiary Sampling Units (TSUs)**
+
+The third and final stage involves selecting TSUs using **simple random sampling without replacement**. Each SSU contains 25 possible TSUs of 20m × 20m, corresponding to the pixel size of the crop raster layer.
+
+**Selection scheme**:
+- 3 TSUs per SSU:
+  - 1 target TSU (primary sampling location)
+  - 2 replacement TSUs (alternatives)
+- If a TSU is unsuitable, any replacement can be used
+- If all TSUs within an SSU are unsuitable, entire SSU is rejected
+
+**Soil sampling protocol**:
+- Sampling conducted strictly at designated TSU locations
+- **Maximum shift**: 10 metres from defined coordinates
+
+### Site Identification System {#site-id}
+
+The final site ID is an alphanumeric identifier structured as follows (Figure \@ref(fig:site-id)):
+
+**Format**: `AAA####-#-#X`
+
+Where:
+- `AAA` = Three-letter country ISO code (e.g., KEN for Kenya)
+- `####` = Primary Sampling Unit number (zero-padded, e.g., 0001)
+- First `#` = Secondary Sampling Unit number (1-8)
+- Second `#` = Tertiary Sampling Unit number (1-3)
+- `X` = Land use type code:
+  - `C` = Cropland
+  - `G` = Grassland
+  - `F` = Forest
+
+**Example**: `KEN0001-1-1C`
+- Country: Kenya
+- PSU: 1
+- SSU: 1 (target)
+- TSU: 1 (target)
+- Land use: Cropland
+
+```{r site-id, echo=FALSE, fig.cap="Deciphering the site identification.", out.width='60%'}
+knitr::include_graphics("images/figure7_site_id.png")
+```
+
+# Tutorial Using R {#tutorial}
+
+This tutorial is designed for users with a basic understanding of R programming and provides a comprehensive guide to implementing a soil sampling design for soil monitoring and mapping. All scripts and data are available at the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design).
+
+> **💡 Note**: Ensure you have the `tinytex`, `knitr`, `rmarkdown`, and `rstudioapi` R packages installed to successfully run and render R Markdown documents before running this script. Additionally, install tinytex by running `tinytex::install_tinytex()` to enable LaTeX support for PDF generation.
+
+## Setting Up the Environment {#setup}
+
+First, set the working directory to the location of your R script. This ensures that all paths in the script are relative to the script's location.
+
+```{r setup-wd, eval=FALSE}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd("../") # Move wd down to the main folder
+getwd()
+```
+
+### Install Required Libraries {#install-libraries}
+
+The script uses several R libraries, each serving a specific purpose (Table \@ref(tab:r-libraries)).
+
+```{r r-libraries, echo=FALSE}
+libraries <- data.frame(
+  Package = c("sp", "terra", "raster", "sf", "sgsR", "entropy", "tripack", "tibble",
+              "manipulate", "dplyr", "synoptReg", "doSNOW", "Rfast", "fields", 
+              "ggplot2", "rassta"),
+  Purpose = c("Spatial data classes", "Raster data manipulation", "Legacy raster support",
+              "Simple features (vector data)", "Spatial sampling", "Entropy calculations",
+              "Triangulation", "Data frames", "Interactive plotting", "Data manipulation",
+              "PCA for rasters", "Parallel processing", "Fast R functions", 
+              "Distance calculations", "Visualization", "Terrain analysis")
+)
+
+kable(libraries, caption = "Summary of required R libraries and their purposes for SoilFER sampling design")
+```
+
+Some libraries might need to be installed from GitHub. Uncomment and run the lines below if needed:
+
+```{r install-packages, eval=FALSE}
+# Install synoptReg package from GitHub
+# install.packages("remotes") # Install remotes if not installed
+# remotes::install_github("lemuscanovas/synoptReg")
+
+packages <- c("sp", "terra", "raster", "sf", "sgsR", "entropy", 
+              "tripack", "tibble", "manipulate", "dplyr", "synoptReg", 
+              "doSNOW", "Rfast", "fields", "ggplot2", "rassta")
+
+invisible(lapply(packages, library, character.only = TRUE))
+
+rm(packages)
+```
+
+> **Alternative method**: In RStudio, use the **Packages** tab in the bottom-right pane → click **Install** → type package name → ensure "Install dependencies" is checked → click **Install**.
+
+## Define Variables and Parameters {#define-parameters}
+
+Several variables and parameters must be defined to establish a consistent framework for the script.
+
+### Country ISO Code
+
+```{r iso-code, eval=FALSE}
+ISO.code <- "ZMB"  # Zambia example
+```
+
+> **💡 Note**: Use the Alpha-3 ISO code for your country of interest.
+
+### Land Use Type
+
+The SoilFER project focuses on three primary land-use types: croplands (80%), grasslands (15%), and forests (5%).
+
+```{r landuse, eval=FALSE}
+landuse <- "crops"  # Options: "crops", "grassland", "forest"
+```
+
+### File Paths
+
+```{r file-paths, eval=FALSE}
+# Path to data folders
+raster.path <- "data/rasters/"
+shp.path <- "data/shapes/"
+other.path <- "data/other/"
+landuse_dir <- paste0("data/results/", landuse, "/")
+   
+# Check if landuse directory exists; if not, create it
+if (!file.exists(landuse_dir)) {
+  dir.create(landuse_dir)
+}
+
+results.path <- landuse_dir
+```
+
+### Coordinate Reference System
+
+```{r crs, eval=FALSE}
+epsg <- "EPSG:3857"  # WGS 84 / Pseudo-Mercator
+# Find your CRS at: https://epsg.io/
+```
+
+### Sample Size Calculation
+
+```{r sample-size, eval=FALSE}
+nsamples <- 300  # Total sampling sites
+share <- 0.80    # 80% for this land use (croplands)
+nsites <- nsamples * share  # Final number of sites
+
+# However, we will calculate the optimal sample size statistically later
+```
+
+### Sampling Unit Definitions
+
+```{r sampling-units, eval=FALSE}
+# Define the number of PSUs to sample
+n.psu <- round(nsamples/8)  # Will be optimized later
+  
+# Define PSU and SSU sizes 
+psu_size <- 2000  # 2km × 2 km
+ssu_size <- 100   # 100m × 100m = 1 ha
+  
+# Define number of target and alternative SSUs at each PSU
+num_primary_ssus <- 4
+num_alternative_ssus <- 4
+    
+# Define number of TSUs at each SSU
+number_TSUs <- 3
+```
+
+### Algorithm Parameters
+
+```{r algorithm-params, eval=FALSE}
+# Number of iterations for clustering algorithm
+iterations <- 10  # 10 is sufficient
+
+# Minimum crop percentage in selected PSUs
+percent_crop <- 10  # At least 10% crop coverage
+```
+
+## Custom Functions {#custom-functions}
+
+### Covariate Space Coverage Function (CSIS)
+
+The CSIS function is the backbone of clustering sampling units in covariate space. It ensures optimal distribution while considering any fixed legacy data.
+
+**How it works**:
+
+1. **Input Parameters**:
+   - `fixed`: Preselected (legacy) sampling points
+   - `nsup`: Number of additional (new) sampling points to select
+   - `nstarts`: Number of random starting points for clustering
+   - `mygrd`: Grid of covariate data for ROI
+
+2. **Workflow**:
+   - Extract fixed points and exclude from grid
+   - Randomly initialize new sampling points
+   - Combine fixed and new centers
+   - Compute distances and assign points to nearest cluster
+   - Update cluster centers iteratively until convergence
+   - Calculate Mean Squared Shortest Distance (MSSSD)
+   - Save best clustering result
+
+```{r csis-function, eval=FALSE}
+# Clustering CSC function with fixed legacy data
+CSIS <- function(fixed, nsup, nstarts, mygrd) {
+  n_fix <- nrow(fixed)
+  p <- ncol(mygrd)
+  units <- fixed$units
+  mygrd_minfx <- mygrd[-units, ]
+  MSSSD_cur <- NA
+  
+  for (s in 1:nstarts) {
+    units <- sample(nrow(mygrd_minfx), nsup)
+    centers_sup <- mygrd_minfx[units, ]
+    centers <- rbind(fixed[, names(mygrd)], centers_sup)
+    
+    repeat {
+      D <- rdist(x1 = centers, x2 = mygrd)
+      cluster <- apply(X = D, MARGIN = 2, FUN = which.min) %>% as.factor(.)
+      centers_cur <- centers
+      
+      for (i in 1:p) {
+        centers[, i] <- tapply(mygrd[, i], INDEX = cluster, FUN = mean)
+      }
+      
+      # Restore fixed centers
+      centers[1:n_fix, ] <- centers_cur[1:n_fix, ]
+      
+      # Check convergence
+      sumd <- diag(rdist(x1 = centers, x2 = centers_cur)) %>% sum(.)
+      if (sumd < 1E-12) {
+        D <- rdist(x1 = centers, x2 = mygrd)
+        Dmin <- apply(X = D, MARGIN = 2, FUN = min)
+        MSSSD <- mean(Dmin^2)
+        
+        if (s == 1 | MSSSD < MSSSD_cur) {
+          centers_best <- centers
+          clusters_best <- cluster
+          MSSSD_cur <- MSSSD
+        }
+        break
+      }
+    }
+    
+    print(paste0(s, " out of ", nstarts))
+  }
+  
+  list(centers = centers_best, cluster = clusters_best)
+}
+```
+
+> **💡 Note**: This function creates spatially balanced sampling designs by considering existing sampling points and covariate distributions.
+
+### TSU Generation Function
+
+This function generates TSUs within SSUs, ensuring random distribution while respecting land-use constraints.
+
+```{r tsu-function, eval=FALSE}
+generate_tsu_points_within_ssu <- function(ssu, number_TSUs, index, ssu_type, crops) {
+  # Convert SSU to SpatVector for masking
+  ssu_vect <- ssu_grid_sf[index, ]
+  
+  # Clip the raster to the SSU boundaries
+  clipped_lu <- crop(crops, ssu_vect)
+  
+  # Generate random points within the clipped raster
+  sampled_points <- sample_srs(clipped_lu, nSamp = number_TSUs)
+  
+  # Ensure required number of TSUs
+  while (nrow(sampled_points) < number_TSUs) {
+    sampled_points <- spatSample(clipped_lu, size = number_TSUs)
+  }
+  
+  # Add metadata
+  sampled_points$PSU_ID <- selected_psu$ID
+  sampled_points$SSU_ID <- index
+  sampled_points$TSU_ID <- seq_len(nrow(sampled_points))
+  sampled_points$SSU_Type <- ssu_type
+  sampled_points$TSU_Name <- paste0(ISO.code, sprintf("%04d", sampled_points$PSU_ID),
+                                    "-", sampled_points$SSU_ID, "-", 
+                                    seq_len(nrow(sampled_points)))
+  
+  return(sampled_points)
+}
+```
+
+## Load Country Boundaries and Legacy Data {#load-boundaries}
+
+Load and transform country boundaries and legacy soil data to the desired CRS:
+
+```{r load-boundaries, eval=FALSE}
+# Define file locations
+country_boundaries <- file.path(paste0(shp.path, "roi_epsg_3857.shp"))
+legacy <- file.path(paste0(shp.path, "zmb_legacy_v2_clipped_epsg_3857.shp"))
+
+# Load and transform country boundaries
+country_boundaries <- sf::st_read(country_boundaries, quiet = TRUE)
+
+if (sf::st_crs(country_boundaries)$epsg != epsg) {
+  country_boundaries <- sf::st_transform(country_boundaries, crs = epsg)
+}
+
+# Load legacy data (if it exists)
+if (file.exists(legacy)) {
+  legacy <- sf::st_read(legacy, quiet = TRUE)
+  
+  # Transform coordinates
+  if (sf::st_crs(legacy)$epsg != epsg) {
+    legacy <- sf::st_transform(legacy, crs = epsg)
+  }
+} else {
+  # If legacy data does not exist, delete the object
+  rm(legacy)
+}
+```
+
+> **💡 Note**: Always verify that all geospatial datasets use the same CRS before performing spatial operations. Misaligned CRSs can lead to incorrect analyses.
+
+### Visualize Boundaries and Legacy Data
+
+```{r viz-boundaries, eval=FALSE, fig.cap="Black rectangle outlines the region of interest, while black dots represent the geolocations of the legacy data points."}
+library(ggplot2)
+library(ggspatial)
+
+basemap <- annotation_map_tile("osm")
+
+ggplot(data = country_boundaries) +
+  basemap +
+  geom_sf(fill = "transparent", color = "black") +
+  geom_sf(data = legacy, aes(geometry = geometry),
+          color = "black", size = 0.3) +
+  labs(title = "Country Boundaries and Legacy Data",
+       caption = "Data source: OpenStreetMap") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r legacy-map, echo=FALSE, fig.cap="Black rectangle outlines the region of interest, while black dots represent the geolocations of the legacy data points.", out.width='80%'}
+knitr::include_graphics("images/figure8_legacy.png")
+```
+
+## Load Environmental Covariates for PSUs {#load-covariates-psu}
+
+### Optional Auxiliary Data
+
+Additional data layers can improve PSU selection:
+
+```{r aux-data, eval=FALSE}
+# Non-protected areas (shapefile or raster)
+npa <- file.path(paste0(shp.path, "zmb_national_parks_zari_clipped_epsg_3857.shp"))
+
+# High slopes (binary raster: 1 = <50%, NA = >=50%)
+slope <- file.path(paste0(raster.path, "zmb_clipped_slope_mask_epsg_3857.tif")) 
+
+# Geology
+geo <- file.path(paste0(shp.path, "zmb_geology_clipped_epsg_3857.shp"))
+geo.classes <- "GEO"  # Field name for geologic classes
+
+# Geomorphology
+geomorph <- file.path(paste0(raster.path, "zmb_clipped_Geomorphon.tif"))
+geomorph.classes <- "CODR"  # Field name for geomorphology classes
+```
+
+### Load and Process Auxiliary Data
+
+```{r process-aux, eval=FALSE}
+# Non-protected areas
+if (file.exists(npa)) {
+  npa <- sf::st_read(npa, quiet = FALSE)
+  npa <- sf::st_union(npa)
+  npa <- sf::st_difference(country_boundaries, npa)
+  
+  if (sf::st_crs(npa)$epsg != epsg) {
+    npa <- sf::st_transform(npa, crs = epsg)
+  }
+} else {
+  rm(npa)
+}
+
+# Slope mask
+if (file.exists(slope)) {
+  slope <- rast(slope)
+  if (crs(slope) != epsg) {
+    slope <- project(slope, epsg, method = "near")
+  }
+  slope <- slope / slope  # Normalize to 0/1
+} else {
+  rm(slope)
+}
+
+# Geology
+if (file.exists(geo)) {
+  geo <- sf::st_read(geo, quiet = TRUE)
+  if (sf::st_crs(geo)$epsg != epsg) {
+    geo <- sf::st_transform(geo, crs = epsg)
+  }
+  geo$GEO <- as.numeric(as.factor(geo[[geo.classes]]))
+} else {
+  rm(geo)
+}
+
+# Geomorphology
+if (file.exists(geomorph)) {
+  file_extension <- tools::file_ext(geomorph)
+  
+  if (file_extension == "tif") {
+    geomorph <- rast(geomorph)
+    names(geomorph) <- 'GEOMORPH'
+    
+    if (crs(geomorph) != epsg) {
+      geomorph <- project(geomorph, epsg, method = "near")
+    }
+  } else if (file_extension == "shp") {
+    geomorph <- sf::st_read(geomorph, quiet = TRUE)
+    
+    if (sf::st_crs(geomorph)$epsg != epsg) {
+      geomorph <- sf::st_transform(geomorph, crs = epsg)
+    }
+    geomorph$GEOMORPH <- as.numeric(as.factor(geomorph[[geomorph.classes]]))
+  } else {
+    warning("File format not recognized. Expected .tif or .shp.")
+    rm(geomorph)
+  }
+} else {
+  rm(geomorph)
+}
+```
+
+### Load Main Environmental Covariates
+
+```{r load-main-covs, eval=FALSE}
+# Load covariate stack
+cov.dat <- list.files(raster.path, 
+                      pattern = "covs_zam_clipped.tif$",  
+                      recursive = TRUE, 
+                      full.names = TRUE)
+cov.dat <- terra::rast(cov.dat)
+
+cat(sprintf("Loaded %d environmental covariates\n", nlyr(cov.dat)))
+
+# Display covariate names in a table
+cov.dat.names <- matrix(names(cov.dat), ncol = 3, byrow = TRUE)
+knitr::kable(cov.dat.names, format = "markdown", 
+             caption = "Environmental covariates")
+```
+
+> **💡 Note**: Initial number of environmental covariates: 68
+
+### Load and Process Soil Climate Data (Newhall)
+
+```{r load-newhall, eval=FALSE}
+# Load soil climate data
+newhall <- list.files(raster.path, 
+                      pattern = "newhall_zam_clipped.tif$",  
+                      recursive = TRUE, 
+                      full.names = TRUE)
+newhall <- terra::rast(newhall)
+
+# Display variable names
+newhall.names <- matrix(names(newhall), ncol = 3, byrow = TRUE)
+knitr::kable(newhall.names, format = "markdown", 
+             caption = "Soil climate variables")
+
+# Remove unnecessary subdivisions
+newhall$regimeSubdivision1 <- c()
+newhall$regimeSubdivision2 <- c()
+
+cat(sprintf("Soil climate variables: %d (after removing subdivisions)\n", nlyr(newhall)))
+```
+
+### Convert Categorical Variables to Dummy Variables
+
+```{r dummy-vars, eval=FALSE}
+# Convert temperatureRegime and moistureRegime to dummy variables
+temperatureRegime <- dummies(ca.rast = newhall$temperatureRegime, 
+                             preval = 1, absval = 0)
+moistureRegime <- dummies(ca.rast = newhall$moistureRegime, 
+                          preval = 1, absval = 0)
+
+# Remove original categorical layers
+newhall$temperatureRegime <- c()
+newhall$moistureRegime <- c()
+```
+
+### Merge All Covariate Layers
+
+```{r merge-covs, eval=FALSE}
+# Merge covariates and climate data
+cov.dat <- c(cov.dat, newhall, temperatureRegime, moistureRegime)
+    
+# Project if necessary
+if (crs(cov.dat) != epsg) {
+  cov.dat <- terra::project(cov.dat, epsg, method = "near")
+}
+
+# Add geology if exists
+if (exists("geo")) {
+  geo <- rasterize(as(geo, "SpatVector"), cov.dat, field = "GEO")
+  geo <- dummies(ca.rast = geo$GEO, preval = 1, absval = 0)
+  cov.dat <- c(cov.dat, geo)
+}
+
+# Add geomorphology if exists
+if (exists("geomorph")) {
+  if (!inherits(geomorph, "SpatRaster")) {
+    geomorph <- rasterize(as(geomorph, "SpatVector"), cov.dat, field = "GEOMORPH")
+  }
+  geomorph <- dummies(ca.rast = geomorph$GEOMORPH, preval = 1, absval = 0)
+  
+  # Ensure matching extent and resolution
+  if (!identical(ext(cov.dat), ext(geomorph))) {
+    geomorph <- extend(geomorph, cov.dat)
+  }
+  if (!all(res(cov.dat) == res(geomorph))) {
+    geomorph <- resample(geomorph, cov.dat, method = "near")
+  }
+  
+  cov.dat <- c(cov.dat, geomorph)
+}
+
+# Cleanup
+rm(newhall, geomorph, geo)
+gc()
+
+cat(sprintf("\nFinal covariate stack: %d layers\n", nlyr(cov.dat)))
+```
+
+> **💡 Note**: **Stacking** is the process of combining multiple spatial data layers (raster datasets) into a single multi-layer object. This is useful when multiple variables need to be analyzed together.
+
+### Crop and Save Covariates
+
+```{r crop-save-covs, eval=FALSE}
+# Crop covariates to administrative boundary
+cov.dat <- crop(cov.dat, country_boundaries, mask = TRUE, overwrite = TRUE)
+writeRaster(cov.dat, 
+            paste0(raster.path, "cov_dat_stack.tif"), 
+            overwrite = TRUE)
+
+# Reload if needed
+# cov.dat <- rast(paste0(raster.path, "cov_dat_stack.tif"))
+```
+
+## Principal Component Analysis (PCA) {#pca}
+
+PCA reduces dimensionality while retaining the most important information. Components explaining 99% of variance are kept.
+
+```{r pca, eval=FALSE}
+# Perform PCA
+pca <- synoptReg::raster_pca(cov.dat)  # Faster than terra::princomp
+
+# Get SpatRaster layers
+cov.dat <- pca$PCA
+
+# Display summary
+summary(cov.dat)
+
+# Subset to main PCs (variance explained >= 0.99)
+n_comps <- first(which(pca$summaryPCA[3,] > 0.99))
+cov.dat <- pca$PCA[[1:n_comps]]
+
+cat(sprintf("\nRetained %d principal components (99%% variance)\n", n_comps))
+
+# Save PCA rasters
+writeRaster(cov.dat, 
+            paste0(results.path, "PCA_projected.tif"), 
+            overwrite = TRUE)
+
+# Cleanup
+rm(pca)
+
+# Reload if needed
+# cov.dat <- rast(paste0(results.path, "PCA_projected.tif"))
+```
+
+## Organize the Sampling Universe {#sampling-universe}
+
+### Load and Process Land Use Data
+
+```{r load-landuse, eval=FALSE}
+# Define land-use raster path
+landuse <- file.path(paste0(raster.path, "cropland_clipped_zmb_v1_epsg_3857.tif"))
+
+# Load binary raster (1 = target land use, NA = other)
+crops <- rast(landuse)
+crops <- crops / crops  # Normalize
+
+names(crops) <- "lu"
+
+# Display raster info
+crops
+```
+
+```{r cropland-20m, echo=FALSE, fig.cap="Spatial distribution of crops represented at a 20-meter pixel resolution.", out.width='80%'}
+knitr::include_graphics("images/figure9_cropland_20m.png")
+```
+
+### Exclude Protected Areas
+
+```{r exclude-protected, eval=FALSE}
+if (exists("npa")) {
+  # If npa is a shapefile
+  crops <- mask(crops, npa)
+  
+  # If npa is a raster (uncomment if applicable)
+  # npa <- resample(npa, crops, method = "near")
+  # crops <- crops * npa
+}
+
+rm(npa)
+```
+
+> **💡 Note**: Use the correct operation for your npa dataset type (shapefile or raster).
+
+### Restrict to Accessible Slopes
+
+```{r restrict-slopes, eval=FALSE}
+if (exists("slope")) {
+  # Resample to match crops resolution
+  slope <- resample(slope, crops, method = "near")
+  crops <- crops * slope
+}
+
+rm(slope)
+```
+
+### Aggregate to 100m Resolution
+
+Resampling to 100m resolution significantly optimizes processing speed and reduces storage requirements.
+
+```{r aggregate-100m, eval=FALSE}
+# Aggregate 20m pixels to 100m (5×5 grid using modal value)
+lu <- aggregate(crops, 5, fun = modal, cores = 4, na.rm = TRUE)
+lu <- lu / lu
+
+# Display new resolution
+lu
+```
+
+```{r cropland-100m, echo=FALSE, fig.cap="Spatial distribution of crops aggregated/upscaled from the original 20-meter pixel resolution to a coarser 100-meter pixel resolution for improved visualization and analysis.", out.width='80%'}
+knitr::include_graphics("images/figure10_cropland_100m.png")
+```
+
+### Save Processed Land Use
+
+```{r save-landuse, eval=FALSE}
+writeRaster(lu, 
+            paste0(raster.path, "cropland_zmb_100m_v1_epsg_3857.tif"), 
+            overwrite = TRUE)
+
+# Reload if needed
+lu <- rast(paste0(raster.path, "cropland_zmb_100m_v1_epsg_3857.tif"))
+```
+
+### Filter Legacy Data
+
+```{r filter-legacy, eval=FALSE}
+if (exists("legacy")) {
+  # Keep only legacy points within land-use areas
+  legacy$INSIDE <- terra::extract(crops, legacy) %>% dplyr::select(lu)
+  legacy <- legacy[!is.na(legacy$INSIDE), ] %>%
+    dplyr::select(-"INSIDE")
+  
+  cat(sprintf("Legacy points within land-use areas: %d\n", nrow(legacy)))
+}
+```
+
+## Create Primary Sampling Units (PSU Grid) {#create-psu-grid}
+
+### Generate 2km × 2km Grid
+
+```{r generate-grid, eval=FALSE}
+# Create grid
+psu_grid <- st_make_grid(country_boundaries, 
+                         cellsize = c(psu_size, psu_size), 
+                         square = TRUE)
+psu_grid <- st_sf(geometry = psu_grid)
+psu_grid$ID <- 1:nrow(psu_grid)
+
+cat(sprintf("Generated %d PSU grid cells\n", nrow(psu_grid)))
+```
+
+### Trim to Country Boundaries
+
+```{r trim-grid, eval=FALSE}
+# This operation is computationally intensive
+psu_grid <- psu_grid[country_boundaries[1], ]
+
+cat(sprintf("PSUs within country boundaries: %d\n", nrow(psu_grid)))
+```
+
+### Save PSU Grid
+
+```{r save-psu-grid, eval=FALSE}
+write_sf(psu_grid, 
+         paste0(results.path, "../grid2k.shp"), 
+         overwrite = TRUE)
+
+# Reload if needed
+psu_grid <- sf::st_read(file.path(paste0(results.path, "../grid2k.shp")))
+```
+
+## Select PSUs with Sufficient Land Use Coverage {#select-psus}
+
+### Calculate Land Use Percentage
+
+```{r calc-lu-percent, eval=FALSE}
+# Extract land-use values for each PSU
+extracted_values <- terra::extract(lu, psu_grid)
+
+# Calculate percentage (400 pixels = 2km × 2km PSU at 100m resolution)
+crop_perc <- extracted_values %>%
+  group_by(ID) %>%
+  summarize(crop_perc = sum(lu, na.rm = TRUE) * 100 / 400)
+
+rm(extracted_values)
+
+# Add to PSU grid
+psu_grid$crop_perc <- crop_perc$crop_perc
+
+cat(sprintf("Crop percentage calculated for all PSUs\n"))
+```
+
+### Filter PSUs
+
+```{r filter-psus, eval=FALSE}
+# Keep only PSUs with sufficient crop coverage
+psu_grid_filtered <- psu_grid[psu_grid$crop_perc > percent_crop, "ID"]
+
+cat(sprintf("PSUs with >%d%% crop coverage: %d\n", 
+            percent_crop, nrow(psu_grid_filtered)))
+
+# Save filtered grid
+write_sf(psu_grid_filtered, 
+         file.path(paste0(results.path, "/psu_grid_counts.shp")), 
+         overwrite = TRUE)
+```
+
+```{r psu-filtered, echo=FALSE, fig.cap="Distribution of selected Primary Sampling Units based on crop coverage and exclusion of protected areas.", out.width='80%'}
+knitr::include_graphics("images/figure11_psu_filtered.png")
+```
+
+## Rasterize PSUs for Covariate Space Coverage {#rasterize-psus}
+
+```{r rasterize-psus, eval=FALSE}
+# Create raster template at PSU resolution
+template <- rast(vect(psu_grid_filtered), res = psu_size)
+template <- rasterize(vect(psu_grid_filtered), template, field = "ID")
+
+# Crop covariates to filtered PSUs
+cov.dat <- crop(cov.dat, psu_grid_filtered, mask = TRUE, overwrite = TRUE)
+
+# Resample covariates to match PSU template
+PSU.r <- resample(cov.dat, template)
+
+cat(sprintf("Covariates resampled to PSU resolution\n"))
+```
+
+> **💡 Why this matters**: Cropping and resampling ensure that spatial resolution and extent of covariates match the PSU grid, facilitating accurate clustering.
+
+## Compute Optimal Sample Size {#optimal-sample-size}
+
+After rasterizing PSUs for Covariate Space Coverage, calculate the optimal sample size based on divergence metrics [@saurette2023].
+
+```{r load-opt-sample, eval=FALSE}
+# Load optimization script
+source("scripts/opt_sample.R")
+
+# Prepare covariate data
+psu.r.df <- data.frame(PSU.r)
+
+# Define parameters
+initial.n <- 50     # Minimum sample size
+final.n <- 3000     # Maximum sample size
+by.n <- 25          # Increment step
+iters <- 4          # Iterations per trial
+```
+
+### Run Optimization
+
+```{r run-optimization, eval=FALSE}
+# Calculate optimal sample size using normalized KL-divergence
+opt_N_fcs <- opt_sample(
+  alg = "fcs",              # Feature coverage sampling
+  s_min = initial.n, 
+  s_max = final.n, 
+  s_step = by.n, 
+  s_reps = iters, 
+  covs = psu.r.df, 
+  cpus = NULL,              # Use all available cores
+  conf = 0.95
+)
+
+# Display results
+print(opt_N_fcs$optimal_sites)
+```
+
+```{r optimal-n-plot, echo=FALSE, fig.cap="Divergence metrics for determining the optimal sample size. The top row shows the relationship between sample size and divergence metrics. The red curve represents the fitted trend, while black dots represent computed divergence values. The bottom row displays the cumulative distribution function (CDF) of the inverse normalized divergence metrics. Vertical red lines indicate the optimal sample size selection.", out.width='100%'}
+knitr::include_graphics("images/figure12_optimal_n.png")
+```
+
+```{r divergence-comparison, echo=FALSE, fig.cap="Comparison of normalized divergence metrics across sample sizes. The plots illustrate the variation across multiple principal components (PCs). Each colored line represents a principal component.", out.width='100%'}
+knitr::include_graphics("images/figure13_divergence.png")
+```
+
+### Extract Optimal Sample Size
+
+```{r extract-optimal, eval=FALSE}
+# Use Kullback-Leibler Divergence (most reliable)
+optimal_N_KLD <- opt_N_fcs$optimal_sites[1, 2]
+
+cat(sprintf("\n✓ Optimal sample size: %d PSUs\n", optimal_N_KLD))
+
+# Set final PSU count
+n.psu <- optimal_N_KLD
+
+# Expected total sampling sites (4 per PSU)
+cat(sprintf("Expected total target sites: %d\n", n.psu * 4))
+```
+
+> **💡 Note**: The optimal sample size is based on Kullback-Leibler Divergence, which does not overestimate like Jensen-Shannon methods.
+
+## Covariate Space Coverage - Computing PSUs {#csc-computing}
+
+Covariate Space Coverage (CSC) sampling ensures sampling units are distributed effectively across the multidimensional space of environmental covariates.
+
+### Prepare Function Parameters
+
+```{r prepare-csc, eval=FALSE}
+# Convert raster to dataframe with coordinates
+PSU.df <- as.data.frame(PSU.r, xy = TRUE)
+
+# Get covariate names
+covs <- names(cov.dat)
+
+# Scale covariates (mean = 0, SD = 1)
+mygrd <- data.frame(scale(PSU.df[, covs]))
+
+cat(sprintf("Prepared %d PSUs with %d covariates for clustering\n", 
+            nrow(mygrd), ncol(mygrd)))
+```
+
+### Perform K-means Clustering
+
+```{r kmeans-clustering, eval=FALSE}
+# With legacy data
+if (exists("legacy")) {
+  # Filter legacy to PSU grid extent
+  legacy <- st_filter(legacy, psu_grid_filtered)
+  legacy_df <- st_coordinates(legacy)
+  
+  # Find nearest PSU for each legacy point
+  units <- numeric(nrow(legacy_df))
+  for (i in 1:nrow(legacy_df)) {
+    distances <- sqrt((PSU.df$x - legacy_df[i, "X"])^2 + 
+                     (PSU.df$y - legacy_df[i, "Y"])^2)
+    units[i] <- which.min(distances)
+  }
+  
+  # Create fixed centers from legacy points
+  fixed <- unique(data.frame(units, scale(PSU.df[, covs])[units, ]))
+  
+  cat(sprintf("Incorporating %d legacy points as fixed centers\n", nrow(fixed)))
+  
+  # Run constrained clustering
+  res <- CSIS(fixed = fixed, 
+              nsup = n.psu, 
+              nstarts = iterations, 
+              mygrd = mygrd)
+  
+} else {
+  # Standard k-means without legacy data
+  res <- kmeans(mygrd, 
+                centers = n.psu, 
+                iter.max = 10000, 
+                nstart = 100)
+  
+  cat(sprintf("Running standard k-means with %d centers\n", n.psu))
+}
+```
+
+> **💡 Note**: Progress is printed as "X out of Y" for each clustering iteration.
+
+### Assign Clusters and Calculate Distances
+
+```{r assign-clusters, eval=FALSE}
+# Assign clusters to PSUs
+PSU.df$cluster <- res$cluster
+
+# Compute distances to nearest cluster center
+D <- rdist(x1 = res$centers, x2 = scale(PSU.df[, covs]))
+units <- apply(D, MARGIN = 1, FUN = which.min)
+
+# Calculate Mean Squared Shortest Distance (MSSSD)
+dmin <- apply(D, MARGIN = 2, min)
+MSSSD <- mean(dmin^2)
+
+cat(sprintf("MSSSD: %.6f\n", MSSSD))
+```
+
+### Extract Selected PSUs
+
+```{r extract-selected, eval=FALSE}
+# Get selected PSU coordinates and covariates
+myCSCsample <- PSU.df[units, c("x", "y", covs)]
+
+# Label as legacy or new
+if (exists("legacy")) {
+  myCSCsample$type <- c(rep("legacy", nrow(fixed)), 
+                        rep("new", length(units) - nrow(fixed)))
+} else {
+  myCSCsample$type <- "new"
+}
+
+# Convert to spatial object
+myCSCsample <- myCSCsample %>%
+  st_as_sf(coords = c("x", "y"), crs = epsg)
+
+# Separate legacy and new points
+if (exists("legacy")) {
+  legacy <- myCSCsample[myCSCsample$type == "legacy", ]
+}
+new <- myCSCsample[myCSCsample$type == "new", ]
+
+# Get PSU IDs
+PSUs <- sf::st_intersection(psu_grid_filtered, new) %>% 
+  dplyr::select(ID)
+
+# Extract target PSUs
+target.PSUs <- psu_grid_filtered[psu_grid_filtered$ID %in% PSUs$ID, ] %>% 
+  dplyr::select(ID)
+
+cat(sprintf("\n✓ Selected %d target PSUs\n", nrow(target.PSUs)))
+
+# Cleanup
+rm(new, dmin, MSSSD)
+```
+
+```{r psu-selected-map, echo=FALSE, fig.cap="Distribution of selected target Primary Sampling Units over the covariate space coverage.", out.width='80%'}
+knitr::include_graphics("images/figure14_psu_selected.png")
+```
+
+### Visualize in Covariate Space
+
+```{r viz-covariate-space, echo=FALSE, fig.cap="Distribution of Primary Sampling Units over the covariate space coverage (PC1 vs PC2).", out.width='80%'}
+knitr::include_graphics("images/figure15_covariate_space.png")
+```
+
+## Compute SSUs and TSUs {#compute-ssu-tsu}
+
+Now we generate Secondary Sampling Units (100m × 100m) within each PSU and Tertiary Sampling Units (20m × 20m points) within each SSU.
+
+### Load High-Resolution Covariates
+
+```{r load-highres, eval=FALSE}
+# Load SSU-level covariates (100m resolution)
+cov.dat.ssu <- terra::rast(paste0(raster.path, 
+                                   "hres_data/covs_stack_ssu_1ha_ZMB.tif"))
+
+cat(sprintf("Loaded %d high-resolution covariates\n", nlyr(cov.dat.ssu)))
+
+# Display covariate names
+names(cov.dat.ssu)
+
+# Remove system-specific bands if needed
+cov.dat.ssu <- subset(cov.dat.ssu, 
+                      names(cov.dat.ssu)[!names(cov.dat.ssu) %in% 
+                        c("sysisen_B2", "sysisen_B3", "sysisen_B4", "sysisen_B5",
+                          "sysisen_B6", "sysisen_B7", "sysisen_B8", "sysisen_B8A",
+                          "sysisen_B11", "sysisen_B12")])
+
+# Replace NA with 0 (for categorical variables)
+cov.dat.ssu[is.na(cov.dat.ssu)] <- 0
+
+cat(sprintf("Final SSU covariates: %d layers\n", nlyr(cov.dat.ssu)))
+```
+
+### Process Each PSU
+
+```{r process-psus, eval=FALSE}
+# Initialize storage lists
+selected_ssus <- list()
+all_psus_tsus <- list()
+
+# Main loop: Process each PSU
+for (psu_id in 1:nrow(target.PSUs)) {
+  
+  selected_psu <- target.PSUs[psu_id, ]
+  
+  # Generate 100m × 100m SSU grid
+  ssu_grid <- st_make_grid(selected_psu, 
+                           cellsize = c(ssu_size, ssu_size), 
+                           square = TRUE)
+  ssu_grid_sf <- st_sf(geometry = ssu_grid)
+  
+  # Convert to SpatVector for extraction
+  ssu_grid_vect <- vect(ssu_grid_sf)
+  
+  # Extract land-use values to filter SSUs
+  extracted_values <- extract(crops, ssu_grid_vect, fun = table)
+  
+  # Calculate land-use percentage (25 pixels per SSU at 20m resolution)
+  ssu_grid_sf$lu <- (extracted_values[, 2] * 100) / 25
+  ssu_grid_sf <- ssu_grid_sf[ssu_grid_sf$lu > percent_crop, ]
+  
+  # Progress update
+  if (psu_id %% 10 == 0 || psu_id == nrow(target.PSUs)) {
+    cat(sprintf("\rProgress: %.2f%% (%d out of %d)", 
+                (psu_id / nrow(target.PSUs)) * 100, 
+                psu_id, nrow(target.PSUs)))
+    flush.console()
+  }
+  
+  # Check minimum SSU requirement
+  total_ssus <- nrow(ssu_grid_sf)
+  if (total_ssus < (num_primary_ssus + num_alternative_ssus)) {
+    warning(paste("PSU", psu_id, "does not have enough SSUs. Skipping."))
+    next
+  }
+  
+  # Extract covariate values for each SSU
+  ssu_covariates <- terra::extract(cov.dat.ssu, vect(ssu_grid_sf), df = TRUE)
+  
+  # Merge with SSU spatial data
+  ssu_data <- cbind(ssu_grid_sf, ssu_covariates[, -1])
+  ssu_data_values <- st_drop_geometry(ssu_data)
+  
+  # Identify columns to exclude from scaling (categorical)
+  exclude <- grep("^geomorph_|^lu$", names(ssu_data_values), value = TRUE)
+  
+  # Separate scalable and non-scalable data
+  to_scale <- ssu_data_values[, !names(ssu_data_values) %in% exclude]
+  to_keep  <- ssu_data_values[, names(ssu_data_values) %in% exclude, drop = FALSE]
+  
+  # Remove NA-only columns
+  to_scale <- to_scale[, colSums(!is.na(to_scale)) > 0, drop = FALSE]
+  
+  # Identify zero-variance columns
+  zero_variance_cols <- sapply(to_scale, function(x) sd(x, na.rm = TRUE) == 0)
+  zero_variance_cols[is.na(zero_variance_cols)] <- TRUE
+  
+  # Scale only non-zero-variance columns
+  scaled_part <- to_scale
+  if (any(!zero_variance_cols)) {
+    scaled_part[, !zero_variance_cols] <- scale(to_scale[, !zero_variance_cols])
+  }
+  
+  # Recombine
+  mygrd_ssu <- cbind(to_keep, scaled_part)
+  
+  # Perform k-means clustering for this PSU
+  optimal_k <- num_primary_ssus  # 4 clusters
+  kmeans_result <- kmeans(mygrd_ssu[, -1], 
+                          centers = optimal_k, 
+                          iter.max = 10000, 
+                          nstart = 10)
+  
+  ssu_data$cluster <- as.factor(kmeans_result$cluster)
+  
+  # CSC Sampling: Select closest SSUs to cluster centers
+  D <- rdist(x1 = kmeans_result$centers, x2 = mygrd_ssu[, -1])
+  
+  # Target SSUs (closest to centers)
+  target_units <- apply(D, MARGIN = 1, FUN = function(x) order(x)[1])
+  target_ssus <- ssu_data[target_units, ]
+  
+  # Replacement SSUs (second closest to centers)
+  replacement_units <- apply(D, MARGIN = 1, FUN = function(x) order(x)[2])
+  replacement_ssus <- ssu_data[replacement_units, ]
+  
+  # Add metadata
+  target_ssus$SSU_Type <- "Target"
+  replacement_ssus$SSU_Type <- "Replacement"
+  
+  target_ssus$SSU_ID <- 1:nrow(target_ssus)
+  replacement_ssus$SSU_ID <- (nrow(target_ssus) + 1):(2 * nrow(target_ssus))
+  
+  # Link replacements to targets by cluster
+  replacement_ssus$replacement_for <- sapply(replacement_ssus$cluster, function(cl) {
+    matched <- target_ssus$SSU_ID[target_ssus$cluster == cl]
+    if (length(matched) > 0) return(matched[1]) else return(NA)
+  })
+  target_ssus$replacement_for <- NA
+  
+  # Add PSU ID
+  target_ssus$PSU_ID <- selected_psu$ID
+  replacement_ssus$PSU_ID <- selected_psu$ID
+  
+  # Store SSUs
+  selected_ssus[[psu_id]] <- rbind(target_ssus, replacement_ssus)
+  
+  # Generate TSUs for target SSUs
+  primary_tsus <- lapply(rownames(target_ssus), function(index) {
+    generate_tsu_points_within_ssu(
+      ssu_grid_sf[rownames(ssu_grid_sf) == index, ], 
+      number_TSUs, 
+      index, 
+      "Target", 
+      crops
+    )
+  })
+  
+  # Generate TSUs for replacement SSUs
+  alternative_tsus <- lapply(rownames(replacement_ssus), function(index) {
+    generate_tsu_points_within_ssu(
+      ssu_grid_sf[rownames(ssu_grid_sf) == index, ], 
+      number_TSUs, 
+      index, 
+      "Replacement", 
+      crops
+    )
+  })
+  
+  # Combine all TSUs for this PSU
+  all_psus_tsus[[psu_id]] <- do.call(rbind, c(primary_tsus, alternative_tsus))
+}
+
+cat(sprintf("\n✓ Processing complete\n"))
+cat(sprintf("  Successful PSUs: %d\n", length(selected_ssus)))
+```
+
+```{r ssu-csc, echo=FALSE, fig.cap="Covariate space coverage sampling allocating target and replacement SSUs.", out.width='80%'}
+knitr::include_graphics("images/figure16_ssu_csc.png")
+```
+
+### Combine SSUs and TSUs
+
+```{r combine-ssu-tsu, eval=FALSE}
+# Combine all SSUs
+all_ssus <- do.call(rbind, selected_ssus)
+all_ssus <- all_ssus %>%
+  mutate_at(vars(PSU_ID, SSU_ID), as.numeric)
+
+# Combine all TSUs
+all_tsus <- do.call(rbind, all_psus_tsus)
+all_tsus <- all_tsus %>%
+  mutate_at(vars(PSU_ID, SSU_ID), as.numeric)
+
+# Join TSU and SSU metadata
+all_tsus <- st_join(all_tsus, 
+                    all_ssus[c("PSU_ID", "SSU_ID", "SSU_Type", "replacement_for")])
+
+# Reorganize columns
+all_tsus <- all_tsus %>%
+  select(PSU_ID = PSU_ID.x, 
+         SSU_ID = SSU_ID.y, 
+         SSU_Type = SSU_Type.y,
+         Replacement_for = replacement_for, 
+         TSU_ID, 
+         geometry)
+
+# Label TSU types
+all_tsus$TSU_Type <- "Target"
+all_tsus[all_tsus$TSU_ID > 1, "TSU_Type"] <- "Alternative"
+all_tsus$PSU_Type <- "Target"
+
+# Final column selection
+all_tsus <- all_tsus %>%
+  dplyr::select("PSU_ID", "SSU_ID", "SSU_Type", "Replacement_for", 
+                "TSU_ID", "TSU_Type", "geometry")
+
+cat(sprintf("\n✓ Total SSUs: %d\n", nrow(all_ssus)))
+cat(sprintf("✓ Total TSUs: %d\n", nrow(all_tsus)))
+cat(sprintf("✓ Target sampling sites: %d\n", 
+            sum(all_tsus$SSU_Type == "Target" & all_tsus$TSU_Type == "Target")))
+```
+
+```{r psu-example, echo=FALSE, fig.cap="Example of a target Primary Sampling Unit (PSU) displaying its associated target and alternative Secondary Sampling Units (SSUs), and Tertiary Sampling Units (TSUs).", out.width='100%'}
+knitr::include_graphics("images/figure17_psu_example.png")
+```
+
+## Export Sampling Units {#export-units}
+
+### Create Cluster Raster
+
+```{r create-cluster-raster, eval=FALSE}
+# Convert cluster information to raster
+dfr <- PSU.df[, c("x", "y", "cluster")]
+dfr$cluster <- as.numeric(dfr$cluster)
+dfr <- rasterFromXYZ(dfr)
+crs(dfr) <- epsg
+
+# Associate clusters with PSUs
+PSU_cluster.id <- unlist(extract(dfr, target.PSUs))
+
+valid.PSU_clusters <- target.PSUs %>% 
+  mutate(cluster = extract(dfr, target.PSUs, fun = mean, na.rm = TRUE))
+
+all.PSU_clusters <- psu_grid_filtered %>% 
+  mutate(cluster = extract(dfr, psu_grid_filtered, fun = mean, na.rm = TRUE))
+
+all.PSU_clusters <- na.omit(all.PSU_clusters)
+```
+
+### Join Cluster Info to TSUs
+
+```{r join-clusters, eval=FALSE}
+# Rename cluster column
+valid.PSU_clusters <- valid.PSU_clusters %>%
+  rename(Replace_ID = cluster)
+
+# Join to TSUs
+all_tsus <- st_join(all_tsus, valid.PSU_clusters)
+
+# Assign sampling order
+all_tsus <- all_tsus %>%
+  group_by(PSU_ID) %>%
+  mutate(order = match(SSU_ID, unique(SSU_ID))) %>%
+  ungroup()
+```
+
+### Create Site IDs
+
+```{r create-site-ids, eval=FALSE}
+# Generate unique site IDs
+all_tsus$site_id <- paste0(ISO.code, 
+                           sprintf("%04d", all_tsus$PSU_ID), 
+                           "-", all_tsus$SSU_ID, 
+                           "-", all_tsus$TSU_ID, 
+                           "C")  # C = Cropland
+
+cat(sprintf("Created %d unique site IDs\n", nrow(all_tsus)))
+```
+
+### Export Shapefiles
+
+```{r export-shapefiles, eval=FALSE}
+# Export target PSUs
+write_sf(valid.PSU_clusters, 
+         paste0(results.path, "/PSUs_target.shp"), 
+         overwrite = TRUE)
+
+# Export target TSUs
+write_sf(all_tsus, 
+         paste0(results.path, "/TSUs_target.shp"), 
+         overwrite = TRUE)
+
+# Export all PSU clusters
+write_sf(all.PSU_clusters, 
+         paste0(results.path, "/PSU_pattern_cl.shp"), 
+         overwrite = TRUE)
+
+# Export cluster raster
+writeRaster(dfr, 
+            paste0(results.path, "/clusters.tif"), 
+            overwrite = TRUE)
+
+cat(sprintf("\n✓ All files exported successfully\n"))
+cat(sprintf("  Location: %s\n", results.path))
+```
+
+## Compute Alternative PSUs {#alternative-psus}
+
+Generate replacement PSUs from the same environmental clusters as targets.
+
+```{r compute-replacements, eval=FALSE}
+# Filter out already selected PSUs
+remaining_psus <- all.PSU_clusters %>%
+  filter(!(ID %in% target.PSUs$ID))
+
+# Get unique cluster IDs from targets
+unique_clusters <- unique(valid.PSU_clusters$Replace_ID)
+
+# Initialize list for replacements
+replacement_psus <- data.frame()
+
+# For each target cluster, select a replacement
+for (clust_id in unique_clusters) {
+  # Find candidates in same cluster
+  candidates <- remaining_psus %>% 
+    filter(cluster == clust_id)
+  
+  if (nrow(candidates) > 0) {
+    # Random selection from candidates
+    replacement <- candidates[sample(nrow(candidates), 1), ]
+    replacement$replaces_PSU <- valid.PSU_clusters$ID[
+      valid.PSU_clusters$Replace_ID == clust_id
+    ][1]
+    
+    replacement_psus <- rbind(replacement_psus, replacement)
+  } else {
+    warning(sprintf("No replacement found for cluster %d", clust_id))
+  }
+}
+
+cat(sprintf("\n✓ Generated %d replacement PSUs\n", nrow(replacement_psus)))
+
+# Export replacement PSUs
+write_sf(replacement_psus, 
+         paste0(results.path, "/PSUs_replacements.shp"), 
+         overwrite = TRUE)
+```
+
+```{r replacement-example, echo=FALSE, fig.cap="Example of an alternative Primary Sampling Unit (PSU) displaying its associated target and alternative Secondary Sampling Units (SSUs), and Tertiary Sampling Units (TSUs).", out.width='100%'}
+knitr::include_graphics("images/figure18_replacement.png")
+```
+
+> **Note**: Follow the same SSU and TSU generation process for replacement PSUs to create complete backup sampling locations.
+
+# Merging Results from Multiple Land Uses {#merging-results}
+
+After running the sampling design separately for cropland, grassland, and forest, combine all results into a unified dataset with country-wide unique IDs.
+
+```{r merge-landuses, eval=FALSE}
+library(data.table)
+
+# Define land uses and codes
+landuses <- c("cropland", "grassland", "forest")
+lu_codes <- c("C", "G", "F")
+
+# Initialize storage lists
+psus_target_list <- list()
+tsus_target_list <- list()
+psus_repl_list <- list()
+tsus_repl_list <- list()
+
+# Load all shapefiles
+for (i in seq_along(landuses)) {
+  lu <- landuses[i]
+  code <- lu_codes[i]
+  
+  # Target PSUs
+  file_path <- sprintf("results/%s/PSUs_target.shp", lu)
+  if (file.exists(file_path)) {
+    temp <- st_read(file_path, quiet = TRUE)
+    temp$lulc <- code
+    psus_target_list[[lu]] <- temp
+    cat(sprintf("✓ Loaded %s target PSUs (%d)\n", lu, nrow(temp)))
+  }
+  
+  # Target TSUs
+  file_path <- sprintf("results/%s/TSUs_target.shp", lu)
+  if (file.exists(file_path)) {
+    temp <- st_read(file_path, quiet = TRUE)
+    temp$lulc <- code
+    tsus_target_list[[lu]] <- temp
+    cat(sprintf("✓ Loaded %s target TSUs (%d)\n", lu, nrow(temp)))
+  }
+  
+  # Replacement PSUs and TSUs
+  # (similar loading process)
+}
+
+# Merge using data.table (handles different column names)
+psus_target <- st_as_sf(rbindlist(psus_target_list, fill = TRUE))
+tsus_target <- st_as_sf(rbindlist(tsus_target_list, fill = TRUE))
+
+cat(sprintf("\n=== MERGED DATASETS ===\n"))
+cat(sprintf("Target PSUs: %d\n", nrow(psus_target)))
+cat(sprintf("Target TSUs: %d\n", nrow(tsus_target)))
+```
+
+## Assign Country-Wide Unique IDs {#assign-unique-ids}
+
+```{r assign-country-ids, eval=FALSE}
+# Assign sequential IDs to target PSUs
+psus_target$PSU_ID_country <- 1:nrow(psus_target)
+
+# Continue numbering for replacements
+start_id <- nrow(psus_target) + 1
+psus_repl$PSU_ID_country <- start_id:(start_id + nrow(psus_repl) - 1)
+
+# Transfer country-wide IDs to TSUs
+tsus_target$PSU_temp_ID <- paste0(tsus_target$PSU_ID, "-", tsus_target$lulc)
+psus_target$PSU_temp_ID <- paste0(psus_target$ID, "-", psus_target$lulc)
+
+tsus_target$PSU_ID_country <- psus_target$PSU_ID_country[
+  match(tsus_target$PSU_temp_ID, psus_target$PSU_temp_ID)
+]
+
+# Create final site IDs with country-wide PSU numbers
+tsus_target <- tsus_target %>%
+  mutate(site_id = sprintf("%s%04d-%d-%d%s", 
+                          ISO.code, PSU_ID_country, SSU_ID, TSU_ID, lulc))
+
+# Clean up
+tsus_target <- tsus_target %>%
+  select(PSU_ID = PSU_ID_country, SSU_ID, SSU_Type, TSU_ID, TSU_Type, 
+         site_id, lulc, geometry)
+
+psus_target <- psus_target %>%
+  select(PSU_ID = PSU_ID_country, lulc, geometry)
+
+cat(sprintf("\n✓ Assigned country-wide unique IDs\n"))
+```
+
+## Export Unified Datasets {#export-unified}
+
+```{r export-unified, eval=FALSE}
+# Export unified datasets
+write_sf(psus_target, "results/all/all_psus_target.shp", overwrite = TRUE)
+write_sf(tsus_target, "results/all/all_tsus_target.shp", overwrite = TRUE)
+write_sf(psus_repl, "results/all/all_psus_replacements.shp", overwrite = TRUE)
+write_sf(tsus_repl, "results/all/all_tsus_replacements.shp", overwrite = TRUE)
+
+cat(sprintf("\n✓ All unified datasets exported to results/all/\n"))
+```
+
+## Summary Statistics {#summary-stats}
+
+```{r final-summary, eval=FALSE}
+# Count target sites by land use
+summary_lu <- tsus_target %>%
+  filter(SSU_Type == "Target" & TSU_Type == "Target") %>%
+  st_drop_geometry() %>%
+  group_by(lulc) %>%
+  summarise(
+    n_PSUs = n_distinct(PSU_ID),
+    n_sites = n(),
+    sites_per_PSU = n / n_distinct(PSU_ID)
+  )
+
+print(summary_lu)
+
+# Total counts
+cat(sprintf("\n=== FINAL SAMPLING DESIGN ===\n"))
+cat(sprintf("Total PSUs: %d\n", n_distinct(tsus_target$PSU_ID)))
+cat(sprintf("Total target sampling sites: %d\n", 
+            sum(tsus_target$SSU_Type == "Target" & tsus_target$TSU_Type == "Target")))
+cat(sprintf("  - Cropland: %d\n", 
+            sum(tsus_target$lulc == "C" & tsus_target$SSU_Type == "Target" & 
+                tsus_target$TSU_Type == "Target")))
+cat(sprintf("  - Grassland: %d\n", 
+            sum(tsus_target$lulc == "G" & tsus_target$SSU_Type == "Target" & 
+                tsus_target$TSU_Type == "Target")))
+cat(sprintf("  - Forest: %d\n", 
+            sum(tsus_target$lulc == "F" & tsus_target$SSU_Type == "Target" & 
+                tsus_target$TSU_Type == "Target")))
+```
+
+## Create Distribution Maps {#distribution-maps}
+
+```{r final-maps, eval=FALSE, fig.cap="Final site distribution across all land uses"}
+library(ggplot2)
+
+# Filter to target sites only
+target_sites <- tsus_target %>%
+  filter(SSU_Type == "Target" & TSU_Type == "Target")
+
+# Load country boundaries
+country <- st_read("shapes/roi_country_epsg_4326.shp")
+
+# Create distribution map
+ggplot() +
+  geom_sf(data = country, fill = "gray95", color = "gray50") +
+  geom_sf(data = target_sites, aes(color = lulc), size = 0.5, alpha = 0.6) +
+  scale_color_manual(
+    name = "Land Use",
+    values = c("C" = "#F096FF", "G" = "#FFFF4C", "F" = "#006400"),
+    labels = c("C" = "Cropland", "G" = "Grassland", "F" = "Forest")
+  ) +
+  labs(title = "SoilFER Sampling Design - Final Site Distribution",
+       subtitle = sprintf("%d sampling locations across %d PSUs", 
+                         nrow(target_sites), n_distinct(target_sites$PSU_ID))) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+ggsave("results/all/final_site_distribution.png", 
+       width = 12, height = 10, dpi = 300)
+
+cat(sprintf("\n✓ Distribution map saved\n"))
+```
+
+# Field Sampling Protocol {#field-protocol}
+
+## GPS Device Preparation {#gps-prep}
+
+### Export to GPX Format
+
+```{r export-gpx, eval=FALSE}
+# Load target TSUs
+tsus_field <- st_read("results/all/all_tsus_target.shp")
+
+# Filter to primary targets only (1 per SSU)
+tsus_field <- tsus_field %>%
+  filter(SSU_Type == "Target" & TSU_Type == "Target")
+
+# Transform to WGS84 (required for GPS)
+tsus_field_wgs84 <- st_transform(tsus_field, crs = 4326)
+
+# Export to GPX
+st_write(tsus_field_wgs84, 
+         "results/all/field_sampling_points.gpx", 
+         driver = "GPX", 
+         delete_dsn = TRUE)
+
+cat(sprintf("✓ Exported %d waypoints to GPX\n", nrow(tsus_field_wgs84)))
+```
+
+### Load onto GPS Device
+
+1. Connect GPS device to computer
+2. Copy `field_sampling_points.gpx` to GPS memory
+3. Load waypoints in GPS software
+4. Waypoint names will be `site_id` values (e.g., KEN0001-1-1C)
+
+## Sampling Procedure {#sampling-procedure}
+
+**For each PSU (in order of PSU_ID):**
+
+1. **Navigate to TSU 1** (SSU_ID=1, TSU_ID=1)
+   - If accessible → Sample at exact GPS location
+   - If inaccessible (physical barrier) → Use TSU 2 (Alternative 1) or TSU 3 (Alternative 2)
+
+2. **Navigate to TSU 2** (SSU_ID=2, TSU_ID=1)
+   - Repeat accessibility check and sampling
+
+3. **Navigate to TSU 3** (SSU_ID=3, TSU_ID=1)
+
+4. **Navigate to TSU 4** (SSU_ID=4, TSU_ID=1)
+
+**If entire PSU is inaccessible:**
+- Use `replacement_PSU_ID` to find backup PSU
+- Navigate to replacement PSU location
+- Sample at replacement TSUs (SSU_ID = 5, 6, 7, 8)
+
+## Data Recording {#data-recording}
+
+Field form should capture (Table \@ref(tab:field-form)):
+
+```{r field-form, echo=FALSE}
+field_data <- data.frame(
+  Field = c("site_id", "date", "team", "coordinates_actual", "accessibility", 
+            "land_use_observed", "soil_depth", "photos", "notes"),
+  Example = c("KEN0001-1-1C", "2025-01-15", "Team A", "-1.2345, 36.7890", 
+              "Target / Alt1 / Alt2", "Maize field", "45 cm", 
+              "KEN0001-1-1C_001.jpg", "Rocky, 15% slope"),
+  Notes = c("**CRITICAL** - Unique identifier", "Date of sampling", "Field team name",
+            "Actual GPS coordinates", "Which TSU was sampled", "Visual confirmation",
+            "Depth to restrictive layer", "Geotagged photos", "Relevant observations")
+)
+
+kable(field_data, caption = "Required field data recording")
+```
+
+## Quality Control {#qc}
+
+**During field work:**
+- ✅ Verify land use matches expected type
+- ✅ Document if alternative TSU used (and reason)
+- ✅ Take geotagged photos at each site
+- ✅ Record actual GPS coordinates
+- ✅ Note any anomalies or challenges
+
+**Post-field QC:**
+- Check for duplicate `site_id` entries
+- Verify all mandatory fields completed
+- Cross-reference photos with field records
+- Flag sites with large GPS deviation (>30m from waypoint)
+
+# References {-}
+
+<div id="refs"></div>
+
+# Appendices {-}
+
+## Appendix A: Software and Data Sources {-}
+
+### Software Requirements
+
+- **R** (version ≥ 4.0): https://www.r-project.org/
+- **RStudio**: https://posit.co/products/open-source/rstudio/
+- **Google Earth Engine**: https://earthengine.google.com/
+- **QGIS** (optional): https://qgis.org/
+
+### Data Sources
+
+**Global Datasets:**
+- CHELSA Climate: https://chelsa-climate.org/
+- TerraClimate: https://www.climatologylab.org/terraclimate.html
+- MODIS: https://lpdaac.usgs.gov/products/mod13q1v006/
+- Sentinel-2: https://scihub.copernicus.eu/
+- SRTM DEM: https://earthexplorer.usgs.gov/
+- ESA WorldCover: https://esa-worldcover.org/
+- SoilGrids: https://soilgrids.org/
+- Geomorpho90m: https://www.geomorpho90m.org/
+
+**Administrative Boundaries:**
+- GADM: https://gadm.org/
+- Natural Earth: https://www.naturalearthdata.com/
+
+## Appendix B: Troubleshooting Common Issues {-}
+
+### Memory Issues
+
+**Problem**: R runs out of memory during processing
+
+**Solution**:
+```{r memory-fix, eval=FALSE}
+# Increase memory limit (Windows)
+memory.limit(size = 32000)  # 32 GB
+
+# Use terra instead of raster (more efficient)
+# Process data in chunks
+# Close unnecessary applications
+```
+
+### CRS Misalignment
+
+**Problem**: Spatial layers don't overlap correctly
+
+**Solution**:
+```{r crs-fix, eval=FALSE}
+# Always check CRS
+sf::st_crs(your_data)
+terra::crs(your_raster)
+
+# Reproject if needed
+your_data <- sf::st_transform(your_data, crs = target_crs)
+your_raster <- terra::project(your_raster, target_crs)
+```
+
+### Empty Geometry
+
+**Problem**: SSU or TSU generation fails
+
+**Solution**:
+```{r geometry-fix, eval=FALSE}
+# Check for valid geometries
+st_is_valid(your_sf_object)
+
+# Fix invalid geometries
+your_sf_object <- st_make_valid(your_sf_object)
+
+# Remove empty geometries
+your_sf_object <- your_sf_object[!st_is_empty(your_sf_object), ]
+```
+
+## Appendix C: Acronyms and Abbreviations {-}
+
+```{r acronyms, echo=FALSE}
+acronyms <- data.frame(
+  Acronym = c("AOI", "AWC", "BAS", "CHELSA", "CLHS", "CRS", "CSC", "CSCS", 
+              "DEM", "DSM", "EVI", "FAO", "FPAR", "GEE", "GRTS", "ISO",
+              "KLD", "JSD", "LULC", "MAST", "MODIS", "MSSD", "MSSSD", "NDVI",
+              "NSM", "PCA", "PC", "PET", "PSU", "ROI", "SoilFER", "SRS",
+              "SRTM", "SSU", "SWIR", "TPI", "TSU", "TWI", "VACS"),
+  Definition = c("Area of Interest", "Available Water Capacity", "Balanced Acceptance Sampling",
+                 "Climatologies at High resolution for the Earth's Land Surface Areas",
+                 "Conditioned Latin Hypercube Sampling", "Coordinate Reference System",
+                 "Covariate Space Coverage", "Covariate Space Coverage Sampling",
+                 "Digital Elevation Model", "Digital Soil Mapping", "Enhanced Vegetation Index",
+                 "Food and Agriculture Organization", "Fraction of Photosynthetically Active Radiation",
+                 "Google Earth Engine", "Generalized Random Tessellation Stratified",
+                 "International Organization for Standardization",
+                 "Kullback-Leibler Divergence", "Jensen-Shannon Divergence",
+                 "Land Use and Land Cover", "Mean Annual Soil Temperature",
+                 "Moderate Resolution Imaging Spectroradiometer",
+                 "Mean Squared Shortest Distance", "Mean Squared Shortest Scaled Distance",
+                 "Normalized Difference Vegetation Index", "Normalized Soil Moisture",
+                 "Principal Component Analysis", "Principal Component",
+                 "Potential Evapotranspiration", "Primary Sampling Unit",
+                 "Region of Interest", "Soil Mapping for Resilient Agrifood Systems",
+                 "Simple Random Sampling", "Shuttle Radar Topography Mission",
+                 "Secondary Sampling Unit", "Shortwave Infrared",
+                 "Topographic Position Index", "Tertiary Sampling Unit",
+                 "Topographic Wetness Index", "Vision for Adapted Crops and Soils")
+)
+
+kable(acronyms, caption = "List of acronyms and abbreviations used in this manual")
+```
+
+---
+
+*For questions, technical support, or to report issues, please visit the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design) or contact the SoilFER team at FAO.*

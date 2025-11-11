@@ -1,0 +1,169 @@
+--- 
+title:  |
+  <img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" />
+  Integrated Soil Information for decision-making
+subtitle: "From Soil Sampling Design and Spectroscopy to Decision-Making "
+author: "Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I. "
+site: bookdown::bookdown_site
+output: 
+  bookdown::pdf_book:
+    keep_tex: yes
+  bookdown::word_document2: # Word output
+    toc: true
+    fig_caption: true
+  bookdown::gitbook:
+    config:
+      fig_caption: yes
+      download: ["pdf"]
+  latex_engine: xelatex # Use XeLaTeX for better figure handling
+  out.width: '0.9\\textwidth' # Adjust this value as needed
+header-includes:
+    - \AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
+    - \usepackage{titling}
+    - \usepackage{natbib}
+    - \usepackage{pdfpages}
+    - \usepackage{fancyhdr}
+    - \usepackage{booktabs}
+    - \usepackage{longtable}
+    - \usepackage{subfig}
+    - \usepackage{array}
+    - \usepackage{amsmath}
+    - \usepackage{multirow}
+    - \usepackage{wrapfig}
+    - \usepackage{bookmark}
+    - \usepackage[utf8]{inputenc}
+    - \usepackage{float}
+    - \usepackage{colortbl}
+    - \usepackage{pdflscape}
+    - \usepackage{tabu}
+    - \usepackage{threeparttable}
+    - \usepackage{threeparttablex}
+    - \usepackage[normalem]{ulem}
+    - \usepackage{makecell}
+    - \usepackage{xcolor}
+    - \DeclareUnicodeCharacter{2212}{\textendash}
+    - \usepackage{rotating, graphicx}
+    - \usepackage{listings}
+documentclass: book
+csl: food-and-agriculture-organization-of-the-united-nations.csl
+bibliography: "reference-list.bib"
+link-citations: yes
+classoption: oneside
+papersize: b5
+fontsize: 10pt
+description: "SoilFER SID Technical Manual"
+always_allow_html: yes
+template: null
+---
+
+
+```{r set-options, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE, eval = FALSE}
+
+options(width = 65 ,scipen=999)
+
+
+library(kableExtra)
+
+
+# Cache results
+knitr::opts_chunk$set(cache=F,fig.pos = 'H', fig.cap = T,dev = 'jpeg')
+
+```
+
+
+\frontmatter
+\addtocontents{toc}{\protect\hypersetup{hidelinks}}   
+\addtocontents{lof}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\tableofcontents
+\listoffigures
+\listoftables
+\nopagebreak[5]
+
+
+```{r, echo = F, eval = T, fig.cap = ""}
+knitr::include_graphics("images/frontcover.jpg")
+```
+
+# Licence {-}
+
+The Technical Manual is made available under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO licence
+
+
+[CC BY-NC-SA 3.0 IGO](https://creativecommons.org/licenses/by-nc-sa/3.0/igo/legalcode).
+
+
+
+
+# Abbreviations and acronyms {-}
+BD
+
+:   Bulk density
+
+CEC
+
+:   Cation exchange capacity
+
+CRAN
+
+:   Comprehensive R archive network
+
+DSM
+
+:   Digital soil mapping 
+
+GEE
+
+:   Google Earth Engine
+
+GSP
+
+:   Global Soil Partnership
+
+INSII
+
+:   International Network of Soil Information Institutions
+
+ITPS
+
+:   Intergovernmental Technical Panel on Soils
+
+ME
+
+:   Mean error
+
+MAE
+
+:   Mean absolute error
+
+MEC
+
+:   Modelling efficiency coefficient
+
+NDVI
+
+:   Normalized difference in vegetation index
+
+QA/QC
+
+:   Quality assurance/quality check
+
+RMSE
+
+:   Root mean squared error
+
+SOC
+
+:   Soil organic carbon
+
+SOM
+
+:   Soil organic matter
+
+
+
+# Contributors and reviewers {-}
+
+
