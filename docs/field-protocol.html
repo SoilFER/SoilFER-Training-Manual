@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Soil Data Preparation | Integrated soil information for decision-making </title>
+  <title>Chapter 4 Field Sampling Protocol | Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Soil Data Preparation | Integrated soil information for decision-making " />
+  <meta property="og:title" content="Chapter 4 Field Sampling Protocol | Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Soil Data Preparation | Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Chapter 4 Field Sampling Protocol | Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tbd.html"/>
-<link rel="next" href="digital-soil-mapping-and-modeling.html"/>
+<link rel="prev" href="merging-results.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -326,44 +326,140 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="soil-data-preparation" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Soil Data Preparation<a href="soil-data-preparation.html#soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-1" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Introduction<a href="soil-data-preparation.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="field-protocol" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Field Sampling Protocol<a href="field-protocol.html#field-protocol" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="gps-prep" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> GPS Device Preparation<a href="field-protocol.html#gps-prep" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="export-to-gpx-format" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Export to GPX Format<a href="field-protocol.html#export-to-gpx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="field-protocol.html#cb54-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
+<span id="cb54-2"><a href="field-protocol.html#cb54-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
+<span id="cb54-3"><a href="field-protocol.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="field-protocol.html#cb54-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
+<span id="cb54-5"><a href="field-protocol.html#cb54-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
+<span id="cb54-6"><a href="field-protocol.html#cb54-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb54-7"><a href="field-protocol.html#cb54-7" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="field-protocol.html#cb54-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
+<span id="cb54-9"><a href="field-protocol.html#cb54-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb54-10"><a href="field-protocol.html#cb54-10" tabindex="-1"></a></span>
+<span id="cb54-11"><a href="field-protocol.html#cb54-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
+<span id="cb54-12"><a href="field-protocol.html#cb54-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
+<span id="cb54-13"><a href="field-protocol.html#cb54-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
+<span id="cb54-14"><a href="field-protocol.html#cb54-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
+<span id="cb54-15"><a href="field-protocol.html#cb54-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-16"><a href="field-protocol.html#cb54-16" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="field-protocol.html#cb54-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
 </div>
-<div id="data-cleaning" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Data cleaning<a href="soil-data-preparation.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-onto-gps-device" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Load onto GPS Device<a href="field-protocol.html#load-onto-gps-device" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Connect GPS device to computer</li>
+<li>Copy <code>field_sampling_points.gpx</code> to GPS memory</li>
+<li>Load waypoints in GPS software</li>
+<li>Waypoint names will be <code>site_id</code> values (e.g., KEN0001-1-1C)</li>
+</ol>
 </div>
-<div id="soil-data-harmonization" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Soil Data Harmonization<a href="soil-data-preparation.html#soil-data-harmonization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="concepts-on-digital-exchange-of-soil-related-data-iso-28258" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Concepts on digital exchange of soil-related data (ISO 28258)<a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-procedure" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Sampling Procedure<a href="field-protocol.html#sampling-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>For each PSU (in order of PSU_ID):</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Navigate to TSU 1</strong> (SSU_ID=1, TSU_ID=1)</p>
+<ul>
+<li>If accessible → Sample at exact GPS location</li>
+<li>If inaccessible (physical barrier) → Use TSU 2 (Alternative 1) or TSU 3 (Alternative 2)</li>
+</ul></li>
+<li><p><strong>Navigate to TSU 2</strong> (SSU_ID=2, TSU_ID=1)</p>
+<ul>
+<li>Repeat accessibility check and sampling</li>
+</ul></li>
+<li><p><strong>Navigate to TSU 3</strong> (SSU_ID=3, TSU_ID=1)</p></li>
+<li><p><strong>Navigate to TSU 4</strong> (SSU_ID=4, TSU_ID=1)</p></li>
+</ol>
+<p><strong>If entire PSU is inaccessible:</strong>
+- Use <code>replacement_PSU_ID</code> to find backup PSU
+- Navigate to replacement PSU location
+- Sample at replacement TSUs (SSU_ID = 5, 6, 7, 8)</p>
 </div>
-<div id="plot-data" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Plot data<a href="soil-data-preparation.html#plot-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-recording" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Data Recording<a href="field-protocol.html#data-recording" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Field form should capture (Table <a href="field-protocol.html#tab:field-form">4.1</a>):</p>
+<table>
+<caption><span id="tab:field-form">Table 4.1: </span>Required field data recording</caption>
+<colgroup>
+<col width="26%" />
+<col width="28%" />
+<col width="45%" />
+</colgroup>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Example</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">site_id</td>
+<td align="left">KEN0001-1-1C</td>
+<td align="left"><strong>CRITICAL</strong> - Unique identifier</td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left">2025-01-15</td>
+<td align="left">Date of sampling</td>
+</tr>
+<tr>
+<td align="left">team</td>
+<td align="left">Team A</td>
+<td align="left">Field team name</td>
+</tr>
+<tr>
+<td align="left">coordinates_actual</td>
+<td align="left">-1.2345, 36.7890</td>
+<td align="left">Actual GPS coordinates</td>
+</tr>
+<tr>
+<td align="left">accessibility</td>
+<td align="left">Target / Alt1 / Alt2</td>
+<td align="left">Which TSU was sampled</td>
+</tr>
+<tr>
+<td align="left">land_use_observed</td>
+<td align="left">Maize field</td>
+<td align="left">Visual confirmation</td>
+</tr>
+<tr>
+<td align="left">soil_depth</td>
+<td align="left">45 cm</td>
+<td align="left">Depth to restrictive layer</td>
+</tr>
+<tr>
+<td align="left">photos</td>
+<td align="left">KEN0001-1-1C_001.jpg</td>
+<td align="left">Geotagged photos</td>
+</tr>
+<tr>
+<td align="left">notes</td>
+<td align="left">Rocky, 15% slope</td>
+<td align="left">Relevant observations</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="profile-data" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Profile data<a href="soil-data-preparation.html#profile-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="element-data" class="section level2 hasAnchor" number="6.7">
-<h2><span class="header-section-number">6.7</span> Element data<a href="soil-data-preparation.html#element-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="specimen-data" class="section level2 hasAnchor" number="6.8">
-<h2><span class="header-section-number">6.8</span> Specimen data<a href="soil-data-preparation.html#specimen-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="definition-of-laboratory-procedures" class="section level2 hasAnchor" number="6.9">
-<h2><span class="header-section-number">6.9</span> Definition of laboratory procedures<a href="soil-data-preparation.html#definition-of-laboratory-procedures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="data-transformation" class="section level2 hasAnchor" number="6.10">
-<h2><span class="header-section-number">6.10</span> Data transformation<a href="soil-data-preparation.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="organizing-soil-data-according-to-the-glosis-database" class="section level2 hasAnchor" number="6.11">
-<h2><span class="header-section-number">6.11</span> Organizing soil data according to the GloSIS database<a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="tools-for-harmonization-of-soil-databases-within-glosis" class="section level2 hasAnchor" number="6.12">
-<h2><span class="header-section-number">6.12</span> Tools for harmonization of soil databases within GloSIS<a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-
+<div id="qc" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Quality Control<a href="field-protocol.html#qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>During field work:</strong>
+- ✅ Verify land use matches expected type
+- ✅ Document if alternative TSU used (and reason)
+- ✅ Take geotagged photos at each site
+- ✅ Record actual GPS coordinates
+- ✅ Note any anomalies or challenges</p>
+<p><strong>Post-field QC:</strong>
+- Check for duplicate <code>site_id</code> entries
+- Verify all mandatory fields completed
+- Cross-reference photos with field records
+- Flag sites with large GPS deviation (&gt;30m from waypoint)</p>
 </div>
 </div>
             </section>
@@ -371,8 +467,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="tbd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="digital-soil-mapping-and-modeling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="merging-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
