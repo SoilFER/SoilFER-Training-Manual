@@ -1,1 +1,376 @@
-# Digital soil mapping and modeling
+# Digital Soil Mapping and Modeling
+
+# 1. Fundamentals of Digital Soil Mapping
+
+Here is the revised introduction focusing on DSM and its evolution:
+
+---
+
+## Introduction to Digital Soil Mapping
+
+Digital soil mapping (DSM) is a modern approach that uses quantitative methods to create soil maps. It combines field observations, laboratory data, and environmental information within a spatial framework [@Lagacherie2008]. DSM represents a significant change from traditional soil survey, where maps were created based mainly on expert knowledge and manual interpretation of landscapes.
+
+Traditional soil survey relied on a soil surveyor's conceptual model of the landscape. Surveyors used aerial photographs, satellite images, and field observations to identify soil patterns. However, this approach had important limitations: maps were subjective, difficult to update, and lacked quantitative measures of uncertainty [@Minasny2016].
+
+The evolution towards digital methods began in the 1970s when researchers started using computers to store and analyse soil data. @Webster1979 demonstrated early digital soil cartography in England, while soil information systems were developed to manage soil databases. During the 1980s, the development of geographic information systems (GIS) and geostatistics provided new tools for spatial analysis. The 1990s brought advances in digital terrain modelling, data mining, and machine learning methods such as classification trees and neural networks.
+
+The success of DSM in the early 2000s resulted from several factors: increased availability of digital elevation models and satellite imagery, greater computing power, development of data mining tools, and a growing global demand for soil information with uncertainty estimates [@Minasny2016]. Universities and research centres began producing soil maps that were previously only made by national survey agencies.
+
+Today, DSM is defined as the creation of spatial soil information systems using field and laboratory observations combined with spatial inference methods [@Lagacherie2006]. The theoretical framework for DSM was formalised in 2003, establishing the conceptual basis that guides current practice.
+
+
+
+
+Here is the improved version:
+
+---
+
+## The SCORPAN Framework
+
+The conceptual and methodological foundations of DSM were formalised by the *scorpan* framework [@McBratney2003]. This model represents a quantitative expansion of the classical factors of soil formation originally proposed by Dokuchaev in 1883 and later refined by @Jenny1941. While Jenny's *clorpt* model (climate, organisms, relief, parent material, time) was developed to explain soil genesis, the *scorpan* framework transforms this explanatory approach into an empirical predictive tool for spatial mapping.
+
+The fundamental distinction between the two frameworks lies in their purpose. Jenny's model describes how soils form through the interaction of environmental factors over time—it is a qualitative, theoretical framework. The *scorpan* approach, in contrast, does not attempt to explain soil formation mechanistically but rather exploits empirical relationships between soil and environmental variables for prediction [@McBratney2003]. As noted by the authors, the direction of causality is not considered: where evidence of a relationship exists, it can be used for prediction regardless of whether the factor causes or is caused by soil properties.
+
+The *scorpan* acronym identifies seven environmental factors that influence soil distribution:
+
+-   **s**: soil—other properties of the soil at a point, including information from prior maps, proximal or remote sensing, or expert knowledge
+-   **c**: climate—properties of the environment such as precipitation, temperature, and evapotranspiration
+-   **o**: organisms—vegetation, fauna, or human activity, often represented by land cover or spectral indices
+-   **r**: relief—topographic attributes derived from digital elevation models
+-   **p**: parent material—lithology and geological substrate
+-   **a**: age—the time factor representing soil development duration or geomorphic surface age
+-   **n**: space—spatial position expressed as geographic coordinates
+
+Two additional factors distinguish *scorpan* from Jenny's original formulation. First, soil itself (s) is included as a predictor because soil properties can be predicted from other soil attributes measured at the same location or from existing soil maps. Second, the spatial factor (n) explicitly incorporates geographic position, which captures spatial trends and autocorrelation not explained by the other environmental factors [@McBratney2003]. The spatial coordinates can be used directly or transformed into derived variables such as distance to coast or distance from discharge areas.
+
+The general pedometric model is formulated as:
+
+$$S_c = f(s, c, o, r, p, a, n) + \varepsilon$$
+
+or for soil attributes:
+
+$$S_a = f(s, c, o, r, p, a, n) + \varepsilon$$
+
+This can be expressed more compactly as:
+
+$$S = f(Q) + \varepsilon$$
+
+where $S$ denotes a soil class ($S_c$) or attribute ($S_a$) at a specific location, $f(Q)$ represents a deterministic function of the *scorpan* covariates, and $\varepsilon$ represents the spatially autocorrelated residual. The complete methodological approach is termed *scorpan-SSPFe* (Soil Spatial Prediction Function with spatially autocorrelated errors), where deterministic predictions from $f(Q)$ are complemented by geostatistical modelling of residuals to account for spatial structure not captured by the covariates [@McBratney2003].
+
+Each *scorpan* factor is represented by one or more environmental covariates. For example, climate (c) may be represented by mean annual precipitation and temperature; relief (r) by slope, aspect, curvature, and terrain wetness index; and organisms (o) by satellite-derived vegetation indices such as NDVI. The selection of covariates depends on data availability, mapping scale, and the soil property being predicted. Environmental covariates are discussed in detail in [Chapter 2, Environmental Covariates](http://linktothechapter.org/#Env-cov).
+
+The *scorpan-SSPFe* approach represents a paradigm shift in soil mapping [@McBratney2003]. While the conventional Jenny model follows a deductive-nomological framework, the *scorpan* approach follows an inductive-statistical model of explanation. Both frameworks share the same ontological basis—soil as a function of environment—but differ fundamentally in methodology and apparatus. The *scorpan* approach requires digital data, computing resources, and statistical methods for fitting $f()$, whereas traditional mapping relies primarily on expert mental models and field interpretation.
+
+
+Here is the improved and enriched version:
+
+---
+
+## Statistical Theory for Predictive Soil Mapping
+
+The spatial heterogeneity of soil properties results from complex interactions among soil-forming factors that are often only partially characterised. While the deterministic influences of climate, organisms, relief, parent material, and time are well-recognised, their synergistic interaction over pedogenic timescales presents significant challenges for mechanistic modelling [@HeuvelinkWebster2001]. Soil varies continuously in space and time, and any description of this variation is inevitably incomplete. Soil scientists must therefore represent this variation using models that combine deterministic and stochastic components [@HeuvelinkWebster2001].
+
+### Mechanistic versus Empirical Approaches
+
+Mechanistic modelling (also referred to as process-based or white-box modelling) involves the mathematical representation of soil systems based on known physical, chemical, and biological processes. Unlike empirical models that rely on statistical correlations, mechanistic models attempt to simulate the actual mechanisms of soil formation and function—such as water movement, solute transport, organic matter decomposition, and soil erosion—over time and space [@Wadoux2021]. These models typically use systems of differential equations to describe the state of the soil system and its evolution.
+
+@Wadoux2021 distinguish between mechanistic and functional (empirical) models for soil mapping. Mechanistic models have structures based on mechanisms derived from knowledge of physical processes and soil chemical and biological reactions. Examples include soil erosion and deposition models, soil-landscape evolution models, and soil carbon dynamics models. However, the main problems with mechanistic approaches are that they require adequate mechanistic understanding of major soil processes, need extensive input data that are often unavailable, have many parameters that are difficult to infer, are computationally challenging, and typically do not quantify prediction uncertainty.
+
+Although advancements have been made in modelling vertical soil variation through process-based approaches, these methods remain primarily experimental and are not yet suitable for large-scale operational soil mapping [@Zhang2024]. Consequently, most operational DSM follows an **empirical approach**. Instead of simulating every physical process, empirical models use statistical relationships between soil properties and environmental covariates to make predictions [@McBratney2003].
+
+Recent research has explored hybrid approaches that integrate process-oriented (PO) and machine learning (ML) models. @Zhang2024 proposed a framework where PO model outputs serve as additional covariates for ML models, combining the ability of PO models to capture temporal dynamics with the spatial prediction accuracy of ML models. This integration represents a promising avenue for dynamic soil mapping that addresses one of the ten challenges for the future of pedometrics [@Wadoux2021].
+
+### Sources of Residual Variance
+
+Regression models frequently account for only a portion of the total soil variance. This limitation arises from several factors [@Hengl2007; @Wadoux2021]:
+
+1. **Model structure limitations**: The deterministic model structure may fail to represent actual mechanistic pedogenic processes adequately.
+2. **Missing causal factors**: Models often exclude significant causal factors that influence soil variation.
+3. **Covariate limitations**: Environmental covariates serve as incomplete proxies for true soil-forming factors (see section below).
+4. **Measurement errors**: Covariates contain inherent measurement errors or suffer from scale (support) mismatches relative to soil observations.
+5. **Spatial scale effects**: Soil properties vary at spatial scales from the atomic to the global, and the factors causing variation at one scale may differ from those at other scales [@Wadoux2021].
+
+Given these constraints, soil spatial models often exhibit substantial residual variance. When these residuals demonstrate spatial autocorrelation—quantifiable through variogram analysis—the application of kriging techniques to the residuals can significantly improve prediction accuracy [@McBratney2003; @Hengl2007].
+
+### Covariates as Proxies of Soil-Forming Factors
+
+In DSM, we use the terms **proxy** and **covariate** when referring to environmental data layers used to predict soil properties. A proxy is an indirect measurement of a variable that is difficult to measure directly. Since we cannot measure the exact historical climate or the precise biological activity that has occurred at every location over millennia, we use available data that correlates with these processes [@McBratney2003].
+
+For example, a **Normalized Difference Vegetation Index (NDVI)** map derived from satellite imagery is not the "organisms" factor itself but serves as a proxy for vegetation biomass and productivity, which influences organic matter inputs to the soil.
+
+While the *scorpan* framework is based on soil-forming factors, the digital layers we input into models are mathematical representations rather than the physical factors themselves. There are four primary reasons for this distinction [@Lagacherie2008; @Kempen2009]:
+
+1. **Temporal mismatch**: Soil formation occurs over centuries or millennia, but most climate covariates are based on the last 30 to 50 years of data. These represent proxies for the long-term climate that actually formed the soil.
+2. **Information loss and simplification**: A Digital Elevation Model represents relief, but it is a grid of numbers representing average heights within pixels. It misses fine-scale terrain nuances that influence water flow and erosion.
+3. **Measurement error**: Every digital layer contains inherent errors. Satellite sensors have noise, and climate station data are interpolated across spatial gaps.
+4. **Indirect correlation**: Often, a covariate represents multiple factors simultaneously. Elevation (relief) correlates strongly with temperature (climate), making it a statistical surrogate rather than a pure physical factor.
+
+### The Universal Model of Soil Variation
+
+In DSM, we mathematically decompose soil variation into distinct components to better understand and predict soil patterns. This decomposition follows the **Universal Model of Soil Variation** [@Webster2007; @HeuvelinkWebster2001]:
+
+$$Z(s) = m(s) + \varepsilon'(s) + \varepsilon''(s)$$
+
+Where:
+
+- $Z(s)$: The value of a soil property at a specific location ($s$)
+- $m(s)$: The **deterministic component** (trend)—the part of soil variation explained using environmental covariates
+- $\varepsilon'(s)$: The **spatially correlated stochastic component**—variation that follows a spatial pattern but is not captured by covariates
+- $\varepsilon''(s)$: The **pure noise**—measurement errors and fine-scale variation
+
+This decomposition provides the theoretical foundation for hybrid interpolation methods such as regression-kriging, where the trend $m(s)$ is modelled as a function of environmental covariates and the spatially correlated residual $\varepsilon'(s)$ is interpolated using kriging [@Hengl2007; @Odeh1995].
+
+@Hengl2007 demonstrated that regression-kriging explicitly separates trend estimation from residual interpolation, allowing the use of arbitrarily complex regression forms. The method can be expressed as:
+
+$$\hat{Z}(s_0) = \hat{m}(s_0) + \hat{\varepsilon}'(s_0)$$
+
+where $\hat{m}(s_0)$ is predicted from the regression model and $\hat{\varepsilon}'(s_0)$ is obtained by kriging the regression residuals.
+
+### Extending the Model: Space, Depth, and Time (3D+T)
+
+While a 2D map describes soil variation at a single depth layer, soils are three-dimensional bodies that change over time. The Universal Model can be generalised to include depth ($d$) and time ($t$) [@HeuvelinkWebster2001]:
+
+$$Z(s, d, t) = m(s, d, t) + \varepsilon'(s, d, t) + \varepsilon''(s, d, t)$$
+
+This **3D+T (spatio-temporal)** model allows tracking how soil properties change with depth and evolve over time. @Heuvelink2016 noted that 3D kriging, where depth is treated as a third dimension, has important advantages because predictions at any depth interval can be made. However, modelling vertical variation realistically is challenging due to zonal and geometric anisotropies and discontinuities at horizon boundaries. Soil observations are typically averages over depth intervals and cannot be treated as vertical points. Mass-preserving splines have been developed to address this issue [@Bishop1999; @Orton2014], though they introduce additional uncertainties.
+
+::: Highlights
+**Example: Weekly Soil Moisture Mapping**
+A classic example of the need for spatio-temporal modelling is **soil moisture**. Unlike soil texture (which changes very slowly over decades), soil moisture fluctuates daily or weekly based on rainfall and evaporation. Creating weekly maps of soil moisture requires a space-time framework considering location ($s$), time ($t$), and depth ($d$) simultaneously.
+:::
+
+However, moving from 2D to 3D+T significantly increases analytical complexity. Each additional dimension requires more model parameters to be estimated, and the data requirements increase substantially.
+
+> **2D+T and 3D+T models**: Because data requirements for 2D+T and 3D+T models are high, they remain experimental in many regions. For most projects, focusing on high-quality 2D or 3D (depth-only) mapping is the standard starting point. Recent developments in integrating process-oriented models with machine learning offer promising approaches for capturing temporal dynamics while maintaining spatial prediction accuracy [@Zhang2024].
+
+
+Here is the improved and enriched version:
+
+---
+
+### Types of Soil Variables
+
+Soil variables are classified into two fundamental categories based on their mathematical nature, and this distinction has important implications for the choice of prediction methods [@McBratney2003]:
+
+**Continuous Variables (Soil Properties):** These are attributes measured on a numerical scale that can take any value within a range. Common examples include clay content (%), soil organic carbon concentration (g kg⁻¹), pH, bulk density (g cm⁻³), and cation exchange capacity (cmol kg⁻¹). From a pedological perspective, these properties typically change gradually across space, reflecting the continuous nature of soil variation [@HeuvelinkWebster2001]. However, some properties may exhibit abrupt changes at lithological boundaries or landscape discontinuities.
+
+**Categorical Variables (Soil Classes):** These represent qualitative groups or discrete soil attributes. Examples include soil taxonomic units (e.g., Mollisol, Alfisol), drainage classes, or horizon designations. Traditional soil classification follows a "top-down" model where soils are divided into mutually exclusive classes with sharp conceptual boundaries [@Odgers2011]. However, the intrinsic variability of soil means that soil usually does not exist as discrete bodies with sharp boundaries between them—either physical boundaries in the natural landscape or conceptual boundaries in the feature space [@HeuvelinkWebster2001; @Odgers2011].
+
+**The Soil Continuum Problem:** In reality, soil grades more or less gradually from one class to another, both in the landscape and in feature space [@Odgers2011]. This has led to the development of continuous classification approaches using fuzzy set theory, where objects can belong to multiple classes with membership values that sum to one [@HeuvelinkWebster2001]. Fuzzy classification provides a more realistic representation of soil variation by quantifying the degree of similarity between soil profiles and class centroids.
+
+### Prediction Methods
+
+The mathematical nature of soil variables determines the type of statistical method used to create predictive maps [@McBratney2003]:
+
+**Regression for Continuous Properties:** For continuous variables, regression algorithms establish numerical relationships between soil properties and environmental covariates. Methods range from linear approaches (ordinary least squares, generalised linear models) to non-linear techniques (generalised additive models, regression trees, neural networks, and ensemble methods such as Random Forest). The advantage of tree-based methods over linear models is their ability to handle nonlinearity and non-additive behaviour without requiring interactions to be pre-specified [@Breiman1984; @McBratney2003].
+
+**Classification for Soil Classes:** For categorical variables, classification algorithms calculate the probability of a location belonging to specific soil classes. Methods include discriminant analysis, logistic regression, classification trees, and machine learning classifiers. Rather than producing a single "hard" classification, modern approaches often output class membership probabilities for each location, providing a richer representation of prediction uncertainty [@McBratney2003; @Kempen2009].
+
+**Hybrid Approaches:** Some methods can handle both continuous and categorical data simultaneously. Classification and regression trees (CART) exemplify this flexibility, automatically determining splitting variables and points based on the data structure [@Breiman1984]. Tree-based models are particularly valued for their interpretability compared to methods like neural networks or generalised additive models [@McBratney2003].
+
+### Nonlinearity and Uncertainty
+
+A fundamental characteristic of soil-environment relationships is that they are often **non-linear and complex** [@Minasny2016]. Environmental factors do not always influence soil properties in simple, linear ways. Terrain attributes may have threshold effects, climate interactions may be multiplicative, and biological processes introduce additional complexity. Because predictive models are simplified representations of natural processes, they are never fully accurate.
+
+Unlike traditional soil maps that provide a single deterministic view, digital soil mapping enables the quantification of **prediction uncertainty**. This means that for every prediction, we can provide measures of confidence indicating where the model is reliable and where additional data might be needed [@Padarian2023; @Styc2021]. Uncertainty can be expressed through:
+
+- **Prediction intervals**: Upper and lower bounds within which the true value is expected to fall with a specified probability (e.g., 90% confidence interval)
+- **Standard deviation or variance**: Measures of prediction spread around the mean estimate
+- **Prediction interval coverage probability (PICP)**: Assessment of whether stated confidence intervals actually contain the expected proportion of true values [@Styc2021]
+
+However, @Padarian2023 noted that uncertainty estimates remain underutilised in practice. Around 50% of DSM studies still do not report uncertainty assessments, and end users often find uncertainty maps difficult to interpret alongside target variable maps. This challenge has motivated new approaches for communicating uncertainty, including variable-resolution maps where pixel size encodes prediction confidence.
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+
+The SCORPAN model is often written as:
+
+**S** = f(s, c, o, r, p, a, n) + ε,\
+where S is the soil property or class at a location, f(…) is a deterministic function of the SCORPAN factors, and ε is a spatial residual term[$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A). In practice, the function f(…) is an empirical statistical or machine-learning model that uses covariate layers representing the factors (e.g. maps of climate or terrain) to predict soil. The residual ε captures the variation that the model does not explain. If the residuals show spatial autocorrelation, geostatistical interpolation (kriging) of ε can be added to improve predictions[$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A)[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007). This combined approach is often called **regression-kriging** or **scorpan-kriging**.
+
+The SCORPAN paradigm formalized DSM around 2003[$$8$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20scorpan%20Model), building on earlier soil-formation concepts (e.g. Jenny’s factors). Since then, DSM has evolved with advances in computing and data: high-resolution remote sensing, GIS, and machine learning are now routinely used. For example, terrain attributes from digital elevation models (slope, curvature, solar radiation) and spectral indices from satellites (e.g. Landsat, Sentinel, radiometrics) are common covariates[$$9$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Covariates%20used%20in%20f,include)[$$10$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=The%20majority%20of%20the%20environmental,platforms%20are%20also%20continuous%20models). DSM methods range from simple linear models to complex neural networks, but all rely on linking observations to covariates statistically[$$11$$](https://soilmapper.org/statistical-theory.html#:~:text=Soils%20vary%20spatially%20in%20a,Minasny%2C%20McBratney%2C%20and)[$$1$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=Digital%20soil%20mapping%20,estimation%20uncertainty).
+
+Important in DSM is quantifying uncertainty. Unlike a hand-drawn map, DSM can assign a measure of confidence at each location. For instance, a model might predict that the probability of soil class “Loamy sand” is 70% at a certain point. The USDA soil survey manual notes that DSM produces not only spatial predictions but also uncertainty estimates (e.g. probability of occurrence)[$$4$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=representing%20it%20by%20digital%20environmental,art). In sum, DSM combines soil science with spatial statistics to generate detailed, probabilistic soil maps from point data and environmental covariates. \## <a name="x3df9ff6b56e80f45a48004e1cfc6fbdb67475b3"></a>1.1. Soil Observations and Environmental Covariates **Soil data (observations).** The input “soil observations” in DSM are usually point measurements or profiles from field and lab analyses. Examples include soil samples with measured organic carbon, pH, texture, or soil class at specific locations (soil pits or core samples). These data come from surveys, research studies, or legacy databases. Soil observations are the target values we want to map. In DSM, these target variables can be **continuous properties** (e.g. % clay, pH, nutrient content) or **discrete classes** (e.g. soil taxonomic class, texture class, land capability class). Continuous soil properties are represented by real numbers and typically vary smoothly in space, while discrete soil classes are categorical labels.
+
+**Environmental covariates.** These are spatial layers that describe the environment at each location and serve as predictors of soil. Covariates are derived from GIS or remote sensing and are assumed to be related to soil formation factors. Common covariate types include: - **Topographic data:** Derived from digital elevation models (DEM) – slope, aspect, curvature, wetness index, elevation bands[$$9$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Covariates%20used%20in%20f,include). - **Climate variables:** Long-term rainfall, temperature, aridity, potential evapotranspiration maps. - **Spectral data:** Indices or bands from satellite or airborne sensors (NDVI, soil reflectance, radiometric gamma rays)[$$9$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Covariates%20used%20in%20f,include)[$$10$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=The%20majority%20of%20the%20environmental,platforms%20are%20also%20continuous%20models). - **Parent material or geology:** Maps of geology or sediment type. - **Land cover/vegetation:** Land use or vegetation type maps. - **Legacy soil or terrain maps:** Existing coarse soil survey maps or derivative indices (e.g. distance to certain landforms). - **Spatial coordinates:** Longitude/latitude or location itself (to capture spatial trends).
+
+Most covariates are **continuous variables** (real-valued) rather than classes. The USDA notes that “the majority of environmental covariates used in digital soil mapping are continuous data models”[$$10$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=The%20majority%20of%20the%20environmental,platforms%20are%20also%20continuous%20models). For example, elevation, slope, or satellite reflectance are continuous. Continuous covariates can vary at fine resolution (e.g. 1–30 m pixels) or coarse (100 m, 1 km), depending on data sources. Discrete covariates (e.g. geology classes) are sometimes used, but fewer.
+
+**Statistical distribution of targets.** The statistical distribution of a soil property depends on the variable. Many continuous soil properties (like organic carbon or clay %) are positively skewed (log-normal) rather than symmetric. Modelers often transform such data (e.g. log or Box-Cox) so that the residuals of a regression are roughly normal. Some variables like pH may be approximately normal without transform. Discrete soil classes follow a multinomial distribution. In any case, when modeling with regression we usually assume that the model residuals are roughly independent and normally distributed (zero-mean), although some machine-learning methods (like Random Forest) do not require this.
+
+**Modeling goals.** The main goal in DSM is to predict soil at unsampled locations. For a continuous property, the model predicts the **most likely value** (e.g. expected or median). For a categorical variable, the model predicts the **most likely class** (e.g. soil type) or sometimes the probability of each class at a point. Besides point predictions, it is often useful to estimate uncertainty. For continuous outputs, one may compute prediction intervals or standard errors. For discrete outputs, one can output class probabilities (e.g. “30% sandy loam, 70% clay loam”).
+
+Uncertainty arises from **intrinsic errors** – measurement noise and natural variability that the model cannot fully capture[$$12$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin%7Bequation%7D%20z,equation). Every prediction has an error budget. In the universal error model, the predicted map value is the true soil value plus an error term ε:
+
+zs=Zs+εs,
+
+where Zs is the true (unknown) soil value, and εs includes two parts[$$12$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin%7Bequation%7D%20z,equation): (1) unexplained variation (due to missing covariates or model imperfections) and (2) pure noise (measurement or sampling error). In practice, we cannot eliminate these errors, but we can quantify them (e.g. via RMSE or prediction intervals) to understand map quality. DSM explicitly aims to report this uncertainty (for instance, GlobalSoilMap products include confidence intervals for predictions). \## <a name="modelling-and-accuracy-assessment"></a>1.2. Modelling and Accuracy Assessment **Regression vs. classification models.** Predictive models in DSM fall into two broad categories, analogous to many fields[$$13$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Soil%20Survey%20Manual%20333%20for,2013%29%20and):
+
+-   **Regression models** predict a continuous soil property (e.g. organic C, pH). These models output a numerical estimate at each location. Examples include linear regression, regression trees, random forest regression, or kriging of a soil variable. The goal is to minimize the difference between predicted and actual values (e.g. least-squares error).
+-   **Classification models** predict a categorical soil class (e.g. soil type, texture class). These models output a discrete category (or the probabilities of each category). Examples include decision trees, random forest classification, support vector machines (for classes), or discriminant analysis. The goal is to maximize correct class assignment.
+
+In DSM, one might use regression models to predict numeric properties like clay percentage, and classification models to predict soil taxonomic classes. Some algorithms (e.g. Random Forest) can do either mode. Importantly, classification models typically output not just a single class but also the **probability** of each class at a point (e.g. “pixel has 80% chance of Class A, 20% Class B”), which can be interpreted as uncertainty in categorical predictions[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple).
+
+**Model theory – regression.** Regression-type models (linear or nonlinear) fit a function Y=fX1,…,Xp from covariates to the target variable. For example, *multiple linear regression (MLR)* assumes
+
+Y=β0+β1X1+…+βpXp+ε,
+
+where ε is an error term. MLR assumes that each covariate contributes additively and linearly. Key assumptions include that errors ε are independent, have mean zero, and are normally distributed[$$15$$](https://soilmapper.org/statistical-theory.html#:~:text=observations%20%5C%28y%28,mean%20normally). In matrix form, Y=XTβ+ε with ε∼N0,σ2[$$15$$](https://soilmapper.org/statistical-theory.html#:~:text=observations%20%5C%28y%28,mean%20normally). After fitting, the regression yields coefficients β (e.g. by least squares[$$16$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,equation)).
+
+**Regression accuracy metrics.** The quality of regression predictions is assessed by comparing predicted vs. observed values. Common metrics are: - **RMSE (Root Mean Squared Error):** 1ni=1nyi−yi2, which measures typical prediction error[$$17$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,2%20%7D%20%7D%20%5Ctag%7B5.29%7D%20%5Cend%7Bequation). - **Mean Error (ME or bias):** average of yi−yi, showing if predictions tend to be too high or low[$$18$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,equation). - **R² (coefficient of determination):** fraction of variance explained = 1−∑yi−yi2∑yi−y2, where y is mean observed. Hengl et al. note that one can compute the percentage of variation explained by the model as Σ% using RMSE[$$19$$](https://soilmapper.org/statistical-theory.html#:~:text=To%20see%20how%20much%20of,the%20model%20we%20can%20use). - **Residual analysis:** checking if errors are unbiased or spatially autocorrelated. If residuals are spatially structured, adding kriging (see below) can improve predictions[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007).
+
+These metrics are often obtained via **cross-validation**, in which the data are split into training and testing subsets. For example, one might hold out 20% of points for validation. The Soil Survey Manual emphasizes objective, statistical validation rather than just “looks good”[$$20$$](https://soilmapper.org/statistical-theory.html#:~:text=Every%20time%20a%20digital%20soil,testing%20using%20ground%20truth%20data). Ideally, independent new samples are used, but cross-validation (e.g. k-fold CV) is commonly done to estimate accuracy[$$21$$](https://soilmapper.org/statistical-theory.html#:~:text=5)[$$22$$](https://soilmapper.org/statistical-theory.html#:~:text=probability,often%20the%20only%20viable%20option).
+
+**Model theory – classification.** Classification models predict categorical outcomes. After fitting, they assign the most likely class to each new point, often based on majority vote or probability threshold. The Soil Survey Manual states that classification is used for soil classes, while regression is for continuous properties[$$13$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Soil%20Survey%20Manual%20333%20for,2013%29%20and). For classification, we evaluate the model using a **confusion matrix** comparing predicted vs. true classes. From the confusion matrix we compute: - **Overall Accuracy (OA or PCC):** percentage of correctly classified points[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple). - **Producer’s/Client’s accuracy:** class-wise recall/precision. - **Kappa or other indices:** account for chance agreement (though Kappa has limitations). Rossiter et al. (2017) note that overall accuracy is simple but can hide detailed performance; nonetheless it is widely used[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple). For beginners, it suffices to say: “if 80 out of 100 validation points have their class correctly predicted, the model’s accuracy is 80%.”
+
+**Class prediction uncertainty.** Modern methods (like Random Forest) output not only a class, but the probability of each class (summing to 100%). This can be used to gauge confidence: e.g., if a pixel is assigned Soil Class A with 60% probability and Class B with 40%, the model is less certain. Some researchers recommend evaluating the full probabilistic prediction (e.g. Brier score, Shannon entropy) rather than just accuracy of the most likely class[$$23$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=This%20article%20does%20a%20fine,be%20the%20primary%20means%20of), but for introductory purposes overall accuracy is commonly reported.
+
+In summary, regression models are assessed by numeric error metrics (RMSE, R², bias)[$$17$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,2%20%7D%20%7D%20%5Ctag%7B5.29%7D%20%5Cend%7Bequation), while classification models are assessed by accuracy and confusion matrices[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple). All assessments should ideally use independent validation data or cross-validation to avoid bias. DSM emphasizes both mapping accuracy and reporting the uncertainty of predictions. \## <a name="mapping"></a>1.3. Mapping The final goal of DSM is to produce a continuous map of soil properties or classes. Several factors affect the quality of these maps:
+
+-   **Covariate availability and resolution.** The choice and detail of covariates heavily influence predictions. High-resolution, accurate covariate layers (e.g. LiDAR-derived slope at 10 m, or multi-spectral indices at 30 m) allow the model to resolve fine soil patterns. Conversely, coarse or noisy covariates (e.g. 1 km climate data) will produce smoother, less precise soil maps. As Hengl et al. note, covariates are often measured at a coarser scale than the soil samples, which can limit detail[$$24$$](https://soilmapper.org/statistical-theory.html#:~:text=,factors%20that%20formed%20the%20soil). If model covariates do not capture key local variation, predictions will miss those patterns.
+-   **Data availability and method choice.** The quantity and type of data determines which DSM approach to use. For instance, Minasny & McBratney (2010) provide a decision-tree of methods based on available data[$$25$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Minasny%20%26%20McBratney%20,it%E2%80%99s%20useful%20at%20any%20scale)[$$26$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Mapping%20Scenarios%20Based%20on%20Available,Data). If **only point samples** exist, one typically applies SCORPAN-kriging (regression-kriging). If both point data and a legacy soil map are available, one might combine information (e.g. model averaging or hierarchical approaches)[$$26$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Mapping%20Scenarios%20Based%20on%20Available,Data). If **only soil maps** are available, methods like disaggregation (e.g. DSMART or PROPR) convert map units to probabilistic soil estimates[$$27$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=%E2%86%92%20Combine%20approaches%20%28e,2014). Figure 【8†】 illustrates a simplified decision tree for choosing DSM methods: for example, it shows that with only point data one uses scorpan-kriging, whereas with soil map units one uses map splitting algorithms. Embedding this figure:
+
+![](Aspose.Words.85641fdd-637d-4889-b18e-a442de896dfb.001.png)\
+*Decision tree for selecting DSM methods based on data availability (Minasny & McBratney 2010). For example, if only point observations are available, scorpan-kriging is used; if legacy soil maps exist, techniques like model averaging or map disaggregation are applied*[$$26$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Mapping%20Scenarios%20Based%20on%20Available,Data).
+
+-   **Spatial support and resolution issues.** Soil samples (points) have effectively “zero” support, while covariates and predicted maps have pixel support (e.g. 10–30 m). When covariates have coarser support than the soil property variability, model errors increase. To improve maps, one can use covariates at finer scale (e.g. very-high-resolution imagery or local terrain features). One can also fuse data at multiple scales. For example, regression-kriging can capture small-scale variation left unexplained by covariates: after fitting a regression model, the remaining residuals (ε) are interpolated by kriging, effectively increasing map smoothness and capturing fine patterns[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007)[$$28$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=using%20methods%20such%20as%20universal,R%20Core%20Team).
+-   **Post-processing and smoothing.** Sometimes maps are refined by smoothing or filtering to create more realistic soil bodies. Rossiter & Poggio (2025) suggest evaluating maps by their spatial patterns (aggregating similar pixels) to see if natural soil polygons emerge[$$2$$](https://soil.copernicus.org/articles/11/849/2025/#:~:text=Digital%20Soil%20Mapping%20,is%20by%20nature%20predictive%2C%20this). In practice, map improvement may involve combining models (ensemble averaging), recalibrating with new data, or adjusting the modeled soil-landscape relationships based on expert knowledge.
+
+In short, map quality depends on **covariate quality, model choice, and spatial methods**. Better, higher-resolution covariates and hybrid methods (like regression-kriging) generally produce improved maps[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007)[$$28$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=using%20methods%20such%20as%20universal,R%20Core%20Team). It is also crucial to report where maps are less certain, using methods like prediction intervals or class probabilities. \## <a name="modelling-methods"></a>2. Modelling Methods Below we outline several common modelling approaches in DSM, stating their theory, assumptions, and typical uses. \### <a name="multiple-linear-regression-mlr"></a>2.1. Multiple Linear Regression (MLR) Multiple linear regression is a simple and interpretable method for predicting a continuous soil property. It assumes the target is a linear function of the covariates plus random noise. Mathematically:
+
+Y=β0+β1X1+…+βpXp,
+
+where βi are coefficients estimated from data. The standard assumptions are that the residual errors ε=Y−Y are independent and normally distributed with mean 0 and constant variance[$$15$$](https://soilmapper.org/statistical-theory.html#:~:text=observations%20%5C%28y%28,mean%20normally). The coefficient estimates β are usually found by Ordinary Least Squares (OLS)[$$16$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,equation).
+
+**Key points about MLR:**\
+- *Linearity:* The model can only capture linear relationships between each covariate and the soil property. If the true relationship is curved or involves interactions, MLR may misfit. (For novices: think of fitting a straight plane in a multi-dimensional space.)\
+- *Additivity:* Effects of covariates are additive. If two covariates interact (the effect of one depends on the other), a basic MLR will not capture that unless interaction terms are explicitly included.\
+- *Multicollinearity:* If two covariates are strongly correlated (e.g. elevation and temperature), the model may have unstable coefficient estimates. This can be checked by variance inflation factors.\
+- *Normality:* The residuals ε should be roughly normally distributed. If the soil data are highly skewed, a transformation (e.g. log) may be applied beforehand. - *Homoscedasticity:* The model assumes residuals have equal variance across all levels of covariates.
+
+**Strengths of MLR:**\
+- Very **interpretable**: each coefficient shows the change in soil property per unit change in a covariate, holding others constant.\
+- **Fast** to compute even on large datasets, with few parameters to tune[$$29$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=limitation%2C%20then%20algorithms%20that%20have,to%20produce%20models%20for%20predicting).\
+- If assumptions hold, OLS estimates are unbiased and optimal (Gauss–Markov theorem).
+
+**Weaknesses of MLR:**\
+- Cannot model nonlinear or complex patterns without extra terms. Soil-landscape relationships are often nonlinear (e.g. clay may increase steeply with slope only after a threshold), so MLR can be too simplistic.\
+- Sensitive to outliers and mis-specified form.\
+- Can only extrapolate (predict beyond the data range) under the linear trend; far-from-training predictions have large uncertainty. Indeed, the prediction variance is smallest where training data lie in the “center” of covariate space, and grows rapidly when extrapolating[$$30$$](https://soilmapper.org/statistical-theory.html#:~:text=with%20associated%20prediction%20error%20variance%3A).\
+- In practice, residual diagnostics and transformations are often needed.
+
+MLR is nonetheless a fundamental tool. Software (like R) typically provides coefficient estimates and standard errors. For novices, an example is predicting soil pH from elevation and precipitation by fitting a line (in 3D). The model fit is evaluated by R² and RMSE to see how well it captures the data. \### <a name="random-forest-rf"></a>2.2. Random Forest (RF) Random Forest is a powerful nonparametric method based on decision trees. It can be used for regression or classification. In DSM, Random Forest is popular because it can handle complex, nonlinear relationships and does not assume a specific data distribution[$$31$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=The%20RF%20for%20regression%20is,and%20more%20straightforward%20to%20use).
+
+**How it works:** RF builds **many decision trees** (often hundreds) on bootstrapped samples of the data. Each tree is a standard regression or classification tree that splits data based on covariate thresholds. At each split, only a random subset of covariates is considered (this is the “random” in RF). For regression RF, each tree outputs a numeric prediction; the forest’s final prediction is the average of all tree predictions. For classification RF, each tree votes for a class and the forest assigns the most-voted class. Breiman’s original description: “a random forest is a classifier consisting of a collection of tree-structured classifiers…where each tree casts a unit vote for the most popular class”[$$32$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=According%20to%20Breiman%20%282001%29%20,the%20random%20vector%20Y%2C%20X%E2%80%9D).
+
+**Key features of RF:**\
+- **No distributional assumptions:** Unlike linear regression, RF makes no assumption that data are normal or linear. It works well with skewed data and automatically handles interactions[$$31$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=The%20RF%20for%20regression%20is,and%20more%20straightforward%20to%20use).\
+- **Handles many covariates:** RF can include dozens to hundreds of predictors without overfitting as easily (due to bagging). It also computes a measure of variable importance, useful for understanding which covariates matter most.\
+- **Robustness:** RF is relatively robust to outliers and noise.\
+- **Internal validation:** RF uses “out-of-bag” (OOB) samples (left out in each bootstrap) to estimate prediction error, giving an unbiased error estimate without needing separate holdout data.
+
+**Assumptions and tuning:** RF has very few strict assumptions. However, it requires setting some parameters: the number of trees (often hundreds), and the number of covariates to try at each split. In practice, default settings often work well. Khaledian & Miller (2020) note that RF has few hyperparameters and tends to perform well even with modest sample sizes[$$29$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=limitation%2C%20then%20algorithms%20that%20have,to%20produce%20models%20for%20predicting). They highlight that RF (like Cubist trees) is more interpretable than truly black-box methods (neural nets)[$$33$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=predictions%20produced%20by%20Cubist%2C%20KNN%2C,to%20produce%20models%20for%20predicting), though individual trees are hard to parse collectively.
+
+**Strengths of RF in DSM:**\
+- **Flexibility:** Captures nonlinear and threshold effects common in soils (e.g. clay content jumping at certain landforms).\
+- **Handles mixed data:** Can work with continuous and categorical covariates.\
+- **High accuracy:** Often outperforms simpler models on diverse soil datasets.\
+- **Built-in error measure:** OOB error approximates test error.
+
+**Weaknesses of RF:**\
+- **No simple uncertainty output:** A standard RF regression will only give a mean prediction, not a prediction variance. As Nikou and Tziachris point out, “RF provides only mean value predictions” and lacks intrinsic uncertainty estimates[$$34$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=It%20just%20requires%20special%20attention,provide%20only%20mean%20value%20predictions). (One can approximate uncertainty by the spread of tree predictions, but that is ad hoc.)\
+- **Limited extrapolation:** Like all data-driven models, RF cannot reliably predict outside the range of training covariates.\
+- **Interpretability:** Although better than neural networks, RF is still hard to interpret in detail; one can inspect variable importance, but the ensemble of trees is a “black box” in complex ways.\
+- **Tuning required:** A very large forest can overfit noise if not controlled, so one must tune tree depth or number.
+
+RF is widely used in DSM for both regression of soil properties and classification of soil types. Its lack of distributional assumptions means you can throw in many covariates and let the algorithm find patterns. However, the user must be mindful to validate the model (via cross-validation) and consider using methods like Quantile Regression Forest (next section) if uncertainty estimates are needed. \### <a name="quantile-regression-forest-qrf"></a>2.2.1. Quantile Regression Forest (QRF) Quantile Regression Forest is an extension of Random Forest that provides **predictive distributions**, not just point estimates[$$35$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=A%20possible%20solution%20to%20this,distribution%20based%20on%20this%20information). It was introduced by Meinshausen (2006) to address RF’s shortcoming of giving only means.
+
+**How it differs from RF:** In a standard RF, each tree leaf stores only the average of training responses that reach that leaf. In QRF, each leaf stores all the training response values. When predicting at a new point, QRF examines all trees: for each tree, it finds the leaf where the point would fall, and collects all the stored response values from that leaf. Aggregating over all trees, QRF builds the conditional distribution of the response given the covariates. From this distribution, one can extract any desired quantile.
+
+**Key points:**\
+- QRF yields **prediction intervals**. For example, one can compute the 5th and 95th percentile of predicted values, giving a 90% confidence band for the soil property at each location. This directly quantifies model uncertainty.\
+- It makes the same few assumptions as RF (no normality needed) but is computationally more intensive (need to store and sort values).\
+- Nikou & Tziachris (2022) note that QRF “provides information for the full conditional distribution of the response variable, and not only about the conditional mean”[$$35$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=A%20possible%20solution%20to%20this,distribution%20based%20on%20this%20information). This is a major advantage for DSM, where decision-makers often want uncertainty bounds on soil properties.
+
+**Usage:** In practice, one fits a QRF model much like RF, but instructs the software (many ML libraries have a QRF option) to compute quantiles. Then for each grid cell, one can output e.g. the median predicted value and a prediction interval. The median map can be similar to the standard RF map, but QRF also enables maps of uncertainty (e.g. map of interquartile range).
+
+**Limitations:** QRF still assumes that the training data are representative; if the true conditional distribution has heavy tails or is multi-modal, QRF will reproduce the empirical distribution but may still underestimate extreme uncertainty if samples are sparse. Also, because QRF relies on many trees, it can be slow on large datasets. \### <a name="kriging"></a>2.3. Kriging Kriging is a geostatistical interpolation method that explicitly models spatial autocorrelation. It is based on the idea that nearby points are more alike than distant points, and it provides a statistically optimal way to predict values at unsampled locations under certain assumptions.
+
+**Ordinary Kriging (OK):** Assumes the soil property of interest is a realization of a spatial stochastic process with an unknown but constant mean. One first computes an experimental *variogram* from the data, which describes how variance increases with distance. Then the kriging system solves for weights on neighboring observations so that predictions are unbiased and have minimum variance. In effect, OK predicts a weighted average of nearby sample values, with weights derived from the variogram model.
+
+**Key assumptions of basic kriging:**\
+- **Stationarity:** The statistical properties (mean and covariance) of the soil property do not change over the study area, or change in a known way.\
+- **Variogram model:** One must fit a valid model (e.g. spherical, exponential) to the empirical variogram of the data. If data are sparse, variogram estimation can be uncertain.\
+- **Isotropy (often assumed):** Spatial correlation depends only on distance, not direction (unless an anisotropic variogram is modeled).
+
+**Inclusion of trends (Drift):** If a soil variable has a spatial trend (e.g. increases with elevation), one can use *Universal Kriging* or *Kriging with External Drift*. These methods include a deterministic trend term (often a linear function of coordinates or covariates) alongside the stochastic variogram. The Soil Survey Manual notes that covariate trends can be incorporated into kriging via universal kriging or external drift[$$28$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=using%20methods%20such%20as%20universal,R%20Core%20Team). Practically, universal kriging fits a regression on the trend and kriges the residuals simultaneously, whereas regression-kriging (described next) does it in two steps.
+
+**Regression-Kriging (Scorpan-Kriging):** A widely used DSM approach is regression-kriging[$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A)[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007). This is essentially SCORPAN plus kriging of residuals:\
+1. Fit a regression (or machine learning) model using the SCORPAN covariates to predict the soil property.\
+2. Compute residuals ε at the sample points (observed minus predicted).\
+3. Model the variogram of these residuals and perform ordinary kriging on them.\
+4. The final prediction = regression prediction + kriged residual.
+
+This combines the strengths of both approaches: the regression captures broad trends from covariates, and kriging captures fine-scale spatial dependence[$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A)[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007). Hengl et al. explain that kriging the residuals often improves accuracy when residuals show spatial structure[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007).
+
+**Advantages of kriging:**\
+- Provides explicit **uncertainty estimates** (kriging variance) at each location, under the model assumptions.\
+- Accounts for spatial autocorrelation that regression might miss.\
+- Works well for interpolation when covariates are poor or absent.
+
+**Disadvantages:**\
+- Only as good as the variogram model; if spatial correlation is weak or irregular, kriging may add little.\
+- Assumes stationarity; difficult terrain can violate this.\
+- Cannot use many auxiliary variables without extending to universal kriging.
+
+In DSM, kriging is used in two main ways: (a) **Regresssion-Kriging** as above, or (b) **disjunctive kriging / probability kriging** to produce class probability maps for soil types. In both cases, the core is that kriging makes use of the exact locations of samples (spatial support = point) and the modeled spatial structure to refine predictions. \## <a name="x40bf5125cc03221265e1b2d87b2deaf48a699a9"></a>3. Modeling Soil Properties and Accuracy Assessment **Note:** The following sections describe how one would apply the above methods in practice. R scripts and detailed code will be provided separately, so here we focus on concepts and steps (no actual code is written). \### <a name="xce30fe471bd16306e0f89782ee60289add93aaf"></a>3.1. Modeling Continuous Soil Properties: Regression When mapping a continuous soil property (e.g. organic carbon, clay content, pH), the typical workflow is:
+
+1.  **Data preparation:** Compile a dataset of soil samples with the target property measured. Extract values of all covariates at each sample location (using GIS overlay). Ensure covariates are properly aligned and any necessary transformations (e.g. log of SOC) are applied.
+2.  **Model fitting:** Choose a regression model (e.g. MLR, Random Forest regression, or others like Cubist). Use the prepared dataset to train the model: that is, let the model learn the relationship between covariates and the soil property. For example, one might fit a linear regression of pH on elevation, precipitation, and slope. If using Random Forest, one would train the forest on the same data.
+3.  **Validation:** Assess model performance by cross-validation. For instance, split the sample data into a training set and a validation set. Fit the model on the training set and predict values for the validation set. Compute metrics like RMSE or R² on the validation data[$$17$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,2%20%7D%20%7D%20%5Ctag%7B5.29%7D%20%5Cend%7Bequation). If RMSE is low and no strong bias (mean error near zero), the model is considered good. Multiple rounds of k-fold cross-validation can yield a robust error estimate.
+4.  **Mapping:** Once validated, the model is applied to the covariate grid covering the study area. The model predicts a soil property value at every grid cell, creating a continuous raster map. For example, each pixel might get a predicted SOC value. Optionally, in regression-kriging, one would also krige the residuals on this grid and add them to the regression map for a final combined prediction.
+5.  **Error estimation:** If using kriging or QRF, one can also produce a map of prediction uncertainty (e.g. standard error, or 90% interval). If only regression is used, one might attach a single RMSE value from cross-validation to the map (though better methods exist, such as spatially varying uncertainty).
+
+Throughout, the focus is on regression accuracy metrics. As Hengl et al. write, RMSE is a common summary of map accuracy[$$17$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,2%20%7D%20%7D%20%5Ctag%7B5.29%7D%20%5Cend%7Bequation). For example, if a SOC model has RMSE = 5 g/kg, this means on average predictions are off by that much. A high R² (closer to 1) means the model explains most of the variation. \### <a name="x615c46b4811cd83722ebe1399b90dd728214ca6"></a>3.2. Modeling Discrete Soil Properties: Classification When the target is a soil class (e.g. soil taxonomic class, texture class, or a binary soil attribute), one uses classification methods. The workflow parallels the regression case:
+
+1.  **Data preparation:** Assemble a dataset of sample points, each labeled with the soil class. Extract covariate values at each sample, just as before.
+2.  **Model fitting:** Choose a classifier (e.g. Random Forest classification, CART, or other). Train the model to predict the soil class from the covariates. For Random Forest, each tree votes on the soil type.
+3.  **Validation:** Use cross-validation to test classification accuracy. This involves withholding a subset of samples, training on the rest, predicting classes for the withheld points, and constructing a confusion matrix[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple). From the confusion matrix, compute overall accuracy (percent correct) and perhaps class-specific accuracy. For beginners, reporting overall accuracy (e.g. “85% of validation samples were correctly classified”) is typical.
+4.  **Prediction map:** Apply the trained classifier to every pixel of the covariate grid. The model outputs a class for each pixel (or the class with the highest probability). The result is a soil class map. Some tools also allow outputting probability-of-class maps (e.g. percentage chance of each soil type).
+5.  **Probability maps:** Because many classification algorithms (RF, logistic regression, etc.) can give class probabilities, one can produce maps that show the likelihood of each class at each location. These probability maps are useful for risk analysis (e.g. probability of finding a specific soil type).
+6.  **Error estimation:** The classifier’s error is summarized by the accuracy metrics from validation. For instance, a soil type classifier with 85% overall accuracy means 15% of points were misclassified. A confusion matrix also reveals which classes are often confused.
+
+In practice, discrete mapping may involve additional steps like dealing with imbalanced classes (some soil types being rare) or incorporating expert rules. But fundamentally, the evaluation of a classification map involves reporting how many points were correctly mapped. As the Soil Survey Manual states, the simplest metric is percent correctly classified (overall accuracy)[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple). \## <a name="references"></a>References - Smart Digital Agriculture (2025). *Digital Soil Mapping – The fundamentals*. (Online course material)[$$3$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=,observations%20and%20related%20environmental%20variables)[$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A). - Soil Survey Staff (2017). *Soil Survey Manual, Chapter 5 – Digital Soil Mapping and Modeling*. USDA–NRCS (Salinas, CA)[$$36$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Continuous%20Models%20A%20map%20of,finite%20number%20of%20predefined%20outcomes)[$$13$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Soil%20Survey%20Manual%20333%20for,2013%29%20and). - Hengl, T., Heuvelink, G.B.M., & MacMillan, R.A. (2018). *Predictive Soil Mapping with R*. OpenGeoHub Foundation (online book)[$$11$$](https://soilmapper.org/statistical-theory.html#:~:text=Soils%20vary%20spatially%20in%20a,Minasny%2C%20McBratney%2C%20and)[$$20$$](https://soilmapper.org/statistical-theory.html#:~:text=Every%20time%20a%20digital%20soil,testing%20using%20ground%20truth%20data). - Khaledian, Y. & Miller, B.A. (2020). “Selecting appropriate machine learning methods for digital soil mapping.” *Applied Mathematical Modelling* 81:401–418[$$29$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=limitation%2C%20then%20algorithms%20that%20have,to%20produce%20models%20for%20predicting). - Nikou, M. & Tziachris, P. (2022). “Prediction and Uncertainty Capabilities of Quantile Regression Forests in Estimating Spatial Distribution of Soil Organic Matter.” *ISPRS Int. J. Geo-Inf.* 11(2):130[$$35$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=A%20possible%20solution%20to%20this,distribution%20based%20on%20this%20information). - Rossiter, D.G. & Poggio, L. (2025). “Representing soil landscapes from digital soil mapping products – helping the map to speak for itself.” *SOIL* 11:849–881[$$2$$](https://soil.copernicus.org/articles/11/849/2025/#:~:text=Digital%20Soil%20Mapping%20,is%20by%20nature%20predictive%2C%20this). ----- <a name="citations"></a>[$$1$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=Digital%20soil%20mapping%20,estimation%20uncertainty) [$$31$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=The%20RF%20for%20regression%20is,and%20more%20straightforward%20to%20use) [$$32$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=According%20to%20Breiman%20%282001%29%20,the%20random%20vector%20Y%2C%20X%E2%80%9D) [$$34$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=It%20just%20requires%20special%20attention,provide%20only%20mean%20value%20predictions) [$$35$$](https://www.mdpi.com/2220-9964/11/2/130#:~:text=A%20possible%20solution%20to%20this,distribution%20based%20on%20this%20information) Prediction and Uncertainty Capabilities of Quantile Regression Forests in Estimating Spatial Distribution of Soil Organic Matter \| MDPI
+
+<https://www.mdpi.com/2220-9964/11/2/130>
+
+[$$2$$](https://soil.copernicus.org/articles/11/849/2025/#:~:text=Digital%20Soil%20Mapping%20,is%20by%20nature%20predictive%2C%20this) SOIL - Representing soil landscapes from digital soil mapping products – helping the map to speak for itself
+
+<https://soil.copernicus.org/articles/11/849/2025/>
+
+[$$3$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=,observations%20and%20related%20environmental%20variables) [$$5$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=scorpan%20is%20a%20mnemonic%20for,the%20environmental%20factors%20influencing%20soil) [$$6$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20model%20is%20expressed%20as%3A) [$$8$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=The%20scorpan%20Model) [$$9$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Covariates%20used%20in%20f,include) [$$25$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Minasny%20%26%20McBratney%20,it%E2%80%99s%20useful%20at%20any%20scale) [$$26$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=Mapping%20Scenarios%20Based%20on%20Available,Data) [$$27$$](http://smartdigiag.com/DSM_book/pages/introduction/#:~:text=%E2%86%92%20Combine%20approaches%20%28e,2014) Digital Soil Mapping - The fundamentals – Smart Digital Agriculture
+
+<http://smartdigiag.com/DSM_book/pages/introduction/>
+
+[$$4$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=representing%20it%20by%20digital%20environmental,art) [$$10$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=The%20majority%20of%20the%20environmental,platforms%20are%20also%20continuous%20models) [$$13$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Soil%20Survey%20Manual%20333%20for,2013%29%20and) [$$28$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=using%20methods%20such%20as%20universal,R%20Core%20Team) [$$36$$](https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf#:~:text=Continuous%20Models%20A%20map%20of,finite%20number%20of%20predefined%20outcomes) Soil Survey Manual 2017; Chapter 5
+
+<https://www.nrcs.usda.gov/sites/default/files/2022-09/SSM-ch5.pdf>
+
+[$$7$$](https://soilmapper.org/statistical-theory.html#:~:text=As%20a%20result%2C%20soil%20spatial,Hengl%2C%20Heuvelink%2C%20and%20Rossiter%202007) [$$11$$](https://soilmapper.org/statistical-theory.html#:~:text=Soils%20vary%20spatially%20in%20a,Minasny%2C%20McBratney%2C%20and) [$$12$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin%7Bequation%7D%20z,equation) [$$15$$](https://soilmapper.org/statistical-theory.html#:~:text=observations%20%5C%28y%28,mean%20normally) [$$16$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,equation) [$$17$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,2%20%7D%20%7D%20%5Ctag%7B5.29%7D%20%5Cend%7Bequation) [$$18$$](https://soilmapper.org/statistical-theory.html#:~:text=%5C%5B%5Cbegin,equation) [$$19$$](https://soilmapper.org/statistical-theory.html#:~:text=To%20see%20how%20much%20of,the%20model%20we%20can%20use) [$$20$$](https://soilmapper.org/statistical-theory.html#:~:text=Every%20time%20a%20digital%20soil,testing%20using%20ground%20truth%20data) [$$21$$](https://soilmapper.org/statistical-theory.html#:~:text=5) [$$22$$](https://soilmapper.org/statistical-theory.html#:~:text=probability,often%20the%20only%20viable%20option) [$$24$$](https://soilmapper.org/statistical-theory.html#:~:text=,factors%20that%20formed%20the%20soil) [$$30$$](https://soilmapper.org/statistical-theory.html#:~:text=with%20associated%20prediction%20error%20variance%3A) 5 Statistical theory for predictive soil mapping \| Predictive Soil Mapping with R
+
+<https://soilmapper.org/statistical-theory.html>
+
+[$$14$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=The%20%E2%80%9CDigital%20Soil%20Mapping%E2%80%9D%20chapter,used%20and%20implementation%20is%20simple) [$$23$$](http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html#:~:text=This%20article%20does%20a%20fine,be%20the%20primary%20means%20of) A Accuracy and Uncertainty for Categorical Predictions \| Statistics for Soil Survey - Part 2
+
+<http://ncss-tech.github.io/stats_for_soil_survey/book2/acc-unc-categorical-data.html>
+
+[$$29$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=limitation%2C%20then%20algorithms%20that%20have,to%20produce%20models%20for%20predicting) [$$33$$](https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/#:~:text=predictions%20produced%20by%20Cubist%2C%20KNN%2C,to%20produce%20models%20for%20predicting) Selecting Appropriate Machine Learning Methods for Digital Soil Mapping - Geospatial Laboratory for Soil Informatics
+
+<https://www.agron.iastate.edu/glsi/manuscripts/selecting-appropriate-machine-learning-methods-for-digital-soil-mapping/>
