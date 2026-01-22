@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 SoilFER Sampling Design | Integrated Soil Information for decision-making </title>
+  <meta name="description" content="SoilFER SID Technical Manual" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 SoilFER Sampling Design | Integrated Soil Information for decision-making " />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="SoilFER SID Technical Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 SoilFER Sampling Design | Integrated Soil Information for decision-making " />
+  
+  <meta name="twitter:description" content="SoilFER SID Technical Manual" />
+  
+
+<meta name="author" content="Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sampling-theory.html"/>
+<link rel="next" href="tutorial.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Licence</a></li>
+<li class="chapter" data-level="" data-path="abbreviations-and-acronyms.html"><a href="abbreviations-and-acronyms.html"><i class="fa fa-check"></i>Abbreviations and acronyms</a></li>
+<li class="chapter" data-level="" data-path="contributors-and-reviewers.html"><a href="contributors-and-reviewers.html"><i class="fa fa-check"></i>Contributors and reviewers</a></li>
+<li class="chapter" data-level="1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i><b>1</b> Presentation and basics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objectives"><i class="fa fa-check"></i><b>1.1</b> Background and Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.2</b> How to use this book</a></li>
+<li class="chapter" data-level="1.3" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#training-material"><i class="fa fa-check"></i><b>1.3</b> Training material</a></li>
+<li class="chapter" data-level="1.4" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#setting-up-the-software-environment"><i class="fa fa-check"></i><b>1.4</b> Setting up the software environment</a></li>
+<li class="chapter" data-level="1.5" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#resources-to-get-started"><i class="fa fa-check"></i><b>1.5</b> Resources to get started</a></li>
+<li class="chapter" data-level="1.6" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#basic-concepts"><i class="fa fa-check"></i><b>1.6</b> Basic concepts</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#digital-soil-mapping"><i class="fa fa-check"></i><b>1.6.1</b> Digital Soil Mapping</a></li>
+<li class="chapter" data-level="1.6.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#main-concepts-scorpan-model"><i class="fa fa-check"></i><b>1.6.2</b> Main concepts: SCORPAN model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>2</b> Sampling design for soil surveys</a></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="sampling-theory.html"><a href="sampling-theory.html"><i class="fa fa-check"></i><b>4</b> Sampling methodologies for soil spatial survey</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sampling-theory.html"><a href="sampling-theory.html#selection-methods"><i class="fa fa-check"></i><b>4.1</b> Selection of the sampling methodology</a></li>
+<li class="chapter" data-level="4.2" data-path="sampling-theory.html"><a href="sampling-theory.html#inference-methods"><i class="fa fa-check"></i><b>4.2</b> Inference Methods</a></li>
+<li class="chapter" data-level="4.3" data-path="sampling-theory.html"><a href="sampling-theory.html#sampling-purpose"><i class="fa fa-check"></i><b>4.3</b> Purpose of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="sampling-theory.html"><a href="sampling-theory.html#design-types"><i class="fa fa-check"></i><b>4.4</b> Sampling Design Types</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="sampling-theory.html"><a href="sampling-theory.html#soils4africa-example"><i class="fa fa-check"></i><b>4.4.1</b> Example: Soils4Africa Sampling Design</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="soilfer-design.html"><a href="soilfer-design.html"><i class="fa fa-check"></i><b>5</b> SoilFER Sampling Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="soilfer-design.html"><a href="soilfer-design.html#soil-properties"><i class="fa fa-check"></i><b>5.1</b> Soil Properties</a></li>
+<li class="chapter" data-level="5.2" data-path="soilfer-design.html"><a href="soilfer-design.html#env-covariates"><i class="fa fa-check"></i><b>5.2</b> Environmental Covariates</a></li>
+<li class="chapter" data-level="5.3" data-path="soilfer-design.html"><a href="soilfer-design.html#methodology"><i class="fa fa-check"></i><b>5.3</b> Understanding the Methodology</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="soilfer-design.html"><a href="soilfer-design.html#psu-selection-process"><i class="fa fa-check"></i><b>5.3.1</b> PSU Selection Process</a></li>
+<li class="chapter" data-level="5.3.2" data-path="soilfer-design.html"><a href="soilfer-design.html#ssu-tsu-selection"><i class="fa fa-check"></i><b>5.3.2</b> SSU and TSU Selection Process</a></li>
+<li class="chapter" data-level="5.3.3" data-path="soilfer-design.html"><a href="soilfer-design.html#site-id"><i class="fa fa-check"></i><b>5.3.3</b> Site Identification System</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>6</b> Tutorial Using R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tutorial.html"><a href="tutorial.html#setup"><i class="fa fa-check"></i><b>6.1</b> Setting Up the Environment</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="tutorial.html"><a href="tutorial.html#install-libraries"><i class="fa fa-check"></i><b>6.1.1</b> Install Required Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tutorial.html"><a href="tutorial.html#define-parameters"><i class="fa fa-check"></i><b>6.2</b> Define Variables and Parameters</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tutorial.html"><a href="tutorial.html#country-iso-code"><i class="fa fa-check"></i><b>6.2.1</b> Country ISO Code</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tutorial.html"><a href="tutorial.html#land-use-type"><i class="fa fa-check"></i><b>6.2.2</b> Land Use Type</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tutorial.html"><a href="tutorial.html#file-paths"><i class="fa fa-check"></i><b>6.2.3</b> File Paths</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tutorial.html"><a href="tutorial.html#coordinate-reference-system"><i class="fa fa-check"></i><b>6.2.4</b> Coordinate Reference System</a></li>
+<li class="chapter" data-level="6.2.5" data-path="tutorial.html"><a href="tutorial.html#sample-size-calculation"><i class="fa fa-check"></i><b>6.2.5</b> Sample Size Calculation</a></li>
+<li class="chapter" data-level="6.2.6" data-path="tutorial.html"><a href="tutorial.html#sampling-unit-definitions"><i class="fa fa-check"></i><b>6.2.6</b> Sampling Unit Definitions</a></li>
+<li class="chapter" data-level="6.2.7" data-path="tutorial.html"><a href="tutorial.html#algorithm-parameters"><i class="fa fa-check"></i><b>6.2.7</b> Algorithm Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tutorial.html"><a href="tutorial.html#custom-functions"><i class="fa fa-check"></i><b>6.3</b> Custom Functions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="tutorial.html"><a href="tutorial.html#covariate-space-coverage-function-csis"><i class="fa fa-check"></i><b>6.3.1</b> Covariate Space Coverage Function (CSIS)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tutorial.html"><a href="tutorial.html#tsu-generation-function"><i class="fa fa-check"></i><b>6.3.2</b> TSU Generation Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tutorial.html"><a href="tutorial.html#load-boundaries"><i class="fa fa-check"></i><b>6.4</b> Load Country Boundaries and Legacy Data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tutorial.html"><a href="tutorial.html#visualize-boundaries-and-legacy-data"><i class="fa fa-check"></i><b>6.4.1</b> Visualize Boundaries and Legacy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tutorial.html"><a href="tutorial.html#load-covariates-psu"><i class="fa fa-check"></i><b>6.5</b> Load Environmental Covariates for PSUs</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="tutorial.html"><a href="tutorial.html#optional-auxiliary-data"><i class="fa fa-check"></i><b>6.5.1</b> Optional Auxiliary Data</a></li>
+<li class="chapter" data-level="6.5.2" data-path="tutorial.html"><a href="tutorial.html#load-and-process-auxiliary-data"><i class="fa fa-check"></i><b>6.5.2</b> Load and Process Auxiliary Data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="tutorial.html"><a href="tutorial.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Load Main Environmental Covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="tutorial.html"><a href="tutorial.html#load-and-process-soil-climate-data-newhall"><i class="fa fa-check"></i><b>6.5.4</b> Load and Process Soil Climate Data (Newhall)</a></li>
+<li class="chapter" data-level="6.5.5" data-path="tutorial.html"><a href="tutorial.html#convert-categorical-variables-to-dummy-variables"><i class="fa fa-check"></i><b>6.5.5</b> Convert Categorical Variables to Dummy Variables</a></li>
+<li class="chapter" data-level="6.5.6" data-path="tutorial.html"><a href="tutorial.html#merge-all-covariate-layers"><i class="fa fa-check"></i><b>6.5.6</b> Merge All Covariate Layers</a></li>
+<li class="chapter" data-level="6.5.7" data-path="tutorial.html"><a href="tutorial.html#crop-and-save-covariates"><i class="fa fa-check"></i><b>6.5.7</b> Crop and Save Covariates</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="tutorial.html"><a href="tutorial.html#pca"><i class="fa fa-check"></i><b>6.6</b> Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="6.7" data-path="tutorial.html"><a href="tutorial.html#sampling-universe"><i class="fa fa-check"></i><b>6.7</b> Organize the Sampling Universe</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="tutorial.html"><a href="tutorial.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>6.7.1</b> Load and Process Land Use Data</a></li>
+<li class="chapter" data-level="6.7.2" data-path="tutorial.html"><a href="tutorial.html#exclude-protected-areas"><i class="fa fa-check"></i><b>6.7.2</b> Exclude Protected Areas</a></li>
+<li class="chapter" data-level="6.7.3" data-path="tutorial.html"><a href="tutorial.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>6.7.3</b> Restrict to Accessible Slopes</a></li>
+<li class="chapter" data-level="6.7.4" data-path="tutorial.html"><a href="tutorial.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>6.7.4</b> Aggregate to 100m Resolution</a></li>
+<li class="chapter" data-level="6.7.5" data-path="tutorial.html"><a href="tutorial.html#save-processed-land-use"><i class="fa fa-check"></i><b>6.7.5</b> Save Processed Land Use</a></li>
+<li class="chapter" data-level="6.7.6" data-path="tutorial.html"><a href="tutorial.html#filter-legacy-data"><i class="fa fa-check"></i><b>6.7.6</b> Filter Legacy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="tutorial.html"><a href="tutorial.html#create-psu-grid"><i class="fa fa-check"></i><b>6.8</b> Create Primary Sampling Units (PSU Grid)</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="tutorial.html"><a href="tutorial.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>6.8.1</b> Generate 2km × 2km Grid</a></li>
+<li class="chapter" data-level="6.8.2" data-path="tutorial.html"><a href="tutorial.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>6.8.2</b> Trim to Country Boundaries</a></li>
+<li class="chapter" data-level="6.8.3" data-path="tutorial.html"><a href="tutorial.html#save-psu-grid"><i class="fa fa-check"></i><b>6.8.3</b> Save PSU Grid</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="tutorial.html"><a href="tutorial.html#select-psus"><i class="fa fa-check"></i><b>6.9</b> Select PSUs with Sufficient Land Use Coverage</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="tutorial.html"><a href="tutorial.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>6.9.1</b> Calculate Land Use Percentage</a></li>
+<li class="chapter" data-level="6.9.2" data-path="tutorial.html"><a href="tutorial.html#filter-psus"><i class="fa fa-check"></i><b>6.9.2</b> Filter PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="tutorial.html"><a href="tutorial.html#rasterize-psus"><i class="fa fa-check"></i><b>6.10</b> Rasterize PSUs for Covariate Space Coverage</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorial.html"><a href="tutorial.html#optimal-sample-size"><i class="fa fa-check"></i><b>6.11</b> Compute Optimal Sample Size</a>
+<ul>
+<li class="chapter" data-level="6.11.1" data-path="tutorial.html"><a href="tutorial.html#run-optimization"><i class="fa fa-check"></i><b>6.11.1</b> Run Optimization</a></li>
+<li class="chapter" data-level="6.11.2" data-path="tutorial.html"><a href="tutorial.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>6.11.2</b> Extract Optimal Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="tutorial.html"><a href="tutorial.html#csc-computing"><i class="fa fa-check"></i><b>6.12</b> Covariate Space Coverage - Computing PSUs</a>
+<ul>
+<li class="chapter" data-level="6.12.1" data-path="tutorial.html"><a href="tutorial.html#prepare-function-parameters"><i class="fa fa-check"></i><b>6.12.1</b> Prepare Function Parameters</a></li>
+<li class="chapter" data-level="6.12.2" data-path="tutorial.html"><a href="tutorial.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>6.12.2</b> Perform K-means Clustering</a></li>
+<li class="chapter" data-level="6.12.3" data-path="tutorial.html"><a href="tutorial.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>6.12.3</b> Assign Clusters and Calculate Distances</a></li>
+<li class="chapter" data-level="6.12.4" data-path="tutorial.html"><a href="tutorial.html#extract-selected-psus"><i class="fa fa-check"></i><b>6.12.4</b> Extract Selected PSUs</a></li>
+<li class="chapter" data-level="6.12.5" data-path="tutorial.html"><a href="tutorial.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>6.12.5</b> Visualize in Covariate Space</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="tutorial.html"><a href="tutorial.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>6.13</b> Compute SSUs and TSUs</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="tutorial.html"><a href="tutorial.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>6.13.1</b> Load High-Resolution Covariates</a></li>
+<li class="chapter" data-level="6.13.2" data-path="tutorial.html"><a href="tutorial.html#process-each-psu"><i class="fa fa-check"></i><b>6.13.2</b> Process Each PSU</a></li>
+<li class="chapter" data-level="6.13.3" data-path="tutorial.html"><a href="tutorial.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>6.13.3</b> Combine SSUs and TSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="tutorial.html"><a href="tutorial.html#export-units"><i class="fa fa-check"></i><b>6.14</b> Export Sampling Units</a>
+<ul>
+<li class="chapter" data-level="6.14.1" data-path="tutorial.html"><a href="tutorial.html#create-cluster-raster"><i class="fa fa-check"></i><b>6.14.1</b> Create Cluster Raster</a></li>
+<li class="chapter" data-level="6.14.2" data-path="tutorial.html"><a href="tutorial.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>6.14.2</b> Join Cluster Info to TSUs</a></li>
+<li class="chapter" data-level="6.14.3" data-path="tutorial.html"><a href="tutorial.html#create-site-ids"><i class="fa fa-check"></i><b>6.14.3</b> Create Site IDs</a></li>
+<li class="chapter" data-level="6.14.4" data-path="tutorial.html"><a href="tutorial.html#export-shapefiles"><i class="fa fa-check"></i><b>6.14.4</b> Export Shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="tutorial.html"><a href="tutorial.html#alternative-psus"><i class="fa fa-check"></i><b>6.15</b> Compute Alternative PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>7</b> Merging Results from Multiple Land Uses</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>7.1</b> Assign Country-Wide Unique IDs</a></li>
+<li class="chapter" data-level="7.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>7.2</b> Export Unified Datasets</a></li>
+<li class="chapter" data-level="7.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>7.3</b> Summary Statistics</a></li>
+<li class="chapter" data-level="7.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>7.4</b> Create Distribution Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>8</b> Field Sampling Protocol</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>8.1</b> GPS Device Preparation</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>8.1.1</b> Export to GPX Format</a></li>
+<li class="chapter" data-level="8.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>8.1.2</b> Load onto GPS Device</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>8.2</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="8.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>8.3</b> Data Recording</a></li>
+<li class="chapter" data-level="8.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>8.4</b> Quality Control</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>8.4.1</b> Software Requirements</a></li>
+<li class="chapter" data-level="8.4.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>8.4.2</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
+<ul>
+<li class="chapter" data-level="8.4.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>8.4.3</b> Memory Issues</a></li>
+<li class="chapter" data-level="8.4.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>8.4.4</b> CRS Misalignment</a></li>
+<li class="chapter" data-level="8.4.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>8.4.5</b> Empty Geometry</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>9</b> TBD</a></li>
+<li class="chapter" data-level="10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html"><i class="fa fa-check"></i><b>10</b> Soil Data Preparation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-cleaning"><i class="fa fa-check"></i><b>10.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="10.3" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#soil-data-harmonization"><i class="fa fa-check"></i><b>10.3</b> Soil Data Harmonization</a></li>
+<li class="chapter" data-level="10.4" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258"><i class="fa fa-check"></i><b>10.4</b> Concepts on digital exchange of soil-related data (ISO 28258)</a></li>
+<li class="chapter" data-level="10.5" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#plot-data"><i class="fa fa-check"></i><b>10.5</b> Plot data</a></li>
+<li class="chapter" data-level="10.6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#profile-data"><i class="fa fa-check"></i><b>10.6</b> Profile data</a></li>
+<li class="chapter" data-level="10.7" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#element-data"><i class="fa fa-check"></i><b>10.7</b> Element data</a></li>
+<li class="chapter" data-level="10.8" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#specimen-data"><i class="fa fa-check"></i><b>10.8</b> Specimen data</a></li>
+<li class="chapter" data-level="10.9" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#definition-of-laboratory-procedures"><i class="fa fa-check"></i><b>10.9</b> Definition of laboratory procedures</a></li>
+<li class="chapter" data-level="10.10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-transformation"><i class="fa fa-check"></i><b>10.10</b> Data transformation</a></li>
+<li class="chapter" data-level="10.11" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database"><i class="fa fa-check"></i><b>10.11</b> Organizing soil data according to the GloSIS database</a></li>
+<li class="chapter" data-level="10.12" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis"><i class="fa fa-check"></i><b>10.12</b> Tools for harmonization of soil databases within GloSIS</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>11</b> Digital soil mapping and modeling</a></li>
+<li class="chapter" data-level="12" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>12</b> Soil Data Sharing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>12.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="12.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>12.2</b> Metadata</a></li>
+<li class="chapter" data-level="12.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>12.3</b> Web Services</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><p>Integrated Soil Information for decision-making
+<img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" /></p></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="soilfer-design" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> SoilFER Sampling Design<a href="soilfer-design.html#soilfer-design" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The SoilFER soil spatial survey aims to estimate means and totals for a set of target soil properties and quality indicators within three domains: <strong>croplands (85%)</strong>, <strong>grasslands (10%)</strong>, and <strong>forests (5%)</strong> in a country. The percentages for each domain are relative to the total sampling points, considering the sampling density required for high-resolution digital soil maps. Once the purpose was defined, the most suitable selection method identified was probability sampling, which allows for both design- and model-based inference methods. Given the purpose, selection and inference methods, the final step was to choose the appropriate sampling design. Like the Soils4Africa project, the SoilFER project employs three sampling units, which are discrete entities in space, and thus a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling was selected for mapping and monitoring within the SoilFER sampling design.</p>
+<p>In the literature, covariate space coverage (CSC) sampling has proven to be more efficient than other approaches for mapping a continuous soil property or class <span class="citation">(<a href="#ref-brus2018"><strong>brus2018?</strong></a>; <a href="#ref-degruijter2006"><strong>degruijter2006?</strong></a>; <a href="#ref-ma2020"><strong>ma2020?</strong></a>; <a href="#ref-schmidinger2024"><strong>schmidinger2024?</strong></a>)</span>. Therefore, in the SoilFER sampling design, the first stage or first hierarchical level selects the primary sampling units (PSUs) (i.e., 2km × 2km) using a CSC sampling method, or k-means sampling if you will (i.e., model-based). K-means is an unsupervised clustering method used when no response variable is available, partitioning data into k groups by maximizing similarity within groups and differences between them. Like the selection of PSUs, the second hierarchical level selects the secondary sampling units (SSUs) (i.e., 100m × 100m) using CSC sampling and a second set of environmental covariates (i.e., model-based). Lastly, the third hierarchical levels select the tertiary sampling units using simple random sampling without replacement (i.e., design-based). This multi-stage sampling framework enhances both spatial representativeness and statistical reliability.</p>
+<div id="soil-properties" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Soil Properties<a href="soilfer-design.html#soil-properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Understanding and assessing soil properties are critical for evaluating soil health, guiding fertilizer recommendations, and informing land management decisions. In the SoilFER project, both chemical and physical soil attributes are measured to provide a comprehensive evaluation of soil quality and health (Table <a href="soilfer-design.html#tab:soil-properties">5.1</a>). Some key chemical properties include soil organic carbon, pH, cation exchange capacity, and nutrient levels such as nitrogen, phosphorus, and potassium. On the physical side, attributes like soil texture, soil depth, rockiness of surface soil, drainage, surface cracks, soil color, soil erosion and gypsum content are analyzed to understand soil structure, compaction, and water infiltration rates. Collectively, these attributes offer valuable insights into the soil’s ability to support plant growth, resist erosion, and store carbon, making them indispensable for both mapping soil health and tailoring site-specific fertilizer recommendations.</p>
+<table>
+<caption><span id="tab:soil-properties">Table 5.1: </span>Some of the chemical and physical soil properties to be quantified in the SoilFER project</caption>
+<thead>
+<tr>
+<th align="left">Category</th>
+<th align="left">Property</th>
+<th align="left">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Soil Organic Carbon</td>
+<td align="left">%</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">pH</td>
+<td align="left">pH units</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Cation Exchange Capacity</td>
+<td align="left">cmol(+)/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Total Nitrogen</td>
+<td align="left">%</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Available Phosphorus</td>
+<td align="left">mg/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Exchangeable Potassium</td>
+<td align="left">cmol(+)/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Micronutrients</td>
+<td align="left">mg/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Electrical Conductivity</td>
+<td align="left">dS/m</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Texture</td>
+<td align="left">% sand/silt/clay</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Depth</td>
+<td align="left">cm</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Rockiness</td>
+<td align="left">% coverage</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Drainage</td>
+<td align="left">class</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Surface Cracks</td>
+<td align="left">present/absent</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Color</td>
+<td align="left">Munsell</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Erosion</td>
+<td align="left">severity class</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Gypsum Content</td>
+<td align="left">%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: Both wet and dry chemistry (i.e., infrared spectroscopy) will be conducted in the laboratory for soil analysis as part of the SoilFER project. These methods are not listed here, as a standard operating procedure exists for each one of them.</p>
+</blockquote>
+</div>
+<div id="env-covariates" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Environmental Covariates<a href="soilfer-design.html#env-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Environmental covariates, also referred to as explanatory or environmental variables or simply covariates, are essential for understanding the spatial variability of soil properties and landscape processes. The SoilFER sampling design incorporates <strong>85 environmental covariates</strong> (Table <a href="soilfer-design.html#tab:psu-covariates">5.2</a>) to optimise the identification and allocation of PSUs (2km × 2km) across diverse landscapes at a national scale. As SoilFER targets soil mapping at national scale, the first set of environmental covariates have pixel resolution varying from 250 m to 1 km. To align with the PSU size (2km × 2km), these covariates were upscaled to ensure that each PSU is represented by a single aggregated value per covariate. This resolution provides a balance between sufficient spatial detail and computational efficiency, ensuring accurate large-scale mapping while manageable computational processing requirements, ensuring efficient data handling and analysis. Moreover, this comprehensive set of covariates ensures that the selected PSUs capture the full range of environmental conditions and soil diversity within a country.</p>
+<p>Additionally, a second set of <strong>24 environmental covariates</strong> (Table <a href="soilfer-design.html#tab:ssu-covariates">5.3</a>) is used to refine site selection at farm level. This high-resolution dataset (e.g., ≤ 90 m pixel resolution) was upscaled to match the SSU size (100m × 100m), ensuring that each SSU is characterized by a single representative value for each covariate. This significantly enhances the precision of SSU selection by capturing finer spatial variability. If additional high-resolution environmental covariates are available for a given country, it is highly recommended to incorporate them into the analysis to further improve sampling precision. These two sets of environmental covariates were carefully chosen based on their relevance to soil formation processes, spatial variability, and their role as proxies for key soil properties. Further information on how to retrieve these environmental covariates can be found in the SoilFER GitHub repository.</p>
+<table>
+<caption><span id="tab:psu-covariates">Table 5.2: </span>Some of the chemical and physical soil properties to be quantified in the SoilFER project</caption>
+<thead>
+<tr>
+<th align="left">Category</th>
+<th align="left">Property</th>
+<th align="left">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Soil Organic Carbon</td>
+<td align="left">%</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">pH</td>
+<td align="left">pH units</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Cation Exchange Capacity</td>
+<td align="left">cmol(+)/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Total Nitrogen</td>
+<td align="left">%</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Available Phosphorus</td>
+<td align="left">mg/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Exchangeable Potassium</td>
+<td align="left">cmol(+)/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Micronutrients</td>
+<td align="left">mg/kg</td>
+</tr>
+<tr>
+<td align="left">Chemical</td>
+<td align="left">Electrical Conductivity</td>
+<td align="left">dS/m</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Texture</td>
+<td align="left">% sand/silt/clay</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Depth</td>
+<td align="left">cm</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Rockiness</td>
+<td align="left">% coverage</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Drainage</td>
+<td align="left">class</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Surface Cracks</td>
+<td align="left">present/absent</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Soil Color</td>
+<td align="left">Munsell</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Erosion</td>
+<td align="left">severity class</td>
+</tr>
+<tr>
+<td align="left">Physical</td>
+<td align="left">Gypsum Content</td>
+<td align="left">%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: NSM, Normalized Soil Moisture; SWIR, Shortwave Infrared. Full list contains 85 variables.</p>
+</blockquote>
+<table>
+<caption><span id="tab:ssu-covariates">Table 5.3: </span>List of environmental covariates used to delineate the secondary sampling units</caption>
+<thead>
+<tr>
+<th align="left">Source</th>
+<th align="left">Variable</th>
+<th align="left">Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SRTM Terrain</td>
+<td align="left">Elevation</td>
+<td align="left">90-100m</td>
+</tr>
+<tr>
+<td align="left">SRTM Terrain</td>
+<td align="left">Slope</td>
+<td align="left">90-100m</td>
+</tr>
+<tr>
+<td align="left">SRTM Terrain</td>
+<td align="left">Aspect</td>
+<td align="left">90-100m</td>
+</tr>
+<tr>
+<td align="left">SRTM Terrain</td>
+<td align="left">TPI</td>
+<td align="left">90-100m</td>
+</tr>
+<tr>
+<td align="left">SRTM Terrain</td>
+<td align="left">Hillshade</td>
+<td align="left">90-100m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B2 (Blue)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B3 (Green)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B4 (Red)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B5 (Red Edge 1)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B6 (Red Edge 2)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B7 (Red Edge 3)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B8 (NIR)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B8A (NIR Narrow)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B11 (SWIR 1)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Spectral</td>
+<td align="left">B12 (SWIR 2)</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">NDVI</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">EVI</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">NDBSI</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">Brightness Index</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">Redness Index</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Sentinel-2 Indices</td>
+<td align="left">VNSIR</td>
+<td align="left">10-20m</td>
+</tr>
+<tr>
+<td align="left">Geomorphology</td>
+<td align="left">Geomorphon Class 1-9</td>
+<td align="left">90m</td>
+</tr>
+<tr>
+<td align="left">Geomorphology</td>
+<td align="left">…</td>
+<td align="left">90m</td>
+</tr>
+<tr>
+<td align="left">Geomorphology</td>
+<td align="left">…</td>
+<td align="left">90m</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="methodology" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Understanding the Methodology<a href="soilfer-design.html#methodology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SoilFER sampling design methodology follows a hierarchical sampling approach with three levels of increasing spatial resolution: Primary Sampling Units (PSUs), Secondary Sampling Units (SSUs), and Tertiary Sampling Units (TSUs) (Figure <a href="#fig:three-stage"><strong>??</strong></a>). This design is similar to the Soils4Africa project but differs in two key aspects. First, we use covariate space coverage (CSC) to select PSUs <span class="citation">(<a href="#ref-brus2022"><strong>brus2022?</strong></a>)</span>, whereas Soils4Africa employed stratified random sampling at this stage. At the first hierarchical level, CSC is used to select PSUs (2km × 2km areas), ensuring a well-distributed spread across the covariate space to maximise environmental variation and represent soil diversity across the region at national scale. Second key aspect, we select SSUs using CSC rather than simple random sampling, as done in Soils4Africa. At this second hierarchical level, CSC is applied to select SSUs (100m × 100m) based on a refined set of environmental covariates at farm scale. It is of note that each project adopted a methodology tailored to its specific objectives/purposes, ensuring that the sampling design aligns with its intended goals. Each PSU contains multiple SSUs, each measuring 100m × 100m, and each SSU consists of three TSUs, each measuring 20m × 20m. This structured yet flexible sampling design captures soil variability across different spatial scales (Figure <a href="#fig:three-stage"><strong>??</strong></a>).</p>
+<div id="psu-selection-process" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> PSU Selection Process<a href="soilfer-design.html#psu-selection-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The process of selecting the PSUs is summarized as follows:</p>
+<p><strong>Step 1: Create 2km × 2km Grid</strong> (Figure <a href="#fig:grid-creation"><strong>??</strong></a>)
+- A 2km × 2km grid covering the entire region of interest (ROI) is created
+- This grid serves as the foundational structure for stratification and spatial analysis</p>
+<p><strong>Step 2: Overlay Land Use and Protected Areas</strong> (Figure <a href="#fig:grid-overlay"><strong>??</strong></a>)
+- Land-use and land cover (LULC) mask layer identifying cropland, forest, or grassland is overlaid
+- Protected area boundaries are incorporated
+- Grid cells where cropland, forest, or grassland cover more than 10% (or specified percentage) are retained
+- This ensures that only PSUs containing target land uses are selected</p>
+<p><strong>Step 3: Apply Covariate Space Coverage</strong> (Figure <a href="#fig:csc-application"><strong>??</strong></a>)
+- PSUs are selected through CSC sampling using 85 environmental covariates
+- Covariates are resampled to 250m resolution
+- Principal Component Analysis (PCA) transforms covariates into PC layers
+- PC layers accounting for up to 99% of variance are retained
+- PC layers are upscaled to 2km × 2km resolution</p>
+<p><strong>Step 4: Determine Optimal Sample Size</strong>
+- Optimal number of PSUs determined using divergence metrics
+- Kullback-Leibler Divergence (KLD) quantifies how well sampled data represent full environmental covariate space
+- Unlike Jensen-Shannon methods, KLD does not overestimate optimal sample size <span class="citation">(<a href="#ref-saurette2023"><strong>saurette2023?</strong></a>)</span></p>
+<p><strong>Step 5: Perform K-means Clustering</strong>
+- K-means clustering creates homogeneous clusters (strata)
+- Number of clusters equals total number of PSUs to be sampled
+- Legacy point data can be incorporated (clusters fixed at legacy locations)
+- Mean Squared Shortest Distance (MSSD) in covariate space is calculated
+- Process repeated 10 times, retaining trial with minimum MSSD</p>
+<p><strong>Step 6: Select Target and Replacement PSUs</strong> (Figure <a href="#fig:psu-selection"><strong>??</strong></a>)
+- PSUs allocated by minimizing MSSD within environmental covariate space
+- Output: N PSUs where N equals total number of samples
+- Replacement PSUs calculated by randomly selecting grid cells within same cluster class</p>
+</div>
+<div id="ssu-tsu-selection" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> SSU and TSU Selection Process<a href="soilfer-design.html#ssu-tsu-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Stage 2: Secondary Sampling Units (SSUs)</strong></p>
+<p>The second stage involves selecting SSUs using Covariate Space Coverage Sampling (CSCS) based on 24 high-resolution environmental covariates. Each SSU represents a 100m × 100m (1 hectare) area divided into 25 regular sampling plots of 20m × 20m (Figure <a href="#fig:ssu-detail"><strong>??</strong></a>).</p>
+<p><strong>Selection scheme</strong>:
+- 8 SSUs selected from each PSU
+- 4 target SSUs (1-4): where samples will be collected<br />
+- 4 replacement SSUs (5-8): pre-identified substitutes
+- Replacement SSUs directly linked to targets (one-to-one basis):
+- SSU 5 replaces SSU 1
+- SSU 6 replaces SSU 2
+- SSU 7 replaces SSU 3
+- SSU 8 replaces SSU 4</p>
+<p>If all SSUs within a target PSU are exhausted, missing SSUs must be selected from the designated PSU replacement. The designated PSU replacements were selected with the same spatial variability as their PSU targets.</p>
+<p><strong>Stage 3: Tertiary Sampling Units (TSUs)</strong></p>
+<p>The third and final stage involves selecting TSUs using <strong>simple random sampling without replacement</strong>. Each SSU contains 25 possible TSUs of 20m × 20m, corresponding to the pixel size of the crop raster layer.</p>
+<p><strong>Selection scheme</strong>:
+- 3 TSUs per SSU:
+- 1 target TSU (primary sampling location)
+- 2 replacement TSUs (alternatives)
+- If a TSU is unsuitable, any replacement can be used
+- If all TSUs within an SSU are unsuitable, entire SSU is rejected</p>
+<p><strong>Soil sampling protocol</strong>:
+- Sampling conducted strictly at designated TSU locations
+- <strong>Maximum shift</strong>: 10 metres from defined coordinates</p>
+</div>
+<div id="site-id" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Site Identification System<a href="soilfer-design.html#site-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The final site ID is an alphanumeric identifier structured as follows (Figure <a href="#fig:site-id"><strong>??</strong></a>):</p>
+<p><strong>Format</strong>: <code>AAA####-#-#X</code></p>
+<p>Where:
+- <code>AAA</code> = Three-letter country ISO code (e.g., KEN for Kenya)
+- <code>####</code> = Primary Sampling Unit number (zero-padded, e.g., 0001)
+- First <code>#</code> = Secondary Sampling Unit number (1-8)
+- Second <code>#</code> = Tertiary Sampling Unit number (1-3)
+- <code>X</code> = Land use type code:
+- <code>C</code> = Cropland
+- <code>G</code> = Grassland
+- <code>F</code> = Forest</p>
+<p><strong>Example</strong>: <code>KEN0001-1-1C</code>
+- Country: Kenya
+- PSU: 1
+- SSU: 1 (target)
+- TSU: 1 (target)
+- Land use: Cropland</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sampling-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tutorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["GSNmap_Technical_Manual.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"fig_caption": true
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Sampling methodologies for soil spatial survey | Integrated Soil Information for decision-making </title>
+  <meta name="description" content="SoilFER SID Technical Manual" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Sampling methodologies for soil spatial survey | Integrated Soil Information for decision-making " />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="SoilFER SID Technical Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Sampling methodologies for soil spatial survey | Integrated Soil Information for decision-making " />
+  
+  <meta name="twitter:description" content="SoilFER SID Technical Manual" />
+  
+
+<meta name="author" content="Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="soilfer-design.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Licence</a></li>
+<li class="chapter" data-level="" data-path="abbreviations-and-acronyms.html"><a href="abbreviations-and-acronyms.html"><i class="fa fa-check"></i>Abbreviations and acronyms</a></li>
+<li class="chapter" data-level="" data-path="contributors-and-reviewers.html"><a href="contributors-and-reviewers.html"><i class="fa fa-check"></i>Contributors and reviewers</a></li>
+<li class="chapter" data-level="1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i><b>1</b> Presentation and basics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objectives"><i class="fa fa-check"></i><b>1.1</b> Background and Objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.2</b> How to use this book</a></li>
+<li class="chapter" data-level="1.3" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#training-material"><i class="fa fa-check"></i><b>1.3</b> Training material</a></li>
+<li class="chapter" data-level="1.4" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#setting-up-the-software-environment"><i class="fa fa-check"></i><b>1.4</b> Setting up the software environment</a></li>
+<li class="chapter" data-level="1.5" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#resources-to-get-started"><i class="fa fa-check"></i><b>1.5</b> Resources to get started</a></li>
+<li class="chapter" data-level="1.6" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#basic-concepts"><i class="fa fa-check"></i><b>1.6</b> Basic concepts</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#digital-soil-mapping"><i class="fa fa-check"></i><b>1.6.1</b> Digital Soil Mapping</a></li>
+<li class="chapter" data-level="1.6.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#main-concepts-scorpan-model"><i class="fa fa-check"></i><b>1.6.2</b> Main concepts: SCORPAN model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>2</b> Sampling design for soil surveys</a></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="sampling-theory.html"><a href="sampling-theory.html"><i class="fa fa-check"></i><b>4</b> Sampling methodologies for soil spatial survey</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sampling-theory.html"><a href="sampling-theory.html#selection-methods"><i class="fa fa-check"></i><b>4.1</b> Selection of the sampling methodology</a></li>
+<li class="chapter" data-level="4.2" data-path="sampling-theory.html"><a href="sampling-theory.html#inference-methods"><i class="fa fa-check"></i><b>4.2</b> Inference Methods</a></li>
+<li class="chapter" data-level="4.3" data-path="sampling-theory.html"><a href="sampling-theory.html#sampling-purpose"><i class="fa fa-check"></i><b>4.3</b> Purpose of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="sampling-theory.html"><a href="sampling-theory.html#design-types"><i class="fa fa-check"></i><b>4.4</b> Sampling Design Types</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="sampling-theory.html"><a href="sampling-theory.html#soils4africa-example"><i class="fa fa-check"></i><b>4.4.1</b> Example: Soils4Africa Sampling Design</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="soilfer-design.html"><a href="soilfer-design.html"><i class="fa fa-check"></i><b>5</b> SoilFER Sampling Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="soilfer-design.html"><a href="soilfer-design.html#soil-properties"><i class="fa fa-check"></i><b>5.1</b> Soil Properties</a></li>
+<li class="chapter" data-level="5.2" data-path="soilfer-design.html"><a href="soilfer-design.html#env-covariates"><i class="fa fa-check"></i><b>5.2</b> Environmental Covariates</a></li>
+<li class="chapter" data-level="5.3" data-path="soilfer-design.html"><a href="soilfer-design.html#methodology"><i class="fa fa-check"></i><b>5.3</b> Understanding the Methodology</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="soilfer-design.html"><a href="soilfer-design.html#psu-selection-process"><i class="fa fa-check"></i><b>5.3.1</b> PSU Selection Process</a></li>
+<li class="chapter" data-level="5.3.2" data-path="soilfer-design.html"><a href="soilfer-design.html#ssu-tsu-selection"><i class="fa fa-check"></i><b>5.3.2</b> SSU and TSU Selection Process</a></li>
+<li class="chapter" data-level="5.3.3" data-path="soilfer-design.html"><a href="soilfer-design.html#site-id"><i class="fa fa-check"></i><b>5.3.3</b> Site Identification System</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>6</b> Tutorial Using R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tutorial.html"><a href="tutorial.html#setup"><i class="fa fa-check"></i><b>6.1</b> Setting Up the Environment</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="tutorial.html"><a href="tutorial.html#install-libraries"><i class="fa fa-check"></i><b>6.1.1</b> Install Required Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tutorial.html"><a href="tutorial.html#define-parameters"><i class="fa fa-check"></i><b>6.2</b> Define Variables and Parameters</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tutorial.html"><a href="tutorial.html#country-iso-code"><i class="fa fa-check"></i><b>6.2.1</b> Country ISO Code</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tutorial.html"><a href="tutorial.html#land-use-type"><i class="fa fa-check"></i><b>6.2.2</b> Land Use Type</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tutorial.html"><a href="tutorial.html#file-paths"><i class="fa fa-check"></i><b>6.2.3</b> File Paths</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tutorial.html"><a href="tutorial.html#coordinate-reference-system"><i class="fa fa-check"></i><b>6.2.4</b> Coordinate Reference System</a></li>
+<li class="chapter" data-level="6.2.5" data-path="tutorial.html"><a href="tutorial.html#sample-size-calculation"><i class="fa fa-check"></i><b>6.2.5</b> Sample Size Calculation</a></li>
+<li class="chapter" data-level="6.2.6" data-path="tutorial.html"><a href="tutorial.html#sampling-unit-definitions"><i class="fa fa-check"></i><b>6.2.6</b> Sampling Unit Definitions</a></li>
+<li class="chapter" data-level="6.2.7" data-path="tutorial.html"><a href="tutorial.html#algorithm-parameters"><i class="fa fa-check"></i><b>6.2.7</b> Algorithm Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tutorial.html"><a href="tutorial.html#custom-functions"><i class="fa fa-check"></i><b>6.3</b> Custom Functions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="tutorial.html"><a href="tutorial.html#covariate-space-coverage-function-csis"><i class="fa fa-check"></i><b>6.3.1</b> Covariate Space Coverage Function (CSIS)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tutorial.html"><a href="tutorial.html#tsu-generation-function"><i class="fa fa-check"></i><b>6.3.2</b> TSU Generation Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tutorial.html"><a href="tutorial.html#load-boundaries"><i class="fa fa-check"></i><b>6.4</b> Load Country Boundaries and Legacy Data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tutorial.html"><a href="tutorial.html#visualize-boundaries-and-legacy-data"><i class="fa fa-check"></i><b>6.4.1</b> Visualize Boundaries and Legacy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tutorial.html"><a href="tutorial.html#load-covariates-psu"><i class="fa fa-check"></i><b>6.5</b> Load Environmental Covariates for PSUs</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="tutorial.html"><a href="tutorial.html#optional-auxiliary-data"><i class="fa fa-check"></i><b>6.5.1</b> Optional Auxiliary Data</a></li>
+<li class="chapter" data-level="6.5.2" data-path="tutorial.html"><a href="tutorial.html#load-and-process-auxiliary-data"><i class="fa fa-check"></i><b>6.5.2</b> Load and Process Auxiliary Data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="tutorial.html"><a href="tutorial.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Load Main Environmental Covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="tutorial.html"><a href="tutorial.html#load-and-process-soil-climate-data-newhall"><i class="fa fa-check"></i><b>6.5.4</b> Load and Process Soil Climate Data (Newhall)</a></li>
+<li class="chapter" data-level="6.5.5" data-path="tutorial.html"><a href="tutorial.html#convert-categorical-variables-to-dummy-variables"><i class="fa fa-check"></i><b>6.5.5</b> Convert Categorical Variables to Dummy Variables</a></li>
+<li class="chapter" data-level="6.5.6" data-path="tutorial.html"><a href="tutorial.html#merge-all-covariate-layers"><i class="fa fa-check"></i><b>6.5.6</b> Merge All Covariate Layers</a></li>
+<li class="chapter" data-level="6.5.7" data-path="tutorial.html"><a href="tutorial.html#crop-and-save-covariates"><i class="fa fa-check"></i><b>6.5.7</b> Crop and Save Covariates</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="tutorial.html"><a href="tutorial.html#pca"><i class="fa fa-check"></i><b>6.6</b> Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="6.7" data-path="tutorial.html"><a href="tutorial.html#sampling-universe"><i class="fa fa-check"></i><b>6.7</b> Organize the Sampling Universe</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="tutorial.html"><a href="tutorial.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>6.7.1</b> Load and Process Land Use Data</a></li>
+<li class="chapter" data-level="6.7.2" data-path="tutorial.html"><a href="tutorial.html#exclude-protected-areas"><i class="fa fa-check"></i><b>6.7.2</b> Exclude Protected Areas</a></li>
+<li class="chapter" data-level="6.7.3" data-path="tutorial.html"><a href="tutorial.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>6.7.3</b> Restrict to Accessible Slopes</a></li>
+<li class="chapter" data-level="6.7.4" data-path="tutorial.html"><a href="tutorial.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>6.7.4</b> Aggregate to 100m Resolution</a></li>
+<li class="chapter" data-level="6.7.5" data-path="tutorial.html"><a href="tutorial.html#save-processed-land-use"><i class="fa fa-check"></i><b>6.7.5</b> Save Processed Land Use</a></li>
+<li class="chapter" data-level="6.7.6" data-path="tutorial.html"><a href="tutorial.html#filter-legacy-data"><i class="fa fa-check"></i><b>6.7.6</b> Filter Legacy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="tutorial.html"><a href="tutorial.html#create-psu-grid"><i class="fa fa-check"></i><b>6.8</b> Create Primary Sampling Units (PSU Grid)</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="tutorial.html"><a href="tutorial.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>6.8.1</b> Generate 2km × 2km Grid</a></li>
+<li class="chapter" data-level="6.8.2" data-path="tutorial.html"><a href="tutorial.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>6.8.2</b> Trim to Country Boundaries</a></li>
+<li class="chapter" data-level="6.8.3" data-path="tutorial.html"><a href="tutorial.html#save-psu-grid"><i class="fa fa-check"></i><b>6.8.3</b> Save PSU Grid</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="tutorial.html"><a href="tutorial.html#select-psus"><i class="fa fa-check"></i><b>6.9</b> Select PSUs with Sufficient Land Use Coverage</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="tutorial.html"><a href="tutorial.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>6.9.1</b> Calculate Land Use Percentage</a></li>
+<li class="chapter" data-level="6.9.2" data-path="tutorial.html"><a href="tutorial.html#filter-psus"><i class="fa fa-check"></i><b>6.9.2</b> Filter PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="tutorial.html"><a href="tutorial.html#rasterize-psus"><i class="fa fa-check"></i><b>6.10</b> Rasterize PSUs for Covariate Space Coverage</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorial.html"><a href="tutorial.html#optimal-sample-size"><i class="fa fa-check"></i><b>6.11</b> Compute Optimal Sample Size</a>
+<ul>
+<li class="chapter" data-level="6.11.1" data-path="tutorial.html"><a href="tutorial.html#run-optimization"><i class="fa fa-check"></i><b>6.11.1</b> Run Optimization</a></li>
+<li class="chapter" data-level="6.11.2" data-path="tutorial.html"><a href="tutorial.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>6.11.2</b> Extract Optimal Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="tutorial.html"><a href="tutorial.html#csc-computing"><i class="fa fa-check"></i><b>6.12</b> Covariate Space Coverage - Computing PSUs</a>
+<ul>
+<li class="chapter" data-level="6.12.1" data-path="tutorial.html"><a href="tutorial.html#prepare-function-parameters"><i class="fa fa-check"></i><b>6.12.1</b> Prepare Function Parameters</a></li>
+<li class="chapter" data-level="6.12.2" data-path="tutorial.html"><a href="tutorial.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>6.12.2</b> Perform K-means Clustering</a></li>
+<li class="chapter" data-level="6.12.3" data-path="tutorial.html"><a href="tutorial.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>6.12.3</b> Assign Clusters and Calculate Distances</a></li>
+<li class="chapter" data-level="6.12.4" data-path="tutorial.html"><a href="tutorial.html#extract-selected-psus"><i class="fa fa-check"></i><b>6.12.4</b> Extract Selected PSUs</a></li>
+<li class="chapter" data-level="6.12.5" data-path="tutorial.html"><a href="tutorial.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>6.12.5</b> Visualize in Covariate Space</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="tutorial.html"><a href="tutorial.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>6.13</b> Compute SSUs and TSUs</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="tutorial.html"><a href="tutorial.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>6.13.1</b> Load High-Resolution Covariates</a></li>
+<li class="chapter" data-level="6.13.2" data-path="tutorial.html"><a href="tutorial.html#process-each-psu"><i class="fa fa-check"></i><b>6.13.2</b> Process Each PSU</a></li>
+<li class="chapter" data-level="6.13.3" data-path="tutorial.html"><a href="tutorial.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>6.13.3</b> Combine SSUs and TSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="tutorial.html"><a href="tutorial.html#export-units"><i class="fa fa-check"></i><b>6.14</b> Export Sampling Units</a>
+<ul>
+<li class="chapter" data-level="6.14.1" data-path="tutorial.html"><a href="tutorial.html#create-cluster-raster"><i class="fa fa-check"></i><b>6.14.1</b> Create Cluster Raster</a></li>
+<li class="chapter" data-level="6.14.2" data-path="tutorial.html"><a href="tutorial.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>6.14.2</b> Join Cluster Info to TSUs</a></li>
+<li class="chapter" data-level="6.14.3" data-path="tutorial.html"><a href="tutorial.html#create-site-ids"><i class="fa fa-check"></i><b>6.14.3</b> Create Site IDs</a></li>
+<li class="chapter" data-level="6.14.4" data-path="tutorial.html"><a href="tutorial.html#export-shapefiles"><i class="fa fa-check"></i><b>6.14.4</b> Export Shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="tutorial.html"><a href="tutorial.html#alternative-psus"><i class="fa fa-check"></i><b>6.15</b> Compute Alternative PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>7</b> Merging Results from Multiple Land Uses</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>7.1</b> Assign Country-Wide Unique IDs</a></li>
+<li class="chapter" data-level="7.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>7.2</b> Export Unified Datasets</a></li>
+<li class="chapter" data-level="7.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>7.3</b> Summary Statistics</a></li>
+<li class="chapter" data-level="7.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>7.4</b> Create Distribution Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>8</b> Field Sampling Protocol</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>8.1</b> GPS Device Preparation</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>8.1.1</b> Export to GPX Format</a></li>
+<li class="chapter" data-level="8.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>8.1.2</b> Load onto GPS Device</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>8.2</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="8.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>8.3</b> Data Recording</a></li>
+<li class="chapter" data-level="8.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>8.4</b> Quality Control</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>8.4.1</b> Software Requirements</a></li>
+<li class="chapter" data-level="8.4.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>8.4.2</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
+<ul>
+<li class="chapter" data-level="8.4.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>8.4.3</b> Memory Issues</a></li>
+<li class="chapter" data-level="8.4.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>8.4.4</b> CRS Misalignment</a></li>
+<li class="chapter" data-level="8.4.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>8.4.5</b> Empty Geometry</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>9</b> TBD</a></li>
+<li class="chapter" data-level="10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html"><i class="fa fa-check"></i><b>10</b> Soil Data Preparation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-cleaning"><i class="fa fa-check"></i><b>10.2</b> Data cleaning</a></li>
+<li class="chapter" data-level="10.3" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#soil-data-harmonization"><i class="fa fa-check"></i><b>10.3</b> Soil Data Harmonization</a></li>
+<li class="chapter" data-level="10.4" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258"><i class="fa fa-check"></i><b>10.4</b> Concepts on digital exchange of soil-related data (ISO 28258)</a></li>
+<li class="chapter" data-level="10.5" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#plot-data"><i class="fa fa-check"></i><b>10.5</b> Plot data</a></li>
+<li class="chapter" data-level="10.6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#profile-data"><i class="fa fa-check"></i><b>10.6</b> Profile data</a></li>
+<li class="chapter" data-level="10.7" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#element-data"><i class="fa fa-check"></i><b>10.7</b> Element data</a></li>
+<li class="chapter" data-level="10.8" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#specimen-data"><i class="fa fa-check"></i><b>10.8</b> Specimen data</a></li>
+<li class="chapter" data-level="10.9" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#definition-of-laboratory-procedures"><i class="fa fa-check"></i><b>10.9</b> Definition of laboratory procedures</a></li>
+<li class="chapter" data-level="10.10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-transformation"><i class="fa fa-check"></i><b>10.10</b> Data transformation</a></li>
+<li class="chapter" data-level="10.11" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database"><i class="fa fa-check"></i><b>10.11</b> Organizing soil data according to the GloSIS database</a></li>
+<li class="chapter" data-level="10.12" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis"><i class="fa fa-check"></i><b>10.12</b> Tools for harmonization of soil databases within GloSIS</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>11</b> Digital soil mapping and modeling</a></li>
+<li class="chapter" data-level="12" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>12</b> Soil Data Sharing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>12.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="12.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>12.2</b> Metadata</a></li>
+<li class="chapter" data-level="12.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>12.3</b> Web Services</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><p>Integrated Soil Information for decision-making
+<img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" /></p></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sampling-theory" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Sampling methodologies for soil spatial survey<a href="sampling-theory.html#sampling-theory" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Soil monitoring and mapping are essential to understand soil variability and manage soil resources efficiently. In this context, it is important to understand the basics of choosing a sampling methodology that best fits the project’s objectives, whether focused on mapping, monitoring, or a combination of both. The aim of this section is to provide an overview of sampling design concepts, making them understandable and accessible for both academic and non-academic audiences.</p>
+<div id="selection-methods" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Selection of the sampling methodology<a href="sampling-theory.html#selection-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Purposive (also known as traditional or expert) and probability sampling are the most used methods for selecting sampling units in soil surveys. Both methods differ basically in their objectives. In simple terms, expert sampling involves selecting specific points along a slope or landscape feature, either at individual locations or along transects, such as a catena or toposequence. This approach aims to capture the relationships between the variation in soil properties and the different geographical features that make up the landscape. This concept has been widely used as stated in the literature for soil mapping <span class="citation">(<a href="#ref-borden2020"><strong>borden2020?</strong></a>; <a href="#ref-gobin2000"><strong>gobin2000?</strong></a>; <a href="#ref-milne1936"><strong>milne1936?</strong></a>)</span>. This selection method effectively captures local variations in soil properties and is useful for understanding how these properties change in relation to terrain and hydrological characteristics. However, this sampling method may not always reflect the overall variability of soil properties across the entire study area. Moreover, implementing this approach generally requires significant effort, time, and funding, particularly for large study areas.</p>
+<p>On the other hand, probability sampling assigns a known probability of selection to each sampling unit, ensuring that each sampling unit has a chance of being included in the sample. This approach focuses on obtaining representative samples to make unbiased inferences about the entire population under study <span class="citation">(<a href="#ref-degruijter2006"><strong>degruijter2006?</strong></a>)</span>. This method requires careful planning and implementation to ensure that the sampling design is both unbiased and representative of the population. In addition, its implementation can be more complex compared to the expert sampling method. However, its main advantage is that every sampling unit has a chance of being included in the sample, resulting in a more representative sample of the variability in the study area. Additionally, it allows statistical inferences about the entire population from the sample. This last aspect, if not the most important, allows soil surveyors to monitor and better report the current and future status of soil properties. In general, traditional/expert (non-probabilistic) sampling is less flexible than probabilistic sampling since the latter allows for both types of inference methods, as we will see in the next subsection.</p>
+</div>
+<div id="inference-methods" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Inference Methods<a href="sampling-theory.html#inference-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Two primary statistical inference methods are used in soil survey: design- and model-based inference approaches <span class="citation">(<a href="#ref-degruijter2006"><strong>degruijter2006?</strong></a>)</span>. Design-based inference utilizes the sample design to make inferences about the entire population including probabilities of the sampling units. This approach is suitable for estimating global quantities, such as means and totals, or local quantities for large domains based on the design of the sampling scheme. Briefly, global quantities encompass the spatial cumulative distribution function of the response variable in the sampling universe, or quantities derived from it, such as quantiles, median, mean, and standard deviation. Local quantities, on the other hand, pertain to individual estimates within sub-areas of the sampling universe, also known as domains. Model-based inference uses statistical models to make inferences about unsampled locations based on the relationships observed in the sampled data. This approach is valuable for predicting soil properties at unsampled locations, especially in areas where sampling is limited. Further information about design- and model-based approaches can be found in <span class="citation">(<a href="#ref-brus2021"><strong>brus2021?</strong></a>)</span>.</p>
+</div>
+<div id="sampling-purpose" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Purpose of Sampling<a href="sampling-theory.html#sampling-purpose" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bounding together selection and inference methods, one can better determine which one of those combinations works best for their project goals. The choice of sampling method in soil survey and monitoring depends on the survey’s purpose <span class="citation">(<a href="#ref-brus2022"><strong>brus2022?</strong></a>)</span>. For monitoring soil properties over time, design-based inference and probability sampling selection are suitable. These methods allow for the unbiased estimation of changes in soil properties at specific locations over time. For mapping soil properties across a landscape, model-based inference and non-probabilistic sampling are more appropriate. These methods allow for the spatial prediction of soil properties at unsampled locations based on the relationships observed in the sampled data. Monitoring differs from estimating soil parameters of domains at a given point in time. However, similar to monitoring, design-based inference and probability sampling are the most suitable methods for estimating soil properties within a certain domain. These approaches ensure that the estimates of soil parameters (e.g., mean, variance, mode, median) are unbiased and representative of the study area.</p>
+</div>
+<div id="design-types" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Sampling Design Types<a href="sampling-theory.html#design-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The sequence of decision-making for a soil survey or monitoring project should follow a logical order to ensure that the objectives of the project are met effectively. Begin by defining the purpose of the project. Determine whether the goal is to monitor changes in soil properties over time or to map them across landscape. Based on the purpose, one can choose an appropriate selection method. After that, one can select the inference method which best suits the project. For instance, if the goal is monitoring, consider probability sampling. For mapping, consider either non-probability or probability methods. Once the purpose, selection and inference methods are defined, one can select the appropriate sampling design.</p>
+<p>Before diving into the types of sampling design, it is important to take into consideration the stratification of the sampling universe. Stratification involves dividing the sampling universe into strata or sub-areas based on certain criteria, such as soil-climate types or land-use. This approach can increase the efficiency of the sampling design by obtaining separate estimates for each stratum, leading to more precise estimates for specific regions of interest (ROI). For example, if the ROI has distinct soil types, stratifying the sample by soil type can ensure that each soil type is adequately represented in the sample. Another example is using explanatory variables from remote sensing as a means of spatial coverage and stratification.</p>
+<p>We divided the sampling design types into monitoring and mapping (Table <a href="sampling-theory.html#tab:design-comparison">4.1</a>). For monitoring, one can certainly choose among simple random sampling (SRS), stratified SRS, or two-stage cluster random sampling. In SRS, each sampling unit in the ROI has equal probability of being selected. This approach is straightforward and easy to implement but may not account for spatial variability in soil properties. Stratified simple random sampling divides the ROI into strata based on certain criteria, such as soil-climate types or land-use. Then, SRS is conducted within each stratum. This method ensures that each stratum is adequately represented in the sample, leading to more precise estimates for specific ROI. Finally, two-stage cluster random sampling, the sampling units are grouped into clusters, and then clusters are randomly selected for sampling. This method is useful for large study areas where it may be impractical to sample every unit individually. One interesting method, which is not specifically categorized as simple, stratified, or two-stage cluster random sampling, is called balanced acceptance sampling <span class="citation">(<a href="#ref-robertson2013"><strong>robertson2013?</strong></a>)</span>. This methodological approach can be applied within any of these sampling design types to ensure a balanced representation of different strata in the sample. For example, in a simple random sampling design, balanced acceptance sampling (BAS) would involve ensuring that each stratum is adequately represented in the random sample. In a stratified sampling design, BAS would aim to balance the number of sampling points across strata. In a two-stage cluster random sampling design, BAS would involve ensuring a balanced selection of clusters from each stratum. In essence, BAS is a principle or strategy that can be incorporated into various sampling design types to reduce bias in the estimation of soil properties.</p>
+<p>If the main goal of a sampling design is to map soil properties, non-probability methods such as conditioned Latin Hypercube sampling <span class="citation">(<a href="#ref-minasny2006"><strong>minasny2006?</strong></a>)</span>, catena or topo-sequence sampling <span class="citation">(<a href="#ref-milne1936"><strong>milne1936?</strong></a>)</span>, grid sampling, or covariate space coverage sampling <span class="citation">(<a href="#ref-brus2018"><strong>brus2018?</strong></a>; <a href="#ref-degruijter2006"><strong>degruijter2006?</strong></a>)</span> are the most suitable choices. Conditioned Latin Hypercube sampling (CLHS) selects sampling points that ensure a representative distribution of soil properties across the study area. This approach is particularly useful for capturing spatial variability within the explanatory variables that describe the pattern of the response variable, leading to more accurate soil property maps. Catena or topo-sequence sampling was already discussed in section <a href="sampling-theory.html#selection-methods">4.1</a>. Covariate space coverage sampling (CSCS) selects sampling points to provide complete spatial coverage of the ROI. <span class="citation">(<a href="#ref-ma2020"><strong>ma2020?</strong></a>)</span> compared the efficiency of SRS, CLHS, and CSCS, being the latter the most efficient.</p>
+<p>In addition to the aforementioned methods, there are sampling approaches designed to produce samples that are evenly distributed across the study area, known as spatially balanced designs. These methods ensure that all areas are considered for inclusion in fieldwork, often requiring fewer samples compared to simple random sampling (SRS). Generalized Random Tessellation Stratified (GRTS) sampling <span class="citation">(<a href="#ref-stevens1999"><strong>stevens1999?</strong></a>)</span> and BAS are two popular approaches within the balanced sampling framework. The rationale behind these methods is that for estimating overall properties over a landscape, such as mean soil carbon, the estimate is most reliable when samples cover all areas of interest. While SRS, GRTS, and BAS are among the many sampling methods available, each with its own set of advantages and disadvantages, selecting the most suitable method can be daunting for field scientists. They often need to choose sites for fieldwork while adhering to constraints such as budget and time. For instance, the GRTS method can be used to provide a spatially balanced, probability sample with design-based, unbiased variance estimators with a minimum sample size.</p>
+<table>
+<caption><span id="tab:design-comparison">Table 4.1: </span>Short description of pros and cons within each soil sampling design type</caption>
+<colgroup>
+<col width="36%" />
+<col width="9%" />
+<col width="28%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr>
+<th align="left">Sampling.Design</th>
+<th align="left">Purpose</th>
+<th align="left">Pros</th>
+<th align="left">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Simple Random (SR)</td>
+<td align="left">Monitoring</td>
+<td align="left">Simple, unbiased</td>
+<td align="left">May miss rare features</td>
+</tr>
+<tr>
+<td align="left">Stratified Simple Random (SSR)</td>
+<td align="left">Monitoring</td>
+<td align="left">Better precision per stratum</td>
+<td align="left">Requires prior stratification</td>
+</tr>
+<tr>
+<td align="left">Two-Stage Cluster Random (TSCR)</td>
+<td align="left">Monitoring</td>
+<td align="left">Cost-effective for large areas</td>
+<td align="left">Higher variance</td>
+</tr>
+<tr>
+<td align="left">Conditioned Latin Hypercube (CLH)</td>
+<td align="left">Mapping</td>
+<td align="left">Environmental representativeness</td>
+<td align="left">Complex implementation</td>
+</tr>
+<tr>
+<td align="left">Catena/Toposequence (CT)</td>
+<td align="left">Mapping</td>
+<td align="left">Captures terrain relationships</td>
+<td align="left">Subjective, labor-intensive</td>
+</tr>
+<tr>
+<td align="left">Covariate Space Coverage (CSC)</td>
+<td align="left">Mapping</td>
+<td align="left">Most efficient for mapping</td>
+<td align="left">Computationally intensive</td>
+</tr>
+<tr>
+<td align="left">Generalized Tessellation Stratified (GRT)</td>
+<td align="left">Both</td>
+<td align="left">Spatially balanced</td>
+<td align="left">Complex variance estimation</td>
+</tr>
+<tr>
+<td align="left">Balanced Acceptance (BA)</td>
+<td align="left">Both</td>
+<td align="left">Reduces bias</td>
+<td align="left">Requires careful planning</td>
+</tr>
+</tbody>
+</table>
+<div id="soils4africa-example" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Example: Soils4Africa Sampling Design<a href="sampling-theory.html#soils4africa-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The EU-funded project Soils4Africa aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project’s purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:</p>
+<p><strong>Primary Sampling Units (PSUs)</strong>: PSUs constitute the broadest spatial units within the study area, typically defined based on geographical, administrative, ecological boundaries, or soil management types. The size of each PSU is 4 square kilometers (2 × 2 km grid cells). The total number of PSUs selected depends on the sample size and ideally should be sufficient to cover the range of environmental gradients present in the study area.</p>
+<p><strong>Secondary Sampling Units (SSUs)</strong>: Within each PSU, a predefined number of SSUs are selected for detailed sampling. SSUs offer a finer resolution level of sampling within each PSU. The size of an SSU is determined based on the need to capture localized environmental conditions and variability. In this case the size of the SSUs is 1 hectare (100 × 100 m grid cells). This approach involves a random selection of 7 SSUs per PSU to ensure a comprehensive coverage of the PSU’s environmental diversity. Four of these SSU are target SSUs and 3 are alternative SSUs to be used as replacement areas due to potential sampling challenges encountered in the field.</p>
+<p><strong>Tertiary Sampling Units (TSUs)</strong>: TSUs represent the most detailed level of sampling, focusing on specific points within SSUs. The number of TSUs within each SSU is 3, one which acts as the primary target point and 2 as replacement points for the primary point.</p>
+<p>The sampling design in Soils4Africa proceeds as follows: (i) A first selection of PSUs is made using a stratified random sampling on farming systems strata. The farming system classification data comes from the FAO farming systems map for Africa which provides information for 46 different farming classes or stratum. (ii) Within each of the selected PSUs, a second sampling level is done upon a regular division of the PSU into cells of 1 ha, the SSU. For each PSU, 4 random SSUs are selected for sampling and 3 additional cells are stored as alternative cells. These cells are used as replacements in case some of the target SSUs cannot be sampled for some reason. The selection of SSUs is done by simple random sampling within the PSU. (iii) Within each SSU, 3 simple random sampling points are located. The first point serves as the target point to be sampled and the remaining 2 are stored as replacement points to be used as in the previous step. This Hierarchical Sampling design helps reduce bias in the data, allowing for accurate assessments of soil constraints, quantification of risk factors, and reliable evaluations of changes in soil health/quality.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="soilfer-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["GSNmap_Technical_Manual.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"fig_caption": true
+});
+});
+</script>
+
+</body>
+
+</html>

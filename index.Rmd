@@ -1,20 +1,20 @@
 --- 
 title:  |
+  Integrated soil information for decision-making
   <img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" />
-  Integrated Soil Information for decision-making
-subtitle: "From Soil Sampling Design and Spectroscopy to Decision-Making "
+subtitle: "Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making."
 author: "Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I. "
 site: bookdown::bookdown_site
 output: 
-  bookdown::pdf_book:
-    keep_tex: yes
-  bookdown::word_document2: # Word output
-    toc: true
-    fig_caption: true
   bookdown::gitbook:
     config:
       fig_caption: yes
       download: ["pdf"]
+  bookdown::word_document2: # Word output
+    toc: true
+    fig_caption: true
+  bookdown::pdf_book:
+    keep_tex: yes
   latex_engine: xelatex # Use XeLaTeX for better figure handling
   out.width: '0.9\\textwidth' # Adjust this value as needed
 header-includes:

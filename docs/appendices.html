@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Soil Data Preparation | Integrated soil information for decision-making </title>
+  <title>Appendices | Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Soil Data Preparation | Integrated soil information for decision-making " />
+  <meta property="og:title" content="Appendices | Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Soil Data Preparation | Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Appendices | Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tbd.html"/>
-<link rel="next" href="digital-soil-mapping-and-modeling.html"/>
+<link rel="prev" href="references.html"/>
+<link rel="next" href="tbd.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -326,43 +326,249 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="soil-data-preparation" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Soil Data Preparation<a href="soil-data-preparation.html#soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-1" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Introduction<a href="soil-data-preparation.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="appendices" class="section level1 unnumbered hasAnchor">
+<h1>Appendices<a href="appendices.html#appendices" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="appendix-a-software-and-data-sources" class="section level2 unnumbered hasAnchor">
+<h2>Appendix A: Software and Data Sources<a href="appendices.html#appendix-a-software-and-data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="software-requirements" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Software Requirements<a href="appendices.html#software-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>R</strong> (version ≥ 4.0): <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a></li>
+<li><strong>RStudio</strong>: <a href="https://posit.co/products/open-source/rstudio/" class="uri">https://posit.co/products/open-source/rstudio/</a></li>
+<li><strong>Google Earth Engine</strong>: <a href="https://earthengine.google.com/" class="uri">https://earthengine.google.com/</a></li>
+<li><strong>QGIS</strong> (optional): <a href="https://qgis.org/" class="uri">https://qgis.org/</a></li>
+</ul>
 </div>
-<div id="data-cleaning" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Data cleaning<a href="soil-data-preparation.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-sources" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Data Sources<a href="appendices.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Global Datasets:</strong>
+- CHELSA Climate: <a href="https://chelsa-climate.org/" class="uri">https://chelsa-climate.org/</a>
+- TerraClimate: <a href="https://www.climatologylab.org/terraclimate.html" class="uri">https://www.climatologylab.org/terraclimate.html</a>
+- MODIS: <a href="https://lpdaac.usgs.gov/products/mod13q1v006/" class="uri">https://lpdaac.usgs.gov/products/mod13q1v006/</a>
+- Sentinel-2: <a href="https://scihub.copernicus.eu/" class="uri">https://scihub.copernicus.eu/</a>
+- SRTM DEM: <a href="https://earthexplorer.usgs.gov/" class="uri">https://earthexplorer.usgs.gov/</a>
+- ESA WorldCover: <a href="https://esa-worldcover.org/" class="uri">https://esa-worldcover.org/</a>
+- SoilGrids: <a href="https://soilgrids.org/" class="uri">https://soilgrids.org/</a>
+- Geomorpho90m: <a href="https://www.geomorpho90m.org/" class="uri">https://www.geomorpho90m.org/</a></p>
+<p><strong>Administrative Boundaries:</strong>
+- GADM: <a href="https://gadm.org/" class="uri">https://gadm.org/</a>
+- Natural Earth: <a href="https://www.naturalearthdata.com/" class="uri">https://www.naturalearthdata.com/</a></p>
 </div>
-<div id="soil-data-harmonization" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Soil Data Harmonization<a href="soil-data-preparation.html#soil-data-harmonization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="concepts-on-digital-exchange-of-soil-related-data-iso-28258" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Concepts on digital exchange of soil-related data (ISO 28258)<a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="appendix-b-troubleshooting-common-issues" class="section level2 unnumbered hasAnchor">
+<h2>Appendix B: Troubleshooting Common Issues<a href="appendices.html#appendix-b-troubleshooting-common-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="memory-issues" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Memory Issues<a href="appendices.html#memory-issues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Problem</strong>: R runs out of memory during processing</p>
+<p><strong>Solution</strong>:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="appendices.html#cb55-1" tabindex="-1"></a><span class="co"># Increase memory limit (Windows)</span></span>
+<span id="cb55-2"><a href="appendices.html#cb55-2" tabindex="-1"></a><span class="fu">memory.limit</span>(<span class="at">size =</span> <span class="dv">32000</span>)  <span class="co"># 32 GB</span></span>
+<span id="cb55-3"><a href="appendices.html#cb55-3" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="appendices.html#cb55-4" tabindex="-1"></a><span class="co"># Use terra instead of raster (more efficient)</span></span>
+<span id="cb55-5"><a href="appendices.html#cb55-5" tabindex="-1"></a><span class="co"># Process data in chunks</span></span>
+<span id="cb55-6"><a href="appendices.html#cb55-6" tabindex="-1"></a><span class="co"># Close unnecessary applications</span></span></code></pre></div>
 </div>
-<div id="plot-data" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Plot data<a href="soil-data-preparation.html#plot-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="crs-misalignment" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> CRS Misalignment<a href="appendices.html#crs-misalignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Problem</strong>: Spatial layers don’t overlap correctly</p>
+<p><strong>Solution</strong>:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="appendices.html#cb56-1" tabindex="-1"></a><span class="co"># Always check CRS</span></span>
+<span id="cb56-2"><a href="appendices.html#cb56-2" tabindex="-1"></a>sf<span class="sc">::</span><span class="fu">st_crs</span>(your_data)</span>
+<span id="cb56-3"><a href="appendices.html#cb56-3" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(your_raster)</span>
+<span id="cb56-4"><a href="appendices.html#cb56-4" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="appendices.html#cb56-5" tabindex="-1"></a><span class="co"># Reproject if needed</span></span>
+<span id="cb56-6"><a href="appendices.html#cb56-6" tabindex="-1"></a>your_data <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_transform</span>(your_data, <span class="at">crs =</span> target_crs)</span>
+<span id="cb56-7"><a href="appendices.html#cb56-7" tabindex="-1"></a>your_raster <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(your_raster, target_crs)</span></code></pre></div>
 </div>
-<div id="profile-data" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Profile data<a href="soil-data-preparation.html#profile-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="empty-geometry" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Empty Geometry<a href="appendices.html#empty-geometry" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Problem</strong>: SSU or TSU generation fails</p>
+<p><strong>Solution</strong>:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="appendices.html#cb57-1" tabindex="-1"></a><span class="co"># Check for valid geometries</span></span>
+<span id="cb57-2"><a href="appendices.html#cb57-2" tabindex="-1"></a><span class="fu">st_is_valid</span>(your_sf_object)</span>
+<span id="cb57-3"><a href="appendices.html#cb57-3" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="appendices.html#cb57-4" tabindex="-1"></a><span class="co"># Fix invalid geometries</span></span>
+<span id="cb57-5"><a href="appendices.html#cb57-5" tabindex="-1"></a>your_sf_object <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(your_sf_object)</span>
+<span id="cb57-6"><a href="appendices.html#cb57-6" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="appendices.html#cb57-7" tabindex="-1"></a><span class="co"># Remove empty geometries</span></span>
+<span id="cb57-8"><a href="appendices.html#cb57-8" tabindex="-1"></a>your_sf_object <span class="ot">&lt;-</span> your_sf_object[<span class="sc">!</span><span class="fu">st_is_empty</span>(your_sf_object), ]</span></code></pre></div>
 </div>
-<div id="element-data" class="section level2 hasAnchor" number="6.7">
-<h2><span class="header-section-number">6.7</span> Element data<a href="soil-data-preparation.html#element-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="specimen-data" class="section level2 hasAnchor" number="6.8">
-<h2><span class="header-section-number">6.8</span> Specimen data<a href="soil-data-preparation.html#specimen-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="definition-of-laboratory-procedures" class="section level2 hasAnchor" number="6.9">
-<h2><span class="header-section-number">6.9</span> Definition of laboratory procedures<a href="soil-data-preparation.html#definition-of-laboratory-procedures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="data-transformation" class="section level2 hasAnchor" number="6.10">
-<h2><span class="header-section-number">6.10</span> Data transformation<a href="soil-data-preparation.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="organizing-soil-data-according-to-the-glosis-database" class="section level2 hasAnchor" number="6.11">
-<h2><span class="header-section-number">6.11</span> Organizing soil data according to the GloSIS database<a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="tools-for-harmonization-of-soil-databases-within-glosis" class="section level2 hasAnchor" number="6.12">
-<h2><span class="header-section-number">6.12</span> Tools for harmonization of soil databases within GloSIS<a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="appendix-c-acronyms-and-abbreviations" class="section level2 unnumbered hasAnchor">
+<h2>Appendix C: Acronyms and Abbreviations<a href="appendices.html#appendix-c-acronyms-and-abbreviations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<caption><span id="tab:acronyms">Table 4.2: </span>List of acronyms and abbreviations used in this manual</caption>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr>
+<th align="left">Acronym</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">AOI</td>
+<td align="left">Area of Interest</td>
+</tr>
+<tr>
+<td align="left">AWC</td>
+<td align="left">Available Water Capacity</td>
+</tr>
+<tr>
+<td align="left">BAS</td>
+<td align="left">Balanced Acceptance Sampling</td>
+</tr>
+<tr>
+<td align="left">CHELSA</td>
+<td align="left">Climatologies at High resolution for the Earth’s Land Surface Areas</td>
+</tr>
+<tr>
+<td align="left">CLHS</td>
+<td align="left">Conditioned Latin Hypercube Sampling</td>
+</tr>
+<tr>
+<td align="left">CRS</td>
+<td align="left">Coordinate Reference System</td>
+</tr>
+<tr>
+<td align="left">CSC</td>
+<td align="left">Covariate Space Coverage</td>
+</tr>
+<tr>
+<td align="left">CSCS</td>
+<td align="left">Covariate Space Coverage Sampling</td>
+</tr>
+<tr>
+<td align="left">DEM</td>
+<td align="left">Digital Elevation Model</td>
+</tr>
+<tr>
+<td align="left">DSM</td>
+<td align="left">Digital Soil Mapping</td>
+</tr>
+<tr>
+<td align="left">EVI</td>
+<td align="left">Enhanced Vegetation Index</td>
+</tr>
+<tr>
+<td align="left">FAO</td>
+<td align="left">Food and Agriculture Organization</td>
+</tr>
+<tr>
+<td align="left">FPAR</td>
+<td align="left">Fraction of Photosynthetically Active Radiation</td>
+</tr>
+<tr>
+<td align="left">GEE</td>
+<td align="left">Google Earth Engine</td>
+</tr>
+<tr>
+<td align="left">GRTS</td>
+<td align="left">Generalized Random Tessellation Stratified</td>
+</tr>
+<tr>
+<td align="left">ISO</td>
+<td align="left">International Organization for Standardization</td>
+</tr>
+<tr>
+<td align="left">KLD</td>
+<td align="left">Kullback-Leibler Divergence</td>
+</tr>
+<tr>
+<td align="left">JSD</td>
+<td align="left">Jensen-Shannon Divergence</td>
+</tr>
+<tr>
+<td align="left">LULC</td>
+<td align="left">Land Use and Land Cover</td>
+</tr>
+<tr>
+<td align="left">MAST</td>
+<td align="left">Mean Annual Soil Temperature</td>
+</tr>
+<tr>
+<td align="left">MODIS</td>
+<td align="left">Moderate Resolution Imaging Spectroradiometer</td>
+</tr>
+<tr>
+<td align="left">MSSD</td>
+<td align="left">Mean Squared Shortest Distance</td>
+</tr>
+<tr>
+<td align="left">MSSSD</td>
+<td align="left">Mean Squared Shortest Scaled Distance</td>
+</tr>
+<tr>
+<td align="left">NDVI</td>
+<td align="left">Normalized Difference Vegetation Index</td>
+</tr>
+<tr>
+<td align="left">NSM</td>
+<td align="left">Normalized Soil Moisture</td>
+</tr>
+<tr>
+<td align="left">PCA</td>
+<td align="left">Principal Component Analysis</td>
+</tr>
+<tr>
+<td align="left">PC</td>
+<td align="left">Principal Component</td>
+</tr>
+<tr>
+<td align="left">PET</td>
+<td align="left">Potential Evapotranspiration</td>
+</tr>
+<tr>
+<td align="left">PSU</td>
+<td align="left">Primary Sampling Unit</td>
+</tr>
+<tr>
+<td align="left">ROI</td>
+<td align="left">Region of Interest</td>
+</tr>
+<tr>
+<td align="left">SoilFER</td>
+<td align="left">Soil Mapping for Resilient Agrifood Systems</td>
+</tr>
+<tr>
+<td align="left">SRS</td>
+<td align="left">Simple Random Sampling</td>
+</tr>
+<tr>
+<td align="left">SRTM</td>
+<td align="left">Shuttle Radar Topography Mission</td>
+</tr>
+<tr>
+<td align="left">SSU</td>
+<td align="left">Secondary Sampling Unit</td>
+</tr>
+<tr>
+<td align="left">SWIR</td>
+<td align="left">Shortwave Infrared</td>
+</tr>
+<tr>
+<td align="left">TPI</td>
+<td align="left">Topographic Position Index</td>
+</tr>
+<tr>
+<td align="left">TSU</td>
+<td align="left">Tertiary Sampling Unit</td>
+</tr>
+<tr>
+<td align="left">TWI</td>
+<td align="left">Topographic Wetness Index</td>
+</tr>
+<tr>
+<td align="left">VACS</td>
+<td align="left">Vision for Adapted Crops and Soils</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>For questions, technical support, or to report issues, please visit the <a href="https://github.com/FAO-GSP/SoilFER-sampling-design">SoilFER GitHub repository</a> or contact the SoilFER team at FAO.</em></p>
 
 </div>
 </div>
@@ -371,8 +577,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="tbd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="digital-soil-mapping-and-modeling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tbd.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
