@@ -1,49 +1,51 @@
---- 
+---
 title:  |
   Integrated soil information for decision-making
   <img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" />
 subtitle: "Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making."
 author: "Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I. "
 site: bookdown::bookdown_site
-output: 
+
+output:
   bookdown::gitbook:
     config:
       fig_caption: yes
-      download: ["pdf"]
-  bookdown::word_document2: # Word output
-    toc: true
-    fig_caption: true
-  bookdown::pdf_book:
-    keep_tex: yes
-  latex_engine: xelatex # Use XeLaTeX for better figure handling
-  out.width: '0.9\\textwidth' # Adjust this value as needed
+      download: []   # no download buttons (pdf/epub)
+
+# (PDF disabled)
+# bookdown::pdf_book:
+#   keep_tex: yes
+# latex_engine: xelatex
+# out.width: '0.9\\textwidth'
+
 header-includes:
-    - \AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
-    - \usepackage{titling}
-    - \usepackage{natbib}
-    - \usepackage{pdfpages}
-    - \usepackage{fancyhdr}
-    - \usepackage{booktabs}
-    - \usepackage{longtable}
-    - \usepackage{subfig}
-    - \usepackage{array}
-    - \usepackage{amsmath}
-    - \usepackage{multirow}
-    - \usepackage{wrapfig}
-    - \usepackage{bookmark}
-    - \usepackage[utf8]{inputenc}
-    - \usepackage{float}
-    - \usepackage{colortbl}
-    - \usepackage{pdflscape}
-    - \usepackage{tabu}
-    - \usepackage{threeparttable}
-    - \usepackage{threeparttablex}
-    - \usepackage[normalem]{ulem}
-    - \usepackage{makecell}
-    - \usepackage{xcolor}
-    - \DeclareUnicodeCharacter{2212}{\textendash}
-    - \usepackage{rotating, graphicx}
-    - \usepackage{listings}
+  - \AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
+  - \usepackage{titling}
+  - \usepackage{natbib}
+  - \usepackage{pdfpages}
+  - \usepackage{fancyhdr}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{subfig}
+  - \usepackage{array}
+  - \usepackage{amsmath}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{bookmark}
+  - \usepackage[utf8]{inputenc}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \DeclareUnicodeCharacter{2212}{\textendash}
+  - \usepackage{rotating, graphicx}
+  - \usepackage{listings}
+
 documentclass: book
 csl: food-and-agriculture-organization-of-the-united-nations.csl
 bibliography: "reference-list.bib"
@@ -55,7 +57,6 @@ description: "SoilFER SID Technical Manual"
 always_allow_html: yes
 template: null
 ---
-
 
 ```{r set-options, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE, eval = FALSE}
 
