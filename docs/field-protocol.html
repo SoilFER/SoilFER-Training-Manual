@@ -164,15 +164,17 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="contributors-and-reviewers.html"><a href="contributors-and-reviewers.html"><i class="fa fa-check"></i>Contributors and reviewers</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i>Presentation and basics</a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objectives"><i class="fa fa-check"></i><b>0.1</b> Background and Objectives</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
-<li class="chapter" data-level="0.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#training-material"><i class="fa fa-check"></i><b>0.2</b> Training material</a></li>
-<li class="chapter" data-level="0.3" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#setting-up-the-software-environment"><i class="fa fa-check"></i><b>0.3</b> Setting up the software environment</a></li>
-<li class="chapter" data-level="0.4" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#resources-to-get-started"><i class="fa fa-check"></i><b>0.4</b> Resources to get started</a></li>
-<li class="chapter" data-level="0.5" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#basic-concepts"><i class="fa fa-check"></i><b>0.5</b> Basic concepts</a>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a>
 <ul>
-<li class="chapter" data-level="0.5.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#digital-soil-mapping"><i class="fa fa-check"></i><b>0.5.1</b> Digital Soil Mapping</a></li>
-<li class="chapter" data-level="0.5.2" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#main-concepts-scorpan-model"><i class="fa fa-check"></i><b>0.5.2</b> Main concepts: SCORPAN model</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#step-by-step-setup-instructions"><i class="fa fa-check"></i>Step-by-step setup instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#resources-to-get-started"><i class="fa fa-check"></i>Resources to get started</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#basic-concepts"><i class="fa fa-check"></i>Basic concepts</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#digital-soil-mapping"><i class="fa fa-check"></i>Digital Soil Mapping</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#main-concepts-scorpan-model"><i class="fa fa-check"></i>Main concepts: SCORPAN model</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html"><i class="fa fa-check"></i><b>1</b> Data preparation for digital soil mapping in R</a></li>
@@ -350,23 +352,23 @@ div.csl-indent {
 <h2><span class="header-section-number">4.1</span> GPS Device Preparation<a href="field-protocol.html#gps-prep" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="export-to-gpx-format" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Export to GPX Format<a href="field-protocol.html#export-to-gpx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="field-protocol.html#cb54-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
-<span id="cb54-2"><a href="field-protocol.html#cb54-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
-<span id="cb54-3"><a href="field-protocol.html#cb54-3" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="field-protocol.html#cb54-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
-<span id="cb54-5"><a href="field-protocol.html#cb54-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
-<span id="cb54-6"><a href="field-protocol.html#cb54-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb54-7"><a href="field-protocol.html#cb54-7" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="field-protocol.html#cb54-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
-<span id="cb54-9"><a href="field-protocol.html#cb54-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb54-10"><a href="field-protocol.html#cb54-10" tabindex="-1"></a></span>
-<span id="cb54-11"><a href="field-protocol.html#cb54-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
-<span id="cb54-12"><a href="field-protocol.html#cb54-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
-<span id="cb54-13"><a href="field-protocol.html#cb54-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
-<span id="cb54-14"><a href="field-protocol.html#cb54-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
-<span id="cb54-15"><a href="field-protocol.html#cb54-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-16"><a href="field-protocol.html#cb54-16" tabindex="-1"></a></span>
-<span id="cb54-17"><a href="field-protocol.html#cb54-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="field-protocol.html#cb56-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
+<span id="cb56-2"><a href="field-protocol.html#cb56-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
+<span id="cb56-3"><a href="field-protocol.html#cb56-3" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="field-protocol.html#cb56-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
+<span id="cb56-5"><a href="field-protocol.html#cb56-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
+<span id="cb56-6"><a href="field-protocol.html#cb56-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb56-7"><a href="field-protocol.html#cb56-7" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="field-protocol.html#cb56-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
+<span id="cb56-9"><a href="field-protocol.html#cb56-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb56-10"><a href="field-protocol.html#cb56-10" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="field-protocol.html#cb56-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
+<span id="cb56-12"><a href="field-protocol.html#cb56-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
+<span id="cb56-13"><a href="field-protocol.html#cb56-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
+<span id="cb56-14"><a href="field-protocol.html#cb56-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
+<span id="cb56-15"><a href="field-protocol.html#cb56-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-16"><a href="field-protocol.html#cb56-16" tabindex="-1"></a></span>
+<span id="cb56-17"><a href="field-protocol.html#cb56-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
 </div>
 <div id="load-onto-gps-device" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Load onto GPS Device<a href="field-protocol.html#load-onto-gps-device" class="anchor-section" aria-label="Anchor link to header"></a></h3>
