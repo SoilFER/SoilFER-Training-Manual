@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Field Sampling Protocol | Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Field Sampling Protocol | Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -127,6 +127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -164,17 +165,112 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i>Presentation and basics</a>
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
+<li class="chapter" data-level="0.1" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#is-not"><i class="fa fa-check"></i><b>0.1</b> What this Tutorial is not</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a>
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#step-by-step-setup-instructions"><i class="fa fa-check"></i>Step-by-step setup instructions</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#resources-to-get-started"><i class="fa fa-check"></i>Resources to get started</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#basic-concepts"><i class="fa fa-check"></i>Basic concepts</a>
-<ul>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#digital-soil-mapping"><i class="fa fa-check"></i>Digital Soil Mapping</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#main-concepts-scorpan-model"><i class="fa fa-check"></i>Main concepts: SCORPAN model</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html"><i class="fa fa-check"></i>Introduction to R programming</a>
+<ul>
+<li class="chapter" data-level="0.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#what-is-r"><i class="fa fa-check"></i><b>0.2</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#why-r-for-soil-science"><i class="fa fa-check"></i><b>0.2.1</b> Why R for Soil Science?</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>0.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-r"><i class="fa fa-check"></i><b>0.3.1</b> Installing R</a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-rstudio"><i class="fa fa-check"></i><b>0.3.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="0.3.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#verifying-installation"><i class="fa fa-check"></i><b>0.3.3</b> Verifying Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#understanding-the-rstudio-interface"><i class="fa fa-check"></i><b>0.4</b> Understanding the RStudio Interface</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#console-pane-bottom-left"><i class="fa fa-check"></i><b>0.4.1</b> 1. Console Pane (Bottom Left)</a></li>
+<li class="chapter" data-level="0.4.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#code-editor-pane-top-left"><i class="fa fa-check"></i><b>0.4.2</b> 2. Code Editor Pane (Top Left)</a></li>
+<li class="chapter" data-level="0.4.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#environmenthistory-pane-top-right"><i class="fa fa-check"></i><b>0.4.3</b> 3. Environment/History Pane (Top Right)</a></li>
+<li class="chapter" data-level="0.4.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#filesplotspackageshelp-pane-bottom-right"><i class="fa fa-check"></i><b>0.4.4</b> 4. Files/Plots/Packages/Help Pane (Bottom Right)</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#r-packages-extending-rs-capabilities"><i class="fa fa-check"></i><b>0.5</b> R Packages: Extending R’s Capabilities</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#what-are-packages"><i class="fa fa-check"></i><b>0.5.1</b> What are Packages?</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-packages"><i class="fa fa-check"></i><b>0.5.2</b> Installing Packages</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#loading-packages"><i class="fa fa-check"></i><b>0.5.3</b> Loading Packages</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#finding-help-on-packages"><i class="fa fa-check"></i><b>0.5.4</b> Finding Help on Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#object-types"><i class="fa fa-check"></i><b>0.6</b> R Basics: Objects and Data Types</a>
+<ul>
+<li class="chapter" data-level="0.6.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#object-assignment"><i class="fa fa-check"></i><b>0.6.1</b> Creating Objects with Assignment</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#data-types"><i class="fa fa-check"></i><b>0.6.2</b> Data Types in R</a></li>
+<li class="chapter" data-level="0.6.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#check-data"><i class="fa fa-check"></i><b>0.6.3</b> Checking Data Types</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#structure-data"><i class="fa fa-check"></i><b>0.7</b> Data Structures in R</a>
+<ul>
+<li class="chapter" data-level="0.7.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#vector-data"><i class="fa fa-check"></i><b>0.7.1</b> Vectors</a></li>
+<li class="chapter" data-level="0.7.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#factor-data"><i class="fa fa-check"></i><b>0.7.2</b> Factors</a></li>
+<li class="chapter" data-level="0.7.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#matrix-data"><i class="fa fa-check"></i><b>0.7.3</b> Matrices</a></li>
+<li class="chapter" data-level="0.7.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dataframe"><i class="fa fa-check"></i><b>0.7.4</b> Data Frames</a></li>
+<li class="chapter" data-level="0.7.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#list-data"><i class="fa fa-check"></i><b>0.7.5</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="0.8" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#operators"><i class="fa fa-check"></i><b>0.8</b> Operators in R</a>
+<ul>
+<li class="chapter" data-level="0.8.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#arithmetic-operators"><i class="fa fa-check"></i><b>0.8.1</b> Arithmetic Operators</a></li>
+<li class="chapter" data-level="0.8.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#comparison-operators"><i class="fa fa-check"></i><b>0.8.2</b> Comparison Operators</a></li>
+<li class="chapter" data-level="0.8.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#logical-operators"><i class="fa fa-check"></i><b>0.8.3</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="0.9" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#conditional-statements"><i class="fa fa-check"></i><b>0.9</b> Control Structures: Conditional Statements</a>
+<ul>
+<li class="chapter" data-level="0.9.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#ifelse-statements"><i class="fa fa-check"></i><b>0.9.1</b> If-Else Statements</a></li>
+<li class="chapter" data-level="0.9.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#v-ifelse-statements"><i class="fa fa-check"></i><b>0.9.2</b> Vectorized If-Else: <code>ifelse()</code></a></li>
+<li class="chapter" data-level="0.9.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#cut-statements"><i class="fa fa-check"></i><b>0.9.3</b> Vectorized Cut: <code>cut()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="0.10" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#control-structures"><i class="fa fa-check"></i><b>0.10</b> Control Structures: Loops</a>
+<ul>
+<li class="chapter" data-level="0.10.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#for-loop"><i class="fa fa-check"></i><b>0.10.1</b> For Loops</a></li>
+<li class="chapter" data-level="0.10.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#while-loop"><i class="fa fa-check"></i><b>0.10.2</b> While Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="0.11" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#r-funtions"><i class="fa fa-check"></i><b>0.11</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="0.11.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#built-funtions"><i class="fa fa-check"></i><b>0.11.1</b> Using Built-in Functions</a></li>
+<li class="chapter" data-level="0.11.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#build-functions"><i class="fa fa-check"></i><b>0.11.2</b> Creating Custom Functions</a></li>
+<li class="chapter" data-level="0.11.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#arguments-functions"><i class="fa fa-check"></i><b>0.11.3</b> Function Arguments and Defaults</a></li>
+</ul></li>
+<li class="chapter" data-level="0.12" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#R-data-manipulation"><i class="fa fa-check"></i><b>0.12</b> Data Manipulation with Base R</a>
+<ul>
+<li class="chapter" data-level="0.12.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#R-data-subset"><i class="fa fa-check"></i><b>0.12.1</b> Subsetting and Filtering</a></li>
+<li class="chapter" data-level="0.12.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#delete-cols"><i class="fa fa-check"></i><b>0.12.2</b> Deleting Columns</a></li>
+<li class="chapter" data-level="0.12.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#sort-rows"><i class="fa fa-check"></i><b>0.12.3</b> Sorting Data</a></li>
+<li class="chapter" data-level="0.12.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#aggregate-rows"><i class="fa fa-check"></i><b>0.12.4</b> Aggregating Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.13" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-manipultation"><i class="fa fa-check"></i><b>0.13</b> Data Manipulation with the Tidyverse</a>
+<ul>
+<li class="chapter" data-level="0.13.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-load"><i class="fa fa-check"></i><b>0.13.1</b> Loading the Tidyverse</a></li>
+<li class="chapter" data-level="0.13.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-tibbles"><i class="fa fa-check"></i><b>0.13.2</b> Tibbles: Modern Data Frames</a></li>
+<li class="chapter" data-level="0.13.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-pipe"><i class="fa fa-check"></i><b>0.13.3</b> The Pipe Operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="0.13.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#manipulation-dplyr"><i class="fa fa-check"></i><b>0.13.4</b> Data Manipulation with <code>{dplyr}</code></a></li>
+<li class="chapter" data-level="0.13.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-rename"><i class="fa fa-check"></i><b>0.13.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="0.13.6" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-group"><i class="fa fa-check"></i><b>0.13.6</b> Grouping and Summarizing Data by columns</a></li>
+</ul></li>
+<li class="chapter" data-level="0.14" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-join"><i class="fa fa-check"></i><b>0.14</b> Combining Data Frames</a>
+<ul>
+<li class="chapter" data-level="0.14.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#understand-joins"><i class="fa fa-check"></i><b>0.14.1</b> Understanding Joins</a></li>
+<li class="chapter" data-level="0.14.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>0.14.2</b> Stacking Data with <code>bind_rows()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="0.15" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#NA"><i class="fa fa-check"></i><b>0.15</b> Missing Data</a>
+<ul>
+<li class="chapter" data-level="0.15.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#identify-NA"><i class="fa fa-check"></i><b>0.15.1</b> Identifying Missing Data</a></li>
+<li class="chapter" data-level="0.15.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#handle-NA"><i class="fa fa-check"></i><b>0.15.2</b> Handling Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.16" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#pivoting"><i class="fa fa-check"></i><b>0.16</b> Data Reshaping with <code>{tidyr}</code> package: Pivoting</a></li>
+<li class="chapter" data-level="0.17" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dl-data"><i class="fa fa-check"></i><b>0.17</b> Handling Below Detection Limit Data</a></li>
+<li class="chapter" data-level="0.18" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#soil-data"><i class="fa fa-check"></i><b>0.18</b> Working with Soil Data</a>
+<ul>
+<li class="chapter" data-level="0.18.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#set-directory"><i class="fa fa-check"></i><b>0.18.1</b> Setting Working Directory</a></li>
+<li class="chapter" data-level="0.18.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#load-packages"><i class="fa fa-check"></i><b>0.18.2</b> Load packages</a></li>
+<li class="chapter" data-level="0.18.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#import-files"><i class="fa fa-check"></i><b>0.18.3</b> Importing Data from Files</a></li>
+<li class="chapter" data-level="0.18.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#data-exploration"><i class="fa fa-check"></i><b>0.18.4</b> Exploring the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.19" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#references-m1"><i class="fa fa-check"></i><b>0.19</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html"><i class="fa fa-check"></i><b>1</b> Data preparation for digital soil mapping in R</a>
 <ul>
@@ -404,43 +500,23 @@ div.csl-indent {
 <h2><span class="header-section-number">4.1</span> GPS Device Preparation<a href="field-protocol.html#gps-prep" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="export-to-gpx-format" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Export to GPX Format<a href="field-protocol.html#export-to-gpx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="field-protocol.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
-<span id="cb96-2"><a href="field-protocol.html#cb96-2" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
-<span id="cb96-3"><a href="field-protocol.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="field-protocol.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
-<span id="cb96-5"><a href="field-protocol.html#cb96-5" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
-<span id="cb96-6"><a href="field-protocol.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb96-7"><a href="field-protocol.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="field-protocol.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
-<span id="cb96-9"><a href="field-protocol.html#cb96-9" aria-hidden="true" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb96-10"><a href="field-protocol.html#cb96-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-11"><a href="field-protocol.html#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
-<span id="cb96-12"><a href="field-protocol.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
-<span id="cb96-13"><a href="field-protocol.html#cb96-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
-<span id="cb96-14"><a href="field-protocol.html#cb96-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
-<span id="cb96-15"><a href="field-protocol.html#cb96-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb96-16"><a href="field-protocol.html#cb96-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-17"><a href="field-protocol.html#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="field-protocol.html#cb91-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
-<span id="cb91-2"><a href="field-protocol.html#cb91-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
-<span id="cb91-3"><a href="field-protocol.html#cb91-3" tabindex="-1"></a></span>
-<span id="cb91-4"><a href="field-protocol.html#cb91-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
-<span id="cb91-5"><a href="field-protocol.html#cb91-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
-<span id="cb91-6"><a href="field-protocol.html#cb91-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb91-7"><a href="field-protocol.html#cb91-7" tabindex="-1"></a></span>
-<span id="cb91-8"><a href="field-protocol.html#cb91-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
-<span id="cb91-9"><a href="field-protocol.html#cb91-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb91-10"><a href="field-protocol.html#cb91-10" tabindex="-1"></a></span>
-<span id="cb91-11"><a href="field-protocol.html#cb91-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
-<span id="cb91-12"><a href="field-protocol.html#cb91-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
-<span id="cb91-13"><a href="field-protocol.html#cb91-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
-<span id="cb91-14"><a href="field-protocol.html#cb91-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
-<span id="cb91-15"><a href="field-protocol.html#cb91-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb91-16"><a href="field-protocol.html#cb91-16" tabindex="-1"></a></span>
-<span id="cb91-17"><a href="field-protocol.html#cb91-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
->>>>>>> aab0b92a65a19a07475c8b5073ecec9fcf536f12
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="field-protocol.html#cb172-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
+<span id="cb172-2"><a href="field-protocol.html#cb172-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
+<span id="cb172-3"><a href="field-protocol.html#cb172-3" tabindex="-1"></a></span>
+<span id="cb172-4"><a href="field-protocol.html#cb172-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
+<span id="cb172-5"><a href="field-protocol.html#cb172-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
+<span id="cb172-6"><a href="field-protocol.html#cb172-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb172-7"><a href="field-protocol.html#cb172-7" tabindex="-1"></a></span>
+<span id="cb172-8"><a href="field-protocol.html#cb172-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
+<span id="cb172-9"><a href="field-protocol.html#cb172-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb172-10"><a href="field-protocol.html#cb172-10" tabindex="-1"></a></span>
+<span id="cb172-11"><a href="field-protocol.html#cb172-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
+<span id="cb172-12"><a href="field-protocol.html#cb172-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
+<span id="cb172-13"><a href="field-protocol.html#cb172-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
+<span id="cb172-14"><a href="field-protocol.html#cb172-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
+<span id="cb172-15"><a href="field-protocol.html#cb172-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb172-16"><a href="field-protocol.html#cb172-16" tabindex="-1"></a></span>
+<span id="cb172-17"><a href="field-protocol.html#cb172-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
 </div>
 <div id="load-onto-gps-device" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Load onto GPS Device<a href="field-protocol.html#load-onto-gps-device" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -476,13 +552,6 @@ div.csl-indent {
 <div id="data-recording" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Data Recording<a href="field-protocol.html#data-recording" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Field form should capture (Table <a href="field-protocol.html#tab:field-form">4.1</a>):</p>
-<pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
-## Use &#39;xfun::attr2()&#39; instead.
-## See help(&quot;Deprecated&quot;)
-
-## Warning: &#39;xfun::attr()&#39; is deprecated.
-## Use &#39;xfun::attr2()&#39; instead.
-## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
 <caption><span id="tab:field-form">Table 4.1: </span>Required field data recording</caption>
 <colgroup>
@@ -581,7 +650,6 @@ div.csl-indent {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-<<<<<<< HEAD
   "sharing": {
     "github": false,
     "facebook": true,
@@ -610,7 +678,7 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": ["GSNmap_Technical_Manual.pdf"],
+  "download": {},
   "search": {
     "engine": "fuse",
     "options": null
@@ -619,45 +687,6 @@ gitbook.start({
     "collapse": "subsection"
   },
   "fig_caption": true
-=======
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": {},
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"fig_caption": true
->>>>>>> aab0b92a65a19a07475c8b5073ecec9fcf536f12
 });
 });
 </script>

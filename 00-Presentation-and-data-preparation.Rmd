@@ -1,10 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-\mainmatter
-
 # Presentation and basics {-}
 
 ##	Background and Objective {-}
@@ -359,7 +352,7 @@ For soil science work, key packages include:
 Packages need to be installed once before you can use them.
 Use `install.packages()`:
 
-```{r install-packages, echo=TRUE, eval=FALSE}
+```{r install-package-1, echo=TRUE, eval=FALSE}
 # Install a single package
 install.packages("tidyverse")
 
