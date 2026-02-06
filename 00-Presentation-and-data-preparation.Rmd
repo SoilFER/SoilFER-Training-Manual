@@ -22,7 +22,7 @@ The objectives of this manual are to:
 By integrating these components, the manual equips users to move from raw samples to reliable soil information products that inform policy, guide sustainable soil management, and strengthen food and nutrition security. 
 
 
-## What this Tutorial is not  {#is-not}
+## What this Tutorial is not {-}
 
 ::: highlights
 
