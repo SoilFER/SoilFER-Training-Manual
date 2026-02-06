@@ -99,7 +99,7 @@ read-excel
 data-exploration
 references-m1
 data-preparation-for-digital-soil-mapping-in-r
-introduction1
+introduction-1
 loading-data
 basic-data-loading-and-structure
 data-components-and-organization
@@ -116,7 +116,7 @@ check-1-missing-depth-boundaries
 check-2-negative-depth-values
 check-3-zero-thickness-intervals
 check-4-invalid-depth-logic
-check-5-profiles-without-a-surface-horizon-top-0-todo
+check-5-profiles-without-a-surface-horizon-top-0
 lab-validation
 prepare-and-standardize-laboratory-columns
 check-1-check-each-property-against-feasible-analytical-thresholds
@@ -236,7 +236,7 @@ crs-misalignment
 empty-geometry
 tbd
 soil-data-preparation
-introduction-1
+introduction-2
 data-cleaning
 soil-data-harmonization
 concepts-on-digital-exchange-of-soil-related-data-iso-28258
