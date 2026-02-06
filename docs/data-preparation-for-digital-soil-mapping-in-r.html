@@ -796,13 +796,12 @@ div.csl-indent {
 <div id="load-property-thresholds" class="section level4 hasAnchor" number="1.6.2.1">
 <h4><span class="header-section-number">1.6.2.1</span> Load property thresholds<a href="data-preparation-for-digital-soil-mapping-in-r.html#load-property-thresholds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Store thresholds in a configuration file (e.g., <code>property_thresholds.csv</code>) to ensure transparency and reproducibility.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----</span></span>
-<span id="cb97-2"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load valid ranges for soil properties</span></span>
-<span id="cb97-3"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: These thresholds are based on global soil datasets and/or literature.</span></span>
-<span id="cb97-4"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co">#       Adjust for your specific region and soil types.</span></span>
-<span id="cb97-5"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-5" aria-hidden="true" tabindex="-1"></a>property_thresholds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;property_thresholds.csv&quot;</span>)</span>
-<span id="cb97-6"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display thresholds</span></span>
-<span id="cb97-7"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(property_thresholds)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load valid ranges for soil properties</span></span>
+<span id="cb97-2"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: These thresholds are based on global soil datasets and literature.</span></span>
+<span id="cb97-3"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co">#       Adjust for your specific region and soil types.</span></span>
+<span id="cb97-4"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-4" aria-hidden="true" tabindex="-1"></a>property_thresholds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;property_thresholds.csv&quot;</span>)</span>
+<span id="cb97-5"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display thresholds</span></span>
+<span id="cb97-6"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(property_thresholds)</span></code></pre></div>
 </div>
 <div id="identify-out-of-bounds-values" class="section level4 hasAnchor" number="1.6.2.2">
 <h4><span class="header-section-number">1.6.2.2</span> Identify out-of-bounds values<a href="data-preparation-for-digital-soil-mapping-in-r.html#identify-out-of-bounds-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
