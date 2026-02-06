@@ -5,7 +5,6 @@ output:
 ---
 \mainmatter
 
-
 # Presentation and basics {-}
 
 ##	Background and Objective {-}

@@ -404,6 +404,7 @@ div.csl-indent {
 <h2><span class="header-section-number">4.1</span> GPS Device Preparation<a href="field-protocol.html#gps-prep" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="export-to-gpx-format" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Export to GPX Format<a href="field-protocol.html#export-to-gpx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="field-protocol.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
 <span id="cb96-2"><a href="field-protocol.html#cb96-2" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
 <span id="cb96-3"><a href="field-protocol.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -421,6 +422,25 @@ div.csl-indent {
 <span id="cb96-15"><a href="field-protocol.html#cb96-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb96-16"><a href="field-protocol.html#cb96-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-17"><a href="field-protocol.html#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="field-protocol.html#cb91-1" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
+<span id="cb91-2"><a href="field-protocol.html#cb91-2" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
+<span id="cb91-3"><a href="field-protocol.html#cb91-3" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="field-protocol.html#cb91-4" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
+<span id="cb91-5"><a href="field-protocol.html#cb91-5" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
+<span id="cb91-6"><a href="field-protocol.html#cb91-6" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb91-7"><a href="field-protocol.html#cb91-7" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="field-protocol.html#cb91-8" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
+<span id="cb91-9"><a href="field-protocol.html#cb91-9" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb91-10"><a href="field-protocol.html#cb91-10" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="field-protocol.html#cb91-11" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
+<span id="cb91-12"><a href="field-protocol.html#cb91-12" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
+<span id="cb91-13"><a href="field-protocol.html#cb91-13" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
+<span id="cb91-14"><a href="field-protocol.html#cb91-14" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
+<span id="cb91-15"><a href="field-protocol.html#cb91-15" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb91-16"><a href="field-protocol.html#cb91-16" tabindex="-1"></a></span>
+<span id="cb91-17"><a href="field-protocol.html#cb91-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
+>>>>>>> aab0b92a65a19a07475c8b5073ecec9fcf536f12
 </div>
 <div id="load-onto-gps-device" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Load onto GPS Device<a href="field-protocol.html#load-onto-gps-device" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -561,6 +581,7 @@ div.csl-indent {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
+<<<<<<< HEAD
   "sharing": {
     "github": false,
     "facebook": true,
@@ -598,6 +619,45 @@ gitbook.start({
     "collapse": "subsection"
   },
   "fig_caption": true
+=======
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"fig_caption": true
+>>>>>>> aab0b92a65a19a07475c8b5073ecec9fcf536f12
 });
 });
 </script>
