@@ -5,7 +5,6 @@ tab:ssu-covariates
 tab:r-libraries
 tab:field-form
 tab:acronyms
-is-not
 what-is-r
 why-r-for-soil-science
 installing-r-and-rstudio
