@@ -190,7 +190,7 @@ Follow these steps **in order** before starting any module exercises.
 1. Open the extracted project directory.  
 2. Confirm that the top-level structure matches the following:
 
-```text
+```
 SoilFER-Training-Resources/
 ├── 01_data/
 │   ├── module1/
@@ -326,7 +326,7 @@ After installation, open RStudio. You should see a window with several panes:
 
 Try typing a simple command in the Console window:
 
-```{r verify-install, eval=FALSE}
+```{r verify-install, echo=TRUE, eval=FALSE}
 # Simple arithmetic
 2 + 2
 
@@ -350,7 +350,7 @@ The **Console** is where R code is executed.
 You can type commands directly here or run them from your script.
 The Console displays results, warnings, and error messages.
 
-```{r console-example, eval=FALSE}
+```{r console-example, echo=TRUE, eval=FALSE}
 # Type directly in the console
 5 * 3
 
@@ -427,7 +427,7 @@ For soil science work, key packages include:
 Packages need to be installed once before you can use them.
 Use `install.packages()`:
 
-```{r install-packages, eval=FALSE}
+```{r install-packages, echo=TRUE, eval=FALSE}
 # Install a single package
 install.packages("tidyverse")
 
@@ -491,7 +491,7 @@ Depending on the package size and your connection speed, installation may take s
 After installation, you must **load** a package into your R session each time you start R.
 Use the `library()` function:
 
-```{r load-packages, eval=FALSE}
+```{r load-packages, echo=TRUE, eval=FALSE}
 # Load tidyverse package
 library(tidyverse)
 
@@ -511,7 +511,7 @@ library(aqp)
 
 ### Finding Help on Packages
 
-```{r package-help, eval=FALSE}
+```{r package-help, echo=TRUE, eval=FALSE}
 # Get help on a package
 help(package = "tidyverse")
 
@@ -534,7 +534,7 @@ You can assign values to objects using either `<-` or `=`.
 
 However, the preferred and most common assignment operator is `<-` while `=` is most commonly used inside function calls to name arguments. This avoids confusion between assigning objects and passing inputs to functions.
 
-```{r assignment, eval=FALSE}
+```{r assignment, echo=TRUE, eval=FALSE}
 # Assign a value to a variable
 soil_depth <- 30
 
@@ -552,7 +552,7 @@ soil_depth <- mean(x = ph_values, na.rm = TRUE)
 
 **Good naming practices:**
 
-```{r naming-good, eval=FALSE}
+```{r naming-good, echo=TRUE, eval=FALSE}
 # Descriptive names
 soil_ph <- 6.5
 organic_carbon_percent <- 2.1
@@ -565,7 +565,7 @@ plotID <- "P001"       # camelCase (alternative)
 
 **Avoid:**
 
-```{r naming-bad, eval=FALSE}
+```{r naming-bad, echo=TRUE, eval=FALSE}
 # Too short, unclear
 x <- 6.5
 a <- 2.1
@@ -586,7 +586,7 @@ R has several basic data types:
 
 Numeric values store measurements that can include decimals (e.g., pH, clay %, temperature).
 
-```{r numeric, eval=FALSE}
+```{r numeric, echo=TRUE, eval=FALSE}
 # Numeric values
 ph_value <- 6.8
 clay_percent <- 25.5
@@ -597,7 +597,7 @@ temperature <- 15.2
 
 Integers are whole numbers. In R, you can create them explicitly using the L suffix.
 
-```{r integer, eval=FALSE}
+```{r integer, echo=TRUE, eval=FALSE}
 # Integer values (use L suffix)
 sample_count <- 100L
 plot_number <- 5L
@@ -607,7 +607,7 @@ plot_number <- 5L
 
 Character values store text (soil types, locations, notes). They must be written inside quotes.
 
-```{r character, eval=FALSE}
+```{r character, echo=TRUE, eval=FALSE}
 # Character values (use quotes)
 soil_type <- "Acrisol"
 location <- "Kansas"
@@ -618,7 +618,7 @@ notes <- "Sample collected from topsoil"
 
 Logical values represent yes/no conditions and are commonly used for filtering and decision-making.
 
-```{r logical, eval=FALSE}
+```{r logical, echo=TRUE, eval=FALSE}
 # Logical values
 is_valid <- TRUE
 has_missing_data <- FALSE
@@ -628,7 +628,7 @@ has_missing_data <- FALSE
 
 Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.
 
-```{r date, eval=FALSE}
+```{r date, echo=TRUE, eval=FALSE}
 # ISO 8601 date format, YYYY-MM-DD
 sampling_date <- "2024-03-12"
 sampling_date <- as.Date(sampling_date, format = "%Y-%m-%d")
@@ -645,7 +645,7 @@ class(sampling_date)
 
 ### Checking Data Types {#check-data}
 
-```{r check-types, eval=FALSE}
+```{r check-types, echo=TRUE, eval=FALSE}
 # Check the class (high-level type)
 class(ph_value)   # "numeric"
 class(soil_type)  # "character"
@@ -696,7 +696,7 @@ A **vector** is the simplest data structure - a one-dimensional sequence of elem
 
 #### Creating Vectors {#create-vector}
 
-```{r vectors-create, eval=FALSE}
+```{r vectors-create, echo=TRUE, eval=FALSE}
 # Create a numeric vector using c() (combine)
 ph_values <- c(5.2, 6.5, 7.1, 5.8, 6.9)
 print(ph_values)
@@ -716,7 +716,7 @@ depths_seq <- seq(0, 100, by=10)   # 0, 10, 20, ..., 100
 
 #### Vector Operations {#operate-vector}
 
-```{r vector-operations, eval=FALSE}
+```{r vector-operations, echo=TRUE, eval=FALSE}
 # Arithmetic on vectors (element-wise)
 ph_values * 10
 ph_values + 1
@@ -731,7 +731,7 @@ max(ph_values)
 
 #### Accessing Vector Elements {#element-vector}
 
-```{r vector-access, eval=FALSE}
+```{r vector-access, echo=TRUE, eval=FALSE}
 # Access by index (position)
 ph_values[1]        # First element
 ph_values[3]        # Third element
@@ -752,7 +752,7 @@ ph_values[-c(1,2)]  # All except first two
 **Factors** are used to represent categorical data.
 They store values as levels (categories).
 
-```{r factors, eval=FALSE}
+```{r factors, echo=TRUE, eval=FALSE}
 # Create a factor from character vector
 soil_class <- factor(c("Clay", "Loam", "Sand", "Clay", "Loam"))
 print(soil_class)
@@ -776,7 +776,7 @@ print(texture_class)
 
 A **matrix** is a two-dimensional structure where all elements must be of the same type.
 
-```{r matrices, eval=FALSE}
+```{r matrices, echo=TRUE, eval=FALSE}
 # Create a matrix
 soil_matrix <- matrix(
   c(5.2, 25, 30,
@@ -806,7 +806,7 @@ It's like a spreadsheet: rows represent observations, columns represent variable
 
 #### Creating Data Frames {#dataframe-create}
 
-```{r dataframes-create, eval=FALSE}
+```{r dataframes-create, echo=TRUE, eval=FALSE}
 # Create a data frame
 soil_data <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004", "P005"),
@@ -838,7 +838,7 @@ ncol(soil_data)        # number of columns
 
 #### Accessing Data Frame Elements {#dataframe-access}
 
-```{r dataframes-access, eval=FALSE}
+```{r dataframes-access, echo=TRUE, eval=FALSE}
 # Access columns by name
 soil_data$ph
 soil_data$soil_type
@@ -861,7 +861,7 @@ soil_data[soil_data$soil_type == "Acrisol", ]  # Only Acrisols
 
 #### Adding Columns {#dataframe-cols}
 
-```{r dataframes-add, eval=FALSE}
+```{r dataframes-add, echo=TRUE, eval=FALSE}
 # Add a new column
 soil_data$silt_content <- c(40, 35, 52, 23, 30)
 
@@ -876,7 +876,7 @@ head(soil_data)
 
 A **list** is a flexible structure that can contain elements of different types and sizes (vectors, data frames, other lists, etc.).
 
-```{r lists, eval=FALSE}
+```{r lists, echo=TRUE, eval=FALSE}
 # Create a list
 soil_analysis <- list(
   site_name = "Kansas Field",
@@ -904,7 +904,7 @@ Operators perform operations on objects. R has several types of operators:
 
 ### Arithmetic Operators {#arithmetic-operators}
 
-```{r arithmetic, eval=FALSE}
+```{r arithmetic, echo=TRUE, eval=FALSE}
 # Basic arithmetic
 10 + 5      # Addition
 10 - 5      # Subtraction
@@ -922,7 +922,7 @@ result
 
 ### Comparison Operators {#comparison-operators}
 
-```{r comparison, eval=FALSE}
+```{r comparison, echo=TRUE, eval=FALSE}
 # Comparison operators return TRUE or FALSE
 5 == 5      # Equal to
 5 != 3      # Not equal to
@@ -940,7 +940,7 @@ ph_values[ph_values > 6]          # Values greater than 6
 
 ### Logical Operators {#logical-operators}
 
-```{r logical-ops, eval=FALSE}
+```{r logical-ops, echo=TRUE, eval=FALSE}
 # AND operator: & (element-wise) or && (single values)
 TRUE & TRUE      # TRUE
 TRUE & FALSE     # FALSE
@@ -973,7 +973,7 @@ Conditional statements let your code make decisions—running different blocks d
 
 Use `if` / `else` when you are checking **a single condition** (one TRUE/FALSE value).
 
-```{r if-else, eval=FALSE}
+```{r if-else, echo=TRUE, eval=FALSE}
 # Basic if statement
 ph_value <- 7.5
 
@@ -1010,7 +1010,7 @@ If you have a vector of values, use a vectorized approach such as `ifelse()`, `c
 
 `ifelse()` is vectorized: it applies a condition to each element of a vector.
 
-```{r ifelse, eval=FALSE}
+```{r ifelse, echo=TRUE, eval=FALSE}
 # Vectorized conditional assignment
 ph_values <- c(5.2, 6.5, 7.1, 5.8, 7.0)
 
@@ -1029,7 +1029,7 @@ Use `cut()` when you have a **numeric** variable and you want to classify values
 
 For multiple classes, `cut()` is often easier to read than nested `ifelse()`:
 
-```{r cut, eval=FALSE}
+```{r cut, echo=TRUE, eval=FALSE}
 soil_class <- cut(
   ph_values,
   breaks = c(-Inf, 5.5, 7.0, Inf),
@@ -1057,7 +1057,7 @@ R provides several loop constructs, but the most commonly used are `for` and `wh
 Use a `for` loop when you want to iterate over a sequence or over the elements of an object.
 
 
-```{r for-loops, eval=FALSE}
+```{r for-loops, echo=TRUE, eval=FALSE}
 # Loop through a sequence
 for (i in 1:5) {
   print(paste("Iteration:", i))
@@ -1086,7 +1086,7 @@ for (i in 1:length(ph_values)) {
 
 A `while` loop repeats as long as a condition is `TRUE`. It is useful when you do not know in advance how many iterations you will need.
 
-```{r while-loops, eval=FALSE}
+```{r while-loops, echo=TRUE, eval=FALSE}
 # While loop continues until condition is FALSE
 counter <- 1
 
@@ -1110,7 +1110,7 @@ Functions are reusable blocks of code that take **inputs** (arguments), perform 
 
 R comes with thousands of built-in functions. You can view help pages with `?function_name` (e.g., `?mean`).
 
-```{r builtin-functions, eval=FALSE}
+```{r builtin-functions, echo=TRUE, eval=FALSE}
 # Statistical functions
 mean(c(5, 10, 15, 20))
 median(c(5, 10, 15, 20))
@@ -1139,7 +1139,7 @@ Using names is often clearer and reduces mistakes.
 
 You can write your own functions using `function()`:
 
-```{r custom-functions, eval=FALSE}
+```{r custom-functions, echo=TRUE, eval=FALSE}
 # Example: Bulk density (mass / volume)
 calculate_bulk_density <- function(mass, volume) {
   if (any(volume <= 0)) stop("volume must be > 0")
@@ -1170,7 +1170,7 @@ You can still use `return()` when you want to exit early or make the function’
 
 ### Function Arguments and Defaults {#arguments-functions}
 
-```{r function-args, eval=FALSE}
+```{r function-args, echo=TRUE, eval=FALSE}
 # SOC stock calculation (example)
 # Assumptions:
 # - soc_percent is in %
@@ -1205,7 +1205,7 @@ In data frames, data access is organized by *rows* and *columns* using the patte
 In this context, **filtering** usually refers to selecting rows, while **subsetting** often refers to selecting columns. In the example below, we use this structure to filter rows and subset columns from a `soil_data` data frame.
 
 
-```{r subsetting, eval=FALSE}
+```{r subsetting, echo=TRUE, eval=FALSE}
 # Example data frame
 soil_data <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004", "P005"),
@@ -1251,7 +1251,7 @@ subset_data
 You can remove columns or rows from a data frame using names, indices, or logical conditions. This is useful when you want to drop unnecessary variables, remove incomplete records, or exclude outliers before analysis.
 
 
-```{r deleting, eval=FALSE}
+```{r deleting, echo=TRUE, eval=FALSE}
 # Example data frame
 data <- data.frame(
   Plot = c("P001", "P002", "P003"),
@@ -1294,7 +1294,7 @@ data <- data[data$pH >= 6, ]
 
 Sorting is useful for quickly identifying extreme values (e.g., highest pH, highest clay content) or for preparing tables for reporting.
 
-```{r sorting, eval=FALSE}
+```{r sorting, echo=TRUE, eval=FALSE}
 # Sort by pH (ascending)
 soil_data[order(soil_data$ph), ]
 
@@ -1309,7 +1309,7 @@ soil_data[order(soil_data$soil_type, soil_data$ph), ]
 
 Aggregation means computing summary statistics by group, such as mean pH per soil type.
 
-```{r aggregating, eval=FALSE}
+```{r aggregating, echo=TRUE, eval=FALSE}
 # Mean pH by soil type
 aggregate(ph ~ soil_type, data = soil_data, FUN = mean)
 
@@ -1347,7 +1347,7 @@ Key packages include:
 
 When you load `{tidyverse}`, it automatically attaches a core set of tidyverse packages (such as `{dplyr}` and `{ggplot2}`) so you can use them right away.
 
-```{r tidyverse-load, eval=FALSE}
+```{r tidyverse-load, echo=TRUE, eval=FALSE}
 # Install if not already installed
 install.packages("tidyverse")
 
@@ -1359,7 +1359,7 @@ library(tidyverse)
 
 A **tibble** is the tidyverse’s modern version of a data frame. It behaves like a regular data frame, but it prints in a cleaner way and is generally more user-friendly. For example, tibbles show only the first rows by default, keep long text from cluttering your console, and display column types so you can quickly confirm how R has interpreted your data. Tibbles also avoid some older base R behaviors (such as automatically converting text to factors in older R versions), which makes them a reliable default for data analysis workflows.
 
-```{r tibbles, eval=FALSE}
+```{r tibbles, echo=TRUE, eval=FALSE}
 # Convert data frame to tibble
 soil_tbl <- as_tibble(soil_data)
 soil_tbl
@@ -1377,7 +1377,7 @@ soil_tbl <- tibble(
 The pipe operator `%>%` (from `{magrittr}` package, loaded with `{tidyverse}`) helps you write code as a clear sequence of chained operations. Instead of nesting functions inside each other, you send ('pipe') the output of one step into the next. This makes workflows easier to read and debug—especially when you are cleaning soil datasets where you often need to filter rows, select variables, create new columns, and then summarize or sort results.
 
 
-```{r pipe, eval=FALSE}
+```{r pipe, echo=TRUE, eval=FALSE}
 # Without pipe (nested functions)
 result <- round(mean(soil_data$ph), 2)
 
@@ -1406,7 +1406,7 @@ soil_data %>%
 
 -   *Natural*: Matches how we think about data transformations step-by-step
 
-⚠️ Use `Ctrl+Shift+M` (Windows) or `Cmd+Shift+M` (Mac) to insert the pipe operator quickly in RStudio!
+-️   Use `Ctrl+Shift+M` (Windows) or `Cmd+Shift+M` (Mac) to insert the pipe operator quickly in RStudio!
 :::
 
 ### Data Manipulation with `{dplyr}` {#manipulation-dplyr}
@@ -1417,7 +1417,7 @@ The `{dplyr}` package provides a clear set of 'data verbs' for manipulating tabu
 
 Use `select()` to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the chance of mistakes when working with wide datasets (many columns).
 
-```{r dplyr-select, eval=FALSE}
+```{r dplyr-select, echo=TRUE, eval=FALSE}
 # Select specific columns
 soil_data %>%
   select(plot_id, ph, clay_content)
@@ -1439,7 +1439,7 @@ soil_data %>%
 
 Use `filter()` to keep only the rows that meet one or more conditions. This is commonly used to focus on samples within a range (e.g., pH > 6) or to extract specific soil classes or land uses.
 
-```{r dplyr-filter, eval=FALSE}
+```{r dplyr-filter, echo=TRUE, eval=FALSE}
 # Filter rows based on condition
 soil_data %>%
   filter(ph > 6)
@@ -1462,7 +1462,7 @@ soil_data %>%
 `rename()` changes column names while keeping all the data.
 The syntax is `new_name = old_name`.
 
-```{r dplyr-rename, eval=FALSE}
+```{r dplyr-rename, echo=TRUE, eval=FALSE}
 # Rename columns for clarity
 rename(soil_data,
     site_id = site)
@@ -1481,7 +1481,7 @@ soil_data %>%
 
 Use `mutate()` to add new variables or update existing ones. This is where you typically compute derived soil indicators (classes, ratios, unit conversions) while keeping the original dataset intact.
 
-```{r dplyr-mutate, eval=FALSE}
+```{r dplyr-mutate, echo=TRUE, eval=FALSE}
 # Create new columns
 soil_data %>%
   mutate(
@@ -1502,7 +1502,7 @@ soil_data %>%
 Use `arrange()` to sort rows by one or more column values. This is useful for quickly identifying extreme values (e.g., the highest pH) and for ordering results in tables and reports.
 Use `arrange(desc())` for descending order.
 
-```{r dplyr-arrange, eval=FALSE}
+```{r dplyr-arrange, echo=TRUE, eval=FALSE}
 # Sort ascending
 soil_data %>%
   arrange(ph)
@@ -1522,7 +1522,7 @@ soil_data %>%
 `group_by()` creates invisible groups in your data using common values on one or more columns, while `summarise()` calculates compute summary statistics.
 Combined with `group_by()`, it becomes a powerful way to calculate metrics by soil type, site, land use, horizon, or any other grouping variable.
 
-```{r dplyr-summarize, eval=FALSE}
+```{r dplyr-summarize, echo=TRUE, eval=FALSE}
 # Create example dataset
 soil_data <- data.frame(
 site = c("Forest_A", "Forest_B", "Grassland_A", "Grassland_B", "Urban_A", "Urban_B"),
@@ -1554,7 +1554,7 @@ soil_data %>%
 
 An alternative function to create quick grouped summaries is `count()`
 
-```{r count-example , echo=TRUE, eval=FALSE}
+```{r count-example, echo=TRUE, eval=FALSE}
 soil_data <- data.frame(
 site = c("Forest_A", "Forest_B", "Grassland_A", "Grassland_B", "Urban_A", "Urban_B"),
 ecosystem = c("Forest", "Forest", "Grassland", "Grassland", "Urban", "Urban"),
@@ -1693,7 +1693,7 @@ Before running summaries, models, or maps, it is important to identify where val
 
 ### Identifying Missing Data {#identify-NA}
 
-```{r missing-data-identify, eval=FALSE}
+```{r missing-data-identify, echo=TRUE, eval=FALSE}
 # Create data with missing values
 soil_data_na <- data.frame(
   plot = c("P001", "P002", "P003", "P004"),
@@ -1722,7 +1722,7 @@ How you handle missing data depends on the context. Sometimes you can remove inc
 In base R, `is.na()` helps you identify missing values, and `na.omit()` can be used to remove rows with missing data. Many functions (such as `mean()`) also include arguments that control how missing values are handled—for example, `na.rm = TRUE` tells R to ignore `NA` values when computing the result.
 
 
-```{r missing-data-handle_rbase, eval=FALSE}
+```{r missing-data-handle_rbase, echo=TRUE, eval=FALSE}
 # Remove rows with any missing values (base R)
 na.omit(soil_data_na)
 
@@ -1738,7 +1738,7 @@ soil_data_na
 If you are using the tidyverse, `{tidyr}` provides convenient helpers for handling missing data. For example, `drop_na()` removes rows with missing values (either across all columns or in selected columns), and r`eplace_na()` fills missing values with specified replacements.
 
 
-```{r missing-data-handle_tidyverse, eval=FALSE}
+```{r missing-data-handle_tidyverse, echo=TRUE, eval=FALSE}
 # Remove all rows with any NA
 soil_data_na %>%
   drop_na()
@@ -1865,7 +1865,7 @@ In soil laboratory datasets, some results are reported as below the detection (o
 
 *Example: Converting "<DL" to DL/2*
 
-```{r dl-dl2, eval=FALSE}
+```{r dl-dl2, echo=TRUE, eval=FALSE}
 soil_lab <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004"),
   no3_mgkg_raw = c("0.12", "<0.05", "0.31", "<0.05"),
@@ -1921,7 +1921,7 @@ RStudio also provides a menu option: `Session → Set Working Directory`.
 
 You can always check the current working directory with `getwd()`, which returns the path of the folder where R is currently operating.
 
-```{r working-directory, eval=FALSE}
+```{r working-directory, echo=TRUE, eval=FALSE}
 # Check current working directory
 getwd()
 
@@ -1934,7 +1934,7 @@ setwd("/Users/YourName/Documents/YourSoilProject")
 
 If you are using RStudio, an option is to set the working directory to the location of the active script:
 
-```{r wd-rstudio, eval=FALSE}  
+```{r wd-rstudio, echo=TRUE, eval=FALSE}  
 # Set working directory to script location (recommended)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 ```
@@ -1960,7 +1960,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 ### Load packages {#load-packages}
 
-```{r example-load-packages, eval=FALSE}
+```{r example-load-packages, echo=TRUE, eval=FALSE}
 library(readxl)           # Read Excel files
 library(tidyverse)        # Data manipulation and visualization
 ```
@@ -1976,7 +1976,7 @@ These functions assumes the separator is a comma (,) and by default use `header 
 The output is a `data.frame`.
 For larger files, you can use `read_csv()`, from `{readr}` which is usually faster and often does a better job of parsing column types.
 
-```{r read-csv, eval=FALSE}
+```{r read-csv, echo=TRUE, eval=FALSE}
 # Read CSV file
 soil_data <- read.csv("path/to/soil_data.csv")
 
@@ -1993,7 +1993,7 @@ soil_data <- read.delim("path/to/file.txt", sep = "\t")
 
 If you are using an RStudio Project and the dataset is stored inside your project, you can use a relative path. For example, for the Kansas soil profiles dataset in this project:
 
-```{r read_kssl-csv, eval=FALSE}
+```{r read_kssl-csv, echo=TRUE, eval=FALSE}
 # Read CSV file
 soil_data <- read_csv("01_data/module1/KSSL_data.csv")
 
@@ -2016,7 +2016,7 @@ They are easier to read and less likely to break if you reorganize folders.
 To read Excel files, use `read_excel()` from the `{readxl}` package:
 
 
-```{r read-excel, eval=FALSE}
+```{r read-excel, echo=TRUE, eval=FALSE}
 
 # Read Excel file
 soil_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = 1) 
@@ -2031,7 +2031,7 @@ soil_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = "SoilData")
 After importing, always confirm the structure, column names, and data types before analysis.
 R provides several built-in functions to help you inspect the structure, preview the values, and summarize the dataset quickly.
 
-```{r read-excel-example, eval=FALSE}
+```{r read-excel-example, echo=TRUE, eval=FALSE}
 str(soil_data)        # Structure + column types
 summary(soil_data)    # Quick summaries for each column
 names(soil_data)      # Column names
