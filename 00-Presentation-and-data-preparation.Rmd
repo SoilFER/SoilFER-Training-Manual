@@ -65,9 +65,9 @@ This tutorial manual introduces the essential concepts of soil data management a
  
  - 3) GloSIS Data Harmonization
  
- - 4) Soil Spectroscopy
+ - 4) Digital Soil Mapping
  
- - 5) Digital Soil Mapping
+ - 5) Soil Spectroscopy
  
  - 6) Soil Data Sharing
  
