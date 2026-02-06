@@ -1,4 +1,72 @@
 ---
+title:  |
+  Integrated soil information for decision-making
+  <img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" />
+subtitle: "Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making."
+author: "Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I. "
+site: bookdown::bookdown_site
+
+output:
+  bookdown::gitbook:
+    config:
+      fig_caption: yes
+      download: []   # no download buttons (pdf/epub)
+
+# (PDF disabled)
+# bookdown::pdf_book:
+#   keep_tex: yes
+# latex_engine: xelatex
+# out.width: '0.9\\textwidth'
+
+header-includes:
+  - \AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
+  - \usepackage{titling}
+  - \usepackage{natbib}
+  - \usepackage{pdfpages}
+  - \usepackage{fancyhdr}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{subfig}
+  - \usepackage{array}
+  - \usepackage{amsmath}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{bookmark}
+  - \usepackage[utf8]{inputenc}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \DeclareUnicodeCharacter{2212}{\textendash}
+  - \usepackage{rotating, graphicx}
+  - \usepackage{listings}
+
+documentclass: book
+csl: food-and-agriculture-organization-of-the-united-nations.csl
+bibliography: "reference-list.bib"
+link-citations: yes
+classoption: oneside
+papersize: b5
+fontsize: 10pt
+description: "SoilFER SID Technical Manual"
+always_allow_html: yes
+template: null
+---
+
+# (PDF disabled)
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+---
 output:
   pdf_document: default
   html_document: default
@@ -2000,4 +2068,212 @@ Spatial Data Science with R and 'terra' (2025). https://rspatial.org/
 
 
 
+
+
+<!--chapter:end:00-Presentation-and-data-preparation.Rmd-->
+
+
+# Data preparation for digital soil mapping in R
+
+Placeholder
+
+
+## Introduction {#introduction1}
+## Loading and exploring raw soil data {#loading-data}
+### Basic data loading and structure
+### Data components and organization
+## Preparing site data for analysis {#site-data-preparation}
+### Adding a unique row identifier
+### Extracting and standardizing column names for sites
+### Creating unique profile identifiers
+### Remove exact duplicate site records
+## Coordinate validation and correction {#coordinate-validation}
+### Check 1: Missing coordinates
+### Check 2: Valid coordinate ranges
+## Soil depth validation and correction {#depth-validation}
+### Check 1: Missing depth boundaries
+### Check 2: Negative depth values
+### Check 3: Zero-thickness intervals
+### Check 4: Invalid depth logic
+### Check 5: Profiles without a surface horizon (top > 0) ····todo
+## Preparing lab data: harmonization and validation {#lab-validation}
+### Prepare and standardize laboratory columns
+### Check 1: Check each property against feasible analytical thresholds
+#### Load property thresholds
+#### Identify out-of-bounds values
+#### Reporting out-of-bounds for properties and audit trail
+### Check 2: Texture validation
+### Check 3: Correction of out-of-bounds laboratory values
+#### Option 1: Targeted corrections (when error mechanism is known)
+#### Option 2: Replace out-of-bounds values with `NA`
+## Resolving duplicated data in soil profiles {#duplicate-detection}
+### Why duplicates occur
+### Types of duplicate situations
+### Check 1: Detect potential horizon duplicates within profiles
+### Resolving Profile Duplicates
+#### Check 1: Average duplicated horizons (same depth intervals)
+#### Check 2: Resolve ProfID for multiple depth sequences
+### Remove profiles not starting at the surface
+#### Check 1: Remove profiles with incomplete surface coverage
+### Result
+## Harmonizing data for DSM {#harmonization}
+### Depth standardization
+### Processing standardized data
+### Exporting standardized data for Digital Soil Mapping
+## Preparing data for spectroscopy analyses {#spectroscopy}
+## Summary of exported files {#exports}
+## References {.unnumbered}
+
+<!--chapter:end:01-Intro-to-R-and-data-preparation.Rmd-->
+
+
+# Sampling design for soil surveys
+
+Placeholder
+
+
+## Introduction {#introduction}
+## Sampling methodologies for soil spatial survey {#sampling-theory}
+### Selection of the sampling methodology {#selection-methods}
+### Inference Methods {#inference-methods}
+### Purpose of Sampling {#sampling-purpose}
+### Sampling Design Types {#design-types}
+#### Example: Soils4Africa Sampling Design {#soils4africa-example}
+## SoilFER Sampling Design {#soilfer-design}
+### Soil Properties {#soil-properties}
+### Environmental Covariates {#env-covariates}
+### Understanding the Methodology {#methodology}
+#### PSU Selection Process {#psu-selection-process}
+#### SSU and TSU Selection Process {#ssu-tsu-selection}
+#### Site Identification System {#site-id}
+## Tutorial Using R {#tutorial}
+### Setting Up the Environment {#setup}
+#### Install Required Libraries {#install-libraries}
+### Define Variables and Parameters {#define-parameters}
+### Country ISO Code
+#### Land Use Type
+#### File Paths
+#### Coordinate Reference System
+#### Sample Size Calculation
+#### Sampling Unit Definitions
+#### Algorithm Parameters
+### Custom Functions {#custom-functions}
+#### Covariate Space Coverage Function (CSIS)
+#### TSU Generation Function
+### Load Country Boundaries and Legacy Data {#load-boundaries}
+#### Visualize Boundaries and Legacy Data
+### Load Environmental Covariates for PSUs {#load-covariates-psu}
+#### Optional Auxiliary Data
+#### Load and Process Auxiliary Data
+### Load Main Environmental Covariates
+#### Load and Process Soil Climate Data (Newhall)
+#### Convert Categorical Variables to Dummy Variables
+#### Merge All Covariate Layers
+#### Crop and Save Covariates
+## Principal Component Analysis (PCA) {#pca}
+## Organize the Sampling Universe {#sampling-universe}
+### Load and Process Land Use Data
+### Exclude Protected Areas
+### Restrict to Accessible Slopes
+### Aggregate to 100m Resolution
+### Save Processed Land Use
+### Filter Legacy Data
+## Create Primary Sampling Units (PSU Grid) {#create-psu-grid}
+### Generate 2km × 2km Grid
+### Trim to Country Boundaries
+### Save PSU Grid
+## Select PSUs with Sufficient Land Use Coverage {#select-psus}
+### Calculate Land Use Percentage
+### Filter PSUs
+## Rasterize PSUs for Covariate Space Coverage {#rasterize-psus}
+## Compute Optimal Sample Size {#optimal-sample-size}
+### Run Optimization
+### Extract Optimal Sample Size
+## Covariate Space Coverage - Computing PSUs {#csc-computing}
+### Prepare Function Parameters
+### Perform K-means Clustering
+### Assign Clusters and Calculate Distances
+### Extract Selected PSUs
+### Visualize in Covariate Space
+## Compute SSUs and TSUs {#compute-ssu-tsu}
+### Load High-Resolution Covariates
+### Process Each PSU
+### Combine SSUs and TSUs
+## Export Sampling Units {#export-units}
+### Create Cluster Raster
+### Join Cluster Info to TSUs
+### Create Site IDs
+### Export Shapefiles
+## Compute Alternative PSUs {#alternative-psus}
+## Assign Country-Wide Unique IDs {#assign-unique-ids}
+## Export Unified Datasets {#export-unified}
+## Summary Statistics {#summary-stats}
+## Create Distribution Maps {#distribution-maps}
+## GPS Device Preparation {#gps-prep}
+### Export to GPX Format
+### Load onto GPS Device
+## Sampling Procedure {#sampling-procedure}
+## Data Recording {#data-recording}
+## Quality Control {#qc}
+## Appendix A: Software and Data Sources {-}
+### Software Requirements
+### Data Sources
+## Appendix B: Troubleshooting Common Issues {-}
+### Memory Issues
+### CRS Misalignment
+### Empty Geometry
+## Appendix C: Acronyms and Abbreviations {-}
+
+<!--chapter:end:02-Soil-Sampling-Design.Rmd-->
+
+# TBD
+
+<!--chapter:end:03-Soil-Spectral-Analysis.Rmd-->
+
+# Soil Data Preparation 
+## Introduction
+## Data cleaning
+##	Soil Data Harmonization
+##	Concepts on digital exchange of soil-related data (ISO 28258)
+##	Plot data
+##	Profile data
+##	Element data
+##	Specimen data
+##	Definition of laboratory procedures
+##	Data transformation
+##	Organizing soil data according to the GloSIS database
+##	Tools for harmonization of soil databases within GloSIS
+
+<!--chapter:end:04-Soil-Data-Preparation-GloSIS.Rmd-->
+
+
+# Digital Soil Mapping and Modeling
+
+Placeholder
+
+
+## Introduction to Digital Soil Mapping
+## The SCORPAN Framework
+## Statistical Theory for Predictive Soil Mapping
+### Mechanistic versus Empirical Approaches
+### Sources of Residual Variance
+### Covariates as Proxies of Soil-Forming Factors
+### The Universal Model of Soil Variation
+### Extending the Model: Space, Depth, and Time (3D+T)
+### Types of Soil Variables
+### Prediction Methods
+### Nonlinearity and Uncertainty
+
+<!--chapter:end:05-Digital-soil-mapping-and-modeling.Rmd-->
+
+# Soil Data Sharing 
+## Data sharing and export formats
+##	Metadata
+##	Web Services
+
+<!--chapter:end:06-Soil-Data-Sharing.Rmd-->
+
+# References {-}
+
+<!--chapter:end:References.rmd-->
 

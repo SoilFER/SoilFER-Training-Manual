@@ -1,0 +1,3245 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  b5paper,
+  oneside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\let\stdl@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{%
+  \stdl@chapter{\textcolor{astral}{#1}}{\textcolor{astral}{#2}}}
+
+\def\thm@space@setup{%
+  \thm@preskip=5cm
+  \thm@postskip=\thm@preskip
+
+}
+\usepackage{graphicx}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\pagestyle{plain} % default for report
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{-24pt}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{-24pt}{}{}
+\makeatother
+
+\makeatother
+\usepackage{sectsty}
+
+\definecolor{astral}{RGB}{153, 61, 15}
+\allsectionsfont{\sffamily\color{astral}}
+
+
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{astral}\leaders\hrule height \headrulewidth\hfill}}
+
+
+\setlength{\headheight}{5pt}
+
+\fancyhf{}
+\fancyhead[EL]{\nouppercase\leftmark}
+\fancyhead[OR]{\nouppercase\rightmark}
+\fancyhead[ER,OL]{\thepage}
+
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{adjustbox}
+\usepackage{rotating}
+\usepackage{tablefootnote}
+\usepackage[normalem]{ulem}
+% empty pages betwen chapters
+\usepackage{emptypage}
+
+
+\makeatletter
+\makeatother
+
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+
+\usepackage[sectionbib]{chapterbib}
+
+%% List of Abbreviations
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{Acronyms}
+%% to update run makeindex on docs folder and move results to / folder
+%% see nomencl manual
+%% e.g. makeindex SOCMapping.nlo -s nomencl.ist -o SOCMapping.nls
+
+%% index
+\usepackage{imakeidx}
+\makeindex
+
+\usepackage{xspace}
+
+% no title page
+\AtBeginDocument{\let\maketitle\relax}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=astral,
+	filecolor=astral,
+	urlcolor=astral,
+	citecolor=astral
+}
+
+\AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
+\usepackage{titling}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{bookmark}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\DeclareUnicodeCharacter{2212}{\textendash}
+\usepackage{rotating, graphicx}
+\usepackage{listings}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Integrated soil information for decision-making },
+  pdfauthor={Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I.},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Integrated soil information for decision-making}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making.}
+\author{Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I.}
+\date{}
+
+\begin{document}
+\maketitle
+
+\pagestyle{plain}
+\includepdf{images/frontcover.pdf}
+\afterpage{\blankpage}
+\thispagestyle{empty}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{4cm}
+        \Large
+
+        \textcolor{astral}{\textbf{Global Soil Nutrient and Nutrient Budgets maps (GSNmap) Phase I\\
+Technical Manual\\}}
+        \vspace{0.5cm}
+        \normalsize
+        \vfill
+        \noindent
+        {\color{astral}\rule{\linewidth}{0.5mm} }
+
+        Food and Agriculture Organization of the United Nations\\
+	Rome, 2022
+    \end{center}
+\end{titlepage}
+\includepdf{images/CB9015EN-Copyright-Disclaimer-v2.pdf}
+
+\hypertarget{pdf-disabled}{%
+\chapter{(PDF disabled)}\label{pdf-disabled}}
+
+Placeholder
+
+\mainmatter
+
+\hypertarget{presentation-and-basics}{%
+\chapter*{Presentation and basics}\label{presentation-and-basics}}
+\addcontentsline{toc}{chapter}{Presentation and basics}
+
+\hypertarget{background-and-objective}{%
+\section*{Background and Objective}\label{background-and-objective}}
+\addcontentsline{toc}{section}{Background and Objective}
+
+Healthy and productive soils are fundamental to resilient agrifood systems, sustainable land management, and climate adaptation. Yet, in many regions, soil information remains fragmented, outdated, or inaccessible. The Soil Mapping for Resilient Agrifood Systems (SoilFER) programme responds to this challenge by building comprehensive soil information systems that integrate sampling design, laboratory analysis, soil spectroscopy, digital modeling, and decision support tools. These systems aim to empower governments, researchers, and farmers with actionable knowledge for crop selection, fertilizer recommendations, and soil health management.
+
+This manual, provides a step-by-step guide along the entire soil data value chain. It is designed as both a technical reference and a practical training resource, bridging the gap between raw soil data and its functional use in agricultural and environmental decision-making.
+
+The objectives of this manual are to:
+
+\begin{itemize}
+\item
+  Present harmonized approaches for soil sampling design used under the SoilFER programme
+\item
+  Provide guidance on the integration soil spectroscopy estimated soil parameters into the digital soil mapping process
+\item
+  Introduce best practices in soil data preparation and management, aligned with the Global Soil Information System (GloSIS)
+\item
+  Demonstrate methods for digital soil modeling and mapping, covering classical statistics, machine learning, and hybrid inference for both continuous and categorical soil properties.
+\item
+  Explain how to generate functional soil information to support evidence-based decision-making.
+\item
+  Facilitate data sharing and dissemination, promoting open standards, metadata documentation, and web-based services.
+\end{itemize}
+
+By integrating these components, the manual equips users to move from raw samples to reliable soil information products that inform policy, guide sustainable soil management, and strengthen food and nutrition security.
+
+\hypertarget{is-not}{%
+\section{What this Tutorial is not}\label{is-not}}
+
+This is not a comprehensive course on R, statistics, or modeling. Instead, it focuses on the essential skills needed to work effectively with soil data.
+
+The main strength of this tutorial is that it provides a complete learning environment that combines lessons, hands-on examples, and assessments---with a strong emphasis on soil data workflows. The goal is to help you build practical skills in soil data management, soil sampling design, Digital Soil Mapping, and soil spectroscopy using R.
+
+For more information, we recommend the following dedicated resources:
+
+\href{https://r4ds.had.co.nz/}{R for Data Science (Grolemund \& Wickham, 2017)} : A free, beginner-friendly guide to doing data science with R, emphasizing best practices for reproducible and efficient analysis.
+
+\href{https://dickbrus.github.io/SpatialSamplingwithR/}{Spatial Sampling with R (DJ Brus, 2023)} : A practical guide to designing and analyzing spatial surveys in R, with examples and exercises for environmental and natural resource studies.
+
+\href{https://soilmapper.org/}{Predictive Soil Mapping with R (Hengl \& MacMillan, 2019)}: An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
+
+\href{https://ncss-tech.github.io/stats_for_soil_example/}{Statistics for Soil Survey (Soil Survey Staff, 2025)}: An open, R-based textbook covering core statistical methods for soil survey, with practical examples and a strong focus on \emph{Algorithms for Quantitative Pedology} using the\texttt{\{aqp\}} package.
+
+\href{https://rspatial.org/}{Spatial Data Science: With Applications in R (Pebesma \& Bivand, 2023)}: Book and online materials for spatial data analysis in R, with a focus on the \texttt{\{sf\}} package.
+
+\href{https://rspatial.org/}{Spatial Data Science with R and `terra'}: Online materials for spatial data analysis and modeling in R, with a focus on \texttt{\{terra\}}.
+
+\href{https://rstats.wtf/}{What They Forgot to Teach You About R}: A short, practical guide with tips and workflows for working effectively in R.
+
+\hypertarget{how-to-use-this-book}{%
+\section*{How to use this book}\label{how-to-use-this-book}}
+\addcontentsline{toc}{section}{How to use this book}
+
+This tutorial manual introduces the essential concepts of soil data management and DSM using examples based on the \textbf{KSSL soil dataset} in Kansas. The tutorial is organized in 6 modules with different chapters:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \tightlist
+  \item
+    Introduction to R and Preparation of Soil Data for Digital Soil Mapping
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Soil Sampling Design
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    GloSIS Data Harmonization
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Digital Soil Mapping
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{4}
+  \tightlist
+  \item
+    Soil Spectroscopy
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{5}
+  \tightlist
+  \item
+    Soil Data Sharing
+  \end{enumerate}
+\end{itemize}
+
+Each module combines conceptual explanations with practical coding exercises, tabular datasets, and spatial data. To follow the workflows as intended, participants are expected to work locally with the predefined project structure used throughout the SoilFER training
+
+\hypertarget{required-downloads}{%
+\subsection*{Required downloads}\label{required-downloads}}
+\addcontentsline{toc}{subsection}{Required downloads}
+
+All training materials are distributed across \textbf{two complementary sources}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Scripts and lightweight tabular data (GitHub)
+\end{enumerate}
+
+The GitHub repository contains:
+
+\begin{itemize}
+\tightlist
+\item
+  All scripts used throughout the manual\\
+\item
+  Lightweight tabular datasets\\
+\item
+  The full project folder structure, organised by module
+\end{itemize}
+
+Download the repository as a ZIP file from:\\
+\href{https://github.com/SoilFER/SoilFER-Training-Resources/archive/refs/heads/main.zip}{https://github.com/SoilFER/SoilFER-Training-Resources}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Large input datasets (Google Drive)
+\end{enumerate}
+
+The Google Drive folder contains files that are too large to be hosted on GitHub, including:
+
+\begin{itemize}
+\tightlist
+\item
+  Raster covariates and maps\\
+\item
+  Large spectral datasets\\
+\item
+  Other supporting input data used in selected modules
+\end{itemize}
+
+Download the data from:\\
+\href{https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu?usp=drive_link}{https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu}
+
+\hypertarget{step-by-step-setup-instructions}{%
+\subsection*{Step-by-step setup instructions}\label{step-by-step-setup-instructions}}
+\addcontentsline{toc}{subsection}{Step-by-step setup instructions}
+
+Follow these steps \textbf{in order} before starting any module exercises.
+
+\hypertarget{step-1-download-and-extract-the-github-repository}{%
+\subsubsection*{Step 1: Download and extract the GitHub repository}\label{step-1-download-and-extract-the-github-repository}}
+\addcontentsline{toc}{subsubsection}{Step 1: Download and extract the GitHub repository}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download the ZIP file from the GitHub link above.\\
+\item
+  Extract (unzip) the contents on your local machine.\\
+\item
+  Rename the extracted folder if needed (e.g.~\texttt{SoilFER-Training-Resources}).\\
+\item
+  Use this folder as your \textbf{main project directory}.
+\end{enumerate}
+
+\hypertarget{step-2-download-the-google-drive-data}{%
+\subsubsection*{Step 2: Download the Google Drive data}\label{step-2-download-the-google-drive-data}}
+\addcontentsline{toc}{subsubsection}{Step 2: Download the Google Drive data}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download the full contents of the Google Drive folder.\\
+\item
+  Keep all file names and folder structures unchanged.\\
+\item
+  Do \textbf{not} work directly from the downloaded Google Drive folder.
+\end{enumerate}
+
+\hypertarget{step-3-inspect-the-project-folder-structure}{%
+\subsubsection*{Step 3: Inspect the project folder structure}\label{step-3-inspect-the-project-folder-structure}}
+\addcontentsline{toc}{subsubsection}{Step 3: Inspect the project folder structure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open the extracted project directory.\\
+\item
+  Confirm that the top-level structure matches the following:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SoilFER{-}Training{-}Resources/}
+\NormalTok{├── 01\_data/}
+\NormalTok{│   ├── module1/}
+\NormalTok{│   ├── module2/}
+\NormalTok{│   ├── module3/}
+\NormalTok{│   ├── module4/}
+\NormalTok{│   ├── module5/}
+\NormalTok{│   └── module6/}
+\NormalTok{├── 02\_scripts/}
+\NormalTok{├── 03\_outputs/}
+\NormalTok{├── 04\_assignments/}
+\NormalTok{├── README.md}
+\NormalTok{└── LICENSE}
+\end{Highlighting}
+\end{Shaded}
+
+Verify that each subfolder under \texttt{01\_data/} corresponds to a module in this manual.
+
+\hypertarget{step-4-place-google-drive-files-into-the-correct-module-folders}{%
+\subsubsection*{Step 4: Place Google Drive files into the correct module folders}\label{step-4-place-google-drive-files-into-the-correct-module-folders}}
+\addcontentsline{toc}{subsubsection}{Step 4: Place Google Drive files into the correct module folders}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Locate the downloaded Google Drive data on your computer.
+\item
+  Copy the entire \texttt{rasters/} folder into:
+
+  01\_data/module2/
+\item
+  Copy the file \texttt{MIR\_KANSAS\_data.xlsx} into:
+
+  01\_data/module3/
+\item
+  Confirm that the folders now resemble:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{   01\_data/  }
+\NormalTok{   ├── module2/  }
+\NormalTok{   │   ├── shapes/  }
+\NormalTok{   │   ├── rasters/  }
+\NormalTok{   │   └── README.md  }
+\NormalTok{   ├── module3/  }
+\NormalTok{   │   ├── MIR\_KANSAS\_data.xlsx  }
+\NormalTok{   │   └── README.md  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  All Google Drive files must be placed \emph{inside} the appropriate \texttt{01\_data/moduleX/} folders.\\
+\item
+  Scripts rely on relative paths and will not run correctly if files are stored elsewhere.
+\end{itemize}
+
+\hypertarget{introduction-to-r-programming}{%
+\chapter*{Introduction to R programming}\label{introduction-to-r-programming}}
+\addcontentsline{toc}{chapter}{Introduction to R programming}
+
+\hypertarget{what-is-r}{%
+\section{What is R?}\label{what-is-r}}
+
+is a programming language and software environment designed for statistical computing, data analysis, and visualization.
+It was created in the early 1990s by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and has since grown into one of the most widely used tools in data science, particularly for statistical modeling.
+
+R is open-source, meaning it is freely available and supported by a large global community of users and developers.
+This community continuously develops new tools and packages that extend R's capabilities, making it highly adaptable to diverse fields such as ecology, genetics, economics, social sciences and, as in this case, soil science.
+
+\hypertarget{why-r-for-soil-science}{%
+\subsection{Why R for Soil Science?}\label{why-r-for-soil-science}}
+
+R is particularly well-suited for soil science applications because it offers comprehensive tools for:
+
+\begin{itemize}
+\item
+  \textbf{Data management}: Efficiently handle, clean, and transform large soil datasets
+\item
+  \textbf{Statistical analysis}: Perform descriptive and inferential statistics, ANOVA, regression models, and more
+\item
+  \textbf{Spatial analysis}: Work with geographic data using packages like \texttt{\{terra\}} and \texttt{\{sf\}}
+\item
+  \textbf{Digital Soil Mapping}: Apply machine learning algorithms for predictive soil mapping
+\item
+  \textbf{Visualization}: Create publication-quality maps, charts, and graphs using \texttt{\{ggplot2\}} and other visualization tools
+\item
+  \textbf{Reproducibility}: Share analyses through scripts that others can replicate and verify
+\end{itemize}
+
+In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soil Mapping initiatives, R provides standardized workflows that promote collaboration, transparency, and scientific rigor.
+
+\begin{itemize}
+\tightlist
+\item
+  R is a analytical go-to platform which unites statistical, spatial, and visualization capabilities in a single ecosystem.
+\item
+  It powers digital soil mapping, supports machine learning and reproducible reporting, and connects seamlessly with GIS and database tools.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{installing-r-and-rstudio}{%
+\section{Installing R and RStudio}\label{installing-r-and-rstudio}}
+
+To start using R, you need two main components:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{R}: The core programming language and computational engine
+\item
+  \textbf{RStudio}: An integrated development environment (IDE) that makes working with R easier
+\end{enumerate}
+
+\hypertarget{installing-r}{%
+\subsection{Installing R}\label{installing-r}}
+
+\textbf{Step 1}: Visit the Comprehensive R Archive Network (CRAN): \url{https://cran.r-project.org/}
+
+\textbf{Step 2}: Choose your operating system:
+
+\begin{itemize}
+\item
+  \textbf{Windows}: Click ``Download R for Windows'' → ``base'' → ``Download R-4.x.x for Windows''
+\item
+  \textbf{macOS}: Click ``Download R for macOS'' → Select the appropriate \texttt{.pkg} file for your macOS version
+\item
+  \textbf{Linux}: Follow the distribution-specific instructions
+\end{itemize}
+
+\textbf{Step 3}: Run the installer and follow the prompts. Accept the default settings unless you have specific preferences.
+
+\hypertarget{installing-rstudio}{%
+\subsection{Installing RStudio}\label{installing-rstudio}}
+
+\textbf{Step 1}: Visit RStudio's website: \url{https://posit.co/download/rstudio-desktop/}
+
+\textbf{Step 2}: Download the free RStudio Desktop version for your operating system
+
+\textbf{Step 3}: Install RStudio by running the installer
+
+Once installed, R provides the underlying engine for data analysis---but working directly in base R can be challenging due to its command-line interface.
+
+\textbf{Important}: Install R before installing RStudio, as RStudio requires R to function.
+
+\hypertarget{verifying-installation}{%
+\subsection{Verifying Installation}\label{verifying-installation}}
+
+After installation, open RStudio. You should see a window with several panes:
+
+\begin{itemize}
+\item
+  \textbf{Console} (bottom left): Where R commands are executed
+\item
+  \textbf{Source} (top left): Where you write and edit scripts
+\item
+  \textbf{Environment/History} (top right): Shows variables and command history
+\item
+  \textbf{Files/Plots/Packages/Help} (bottom right): File browser, plot viewer, package manager, and help documentation
+\end{itemize}
+
+Try typing a simple command in the Console window:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Simple arithmetic}
+\DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
+
+\CommentTok{\# Check R version}
+\NormalTok{R.version.string}
+\end{Highlighting}
+\end{Shaded}
+
+If you see the results, R and RStudio are properly installed in your system.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{understanding-the-rstudio-interface}{%
+\section{Understanding the RStudio Interface}\label{understanding-the-rstudio-interface}}
+
+\textbf{RStudio} provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. 1):
+
+\href{images/2_RStudio-interface.png}{\includegraphics[width=1\textwidth,height=\textheight]{images/2_RStudio-interface.png}}
+
+\hypertarget{console-pane-bottom-left}{%
+\subsection{1. Console Pane (Bottom Left)}\label{console-pane-bottom-left}}
+
+The \textbf{Console} is where R code is executed.
+You can type commands directly here or run them from your script.
+The Console displays results, warnings, and error messages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Type directly in the console}
+\DecValTok{5} \SpecialCharTok{*} \DecValTok{3}
+
+\CommentTok{\# R will immediately show the result}
+\CommentTok{\# [1] 15}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{code-editor-pane-top-left}{%
+\subsection{2. Code Editor Pane (Top Left)}\label{code-editor-pane-top-left}}
+
+You can write commands directly in the Console and execute them line by line. However, it is usually more convenient to write code in a script editor---the \textbf{Code Editor} pane. Here you can create and edit R scripts (\texttt{.R} files), R Markdown documents (\texttt{.Rmd} files), and other file types. Scripts allow you to save your code and run it repeatedly, which is essential for reproducible analysis.
+
+Working in the \textbf{Code Editor} also makes it easier to organize code for later use. You can send any line or selected block of code to the \textbf{Console} for execution by pressing \texttt{Ctrl\ +\ Enter} (Windows/Linux) or \texttt{Cmd\ +\ Enter} (macOS). You can also run code by clicking the \textbf{Run} button in the top-right corner of the \textbf{Code Editor} pane.
+
+\begin{itemize}
+\tightlist
+\item
+  Code can be written and executed directly in the \textbf{Console}.\\
+\item
+  Using the \textbf{Code Editor} is more convenient for organizing and reusing code.\\
+\item
+  Send a line or block of code to the console with \texttt{Ctrl\ +\ Enter} (Windows(), \texttt{Cmd\ +\ Enter} (macOS), or the equivalent shortcut in Linux.\\
+\item
+  You can also run code by clicking the \textbf{Run} button in the script editor.\\
+\end{itemize}
+
+\textbf{Creating a new script:}
+- File → New File → R Script (or press \texttt{Ctrl+Shift+N} / \texttt{Cmd+Shift+N})
+
+\hypertarget{environmenthistory-pane-top-right}{%
+\subsection{3. Environment/History Pane (Top Right)}\label{environmenthistory-pane-top-right}}
+
+\begin{itemize}
+\item
+  \textbf{Environment}: Shows all objects (variables, datasets, functions) currently in your R session
+\item
+  \textbf{History}: Records all commands you've run during the session
+\end{itemize}
+
+\hypertarget{filesplotspackageshelp-pane-bottom-right}{%
+\subsection{4. Files/Plots/Packages/Help Pane (Bottom Right)}\label{filesplotspackageshelp-pane-bottom-right}}
+
+\begin{itemize}
+\item
+  \textbf{Files}: Browse your computer's file system
+\item
+  \textbf{Plots}: View visualizations created with R
+\item
+  \textbf{Packages}: Manage installed packages
+\item
+  \textbf{Help}: Access R documentation and function help pages
+\end{itemize}
+
+\textbf{Best Practice}: Always work in scripts rather than typing directly in the Console.
+Scripts preserve your workflow and make your analysis reproducible.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{r-packages-extending-rs-capabilities}{%
+\section{R Packages: Extending R's Capabilities}\label{r-packages-extending-rs-capabilities}}
+
+R's strength lies in its extensibility through \textbf{packages}.
+A package is a collection of functions, data, and documentation that extends R's functionality for specific tasks.
+
+\hypertarget{what-are-packages}{%
+\subsection{What are Packages?}\label{what-are-packages}}
+
+The base R installation includes fundamental functions for data manipulation and statistical analysis.
+However, specialized tasks often require additional tools provided by contributed packages.
+
+For soil science work, key packages include:
+
+\begin{itemize}
+\item
+  \texttt{\{tidyverse\}}: A collection of packages for data manipulation and visualization, including \texttt{\{dplyr\}} and \texttt{\{tidyr\}}, among others
+\item
+  \texttt{\{terra\}}: Spatial data analysis and raster operations
+\item
+  \texttt{\{sf\}}: Working with vector spatial data
+\item
+  \texttt{\{aqp\}}: Algorithms for Quantitative Pedology (soil profile data)
+\item
+  \texttt{\{ggplot2\}} : Advanced data visualization (part of tidyverse)
+\end{itemize}
+
+\hypertarget{installing-packages}{%
+\subsection{Installing Packages}\label{installing-packages}}
+
+Packages need to be installed once before you can use them.
+Use \texttt{install.packages()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install a single package}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{\# Install multiple packages at once}
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"terra"}\NormalTok{, }\StringTok{"sf"}\NormalTok{, }\StringTok{"aqp"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+You only need to install a package once, but you must load it with \texttt{library()} each time you start a new R session.
+
+You can check which \emph{\{packages\}} are installed with:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{installed.packages}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{install-packages-from-github-or-other-sources}{%
+\subsubsection{Install Packages from GitHub or Other Sources}\label{install-packages-from-github-or-other-sources}}
+
+Some \emph{\{packages\}} are not yet available on CRAN or you may want a newer development versions from GitHub, Gitlab, bitbucket, or an URL.
+In these cases, you can use the \texttt{remotes} or \texttt{devtools} \emph{\{packages\}}, with the functions \texttt{install\_github()}, \texttt{install\_gitlab()}, \texttt{install\_bitbucket()} or \texttt{install\_url()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# First, install remotes package (if not already installed)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{)}
+
+\CommentTok{\# Install an R package from GitHub}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"rspatial/terra"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This is useful for accessing cutting-edge versions, experimental features, or tools developed by research groups.
+
+\hypertarget{manual-installation-of-r-packages}{%
+\subsubsection{Manual Installation of R Packages}\label{manual-installation-of-r-packages}}
+
+You may need to install R \emph{\{packages\}} manually---especially when working in environments without internet access or when using custom-built \emph{\{packages\}}.
+
+There are two common methods:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{1. Installing from a compressed source package file} (e.g., \texttt{mypackage\_1.0.0.tar.gz})
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"path/to/mypackage\_1.0.0.tar.gz"}\NormalTok{, }\AttributeTok{repos =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{type =} \StringTok{"source"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{2. Installing from a Local \texttt{.zip} file} (Windows Binary)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"path/to/mypackage.zip"}\NormalTok{, }\AttributeTok{repos =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{type =} \StringTok{"win.binary"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This method does not require compilation and is usually faster on Windows.
+
+\textbf{Note}: Package installation typically requires an internet connection.
+Depending on the package size and your connection speed, installation may take several minutes.
+
+\hypertarget{loading-packages}{%
+\subsection{Loading Packages}\label{loading-packages}}
+
+After installation, you must \textbf{load} a package into your R session each time you start R.
+Use the \texttt{library()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load tidyverse package}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{\# Load multiple packages}
+\FunctionTok{library}\NormalTok{(terra)}
+\FunctionTok{library}\NormalTok{(sf)}
+\FunctionTok{library}\NormalTok{(aqp)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Key Difference:}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{install.packages()}: Downloads and installs a package (once)
+\item
+  \texttt{library()}: Loads a package into your current session (every time you start R)
+\end{itemize}
+
+\hypertarget{finding-help-on-packages}{%
+\subsection{Finding Help on Packages}\label{finding-help-on-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get help on a package}
+\FunctionTok{help}\NormalTok{(}\AttributeTok{package =} \StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{\# Or use}
+\NormalTok{?tidyverse}
+
+\CommentTok{\# View vignettes (tutorials) for a package}
+\FunctionTok{vignette}\NormalTok{(}\AttributeTok{package =} \StringTok{"ggplot2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{object-types}{%
+\section{R Basics: Objects and Data Types}\label{object-types}}
+
+In R, everything you work with is an \textbf{object} (numbers, text, vectors, tables, models, and maps). When you create an object, R stores it in your computer's \textbf{memory} (RAM) so you can reuse it later. Because memory is limited, especially when working with large soil datasets, rasters, or spatial objects, it is good practice to keep your workspace tidy: reuse objects when appropriate, remove objects you no longer need with \texttt{rm()}, and occasionally trigger garbage collection with ´gc()´ to free memory that is no longer in use.
+
+\hypertarget{object-assignment}{%
+\subsection{Creating Objects with Assignment}\label{object-assignment}}
+
+If you run an operation without assigning it to an object, R will compute the result but won't store it for later use.
+You can assign values to objects using either \texttt{\textless{}-} or \texttt{=}.
+
+However, the preferred and most common assignment operator is \texttt{\textless{}-} while \texttt{=} is most commonly used inside function calls to name arguments. This avoids confusion between assigning objects and passing inputs to functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Assign a value to a variable}
+\NormalTok{soil\_depth }\OtherTok{\textless{}{-}} \DecValTok{30}
+
+\CommentTok{\# Assignment \textasciigrave{}\textless{}{-}\textasciigrave{} to objects and \textasciigrave{}=\textasciigrave{} to function arguments}
+\NormalTok{soil\_depth }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ph\_values, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Naming Rules:}
+- Object names must start with a letter
+- Names can contain letters, numbers, underscores \texttt{\_}, and periods \texttt{.}
+- Names are case-sensitive: \texttt{SoilDepth} is different from \texttt{soildepth}
+- Avoid using reserved words like \texttt{TRUE}, \texttt{FALSE}, \texttt{NA}, \texttt{function}, etc.
+
+\textbf{Good naming practices:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Descriptive names}
+\NormalTok{soil\_ph }\OtherTok{\textless{}{-}} \FloatTok{6.5}
+\NormalTok{organic\_carbon\_percent }\OtherTok{\textless{}{-}} \FloatTok{2.1}
+\NormalTok{clay\_content\_gkg }\OtherTok{\textless{}{-}} \DecValTok{350}
+
+\CommentTok{\# Use consistent style}
+\NormalTok{plot\_id }\OtherTok{\textless{}{-}} \StringTok{"P001"}      \CommentTok{\# snake\_case (recommended)}
+\NormalTok{plotID }\OtherTok{\textless{}{-}} \StringTok{"P001"}       \CommentTok{\# camelCase (alternative)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Avoid:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Too short, unclear}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FloatTok{6.5}
+\NormalTok{a }\OtherTok{\textless{}{-}} \FloatTok{2.1}
+
+\CommentTok{\# Too long}
+\NormalTok{the\_ph\_value\_of\_the\_topsoil\_at\_site\_one }\OtherTok{\textless{}{-}} \FloatTok{6.5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-types}{%
+\subsection{Data Types in R}\label{data-types}}
+
+Every object in R has a data type, which tells R what kind of information it contains and how it can be used (for example, whether you can do math with it or use it as text labels).
+
+R has several basic data types:
+
+\hypertarget{numeric-data}{%
+\subsubsection{1. Numeric (Numbers)}\label{numeric-data}}
+
+Numeric values store measurements that can include decimals (e.g., pH, clay \%, temperature).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Numeric values}
+\NormalTok{ph\_value }\OtherTok{\textless{}{-}} \FloatTok{6.8}
+\NormalTok{clay\_percent }\OtherTok{\textless{}{-}} \FloatTok{25.5}
+\NormalTok{temperature }\OtherTok{\textless{}{-}} \FloatTok{15.2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{integer-data}{%
+\subsubsection{2. Integer (Whole Numbers)}\label{integer-data}}
+
+Integers are whole numbers. In R, you can create them explicitly using the L suffix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Integer values (use L suffix)}
+\NormalTok{sample\_count }\OtherTok{\textless{}{-}}\NormalTok{ 100L}
+\NormalTok{plot\_number }\OtherTok{\textless{}{-}}\NormalTok{ 5L}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{text-data}{%
+\subsubsection{3. Character (Text Strings)}\label{text-data}}
+
+Character values store text (soil types, locations, notes). They must be written inside quotes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Character values (use quotes)}
+\NormalTok{soil\_type }\OtherTok{\textless{}{-}} \StringTok{"Acrisol"}
+\NormalTok{location }\OtherTok{\textless{}{-}} \StringTok{"Kansas"}
+\NormalTok{notes }\OtherTok{\textless{}{-}} \StringTok{"Sample collected from topsoil"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{logical-data}{%
+\subsubsection{4. Logical (TRUE/FALSE)}\label{logical-data}}
+
+Logical values represent yes/no conditions and are commonly used for filtering and decision-making.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Logical values}
+\NormalTok{is\_valid }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}
+\NormalTok{has\_missing\_data }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dates-data}{%
+\subsubsection{5. Dates}\label{dates-data}}
+
+Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ISO 8601 date format, YYYY{-}MM{-}DD}
+\NormalTok{sampling\_date }\OtherTok{\textless{}{-}} \StringTok{"2024{-}03{-}12"}
+\NormalTok{sampling\_date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(sampling\_date, }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{)}
+\FunctionTok{class}\NormalTok{(sampling\_date)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The ISO 8601 date format (\textbf{YYYY-MM-DD}) is preferred for storing date values, since it is the date format adopted in the \textbf{GloSIS} database.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  The ISO 8601 date format (\textbf{YYYY-MM-DD}) is preferred for storing date values, since it is the date format adopted in the \textbf{GloSIS} database.
+\end{itemize}
+
+\hypertarget{check-data}{%
+\subsection{Checking Data Types}\label{check-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check the class (high{-}level type)}
+\FunctionTok{class}\NormalTok{(ph\_value)   }\CommentTok{\# "numeric"}
+\FunctionTok{class}\NormalTok{(soil\_type)  }\CommentTok{\# "character"}
+\FunctionTok{class}\NormalTok{(is\_valid)   }\CommentTok{\# "logical"}
+
+\CommentTok{\# Check the internal storage type}
+\FunctionTok{typeof}\NormalTok{(ph\_value)}
+
+\CommentTok{\# Helpful checks}
+\FunctionTok{is.numeric}\NormalTok{(ph\_value)}
+\FunctionTok{is.character}\NormalTok{(soil\_type)}
+\FunctionTok{is.logical}\NormalTok{(is\_valid)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{class()} is what you'll use most in practice. \texttt{typeof()} is more `internal' (how R stores the object).
+
+\begin{itemize}
+\item
+  Every R object has a \textbf{data type}, which tells R how to store the information and what operations are possible.
+\item
+  \textbf{Numeric}: measurements such as pH, clay (\%), bulk density, or organic carbon.
+\item
+  \textbf{Numeric vectors}: multiple numeric values (e.g., pH readings from several samples or horizons).
+\item
+  \textbf{Character}: text labels such as soil type, land use, site code, or field notes.
+\item
+  \textbf{Character vectors}: multiple text values (e.g., a list of soil classes).
+\item
+  \textbf{Logical}: \texttt{TRUE}/\texttt{FALSE} values, often used for conditions, filtering, and quality checks.
+\end{itemize}
+
+\textbf{Caution:}
+- When importing data from external sources (CSV, Excel, databases), always check that columns have the expected data types. For example, pH or SOC may be imported as text instead of numeric.
+
+\begin{itemize}
+\item
+  Check types with \texttt{str()}, \texttt{class()}, or \texttt{typeof()}.
+\item
+  Convert types when needed using \texttt{as.numeric()}, \texttt{as.character()}, \texttt{as.logical()}, or \texttt{as.Date()}.
+\end{itemize}
+
+\hypertarget{structure-data}{%
+\section{Data Structures in R}\label{structure-data}}
+
+R can store data in different structures, depending on how many values you have and how you want to organize them. For example, a single measurement can be stored as a number, a series of measurements as a vector, and a full dataset as a data frame. Understanding these structures is essential because it determines how you subset data, apply functions, summarize results, and prepare data for plotting or modeling.
+
+\hypertarget{vector-data}{%
+\subsection{Vectors}\label{vector-data}}
+
+A \textbf{vector} is the simplest data structure - a one-dimensional sequence of elements of the same type.
+
+\hypertarget{create-vector}{%
+\subsubsection{Creating Vectors}\label{create-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a numeric vector using c() (combine)}
+\NormalTok{ph\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(ph\_values)}
+
+\CommentTok{\# Character vector}
+\NormalTok{soil\_types }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Acrisol"}\NormalTok{, }\StringTok{"Ferralsol"}\NormalTok{, }\StringTok{"Vertisol"}\NormalTok{, }\StringTok{"Andosol"}\NormalTok{, }\StringTok{"Cambisol"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(soil\_types)}
+
+\CommentTok{\# Logical vector}
+\NormalTok{valid\_samples }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(valid\_samples)}
+
+\CommentTok{\# Create sequences}
+\NormalTok{depths }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\DecValTok{100}                    \CommentTok{\# Integers from 0 to 100}
+\NormalTok{depths\_seq }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\AttributeTok{by=}\DecValTok{10}\NormalTok{)   }\CommentTok{\# 0, 10, 20, ..., 100}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{operate-vector}{%
+\subsubsection{Vector Operations}\label{operate-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Arithmetic on vectors (element{-}wise)}
+\NormalTok{ph\_values }\SpecialCharTok{*} \DecValTok{10}
+\NormalTok{ph\_values }\SpecialCharTok{+} \DecValTok{1}
+
+\CommentTok{\# Summary statistics}
+\FunctionTok{mean}\NormalTok{(ph\_values)}
+\FunctionTok{median}\NormalTok{(ph\_values)}
+\FunctionTok{sd}\NormalTok{(ph\_values)        }\CommentTok{\# standard deviation}
+\FunctionTok{min}\NormalTok{(ph\_values)}
+\FunctionTok{max}\NormalTok{(ph\_values)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{element-vector}{%
+\subsubsection{Accessing Vector Elements}\label{element-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access by index (position)}
+\NormalTok{ph\_values[}\DecValTok{1}\NormalTok{]        }\CommentTok{\# First element}
+\NormalTok{ph\_values[}\DecValTok{3}\NormalTok{]        }\CommentTok{\# Third element}
+
+\CommentTok{\# Access multiple elements}
+\NormalTok{ph\_values[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)]  }\CommentTok{\# Elements 1, 3, and 5}
+
+\CommentTok{\# Access by logical condition}
+\NormalTok{ph\_values[ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{]     }\CommentTok{\# All pH values greater than 6}
+
+\CommentTok{\# Negative indices exclude elements}
+\NormalTok{ph\_values[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]       }\CommentTok{\# All except first}
+\NormalTok{ph\_values[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)]  }\CommentTok{\# All except first two}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{factor-data}{%
+\subsection{Factors}\label{factor-data}}
+
+\textbf{Factors} are used to represent categorical data.
+They store values as levels (categories).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a factor from character vector}
+\NormalTok{soil\_class }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Clay"}\NormalTok{, }\StringTok{"Loam"}\NormalTok{, }\StringTok{"Sand"}\NormalTok{, }\StringTok{"Clay"}\NormalTok{, }\StringTok{"Loam"}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(soil\_class)}
+
+\CommentTok{\# Check levels}
+\FunctionTok{levels}\NormalTok{(soil\_class)}
+
+\CommentTok{\# Count observations per level}
+\FunctionTok{table}\NormalTok{(soil\_class)}
+
+\CommentTok{\# Ordered factors (when order matters)}
+\NormalTok{texture\_class }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"Coarse"}\NormalTok{, }\StringTok{"Fine"}\NormalTok{, }\StringTok{"Medium"}\NormalTok{, }\StringTok{"Fine"}\NormalTok{, }\StringTok{"Coarse"}\NormalTok{),}
+  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Coarse"}\NormalTok{, }\StringTok{"Medium"}\NormalTok{, }\StringTok{"Fine"}\NormalTok{),}
+  \AttributeTok{ordered =} \ConstantTok{TRUE}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(texture\_class)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrix-data}{%
+\subsection{Matrices}\label{matrix-data}}
+
+A \textbf{matrix} is a two-dimensional structure where all elements must be of the same type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a matrix}
+\NormalTok{soil\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{,}
+    \FloatTok{6.5}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{28}\NormalTok{,}
+    \FloatTok{7.1}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{35}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{ncol =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+\CommentTok{\# Add column names}
+\FunctionTok{colnames}\NormalTok{(soil\_matrix) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"pH"}\NormalTok{, }\StringTok{"Clay"}\NormalTok{, }\StringTok{"Sand"}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(soil\_matrix) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sample1"}\NormalTok{, }\StringTok{"Sample2"}\NormalTok{, }\StringTok{"Sample3"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(soil\_matrix)}
+
+\CommentTok{\# Access elements}
+\NormalTok{soil\_matrix[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]        }\CommentTok{\# Row 1, Column 2}
+\NormalTok{soil\_matrix[}\DecValTok{1}\NormalTok{, ]         }\CommentTok{\# All of row 1}
+\NormalTok{soil\_matrix[, }\DecValTok{2}\NormalTok{]         }\CommentTok{\# All of column 2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataframe}{%
+\subsection{Data Frames}\label{dataframe}}
+
+A \textbf{data frame} is the most commonly used structure for storing datasets.
+It's like a spreadsheet: rows represent observations, columns represent variables, and different columns can have different data types.
+
+\hypertarget{dataframe-create}{%
+\subsubsection{Creating Data Frames}\label{dataframe-create}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a data frame}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{plot\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{, }\StringTok{"P004"}\NormalTok{, }\StringTok{"P005"}\NormalTok{),}
+  \AttributeTok{latitude =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{1.25}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.27}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.23}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.29}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.26}\NormalTok{),}
+  \AttributeTok{longitude =} \FunctionTok{c}\NormalTok{(}\FloatTok{36.85}\NormalTok{, }\FloatTok{36.83}\NormalTok{, }\FloatTok{36.87}\NormalTok{, }\FloatTok{36.81}\NormalTok{, }\FloatTok{36.84}\NormalTok{),}
+  \AttributeTok{ph =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{),}
+  \AttributeTok{organic\_carbon =} \FunctionTok{c}\NormalTok{(}\FloatTok{2.1}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{1.8}\NormalTok{, }\FloatTok{2.7}\NormalTok{, }\FloatTok{2.9}\NormalTok{),}
+  \AttributeTok{clay\_content =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{35}\NormalTok{),}
+  \AttributeTok{soil\_type =} \FunctionTok{c}\NormalTok{(}\StringTok{"Acrisol"}\NormalTok{, }\StringTok{"Ferralsol"}\NormalTok{, }\StringTok{"Vertisol"}\NormalTok{, }\StringTok{"Andosol"}\NormalTok{, }\StringTok{"Cambisol"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# View the data frame}
+\FunctionTok{print}\NormalTok{(soil\_data)}
+
+\CommentTok{\# View structure}
+\FunctionTok{str}\NormalTok{(soil\_data)}
+
+\CommentTok{\# View first few rows}
+\FunctionTok{head}\NormalTok{(soil\_data)}
+
+\CommentTok{\# View last few rows}
+\FunctionTok{tail}\NormalTok{(soil\_data)}
+
+\CommentTok{\# Get dimensions}
+\FunctionTok{dim}\NormalTok{(soil\_data)         }\CommentTok{\# rows, columns}
+\FunctionTok{nrow}\NormalTok{(soil\_data)        }\CommentTok{\# number of rows}
+\FunctionTok{ncol}\NormalTok{(soil\_data)        }\CommentTok{\# number of columns}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataframe-access}{%
+\subsubsection{Accessing Data Frame Elements}\label{dataframe-access}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access columns by name}
+\NormalTok{soil\_data}\SpecialCharTok{$}\NormalTok{ph}
+\NormalTok{soil\_data}\SpecialCharTok{$}\NormalTok{soil\_type}
+
+\CommentTok{\# Alternative: use brackets}
+\NormalTok{soil\_data[, }\StringTok{"ph"}\NormalTok{]}
+\NormalTok{soil\_data[[}\StringTok{"ph"}\NormalTok{]]}
+
+\CommentTok{\# Access rows}
+\NormalTok{soil\_data[}\DecValTok{1}\NormalTok{, ]           }\CommentTok{\# First row}
+\NormalTok{soil\_data[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{), ]    }\CommentTok{\# Rows 1, 3, and 5}
+
+\CommentTok{\# Access specific cells}
+\NormalTok{soil\_data[}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{]          }\CommentTok{\# Row 2, Column 4 (pH of second plot)}
+
+\CommentTok{\# Subset based on conditions}
+\NormalTok{soil\_data[soil\_data}\SpecialCharTok{$}\NormalTok{ph }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{, ]              }\CommentTok{\# Plots with pH \textgreater{} 6}
+\NormalTok{soil\_data[soil\_data}\SpecialCharTok{$}\NormalTok{soil\_type }\SpecialCharTok{==} \StringTok{"Acrisol"}\NormalTok{, ]  }\CommentTok{\# Only Acrisols}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataframe-cols}{%
+\subsubsection{Adding Columns}\label{dataframe-cols}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add a new column}
+\NormalTok{soil\_data}\SpecialCharTok{$}\NormalTok{silt\_content }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{52}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{30}\NormalTok{)}
+
+\CommentTok{\# Calculate new columns from existing ones}
+\NormalTok{soil\_data}\SpecialCharTok{$}\NormalTok{clay\_plus\_silt }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data}\SpecialCharTok{$}\NormalTok{clay\_content }\SpecialCharTok{+}\NormalTok{ soil\_data}\SpecialCharTok{$}\NormalTok{silt\_content}
+
+\CommentTok{\# View updated data frame}
+\FunctionTok{head}\NormalTok{(soil\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{list-data}{%
+\subsection{Lists}\label{list-data}}
+
+A \textbf{list} is a flexible structure that can contain elements of different types and sizes (vectors, data frames, other lists, etc.).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list}
+\NormalTok{soil\_analysis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \AttributeTok{site\_name =} \StringTok{"Kansas Field"}\NormalTok{,}
+  \AttributeTok{coordinates =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lat =} \SpecialCharTok{{-}}\FloatTok{1.25}\NormalTok{, }\AttributeTok{lon =} \FloatTok{36.85}\NormalTok{),}
+  \AttributeTok{measurements =} \FunctionTok{data.frame}\NormalTok{(}
+    \AttributeTok{depth =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{),}
+    \AttributeTok{ph =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.5}\NormalTok{, }\FloatTok{6.2}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{5.5}\NormalTok{)}
+\NormalTok{  ),}
+  \AttributeTok{notes =} \StringTok{"Collected during dry season"}
+\NormalTok{)}
+
+\CommentTok{\# View list structure}
+\FunctionTok{str}\NormalTok{(soil\_analysis)}
+
+\CommentTok{\# Access list elements}
+\NormalTok{soil\_analysis}\SpecialCharTok{$}\NormalTok{site\_name}
+\NormalTok{soil\_analysis[[}\DecValTok{1}\NormalTok{]]           }\CommentTok{\# First element}
+\NormalTok{soil\_analysis[[}\StringTok{"measurements"}\NormalTok{]]  }\CommentTok{\# measurements data frame}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{operators}{%
+\section{Operators in R}\label{operators}}
+
+Operators perform operations on objects. R has several types of operators:
+
+\hypertarget{arithmetic-operators}{%
+\subsection{Arithmetic Operators}\label{arithmetic-operators}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Basic arithmetic}
+\DecValTok{10} \SpecialCharTok{+} \DecValTok{5}      \CommentTok{\# Addition}
+\DecValTok{10} \SpecialCharTok{{-}} \DecValTok{5}      \CommentTok{\# Subtraction}
+\DecValTok{10} \SpecialCharTok{*} \DecValTok{5}      \CommentTok{\# Multiplication}
+\DecValTok{10} \SpecialCharTok{/} \DecValTok{5}      \CommentTok{\# Division}
+\DecValTok{10} \SpecialCharTok{\^{}} \DecValTok{2}      \CommentTok{\# Exponentiation (10 squared)}
+\DecValTok{10} \SpecialCharTok{\%\%} \DecValTok{3}     \CommentTok{\# Modulus (remainder: 10 mod 3 = 1)}
+\DecValTok{10} \SpecialCharTok{\%/\%} \DecValTok{3}    \CommentTok{\# Integer division (10 divided by 3 = 3)}
+
+\CommentTok{\# Order of operations (PEMDAS)}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{10} \SpecialCharTok{+} \DecValTok{5}\NormalTok{) }\SpecialCharTok{*} \DecValTok{2} \SpecialCharTok{/} \DecValTok{4} \SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{result}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comparison-operators}{%
+\subsection{Comparison Operators}\label{comparison-operators}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comparison operators return TRUE or FALSE}
+\DecValTok{5} \SpecialCharTok{==} \DecValTok{5}      \CommentTok{\# Equal to}
+\DecValTok{5} \SpecialCharTok{!=} \DecValTok{3}      \CommentTok{\# Not equal to}
+\DecValTok{5} \SpecialCharTok{\textgreater{}} \DecValTok{3}       \CommentTok{\# Greater than}
+\DecValTok{5} \SpecialCharTok{\textless{}} \DecValTok{3}       \CommentTok{\# Less than}
+\DecValTok{5} \SpecialCharTok{\textgreater{}=} \DecValTok{5}      \CommentTok{\# Greater than or equal to}
+\DecValTok{5} \SpecialCharTok{\textless{}=} \DecValTok{6}      \CommentTok{\# Less than or equal to}
+
+\CommentTok{\# Use in subsetting}
+\NormalTok{ph\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{)}
+\NormalTok{ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{6}                     \CommentTok{\# Logical vector}
+\NormalTok{ph\_values[ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{]          }\CommentTok{\# Values greater than 6}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{logical-operators}{%
+\subsection{Logical Operators}\label{logical-operators}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# AND operator: \& (element{-}wise) or \&\& (single values)}
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{TRUE}      \CommentTok{\# TRUE}
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{FALSE}     \CommentTok{\# FALSE}
+
+\CommentTok{\# OR operator: | (element{-}wise) or || (single values)}
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{FALSE}     \CommentTok{\# TRUE}
+\ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{FALSE}    \CommentTok{\# FALSE}
+
+\CommentTok{\# NOT operator: !}
+\SpecialCharTok{!}\ConstantTok{TRUE}            \CommentTok{\# FALSE}
+\SpecialCharTok{!}\ConstantTok{FALSE}           \CommentTok{\# TRUE}
+
+\CommentTok{\# Combining conditions}
+\NormalTok{ph\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{)}
+\NormalTok{clay\_content }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{35}\NormalTok{)}
+
+\CommentTok{\# Find samples with pH \textgreater{} 6 AND clay \textgreater{} 25}
+\NormalTok{ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{6} \SpecialCharTok{\&}\NormalTok{ clay\_content }\SpecialCharTok{\textgreater{}} \DecValTok{25}
+
+\CommentTok{\# Find samples with pH \textgreater{} 6 OR clay \textgreater{} 40}
+\NormalTok{ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{6} \SpecialCharTok{|}\NormalTok{ clay\_content }\SpecialCharTok{\textgreater{}} \DecValTok{40}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{conditional-statements}{%
+\section{Control Structures: Conditional Statements}\label{conditional-statements}}
+
+Conditional statements let your code make decisions---running different blocks depending on whether a condition is \texttt{TRUE} or \texttt{FALSE}.
+
+\hypertarget{ifelse-statements}{%
+\subsection{If-Else Statements}\label{ifelse-statements}}
+
+Use \texttt{if} / \texttt{else} when you are checking \textbf{a single condition} (one TRUE/FALSE value).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Basic if statement}
+\NormalTok{ph\_value }\OtherTok{\textless{}{-}} \FloatTok{7.5}
+
+\CommentTok{\# Basic if statement}
+\ControlFlowTok{if}\NormalTok{ (ph\_value }\SpecialCharTok{\textgreater{}} \DecValTok{7}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Alkaline soil"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# If{-}else}
+\ControlFlowTok{if}\NormalTok{ (ph\_value }\SpecialCharTok{\textgreater{}} \DecValTok{7}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Alkaline soil"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Neutral or acidic soil"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Multiple conditions (only the first TRUE branch runs)}
+\ControlFlowTok{if}\NormalTok{ (ph\_value }\SpecialCharTok{\textgreater{}} \FloatTok{7.5}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Strongly alkaline"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (ph\_value }\SpecialCharTok{\textgreater{}} \DecValTok{7}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Slightly alkaline"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (ph\_value }\SpecialCharTok{==} \DecValTok{7}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Neutral"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Acidic"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{if\ (...)} expects a single logical value.
+If you have a vector of values, use a vectorized approach such as \texttt{ifelse()}, \texttt{cut()}, or \texttt{case\_when()}.
+
+\hypertarget{v-ifelse-statements}{%
+\subsection{\texorpdfstring{Vectorized If-Else: \texttt{ifelse()}}{Vectorized If-Else: ifelse()}}\label{v-ifelse-statements}}
+
+\texttt{ifelse()} is vectorized: it applies a condition to each element of a vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vectorized conditional assignment}
+\NormalTok{ph\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{7.0}\NormalTok{)}
+
+\CommentTok{\# Simple two{-}class example}
+\NormalTok{soil\_reaction }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(ph\_values }\SpecialCharTok{\textgreater{}} \DecValTok{7}\NormalTok{, }\StringTok{"Alkaline"}\NormalTok{, }\StringTok{"Not alkaline"}\NormalTok{)}
+\NormalTok{soil\_reaction}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cut-statements}{%
+\subsection{\texorpdfstring{Vectorized Cut: \texttt{cut()}}{Vectorized Cut: cut()}}\label{cut-statements}}
+
+Use \texttt{cut()} when you have a \textbf{numeric} variable and you want to classify values into \textbf{interval-based categories} (bins), such as pH classes, depth intervals, or temperature ranges. It is especially useful when:
+
+\begin{itemize}
+\tightlist
+\item
+  the variable is \textbf{continuous or ordered} (numeric),
+\item
+  you can define meaningful \textbf{break points}, and
+\item
+  you want a clear, readable alternative to many nested conditions.
+\end{itemize}
+
+For multiple classes, \texttt{cut()} is often easier to read than nested \texttt{ifelse()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{soil\_class }\OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(}
+\NormalTok{  ph\_values,}
+  \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\FloatTok{5.5}\NormalTok{, }\FloatTok{7.0}\NormalTok{, }\ConstantTok{Inf}\NormalTok{),}
+  \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Acidic"}\NormalTok{, }\StringTok{"Neutral"}\NormalTok{, }\StringTok{"Alkaline"}\NormalTok{),}
+  \AttributeTok{right =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{include.lowest =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{soil\_class}
+
+\CommentTok{\# Notes:}
+\CommentTok{\# {-} \textasciigrave{}right = TRUE\textasciigrave{} means intervals are **right{-}closed** (e.g., \textasciigrave{}(5.5, 7.0]\textasciigrave{}).}
+\CommentTok{\# {-} \textasciigrave{}include.lowest = TRUE\textasciigrave{} ensures the smallest value is included in the first interval.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{control-structures}{%
+\section{Control Structures: Loops}\label{control-structures}}
+
+Loops in R are used to \textbf{repeat a block of code} multiple times. They are helpful when you need to automate repetitive tasks, such as performing calculations over a sequence of values or processing each element of a dataset.
+
+R provides several loop constructs, but the most commonly used are \texttt{for} and \texttt{while}.
+
+\hypertarget{for-loop}{%
+\subsection{For Loops}\label{for-loop}}
+
+Use a \texttt{for} loop when you want to iterate over a sequence or over the elements of an object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loop through a sequence}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Iteration:"}\NormalTok{, i))}
+\NormalTok{\}}
+
+\CommentTok{\# Loop through a vector}
+\NormalTok{soil\_types }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Acrisol"}\NormalTok{, }\StringTok{"Ferralsol"}\NormalTok{, }\StringTok{"Vertisol"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (soil }\ControlFlowTok{in}\NormalTok{ soil\_types) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Soil type:"}\NormalTok{, soil))}
+\NormalTok{\}}
+
+\CommentTok{\# Loop with conditional logic}
+\NormalTok{ph\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(ph\_values)) \{}
+  \ControlFlowTok{if}\NormalTok{ (ph\_values[i] }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{) \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Sample"}\NormalTok{, i, }\StringTok{"has pH ="}\NormalTok{, ph\_values[i], }\StringTok{"(Acceptable)"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Sample"}\NormalTok{, i, }\StringTok{"has pH ="}\NormalTok{, ph\_values[i], }\StringTok{"(Too acidic)"}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{while-loop}{%
+\subsection{While Loops}\label{while-loop}}
+
+A \texttt{while} loop repeats as long as a condition is \texttt{TRUE}. It is useful when you do not know in advance how many iterations you will need.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# While loop continues until condition is FALSE}
+\NormalTok{counter }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\ControlFlowTok{while}\NormalTok{ (counter }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Counter value:"}\NormalTok{, counter))}
+\NormalTok{  counter }\OtherTok{\textless{}{-}}\NormalTok{ counter }\SpecialCharTok{+} \DecValTok{1}   \CommentTok{\# Increment counter}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caution:}
+- Always ensure loop conditions eventually become \texttt{FALSE} to avoid infinite loops!
+
+\hypertarget{r-funtions}{%
+\section{Functions in R}\label{r-funtions}}
+
+Functions are reusable blocks of code that take \textbf{inputs} (arguments), perform a task, and return an \textbf{output}. They help you avoid repeating code and make your scripts easier to read and maintain.
+
+\hypertarget{built-funtions}{%
+\subsection{Using Built-in Functions}\label{built-funtions}}
+
+R comes with thousands of built-in functions. You can view help pages with \texttt{?function\_name} (e.g., \texttt{?mean}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Statistical functions}
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+\FunctionTok{median}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+\FunctionTok{sd}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+
+\CommentTok{\# String functions}
+\FunctionTok{toupper}\NormalTok{(}\StringTok{"acrisol"}\NormalTok{)}
+\FunctionTok{tolower}\NormalTok{(}\StringTok{"FERRALSOL"}\NormalTok{)}
+\FunctionTok{nchar}\NormalTok{(}\StringTok{"soil science"}\NormalTok{)         }\CommentTok{\# Count characters}
+
+\CommentTok{\# Math functions}
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{16}\NormalTok{)}
+\FunctionTok{log}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\FunctionTok{exp}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abs}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Function \textbf{arguments} can be provided by position (e.g., round(3.14159, 2)) or by name (e.g., round(\textbf{x =} 3.14159, \textbf{digits =} 2)).
+Using names is often clearer and reduces mistakes.
+
+\hypertarget{build-functions}{%
+\subsection{Creating Custom Functions}\label{build-functions}}
+
+You can write your own functions using \texttt{function()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example: Bulk density (mass / volume)}
+\NormalTok{calculate\_bulk\_density }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mass, volume) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{any}\NormalTok{(volume }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"volume must be \textgreater{} 0"}\NormalTok{)}
+\NormalTok{  mass }\SpecialCharTok{/}\NormalTok{ volume}
+\NormalTok{\}}
+
+\FunctionTok{calculate\_bulk\_density}\NormalTok{(}\AttributeTok{mass =} \DecValTok{150}\NormalTok{, }\AttributeTok{volume =} \DecValTok{100}\NormalTok{)}
+
+\CommentTok{\# Function with a default argument}
+\NormalTok{classify\_soil\_ph }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(ph, }\AttributeTok{threshold =} \DecValTok{7}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (ph }\SpecialCharTok{\textgreater{}}\NormalTok{ threshold) \{}
+    \StringTok{"Alkaline"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (ph }\SpecialCharTok{==}\NormalTok{ threshold) \{}
+    \StringTok{"Neutral"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \StringTok{"Acidic"}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\FunctionTok{classify\_soil\_ph}\NormalTok{(}\FloatTok{6.5}\NormalTok{)}
+\FunctionTok{classify\_soil\_ph}\NormalTok{(}\FloatTok{6.5}\NormalTok{, }\AttributeTok{threshold =} \DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{return()} is optional in many cases, R returns the last evaluated expression.
+You can still use \texttt{return()} when you want to exit early or make the function's output explicit.
+
+\hypertarget{arguments-functions}{%
+\subsection{Function Arguments and Defaults}\label{arguments-functions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SOC stock calculation (example)}
+\CommentTok{\# Assumptions:}
+\CommentTok{\# {-} soc\_percent is in \%}
+\CommentTok{\# {-} bulk\_density is in g/cm\^{}3}
+\CommentTok{\# {-} depth is in cm}
+\CommentTok{\# Output: SOC stock in Mg/ha}
+
+\NormalTok{calculate\_soc\_stock }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(soc\_percent, bulk\_density, depth, }\AttributeTok{coarse\_fragment =} \DecValTok{0}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{any}\NormalTok{(coarse\_fragment }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ coarse\_fragment }\SpecialCharTok{\textgreater{}} \DecValTok{100}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"coarse\_fragment must be between 0 and 100"}\NormalTok{)}
+\NormalTok{  soc\_percent }\SpecialCharTok{*}\NormalTok{ bulk\_density }\SpecialCharTok{*}\NormalTok{ depth }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ coarse\_fragment }\SpecialCharTok{/} \DecValTok{100}\NormalTok{)}
+\NormalTok{\}}
+
+\FunctionTok{calculate\_soc\_stock}\NormalTok{(}\AttributeTok{soc\_percent =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{bulk\_density =} \FloatTok{1.3}\NormalTok{, }\AttributeTok{depth =} \DecValTok{30}\NormalTok{)}
+\FunctionTok{calculate\_soc\_stock}\NormalTok{(}\AttributeTok{soc\_percent =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{bulk\_density =} \FloatTok{1.3}\NormalTok{, }\AttributeTok{depth =} \DecValTok{30}\NormalTok{, }\AttributeTok{coarse\_fragment =} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{R-data-manipulation}{%
+\section{Data Manipulation with Base R}\label{R-data-manipulation}}
+
+This section shows common data manipulation tasks using base R: filtering rows, selecting columns, sorting, and summarizing by groups.
+
+\hypertarget{R-data-subset}{%
+\subsection{Subsetting and Filtering}\label{R-data-subset}}
+
+Use subsetting and filtering to \textbf{extract only certain rows or columns} from a dataset. This is often the first step when you want to focus on data that meet specific criteria.
+
+In data frames, data access is organized by \emph{rows} and \emph{columns} using the pattern \texttt{data{[}rows,\ columns{]}}, where:
+
+\begin{itemize}
+\item
+  \texttt{rows} specifies which observations (records) to keep. It can be a number, a logical condition, or a vector of indices.
+\item
+  \texttt{columns} specifies which variables to keep. It can be a name, a position, or a vector of indices.
+\end{itemize}
+
+In this context, \textbf{filtering} usually refers to selecting rows, while \textbf{subsetting} often refers to selecting columns. In the example below, we use this structure to filter rows and subset columns from a \texttt{soil\_data} data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example data frame}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{plot\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{, }\StringTok{"P004"}\NormalTok{, }\StringTok{"P005"}\NormalTok{),}
+  \AttributeTok{latitude =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{1.25}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.27}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.23}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.29}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.26}\NormalTok{),}
+  \AttributeTok{longitude =} \FunctionTok{c}\NormalTok{(}\FloatTok{36.85}\NormalTok{, }\FloatTok{36.83}\NormalTok{, }\FloatTok{36.87}\NormalTok{, }\FloatTok{36.81}\NormalTok{, }\FloatTok{36.84}\NormalTok{),}
+  \AttributeTok{ph =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{),}
+  \AttributeTok{clay\_content =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{35}\NormalTok{),}
+  \AttributeTok{soil\_type =} \FunctionTok{c}\NormalTok{(}\StringTok{"Acrisol"}\NormalTok{, }\StringTok{"Ferralsol"}\NormalTok{, }\StringTok{"Vertisol"}\NormalTok{, }\StringTok{"Andosol"}\NormalTok{, }\StringTok{"Cambisol"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Select column by index: Show second column}
+\NormalTok{soil\_data[, }\DecValTok{2}\NormalTok{]}
+\CommentTok{\# Select column by index: Show first and third columns}
+\NormalTok{soil\_data[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\CommentTok{\# Select column  by name: Show texture columns}
+\NormalTok{soil\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"clay"}\NormalTok{,}\StringTok{"silt"}\NormalTok{,}\StringTok{"sand"}\NormalTok{)]}
+\CommentTok{\# Filter rows by index: keep first 2 records in the data frame}
+\NormalTok{soil\_data[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{),]}
+
+\CommentTok{\# Filter rows by index: keep texture properties for the first 100 records in the data frame}
+\NormalTok{soil\_data[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"clay"}\NormalTok{,}\StringTok{"silt"}\NormalTok{,}\StringTok{"sand"}\NormalTok{)]}
+
+\CommentTok{\# Filter rows based on conditions}
+\NormalTok{high\_ph }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data[soil\_data}\SpecialCharTok{$}\NormalTok{ph }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{, ]}
+\NormalTok{high\_ph}
+
+\CommentTok{\# Multiple conditions with \& and |}
+\NormalTok{high\_ph\_clay }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data[soil\_data}\SpecialCharTok{$}\NormalTok{ph }\SpecialCharTok{\textgreater{}} \DecValTok{6} \SpecialCharTok{\&}\NormalTok{ soil\_data}\SpecialCharTok{$}\NormalTok{clay\_content }\SpecialCharTok{\textgreater{}} \DecValTok{25}\NormalTok{, ]}
+\NormalTok{high\_ph\_clay}
+
+\CommentTok{\# Select columns by index: Show second column}
+\NormalTok{subset\_data }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data[, }\DecValTok{2}\NormalTok{]}
+\CommentTok{\# Select several columns by index}
+\NormalTok{subset\_data }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+
+\CommentTok{\# Select by name}
+\NormalTok{subset\_data }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"plot\_id"}\NormalTok{, }\StringTok{"ph"}\NormalTok{, }\StringTok{"soil\_type"}\NormalTok{)]}
+\NormalTok{subset\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{delete-cols}{%
+\subsection{Deleting Columns}\label{delete-cols}}
+
+You can remove columns or rows from a data frame using names, indices, or logical conditions. This is useful when you want to drop unnecessary variables, remove incomplete records, or exclude outliers before analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example data frame}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Plot =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{),}
+  \AttributeTok{Clay =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{18}\NormalTok{),}
+  \AttributeTok{Silt =} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{52}\NormalTok{),}
+  \AttributeTok{pH   =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# {-}{-}{-} Delete columns {-}{-}{-}}
+
+\CommentTok{\# Delete one column by name}
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{Clay }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{Clay }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{() }\CommentTok{\# Empty vector}
+
+\CommentTok{\# Delete multiple columns by name}
+\NormalTok{data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Silt"}\NormalTok{, }\StringTok{"pH"}\NormalTok{)] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+
+
+\CommentTok{\# {-}{-}{-} Delete rows {-}{-}{-}}
+
+\CommentTok{\# Delete a row by index (e.g., remove the 2nd row)}
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, ]}
+
+\CommentTok{\# Delete rows based on a condition (e.g., remove rows with pH \textless{} 6)}
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data[data}\SpecialCharTok{$}\NormalTok{pH }\SpecialCharTok{\textgreater{}=} \DecValTok{6}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  To delete columns, use NULL (recommended) or an empty vector.
+\item
+  To delete rows, use negative indices (e.g., data{[}-2, {]}) or a logical condition (e.g., data{[}data\$pH \textgreater= 6, {]}).
+\end{itemize}
+
+\hypertarget{sort-rows}{%
+\subsection{Sorting Data}\label{sort-rows}}
+
+Sorting is useful for quickly identifying extreme values (e.g., highest pH, highest clay content) or for preparing tables for reporting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sort by pH (ascending)}
+\NormalTok{soil\_data[}\FunctionTok{order}\NormalTok{(soil\_data}\SpecialCharTok{$}\NormalTok{ph), ]}
+
+\CommentTok{\# Sort by pH (descending)}
+\NormalTok{soil\_data[}\FunctionTok{order}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{soil\_data}\SpecialCharTok{$}\NormalTok{ph), ]}
+
+\CommentTok{\# Sort by multiple columns}
+\NormalTok{soil\_data[}\FunctionTok{order}\NormalTok{(soil\_data}\SpecialCharTok{$}\NormalTok{soil\_type, soil\_data}\SpecialCharTok{$}\NormalTok{ph), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{aggregate-rows}{%
+\subsection{Aggregating Data}\label{aggregate-rows}}
+
+Aggregation means computing summary statistics by group, such as mean pH per soil type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mean pH by soil type}
+\FunctionTok{aggregate}\NormalTok{(ph }\SpecialCharTok{\textasciitilde{}}\NormalTok{ soil\_type, }\AttributeTok{data =}\NormalTok{ soil\_data, }\AttributeTok{FUN =}\NormalTok{ mean)}
+
+\CommentTok{\# Multiple summary values by group (mean and standard deviation of pH by soil\_type)}
+\FunctionTok{aggregate}\NormalTok{(}
+\NormalTok{  ph }\SpecialCharTok{\textasciitilde{}}\NormalTok{ soil\_type,}
+  \AttributeTok{data =}\NormalTok{ soil\_data,}
+  \AttributeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{c}\NormalTok{(}\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(x), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(x))}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+When using \texttt{aggregate()}, make sure the grouping variable (here soil\_type) is correctly imported as character or factor, and that the summarized variable (here ph) is numeric.
+
+\hypertarget{tidyverse-manipultation}{%
+\section{Data Manipulation with the Tidyverse}\label{tidyverse-manipultation}}
+
+While \textbf{base R} is powerful, the \textbf{tidyverse} makes many common data tasks easier to write, read, and maintain---especially when working with real datasets. Its functions use a consistent ``verb'' style (e.g., \texttt{filter()}, \texttt{select()}, \texttt{mutate()}, \texttt{summarize()}), and the pipe operator \texttt{(\%\textgreater{}\%} or \texttt{\textbar{}\textgreater{}}) lets you build clear, step-by-step workflows. This is particularly useful in soil data analysis, where you often need to clean, subset, join, and summarize data repeatedly.
+
+The \texttt{\{tidyverse\}} is a collection of R packages designed for data science that share a common philosophy and syntax.
+Key packages include:
+
+\begin{itemize}
+\item
+  \texttt{\{dplyr\}}: Data manipulation
+\item
+  \texttt{\{ggplot2\}}: Data visualization
+\item
+  \texttt{\{tidyr\}}: Data reshaping
+\item
+  \texttt{\{readr\}}: Reading data
+\item
+  \texttt{\{tibble\}}: Modern data frames
+\end{itemize}
+
+\hypertarget{tidyverse-load}{%
+\subsection{Loading the Tidyverse}\label{tidyverse-load}}
+
+When you load \texttt{\{tidyverse\}}, it automatically attaches a core set of tidyverse packages (such as \texttt{\{dplyr\}} and \texttt{\{ggplot2\}}) so you can use them right away.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install if not already installed}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{\# Load tidyverse}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tidyverse-tibbles}{%
+\subsection{Tibbles: Modern Data Frames}\label{tidyverse-tibbles}}
+
+A \textbf{tibble} is the tidyverse's modern version of a data frame. It behaves like a regular data frame, but it prints in a cleaner way and is generally more user-friendly. For example, tibbles show only the first rows by default, keep long text from cluttering your console, and display column types so you can quickly confirm how R has interpreted your data. Tibbles also avoid some older base R behaviors (such as automatically converting text to factors in older R versions), which makes them a reliable default for data analysis workflows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert data frame to tibble}
+\NormalTok{soil\_tbl }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(soil\_data)}
+\NormalTok{soil\_tbl}
+
+\CommentTok{\# Create tibble directly}
+\NormalTok{soil\_tbl }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{plot\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{),}
+  \AttributeTok{ph =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{),}
+  \AttributeTok{clay =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{18}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tidyverse-pipe}{%
+\subsection{\texorpdfstring{The Pipe Operator: \texttt{\%\textgreater{}\%}}{The Pipe Operator: \%\textgreater\%}}\label{tidyverse-pipe}}
+
+The pipe operator \texttt{\%\textgreater{}\%} (from \texttt{\{magrittr\}} package, loaded with \texttt{\{tidyverse\}}) helps you write code as a clear sequence of chained operations. Instead of nesting functions inside each other, you send (`pipe') the output of one step into the next. This makes workflows easier to read and debug---especially when you are cleaning soil datasets where you often need to filter rows, select variables, create new columns, and then summarize or sort results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Without pipe (nested functions)}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(soil\_data}\SpecialCharTok{$}\NormalTok{ph), }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# With pipe (sequential operations)}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data}\SpecialCharTok{$}\NormalTok{ph }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mean}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{round}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{result}
+
+\CommentTok{\# More complex example}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ph }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(plot\_id, ph, soil\_type) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(ph))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Key pipe benefits}:
+
+\begin{itemize}
+\item
+  \emph{Readable}: Code flows logically from left to right
+\item
+  \emph{Efficient}: No need for intermediate objects
+\item
+  \emph{Debuggable}: Easy to add/remove steps by commenting out lines
+\item
+  \emph{Natural}: Matches how we think about data transformations step-by-step
+\end{itemize}
+
+⚠️ Use \texttt{Ctrl+Shift+M} (Windows) or \texttt{Cmd+Shift+M} (Mac) to insert the pipe operator quickly in RStudio!
+
+\hypertarget{manipulation-dplyr}{%
+\subsection{\texorpdfstring{Data Manipulation with \texttt{\{dplyr\}}}{Data Manipulation with \{dplyr\}}}\label{manipulation-dplyr}}
+
+The \texttt{\{dplyr\}} package provides a clear set of `data verbs' for manipulating tabular data. Its syntax is designed to be readable: you describe what you want to do (filter rows, select columns, create variables, summarize results) rather than how to do it step by step. This makes \texttt{\{dplyr\}} especially useful for soil datasets, where you often need to subset observations, compute derived indicators (e.g., pH classes), and summarize results by soil type, horizon, land use, or sampling site.
+
+\hypertarget{dplyr-select}{%
+\subsubsection{Selecting Columns}\label{dplyr-select}}
+
+Use \texttt{select()} to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the chance of mistakes when working with wide datasets (many columns).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select specific columns}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(plot\_id, ph, clay\_content)}
+
+\CommentTok{\# Select range of columns}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(plot\_id}\SpecialCharTok{:}\NormalTok{ph)}
+
+\CommentTok{\# Remove columns}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{latitude, }\SpecialCharTok{{-}}\NormalTok{longitude)}
+
+\CommentTok{\# Select columns matching pattern}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{contains}\NormalTok{(}\StringTok{"content"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-filter}{%
+\subsubsection{Filtering Rows}\label{dplyr-filter}}
+
+Use \texttt{filter()} to keep only the rows that meet one or more conditions. This is commonly used to focus on samples within a range (e.g., pH \textgreater{} 6) or to extract specific soil classes or land uses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter rows based on condition}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ph }\SpecialCharTok{\textgreater{}} \DecValTok{6}\NormalTok{)}
+
+\CommentTok{\# Multiple conditions}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ph }\SpecialCharTok{\textgreater{}} \DecValTok{6} \SpecialCharTok{\&}\NormalTok{ clay\_content }\SpecialCharTok{\textgreater{}} \DecValTok{25}\NormalTok{)}
+
+\CommentTok{\# Filter with OR}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(soil\_type }\SpecialCharTok{==} \StringTok{"Acrisol"} \SpecialCharTok{|}\NormalTok{ soil\_type }\SpecialCharTok{==} \StringTok{"Ferralsol"}\NormalTok{)}
+
+\CommentTok{\# Use \%in\% for multiple values}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(soil\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Acrisol"}\NormalTok{, }\StringTok{"Ferralsol"}\NormalTok{, }\StringTok{"Vertisol"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-rename}{%
+\subsection{\texorpdfstring{Renaming Columns with \texttt{rename()}}{Renaming Columns with rename()}}\label{dplyr-rename}}
+
+\texttt{rename()} changes column names while keeping all the data.
+The syntax is \texttt{new\_name\ =\ old\_name}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rename columns for clarity}
+\FunctionTok{rename}\NormalTok{(soil\_data,}
+    \AttributeTok{site\_id =}\NormalTok{ site)}
+
+\CommentTok{\# You can rename multiple columns at once}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{rename}\NormalTok{(}
+  \AttributeTok{location =}\NormalTok{ site,}
+  \AttributeTok{acidity =}\NormalTok{ pH,}
+  \AttributeTok{carbon\_content =}\NormalTok{ organic\_carbon}
+\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-mutate}{%
+\subsubsection{\texorpdfstring{Creating/Modifying Columns with \texttt{mutate()}}{Creating/Modifying Columns with mutate()}}\label{dplyr-mutate}}
+
+Use \texttt{mutate()} to add new variables or update existing ones. This is where you typically compute derived soil indicators (classes, ratios, unit conversions) while keeping the original dataset intact.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create new columns}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{ph\_class =} \FunctionTok{ifelse}\NormalTok{(ph }\SpecialCharTok{\textgreater{}} \DecValTok{7}\NormalTok{, }\StringTok{"Alkaline"}\NormalTok{, }\StringTok{"Acidic"}\NormalTok{),}
+    \AttributeTok{clay\_percent =}\NormalTok{ clay\_content }\SpecialCharTok{/} \DecValTok{10}
+\NormalTok{  )}
+
+\CommentTok{\# Modify existing columns}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{ph =} \FunctionTok{round}\NormalTok{(ph, }\DecValTok{1}\NormalTok{),}
+    \AttributeTok{soil\_type =} \FunctionTok{toupper}\NormalTok{(soil\_type)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-arrange}{%
+\subsubsection{Arranging (Sorting) Data}\label{dplyr-arrange}}
+
+Use \texttt{arrange()} to sort rows by one or more column values. This is useful for quickly identifying extreme values (e.g., the highest pH) and for ordering results in tables and reports.
+Use \texttt{arrange(desc())} for descending order.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sort ascending}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(ph)}
+
+\CommentTok{\# Sort descending}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(ph))}
+
+\CommentTok{\# Multiple sort keys}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(soil\_type, }\FunctionTok{desc}\NormalTok{(clay\_content))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-group}{%
+\subsection{Grouping and Summarizing Data by columns}\label{dplyr-group}}
+
+\texttt{group\_by()} creates invisible groups in your data using common values on one or more columns, while \texttt{summarise()} calculates compute summary statistics.
+Combined with \texttt{group\_by()}, it becomes a powerful way to calculate metrics by soil type, site, land use, horizon, or any other grouping variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create example dataset}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{site =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest\_A"}\NormalTok{, }\StringTok{"Forest\_B"}\NormalTok{, }\StringTok{"Grassland\_A"}\NormalTok{, }\StringTok{"Grassland\_B"}\NormalTok{, }\StringTok{"Urban\_A"}\NormalTok{, }\StringTok{"Urban\_B"}\NormalTok{),}
+\AttributeTok{ecosystem =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest"}\NormalTok{, }\StringTok{"Forest"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{),}
+\AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.2}\NormalTok{, }\FloatTok{6.8}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{6.9}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.0}\NormalTok{),}
+\AttributeTok{organic\_carbon =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.2}\NormalTok{, }\FloatTok{2.8}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{2.4}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{1.8}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Summarize soil properties}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_ph =} \FunctionTok{mean}\NormalTok{(pH),}
+    \AttributeTok{sd\_ph =} \FunctionTok{sd}\NormalTok{(pH),}
+    \AttributeTok{min\_soc =} \FunctionTok{min}\NormalTok{(organic\_carbon),}
+    \AttributeTok{max\_soc =} \FunctionTok{max}\NormalTok{(organic\_carbon),}
+    \AttributeTok{n\_samples =} \FunctionTok{n}\NormalTok{()}
+\NormalTok{  )}
+
+\CommentTok{\# Group by and summarize}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(ecosystem) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_ph =} \FunctionTok{mean}\NormalTok{(pH),}
+    \AttributeTok{mean\_soc =} \FunctionTok{mean}\NormalTok{(organic\_carbon), }\CommentTok{\# Average organic carbon}
+    \AttributeTok{count =} \FunctionTok{n}\NormalTok{(),  }
+  \AttributeTok{.groups =} \StringTok{"drop"}            \CommentTok{\# Remove grouping}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+An alternative function to create quick grouped summaries is \texttt{count()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{site =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest\_A"}\NormalTok{, }\StringTok{"Forest\_B"}\NormalTok{, }\StringTok{"Grassland\_A"}\NormalTok{, }\StringTok{"Grassland\_B"}\NormalTok{, }\StringTok{"Urban\_A"}\NormalTok{, }\StringTok{"Urban\_B"}\NormalTok{),}
+\AttributeTok{ecosystem =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest"}\NormalTok{, }\StringTok{"Forest"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{),}
+\AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.2}\NormalTok{, }\FloatTok{6.8}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{6.9}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{6.0}\NormalTok{),}
+\AttributeTok{organic\_carbon =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.2}\NormalTok{, }\FloatTok{2.8}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{2.4}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{1.8}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# Count observations by group}
+\FunctionTok{count}\NormalTok{(soil\_data, ecosystem)}
+
+\CommentTok{\# Count by multiple groups}
+\FunctionTok{count}\NormalTok{(soil\_data, ecosystem, site)}
+
+\CommentTok{\# Count with weights of a column (sum of carbon instead of count)}
+\NormalTok{soil\_data }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{count}\NormalTok{(ecosystem, }\AttributeTok{wt =}\NormalTok{ organic\_carbon, }\AttributeTok{name =} \StringTok{"total SOC"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{dplyr-join}{%
+\section{Combining Data Frames}\label{dplyr-join}}
+
+In soil research, information often comes from multiple sources. For example, one dataset may contain chemical properties (pH, organic carbon), another may include physical measurements (bulk density, nutrients), and a third may describe site conditions (land use, elevation, geology). To get a complete picture, we often need to \textbf{combine datasets} into a single table where all attributes are linked.
+
+This is usually done by matching tables using a shared identifier (a \textbf{key}), such as \texttt{site\_id}, \texttt{plot\_id}, or \texttt{sample\_id}. In R, \texttt{\{dplyr\}} (part of \texttt{\{tidyverse\}}) provides clear functions to perform these joins.
+
+\hypertarget{understand-joins}{%
+\subsection{Understanding Joins}\label{understand-joins}}
+
+A \textbf{join} combines two data frames by matching values in one or more key columns. Each join type differs mainly in which rows (keys) are kept in the result.
+
+\hypertarget{join-types}{%
+\subsubsection{Join types}\label{join-types}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3151}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3151}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3699}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Join
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Keeps which keys?
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Typical use
+\end{minipage} \\
+\midrule()
+\endhead
+\texttt{left\_join(x,\ y)} & All keys in \textbf{x} & Add attributes to a main table, keeping all records in \texttt{x} \\
+\texttt{right\_join(x,\ y)} & All keys in \textbf{y} & Same as left join, but keeping all records in \texttt{y} \\
+\texttt{inner\_join(x,\ y)} & Keys present in \textbf{both} x and y & Keep only records with matches in both tables \\
+\texttt{full\_join(x,\ y)} & Keys present in \textbf{either} x or y & Keep everything; unmatched fields become\texttt{NA} \\
+\bottomrule()
+\end{longtable}
+
+\textbf{Before joining, always check:}
+
+\begin{itemize}
+\item
+  The key columns use the \textbf{same format and values} in both tables (e.g., \texttt{"A"} is not the same as \texttt{"a"}, and extra spaces can cause mismatches).
+\item
+  If key columns have \textbf{different names}, map them explicitly, e.g.
+  \texttt{left\_join(x,\ y,\ by\ =\ c("key\_in\_x"\ =\ "key\_in\_y"))}
+\item
+  Keys are \textbf{unique in at least one table}. If both tables contain repeated keys, the join can create duplicate rows (a many-to-many join).
+\end{itemize}
+
+\hypertarget{dplyr-join-example}{%
+\subsubsection{Example datasets and join operations}\label{dplyr-join-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Soil data example}
+\NormalTok{soil\_basic }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{),}
+ \AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.2}\NormalTok{, }\FloatTok{6.8}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{6.9}\NormalTok{),}
+ \AttributeTok{organic\_carbon =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.2}\NormalTok{, }\FloatTok{2.8}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{2.4}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# Additional measurements (note: includes data on site E, but not on site A)}
+\NormalTok{nutrients }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{),}
+ \AttributeTok{phosphorus =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.15}\NormalTok{, }\FloatTok{0.12}\NormalTok{, }\FloatTok{0.18}\NormalTok{, }\FloatTok{0.14}\NormalTok{),}
+ \AttributeTok{potassium =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.8}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{0.7}\NormalTok{, }\FloatTok{0.6}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# Site information}
+\NormalTok{site\_info }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{),}
+ \AttributeTok{ecosystem =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest"}\NormalTok{, }\StringTok{"Forest"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{),}
+ \AttributeTok{elevation =} \FunctionTok{c}\NormalTok{(}\DecValTok{450}\NormalTok{, }\DecValTok{520}\NormalTok{, }\DecValTok{380}\NormalTok{, }\DecValTok{420}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Join examples (same keys, different rules for which rows are kept)}
+
+\CommentTok{\# 1) \textasciigrave{}left\_join()\textasciigrave{}: Keep all rows from soil\_basic}
+\FunctionTok{left\_join}\NormalTok{(soil\_basic, nutrients, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{)}
+
+\CommentTok{\# 2) \textasciigrave{}right\_join()\textasciigrave{}: Keep all rows from nutrients}
+\FunctionTok{right\_join}\NormalTok{(soil\_basic, nutrients, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{)}
+
+\CommentTok{\# 3) \textasciigrave{}inner\_join()\textasciigrave{}: Keep only rows that exist in both tables}
+\FunctionTok{inner\_join}\NormalTok{(soil\_basic, nutrients, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{)}
+
+\CommentTok{\# 4) \textasciigrave{}full\_join()\textasciigrave{}: Keep all rows from both tables (missing values become NA)}
+\FunctionTok{full\_join}\NormalTok{(soil\_basic, nutrients, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{)}
+
+\DocumentationTok{\#\# Joining more than two tables sequentially}
+\NormalTok{soil\_basic }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(nutrients, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(site\_info, }\AttributeTok{by =} \StringTok{"site\_id"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dplyr-bind_rows}{%
+\subsection{\texorpdfstring{Stacking Data with \texttt{bind\_rows()}}{Stacking Data with bind\_rows()}}\label{dplyr-bind_rows}}
+
+Sometimes datasets have the \textbf{same columns} but represent different campaigns (e.g., seasons, years, field visits). In that case, you combine them \textbf{vertically} (one under the other) using bind\_rows():
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Data from different time periods}
+\NormalTok{spring\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{),}
+ \AttributeTok{season =} \StringTok{"Spring"}\NormalTok{,}
+ \AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.1}\NormalTok{, }\FloatTok{6.7}\NormalTok{),}
+ \AttributeTok{temperature =} \FunctionTok{c}\NormalTok{(}\FloatTok{12.5}\NormalTok{, }\FloatTok{11.8}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{summer\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{),}
+ \AttributeTok{season =} \StringTok{"Summer"}\NormalTok{, }
+ \AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.3}\NormalTok{, }\FloatTok{6.9}\NormalTok{),}
+ \AttributeTok{temperature =} \FunctionTok{c}\NormalTok{(}\FloatTok{18.2}\NormalTok{, }\FloatTok{17.5}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Combine the datasets}
+\FunctionTok{bind\_rows}\NormalTok{(spring\_data, summer\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caution:}
+- \texttt{bind\_rows()} works best when column names and types match.
+
+\begin{itemize}
+\tightlist
+\item
+  If one dataset has extra/missing columns, \texttt{bind\_rows()} will create the missing columns and fill them with \texttt{NA}.
+\end{itemize}
+
+\hypertarget{NA}{%
+\section{Missing Data}\label{NA}}
+
+Soil datasets often contain missing values.
+Missing values in R are stored as \texttt{NA}. Many functions will return \texttt{NA} if missing values are present, unless you specify how to handle them (e.g., na.rm = TRUE).
+Before running summaries, models, or maps, it is important to identify where values are missing and decide how to handle them.
+
+\hypertarget{identify-NA}{%
+\subsection{Identifying Missing Data}\label{identify-NA}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create data with missing values}
+\NormalTok{soil\_data\_na }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{plot =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{, }\StringTok{"P004"}\NormalTok{),}
+  \AttributeTok{ph =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{6.5}\NormalTok{),}
+  \AttributeTok{clay =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{35}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Check for missing values}
+\FunctionTok{is.na}\NormalTok{(soil\_data\_na)}
+
+\CommentTok{\# Count missing values per column}
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(soil\_data\_na))}
+
+\CommentTok{\# Identify complete cases (rows with no missing values)}
+\FunctionTok{complete.cases}\NormalTok{(soil\_data\_na)}
+
+\CommentTok{\# Extract complete cases}
+\NormalTok{soil\_complete }\OtherTok{\textless{}{-}}\NormalTok{ soil\_data\_na[}\FunctionTok{complete.cases}\NormalTok{(soil\_data\_na), ]}
+\NormalTok{soil\_complete}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{handle-NA}{%
+\subsection{Handling Missing Data}\label{handle-NA}}
+
+How you handle missing data depends on the context. Sometimes you can remove incomplete records; other times you may replace missing values with a reasonable estimate or a fixed value. An example of handling missing data is provided in the \textbf{Data Preparation} section.
+
+In base R, \texttt{is.na()} helps you identify missing values, and \texttt{na.omit()} can be used to remove rows with missing data. Many functions (such as \texttt{mean()}) also include arguments that control how missing values are handled---for example, \texttt{na.rm\ =\ TRUE} tells R to ignore \texttt{NA} values when computing the result.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove rows with any missing values (base R)}
+\FunctionTok{na.omit}\NormalTok{(soil\_data\_na)}
+
+\CommentTok{\# Remove rows where a specific column is missing (keep rows with non{-}missing pH)}
+\NormalTok{soil\_data\_na[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(soil\_data\_na}\SpecialCharTok{$}\NormalTok{ph), ]}
+
+\CommentTok{\# Replace missing pH values with the mean pH (na.rm = TRUE ignores NA in the mean)}
+\NormalTok{soil\_data\_na}\SpecialCharTok{$}\NormalTok{ph[}\FunctionTok{is.na}\NormalTok{(soil\_data\_na}\SpecialCharTok{$}\NormalTok{ph)] }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(soil\_data\_na}\SpecialCharTok{$}\NormalTok{ph, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{soil\_data\_na}
+\end{Highlighting}
+\end{Shaded}
+
+If you are using the tidyverse, \texttt{\{tidyr\}} provides convenient helpers for handling missing data. For example, \texttt{drop\_na()} removes rows with missing values (either across all columns or in selected columns), and r\texttt{eplace\_na()} fills missing values with specified replacements.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove all rows with any NA}
+\NormalTok{soil\_data\_na }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{()}
+
+\CommentTok{\# Remove rows where ph is NA}
+\NormalTok{soil\_data\_na }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(ph)}
+
+\CommentTok{\# Replace NA values with specified values}
+\NormalTok{soil\_data\_na }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{replace\_na}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{ph =} \FloatTok{6.0}\NormalTok{, }\AttributeTok{clay =} \DecValTok{30}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caution:}
+- \texttt{na.omit()} removes \textbf{any row} that contains at least one \texttt{NA} in \textbf{any column}. This can unintentionally drop many observations---especially in wide datasets.
+
+\begin{itemize}
+\item
+  \texttt{drop\_na()} (like \texttt{na.omit()}) can remove many rows if your dataset has missing values in multiple columns.
+\item
+  Replacing missing values (imputation) can change your results and should be done carefully.
+\item
+  Always document the method you used and consider whether missingness might be informative (e.g., values missing due to sampling or lab issues).
+\end{itemize}
+
+\hypertarget{pivoting}{%
+\section{\texorpdfstring{Data Reshaping with \texttt{\{tidyr\}} package: Pivoting}{Data Reshaping with \{tidyr\} package: Pivoting}}\label{pivoting}}
+
+Soil datasets are often stored in different formats depending on how they were collected or produced. The \texttt{\{tidyr\}} package helps you reshape data---changing its layout without changing the information. This is especially useful when preparing data for plotting, reporting, modeling, or joining with other tables.
+
+\hypertarget{wide-long}{%
+\subsubsection{Wide vs Long Data Format}\label{wide-long}}
+
+\begin{itemize}
+\item
+  \textbf{Wide format}: each variable has its own column (common in spreadsheets and summary tables).
+\item
+  \textbf{Long format}: values are stored in a single column, with one or more columns describing what the values represent (common for tidy workflows and \texttt{ggplot2()}).
+\end{itemize}
+
+\hypertarget{pivot-long}{%
+\subsubsection{\texorpdfstring{\texttt{pivot\_longer()}: Wide to Long}{pivot\_longer(): Wide to Long}}\label{pivot-long}}
+
+Use \texttt{pivot\_longer()} to turn several measurement columns (e.g., pH, carbon, nitrogen) into a tidy key--value structure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr) }\CommentTok{\# for piping \%\textgreater{}\%}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr) }\CommentTok{\# for pivoting}
+\CommentTok{\# Wide format data}
+\NormalTok{wide\_soil }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{),}
+ \AttributeTok{ecosystem =} \FunctionTok{c}\NormalTok{(}\StringTok{"Forest"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{),}
+ \AttributeTok{pH =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.2}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{5.8}\NormalTok{),}
+ \AttributeTok{carbon =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.2}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{1.5}\NormalTok{),}
+ \AttributeTok{nitrogen =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.18}\NormalTok{, }\FloatTok{0.12}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(wide\_soil)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   site ecosystem  pH carbon nitrogen
+## 1    A    Forest 6.2    3.2     0.25
+## 2    B Grassland 7.1    2.1     0.18
+## 3    C     Urban 5.8    1.5     0.12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert to long format}
+\NormalTok{long\_soil }\OtherTok{\textless{}{-}}\NormalTok{ wide\_soil }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{pivot\_longer}\NormalTok{(}
+  \AttributeTok{cols =} \FunctionTok{c}\NormalTok{(pH, carbon, nitrogen),     }\CommentTok{\# Columns to pivot}
+  \AttributeTok{names\_to =} \StringTok{"measurement\_type"}\NormalTok{,      }\CommentTok{\# Name for the variable column}
+  \AttributeTok{values\_to =} \StringTok{"value"}           \CommentTok{\# Name for the values column}
+\NormalTok{ )}
+\NormalTok{long\_soil}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 9 x 4
+##   site  ecosystem measurement_type value
+##   <chr> <chr>     <chr>            <dbl>
+## 1 A     Forest    pH                6.2 
+## 2 A     Forest    carbon            3.2 
+## 3 A     Forest    nitrogen          0.25
+## 4 B     Grassland pH                7.1 
+## 5 B     Grassland carbon            2.1 
+## 6 B     Grassland nitrogen          0.18
+## 7 C     Urban     pH                5.8 
+## 8 C     Urban     carbon            1.5 
+## 9 C     Urban     nitrogen          0.12
+\end{verbatim}
+
+\begin{itemize}
+\item
+  Many tidyverse workflows (especially with \texttt{\{ggplot2\}}) work best with long data.
+\item
+  Functions such as \texttt{slab()} (from the \textbf{Algorithms for Quantitative Pedology} package -\texttt{\{aqp\}}) often return horizon or slice summaries in a long format (e.g., one row per profile × depth-slice). If you need a ``one row per horizon'' table for reporting or modeling, you may need to reshape that output to wide using \texttt{pivot\_wider()}.
+\item
+  In many relational databases such as \textbf{PostgreSQL}, measurements are often stored in a \textbf{long (tidy) format}, where each row represents one observation and additional columns describe \emph{what} was measured (e.g., \texttt{property}, \texttt{method}, \texttt{unit}) and \emph{the result} (e.g., \texttt{value}). This structure is flexible: you can store many different variables in a single table and add new measurement types over time without changing the table schema.
+\item
+  This is also the approach used in the \textbf{GloSIS} relational database: soil analytical results are typically stored as \textbf{one record per sample/observation × property}, rather than as many property columns in a single wide table. For this reason, reshaping data between \textbf{wide} (common in spreadsheets) and \textbf{long} (common in databases) formats is a frequent step when preparing data for insertion into GloSIS or extracting data for analysis.
+\end{itemize}
+
+\hypertarget{pivot-wider}{%
+\subsubsection{\texorpdfstring{\texttt{pivot\_wider()}: Long to Wide}{pivot\_wider(): Long to Wide}}\label{pivot-wider}}
+
+Use \texttt{pivot\_wider()} to spread a variable column back into multiple columns. This is helpful when you want a compact table for reporting or when a model expects predictors in separate columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert back to wide format}
+\NormalTok{long\_soil }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{pivot\_wider}\NormalTok{(}
+  \AttributeTok{names\_from =}\NormalTok{ measurement\_type, }\CommentTok{\# Column containing variable names}
+  \AttributeTok{values\_from =}\NormalTok{ value            }\CommentTok{\# Column containing values}
+\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   site  ecosystem    pH carbon nitrogen
+##   <chr> <chr>     <dbl>  <dbl>    <dbl>
+## 1 A     Forest      6.2    3.2     0.25
+## 2 B     Grassland   7.1    2.1     0.18
+## 3 C     Urban       5.8    1.5     0.12
+\end{verbatim}
+
+\hypertarget{pivot-table}{%
+\subsubsection{Advanced Pivoting: Multiple Measurements per Site (Replicates)}\label{pivot-table}}
+
+In real datasets, you may have repeated measurements (e.g., replicate samples). In that case, keep replicate identifiers as separate columns and pivot the measurement names into columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# More complex examples with multiple measurements per site}
+\NormalTok{field\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+ \AttributeTok{site =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Forest"}\NormalTok{, }\StringTok{"Grassland"}\NormalTok{), }\AttributeTok{each =} \DecValTok{6}\NormalTok{),}
+ \AttributeTok{measurement =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"pH"}\NormalTok{, }\StringTok{"carbon"}\NormalTok{, }\StringTok{"nitrogen"}\NormalTok{), }\DecValTok{4}\NormalTok{),}
+ \AttributeTok{replicate =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"R1"}\NormalTok{, }\StringTok{"R2"}\NormalTok{), }\DecValTok{6}\NormalTok{),}
+ \AttributeTok{value =} \FunctionTok{c}\NormalTok{(}\FloatTok{6.2}\NormalTok{, }\FloatTok{6.1}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{3.0}\NormalTok{, }\FloatTok{0.25}\NormalTok{, }\FloatTok{0.23}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{7.0}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{2.3}\NormalTok{, }\FloatTok{0.18}\NormalTok{, }\FloatTok{0.19}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{field\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         site measurement replicate value
+## 1     Forest          pH        R1  6.20
+## 2     Forest      carbon        R2  6.10
+## 3     Forest    nitrogen        R1  3.20
+## 4     Forest          pH        R2  3.00
+## 5     Forest      carbon        R1  0.25
+## 6     Forest    nitrogen        R2  0.23
+## 7  Grassland          pH        R1  7.10
+## 8  Grassland      carbon        R2  7.00
+## 9  Grassland    nitrogen        R1  2.10
+## 10 Grassland          pH        R2  2.30
+## 11 Grassland      carbon        R1  0.18
+## 12 Grassland    nitrogen        R2  0.19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pivot to have measurements as columns}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Pivoted data:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pivoted data:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{field\_data }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{pivot\_wider}\NormalTok{(}
+  \AttributeTok{names\_from =}\NormalTok{ measurement,}
+  \AttributeTok{values\_from =}\NormalTok{ value}
+\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+##   site      replicate    pH carbon nitrogen
+##   <chr>     <chr>     <dbl>  <dbl>    <dbl>
+## 1 Forest    R1          6.2   0.25     3.2 
+## 2 Forest    R2          3     6.1      0.23
+## 3 Grassland R1          7.1   0.18     2.1 
+## 4 Grassland R2          2.3   7        0.19
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  If your long dataset contains more than one value for the same combination of identifiers (e.g., site + replicate + measurement), pivot\_wider() may create list-columns or produce an error.
+  In those cases, summarize duplicates first, or use values\_fn, for example:
+  \texttt{pivot\_wider(...,\ values\_fn\ =\ mean)}
+\end{itemize}
+
+\hypertarget{dl-data}{%
+\section{Handling Below Detection Limit Data}\label{dl-data}}
+
+In soil laboratory datasets, some results are reported as below the detection (or reporting) limit, for example \texttt{\textless{}0.05}. When imported into R, these values often cause the entire column to be read as character. A common practical approach for basic summaries is to convert these entries to a numeric value equal to half the detection limit (DL/2), while keeping the original raw values for traceability.
+
+\emph{Example: Converting ``\textless DL'' to DL/2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{soil\_lab }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{plot\_id =} \FunctionTok{c}\NormalTok{(}\StringTok{"P001"}\NormalTok{, }\StringTok{"P002"}\NormalTok{, }\StringTok{"P003"}\NormalTok{, }\StringTok{"P004"}\NormalTok{),}
+  \AttributeTok{no3\_mgkg\_raw =} \FunctionTok{c}\NormalTok{(}\StringTok{"0.12"}\NormalTok{, }\StringTok{"\textless{}0.05"}\NormalTok{, }\StringTok{"0.31"}\NormalTok{, }\StringTok{"\textless{}0.05"}\NormalTok{),}
+  \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\NormalTok{soil\_lab}
+
+\NormalTok{soil\_lab }\OtherTok{\textless{}{-}}\NormalTok{ soil\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{censored =} \FunctionTok{str\_detect}\NormalTok{(no3\_mgkg\_raw, }\StringTok{"\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s*\textless{}"}\NormalTok{),}
+    \AttributeTok{dl =} \FunctionTok{if\_else}\NormalTok{(censored,}
+                 \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{str\_remove}\NormalTok{(no3\_mgkg\_raw, }\StringTok{"\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s*\textless{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s*"}\NormalTok{)),}
+                 \ConstantTok{NA\_real\_}\NormalTok{),}
+    \AttributeTok{no3\_mgkg =} \FunctionTok{if\_else}\NormalTok{(censored, dl }\SpecialCharTok{/} \DecValTok{2}\NormalTok{, }\FunctionTok{as.numeric}\NormalTok{(no3\_mgkg\_raw))}
+\NormalTok{  )}
+
+\NormalTok{soil\_lab}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caution:}
+- Replacing BDL values with DL/2 is a simple convention, but it can bias results when many values are censored. Always report the detection limit and the percentage of BDL values.
+
+\textbf{Other approaches for BDL data:}
+
+\begin{itemize}
+\item
+  \emph{DL (or 0) substitution:} simple sensitivity checks (compare results using 0, DL/2, and DL).
+\item
+  \emph{Censored-data methods (recommended for inference):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Kaplan--Meier (KM)} (e.g., with the \texttt{\{NADA\}} package): estimates summary statistics without assuming substituted values by treating BDL results as left-censored.
+  \item
+    *ROS (Regression on Order Statistics)** (e.g., with the \texttt{\{NADA\}} package): commonly used for environmental data and often a good default when there are multiple detection limits.
+  \end{itemize}
+\item
+  \emph{Censored regression (e.g., Tobit):} useful for modeling relationships while accounting for censoring.
+\end{itemize}
+
+\hypertarget{soil-data}{%
+\section{Working with Soil Data}\label{soil-data}}
+
+Soil data analysis usually starts with importing data, making sure it was read correctly, and then doing a few basic cleaning and selection steps before any modeling or mapping. In this section, you will learn how to set your R environment (manage file paths and your working directory), load the packages you need, import soil datasets from CSV and Excel files, and explore and manipulate the imported data to prepare it for further analyses.
+
+\hypertarget{set-directory}{%
+\subsection{Setting Working Directory}\label{set-directory}}
+
+The \emph{working directory} is the folder where R looks for input files (by default) and where it saves output files unless you specify a different location. Any \emph{relative file path} you use (e.g., \texttt{"data/soil\_data.csv"}) is interpreted relative to the working directory.
+
+It is good practice to set the working directory at the beginning of a script.
+
+You can set the working directory manually with \texttt{setwd()}, which takes the target folder path as a character string.
+RStudio also provides a menu option: \texttt{Session\ →\ Set\ Working\ Directory}.
+
+You can always check the current working directory with \texttt{getwd()}, which returns the path of the folder where R is currently operating.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check current working directory}
+\FunctionTok{getwd}\NormalTok{()}
+
+\CommentTok{\# Set new working directory}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/YourName/Documents/YourSoilProject"}\NormalTok{)}
+
+\CommentTok{\# On Mac/Linux}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/Users/YourName/Documents/YourSoilProject"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+If you are using RStudio, an option is to set the working directory to the location of the active script:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set working directory to script location (recommended)}
+\FunctionTok{setwd}\NormalTok{(}\FunctionTok{dirname}\NormalTok{(rstudioapi}\SpecialCharTok{::}\FunctionTok{getActiveDocumentContext}\NormalTok{()}\SpecialCharTok{$}\NormalTok{path))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Best practice:} Use an RStudio Project (\texttt{.Rproj}) to avoid hard-coded paths.
+
+\begin{itemize}
+\item
+  \texttt{File\ →\ New\ Project} creates an \texttt{.Rproj} file.
+\item
+  Keep your data inside the project folder and use relative paths (e.g., \texttt{"data/KSSL\_data.csv"}).
+\item
+  If you prefer, you can also set the working directory to the active script location:
+
+  \texttt{setwd(dirname(rstudioapi::getActiveDocumentContext()\$path))}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  If you are not using RStudio (or rstudioapi is not installed), the script-location method will not work. In that case, use an RStudio Project or set the working directory manually.
+\end{itemize}
+
+\hypertarget{load-packages}{%
+\subsection{Load packages}\label{load-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)           }\CommentTok{\# Read Excel files}
+\FunctionTok{library}\NormalTok{(tidyverse)        }\CommentTok{\# Data manipulation and visualization}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{import-files}{%
+\subsection{Importing Data from Files}\label{import-files}}
+
+Most soil science projects use data from external sources (field surveys, lab results, sensors, or remote sensing). These datasets are commonly stored as CSV or Excel files, but they can also come from databases, spatial formats (e.g., GeoPackages/shapefiles), or web APIs. R provides tools to import, clean, and analyze these data. In this tutorial, we focus on CSV (\texttt{.csv}) and Excel (\texttt{.xlsx}) because they are the most widely used formats in soil science workflows.
+
+\hypertarget{read-csv}{%
+\subsubsection{Reading CSV Files}\label{read-csv}}
+
+CSV (comma-separated values) and plain text (\texttt{.txt}) files are widely used for exchanging tabular data. In base R, you can import them with \texttt{read.csv()} or the more general \texttt{read.table()} (both from \texttt{\{utils\}}).
+These functions assumes the separator is a comma (,) and by default use \texttt{header\ =\ TRUE}, meaning the first row is treated as column names.
+The output is a \texttt{data.frame}.
+For larger files, you can use \texttt{read\_csv()}, from \texttt{\{readr\}} which is usually faster and often does a better job of parsing column types.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read CSV file}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"path/to/soil\_data.csv"}\NormalTok{)}
+
+\CommentTok{\# View structure}
+\FunctionTok{str}\NormalTok{(soil\_data)}
+
+\CommentTok{\# View first rows}
+\FunctionTok{head}\NormalTok{(soil\_data)}
+
+\CommentTok{\# If CSV uses different separator (semicolon, tab)}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"path/to/file.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{)}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.delim}\NormalTok{(}\StringTok{"path/to/file.txt"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+If you are using an RStudio Project and the dataset is stored inside your project, you can use a relative path. For example, for the Kansas soil profiles dataset in this project:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read CSV file}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"01\_data/module1/KSSL\_data.csv"}\NormalTok{)}
+
+\CommentTok{\# View structure}
+\FunctionTok{str}\NormalTok{(soil\_data)}
+
+\CommentTok{\# View first rows}
+\FunctionTok{head}\NormalTok{(soil\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+When possible, prefer project-relative paths like \texttt{"01\_data/module1/KSSL\_data.csv"}.
+They are easier to read and less likely to break if you reorganize folders.
+
+\hypertarget{read-excel}{%
+\subsubsection{Reading Excel Files}\label{read-excel}}
+
+To read Excel files, use \texttt{read\_excel()} from the \texttt{\{readxl\}} package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read Excel file}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"01\_data/module1/KSSL\_data.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \DecValTok{1}\NormalTok{) }
+
+\CommentTok{\# Or read a specific sheet by name}
+\NormalTok{soil\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"01\_data/module1/KSSL\_data.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"SoilData"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-exploration}{%
+\subsection{Exploring the Data}\label{data-exploration}}
+
+After importing, always confirm the structure, column names, and data types before analysis.
+R provides several built-in functions to help you inspect the structure, preview the values, and summarize the dataset quickly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(soil\_data)        }\CommentTok{\# Structure + column types}
+\FunctionTok{summary}\NormalTok{(soil\_data)    }\CommentTok{\# Quick summaries for each column}
+\FunctionTok{names}\NormalTok{(soil\_data)      }\CommentTok{\# Column names}
+
+\FunctionTok{head}\NormalTok{(soil\_data)       }\CommentTok{\# First rows}
+\FunctionTok{tail}\NormalTok{(soil\_data)       }\CommentTok{\# Last rows}
+
+\FunctionTok{View}\NormalTok{(soil\_data) }\CommentTok{\# opens a spreadsheet{-}style viewer in RStudio}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caution:}
+- Imported columns are sometimes read with the wrong type (e.g., numbers stored as text).
+
+\begin{itemize}
+\item
+  The \texttt{str()} function is especially useful when you're not sure how R is interpreting your variables --- for example, whether a column is being read as text (character) or as a categorical variable (factor).
+\item
+  Check types with \texttt{str()} and convert when needed using \texttt{as.numeric()}, \texttt{as.character()}, or \texttt{as.Date()}.
+\end{itemize}
+
+\hypertarget{references-m1}{%
+\section{References}\label{references-m1}}
+
+Grolemund, G., \& Wickham, H. (2017). R for Data Science. O'Reilly Media.
+
+Brus, D.J.(2022). Spatial Sampling with R, CRC Press, New York. \url{https://dickbrus.github.io/SpatialSamplingwithR/}
+
+Hengl, T., \& MacMillan, R. A. (2019). Predictive Soil Mapping with R. Zenodo. \url{https://doi.org/10.5281/zenodo.2561035}
+
+Soil Survey Staff (2025). Statistics for Soil Survey. \url{https://ncss-tech.github.io/stats_for_soil_example/}
+
+Spatial Data Science with R and `terra' (2025). \url{https://rspatial.org/}
+
+\hypertarget{data-preparation-for-digital-soil-mapping-in-r}{%
+\chapter{Data preparation for digital soil mapping in R}\label{data-preparation-for-digital-soil-mapping-in-r}}
+
+Placeholder
+
+\hypertarget{introduction1}{%
+\section{Introduction}\label{introduction1}}
+
+\hypertarget{loading-data}{%
+\section{Loading and exploring raw soil data}\label{loading-data}}
+
+\hypertarget{basic-data-loading-and-structure}{%
+\subsection{Basic data loading and structure}\label{basic-data-loading-and-structure}}
+
+\hypertarget{data-components-and-organization}{%
+\subsection{Data components and organization}\label{data-components-and-organization}}
+
+\hypertarget{site-data-preparation}{%
+\section{Preparing site data for analysis}\label{site-data-preparation}}
+
+\hypertarget{adding-a-unique-row-identifier}{%
+\subsection{Adding a unique row identifier}\label{adding-a-unique-row-identifier}}
+
+\hypertarget{extracting-and-standardizing-column-names-for-sites}{%
+\subsection{Extracting and standardizing column names for sites}\label{extracting-and-standardizing-column-names-for-sites}}
+
+\hypertarget{creating-unique-profile-identifiers}{%
+\subsection{Creating unique profile identifiers}\label{creating-unique-profile-identifiers}}
+
+\hypertarget{remove-exact-duplicate-site-records}{%
+\subsection{Remove exact duplicate site records}\label{remove-exact-duplicate-site-records}}
+
+\hypertarget{coordinate-validation}{%
+\section{Coordinate validation and correction}\label{coordinate-validation}}
+
+\hypertarget{check-1-missing-coordinates}{%
+\subsection{Check 1: Missing coordinates}\label{check-1-missing-coordinates}}
+
+\hypertarget{check-2-valid-coordinate-ranges}{%
+\subsection{Check 2: Valid coordinate ranges}\label{check-2-valid-coordinate-ranges}}
+
+\hypertarget{depth-validation}{%
+\section{Soil depth validation and correction}\label{depth-validation}}
+
+\hypertarget{check-1-missing-depth-boundaries}{%
+\subsection{Check 1: Missing depth boundaries}\label{check-1-missing-depth-boundaries}}
+
+\hypertarget{check-2-negative-depth-values}{%
+\subsection{Check 2: Negative depth values}\label{check-2-negative-depth-values}}
+
+\hypertarget{check-3-zero-thickness-intervals}{%
+\subsection{Check 3: Zero-thickness intervals}\label{check-3-zero-thickness-intervals}}
+
+\hypertarget{check-4-invalid-depth-logic}{%
+\subsection{Check 4: Invalid depth logic}\label{check-4-invalid-depth-logic}}
+
+\hypertarget{check-5-profiles-without-a-surface-horizon-top-0-todo}{%
+\subsection{Check 5: Profiles without a surface horizon (top \textgreater{} 0) ····todo}\label{check-5-profiles-without-a-surface-horizon-top-0-todo}}
+
+\hypertarget{lab-validation}{%
+\section{Preparing lab data: harmonization and validation}\label{lab-validation}}
+
+\hypertarget{prepare-and-standardize-laboratory-columns}{%
+\subsection{Prepare and standardize laboratory columns}\label{prepare-and-standardize-laboratory-columns}}
+
+\hypertarget{check-1-check-each-property-against-feasible-analytical-thresholds}{%
+\subsection{Check 1: Check each property against feasible analytical thresholds}\label{check-1-check-each-property-against-feasible-analytical-thresholds}}
+
+\hypertarget{load-property-thresholds}{%
+\subsubsection{Load property thresholds}\label{load-property-thresholds}}
+
+\hypertarget{identify-out-of-bounds-values}{%
+\subsubsection{Identify out-of-bounds values}\label{identify-out-of-bounds-values}}
+
+\hypertarget{reporting-out-of-bounds-for-properties-and-audit-trail}{%
+\subsubsection{Reporting out-of-bounds for properties and audit trail}\label{reporting-out-of-bounds-for-properties-and-audit-trail}}
+
+\hypertarget{check-2-texture-validation}{%
+\subsection{Check 2: Texture validation}\label{check-2-texture-validation}}
+
+\hypertarget{check-3-correction-of-out-of-bounds-laboratory-values}{%
+\subsection{Check 3: Correction of out-of-bounds laboratory values}\label{check-3-correction-of-out-of-bounds-laboratory-values}}
+
+\hypertarget{option-1-targeted-corrections-when-error-mechanism-is-known}{%
+\subsubsection{Option 1: Targeted corrections (when error mechanism is known)}\label{option-1-targeted-corrections-when-error-mechanism-is-known}}
+
+\hypertarget{option-2-replace-out-of-bounds-values-with-na}{%
+\subsubsection{\texorpdfstring{Option 2: Replace out-of-bounds values with \texttt{NA}}{Option 2: Replace out-of-bounds values with NA}}\label{option-2-replace-out-of-bounds-values-with-na}}
+
+\hypertarget{duplicate-detection}{%
+\section{Resolving duplicated data in soil profiles}\label{duplicate-detection}}
+
+\hypertarget{why-duplicates-occur}{%
+\subsection{Why duplicates occur}\label{why-duplicates-occur}}
+
+\hypertarget{types-of-duplicate-situations}{%
+\subsection{Types of duplicate situations}\label{types-of-duplicate-situations}}
+
+\hypertarget{check-1-detect-potential-horizon-duplicates-within-profiles}{%
+\subsection{Check 1: Detect potential horizon duplicates within profiles}\label{check-1-detect-potential-horizon-duplicates-within-profiles}}
+
+\hypertarget{resolving-profile-duplicates}{%
+\subsection{Resolving Profile Duplicates}\label{resolving-profile-duplicates}}
+
+\hypertarget{check-1-average-duplicated-horizons-same-depth-intervals}{%
+\subsubsection{Check 1: Average duplicated horizons (same depth intervals)}\label{check-1-average-duplicated-horizons-same-depth-intervals}}
+
+\hypertarget{check-2-resolve-profid-for-multiple-depth-sequences}{%
+\subsubsection{Check 2: Resolve ProfID for multiple depth sequences}\label{check-2-resolve-profid-for-multiple-depth-sequences}}
+
+\hypertarget{remove-profiles-not-starting-at-the-surface}{%
+\subsection{Remove profiles not starting at the surface}\label{remove-profiles-not-starting-at-the-surface}}
+
+\hypertarget{check-1-remove-profiles-with-incomplete-surface-coverage}{%
+\subsubsection{Check 1: Remove profiles with incomplete surface coverage}\label{check-1-remove-profiles-with-incomplete-surface-coverage}}
+
+\hypertarget{result}{%
+\subsection{Result}\label{result}}
+
+\hypertarget{harmonization}{%
+\section{Harmonizing data for DSM}\label{harmonization}}
+
+\hypertarget{depth-standardization}{%
+\subsection{Depth standardization}\label{depth-standardization}}
+
+\hypertarget{processing-standardized-data}{%
+\subsection{Processing standardized data}\label{processing-standardized-data}}
+
+\hypertarget{exporting-standardized-data-for-digital-soil-mapping}{%
+\subsection{Exporting standardized data for Digital Soil Mapping}\label{exporting-standardized-data-for-digital-soil-mapping}}
+
+\hypertarget{spectroscopy}{%
+\section{Preparing data for spectroscopy analyses}\label{spectroscopy}}
+
+\hypertarget{exports}{%
+\section{Summary of exported files}\label{exports}}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{sampling-design-for-soil-surveys}{%
+\chapter{Sampling design for soil surveys}\label{sampling-design-for-soil-surveys}}
+
+Placeholder
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{sampling-theory}{%
+\section{Sampling methodologies for soil spatial survey}\label{sampling-theory}}
+
+\hypertarget{selection-methods}{%
+\subsection{Selection of the sampling methodology}\label{selection-methods}}
+
+\hypertarget{inference-methods}{%
+\subsection{Inference Methods}\label{inference-methods}}
+
+\hypertarget{sampling-purpose}{%
+\subsection{Purpose of Sampling}\label{sampling-purpose}}
+
+\hypertarget{design-types}{%
+\subsection{Sampling Design Types}\label{design-types}}
+
+\hypertarget{soils4africa-example}{%
+\subsubsection{Example: Soils4Africa Sampling Design}\label{soils4africa-example}}
+
+\hypertarget{soilfer-design}{%
+\section{SoilFER Sampling Design}\label{soilfer-design}}
+
+\hypertarget{soil-properties}{%
+\subsection{Soil Properties}\label{soil-properties}}
+
+\hypertarget{env-covariates}{%
+\subsection{Environmental Covariates}\label{env-covariates}}
+
+\hypertarget{methodology}{%
+\subsection{Understanding the Methodology}\label{methodology}}
+
+\hypertarget{psu-selection-process}{%
+\subsubsection{PSU Selection Process}\label{psu-selection-process}}
+
+\hypertarget{ssu-tsu-selection}{%
+\subsubsection{SSU and TSU Selection Process}\label{ssu-tsu-selection}}
+
+\hypertarget{site-id}{%
+\subsubsection{Site Identification System}\label{site-id}}
+
+\hypertarget{tutorial}{%
+\section{Tutorial Using R}\label{tutorial}}
+
+\hypertarget{setup}{%
+\subsection{Setting Up the Environment}\label{setup}}
+
+\hypertarget{install-libraries}{%
+\subsubsection{Install Required Libraries}\label{install-libraries}}
+
+\hypertarget{define-parameters}{%
+\subsection{Define Variables and Parameters}\label{define-parameters}}
+
+\hypertarget{country-iso-code}{%
+\subsection{Country ISO Code}\label{country-iso-code}}
+
+\hypertarget{land-use-type}{%
+\subsubsection{Land Use Type}\label{land-use-type}}
+
+\hypertarget{file-paths}{%
+\subsubsection{File Paths}\label{file-paths}}
+
+\hypertarget{coordinate-reference-system}{%
+\subsubsection{Coordinate Reference System}\label{coordinate-reference-system}}
+
+\hypertarget{sample-size-calculation}{%
+\subsubsection{Sample Size Calculation}\label{sample-size-calculation}}
+
+\hypertarget{sampling-unit-definitions}{%
+\subsubsection{Sampling Unit Definitions}\label{sampling-unit-definitions}}
+
+\hypertarget{algorithm-parameters}{%
+\subsubsection{Algorithm Parameters}\label{algorithm-parameters}}
+
+\hypertarget{custom-functions}{%
+\subsection{Custom Functions}\label{custom-functions}}
+
+\hypertarget{covariate-space-coverage-function-csis}{%
+\subsubsection{Covariate Space Coverage Function (CSIS)}\label{covariate-space-coverage-function-csis}}
+
+\hypertarget{tsu-generation-function}{%
+\subsubsection{TSU Generation Function}\label{tsu-generation-function}}
+
+\hypertarget{load-boundaries}{%
+\subsection{Load Country Boundaries and Legacy Data}\label{load-boundaries}}
+
+\hypertarget{visualize-boundaries-and-legacy-data}{%
+\subsubsection{Visualize Boundaries and Legacy Data}\label{visualize-boundaries-and-legacy-data}}
+
+\hypertarget{load-covariates-psu}{%
+\subsection{Load Environmental Covariates for PSUs}\label{load-covariates-psu}}
+
+\hypertarget{optional-auxiliary-data}{%
+\subsubsection{Optional Auxiliary Data}\label{optional-auxiliary-data}}
+
+\hypertarget{load-and-process-auxiliary-data}{%
+\subsubsection{Load and Process Auxiliary Data}\label{load-and-process-auxiliary-data}}
+
+\hypertarget{load-main-environmental-covariates}{%
+\subsection{Load Main Environmental Covariates}\label{load-main-environmental-covariates}}
+
+\hypertarget{load-and-process-soil-climate-data-newhall}{%
+\subsubsection{Load and Process Soil Climate Data (Newhall)}\label{load-and-process-soil-climate-data-newhall}}
+
+\hypertarget{convert-categorical-variables-to-dummy-variables}{%
+\subsubsection{Convert Categorical Variables to Dummy Variables}\label{convert-categorical-variables-to-dummy-variables}}
+
+\hypertarget{merge-all-covariate-layers}{%
+\subsubsection{Merge All Covariate Layers}\label{merge-all-covariate-layers}}
+
+\hypertarget{crop-and-save-covariates}{%
+\subsubsection{Crop and Save Covariates}\label{crop-and-save-covariates}}
+
+\hypertarget{pca}{%
+\section{Principal Component Analysis (PCA)}\label{pca}}
+
+\hypertarget{sampling-universe}{%
+\section{Organize the Sampling Universe}\label{sampling-universe}}
+
+\hypertarget{load-and-process-land-use-data}{%
+\subsection{Load and Process Land Use Data}\label{load-and-process-land-use-data}}
+
+\hypertarget{exclude-protected-areas}{%
+\subsection{Exclude Protected Areas}\label{exclude-protected-areas}}
+
+\hypertarget{restrict-to-accessible-slopes}{%
+\subsection{Restrict to Accessible Slopes}\label{restrict-to-accessible-slopes}}
+
+\hypertarget{aggregate-to-100m-resolution}{%
+\subsection{Aggregate to 100m Resolution}\label{aggregate-to-100m-resolution}}
+
+\hypertarget{save-processed-land-use}{%
+\subsection{Save Processed Land Use}\label{save-processed-land-use}}
+
+\hypertarget{filter-legacy-data}{%
+\subsection{Filter Legacy Data}\label{filter-legacy-data}}
+
+\hypertarget{create-psu-grid}{%
+\section{Create Primary Sampling Units (PSU Grid)}\label{create-psu-grid}}
+
+\hypertarget{generate-2km-2km-grid}{%
+\subsection{Generate 2km × 2km Grid}\label{generate-2km-2km-grid}}
+
+\hypertarget{trim-to-country-boundaries}{%
+\subsection{Trim to Country Boundaries}\label{trim-to-country-boundaries}}
+
+\hypertarget{save-psu-grid}{%
+\subsection{Save PSU Grid}\label{save-psu-grid}}
+
+\hypertarget{select-psus}{%
+\section{Select PSUs with Sufficient Land Use Coverage}\label{select-psus}}
+
+\hypertarget{calculate-land-use-percentage}{%
+\subsection{Calculate Land Use Percentage}\label{calculate-land-use-percentage}}
+
+\hypertarget{filter-psus}{%
+\subsection{Filter PSUs}\label{filter-psus}}
+
+\hypertarget{rasterize-psus}{%
+\section{Rasterize PSUs for Covariate Space Coverage}\label{rasterize-psus}}
+
+\hypertarget{optimal-sample-size}{%
+\section{Compute Optimal Sample Size}\label{optimal-sample-size}}
+
+\hypertarget{run-optimization}{%
+\subsection{Run Optimization}\label{run-optimization}}
+
+\hypertarget{extract-optimal-sample-size}{%
+\subsection{Extract Optimal Sample Size}\label{extract-optimal-sample-size}}
+
+\hypertarget{csc-computing}{%
+\section{Covariate Space Coverage - Computing PSUs}\label{csc-computing}}
+
+\hypertarget{prepare-function-parameters}{%
+\subsection{Prepare Function Parameters}\label{prepare-function-parameters}}
+
+\hypertarget{perform-k-means-clustering}{%
+\subsection{Perform K-means Clustering}\label{perform-k-means-clustering}}
+
+\hypertarget{assign-clusters-and-calculate-distances}{%
+\subsection{Assign Clusters and Calculate Distances}\label{assign-clusters-and-calculate-distances}}
+
+\hypertarget{extract-selected-psus}{%
+\subsection{Extract Selected PSUs}\label{extract-selected-psus}}
+
+\hypertarget{visualize-in-covariate-space}{%
+\subsection{Visualize in Covariate Space}\label{visualize-in-covariate-space}}
+
+\hypertarget{compute-ssu-tsu}{%
+\section{Compute SSUs and TSUs}\label{compute-ssu-tsu}}
+
+\hypertarget{load-high-resolution-covariates}{%
+\subsection{Load High-Resolution Covariates}\label{load-high-resolution-covariates}}
+
+\hypertarget{process-each-psu}{%
+\subsection{Process Each PSU}\label{process-each-psu}}
+
+\hypertarget{combine-ssus-and-tsus}{%
+\subsection{Combine SSUs and TSUs}\label{combine-ssus-and-tsus}}
+
+\hypertarget{export-units}{%
+\section{Export Sampling Units}\label{export-units}}
+
+\hypertarget{create-cluster-raster}{%
+\subsection{Create Cluster Raster}\label{create-cluster-raster}}
+
+\hypertarget{join-cluster-info-to-tsus}{%
+\subsection{Join Cluster Info to TSUs}\label{join-cluster-info-to-tsus}}
+
+\hypertarget{create-site-ids}{%
+\subsection{Create Site IDs}\label{create-site-ids}}
+
+\hypertarget{export-shapefiles}{%
+\subsection{Export Shapefiles}\label{export-shapefiles}}
+
+\hypertarget{alternative-psus}{%
+\section{Compute Alternative PSUs}\label{alternative-psus}}
+
+\hypertarget{assign-unique-ids}{%
+\section{Assign Country-Wide Unique IDs}\label{assign-unique-ids}}
+
+\hypertarget{export-unified}{%
+\section{Export Unified Datasets}\label{export-unified}}
+
+\hypertarget{summary-stats}{%
+\section{Summary Statistics}\label{summary-stats}}
+
+\hypertarget{distribution-maps}{%
+\section{Create Distribution Maps}\label{distribution-maps}}
+
+\hypertarget{gps-prep}{%
+\section{GPS Device Preparation}\label{gps-prep}}
+
+\hypertarget{export-to-gpx-format}{%
+\subsection{Export to GPX Format}\label{export-to-gpx-format}}
+
+\hypertarget{load-onto-gps-device}{%
+\subsection{Load onto GPS Device}\label{load-onto-gps-device}}
+
+\hypertarget{sampling-procedure}{%
+\section{Sampling Procedure}\label{sampling-procedure}}
+
+\hypertarget{data-recording}{%
+\section{Data Recording}\label{data-recording}}
+
+\hypertarget{qc}{%
+\section{Quality Control}\label{qc}}
+
+\hypertarget{appendix-a-software-and-data-sources}{%
+\section*{Appendix A: Software and Data Sources}\label{appendix-a-software-and-data-sources}}
+\addcontentsline{toc}{section}{Appendix A: Software and Data Sources}
+
+\hypertarget{software-requirements}{%
+\subsection{Software Requirements}\label{software-requirements}}
+
+\hypertarget{data-sources}{%
+\subsection{Data Sources}\label{data-sources}}
+
+\hypertarget{appendix-b-troubleshooting-common-issues}{%
+\section*{Appendix B: Troubleshooting Common Issues}\label{appendix-b-troubleshooting-common-issues}}
+\addcontentsline{toc}{section}{Appendix B: Troubleshooting Common Issues}
+
+\hypertarget{memory-issues}{%
+\subsection{Memory Issues}\label{memory-issues}}
+
+\hypertarget{crs-misalignment}{%
+\subsection{CRS Misalignment}\label{crs-misalignment}}
+
+\hypertarget{empty-geometry}{%
+\subsection{Empty Geometry}\label{empty-geometry}}
+
+\hypertarget{appendix-c-acronyms-and-abbreviations}{%
+\section*{Appendix C: Acronyms and Abbreviations}\label{appendix-c-acronyms-and-abbreviations}}
+\addcontentsline{toc}{section}{Appendix C: Acronyms and Abbreviations}
+
+\hypertarget{tbd}{%
+\chapter{TBD}\label{tbd}}
+
+\hypertarget{soil-data-preparation}{%
+\chapter{Soil Data Preparation}\label{soil-data-preparation}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+\hypertarget{data-cleaning}{%
+\section{Data cleaning}\label{data-cleaning}}
+
+\hypertarget{soil-data-harmonization}{%
+\section{Soil Data Harmonization}\label{soil-data-harmonization}}
+
+\hypertarget{concepts-on-digital-exchange-of-soil-related-data-iso-28258}{%
+\section{Concepts on digital exchange of soil-related data (ISO 28258)}\label{concepts-on-digital-exchange-of-soil-related-data-iso-28258}}
+
+\hypertarget{plot-data}{%
+\section{Plot data}\label{plot-data}}
+
+\hypertarget{profile-data}{%
+\section{Profile data}\label{profile-data}}
+
+\hypertarget{element-data}{%
+\section{Element data}\label{element-data}}
+
+\hypertarget{specimen-data}{%
+\section{Specimen data}\label{specimen-data}}
+
+\hypertarget{definition-of-laboratory-procedures}{%
+\section{Definition of laboratory procedures}\label{definition-of-laboratory-procedures}}
+
+\hypertarget{data-transformation}{%
+\section{Data transformation}\label{data-transformation}}
+
+\hypertarget{organizing-soil-data-according-to-the-glosis-database}{%
+\section{Organizing soil data according to the GloSIS database}\label{organizing-soil-data-according-to-the-glosis-database}}
+
+\hypertarget{tools-for-harmonization-of-soil-databases-within-glosis}{%
+\section{Tools for harmonization of soil databases within GloSIS}\label{tools-for-harmonization-of-soil-databases-within-glosis}}
+
+\hypertarget{digital-soil-mapping-and-modeling}{%
+\chapter{Digital Soil Mapping and Modeling}\label{digital-soil-mapping-and-modeling}}
+
+Placeholder
+
+\hypertarget{introduction-to-digital-soil-mapping}{%
+\section{Introduction to Digital Soil Mapping}\label{introduction-to-digital-soil-mapping}}
+
+\hypertarget{the-scorpan-framework}{%
+\section{The SCORPAN Framework}\label{the-scorpan-framework}}
+
+\hypertarget{statistical-theory-for-predictive-soil-mapping}{%
+\section{Statistical Theory for Predictive Soil Mapping}\label{statistical-theory-for-predictive-soil-mapping}}
+
+\hypertarget{mechanistic-versus-empirical-approaches}{%
+\subsection{Mechanistic versus Empirical Approaches}\label{mechanistic-versus-empirical-approaches}}
+
+\hypertarget{sources-of-residual-variance}{%
+\subsection{Sources of Residual Variance}\label{sources-of-residual-variance}}
+
+\hypertarget{covariates-as-proxies-of-soil-forming-factors}{%
+\subsection{Covariates as Proxies of Soil-Forming Factors}\label{covariates-as-proxies-of-soil-forming-factors}}
+
+\hypertarget{the-universal-model-of-soil-variation}{%
+\subsection{The Universal Model of Soil Variation}\label{the-universal-model-of-soil-variation}}
+
+\hypertarget{extending-the-model-space-depth-and-time-3dt}{%
+\subsection{Extending the Model: Space, Depth, and Time (3D+T)}\label{extending-the-model-space-depth-and-time-3dt}}
+
+\hypertarget{types-of-soil-variables}{%
+\subsection{Types of Soil Variables}\label{types-of-soil-variables}}
+
+\hypertarget{prediction-methods}{%
+\subsection{Prediction Methods}\label{prediction-methods}}
+
+\hypertarget{nonlinearity-and-uncertainty}{%
+\subsection{Nonlinearity and Uncertainty}\label{nonlinearity-and-uncertainty}}
+
+\hypertarget{soil-data-sharing}{%
+\chapter{Soil Data Sharing}\label{soil-data-sharing}}
+
+\hypertarget{data-sharing-and-export-formats}{%
+\section{Data sharing and export formats}\label{data-sharing-and-export-formats}}
+
+\hypertarget{metadata}{%
+\section{Metadata}\label{metadata}}
+
+\hypertarget{web-services}{%
+\section{Web Services}\label{web-services}}
+
+\hypertarget{references-1}{%
+\chapter*{References}\label{references-1}}
+\addcontentsline{toc}{chapter}{References}
+
+%\printindex
+\includepdf{images/backcover.pdf}
+
+\end{document}
