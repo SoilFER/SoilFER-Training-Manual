@@ -1,17 +1,18 @@
 
-# Data preparation for digital soil mapping in R
+# Data preparation for Digital Soil Mapping in R
 
 ## Introduction {#introduction-1}
 
 Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps. 
 
-This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the **Kansas KSSL dataset** as a practical example.The training dataset as well as a tutorial on how to download it l can be found in the following section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
+This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the **Kansas KSSL dataset** as a practical example. The training dataset as well as a tutorial on how to download it can be found in the following section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
 
 Raw soil laboratory data commonly contains the following types of quality issues:
 
 -   **Geographic errors**: Missing or out-of-bounds coordinates, coordinate swaps, and unit inconsistencies
 
 -   **Depth inconsistencies**: Missing soil depths, zero-thickness horizons ((bottom = top), invalid depth logic (bottom \< top), overlapping intervals, and duplicate measurements 
+
 -   **Laboratory data problems**: Missing values, out-of-range soil properties, texture validation failures (clay+silt+sand $\neq$ 100%)
 
 -   **Duplicate profiles**: Multiple measurement sequences at the same location with conflicting depth intervals
