@@ -7,19 +7,16 @@
   b5paper,
   oneside]{book}
 \usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -38,6 +35,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -197,23 +234,23 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage{bookmark}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
+\urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Integrated Soil Information for decision-making },
+  pdftitle={Integrated soil information for decision-making },
   pdfauthor={Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I.},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Integrated Soil Information for decision-making}
+\title{Integrated soil information for decision-making}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{From Soil Sampling Design and Spectroscopy to Decision-Making}
+\subtitle{Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making.}
 \author{Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I.}
 \date{}
 
@@ -241,305 +278,1696 @@ Technical Manual\\}}
 	Rome, 2022
     \end{center}
 \end{titlepage}
-\includepdf{images/CB9015EN_Copyright Disclaimer_v2.pdf}
+\includepdf{images/CB9015EN-Copyright-Disclaimer-v2.pdf}
 
-
-\frontmatter
-\addtocontents{toc}{\protect\hypersetup{hidelinks}}   
-\addtocontents{lof}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\tableofcontents
-\listoffigures
-\listoftables
-\nopagebreak[5]
-
-\begin{figure}
-\includegraphics[width=41.67in]{images/frontcover} \end{figure}
-
-\chapter*{Licence}\label{licence}
+\hypertarget{licence}{%
+\chapter*{Licence}\label{licence}}
 \addcontentsline{toc}{chapter}{Licence}
 
-The Technical Manual is made available under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO licence
+Placeholder
 
-\href{https://creativecommons.org/licenses/by-nc-sa/3.0/igo/legalcode}{CC BY-NC-SA 3.0 IGO}.
-
-\chapter*{Abbreviations and acronyms}\label{abbreviations-and-acronyms}
-\addcontentsline{toc}{chapter}{Abbreviations and acronyms}
-
-\begin{description}
-\item[BD]
-Bulk density
-\item[CEC]
-Cation exchange capacity
-\item[CRAN]
-Comprehensive R archive network
-\item[DSM]
-Digital soil mapping
-\item[GEE]
-Google Earth Engine
-\item[GSP]
-Global Soil Partnership
-\item[INSII]
-International Network of Soil Information Institutions
-\item[ITPS]
-Intergovernmental Technical Panel on Soils
-\item[ME]
-Mean error
-\item[MAE]
-Mean absolute error
-\item[MEC]
-Modelling efficiency coefficient
-\item[NDVI]
-Normalized difference in vegetation index
-\item[QA/QC]
-Quality assurance/quality check
-\item[RMSE]
-Root mean squared error
-\item[SOC]
-Soil organic carbon
-\item[SOM]
-Soil organic matter
-\end{description}
-
-\chapter*{Contributors and reviewers}\label{contributors-and-reviewers}
-\addcontentsline{toc}{chapter}{Contributors and reviewers}
-
-\chapter{Presentation and basics}\label{presentation-and-basics}
+\hypertarget{presentation-and-basics}{%
+\chapter*{Presentation and basics}\label{presentation-and-basics}}
+\addcontentsline{toc}{chapter}{Presentation and basics}
 
 Placeholder
 
-\section{How to use this book}\label{how-to-use-this-book}
+\hypertarget{how-to-use-this-book}{%
+\section*{How to use this book}\label{how-to-use-this-book}}
+\addcontentsline{toc}{section}{How to use this book}
 
-\section{Training material}\label{training-material}
+\hypertarget{training-material}{%
+\section{Training material}\label{training-material}}
 
-\section{Setting up the software environment}\label{setting-up-the-software-environment}
+\hypertarget{setting-up-the-software-environment}{%
+\section{Setting up the software environment}\label{setting-up-the-software-environment}}
 
-\subsection{Digital Soil Mapping}\label{digital-soil-mapping}
+\hypertarget{digital-soil-mapping}{%
+\subsection{Digital Soil Mapping}\label{digital-soil-mapping}}
 
-\subsection{Main concepts: SCORPAN model}\label{main-concepts-scorpan-model}
+\hypertarget{main-concepts-scorpan-model}{%
+\subsection{Main concepts: SCORPAN model}\label{main-concepts-scorpan-model}}
 
-\chapter{Sampling design for soil surveys}\label{sampling-design-for-soil-surveys}
+\hypertarget{data-preparation-for-digital-soil-mapping-in-r}{%
+\chapter{Data preparation for digital soil mapping in R}\label{data-preparation-for-digital-soil-mapping-in-r}}
+
+\hypertarget{introduction1}{%
+\section{Introduction}\label{introduction1}}
+
+Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps.
+
+This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the \textbf{Kansas KSSL dataset} as a practical example. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
+
+Raw soil laboratory data commonly contains the following types of quality issues:
+
+\begin{itemize}
+\item
+  \textbf{Geographic errors}: Missing or out-of-bounds coordinates, coordinate swaps, and unit inconsistencies
+\item
+  \textbf{Depth inconsistencies}: Missing soil depths, zero-thickness horizons ((bottom = top), invalid depth logic (bottom \textless{} top), overlapping intervals, and duplicate measurements
+\item
+  \textbf{Laboratory data problems}: Missing values, out-of-range soil properties, texture validation failures (clay+silt+sand \(\neq\) 100\%)
+\item
+  \textbf{Duplicate profiles}: Multiple measurement sequences at the same location with conflicting depth intervals
+\item
+  \textbf{Logical inconsistencies}: Values that are physically or chemically impossible given soil science constraints
+\end{itemize}
+
+The Kansas KSSL dataset used throughout this section provides real-world examples of these issues, allowing you to practice identifying and correcting them systematically using reproducible R workflows.
+
+\textbf{Considerations}
+
+\begin{itemize}
+\item
+  Every soil dataset is unique and may have specific data-quality issues.
+\item
+  Proper identification of quality problems requires prior understanding of the dataset's structure.
+\item
+  When using a different database, the code shown here must be adapted to your actual database column names and data types.
+\end{itemize}
+
+\hypertarget{loading-data}{%
+\section{Loading and exploring raw soil data}\label{loading-data}}
+
+Before performing any data cleaning or validation, you must first understand the structure and content of your raw data. This exploratory phase reveals data types, identifies potential problems, and informs your validation strategy.
+
+\hypertarget{basic-data-loading-and-structure}{%
+\subsection{Basic data loading and structure}\label{basic-data-loading-and-structure}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)        }\CommentTok{\# Data manipulation and visualization}
+\FunctionTok{library}\NormalTok{(readxl)           }\CommentTok{\# Read Excel files}
+\FunctionTok{library}\NormalTok{(knitr)            }\CommentTok{\# For formatted tables}
+
+\CommentTok{\# Read Excel file containing raw soil data}
+\NormalTok{raw\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"../../01\_data/module1/KSSL\_data.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \DecValTok{1}\NormalTok{) }
+
+\CommentTok{\# Define the folder to store the results of the exercise}
+\NormalTok{output\_dir }\OtherTok{\textless{}{-}}\StringTok{"../../03\_outputs/module1/"}
+
+\CommentTok{\# Create the output directory if not existing}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(output\_dir))\{}
+  \CommentTok{\# create a new sub directory inside the main path}
+  \FunctionTok{dir.create}\NormalTok{(output\_dir)}
+\NormalTok{\}}
+
+\FunctionTok{str}\NormalTok{(raw\_data) }\CommentTok{\# Examine the structure of the data}
+\FunctionTok{head}\NormalTok{(raw\_data, }\DecValTok{10}\NormalTok{) }\CommentTok{\# Show the first 10 rows}
+\FunctionTok{summary}\NormalTok{(raw\_data[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{25}\NormalTok{]) }\CommentTok{\# Summarize the data in 25 first columns}
+\end{Highlighting}
+\end{Shaded}
+
+This dataset contains four types of information: \emph{site} data (location and depth), \emph{laboratory} data (measured soil properties), and \emph{spectral} data (mid-infrared, MIR, reflectance). In addition, each row includes identifiers for the sample (\texttt{smp\_id}), and other keys related to the spectral analyses (\texttt{join\_key}, \texttt{scan\_path\_name}, \texttt{file\_name}). In many cases, soil datasets do not include spectral data. Understanding these components will help you organize the cleaning process systematically.
+
+\hypertarget{data-components-and-organization}{%
+\subsection{Data components and organization}\label{data-components-and-organization}}
+
+Typically, a raw soil dataset includes several types of information:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Site information} defines where and at what depth a soil sample was collected:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Geographic coordinates (longitude and latitude, often in WGS84 or X, Y in Cartesian projected systems)
+  \item
+    Unique identifiers (profile ID, horizon ID, sample ID)
+  \item
+    Depth boundaries (top and bottom depth of the analyzed horizons in each soil profile)
+  \end{itemize}
+\item
+  \textbf{Laboratory data} contains measured soil properties:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Physical properties (texture: clay, silt, sand percentages)
+  \item
+    Chemical properties (pH, organic carbon, cation exchange capacity)
+  \item
+    Other analyzed parameters (salinity, nutrients, etc.)
+  \end{itemize}
+\item
+  \textbf{Spectral data} (optional) includes:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Spectral reflectance values at multiple wavelengths (MIR, VIS-NIR)
+  \item
+    Used for predicting soil properties through spectroscopy
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{site-data-preparation}{%
+\section{Preparing site data for analysis}\label{site-data-preparation}}
+
+Data cleaning involves extracting relevant information from raw data, standardizing column names, assigning unique identifiers, and validating data quality. To track changes through this process, we add a unique row identifier to the raw dataset before making any modifications.
+
+We operationally define a \textbf{site} as the set of horizons or layers that share the same geographic location (i.e., identical coordinates at the chosen precision). The site has information on location (lat and long coordinates), depth (upper and lower depth boundaries) and metadata-related information (horizon ID).
+
+\hypertarget{adding-a-unique-row-identifier}{%
+\subsection{Adding a unique row identifier}\label{adding-a-unique-row-identifier}}
+
+During data cleaning, some records may be removed, merged, or modified. Good practice is to add a unique sequential \texttt{rowID} to the raw (unchanged) dataset so you can track each original record throughout the entire workflow. This identifier allows you to trace any result back to its source data and understand which raw records were retained or excluded.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add unique row identifier to track individual records through processing}
+\NormalTok{raw\_data }\OtherTok{\textless{}{-}}\NormalTok{ raw\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rowID =} \FunctionTok{row\_number}\NormalTok{(), }\AttributeTok{.before =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{rowID} column preserves the link between processed data and raw data, enabling full transparency and reproducibility in your cleaning workflow.
+
+\hypertarget{extracting-and-standardizing-column-names-for-sites}{%
+\subsection{Extracting and standardizing column names for sites}\label{extracting-and-standardizing-column-names-for-sites}}
+
+Raw soil data often uses inconsistent column naming conventions that vary between data sources, laboratories, and surveys. Standardizing these names prevents errors and makes your code more readable and reusable across different projects
+
+The R object \texttt{site} will store the location, depth, and metadata from the full set of observations, including all sites and their associated horizons or layers in the database.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select only the columns needed for site data preparation}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ raw\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+\NormalTok{    rowID,}
+\NormalTok{    Long\_Site.x,              }\CommentTok{\# Raw column name for longitude}
+\NormalTok{    Lat\_Site.x,               }\CommentTok{\# Raw column name for latitude}
+\NormalTok{    smp\_id,                   }\CommentTok{\# Sample/horizon identifier}
+\NormalTok{    Top\_depth\_cm.x,           }\CommentTok{\# Top depth in centimeters}
+\NormalTok{    Bottom\_depth\_cm.x         }\CommentTok{\# Bottom depth in centimeters}
+\NormalTok{  )}
+
+  \CommentTok{\# Rename columns to standard, consistent names}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}
+    \AttributeTok{lon =}\NormalTok{ Long\_Site.x,}
+    \AttributeTok{lat =}\NormalTok{ Lat\_Site.x,}
+    \AttributeTok{HorID =}\NormalTok{ smp\_id,}
+    \AttributeTok{top =}\NormalTok{ Top\_depth\_cm.x,}
+    \AttributeTok{bottom =}\NormalTok{ Bottom\_depth\_cm.x}
+\NormalTok{  ) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-unique-profile-identifiers}{%
+\subsection{Creating unique profile identifiers}\label{creating-unique-profile-identifiers}}
+
+Each unique geographic location represents a single soil profile. A profile may contain multiple horizons or layers sampled at different depths. We create a unique identifier \texttt{ProfID} for each location based on coordinates so that all horizons from the same location can be grouped together in the same profile.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Group all horizons at the same location}
+  \FunctionTok{group\_by}\NormalTok{(lon, lat) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Assign sequential ID to each unique location (cur\_group\_id() returns group number)}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ProfID =} \FunctionTok{cur\_group\_id}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Format as standardized IDs: PROF0001, PROF0002, etc. with 4 digit resolution}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ProfID =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"PROF\%04d"}\NormalTok{, ProfID))}
+
+  \CommentTok{\# Reorder columns for clarity}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(rowID, ProfID, HorID, lon, lat, top, bottom)}
+\end{Highlighting}
+\end{Shaded}
+
+After this step, horizons from the same location share a common \texttt{ProfID}, while those from different locations receive distinct \texttt{ProfID} values. When unique profile IDs are not available in the raw data, this method reconstructs profile identity using the geographic position of the samples.
+
+\hypertarget{remove-exact-duplicate-site-records}{%
+\subsection{Remove exact duplicate site records}\label{remove-exact-duplicate-site-records}}
+
+Multiple site records may correspond to identical observations (i.e., the same location and depth). In this dataset, spectroscopic measurements were performed four times per sample, resulting in duplicate entries. Remove duplicates and retain a single record to prevent redundancy and double counting in subsequent analyses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove exact duplicate rows}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rowID), }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Standard column naming convention} ensures consistency across all your code and projects:
+
+\begin{itemize}
+\item
+  \texttt{ProfID}: Profile identifier
+\item
+  \texttt{HorID}: Horizon or sample identifier
+\item
+  \texttt{lon}, \texttt{lat}: Geographic coordinates (decimal degrees, WGS84)
+\item
+  \texttt{top},\texttt{bottom}: Depth boundaries in centimeters
+\end{itemize}
+
+\textbf{Adjust \texttt{ProfID} for locations with multiple profile descriptions}
+
+\begin{itemize}
+\item
+  Horizons or layers measured at different times or for different purposes may occur at the same location. If the \texttt{ProfID} is based only on spatial position, these observations may share the same identifier.
+\item
+  Identify these profiles and assign a unique \texttt{ProfID} to each one (see the procedure in Section 6 of this chapter).
+\item
+  Proper identification of unique profiles is necessary to ensure consistent data management and reliable Digital Soil Mapping results.
+\end{itemize}
+
+\hypertarget{coordinate-validation}{%
+\section{Coordinate validation and correction}\label{coordinate-validation}}
+
+Spatial coordinates form the basis of all spatial analyses. Invalid or inaccurate coordinates result in erroneous maps and unreliable spatial predictions. Systematic validation is therefore essential to identify and correct coordinate errors before they propagate through the analytical workflow.
+
+Coordinates can be expressed in different coordinate reference systems (CRS):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Geographic coordinate}s (longitude and latitude in decimal degrees, typically WGS84)
+\item
+  \textbf{Projected coordinates} (X and Y in a projected system, such as UTM or a local projection)
+\end{itemize}
+
+Any dataset should explicitly document which CRS is used. For Digital Soil Mapping workflows, it is recommended to standardize all coordinates to WGS84 (EPSG:4326) geographic coordinates (longitude and latitude) to ensure interoperability and consistency across projects.
+
+\hypertarget{check-1-missing-coordinates}{%
+\subsection{Check 1: Missing coordinates}\label{check-1-missing-coordinates}}
+
+Records lacking valid spatial coordinates cannot be georeferenced and must be excluded from spatial analyses. Check for missing or null values in both coordinate dimensions (e.g., latitude/longitude or projected X/Y) before proceeding.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# Remove records with missing coordinates}
+\NormalTok{  site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(lon) }\SpecialCharTok{\&} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(lat))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-2-valid-coordinate-ranges}{%
+\subsection{Check 2: Valid coordinate ranges}\label{check-2-valid-coordinate-ranges}}
+
+For geographic coordinates (longitude and latitude expressed in decimal degrees), values must fall within the following absolute ranges:
+
+\textbf{Longitude}: -180° to +180° (negative = West, positive = East)
+\textbf{Latitude}: -90° to +90° (negative = South, positive = North)
+
+Values outside these limits indicate invalid or incorrectly formatted coordinates.
+
+The following validation routine applies only to geographic coordinates stored in decimal degrees.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep only rows with valid lon/lat geographic coordinates inside valid ranges}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(}
+\NormalTok{    lon }\SpecialCharTok{\textgreater{}=} \SpecialCharTok{{-}}\DecValTok{180}\NormalTok{, lon }\SpecialCharTok{\textless{}=} \DecValTok{180}\NormalTok{,}
+\NormalTok{    lat }\SpecialCharTok{\textgreater{}=}  \SpecialCharTok{{-}}\DecValTok{90}\NormalTok{, lat }\SpecialCharTok{\textless{}=}  \DecValTok{90}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+If projected coordinates are used, valid ranges depend on the specific projection and the spatial extent of the study area. In such cases, define the expected bounds for the coordinate reference system (CRS) before performing range checks.
+
+\textbf{Coordinate system considerations}:
+
+\begin{itemize}
+\item
+  Geographic coordinates (longitude/latitude in decimal degrees) have fixed global bounds (−180° to +180°, −90° to +90°) that must not be exceeded.
+\item
+  Projected coordinates (e.g., X/Y in meters, such as UTM) require CRS-specific limits.
+\item
+  To minimize CRS-related errors, standardize coordinates to WGS84 (EPSG:4326) early in the workflow. Document the original CRS and any transformations applied to ensure reproducibility and transparency.
+\end{itemize}
+
+\hypertarget{depth-validation}{%
+\section{Soil depth validation and correction}\label{depth-validation}}
+
+Depth intervals define the soil layer represented by each observation. Missing or inconsistent depth information prevents harmonization across profiles and can lead to incorrect interpretation of depth-dependent patterns and model outputs. This section describes a set of quality-control checks to validate and, where possible, correct depth interval data. The checks are applied sequentially, removing structurally invalid records before attempting logical corrections.
+
+\textbf{Understanding depth conventions}
+
+Soil horizons (or layers) are represented as depth intervals with explicit upper and lower boundaries, typically recorded as top depth and bottom depth (e.g., ``0--15 cm'' indicates measurements from 0 to 15 cm below the soil surface). The following rules apply:
+
+\begin{itemize}
+\item
+  Depth boundaries define a continuous interval in the soil profile.
+\item
+  Bottom depth must be strictly greater than top depth.
+\item
+  Depths are measured downward from the soil surface (0 cm).
+\item
+  Horizon thickness is computed as bottom − top and must be positive.
+\end{itemize}
+
+\hypertarget{check-1-missing-depth-boundaries}{%
+\subsection{Check 1: Missing depth boundaries}\label{check-1-missing-depth-boundaries}}
+
+Records with missing top or bottom depths cannot be assigned to a valid interval and should be excluded unless depth information can be recovered from the source.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep records where \textasciigrave{}top\textasciigrave{} or \textasciigrave{}bottom\textasciigrave{} are not NA}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(top) }\SpecialCharTok{\&} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(bottom))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-2-negative-depth-values}{%
+\subsection{Check 2: Negative depth values}\label{check-2-negative-depth-values}}
+
+Depth values must be non-negative. Negative depths indicate invalid input and should be removed unless the error can be corrected using metadata or original field notes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep records where \textasciigrave{}top\textasciigrave{} or \textasciigrave{}bottom\textasciigrave{} are positive}
+\NormalTok{  site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{(top }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ bottom }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-3-zero-thickness-intervals}{%
+\subsection{Check 3: Zero-thickness intervals}\label{check-3-zero-thickness-intervals}}
+
+Horizons with top = bottom have zero thickness and do not represent a measurable soil layer. These records should be excluded from analysis unless the error can be corrected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove zero{-}thickness horizons}
+\NormalTok{  site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{(bottom }\SpecialCharTok{{-}}\NormalTok{ top }\SpecialCharTok{==} \DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-4-invalid-depth-logic}{%
+\subsection{Check 4: Invalid depth logic}\label{check-4-invalid-depth-logic}}
+
+For a valid depth interval, bottom \textgreater{} top must hold. Violations typically indicate data entry errors (e.g., swapped boundaries or incorrect units).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove invalid depth logic}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(bottom }\SpecialCharTok{\textgreater{}}\NormalTok{ top)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-5-profiles-without-a-surface-horizon-top-0-todo}{%
+\subsection{Check 5: Profiles without a surface horizon (top \textgreater{} 0) ····todo}\label{check-5-profiles-without-a-surface-horizon-top-0-todo}}
+
+Each profile should represent the complete soil column starting at surface. This is essential for depth harmonization in a later step for Digital Soil Mapping.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Keep only profiles that start at the surface (min top == 0)}
+\NormalTok{site }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{group\_by}\NormalTok{(ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(top) }\SpecialCharTok{\&} \FunctionTok{min}\NormalTok{(top, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Further checks for depth integrity required}
+
+After applying the basic depth validation steps above, some profiles may still contain duplicated or overlapping horizons, or multiple depth sequences for the same \texttt{ProfID}. These situations often arise from repeated sampling or laboratory analyses conducted at different times.
+
+Do not remove these records prematurely. Duplicate horizons may contain complementary analytical measurements that are not consistently available across all repetitions. Eliminating them at this stage may result in unintended data loss.
+
+Depth-sequence conflicts should therefore be resolved only after laboratory data have been cleaned, validated, and consolidated at the horizon level. Once analytical completeness has been ensured, apply the dedicated profile-level procedure described in \textbf{`Detecting and resolving duplicate soil profiles'} to identify and retain a single representative depth sequence per profile.
+
+This staged approach prevents loss of valid measurements and ensures consistent profile harmonization.
+
+\hypertarget{lab-validation}{%
+\section{Preparing lab data: harmonization and validation}\label{lab-validation}}
+
+Laboratory analyses provide the soil property measurements used as soil property inputs for Digital Soil Mapping. Laboratory data must be quality-controlled to ensure completeness, plausible value ranges, and internal consistency (e.g., particle-size fractions summing to \textasciitilde100\%). This section describes standard extraction, harmonization, and validation checks.
+
+Laboratory analyses provide the soil property measurements used as inputs for Digital Soil Mapping. Prior to modelling, laboratory data must be quality-controlled to ensure:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  completeness of critical variables,
+\item
+  numeric data types for analytical parameters,
+\item
+  plausibility of measured values based on feasible analytical thresholds, and
+\item
+  traceable handling of potential errors (flagging, correction, or exclusion).
+\end{enumerate}
+
+\hypertarget{prepare-and-standardize-laboratory-columns}{%
+\subsection{Prepare and standardize laboratory columns}\label{prepare-and-standardize-laboratory-columns}}
+
+In this step, you will extract horizon-level laboratory results from the raw dataset, convert relevant fields to numeric, and retain only the records associated with the profiles preserved in the cleaned site dataset. Finally, you will merge the laboratory data back into the site dataset using \texttt{rowID} as the unique record identifier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract laboratory columns with standardized names}
+\NormalTok{lab }\OtherTok{\textless{}{-}}\NormalTok{ raw\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+\NormalTok{    rowID,}
+\NormalTok{    SOC, Carbon\_Total,                                }\CommentTok{\# Soil Organic Carbon and Total Carbon (\%)                    }
+\NormalTok{    Bulk.Density\_1\_3.BAR, Bulk.Density\_ovendry,       }\CommentTok{\# Bulk density at 1.3 bar and oven dry (g/cm³)}
+\NormalTok{    Sand, Silt, Clay,                                 }\CommentTok{\# Texture (\%)}
+\NormalTok{    pH,                                               }\CommentTok{\# pH H2O}
+\NormalTok{    CEC,                                              }\CommentTok{\# CEC in cmol(+)/kg}
+\NormalTok{    Nitrogen\_Total,                                   }\CommentTok{\# Total nitrogen (\%),}
+\NormalTok{    Phosphorus\_Mehlich3, Phosphorus\_Olsen, Potassium, }\CommentTok{\# Available P (mg/kg), Exchangeable K (cmol(+)/kg)}
+\NormalTok{    Calcium\_Carbonate\_equivalent                      }\CommentTok{\# CaCO3 equivalent (\%)}
+\NormalTok{  )}
+
+  \CommentTok{\# Ensure numeric type for all analytical parameters (prevents issues if stored as text)}
+\NormalTok{  lab }\OtherTok{\textless{}{-}}\NormalTok{ lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rowID, as.numeric))}
+
+  \CommentTok{\# Keep only lab records that are present in the cleaned site dataset}
+\NormalTok{  lab }\OtherTok{\textless{}{-}}\NormalTok{ lab }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(rowID }\SpecialCharTok{\%in\%}\NormalTok{ site}\SpecialCharTok{$}\NormalTok{rowID)}
+  
+  \CommentTok{\# Join both site and lab data by the common identifier \textquotesingle{}rowID\textquotesingle{}}
+\NormalTok{  site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(lab, }\AttributeTok{by =} \StringTok{"rowID"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+After preparing the laboratory dataset, the analytical results are validated through three quality-control checks:
+
+\begin{itemize}
+\item
+  Check 1: Identify out-of-bounds values --- flag measurements that fall outside plausible or admissible ranges.
+\item
+  Check 2: Texture validation --- verify that sand, silt, and clay values are internally consistent (e.g., within expected limits and summing appropriately when expressed as percentages).
+\item
+  Check 3: Correction of out-of-bounds laboratory values --- apply a proper correction strategy (targeted fixes where justified, or replacing suspect values with \texttt{NA}).
+\end{itemize}
+
+\hypertarget{check-1-check-each-property-against-feasible-analytical-thresholds}{%
+\subsection{Check 1: Check each property against feasible analytical thresholds}\label{check-1-check-each-property-against-feasible-analytical-thresholds}}
+
+Soil properties have physically and analytically plausible bounds. Values outside these bounds typically indicate measurement issues, unit inconsistencies, or transcription/data entry errors. Thresholds should be defined a priori and documented (e.g., based on existing soil datasets or peer-reviewed literature), then adjusted as needed for the target region and soil types.
+
+\hypertarget{load-property-thresholds}{%
+\subsubsection{Load property thresholds}\label{load-property-thresholds}}
+
+Store thresholds in a configuration file (e.g., \texttt{property\_thresholds.csv}) to ensure transparency and reproducibility.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-}{-}{-}}
+\CommentTok{\# Load valid ranges for soil properties}
+\CommentTok{\# }\AlertTok{NOTE}\CommentTok{: These thresholds are based on global soil datasets and/or literature.}
+\CommentTok{\#       Adjust for your specific region and soil types.}
+\NormalTok{property\_thresholds }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"property\_thresholds.csv"}\NormalTok{)}
+\CommentTok{\# Display thresholds}
+\FunctionTok{print}\NormalTok{(property\_thresholds)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{identify-out-of-bounds-values}{%
+\subsubsection{Identify out-of-bounds values}\label{identify-out-of-bounds-values}}
+
+Each soil analytical property is evaluated against its min/max thresholds. Out-of-bounds values are compiled into a structured issue log (\texttt{out\_of\_bounds\_issues}) to support inspection, reporting, and correction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Identify out{-}of{-}bounds values}
+\NormalTok{out\_of\_bounds\_issues }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_len}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(property\_thresholds))) \{}
+\NormalTok{  prop }\OtherTok{\textless{}{-}}\NormalTok{ property\_thresholds}\SpecialCharTok{$}\NormalTok{property[i]}
+\NormalTok{  prop\_desc }\OtherTok{\textless{}{-}}\NormalTok{ property\_thresholds}\SpecialCharTok{$}\NormalTok{description[i]}
+\NormalTok{  min\_val }\OtherTok{\textless{}{-}}\NormalTok{ property\_thresholds}\SpecialCharTok{$}\NormalTok{min\_valid[i]}
+\NormalTok{  max\_val }\OtherTok{\textless{}{-}}\NormalTok{ property\_thresholds}\SpecialCharTok{$}\NormalTok{max\_valid[i]}
+  
+  \CommentTok{\# Check property exists in the dataset}
+  \ControlFlowTok{if}\NormalTok{ (prop }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(site\_lab)) \{}
+\NormalTok{    x }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab[[prop]]}
+    
+    \CommentTok{\# Detect out{-}of{-}bounds: non{-}missing values outside [min\_val, max\_val]}
+\NormalTok{    idx }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x) }\SpecialCharTok{\&}\NormalTok{ (x }\SpecialCharTok{\textless{}}\NormalTok{ min\_val }\SpecialCharTok{|}\NormalTok{ x }\SpecialCharTok{\textgreater{}}\NormalTok{ max\_val))}
+    
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(idx) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{      out\_of\_bounds\_issues[[prop]] }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+        \AttributeTok{rowID =}\NormalTok{ site\_lab}\SpecialCharTok{$}\NormalTok{rowID[idx],}
+        \AttributeTok{property =}\NormalTok{ prop,}
+        \AttributeTok{description =}\NormalTok{ prop\_desc,}
+        \AttributeTok{value =}\NormalTok{ x[idx],}
+        \AttributeTok{min\_valid =}\NormalTok{ min\_val,}
+        \AttributeTok{max\_valid =}\NormalTok{ max\_val,}
+        \AttributeTok{issue =} \FunctionTok{ifelse}\NormalTok{(}
+\NormalTok{          x[idx] }\SpecialCharTok{\textless{}}\NormalTok{ min\_val,}
+          \FunctionTok{paste0}\NormalTok{(}\StringTok{"Below minimum: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(x[idx], }\DecValTok{2}\NormalTok{), }\StringTok{" \textless{} "}\NormalTok{, min\_val),}
+          \FunctionTok{paste0}\NormalTok{(}\StringTok{"Above maximum: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(x[idx], }\DecValTok{2}\NormalTok{), }\StringTok{" \textgreater{} "}\NormalTok{, max\_val)}
+\NormalTok{        )}
+\NormalTok{      )}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\CommentTok{\# Remove temporary objects}
+\FunctionTok{rm}\NormalTok{(i,idx,max\_val,min\_val, prop,prop\_desc,x)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{reporting-out-of-bounds-for-properties-and-audit-trail}{%
+\subsubsection{Reporting out-of-bounds for properties and audit trail}\label{reporting-out-of-bounds-for-properties-and-audit-trail}}
+
+Generate a summary by property, identify records with issues (often indicative of systematic errors), and export a full QC report for review and documentation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Report out{-}of{-}bounds if present}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(out\_of\_bounds\_issues) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{  all\_issues }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(out\_of\_bounds\_issues)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{ Out{-}of{-}bounds properties found}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+
+  \CommentTok{\# Summary by property}
+\NormalTok{  issue\_summary }\OtherTok{\textless{}{-}}\NormalTok{ all\_issues }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(property, description) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}
+      \AttributeTok{count =} \FunctionTok{n}\NormalTok{(),}
+      \AttributeTok{min\_value\_found =} \FunctionTok{min}\NormalTok{(value, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+      \AttributeTok{max\_value\_found =} \FunctionTok{max}\NormalTok{(value, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+      \AttributeTok{min\_valid =} \FunctionTok{first}\NormalTok{(min\_valid),}
+      \AttributeTok{max\_valid =} \FunctionTok{first}\NormalTok{(max\_valid),}
+      \AttributeTok{.groups =} \StringTok{"drop"}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count))}
+  
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Issues by property:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(issue\_summary)}
+  
+  \CommentTok{\# Rows with multiple issues}
+\NormalTok{  rows\_with\_multiple\_issues }\OtherTok{\textless{}{-}}\NormalTok{ all\_issues }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(rowID) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}
+      \AttributeTok{n\_issues =} \FunctionTok{n}\NormalTok{(),}
+      \AttributeTok{properties =} \FunctionTok{paste}\NormalTok{(property, }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{),}
+      \AttributeTok{.groups =} \StringTok{"drop"}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(n\_issues }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(n\_issues))}
+  
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(rows\_with\_multiple\_issues) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{ Records with MULTIPLE property issues:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(rows\_with\_multiple\_issues, }\DecValTok{10}\NormalTok{))}
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{These records likely have data entry errors and should be reviewed.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \CommentTok{\# Export QC report}
+  \FunctionTok{write\_xlsx}\NormalTok{(}
+    \FunctionTok{list}\NormalTok{(}
+      \AttributeTok{Summary =}\NormalTok{ issue\_summary,}
+      \AttributeTok{Issues\_by\_record =}\NormalTok{ rows\_with\_multiple\_issues,}
+      \AttributeTok{All\_issues =}\NormalTok{ all\_issues}
+\NormalTok{    ),}
+    \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"soil\_property\_validation\_report.xlsx"}\NormalTok{)}
+\NormalTok{  )}
+  
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{ Detailed report saved to: soil\_property\_validation\_report.xlsx}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  
+  \FunctionTok{rm}\NormalTok{(all\_issues, issue\_summary, rows\_with\_multiple\_issues)}
+  
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{ All soil properties within valid ranges!}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-2-texture-validation}{%
+\subsection{Check 2: Texture validation}\label{check-2-texture-validation}}
+
+Particle-size fractions should sum to approximately 100\%. This check is used to flag potential inconsistencies (rounding, unit conversion issues, or data errors). The following code just flag inconsistencies in Particle-size fractions. Values failing this check should be reviewed rather than automatically removed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print rows with texture validation incosistencies }
+\NormalTok{texture\_problems }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{texture\_sum =}\NormalTok{ Clay }\SpecialCharTok{+}\NormalTok{ Silt }\SpecialCharTok{+}\NormalTok{ Sand,}
+    \AttributeTok{texture\_valid =} \FunctionTok{abs}\NormalTok{(texture\_sum }\SpecialCharTok{{-}} \DecValTok{100}\NormalTok{) }\SpecialCharTok{\textless{}} \DecValTok{2}
+\NormalTok{  )}
+
+\NormalTok{texture\_problems }\OtherTok{\textless{}{-}}\NormalTok{ texture\_problems }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{texture\_valid)}
+
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(texture\_problems) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{" Found"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(texture\_problems),}
+      \StringTok{"records with invalid texture sums}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(texture\_problems }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{select}\NormalTok{(rowID, ProfID, Clay, Silt, Sand, texture\_sum))}
+  \CommentTok{\# Flag for review (do not automatically remove)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-3-correction-of-out-of-bounds-laboratory-values}{%
+\subsection{Check 3: Correction of out-of-bounds laboratory values}\label{check-3-correction-of-out-of-bounds-laboratory-values}}
+
+Out-of-bounds values identified during validation should be handled systematically and transparently. Corrections must follow clearly defined rules to avoid introducing subjective bias or undocumented changes.
+
+Two complementary approaches are recommended:
+
+\textbf{Option 1 (preferred): targeted correction}, when the error mechanism is known and the true value can be reasonably inferred (e.g., sign errors or unit-scaling mistakes).
+
+\textbf{Option 2: replacement with \texttt{NA}}, when the true value cannot be reliably reconstructed. This preserves the observation while preventing propagation of erroneous measurements into subsequent analyses.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Option 1} requires a clear understanding of the relevant properties and thresholds to correctly identify errors, which can then be fixed with dedicated code.
+\item
+  \textbf{Option 2} is a more drastic approach, as it will automatically replace all potential mistakes with \texttt{NA}. This can result in a critical decrease in records for some measured properties.
+\item
+  Choosing between these options is a decision for the data manager. Handle both with care.
+\end{itemize}
+
+\hypertarget{option-1-targeted-corrections-when-error-mechanism-is-known}{%
+\subsubsection{Option 1: Targeted corrections (when error mechanism is known)}\label{option-1-targeted-corrections-when-error-mechanism-is-known}}
+
+Apply deterministic corrections only when the source of error is clearly understood and scientifically justified.
+
+The summary of the critical values provides information on the nature of each issue.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (property }\ControlFlowTok{in} \FunctionTok{names}\NormalTok{(out\_of\_bounds\_issues))\{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Total errors in"}\NormalTok{,property, }\StringTok{":"}\NormalTok{,}\FunctionTok{n\_distinct}\NormalTok{(out\_of\_bounds\_issues[[property]]}\SpecialCharTok{$}\NormalTok{rowID), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(out\_of\_bounds\_issues[property])[}\DecValTok{4}\NormalTok{]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+In the KSSL dataset provided, \texttt{SOC} is negative in 43 rows while \texttt{Phosphorus\_Mehlich3} has wrong values in 1 row.
+
+Example corrections shown below assume:\\
+- Negative \texttt{SOC} values arise from sign errors, and\\
+- Extremely high \texttt{Phosphorus\_Mehlich3} values arise from unit scaling (e.g., ppb recorded instead of mg/kg).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correction: Negative SOC values}
+\NormalTok{idx }\OtherTok{\textless{}{-}} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(site\_lab}\SpecialCharTok{$}\NormalTok{SOC) }\SpecialCharTok{\&}\NormalTok{ site\_lab}\SpecialCharTok{$}\NormalTok{SOC }\SpecialCharTok{\textless{}} \DecValTok{0}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{any}\NormalTok{(idx)) site\_lab}\SpecialCharTok{$}\NormalTok{SOC[idx] }\OtherTok{\textless{}{-}} \FunctionTok{abs}\NormalTok{(site\_lab}\SpecialCharTok{$}\NormalTok{SOC[idx])}
+\CommentTok{\# Remove temporary objects}
+\FunctionTok{rm}\NormalTok{(idx)}
+
+\CommentTok{\# Correction: Phosphorus Mehlich 3 \textgreater{} 2000 mg/kg (likely 1000× error {-} ppb instead of ppm)}
+\NormalTok{idx }\OtherTok{\textless{}{-}} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(site\_lab}\SpecialCharTok{$}\NormalTok{Phosphorus\_Mehlich3) }\SpecialCharTok{\&}\NormalTok{ site\_lab}\SpecialCharTok{$}\NormalTok{Phosphorus\_Mehlich3 }\SpecialCharTok{\textgreater{}} \DecValTok{2000}
+\NormalTok{n\_idx }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(idx)}
+\ControlFlowTok{if}\NormalTok{ (n\_idx }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) site\_lab}\SpecialCharTok{$}\NormalTok{Phosphorus\_Mehlich3[idx] }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab}\SpecialCharTok{$}\NormalTok{Phosphorus\_Mehlich3[idx] }\SpecialCharTok{/} \DecValTok{1000}
+\CommentTok{\# Remove temporary objects}
+\FunctionTok{rm}\NormalTok{(idx, n\_idx)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{option-2-replace-out-of-bounds-values-with-na}{%
+\subsubsection{\texorpdfstring{Option 2: Replace out-of-bounds values with \texttt{NA}}{Option 2: Replace out-of-bounds values with NA}}\label{option-2-replace-out-of-bounds-values-with-na}}
+
+When values cannot be corrected with confidence, replace only the problematic measurements with \texttt{NA} while retaining the rest of the record.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loop through each property in the out\_of\_bounds\_issues list}
+\ControlFlowTok{for}\NormalTok{ (property }\ControlFlowTok{in} \FunctionTok{names}\NormalTok{(out\_of\_bounds\_issues)) \{}
+  \CommentTok{\# Get the rowIDs with issues for this property}
+\NormalTok{  rowIDs\_with\_issues }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(out\_of\_bounds\_issues[[property]]}\SpecialCharTok{$}\NormalTok{rowID)}
+  \CommentTok{\# Change the values of the property in those rows to NA}
+\NormalTok{  site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}
+      \StringTok{"\{property\}"} \SpecialCharTok{:}\ErrorTok{=}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{if\_else}\NormalTok{(rowID }\SpecialCharTok{\%in\%}\NormalTok{ rowIDs\_with\_issues,}
+                                     \FunctionTok{as.numeric}\NormalTok{(}\ConstantTok{NA}\NormalTok{), .data[[property]])}
+\NormalTok{    )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{duplicate-detection}{%
+\section{Resolving duplicated data in soil profiles}\label{duplicate-detection}}
+
+Duplicate or repeated soil profile descriptions may occur when the same location is sampled or analysed multiple times. These situations can produce multiple horizon sequences under the same \texttt{ProfID}, resulting in inconsistent depth intervals, overlapping layers, or conflicting analytical values.
+
+Such inconsistencies must be resolved before depth harmonization and Digital Soil Mapping, as it requires one coherent and unique vertical profile per location.
+
+The objective of this section is to:
+
+-Detect duplicated or overlapping depth descriptions
+
+-Merge replicated analytical measurements when appropriate
+
+\begin{itemize}
+\tightlist
+\item
+  Separate or select among competing depth sequences
+\end{itemize}
+
+-Retain only complete and internally consistent profiles
+
+\hypertarget{why-duplicates-occur}{%
+\subsection{Why duplicates occur}\label{why-duplicates-occur}}
+
+Duplicates typically arise from:
+
+\begin{itemize}
+\item
+  Re-sampling of the same location in later campaigns (temporal duplicates)
+\item
+  Multiple laboratory analyses of the same sample (analytical replicates)
+\item
+  Re-use of identifiers across merged surveys
+\end{itemize}
+
+These situations may produce:
+
+\begin{itemize}
+\item
+  Multiple horizon sequences per \texttt{ProfID}
+\item
+  Overlapping or conflicting depth intervals
+\item
+  Repeated horizons with different values
+\item
+  Ambiguity about which sequence should be used for modelling
+\end{itemize}
+
+\hypertarget{types-of-duplicate-situations}{%
+\subsection{Types of duplicate situations}\label{types-of-duplicate-situations}}
+
+It is important to distinguish between two fundamentally different cases:
+
+\textbf{- Case A --- Replicated analyses of the same horizons (same depths)}
+
+\begin{verbatim}
+- Identical top–bottom intervals in the same profile
+
+- Multiple measurements of the same soil layer
+
+- Depth integrity is preserved
+
+- Typical in monitoring databases
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Action}: If used for monitoring, use the data for the corresponding period; otherwise, merge measurements (e.g., average values)
+\end{itemize}
+
+\textbf{- Case B --- Multiple depth sequences (different depths)}
+
+\begin{verbatim}
+- Different top–bottom structures within the same ProfID
+
+- Represents independent profile descriptions
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Action}: select one representative sequence
+\end{itemize}
+
+\hypertarget{check-1-detect-potential-horizon-duplicates-within-profiles}{%
+\subsection{Check 1: Detect potential horizon duplicates within profiles}\label{check-1-detect-potential-horizon-duplicates-within-profiles}}
+
+Profile identifiers \texttt{ProfID} have been previously constructed by grouping horizons with identical coordinates into the same profile. However, if multiple profile descriptions have been created at the same location, the \texttt{ProfID} will be the same. The objective now is to flag \texttt{ProfID} values that appear to contain more than one distinct depth sequence (i.e., multiple sets of horizon boundaries).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Detect potential horizon duplicates within profiles}
+\NormalTok{profile\_analysis }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{n\_horizons =} \FunctionTok{n}\NormalTok{(),}
+    \AttributeTok{n\_unique\_tops =} \FunctionTok{n\_distinct}\NormalTok{(top),}
+    \AttributeTok{n\_unique\_bottoms =} \FunctionTok{n\_distinct}\NormalTok{(bottom),}
+    \AttributeTok{max\_depth =} \FunctionTok{max}\NormalTok{(bottom, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{.groups =} \StringTok{"drop"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \CommentTok{\# If all horizons have unique top/bottom values, }
+    \CommentTok{\# depths are consistent (no duplicates)}
+    \AttributeTok{consistent =}\NormalTok{ (n\_unique\_tops }\SpecialCharTok{==}\NormalTok{ n\_horizons }\SpecialCharTok{\&}\NormalTok{ n\_unique\_bottoms }\SpecialCharTok{==}\NormalTok{ n\_horizons),}
+    \AttributeTok{likely\_duplicates =} \SpecialCharTok{!}\NormalTok{consistent}
+\NormalTok{  )}
+
+\CommentTok{\# Find profiles with likely duplicates}
+\NormalTok{duplicates }\OtherTok{\textless{}{-}}\NormalTok{ profile\_analysis }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(likely\_duplicates)}
+
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(duplicates) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{" Found"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(duplicates), }
+      \StringTok{"profiles with likely duplicates measurement sequences}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(duplicates)}
+\NormalTok{\}}
+
+\CommentTok{\# Select all profiles presenting duplicate horizons}
+\NormalTok{duplicates }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ProfID }\SpecialCharTok{\%in\%}\NormalTok{ duplicates}\SpecialCharTok{$}\NormalTok{ProfID)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{resolving-profile-duplicates}{%
+\subsection{Resolving Profile Duplicates}\label{resolving-profile-duplicates}}
+
+Duplicate handling should follow the order below:
+
+\textbf{1 → merge duplicated horizons}\\
+\textbf{2 → resolve competing depth sequences}\\
+\textbf{3 → remove incomplete profiles}
+
+This order prevents premature data loss and preserves maximum analytical information.
+
+\hypertarget{check-1-average-duplicated-horizons-same-depth-intervals}{%
+\subsubsection{Check 1: Average duplicated horizons (same depth intervals)}\label{check-1-average-duplicated-horizons-same-depth-intervals}}
+
+When multiple records share identical \texttt{ProfID}, \texttt{top}, and \texttt{bottom}, they represent repeated measurements of the same soil layer. These should be consolidated into a single horizon. Numeric properties are averaged and common identifiers are retained from the first occurrence.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-}{-}{-}}
+\CommentTok{\# Correction 1: Summarize property in duplicated horizons my mean}
+\CommentTok{\# (e.g. PROF0237, PROF0262, PROF0271, PROF0284, PROF0368)}
+\CommentTok{\# {-}{-}{-}{-}{-}}
+\NormalTok{site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(ProfID, top, bottom) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \CommentTok{\# keep identifiers as the first value in each group}
+    \FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(rowID, HorID, lon, lat), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{first}\NormalTok{(.x)),}
+    
+    \CommentTok{\# compute mean for all other numeric columns (NA{-}safe)}
+    \FunctionTok{across}\NormalTok{(}
+      \FunctionTok{where}\NormalTok{(is.numeric) }\SpecialCharTok{\&} \SpecialCharTok{!}\FunctionTok{any\_of}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"rowID"}\NormalTok{,}\StringTok{"HorID"}\NormalTok{,}\StringTok{"lon"}\NormalTok{,}\StringTok{"lat"}\NormalTok{,}\StringTok{"top"}\NormalTok{,}\StringTok{"bottom"}\NormalTok{)),}
+      \SpecialCharTok{\textasciitilde{}} \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{all}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(.x))) }\ConstantTok{NA\_real\_} \ControlFlowTok{else} \FunctionTok{mean}\NormalTok{(.x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    ),}
+    \AttributeTok{.groups =} \StringTok{"drop"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{names}\NormalTok{(site\_lab))   }\CommentTok{\# \textless{}{-} restores original column order}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Replicates increase measurement reliability.
+\item
+  Averaging avoids discarding valid analytical information.
+\end{itemize}
+
+\hypertarget{check-2-resolve-profid-for-multiple-depth-sequences}{%
+\subsubsection{Check 2: Resolve ProfID for multiple depth sequences}\label{check-2-resolve-profid-for-multiple-depth-sequences}}
+
+Multiple independent profile descriptions likely exist in a single location. This data is valid and must remain in the dataset, but it has to be differentiated by its \texttt{ProfID}.
+
+A \texttt{chain\_horizons} function has been created to identify different sequences in horizons within each profile.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Detect ProfID series with different top{-}bottom depth sequences}
+\CommentTok{\# 1. For each profile, check if all rows form ONE continuous depth sequence}
+\CommentTok{\# 2. If YES → Single profile (done)}
+\CommentTok{\# 3. If NO → Find the consecutive horizons that ARE continuous}
+\CommentTok{\# 4. If we find blocks with no gaps → Split the series into subprofiles}
+
+\CommentTok{\# Create a function to identify sequences of horizons for each profile}
+\NormalTok{chain\_horizons }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(top, bottom) \{}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(top)}
+\NormalTok{  remaining }\OtherTok{\textless{}{-}} \FunctionTok{seq\_len}\NormalTok{(n)}
+\NormalTok{  chain\_id }\OtherTok{\textless{}{-}} \FunctionTok{integer}\NormalTok{(n)}
+\NormalTok{  cid }\OtherTok{\textless{}{-}} \DecValTok{1}
+  
+  \ControlFlowTok{while}\NormalTok{(}\FunctionTok{length}\NormalTok{(remaining) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \CommentTok{\# start new chain at smallest top}
+\NormalTok{    cur }\OtherTok{\textless{}{-}}\NormalTok{ remaining[}\FunctionTok{which.min}\NormalTok{(top[remaining])]}
+    \ControlFlowTok{repeat}\NormalTok{ \{}
+\NormalTok{      chain\_id[cur] }\OtherTok{\textless{}{-}}\NormalTok{ cid}
+\NormalTok{      remaining }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(remaining, cur)}
+\NormalTok{      nxt }\OtherTok{\textless{}{-}}\NormalTok{ remaining[top[remaining] }\SpecialCharTok{==}\NormalTok{ bottom[cur]]}
+      \ControlFlowTok{if}\NormalTok{(}\FunctionTok{length}\NormalTok{(nxt) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\ControlFlowTok{break}
+\NormalTok{      cur }\OtherTok{\textless{}{-}}\NormalTok{ nxt[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    \}}
+\NormalTok{    cid }\OtherTok{\textless{}{-}}\NormalTok{ cid }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{  \}}
+\NormalTok{  chain\_id}
+\NormalTok{\}}
+
+\NormalTok{site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(lon, lat, ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{chain =} \FunctionTok{chain\_horizons}\NormalTok{(top, bottom)) }\SpecialCharTok{\%\textgreater{}\%}   \CommentTok{\# detect sequences}
+  \FunctionTok{arrange}\NormalTok{(chain, top, }\AttributeTok{.by\_group =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}         \CommentTok{\# sort within each chain}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{ProfID =} \FunctionTok{paste0}\NormalTok{(ProfID, }\StringTok{"\_"}\NormalTok{, chain)             }\CommentTok{\# add a numeric suffix}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{()}
+
+
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{max}\NormalTok{(site\_lab}\SpecialCharTok{$}\NormalTok{chain, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{  corrected\_profiles }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(site\_lab}\SpecialCharTok{$}\NormalTok{ProfID[site\_lab}\SpecialCharTok{$}\NormalTok{chain }\SpecialCharTok{\textgreater{}=} \DecValTok{2}\NormalTok{])}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"→ Corrected depth continuity in"}\NormalTok{, }\FunctionTok{length}\NormalTok{(corrected\_profiles), }\StringTok{"profiles}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"  Corrected Profiles:"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{sub}\NormalTok{(}\StringTok{"\_2$"}\NormalTok{, }\StringTok{""}\NormalTok{, corrected\_profiles), }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"→ No depth continuity corrections were needed}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Delete the chain column}
+\NormalTok{site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{chain)}
+
+\CommentTok{\# Delete temporary objects}
+\FunctionTok{rm}\NormalTok{(corrected\_profiles,chain\_horizons)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{remove-profiles-not-starting-at-the-surface}{%
+\subsection{Remove profiles not starting at the surface}\label{remove-profiles-not-starting-at-the-surface}}
+
+Profiles whose shallowest horizon does not begin at 0 cm represent mistakes or incomplete descriptions and may bias depth harmonization and DSM modelling.
+
+Only profiles whose first horizon begins at the surface (top = 0 cm) should be retained for analyses requiring complete vertical representation.
+
+\hypertarget{check-1-remove-profiles-with-incomplete-surface-coverage}{%
+\subsubsection{Check 1: Remove profiles with incomplete surface coverage}\label{check-1-remove-profiles-with-incomplete-surface-coverage}}
+
+As a result of the previous steps, some horizons may remain without forming a continuous sequence within their profile. The objective here is to retain only those profiles whose shallowest recorded depth starts at 0 cm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{site\_lab }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{min}\NormalTok{(top, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}   
+  \FunctionTok{arrange}\NormalTok{(ProfID, top, bottom, HorID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{result}{%
+\subsection{Result}\label{result}}
+
+After this procedure, we obtain a clean horizon-level dataset containing validated site, analytical, and metadata information. The dataset contains:
+
+\begin{itemize}
+\tightlist
+\item
+  One consistent depth sequence per \texttt{ProfID}\\
+\item
+  No duplicated horizons
+\item
+  Consolidated analytical measurements
+\item
+  Alternative profiles at the same location can coexist
+\end{itemize}
+
+This database can be exported to \texttt{csv} and \texttt{.xlsx} files.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save to CSV}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_cleaned.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(site\_lab, output, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Save to Excel}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_cleaned.xlsx"}\NormalTok{)}
+\FunctionTok{write\_xlsx}\NormalTok{(site\_lab, output)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{harmonization}{%
+\section{Harmonizing data for DSM}\label{harmonization}}
+
+As shown in the previous step, the database produced can still present several alternative profiles coexisting at the same location. These profiles present different top-depth valid horizon sequences that must be retained in the soil database. When multiple valid profiles exist at the same coordinates, DSM requires a single profile description at each single location. There are different profile selection criteria based in the data available and/or modeling purpose. Select the option using one of these criteria: :
+
+\begin{verbatim}
+      -   **Most complete**: Keep sequence with most horizons (more depth detail)
+      -   **Best coverage**: Keep sequence extending deepest (most information)
+      -   **Best quality** : Keep sequence with fewest missing values
+      -   **Monitoring**   : Keep sequence analyzed at the period of interest (requires `Date` information)
+\end{verbatim}
+
+In general, for monitoring activities, profiles can be selected upon a time key (e.g., \texttt{Date}, \texttt{campaign\_id}) and treat profiles as separate observations information. This will allow to model temporal trends, or time-specific DSM surfaces. When sampling dates or campaign metadata are unavailable, the \textbf{most complete} (more depth detail) sequence is typically safest.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a new object to store DSM harmonized data}
+\CommentTok{\# Keep most complete profiles at each location to avoid duplicated profiles  }
+\NormalTok{horizons }\OtherTok{\textless{}{-}}\NormalTok{ site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(lon, lat, ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_hz =} \FunctionTok{n\_distinct}\NormalTok{(}\FunctionTok{paste}\NormalTok{(top, bottom)), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(lon, lat) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{slice\_max}\NormalTok{(n\_hz, }\AttributeTok{n =} \DecValTok{1}\NormalTok{, }\AttributeTok{with\_ties =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(lon, lat, ProfID) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{inner\_join}\NormalTok{(site\_lab, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"lon"}\NormalTok{, }\StringTok{"lat"}\NormalTok{, }\StringTok{"ProfID"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{DSM requires one profile per location}
+
+\begin{itemize}
+\item
+  If no \texttt{Date}/\texttt{campaign} metadata exists → keep the most complete profile per location.
+\item
+  If \texttt{Date}/\texttt{campaign} exists and the purpose is monitoring → stratify by \texttt{Date}/\texttt{campaign} and keep one profile per location per \texttt{Date}/\texttt{campaign}
+\end{itemize}
+
+\hypertarget{depth-standardization}{%
+\subsection{Depth standardization}\label{depth-standardization}}
+
+Finally, DSM requires analytical data calculated at standardized depth intervals (the same depths for every profile). The standard depths typically used are 0--30 cm (topsoil), 30--60 cm (subsoil), and 60--100 cm (deep subsoil). These represent meaningful soil zones in terms of soil fertility, root penetration, weathering, and soil formation.
+
+Since the cleaned dataset contains properties at variable-depth horizons for each profile, depth harmonization is needed.
+
+The Algorithms for Quantitative Pedology (\texttt{aqp}) package provides the \texttt{slab()} function for standardizing variable-depth soil data using weighted averaging.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(aqp)}
+
+\CommentTok{\# Define standard depth intervals}
+\NormalTok{standard\_depths }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{60}\NormalTok{)  }\CommentTok{\# 0{-}30, 30{-}60 cm}
+
+\CommentTok{\# Select properties to standardize}
+\NormalTok{properties\_to\_standardize }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(site\_lab)[}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(site\_lab) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rowID"}\NormalTok{,}\StringTok{"ProfID"}\NormalTok{,}\StringTok{"HorID"}\NormalTok{,}\StringTok{"lon"}\NormalTok{,}\StringTok{"lat"}\NormalTok{,}\StringTok{"top"}\NormalTok{,}\StringTok{"bottom"}\NormalTok{,}\StringTok{"texture\_sum"}\NormalTok{,}\StringTok{"texture\_valid"}\NormalTok{)]}
+
+\CommentTok{\# Prepare data for aqp}
+
+\CommentTok{\# Create SoilProfileCollection Object}
+\CommentTok{\# aqp needs profiles + depth structure for proper interpolation}
+\FunctionTok{depths}\NormalTok{(horizons) }\OtherTok{\textless{}{-}}\NormalTok{ ProfID }\SpecialCharTok{\textasciitilde{}}\NormalTok{ top }\SpecialCharTok{+}\NormalTok{ bottom}
+
+\CommentTok{\# Add Spatial Information to SoilProfileCollection}
+\CommentTok{\#   Links geographic location to soil profiles}
+\FunctionTok{initSpatial}\NormalTok{(horizons, }\AttributeTok{crs =} \StringTok{"EPSG:4326"}\NormalTok{) }\OtherTok{\textless{}{-}} \ErrorTok{\textasciitilde{}}\NormalTok{ lon }\SpecialCharTok{+}\NormalTok{ lat}
+
+\CommentTok{\# Build the standardization formula}
+\NormalTok{fml }\OtherTok{\textless{}{-}} \FunctionTok{as.formula}\NormalTok{(}
+  \FunctionTok{paste}\NormalTok{(}\StringTok{"ProfID \textasciitilde{}"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(properties\_to\_standardize, }\AttributeTok{collapse =} \StringTok{" + "}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Apply slab() to interpolate to standard depths}
+\NormalTok{KSSL\_standardized }\OtherTok{\textless{}{-}} \FunctionTok{slab}\NormalTok{(}
+\NormalTok{  horizons,}
+\NormalTok{  fml,}
+  \AttributeTok{slab.structure =}\NormalTok{ standard\_depths,  }\CommentTok{\# Target standard depths}
+  \AttributeTok{na.rm =} \ConstantTok{TRUE}                        \CommentTok{\# Ignore NA values in calculations}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{slab()} function produces output with: - \texttt{p.q5}: 5th percentile (lower confidence bound) - \texttt{p.q50}: Median estimate (best estimate) - \texttt{p.q95}: 95th percentile (upper confidence bound)
+
+The 5th to 95th percentile range provides a 90\% confidence interval, quantifying uncertainty in the standardized estimates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create Confidence Interval of the estimations (CI column)}
+\CommentTok{\# Shows range of uncertainty (p.q5 to p.q95)}
+
+\NormalTok{KSSL\_standardized }\OtherTok{\textless{}{-}}\NormalTok{ KSSL\_standardized }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \CommentTok{\# Create 90\% confidence interval string (p.q5 to p.q95)}
+    \AttributeTok{CI =} \FunctionTok{paste0}\NormalTok{(}
+      \FunctionTok{round}\NormalTok{(p.q5, }\DecValTok{3}\NormalTok{),                 }\CommentTok{\# Lower bound (5th percentile)}
+      \StringTok{"{-}"}\NormalTok{,}
+      \FunctionTok{round}\NormalTok{(p.q95, }\DecValTok{3}\NormalTok{)                 }\CommentTok{\# Upper bound (95th percentile)}
+\NormalTok{    )}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{processing-standardized-data}{%
+\subsection{Processing standardized data}\label{processing-standardized-data}}
+
+The output of the \texttt{slab()} function is a data frame in long format, where soil properties are stored as rows and the estimated percentile values are stored as columns. Each record is identified by \texttt{ProfID}, \texttt{top}, \texttt{and\ bottom}. For most downstream analyses, the data must be reshaped to wide format (i.e., one row per depth interval, with properties as columns).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert from long to wide format}
+\NormalTok{KSSL\_standardized }\OtherTok{\textless{}{-}}\NormalTok{ KSSL\_standardized }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}
+    \AttributeTok{id\_cols =} \FunctionTok{c}\NormalTok{(ProfID, top, bottom), }\CommentTok{\# Keep these as{-}is}
+    \AttributeTok{names\_from =}\NormalTok{ variable,             }\CommentTok{\# Property names become column names}
+    \AttributeTok{values\_from =} \FunctionTok{c}\NormalTok{(p.q50, CI),        }\CommentTok{\# Both point estimate and CI}
+    \AttributeTok{names\_glue =} \StringTok{"\{variable\}\_\{.value\}"} \CommentTok{\# Create names like "SOC\_p.q50", "SOC\_CI"}
+\NormalTok{  )}
+
+\CommentTok{\# Add geographic coordinates back}
+\NormalTok{KSSL\_standardized }\OtherTok{\textless{}{-}}\NormalTok{ KSSL\_standardized }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Get coordinates from original data (one per profile)}
+  \FunctionTok{left\_join}\NormalTok{(}
+\NormalTok{    site\_lab }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{distinct}\NormalTok{(ProfID, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  \CommentTok{\# One row per profile}
+      \FunctionTok{select}\NormalTok{(ProfID, lon, lat),}
+    \AttributeTok{by =} \StringTok{"ProfID"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Move coordinates to front for readability}
+  \FunctionTok{relocate}\NormalTok{(lon, lat, }\AttributeTok{.after =}\NormalTok{ ProfID)}
+
+\CommentTok{\# Since ProfIDs are now unique at each location, remove tailings ProfID values}
+\NormalTok{KSSL\_standardized}\SpecialCharTok{$}\NormalTok{ProfID }\OtherTok{\textless{}{-}} \FunctionTok{sub}\NormalTok{(}\StringTok{"\_[12]$"}\NormalTok{, }\StringTok{""}\NormalTok{, KSSL\_standardized}\SpecialCharTok{$}\NormalTok{ProfID)}
+
+\CommentTok{\# Result: One row per profile{-}depth, with standardized soil properties}
+\FunctionTok{head}\NormalTok{(KSSL\_standardized)}
+\end{Highlighting}
+\end{Shaded}
+
+The final step is to save this dataset with standardized soil properties at two depths.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save to CSV}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_standardized.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(KSSL\_standardized, output, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Save to Excel}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_standardized.xlsx"}\NormalTok{)}
+\FunctionTok{write\_xlsx}\NormalTok{(KSSL\_standardized, output)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exporting-standardized-data-for-digital-soil-mapping}{%
+\subsection{Exporting standardized data for Digital Soil Mapping}\label{exporting-standardized-data-for-digital-soil-mapping}}
+
+At this stage, the dataset is standardized to one row per profile and standard depth interval. Soil properties at these depths are derived from the original horizon measurements using depth-weighted averaging, and the output includes the percentiles of the weighted estimates (e.g., p05, p50, p95).
+
+For the Digital Soil Modelling exercise in this tutorial, we will work with a subset focused on the topsoil (0--30 cm) and use the median (p50) estimates for the following properties: clay, silt, sand, SOC, and pH.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep only 0{-}30 cm depth and select relevant columns (Clay, Silt, Sand, SOC \& pH)}
+\NormalTok{subset\_data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(top }\SpecialCharTok{==} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ bottom }\SpecialCharTok{==} \DecValTok{30}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+\NormalTok{    ProfID,}
+\NormalTok{    lon,}
+\NormalTok{    lat,}
+\NormalTok{    top,}
+\NormalTok{    bottom,}
+    \AttributeTok{Clay =}\NormalTok{ Clay\_p.q50,}
+    \AttributeTok{Silt =}\NormalTok{ Silt\_p.q50,}
+    \AttributeTok{Sand =}\NormalTok{ Sand\_p.q50,}
+    \AttributeTok{SOC =}\NormalTok{ SOC\_p.q50,}
+    \AttributeTok{pH =}\NormalTok{ pH\_p.q50}
+\NormalTok{  )}
+
+\CommentTok{\# Save to CSV}
+\NormalTok{output\_csv }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_DSM\_0{-}301.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(subset\_data, output\_csv, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{" Saved to:"}\NormalTok{, output\_csv, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+
+\CommentTok{\# Save to Excel}
+\NormalTok{output\_xlsx }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_DSM\_0{-}30.xlsx"}\NormalTok{)}
+\FunctionTok{write\_xlsx}\NormalTok{(subset\_data, output\_xlsx)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{" Saved to:"}\NormalTok{, output\_xlsx, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{" Subset data ready for Digital Soil Mapping}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Output file: KSSL\_DSM}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{spectroscopy}{%
+\section{Preparing data for spectroscopy analyses}\label{spectroscopy}}
+
+The original KSSL dataset includes visible--near infrared (vis--NIR) spectral observations associated with each soil horizon. To support spectroscopy-based estimation of soil properties, spectral observations must be integrated with the cleaned horizon dataset (\texttt{site\_lab}) that contains unique and consistent soil profiles (\texttt{ProfID}), validated and harmonized horizon depths (\texttt{top}, \texttt{bottom}), corrected laboratory measurements.
+
+Depth-consistent and quality-controlled reference data are essential for building robust spectral calibration models and avoiding bias introduced by duplicated horizons or invalid analytical values.
+
+In this dataset, each soil sample/horizon was measured four times by spectroscopy. Therefore, after merging spectra to the cleaned horizon dataset, the resulting dataset is expected to contain approximately 4× more rows than the resulting cleaned dataset (subject to missing spectra or incomplete records).
+
+Use a \texttt{left\ join} to preserve the cleaned horizon dataset as the reference. This ensures that every cleaned horizon remains in the merged dataset (even if spectra are missing), and no spectral-only records are introduced without corresponding cleaned horizon metadata. The join key for this operation is \texttt{HorID} in the cleaned dataset and \texttt{smp\_id} in the spectral dataset. Then save the results as \texttt{-csv}and \texttt{.xlsx} files.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read and subset spectral data from the original dataset}
+\NormalTok{raw\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"../../01\_data/module1/MIR\_KANSAS\_data.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \DecValTok{1}\NormalTok{) }
+\NormalTok{spec }\OtherTok{\textless{}{-}}\NormalTok{ raw\_data[,}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\SpecialCharTok{:}\DecValTok{22}\NormalTok{)]}
+
+\CommentTok{\# Merge site\_lab data to the original Spectral data by their common IDs}
+\NormalTok{site\_lab\_spec }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{ (site\_lab,spec, }\AttributeTok{by=}\FunctionTok{c}\NormalTok{(}\StringTok{"HorID"}\OtherTok{=}\StringTok{"smp\_id"}\NormalTok{) )}
+
+\CommentTok{\# Save to CSV}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_spectral\_cleaned.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(site\_lab\_spec, output, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Save to Excel}
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(output\_dir,}\StringTok{"KSSL\_spectral\_cleaned.xlsx"}\NormalTok{)}
+\FunctionTok{write\_xlsx}\NormalTok{(site\_lab\_spec, output)}
+
+\CommentTok{\# Remove spectral data object}
+\FunctionTok{rm}\NormalTok{(spec)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{~- Best practices and recommendations}
+
+\begin{itemize}
+\item
+  \textbf{Trust but verify}: Never assume data is correct. Always validate systematically.
+\item
+  \textbf{Document everything}: Record what was removed, why it was removed, and how many records were affected. This documentation is essential for transparency and reproducibility.
+\item
+  \textbf{Preserve data lineage}: Use unique row identifiers to track which raw records became which cleaned records. This allows you to trace any result back to its source data.
+\item
+  \textbf{Be conservative with removal}: Only remove records if certain they are wrong. When uncertain, flag records for manual review rather than automatically excluding them.
+\item
+  \textbf{Automate, don't manually edit}: Write code that performs all cleaning steps, rather than manually editing spreadsheets. Code-based approaches are reproducible, transparent, and less prone to error.
+\item
+  \textbf{Save intermediate steps}: Keep clean versions after each major processing step. This allows you to backtrack if a decision doesn't work out.
+\end{itemize}
+
+\hfill\break
+
+\textbf{~- Common pitfalls to avoid}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3151}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3151}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3699}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Pitfall
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Problem
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prevention
+\end{minipage} \\
+\midrule()
+\endhead
+Removing too much data & Biased results from non-random loss & Document removal rate; flag \textgreater30\% \\
+Skipping validation & Problems propagate to analysis & Use systematic checklists \\
+Manual edits & Not reproducible, hard to verify & Everything in code \\
+Ignoring depth issues & Impossible harmonization & Verify bottom \textgreater{} top for all \\
+No documentation & Can't explain analysis later & Keep detailed notes \\
+Overconfident correction & Guessing wrong fixes errors & Only correct if confident \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{exports}{%
+\section{Summary of exported files}\label{exports}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2936}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7064}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule()
+\endhead
+KSSL\_cleaned & Clean horizon-level dataset with validated analytical data \\
+KSSL\_spectral\_cleaned & Clean horizon-level dataset with validated analytical and spectroscopic data \\
+KSSL\_standardized & Depth-harmonized dataset (0--30 cm; 30--60 cm) of all soil properties \\
+KSSL\_DSM & Depth-harmonized dataset (0--30 cm) for Digital Soil Mapping \\
+soil\_property\_validation\_report & Detailed report of analytical properties outside valid ranges \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{sampling-design-for-soil-surveys}{%
+\chapter{Sampling design for soil surveys}\label{sampling-design-for-soil-surveys}}
 
 Placeholder
 
-\section{Selection of the sampling methodology}\label{selection-methods}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-\section{Inference Methods}\label{inference-methods}
+\hypertarget{sampling-theory}{%
+\section{Sampling methodologies for soil spatial survey}\label{sampling-theory}}
 
-\section{Purpose of Sampling}\label{sampling-purpose}
+\hypertarget{selection-methods}{%
+\subsection{Selection of the sampling methodology}\label{selection-methods}}
 
-\section{Sampling Design Types}\label{design-types}
+\hypertarget{inference-methods}{%
+\subsection{Inference Methods}\label{inference-methods}}
 
-\subsection{Example: Soils4Africa Sampling Design}\label{soils4africa-example}
+\hypertarget{sampling-purpose}{%
+\subsection{Purpose of Sampling}\label{sampling-purpose}}
 
-\section{Soil Properties}\label{soil-properties}
+\hypertarget{design-types}{%
+\subsection{Sampling Design Types}\label{design-types}}
 
-\section{Environmental Covariates}\label{env-covariates}
+\hypertarget{soils4africa-example}{%
+\subsubsection{Example: Soils4Africa Sampling Design}\label{soils4africa-example}}
 
-\section{Understanding the Methodology}\label{methodology}
+\hypertarget{soilfer-design}{%
+\section{SoilFER Sampling Design}\label{soilfer-design}}
 
-\subsection{PSU Selection Process}\label{psu-selection-process}
+\hypertarget{soil-properties}{%
+\subsection{Soil Properties}\label{soil-properties}}
 
-\subsection{SSU and TSU Selection Process}\label{ssu-tsu-selection}
+\hypertarget{env-covariates}{%
+\subsection{Environmental Covariates}\label{env-covariates}}
 
-\subsection{Site Identification System}\label{site-id}
+\hypertarget{methodology}{%
+\subsection{Understanding the Methodology}\label{methodology}}
 
-\section{Setting Up the Environment}\label{setup}
+\hypertarget{psu-selection-process}{%
+\subsubsection{PSU Selection Process}\label{psu-selection-process}}
 
-\subsection{Install Required Libraries}\label{install-libraries}
+\hypertarget{ssu-tsu-selection}{%
+\subsubsection{SSU and TSU Selection Process}\label{ssu-tsu-selection}}
 
-\section{Define Variables and Parameters}\label{define-parameters}
+\hypertarget{site-id}{%
+\subsubsection{Site Identification System}\label{site-id}}
 
-\subsection{Country ISO Code}\label{country-iso-code}
+\hypertarget{tutorial}{%
+\section{Tutorial Using R}\label{tutorial}}
 
-\subsection{Land Use Type}\label{land-use-type}
+\hypertarget{setup}{%
+\subsection{Setting Up the Environment}\label{setup}}
 
-\subsection{File Paths}\label{file-paths}
+\hypertarget{install-libraries}{%
+\subsubsection{Install Required Libraries}\label{install-libraries}}
 
-\subsection{Coordinate Reference System}\label{coordinate-reference-system}
+\hypertarget{define-parameters}{%
+\subsection{Define Variables and Parameters}\label{define-parameters}}
 
-\subsection{Sample Size Calculation}\label{sample-size-calculation}
+\hypertarget{country-iso-code}{%
+\subsection{Country ISO Code}\label{country-iso-code}}
 
-\subsection{Sampling Unit Definitions}\label{sampling-unit-definitions}
+\hypertarget{land-use-type}{%
+\subsubsection{Land Use Type}\label{land-use-type}}
 
-\subsection{Algorithm Parameters}\label{algorithm-parameters}
+\hypertarget{file-paths}{%
+\subsubsection{File Paths}\label{file-paths}}
 
-\section{Custom Functions}\label{custom-functions}
+\hypertarget{coordinate-reference-system}{%
+\subsubsection{Coordinate Reference System}\label{coordinate-reference-system}}
 
-\subsection{Covariate Space Coverage Function (CSIS)}\label{covariate-space-coverage-function-csis}
+\hypertarget{sample-size-calculation}{%
+\subsubsection{Sample Size Calculation}\label{sample-size-calculation}}
 
-\subsection{TSU Generation Function}\label{tsu-generation-function}
+\hypertarget{sampling-unit-definitions}{%
+\subsubsection{Sampling Unit Definitions}\label{sampling-unit-definitions}}
 
-\section{Load Country Boundaries and Legacy Data}\label{load-boundaries}
+\hypertarget{algorithm-parameters}{%
+\subsubsection{Algorithm Parameters}\label{algorithm-parameters}}
 
-\subsection{Visualize Boundaries and Legacy Data}\label{visualize-boundaries-and-legacy-data}
+\hypertarget{custom-functions}{%
+\subsection{Custom Functions}\label{custom-functions}}
 
-\section{Load Environmental Covariates for PSUs}\label{load-covariates-psu}
+\hypertarget{covariate-space-coverage-function-csis}{%
+\subsubsection{Covariate Space Coverage Function (CSIS)}\label{covariate-space-coverage-function-csis}}
 
-\subsection{Optional Auxiliary Data}\label{optional-auxiliary-data}
+\hypertarget{tsu-generation-function}{%
+\subsubsection{TSU Generation Function}\label{tsu-generation-function}}
 
-\subsection{Load and Process Auxiliary Data}\label{load-and-process-auxiliary-data}
+\hypertarget{load-boundaries}{%
+\subsection{Load Country Boundaries and Legacy Data}\label{load-boundaries}}
 
-\subsection{Load Main Environmental Covariates}\label{load-main-environmental-covariates}
+\hypertarget{visualize-boundaries-and-legacy-data}{%
+\subsubsection{Visualize Boundaries and Legacy Data}\label{visualize-boundaries-and-legacy-data}}
 
-\subsection{Load and Process Soil Climate Data (Newhall)}\label{load-and-process-soil-climate-data-newhall}
+\hypertarget{load-covariates-psu}{%
+\subsection{Load Environmental Covariates for PSUs}\label{load-covariates-psu}}
 
-\subsection{Convert Categorical Variables to Dummy Variables}\label{convert-categorical-variables-to-dummy-variables}
+\hypertarget{optional-auxiliary-data}{%
+\subsubsection{Optional Auxiliary Data}\label{optional-auxiliary-data}}
 
-\subsection{Merge All Covariate Layers}\label{merge-all-covariate-layers}
+\hypertarget{load-and-process-auxiliary-data}{%
+\subsubsection{Load and Process Auxiliary Data}\label{load-and-process-auxiliary-data}}
 
-\subsection{Crop and Save Covariates}\label{crop-and-save-covariates}
+\hypertarget{load-main-environmental-covariates}{%
+\subsection{Load Main Environmental Covariates}\label{load-main-environmental-covariates}}
 
-\section{Principal Component Analysis (PCA)}\label{pca}
+\hypertarget{load-and-process-soil-climate-data-newhall}{%
+\subsubsection{Load and Process Soil Climate Data (Newhall)}\label{load-and-process-soil-climate-data-newhall}}
 
-\section{Organize the Sampling Universe}\label{sampling-universe}
+\hypertarget{convert-categorical-variables-to-dummy-variables}{%
+\subsubsection{Convert Categorical Variables to Dummy Variables}\label{convert-categorical-variables-to-dummy-variables}}
 
-\subsection{Load and Process Land Use Data}\label{load-and-process-land-use-data}
+\hypertarget{merge-all-covariate-layers}{%
+\subsubsection{Merge All Covariate Layers}\label{merge-all-covariate-layers}}
 
-\subsection{Exclude Protected Areas}\label{exclude-protected-areas}
+\hypertarget{crop-and-save-covariates}{%
+\subsubsection{Crop and Save Covariates}\label{crop-and-save-covariates}}
 
-\subsection{Restrict to Accessible Slopes}\label{restrict-to-accessible-slopes}
+\hypertarget{pca}{%
+\section{Principal Component Analysis (PCA)}\label{pca}}
 
-\subsection{Aggregate to 100m Resolution}\label{aggregate-to-100m-resolution}
+\hypertarget{sampling-universe}{%
+\section{Organize the Sampling Universe}\label{sampling-universe}}
 
-\subsection{Save Processed Land Use}\label{save-processed-land-use}
+\hypertarget{load-and-process-land-use-data}{%
+\subsection{Load and Process Land Use Data}\label{load-and-process-land-use-data}}
 
-\subsection{Filter Legacy Data}\label{filter-legacy-data}
+\hypertarget{exclude-protected-areas}{%
+\subsection{Exclude Protected Areas}\label{exclude-protected-areas}}
 
-\section{Create Primary Sampling Units (PSU Grid)}\label{create-psu-grid}
+\hypertarget{restrict-to-accessible-slopes}{%
+\subsection{Restrict to Accessible Slopes}\label{restrict-to-accessible-slopes}}
 
-\subsection{Generate 2km × 2km Grid}\label{generate-2km-2km-grid}
+\hypertarget{aggregate-to-100m-resolution}{%
+\subsection{Aggregate to 100m Resolution}\label{aggregate-to-100m-resolution}}
 
-\subsection{Trim to Country Boundaries}\label{trim-to-country-boundaries}
+\hypertarget{save-processed-land-use}{%
+\subsection{Save Processed Land Use}\label{save-processed-land-use}}
 
-\subsection{Save PSU Grid}\label{save-psu-grid}
+\hypertarget{filter-legacy-data}{%
+\subsection{Filter Legacy Data}\label{filter-legacy-data}}
 
-\section{Select PSUs with Sufficient Land Use Coverage}\label{select-psus}
+\hypertarget{create-psu-grid}{%
+\section{Create Primary Sampling Units (PSU Grid)}\label{create-psu-grid}}
 
-\subsection{Calculate Land Use Percentage}\label{calculate-land-use-percentage}
+\hypertarget{generate-2km-2km-grid}{%
+\subsection{Generate 2km × 2km Grid}\label{generate-2km-2km-grid}}
 
-\subsection{Filter PSUs}\label{filter-psus}
+\hypertarget{trim-to-country-boundaries}{%
+\subsection{Trim to Country Boundaries}\label{trim-to-country-boundaries}}
 
-\section{Rasterize PSUs for Covariate Space Coverage}\label{rasterize-psus}
+\hypertarget{save-psu-grid}{%
+\subsection{Save PSU Grid}\label{save-psu-grid}}
 
-\section{Compute Optimal Sample Size}\label{optimal-sample-size}
+\hypertarget{select-psus}{%
+\section{Select PSUs with Sufficient Land Use Coverage}\label{select-psus}}
 
-\subsection{Run Optimization}\label{run-optimization}
+\hypertarget{calculate-land-use-percentage}{%
+\subsection{Calculate Land Use Percentage}\label{calculate-land-use-percentage}}
 
-\subsection{Extract Optimal Sample Size}\label{extract-optimal-sample-size}
+\hypertarget{filter-psus}{%
+\subsection{Filter PSUs}\label{filter-psus}}
 
-\section{Covariate Space Coverage - Computing PSUs}\label{csc-computing}
+\hypertarget{rasterize-psus}{%
+\section{Rasterize PSUs for Covariate Space Coverage}\label{rasterize-psus}}
 
-\subsection{Prepare Function Parameters}\label{prepare-function-parameters}
+\hypertarget{optimal-sample-size}{%
+\section{Compute Optimal Sample Size}\label{optimal-sample-size}}
 
-\subsection{Perform K-means Clustering}\label{perform-k-means-clustering}
+\hypertarget{run-optimization}{%
+\subsection{Run Optimization}\label{run-optimization}}
 
-\subsection{Assign Clusters and Calculate Distances}\label{assign-clusters-and-calculate-distances}
+\hypertarget{extract-optimal-sample-size}{%
+\subsection{Extract Optimal Sample Size}\label{extract-optimal-sample-size}}
 
-\subsection{Extract Selected PSUs}\label{extract-selected-psus}
+\hypertarget{csc-computing}{%
+\section{Covariate Space Coverage - Computing PSUs}\label{csc-computing}}
 
-\subsection{Visualize in Covariate Space}\label{visualize-in-covariate-space}
+\hypertarget{prepare-function-parameters}{%
+\subsection{Prepare Function Parameters}\label{prepare-function-parameters}}
 
-\section{Compute SSUs and TSUs}\label{compute-ssu-tsu}
+\hypertarget{perform-k-means-clustering}{%
+\subsection{Perform K-means Clustering}\label{perform-k-means-clustering}}
 
-\subsection{Load High-Resolution Covariates}\label{load-high-resolution-covariates}
+\hypertarget{assign-clusters-and-calculate-distances}{%
+\subsection{Assign Clusters and Calculate Distances}\label{assign-clusters-and-calculate-distances}}
 
-\subsection{Process Each PSU}\label{process-each-psu}
+\hypertarget{extract-selected-psus}{%
+\subsection{Extract Selected PSUs}\label{extract-selected-psus}}
 
-\subsection{Combine SSUs and TSUs}\label{combine-ssus-and-tsus}
+\hypertarget{visualize-in-covariate-space}{%
+\subsection{Visualize in Covariate Space}\label{visualize-in-covariate-space}}
 
-\section{Export Sampling Units}\label{export-units}
+\hypertarget{compute-ssu-tsu}{%
+\section{Compute SSUs and TSUs}\label{compute-ssu-tsu}}
 
-\subsection{Create Cluster Raster}\label{create-cluster-raster}
+\hypertarget{load-high-resolution-covariates}{%
+\subsection{Load High-Resolution Covariates}\label{load-high-resolution-covariates}}
 
-\subsection{Join Cluster Info to TSUs}\label{join-cluster-info-to-tsus}
+\hypertarget{process-each-psu}{%
+\subsection{Process Each PSU}\label{process-each-psu}}
 
-\subsection{Create Site IDs}\label{create-site-ids}
+\hypertarget{combine-ssus-and-tsus}{%
+\subsection{Combine SSUs and TSUs}\label{combine-ssus-and-tsus}}
 
-\subsection{Export Shapefiles}\label{export-shapefiles}
+\hypertarget{export-units}{%
+\section{Export Sampling Units}\label{export-units}}
 
-\section{Compute Alternative PSUs}\label{alternative-psus}
+\hypertarget{create-cluster-raster}{%
+\subsection{Create Cluster Raster}\label{create-cluster-raster}}
 
-\section{Assign Country-Wide Unique IDs}\label{assign-unique-ids}
+\hypertarget{join-cluster-info-to-tsus}{%
+\subsection{Join Cluster Info to TSUs}\label{join-cluster-info-to-tsus}}
 
-\section{Export Unified Datasets}\label{export-unified}
+\hypertarget{create-site-ids}{%
+\subsection{Create Site IDs}\label{create-site-ids}}
 
-\section{Summary Statistics}\label{summary-stats}
+\hypertarget{export-shapefiles}{%
+\subsection{Export Shapefiles}\label{export-shapefiles}}
 
-\section{Create Distribution Maps}\label{distribution-maps}
+\hypertarget{alternative-psus}{%
+\section{Compute Alternative PSUs}\label{alternative-psus}}
 
-\section{GPS Device Preparation}\label{gps-prep}
+\hypertarget{assign-unique-ids}{%
+\section{Assign Country-Wide Unique IDs}\label{assign-unique-ids}}
 
-\subsection{Export to GPX Format}\label{export-to-gpx-format}
+\hypertarget{export-unified}{%
+\section{Export Unified Datasets}\label{export-unified}}
 
-\subsection{Load onto GPS Device}\label{load-onto-gps-device}
+\hypertarget{summary-stats}{%
+\section{Summary Statistics}\label{summary-stats}}
 
-\section{Sampling Procedure}\label{sampling-procedure}
+\hypertarget{distribution-maps}{%
+\section{Create Distribution Maps}\label{distribution-maps}}
 
-\section{Data Recording}\label{data-recording}
+\hypertarget{gps-prep}{%
+\section{GPS Device Preparation}\label{gps-prep}}
 
-\section{Quality Control}\label{qc}
+\hypertarget{export-to-gpx-format}{%
+\subsection{Export to GPX Format}\label{export-to-gpx-format}}
 
-\section*{Appendix A: Software and Data Sources}\label{appendix-a-software-and-data-sources}
+\hypertarget{load-onto-gps-device}{%
+\subsection{Load onto GPS Device}\label{load-onto-gps-device}}
+
+\hypertarget{sampling-procedure}{%
+\section{Sampling Procedure}\label{sampling-procedure}}
+
+\hypertarget{data-recording}{%
+\section{Data Recording}\label{data-recording}}
+
+\hypertarget{qc}{%
+\section{Quality Control}\label{qc}}
+
+\hypertarget{appendix-a-software-and-data-sources}{%
+\section*{Appendix A: Software and Data Sources}\label{appendix-a-software-and-data-sources}}
 \addcontentsline{toc}{section}{Appendix A: Software and Data Sources}
 
-\subsection{Software Requirements}\label{software-requirements}
+\hypertarget{software-requirements}{%
+\subsection{Software Requirements}\label{software-requirements}}
 
-\subsection{Data Sources}\label{data-sources}
+\hypertarget{data-sources}{%
+\subsection{Data Sources}\label{data-sources}}
 
-\section*{Appendix B: Troubleshooting Common Issues}\label{appendix-b-troubleshooting-common-issues}
+\hypertarget{appendix-b-troubleshooting-common-issues}{%
+\section*{Appendix B: Troubleshooting Common Issues}\label{appendix-b-troubleshooting-common-issues}}
 \addcontentsline{toc}{section}{Appendix B: Troubleshooting Common Issues}
 
-\subsection{Memory Issues}\label{memory-issues}
+\hypertarget{memory-issues}{%
+\subsection{Memory Issues}\label{memory-issues}}
 
-\subsection{CRS Misalignment}\label{crs-misalignment}
+\hypertarget{crs-misalignment}{%
+\subsection{CRS Misalignment}\label{crs-misalignment}}
 
-\subsection{Empty Geometry}\label{empty-geometry}
+\hypertarget{empty-geometry}{%
+\subsection{Empty Geometry}\label{empty-geometry}}
 
-\section*{Appendix C: Acronyms and Abbreviations}\label{appendix-c-acronyms-and-abbreviations}
+\hypertarget{appendix-c-acronyms-and-abbreviations}{%
+\section*{Appendix C: Acronyms and Abbreviations}\label{appendix-c-acronyms-and-abbreviations}}
 \addcontentsline{toc}{section}{Appendix C: Acronyms and Abbreviations}
 
-\chapter{TBD}\label{tbd}
+\hypertarget{tbd}{%
+\chapter{TBD}\label{tbd}}
 
-\chapter{Soil Data Preparation}\label{soil-data-preparation}
+\hypertarget{soil-data-preparation}{%
+\chapter{Soil Data Preparation}\label{soil-data-preparation}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
-\section{Data cleaning}\label{data-cleaning}
+\hypertarget{data-cleaning}{%
+\section{Data cleaning}\label{data-cleaning}}
 
-\section{Soil Data Harmonization}\label{soil-data-harmonization}
+\hypertarget{soil-data-harmonization}{%
+\section{Soil Data Harmonization}\label{soil-data-harmonization}}
 
-\section{Concepts on digital exchange of soil-related data (ISO 28258)}\label{concepts-on-digital-exchange-of-soil-related-data-iso-28258}
+\hypertarget{concepts-on-digital-exchange-of-soil-related-data-iso-28258}{%
+\section{Concepts on digital exchange of soil-related data (ISO 28258)}\label{concepts-on-digital-exchange-of-soil-related-data-iso-28258}}
 
-\section{Plot data}\label{plot-data}
+\hypertarget{plot-data}{%
+\section{Plot data}\label{plot-data}}
 
-\section{Profile data}\label{profile-data}
+\hypertarget{profile-data}{%
+\section{Profile data}\label{profile-data}}
 
-\section{Element data}\label{element-data}
+\hypertarget{element-data}{%
+\section{Element data}\label{element-data}}
 
-\section{Specimen data}\label{specimen-data}
+\hypertarget{specimen-data}{%
+\section{Specimen data}\label{specimen-data}}
 
-\section{Definition of laboratory procedures}\label{definition-of-laboratory-procedures}
+\hypertarget{definition-of-laboratory-procedures}{%
+\section{Definition of laboratory procedures}\label{definition-of-laboratory-procedures}}
 
-\section{Data transformation}\label{data-transformation}
+\hypertarget{data-transformation}{%
+\section{Data transformation}\label{data-transformation}}
 
-\section{Organizing soil data according to the GloSIS database}\label{organizing-soil-data-according-to-the-glosis-database}
+\hypertarget{organizing-soil-data-according-to-the-glosis-database}{%
+\section{Organizing soil data according to the GloSIS database}\label{organizing-soil-data-according-to-the-glosis-database}}
 
-\section{Tools for harmonization of soil databases within GloSIS}\label{tools-for-harmonization-of-soil-databases-within-glosis}
+\hypertarget{tools-for-harmonization-of-soil-databases-within-glosis}{%
+\section{Tools for harmonization of soil databases within GloSIS}\label{tools-for-harmonization-of-soil-databases-within-glosis}}
 
-\chapter{Digital soil mapping and modeling}\label{digital-soil-mapping-and-modeling}
+\hypertarget{digital-soil-mapping-and-modeling}{%
+\chapter{Digital Soil Mapping and Modeling}\label{digital-soil-mapping-and-modeling}}
 
-\chapter{Soil Data Sharing}\label{soil-data-sharing}
+Placeholder
 
-\section{Data sharing and export formats}\label{data-sharing-and-export-formats}
+\hypertarget{introduction-to-digital-soil-mapping}{%
+\section{Introduction to Digital Soil Mapping}\label{introduction-to-digital-soil-mapping}}
 
-\section{Metadata}\label{metadata}
+\hypertarget{the-scorpan-framework}{%
+\section{The SCORPAN Framework}\label{the-scorpan-framework}}
 
-\section{Web Services}\label{web-services}
+\hypertarget{statistical-theory-for-predictive-soil-mapping}{%
+\section{Statistical Theory for Predictive Soil Mapping}\label{statistical-theory-for-predictive-soil-mapping}}
 
-\chapter*{References}\label{references}
+\hypertarget{mechanistic-versus-empirical-approaches}{%
+\subsection{Mechanistic versus Empirical Approaches}\label{mechanistic-versus-empirical-approaches}}
+
+\hypertarget{sources-of-residual-variance}{%
+\subsection{Sources of Residual Variance}\label{sources-of-residual-variance}}
+
+\hypertarget{covariates-as-proxies-of-soil-forming-factors}{%
+\subsection{Covariates as Proxies of Soil-Forming Factors}\label{covariates-as-proxies-of-soil-forming-factors}}
+
+\hypertarget{the-universal-model-of-soil-variation}{%
+\subsection{The Universal Model of Soil Variation}\label{the-universal-model-of-soil-variation}}
+
+\hypertarget{extending-the-model-space-depth-and-time-3dt}{%
+\subsection{Extending the Model: Space, Depth, and Time (3D+T)}\label{extending-the-model-space-depth-and-time-3dt}}
+
+\hypertarget{types-of-soil-variables}{%
+\subsection{Types of Soil Variables}\label{types-of-soil-variables}}
+
+\hypertarget{prediction-methods}{%
+\subsection{Prediction Methods}\label{prediction-methods}}
+
+\hypertarget{nonlinearity-and-uncertainty}{%
+\subsection{Nonlinearity and Uncertainty}\label{nonlinearity-and-uncertainty}}
+
+\hypertarget{soil-data-sharing}{%
+\chapter{Soil Data Sharing}\label{soil-data-sharing}}
+
+\hypertarget{data-sharing-and-export-formats}{%
+\section{Data sharing and export formats}\label{data-sharing-and-export-formats}}
+
+\hypertarget{metadata}{%
+\section{Metadata}\label{metadata}}
+
+\hypertarget{web-services}{%
+\section{Web Services}\label{web-services}}
+
+\hypertarget{references-1}{%
+\chapter*{References}\label{references-1}}
 \addcontentsline{toc}{chapter}{References}
 
 %\printindex
