@@ -1,7 +1,7 @@
 
 # Data preparation for digital soil mapping in R
 
-## Introduction {#introduction1}
+## Introduction {#introduction-1}
 
 Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps. 
 
@@ -319,7 +319,7 @@ site <- site %>%
 ```
 
 
-### Check 5: Profiles without a surface horizon (top > 0) ····todo
+### Check 5: Profiles without a surface horizon (top > 0)
 
 Each profile should represent the complete soil column starting at surface. This is essential for depth harmonization in a later step for Digital Soil Mapping.
 
