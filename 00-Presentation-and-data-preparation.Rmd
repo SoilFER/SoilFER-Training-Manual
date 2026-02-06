@@ -1255,13 +1255,13 @@ aggregate(
 ```
 
 ::: warning-box
-When using `aggregate()`, make sure the grouping variable (here soil_type) is correctly imported as character or factor, and that the summarized variable (here ph) is numeric.
+- When using `aggregate()`, make sure the grouping variable (here `soil_type`) is correctly imported as character or factor, and that the summarized variable (here `ph`) is numeric.
 :::
 
 
 ## Data Manipulation with the Tidyverse {#tidyverse-manipultation}
 
-While **base R** is powerful, the **tidyverse** makes many common data tasks easier to write, read, and maintain—especially when working with real datasets. Its functions use a consistent “verb” style (e.g., `filter()`, `select()`, `mutate()`, `summarize()`), and the pipe operator `(%>%` or `|>`) lets you build clear, step-by-step workflows. This is particularly useful in soil data analysis, where you often need to clean, subset, join, and summarize data repeatedly.
+While **base R** is powerful, the **tidyverse** makes many common data tasks easier to write, read, and maintain—especially when working with real datasets. Its functions use a consistent "verb" style (e.g., `filter()`, `select()`, `mutate()`, `summarize()`), and the pipe operator (`%>%` or `|>`) lets you build clear, step-by-step workflows. This is particularly useful in soil data analysis, where you often need to clean, subset, join, and summarize data repeatedly.
 
 The `{tidyverse}` is a collection of R packages designed for data science that share a common philosophy and syntax.
 Key packages include:
@@ -1307,7 +1307,7 @@ soil_tbl <- tibble(
 
 ### The Pipe Operator: `%>%` {#tidyverse-pipe}
 
-The pipe operator `%>%` (from `{magrittr}` package, loaded with `{tidyverse}`) helps you write code as a clear sequence of chained operations. Instead of nesting functions inside each other, you send ('pipe') the output of one step into the next. This makes workflows easier to read and debug—especially when you are cleaning soil datasets where you often need to filter rows, select variables, create new columns, and then summarize or sort results.
+The pipe operator `%>%` (from `{magrittr}` package, loaded with `{tidyverse}`) helps you write code as a clear sequence of chained operations. Instead of nesting functions inside each other, you send ("pipe") the output of one step into the next. This makes workflows easier to read and debug—especially when you are cleaning soil datasets where you often need to filter rows, select variables, create new columns, and then summarize or sort results.
 
 
 ```{r pipe, echo=TRUE, eval=FALSE}
