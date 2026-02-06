@@ -234,7 +234,10 @@ To start using R, you need two main components:
 Once installed, R provides the underlying engine for data analysis---but working directly in base R can be challenging due to its command-line interface.
 
 ::: warning-box
-**Important**: Install R before installing RStudio, as RStudio requires R to function.
+**Important**
+
+ - Install R before installing RStudio, as RStudio requires R to function.
+ 
 :::
 
 ### Verifying Installation
@@ -317,8 +320,11 @@ Working in the **Code Editor** also makes it easier to organize code for later u
 -   **Help**: Access R documentation and function help pages
 
 ::: highlights
-**Best Practice**: Always work in scripts rather than typing directly in the Console.
-Scripts preserve your workflow and make your analysis reproducible.
+**Best Practice**
+
+- Always work in scripts rather than typing directly in the Console.
+
+- Scripts preserve your workflow and make your analysis reproducible.
 
 :::
 
@@ -406,8 +412,11 @@ install.packages("path/to/mypackage.zip", repos = NULL, type = "win.binary")
 This method does not require compilation and is usually faster on Windows.
 
 ::: warning-box
-**Note**: Package installation typically requires an internet connection.
-Depending on the package size and your connection speed, installation may take several minutes.
+**Note:**
+
+ - Package installation typically requires an internet connection.
+
+ - Depending on the package size and your connection speed, installation may take several minutes.
 
 :::
 
@@ -564,9 +573,6 @@ class(sampling_date)
 - The ISO 8601 date format (**YYYY-MM-DD**) is preferred for storing date values, since it is the date format adopted in the **GloSIS** database.
 :::
 
-::: warning-box
-- The ISO 8601 date format (**YYYY-MM-DD**) is preferred for storing date values, since it is the date format adopted in the **GloSIS** database.
-:::
 
 ### Checking Data Types {#check-data}
 
@@ -603,6 +609,7 @@ is.logical(is_valid)
 
 ::: warning-box
 **Caution:**
+
  - When importing data from external sources (CSV, Excel, databases), always check that columns have the expected data types. For example, pH or SOC may be imported as text instead of numeric.
 
 - Check types with `str()`, `class()`, or `typeof()`.
@@ -1023,6 +1030,7 @@ while (counter <= 5) {
 
 ::: warning-box
 **Caution:**
+
 - Always ensure loop conditions eventually become `FALSE` to avoid infinite loops!
 
 :::
@@ -1602,6 +1610,7 @@ bind_rows(spring_data, summer_data)
 
 ::: warning-box
 **Caution:**
+
  - `bind_rows()` works best when column names and types match.
  
  - If one dataset has extra/missing columns, `bind_rows()` will create the missing columns and fill them with `NA`.
@@ -1679,6 +1688,7 @@ soil_data_na %>%
 
 ::: warning-box
 **Caution:**
+
  - `na.omit()` removes **any row** that contains at least one `NA` in **any column**. This can unintentionally drop many observations—especially in wide datasets.
  
  - `drop_na()` (like `na.omit()`) can remove many rows if your dataset has missing values in multiple columns.
@@ -1813,6 +1823,7 @@ soil_lab
 
 ::: warning-box
 **Caution:**
+
  - Replacing BDL values with DL/2 is a simple convention, but it can bias results when many values are censored. Always report the detection limit and the percentage of BDL values.
 
 :::
@@ -1970,6 +1981,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 ::: warning-box
 **Caution:**
+
  - Imported columns are sometimes read with the wrong type (e.g., numbers stored as text).
 
  - The `str()` function is especially useful when you're not sure how R is interpreting your variables --- for example, whether a column is being read as text (character) or as a categorical variable (factor).
