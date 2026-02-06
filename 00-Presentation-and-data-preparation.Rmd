@@ -1993,15 +1993,17 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 ## References {#references-m1}
 
-Grolemund, G., & Wickham, H. (2017). R for Data Science. O’Reilly Media.
+ - Brus, D.J.(2022). Spatial Sampling with R, CRC Press, New York. https://dickbrus.github.io/SpatialSamplingwithR/
+ 
+ - Grolemund, G., & Wickham, H. (2017). R for Data Science. O’Reilly Media.
 
-Brus, D.J.(2022). Spatial Sampling with R, CRC Press, New York. https://dickbrus.github.io/SpatialSamplingwithR/
+ - Hengl, T., & MacMillan, R. A. (2019). Predictive Soil Mapping with R. Zenodo. https://doi.org/10.5281/zenodo.2561035
 
-Hengl, T., & MacMillan, R. A. (2019). Predictive Soil Mapping with R. Zenodo. https://doi.org/10.5281/zenodo.2561035
+ - Pebesma, E.; Bivand, R. (2023). Spatial Data Science: With Applications in R (1st ed.). 314 pages. Chapman and Hall/CRC, Boca Raton. https://doi.org/10.1201/9780429459016
 
-Soil Survey Staff (2025). Statistics for Soil Survey. https://ncss-tech.github.io/stats_for_soil_example/
+ - Soil Survey Staff (2025). Statistics for Soil Survey. https://ncss-tech.github.io/stats_for_soil_example/
 
-Spatial Data Science with R and 'terra' (2025). https://rspatial.org/
+ - Spatial Data Science with R and 'terra' (2025). https://rspatial.org/
 
 
 
