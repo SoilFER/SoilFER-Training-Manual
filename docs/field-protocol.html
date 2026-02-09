@@ -51,6 +51,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -165,9 +169,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#what-this-tutorial-is-not"><i class="fa fa-check"></i>What this Tutorial is not</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#the-training-dataset"><i class="fa fa-check"></i>The Training Dataset</a>
 <ul>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#data-structure"><i class="fa fa-check"></i>Data Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a>
+<ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#step-by-step-setup-instructions"><i class="fa fa-check"></i>Step-by-step setup instructions</a></li>
 </ul></li>
 </ul></li>
@@ -499,23 +507,23 @@ div.csl-indent {
 <h2><span class="header-section-number">4.1</span> GPS Device Preparation<a href="field-protocol.html#gps-prep" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="export-to-gpx-format" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Export to GPX Format<a href="field-protocol.html#export-to-gpx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="field-protocol.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
-<span id="cb177-2"><a href="field-protocol.html#cb177-2" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
-<span id="cb177-3"><a href="field-protocol.html#cb177-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-4"><a href="field-protocol.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
-<span id="cb177-5"><a href="field-protocol.html#cb177-5" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
-<span id="cb177-6"><a href="field-protocol.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb177-7"><a href="field-protocol.html#cb177-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-8"><a href="field-protocol.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
-<span id="cb177-9"><a href="field-protocol.html#cb177-9" aria-hidden="true" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb177-10"><a href="field-protocol.html#cb177-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-11"><a href="field-protocol.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
-<span id="cb177-12"><a href="field-protocol.html#cb177-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
-<span id="cb177-13"><a href="field-protocol.html#cb177-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
-<span id="cb177-14"><a href="field-protocol.html#cb177-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
-<span id="cb177-15"><a href="field-protocol.html#cb177-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb177-16"><a href="field-protocol.html#cb177-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-17"><a href="field-protocol.html#cb177-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="field-protocol.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load target TSUs</span></span>
+<span id="cb178-2"><a href="field-protocol.html#cb178-2" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>)</span>
+<span id="cb178-3"><a href="field-protocol.html#cb178-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-4"><a href="field-protocol.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to primary targets only (1 per SSU)</span></span>
+<span id="cb178-5"><a href="field-protocol.html#cb178-5" aria-hidden="true" tabindex="-1"></a>tsus_field <span class="ot">&lt;-</span> tsus_field <span class="sc">%&gt;%</span></span>
+<span id="cb178-6"><a href="field-protocol.html#cb178-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb178-7"><a href="field-protocol.html#cb178-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-8"><a href="field-protocol.html#cb178-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to WGS84 (required for GPS)</span></span>
+<span id="cb178-9"><a href="field-protocol.html#cb178-9" aria-hidden="true" tabindex="-1"></a>tsus_field_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(tsus_field, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb178-10"><a href="field-protocol.html#cb178-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-11"><a href="field-protocol.html#cb178-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to GPX</span></span>
+<span id="cb178-12"><a href="field-protocol.html#cb178-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(tsus_field_wgs84, </span>
+<span id="cb178-13"><a href="field-protocol.html#cb178-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;results/all/field_sampling_points.gpx&quot;</span>, </span>
+<span id="cb178-14"><a href="field-protocol.html#cb178-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver =</span> <span class="st">&quot;GPX&quot;</span>, </span>
+<span id="cb178-15"><a href="field-protocol.html#cb178-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb178-16"><a href="field-protocol.html#cb178-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-17"><a href="field-protocol.html#cb178-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Exported %d waypoints to GPX</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_field_wgs84)))</span></code></pre></div>
 </div>
 <div id="load-onto-gps-device" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Load onto GPS Device<a href="field-protocol.html#load-onto-gps-device" class="anchor-section" aria-label="Anchor link to header"></a></h3>
