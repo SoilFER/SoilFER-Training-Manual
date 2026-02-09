@@ -18,6 +18,9 @@ DATA_DIR    <- file.path(RESOURCES_ROOT, "01_data", "module5")
 SCRIPTS_DIR <- file.path(RESOURCES_ROOT, "02_scripts", "module5")
 OUTPUTS_DIR <- file.path(RESOURCES_ROOT, "03_outputs", "module5")
 
+# Figures are stored locally in the Manual repo so they render online (GitHub Pages)
+FIGURES_DIR <- "images/module5"
+
 # ── terra temporary directory (avoid filling system drive) ──
 # Students on laptops with small C: drives can change this to a larger disk.
 TERRA_TMPDIR <- file.path(tempdir(), "terra_module5")
@@ -61,11 +64,10 @@ if (length(missing_tifs) > 0) {
 }
 
 # ── Check that pre-generated figures exist ──
-figures_dir <- file.path(OUTPUTS_DIR, "figures")
-if (!dir.exists(figures_dir) || length(list.files(figures_dir, pattern = "\\.png$")) == 0) {
+if (!dir.exists(FIGURES_DIR) || length(list.files(FIGURES_DIR, pattern = "\\.png$")) == 0) {
   message("------------------------------------------------------------")
   message("WARNING: Pre-generated figures are missing from:")
-  message("  ", figures_dir)
+  message("  ", FIGURES_DIR)
   message("")
   message("To generate them, run:")
   message("  Rscript ", file.path(SCRIPTS_DIR, "generate_chapter_figures.R"))
@@ -329,7 +331,7 @@ Following the *scorpan* framework, we model pH as a function of environmental co
 The workflow begins by loading environmental covariates representing the *scorpan* factors: terrain attributes derived from digital elevation models (r), climate variables (c), and remote sensing indices representing vegetation (o).
 
 ```{r example-covariate, echo=FALSE, fig.cap="Example environmental covariate layer from the 250m resolution stack."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "example_covariate.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"example_covariate.png"))
 ```
 
 Each covariate layer represents one environmental variable at 100m resolution. These are **proxies** for the true soil-forming factors—they correlate with soil pH but do not directly represent the chemical processes involved. The model learns which covariates best explain pH variation from the training points, then applies that relationship to predict pH across the entire area.
@@ -347,7 +349,7 @@ print(selected_features)
 ```
 
 ```{r boruta-plot, echo=FALSE, fig.cap="Boruta feature selection results. Green = confirmed important, red = rejected, yellow = tentative."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "boruta_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"boruta_pH.png"))
 ```
 
 **How to read this plot:**
@@ -395,7 +397,7 @@ The model was trained using **10-fold cross-validation repeated 5 times**. The d
 ### Variable Importance
 
 ```{r varimp-plot, echo=FALSE, fig.cap="Variable importance from the trained Random Forest model."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "varimp_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"varimp_pH.png"))
 ```
 
 This plot ranks covariates by how much they contribute to predictions. Variables at the top reduce prediction error the most when used in tree splits.
@@ -421,7 +423,7 @@ kable(metrics, digits = 3, caption = "Cross-validation metrics for pH prediction
 An R² of ~0.32 is modest but not unusual in DSM. This reflects the sources of residual variance discussed in Part I: measurement error, missing covariates, scale mismatches, and fine-scale soil variation that cannot be captured at 100m resolution.
 
 ```{r scatterplot, echo=FALSE, fig.cap="Observed vs Predicted pH from cross-validation. The red line shows perfect 1:1 prediction."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "scatterplot_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"scatterplot_pH.png"))
 ```
 
 **How to read this scatterplot:**
@@ -435,7 +437,7 @@ knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "scatterplot_pH.png"))
 #### Mean pH Map
 
 ```{r map-mean, echo=FALSE, fig.cap="Predicted mean pH across the study area."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_mean_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_mean_pH.png"))
 ```
 
 This map represents the deterministic component $\hat{m}(s)$ from the Universal Model—the predicted pH value at each 100m pixel based on environmental covariates.
@@ -450,7 +452,7 @@ Look for patterns that match your understanding of soil-landscape relationships.
 #### Uncertainty Map (Standard Deviation)
 
 ```{r map-sd, echo=FALSE, fig.cap="Prediction uncertainty (SD) - higher values indicate more uncertain predictions."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_sd_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_sd_pH.png"))
 ```
 
 For continuous predictions, we express uncertainty as a **standard deviation (SD)**. This comes from Quantile Regression Forest: each of the trees in the forest makes its own prediction. Where trees agree, SD is low. Where trees disagree, SD is high.
@@ -466,7 +468,7 @@ Use this map to prioritise where additional sampling would improve predictions a
 #### Coefficient of Variation Map
 
 ```{r map-cv, echo=FALSE, fig.cap="Coefficient of Variation (%) - relative uncertainty."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_cv_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_cv_pH.png"))
 ```
 
 CV expresses uncertainty relative to the predicted value: CV = (SD / Mean) × 100.
@@ -538,7 +540,7 @@ kable(metrics_nom, digits = 3, caption = "Classification metrics for Clay_pH_Cla
 Accuracy of ~39% is better than random but limited. This is typical when classifying continuous variables into categories, especially with class imbalance (some classes have many more observations than others).
 
 ```{r confusion-matrix, echo=FALSE, fig.cap="Confusion matrix showing predicted vs observed classes. Diagonal cells are correct predictions."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "confusion_matrix_Clay_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"confusion_matrix_Clay_pH_Class.png"))
 ```
 
 **How to read the confusion matrix:**
@@ -554,7 +556,7 @@ If "high_clay_acid" is often misclassified as "medium_clay_acid", the model stru
 #### Predicted Class Map
 
 ```{r map-class-max, echo=FALSE, fig.cap="Predicted class based on maximum probability."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_class_max_prob.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_class_max_prob.png"))
 ```
 
 Each pixel is assigned to the class with the highest predicted probability. Check if spatial patterns match landscape expectations: high clay in floodplains? Acid soils in high-rainfall uplands?
@@ -562,7 +564,7 @@ Each pixel is assigned to the class with the highest predicted probability. Chec
 #### Maximum Probability Map
 
 ```{r map-prob-max, echo=FALSE, fig.cap="Maximum class probability - higher values indicate more confident predictions."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_max_prob_value.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_max_prob_value.png"))
 ```
 
 **Why probability is uncertainty for nominal variables:**
@@ -574,7 +576,7 @@ Low probability areas are "transition zones" where the model cannot confidently 
 #### Uncertainty Map
 
 ```{r map-uncertainty-nom, echo=FALSE, fig.cap="Classification uncertainty (1 - max probability)."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_uncertainty_nominal.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_uncertainty_nominal.png"))
 ```
 
 This map shows 1 minus the maximum probability. High values mean the model is uncertain about class assignment.
@@ -582,7 +584,7 @@ This map shows 1 minus the maximum probability. High values mean the model is un
 #### Confident Predictions Map
 
 ```{r map-confident, echo=FALSE, fig.cap="Only predictions where max probability >= 0.4 are shown."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_class_confident.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_class_confident.png"))
 ```
 
 This map applies a confidence threshold: predictions below 40% probability are masked. Areas in white/NA are where the model is not confident enough to assign a class.
@@ -671,7 +673,7 @@ kable(metrics_ord, digits = 3, caption = "Ordinal classification metrics for pH_
 In ordinal validation, not all errors are equal. Predicting class 3 when truth is class 4 (distance = 1) is less severe than predicting class 1 (distance = 3). The metrics weight errors by their distance on the ordinal scale.
 
 ```{r ordinal-confusion, echo=FALSE, fig.cap="Ordinal confusion matrix. Errors near the diagonal are minor; errors far from diagonal are severe."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "ordinal_confusion_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"ordinal_confusion_pH_Class.png"))
 ```
 
 **How to read the ordinal confusion matrix:**
@@ -686,7 +688,7 @@ knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "ordinal_confusion_pH_
 #### Latent Values Map
 
 ```{r map-latent, echo=FALSE, fig.cap="Continuous 'latent' predictions before reclassification to ordinal classes."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_latent_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_latent_pH_Class.png"))
 ```
 
 This map shows the raw regression output before rounding to classes. Values range from ~1 to ~5. This reveals continuous spatial gradients that are lost when we assign discrete classes.
@@ -694,7 +696,7 @@ This map shows the raw regression output before rounding to classes. Values rang
 #### Reclassified Ordinal Class Map
 
 ```{r map-class-ord, echo=FALSE, fig.cap="Ordinal classes derived from latent predictions using midpoint thresholds."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_class_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_class_pH_Class.png"))
 ```
 
 Classes 1–5 correspond to: very_acid, acid, neutral, alkaline, very_alkaline. Compare this to the continuous pH map—patterns should be similar but expressed as discrete classes.
@@ -702,7 +704,7 @@ Classes 1–5 correspond to: very_acid, acid, neutral, alkaline, very_alkaline. 
 #### Standard Deviation Map
 
 ```{r map-sd-ord, echo=FALSE, fig.cap="Prediction uncertainty (SD) from the ordinal regression model."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_sd_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_sd_pH_Class.png"))
 ```
 
 As with continuous predictions, SD reflects disagreement among trees. High SD means the model is uncertain about the latent value.
@@ -710,7 +712,7 @@ As with continuous predictions, SD reflects disagreement among trees. High SD me
 #### Class Instability Map
 
 ```{r map-instability, echo=FALSE, fig.cap="Class instability - high values where predictions are near class boundaries."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_instability_pH_Class.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_instability_pH_Class.png"))
 ```
 
 **Why ordinal uncertainty is about instability:**
@@ -736,7 +738,7 @@ The **Area of Applicability (AOA)** identifies which parts of the study area hav
 ### Dissimilarity Index (DI)
 
 ```{r map-di, echo=FALSE, fig.cap="Dissimilarity Index - how different each location is from training data in covariate space."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_DI_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_DI_pH.png"))
 ```
 
 DI measures how different each pixel's covariate values are from the nearest training point in multivariate covariate space. It is calculated using weighted Euclidean distance, where weights reflect variable importance from the model.
@@ -746,7 +748,7 @@ DI near 0 means the pixel is similar to training data. High DI means the covaria
 ### AOA Binary Mask
 
 ```{r map-aoa-mask, echo=FALSE, fig.cap="Area of Applicability mask. Green = within AOA (trustworthy), Grey = outside AOA (unreliable)."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_AOA_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_AOA_pH.png"))
 ```
 
 Pixels are classified as inside (1) or outside (0) the AOA based on a DI threshold derived from cross-validation.
@@ -756,14 +758,14 @@ Pixels are classified as inside (1) or outside (0) the AOA based on a DI thresho
 
 ```{r aoa-coverage, echo=FALSE}
 # AOA coverage statistic (pre-computed by generate_chapter_figures.R)
-aoa_cov_file <- file.path(OUTPUTS_DIR, "figures", "aoa_coverage.txt")
+aoa_cov_file <- file.path(FIGURES_DIR,"aoa_coverage.txt")
 if (file.exists(aoa_cov_file)) cat(readLines(aoa_cov_file), "\n")
 ```
 
 ### Local Point Density (LPD)
 
 ```{r map-lpd, echo=FALSE, fig.cap="Local Point Density - number of training points supporting predictions at each location."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_LPD_pH.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_LPD_pH.png"))
 ```
 
 LPD counts how many training points are "nearby" in covariate space. Even within the AOA, some areas have more training support than others.
@@ -773,7 +775,7 @@ LPD = 0 means no training points are nearby—a strong warning. Higher LPD means
 ### Predictions Masked to AOA
 
 ```{r map-masked-aoa, echo=FALSE, fig.cap="pH predictions only shown within the Area of Applicability."}
-knitr::include_graphics(file.path(OUTPUTS_DIR, "figures", "map_mean_pH_masked_AOA.png"))
+knitr::include_graphics(file.path(FIGURES_DIR,"map_mean_pH_masked_AOA.png"))
 ```
 
 This map shows predictions only where the model can be trusted. White/NA areas are outside the AOA.

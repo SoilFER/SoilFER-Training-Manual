@@ -742,7 +742,7 @@ A classic example of the need for spatio-temporal modelling is <strong>soil mois
 <h3><span class="header-section-number">7.3.2</span> Data and Covariates<a href="digital-soil-mapping-and-modeling.html#data-and-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The workflow begins by loading environmental covariates representing the <em>scorpan</em> factors: terrain attributes derived from digital elevation models (r), climate variables (c), and remote sensing indices representing vegetation (o).</p>
 <div class="figure"><span style="display:block;" id="fig:example-covariate"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/example_covariate.png" alt="Example environmental covariate layer from the 250m resolution stack." width="1200" />
+<img src="images/module5/example_covariate.png" alt="Example environmental covariate layer from the 250m resolution stack." width="1200" />
 <p class="caption">
 Figure 7.1: Example environmental covariate layer from the 250m resolution stack.
 </p>
@@ -770,7 +770,7 @@ Figure 7.1: Example environmental covariate layer from the 250m resolution stack
 ## [25] &quot;dtm_curvature_250m&quot;    &quot;dtm_elevation_250m&quot;    &quot;dtm_slope_250m&quot;       
 ## [28] &quot;dtm_tpi_250m&quot;          &quot;dtm_twi_500m&quot;</code></pre>
 <div class="figure"><span style="display:block;" id="fig:boruta-plot"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/boruta_pH.png" alt="Boruta feature selection results. Green = confirmed important, red = rejected, yellow = tentative." width="442" />
+<img src="images/module5/boruta_pH.png" alt="Boruta feature selection results. Green = confirmed important, red = rejected, yellow = tentative." width="442" />
 <p class="caption">
 Figure 7.2: Boruta feature selection results. Green = confirmed important, red = rejected, yellow = tentative.
 </p>
@@ -838,7 +838,7 @@ Figure 7.2: Boruta feature selection results. Green = confirmed important, red =
 <div id="variable-importance" class="section level3 hasAnchor" number="7.3.5">
 <h3><span class="header-section-number">7.3.5</span> Variable Importance<a href="digital-soil-mapping-and-modeling.html#variable-importance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:varimp-plot"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/varimp_pH.png" alt="Variable importance from the trained Random Forest model." width="442" />
+<img src="images/module5/varimp_pH.png" alt="Variable importance from the trained Random Forest model." width="442" />
 <p class="caption">
 Figure 7.3: Variable importance from the trained Random Forest model.
 </p>
@@ -910,7 +910,7 @@ Figure 7.3: Variable importance from the trained Random Forest model.
 </table>
 <p>An R² of ~0.32 is modest but not unusual in DSM. This reflects the sources of residual variance discussed in Part I: measurement error, missing covariates, scale mismatches, and fine-scale soil variation that cannot be captured at 100m resolution.</p>
 <div class="figure"><span style="display:block;" id="fig:scatterplot"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/scatterplot_pH.png" alt="Observed vs Predicted pH from cross-validation. The red line shows perfect 1:1 prediction." width="708" />
+<img src="images/module5/scatterplot_pH.png" alt="Observed vs Predicted pH from cross-validation. The red line shows perfect 1:1 prediction." width="708" />
 <p class="caption">
 Figure 7.4: Observed vs Predicted pH from cross-validation. The red line shows perfect 1:1 prediction.
 </p>
@@ -927,7 +927,7 @@ Figure 7.4: Observed vs Predicted pH from cross-validation. The red line shows p
 <div id="mean-ph-map" class="section level4 hasAnchor" number="7.3.7.1">
 <h4><span class="header-section-number">7.3.7.1</span> Mean pH Map<a href="digital-soil-mapping-and-modeling.html#mean-ph-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-mean"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_mean_pH.png" alt="Predicted mean pH across the study area." width="1200" />
+<img src="images/module5/map_mean_pH.png" alt="Predicted mean pH across the study area." width="1200" />
 <p class="caption">
 Figure 7.5: Predicted mean pH across the study area.
 </p>
@@ -943,7 +943,7 @@ Figure 7.5: Predicted mean pH across the study area.
 <div id="uncertainty-map-standard-deviation" class="section level4 hasAnchor" number="7.3.7.2">
 <h4><span class="header-section-number">7.3.7.2</span> Uncertainty Map (Standard Deviation)<a href="digital-soil-mapping-and-modeling.html#uncertainty-map-standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-sd"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_sd_pH.png" alt="Prediction uncertainty (SD) - higher values indicate more uncertain predictions." width="1200" />
+<img src="images/module5/map_sd_pH.png" alt="Prediction uncertainty (SD) - higher values indicate more uncertain predictions." width="1200" />
 <p class="caption">
 Figure 7.6: Prediction uncertainty (SD) - higher values indicate more uncertain predictions.
 </p>
@@ -960,7 +960,7 @@ Figure 7.6: Prediction uncertainty (SD) - higher values indicate more uncertain 
 <div id="coefficient-of-variation-map" class="section level4 hasAnchor" number="7.3.7.3">
 <h4><span class="header-section-number">7.3.7.3</span> Coefficient of Variation Map<a href="digital-soil-mapping-and-modeling.html#coefficient-of-variation-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-cv"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_cv_pH.png" alt="Coefficient of Variation (%) - relative uncertainty." width="1200" />
+<img src="images/module5/map_cv_pH.png" alt="Coefficient of Variation (%) - relative uncertainty." width="1200" />
 <p class="caption">
 Figure 7.7: Coefficient of Variation (%) - relative uncertainty.
 </p>
@@ -1099,7 +1099,7 @@ Figure 7.7: Coefficient of Variation (%) - relative uncertainty.
 </table>
 <p>Accuracy of ~39% is better than random but limited. This is typical when classifying continuous variables into categories, especially with class imbalance (some classes have many more observations than others).</p>
 <div class="figure"><span style="display:block;" id="fig:confusion-matrix"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/confusion_matrix_Clay_pH_Class.png" alt="Confusion matrix showing predicted vs observed classes. Diagonal cells are correct predictions." width="1062" />
+<img src="images/module5/confusion_matrix_Clay_pH_Class.png" alt="Confusion matrix showing predicted vs observed classes. Diagonal cells are correct predictions." width="1062" />
 <p class="caption">
 Figure 7.8: Confusion matrix showing predicted vs observed classes. Diagonal cells are correct predictions.
 </p>
@@ -1117,7 +1117,7 @@ Figure 7.8: Confusion matrix showing predicted vs observed classes. Diagonal cel
 <div id="predicted-class-map" class="section level4 hasAnchor" number="7.4.5.1">
 <h4><span class="header-section-number">7.4.5.1</span> Predicted Class Map<a href="digital-soil-mapping-and-modeling.html#predicted-class-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-class-max"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_class_max_prob.png" alt="Predicted class based on maximum probability." width="1200" />
+<img src="images/module5/map_class_max_prob.png" alt="Predicted class based on maximum probability." width="1200" />
 <p class="caption">
 Figure 7.9: Predicted class based on maximum probability.
 </p>
@@ -1127,7 +1127,7 @@ Figure 7.9: Predicted class based on maximum probability.
 <div id="maximum-probability-map" class="section level4 hasAnchor" number="7.4.5.2">
 <h4><span class="header-section-number">7.4.5.2</span> Maximum Probability Map<a href="digital-soil-mapping-and-modeling.html#maximum-probability-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-prob-max"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_max_prob_value.png" alt="Maximum class probability - higher values indicate more confident predictions." width="1200" />
+<img src="images/module5/map_max_prob_value.png" alt="Maximum class probability - higher values indicate more confident predictions." width="1200" />
 <p class="caption">
 Figure 7.10: Maximum class probability - higher values indicate more confident predictions.
 </p>
@@ -1139,7 +1139,7 @@ Figure 7.10: Maximum class probability - higher values indicate more confident p
 <div id="uncertainty-map" class="section level4 hasAnchor" number="7.4.5.3">
 <h4><span class="header-section-number">7.4.5.3</span> Uncertainty Map<a href="digital-soil-mapping-and-modeling.html#uncertainty-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-uncertainty-nom"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_uncertainty_nominal.png" alt="Classification uncertainty (1 - max probability)." width="1200" />
+<img src="images/module5/map_uncertainty_nominal.png" alt="Classification uncertainty (1 - max probability)." width="1200" />
 <p class="caption">
 Figure 7.11: Classification uncertainty (1 - max probability).
 </p>
@@ -1149,7 +1149,7 @@ Figure 7.11: Classification uncertainty (1 - max probability).
 <div id="confident-predictions-map" class="section level4 hasAnchor" number="7.4.5.4">
 <h4><span class="header-section-number">7.4.5.4</span> Confident Predictions Map<a href="digital-soil-mapping-and-modeling.html#confident-predictions-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-confident"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_class_confident.png" alt="Only predictions where max probability &gt;= 0.4 are shown." width="1200" />
+<img src="images/module5/map_class_confident.png" alt="Only predictions where max probability &gt;= 0.4 are shown." width="1200" />
 <p class="caption">
 Figure 7.12: Only predictions where max probability &gt;= 0.4 are shown.
 </p>
@@ -1310,7 +1310,7 @@ Figure 7.12: Only predictions where max probability &gt;= 0.4 are shown.
 <p><strong>Why ordinal metrics differ from nominal:</strong></p>
 <p>In ordinal validation, not all errors are equal. Predicting class 3 when truth is class 4 (distance = 1) is less severe than predicting class 1 (distance = 3). The metrics weight errors by their distance on the ordinal scale.</p>
 <div class="figure"><span style="display:block;" id="fig:ordinal-confusion"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/ordinal_confusion_pH_Class.png" alt="Ordinal confusion matrix. Errors near the diagonal are minor; errors far from diagonal are severe." width="886" />
+<img src="images/module5/ordinal_confusion_pH_Class.png" alt="Ordinal confusion matrix. Errors near the diagonal are minor; errors far from diagonal are severe." width="886" />
 <p class="caption">
 Figure 7.13: Ordinal confusion matrix. Errors near the diagonal are minor; errors far from diagonal are severe.
 </p>
@@ -1328,7 +1328,7 @@ Figure 7.13: Ordinal confusion matrix. Errors near the diagonal are minor; error
 <div id="latent-values-map" class="section level4 hasAnchor" number="7.5.6.1">
 <h4><span class="header-section-number">7.5.6.1</span> Latent Values Map<a href="digital-soil-mapping-and-modeling.html#latent-values-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-latent"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_latent_pH_Class.png" alt="Continuous 'latent' predictions before reclassification to ordinal classes." width="1200" />
+<img src="images/module5/map_latent_pH_Class.png" alt="Continuous 'latent' predictions before reclassification to ordinal classes." width="1200" />
 <p class="caption">
 Figure 7.14: Continuous ‘latent’ predictions before reclassification to ordinal classes.
 </p>
@@ -1338,7 +1338,7 @@ Figure 7.14: Continuous ‘latent’ predictions before reclassification to ordi
 <div id="reclassified-ordinal-class-map" class="section level4 hasAnchor" number="7.5.6.2">
 <h4><span class="header-section-number">7.5.6.2</span> Reclassified Ordinal Class Map<a href="digital-soil-mapping-and-modeling.html#reclassified-ordinal-class-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-class-ord"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_class_pH_Class.png" alt="Ordinal classes derived from latent predictions using midpoint thresholds." width="1200" />
+<img src="images/module5/map_class_pH_Class.png" alt="Ordinal classes derived from latent predictions using midpoint thresholds." width="1200" />
 <p class="caption">
 Figure 7.15: Ordinal classes derived from latent predictions using midpoint thresholds.
 </p>
@@ -1348,7 +1348,7 @@ Figure 7.15: Ordinal classes derived from latent predictions using midpoint thre
 <div id="standard-deviation-map" class="section level4 hasAnchor" number="7.5.6.3">
 <h4><span class="header-section-number">7.5.6.3</span> Standard Deviation Map<a href="digital-soil-mapping-and-modeling.html#standard-deviation-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-sd-ord"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_sd_pH_Class.png" alt="Prediction uncertainty (SD) from the ordinal regression model." width="1200" />
+<img src="images/module5/map_sd_pH_Class.png" alt="Prediction uncertainty (SD) from the ordinal regression model." width="1200" />
 <p class="caption">
 Figure 7.16: Prediction uncertainty (SD) from the ordinal regression model.
 </p>
@@ -1358,7 +1358,7 @@ Figure 7.16: Prediction uncertainty (SD) from the ordinal regression model.
 <div id="class-instability-map" class="section level4 hasAnchor" number="7.5.6.4">
 <h4><span class="header-section-number">7.5.6.4</span> Class Instability Map<a href="digital-soil-mapping-and-modeling.html#class-instability-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure"><span style="display:block;" id="fig:map-instability"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_instability_pH_Class.png" alt="Class instability - high values where predictions are near class boundaries." width="1200" />
+<img src="images/module5/map_instability_pH_Class.png" alt="Class instability - high values where predictions are near class boundaries." width="1200" />
 <p class="caption">
 Figure 7.17: Class instability - high values where predictions are near class boundaries.
 </p>
@@ -1382,7 +1382,7 @@ Figure 7.17: Class instability - high values where predictions are near class bo
 <div id="dissimilarity-index-di" class="section level3 hasAnchor" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> Dissimilarity Index (DI)<a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:map-di"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_DI_pH.png" alt="Dissimilarity Index - how different each location is from training data in covariate space." width="1200" />
+<img src="images/module5/map_DI_pH.png" alt="Dissimilarity Index - how different each location is from training data in covariate space." width="1200" />
 <p class="caption">
 Figure 7.18: Dissimilarity Index - how different each location is from training data in covariate space.
 </p>
@@ -1393,7 +1393,7 @@ Figure 7.18: Dissimilarity Index - how different each location is from training 
 <div id="aoa-binary-mask" class="section level3 hasAnchor" number="7.6.3">
 <h3><span class="header-section-number">7.6.3</span> AOA Binary Mask<a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:map-aoa-mask"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_AOA_pH.png" alt="Area of Applicability mask. Green = within AOA (trustworthy), Grey = outside AOA (unreliable)." width="1200" />
+<img src="images/module5/map_AOA_pH.png" alt="Area of Applicability mask. Green = within AOA (trustworthy), Grey = outside AOA (unreliable)." width="1200" />
 <p class="caption">
 Figure 7.19: Area of Applicability mask. Green = within AOA (trustworthy), Grey = outside AOA (unreliable).
 </p>
@@ -1408,7 +1408,7 @@ Figure 7.19: Area of Applicability mask. Green = within AOA (trustworthy), Grey 
 <div id="local-point-density-lpd" class="section level3 hasAnchor" number="7.6.4">
 <h3><span class="header-section-number">7.6.4</span> Local Point Density (LPD)<a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:map-lpd"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_LPD_pH.png" alt="Local Point Density - number of training points supporting predictions at each location." width="1200" />
+<img src="images/module5/map_LPD_pH.png" alt="Local Point Density - number of training points supporting predictions at each location." width="1200" />
 <p class="caption">
 Figure 7.20: Local Point Density - number of training points supporting predictions at each location.
 </p>
@@ -1419,7 +1419,7 @@ Figure 7.20: Local Point Density - number of training points supporting predicti
 <div id="predictions-masked-to-aoa" class="section level3 hasAnchor" number="7.6.5">
 <h3><span class="header-section-number">7.6.5</span> Predictions Masked to AOA<a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure"><span style="display:block;" id="fig:map-masked-aoa"></span>
-<img src="../SoilFER-Training-Resources/03_outputs/module5/figures/map_mean_pH_masked_AOA.png" alt="pH predictions only shown within the Area of Applicability." width="1200" />
+<img src="images/module5/map_mean_pH_masked_AOA.png" alt="pH predictions only shown within the Area of Applicability." width="1200" />
 <p class="caption">
 Figure 7.21: pH predictions only shown within the Area of Applicability.
 </p>
