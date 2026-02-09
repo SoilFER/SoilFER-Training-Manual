@@ -48,26 +48,233 @@ For more information, we recommend the following dedicated resources:
 :::
 
 
-## How to use this book {-}
+## The Training Dataset {-}
 
-This tutorial manual introduces the essential concepts of soil data management and DSM using examples based on the **KSSL soil dataset** in Kansas. The tutorial is organized in 6 modules with different chapters:
+This manual uses the **KSSL (Kellogg Soil Survey Laboratory) soil dataset from Kansas, USA** as a comprehensive example for implementing the complete Digital Soil Mapping (DSM) workflow. The dataset provides a realistic foundation for learning DSM techniques, from inspection and cleaning of raw soil laboratory data through advanced spatial modeling and uncertainty assessment. It also demonstrates the integration of soil spectroscopy data and its application in operational DSM production.
 
- - 1) Introduction to R and Preparation of Soil Data for Digital Soil Mapping
+The KSSL Kansas dataset represents a collection of laboratory-analyzed soil samples with corresponding mid-infrared spectroscopy measurements. It contains **10,352 soil horizon measurements** from **2,584 distinct soil profiles** distributed across Kansas, spanning from 37.02°N to 39.99°N latitude and -102.04°W to -94.71°W longitude. The dataset exemplifies common data quality issues encountered in soil databases, providing hands-on experience with:
 
- - 2) Soil Sampling Design 
- 
- - 3) GloSIS Data Harmonization
- 
- - 4) Digital Soil Mapping
- 
- - 5) Soil Spectroscopy
- 
- - 6) Soil Data Sharing
- 
+- **Coordinate validation**: Geographic coordinate quality assessment and correction
+- **Depth sequence validation**: Nested horizon depths requiring logical consistency checks
+- **Outlier detection**: Property values spanning common feasible ranges
+- **Replicate measurements**: Resolving data replicates
+- **Missing values**: Strategic approach for dealing with missing values
 
-Each module combines conceptual explanations with practical coding exercises, tabular datasets, and spatial data. To follow the workflows as intended, participants are expected to work locally with the predefined project structure used throughout the SoilFER training 
+These characteristics make the KSSL Kansas dataset an adequate example for acquiring skills in systematic data cleaning, validation, and quality assurance procedures before proceeding to spatial modeling.
 
-### Required downloads {-}
+
+### Data Structure {-}
+
+The original dataset has been split into two data files:
+
+**1) Site and wet chemistry data (`KSSL_data.xlsx` & `KSSL_data.csv`)**: This file includes soil location, sample identifiers, and analytical soil properties (wet chemistry).
+
+The wet chemistry analyses include 14 soil properties commonly measured in soil survey operations. Table \@ref(tab:soil-properties) presents the complete list of available properties, their measurement units, and data completeness.
+
+```{r table-properties, echo=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+
+# Create soil properties table
+soil_props <- data.frame(
+  Category = c(
+    "Carbon & Organic Matter", "",
+    "Physical Properties", "", "",
+    "Texture", "", "",
+    "Chemical Properties", "", "",
+    "Nutrients", "", "", ""
+  ),
+  Property = c(
+    "Soil Organic Carbon", 
+    "Total Carbon",
+    "Bulk Density (1/3 bar)", 
+    "Bulk Density (oven-dry)", 
+    "pH",
+    "Clay", 
+    "Silt", 
+    "Sand",
+    "Cation Exchange Capacity", 
+    "Calcium Carbonate Equivalent",
+    "Potassium (exchangeable)",
+    "Total Nitrogen",
+    "Phosphorus (Mehlich-3)",
+    "Phosphorus (Olsen)",
+    ""
+  ),
+  Variable_Name = c(
+    "SOC", "Carbon_Total",
+    "Bulk.Density_1_3.BAR", "Bulk.Density_ovendry", "pH",
+    "Clay", "Silt", "Sand",
+    "CEC", "Calcium_Carbonate_equivalent", "Potassium",
+    "Nitrogen_Total", "Phosphorus_Mehlich3", "Phosphorus_Olsen",
+    ""
+  ),
+  Units = c(
+    "% (w/w)", "% (w/w)",
+    "g/cm^3", "g/cm^3", "unitless",
+    "%", "%", "%",
+    "cmol(+)/kg", "%", "cmol(+)/kg",
+    "% (w/w)", "mg/kg", "mg/kg",
+    ""
+  ),
+  Completeness = c(
+    "100.0", "99.5",
+    "60.8", "60.8", "98.9",
+    "99.1", "99.1", "99.1",
+    "97.1", "39.6", "85.3",
+    "93.9", "38.1", "13.6",
+    ""
+  ),
+  Notes = c(
+    "Organic carbon only; excludes carbonates",
+    "Includes both organic and inorganic C",
+    "Measured at field capacity (1/3 bar tension)",
+    "Measured after oven drying at 105 degrees C",
+    "Standard soil pH (1:1 soil:water ratio)",
+    "Particles < 0.002 mm",
+    "Particles 0.002-0.05 mm",
+    "Particles 0.05-2.0 mm (note: sum should = 100%)",
+    "Nutrient retention capacity; also as meq/100g",
+    "Inorganic carbon; high in western Kansas",
+    "Also reported as mg/kg in some databases",
+    "Used to calculate C:N ratio",
+    "Multi-element extraction; common in US",
+    "Bicarbonate extraction for alkaline soils",
+    ""
+  ),
+  stringsAsFactors = FALSE
+)
+
+# Create formatted table
+kable(soil_props,
+      col.names = c("Category", "Property", "Variable Name", "Units", "Complete (%)", "Notes"),
+      caption = "Soil properties available in the KSSL Kansas dataset",
+      booktabs = TRUE,
+      align = c("l", "l", "l", "l", "r", "l")) %>%
+  kable_styling(
+    latex_options = c("striped", "hold_position", "scale_down"),
+    font_size = 9,
+    full_width = FALSE
+  ) %>%
+  column_spec(1, bold = TRUE, width = "2.5cm") %>%
+  column_spec(2, width = "3cm") %>%
+  column_spec(3, width = "3cm", monospace = TRUE) %>%
+  column_spec(4, width = "2cm") %>%
+  column_spec(5, width = "1.5cm") %>%
+  column_spec(6, width = "5cm") %>%
+  collapse_rows(columns = 1, valign = "top", latex_hline = "major")
+```
+
+Some properties show strategic missing data patterns reflecting standard laboratory protocols where not all tests are performed on every sample. The varying completeness percentages reflect typical soil laboratory operations rather than random missing data:
+
+- **Fully measured properties** (>95% complete) represent standard analyses performed on nearly all samples: organic carbon, texture, pH, and CEC
+- **Selectively measured properties** (40-94% complete) reflect analyses performed when specific conditions warrant: bulk density, nitrogen, potassium, and calcium carbonate
+- **Conditionally measured properties** (<40% complete) are performed only when needed
+
+**2) Dry chemistry data (`KSSL_spec.xlsx` & `KSSL_spec.csv`)**: This file includes replicates of mid-infrared reflectance data (identified by `scan_path_name`) for each soil sample (linked via the `join_key` variable). Multiple spectral scans per horizon enable:
+
+- Quality control through spectral replicates
+- Training spectroscopy-based prediction models
+- Hybrid DSM approaches combining laboratory measurements with spectral inference
+- Gap-filling strategies for properties with lower completeness using spectral predictions
+
+## How to Use This Manual {-}
+
+This tutorial manual introduces the essential concepts of soil data management, covering the complete workflow from soil sampling design through Digital Soil Mapping (DSM) to data sharing. It is organized into 6 modules with multiple sessions each, progressing from fundamental R programming skills through advanced spatial modeling and international data standardization. The manual is designed for hands-on learning, combining conceptual explanations with practical coding exercises, real soil datasets, and spatial data workflows.
+
+
+### Manual Structure {-}
+
+Each module builds upon the previous one, creating a comprehensive learning pathway for operational DSM implementation:
+
+---
+
+#### **Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping** {-}
+
+This foundational module introduces R programming fundamentals specifically tailored for soil science applications. It consists of three sessions covering essential skills for soil data management and analysis.
+
+**Session 1.1 - Introduction to R for Soil Science**  
+Introduces the R programming environment, basic syntax, data types, operators, functions, and control structures. Participants learn to work with R objects, install and manage packages, and understand the RStudio interface. The session emphasizes practical soil science examples throughout all coding demonstrations.
+
+**Session 1.2 - Soil Data Preparation for Digital Soil Mapping**  
+Focuses on systematic soil data quality assessment and cleaning procedures essential before spatial modeling. Topics include coordinate validation, depth sequence checking, outlier detection and treatment, handling missing values, texture validation (sand-silt-clay constraints), duplicate resolution, and data harmonization techniques including depth standardization using mass-preserving splines.
+
+**Session 1.2.1 - Working with Spatial Data in R**  
+Covers fundamental concepts of spatial data handling using `{sf}` (for vector data) and `{terra}` (for raster data) packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
+
+**Dataset**: KSSL (Kellogg Soil Survey Laboratory) georeferenced soil data from Kansas, USA - 10,352 soil horizon measurements from 2,584 profiles with laboratory analyses and spectroscopy data.
+
+---
+
+#### **Module 2: Soil Sampling Design** {-}
+
+This module introduces the sampling methodology for soil surveys adopted in SoilFER.The module introduces SoilFER sampling procotol using the relationship between soils and the environmental diversity. The module presents the full process to create a proper sampling design according too such protocol.
+
+**Session 2.1. Sampling Design fundamentals**  
+- Soil forming factors and environmental variation: The SCORPAN model 
+- Optimization of the sample size using the Kullback-Leibler Divergence.
+- Use of Covariate Space Coverage (CSC) sampling for the identification of representative locations for soil samples
+- Three-stage hierarchical SoilFER sampling design: Primary Sampling Units (PSUs - 2km × 2km), Secondary Sampling Units (SSUs - 100m × 100m), and Tertiary Sampling Units (TSUs - 20m × 20m)
+
+**Session 2.2. Practical Implementation:**
+The module includes a comprehensive **hands on** exercise for:
+- Preparing environmental covariates
+- Calculation of minimum sample size for describing soils using the SCORPAN background.
+- Implementing Covariate Space Coverage (CSC) sampling for the identification of Primary Sampling Units
+- Generating Secondary and Tertiary Sampling Units (SSUs and TSUs) using stratified random sampling.
+- Creating site identification codes.
+
+---
+
+
+#### **Module 3: GloSIS Data Preparation** {-}
+
+This module covers the Global Soil Information System (GloSIS) framework including the GloSIS database specifications. These framework enables the publication, global data interoperability and sharing of soil data. Participants learn to prepare soil data compliant with international standards, making it shareable through global soil information systems and compatible with FAO reporting requirements.
+
+**Session 3.1. Harmonization of Soil Data for GloSIS**  
+- Understanding ISO-28250 standards and the GloSIS database structure
+- Features on Interest in the GloSIS database model
+- Soil property units and measurement methods in GloSIS
+- The GloSIS template for Soil Data Harmonization
+- Automated harmonization tools for Soil Data.
+
+**Session 3.2. GloSIS web services**  
+- Introduction to GloSIS web services
+- Docker tools for GloSIS deployment
+- ETL for ingestion of soil data into PostgreSQL
+- Metadata catalog service
+- Web mapping services (OpenLayers) for data visualization
+
+#### **Module 4: Digital Soil Mapping** {-}
+
+This module provides comprehensive training in predictive soil mapping techniques, from covariate preparation through model validation and uncertainty quantification.
+
+**Learning Focus:**
+- **Covariate engineering**: Deriving terrain attributes (slope, aspect, curvature, topographic wetness index), spectral indices (NDVI, EVI), climate summaries, and other environmental predictors
+- **Feature selection**: Identifying relevant covariates using correlation analysis, recursive feature elimination, and variable importance measures
+- **Machine learning algorithms**: 
+  - Random Forest for non-linear relationships and feature importance
+  - Gradient Boosting Machines (GBM) for high-accuracy predictions
+  - Support Vector Machines for classification tasks
+  - Ensemble methods combining multiple models
+- **Model training and tuning**: Cross-validation, hyperparameter optimization, preventing overfitting
+- **Spatial prediction**: Generating wall-to-wall maps of soil properties across landscapes
+- **Uncertainty quantification**: Prediction intervals, confidence maps, and model reliability assessment
+- **Map validation**: Independent validation, spatial cross-validation, accuracy metrics (RMSE, R², CCC)
+
+**Practical Workflows:**
+- Extracting covariate values at soil sample locations
+- Data splitting strategies for training and validation
+- Building prediction models using `{caret}` package
+- Raster prediction and map generation
+- Creating publication-quality maps with proper legends and scale bars
+
+**Target Soil Properties:**
+Examples focus on mapping SOC (Soil Organic Carbon), pH, texture (clay, silt, sand), bulk density, CEC (Cation Exchange Capacity), and nutrient content across Kansas using the KSSL dataset.
+
+---
+---
+## Required downloads {-}
 
 All training materials are distributed across **two complementary sources**.
 
