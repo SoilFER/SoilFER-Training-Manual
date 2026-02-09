@@ -247,11 +247,11 @@ This module covers the Global Soil Information System (GloSIS) framework includi
 
 #### **Module 4: Digital Soil Mapping** {-}
 
-This module provides comprehensive training in predictive soil mapping techniques, from covariate preparation through model validation and uncertainty quantification.
+This module provides comprehensive training in digital soil mapping (DSM) theory and practice, progressing from fundamental concepts through practical implementation of predictive soil mapping workflows.
+The training focus on mapping SOC (Soil Organic Carbon), pH and texture (clay, silt, sand) across Kansas using the standardized KSSL dataset produced in Module 1.
 
-**Learning Focus:**
-- **Covariate engineering**: Deriving terrain attributes (slope, aspect, curvature, topographic wetness index), spectral indices (NDVI, EVI), climate summaries, and other environmental predictors
-- **Feature selection**: Identifying relevant covariates using correlation analysis, recursive feature elimination, and variable importance measures
+**Session 4.1. Data preparation and theoretical background for DSM**  
+- **Feature selection**: Identifying relevant covariates to explain spatial differences in the target parameters 
 - **Machine learning algorithms**: 
   - Random Forest for non-linear relationships and feature importance
   - Gradient Boosting Machines (GBM) for high-accuracy predictions
@@ -262,18 +262,53 @@ This module provides comprehensive training in predictive soil mapping technique
 - **Uncertainty quantification**: Prediction intervals, confidence maps, and model reliability assessment
 - **Map validation**: Independent validation, spatial cross-validation, accuracy metrics (RMSE, R², CCC)
 
-**Practical Workflows:**
-- Extracting covariate values at soil sample locations
+**Session 4.2. Practical Workflows:**
+- Extracting relevant covariate values at soil sample locations
 - Data splitting strategies for training and validation
-- Building prediction models using `{caret}` package
-- Raster prediction and map generation
-- Creating publication-quality maps with proper legends and scale bars
+- Building prediction models for:
+  - Continuous Variables (pH)
+  - Nominal Classes (unordered soil classes combining clay content and pH categories)
+  - Ordinal Classes (ordered classes of soil pH - `very_acid < acid < neutral < alkaline < very_alkaline`)
+  - Raster predictive maps of soil parameters and its associated accuracy
 
-**Target Soil Properties:**
-Examples focus on mapping SOC (Soil Organic Carbon), pH, texture (clay, silt, sand), bulk density, CEC (Cation Exchange Capacity), and nutrient content across Kansas using the KSSL dataset.
+
+#### **Module 5: Soil Spectroscopy** {-}
+
+This module introduces soil infrared spectroscopy as a rapid, cost-effective method for predicting soil properties, and its integration into DSM workflows.
+The module uses the KSSL dataset's wet chemistry analyses (14 soil properties) linked to mid-infrared spectral scans, providing a real-world example of spectroscopy-DSM integration.
+
+**Session 5.1. Spectroscopy fundamentals**
+- **Spectral fundamentals and data preprocessing**: Baseline correction, smoothing, derivative transformations, scatter correction
+- **Quality control**: Spectral outlier detection, replicate measurement analysis
+- **Chemometric modeling**: Partial Least Squares Regression (PLSR), support vector regression, random forest for spectral calibration
+- **Spectral library development**: Building and maintaining reference spectral databases
+- **Gap-filling strategies**: Using spectroscopy to predict properties with low laboratory analysis completeness
+
+
+**Session 5.2. Practical Exercises:**
+- Processing raw spectral scans from the KSSL dataset (4 replicates per sample)
+- Building calibration models for SOC, texture, pH, and other properties
+- Integration of spectral predictions into DSM workflows
+
+
+#### **Module 6: Soil Data Sharing** {-}
+
+This module covers the technical and organizational aspects of making soil data discoverable, accessible, and interoperable through web services and international data sharing platforms.
+
+**Session 6.1: Data standards and formats**
+- **Metadata creation**: ISO 19115/19139 standards for spatial metadata
+- **Web service deployment**: Setting up OGC-compliant data services
+- **Data licensing and attribution**: Creative Commons, open data principles, proper citation practices
+- **Integration with global platforms**: Contributing to FAO GloSIS, ISRIC WoSIS (World Soil Information Service), national soil databases
+- **API development**: RESTful APIs for programmatic data access
+
+**Session 6.2: Technical Implementation:**
+- Configuring web map servers for soil data visualization
+- Publishing soil datasets through GeoServer or similar platforms
 
 ---
----
+
+
 ## Required downloads {-}
 
 All training materials are distributed across **two complementary sources**.
