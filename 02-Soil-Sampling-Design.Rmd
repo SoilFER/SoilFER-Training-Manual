@@ -1571,7 +1571,7 @@ write_sf(replacement_psus,
 
 > **Note**: Follow the same SSU and TSU generation process for replacement PSUs to create complete backup sampling locations.
 
-# Merging Results from Multiple Land Uses {#merging-results}
+## Merging Results from Multiple Land Uses {#merging-results}
 
 After running the sampling design separately for cropland, grassland, and forest, combine all results into a unified dataset with country-wide unique IDs.
 
@@ -1735,11 +1735,11 @@ ggsave("results/all/final_site_distribution.png",
 cat(sprintf("\n✓ Distribution map saved\n"))
 ```
 
-# Field Sampling Protocol {#field-protocol}
+## Field Sampling Protocol {#field-protocol}
 
-## GPS Device Preparation {#gps-prep}
+### GPS Device Preparation {#gps-prep}
 
-### Export to GPX Format
+#### Export to GPX Format
 
 ```{r export-gpx, eval=FALSE}
 # Load target TSUs
@@ -1761,14 +1761,14 @@ st_write(tsus_field_wgs84,
 cat(sprintf("✓ Exported %d waypoints to GPX\n", nrow(tsus_field_wgs84)))
 ```
 
-### Load onto GPS Device
+#### Load onto GPS Device
 
 1. Connect GPS device to computer
 2. Copy `field_sampling_points.gpx` to GPS memory
 3. Load waypoints in GPS software
 4. Waypoint names will be `site_id` values (e.g., KEN0001-1-1C)
 
-## Sampling Procedure {#sampling-procedure}
+### Sampling Procedure {#sampling-procedure}
 
 **For each PSU (in order of PSU_ID):**
 
@@ -1788,7 +1788,7 @@ cat(sprintf("✓ Exported %d waypoints to GPX\n", nrow(tsus_field_wgs84)))
 - Navigate to replacement PSU location
 - Sample at replacement TSUs (SSU_ID = 5, 6, 7, 8)
 
-## Data Recording {#data-recording}
+### Data Recording {#data-recording}
 
 Field form should capture (Table \@ref(tab:field-form)):
 
@@ -1807,7 +1807,7 @@ field_data <- data.frame(
 kable(field_data, caption = "Required field data recording")
 ```
 
-## Quality Control {#qc}
+### Quality Control {#qc}
 
 **During field work:**
 - ✅ Verify land use matches expected type
@@ -1822,22 +1822,22 @@ kable(field_data, caption = "Required field data recording")
 - Cross-reference photos with field records
 - Flag sites with large GPS deviation (>30m from waypoint)
 
-# References {-}
+## References {-}
 
 <div id="refs"></div>
 
-# Appendices {-}
+## Appendices {-}
 
-## Appendix A: Software and Data Sources {-}
+### Appendix A: Software and Data Sources {-}
 
-### Software Requirements
+#### Software Requirements
 
 - **R** (version ≥ 4.0): https://www.r-project.org/
 - **RStudio**: https://posit.co/products/open-source/rstudio/
 - **Google Earth Engine**: https://earthengine.google.com/
 - **QGIS** (optional): https://qgis.org/
 
-### Data Sources
+#### Data Sources
 
 **Global Datasets:**
 - CHELSA Climate: https://chelsa-climate.org/
@@ -1853,9 +1853,9 @@ kable(field_data, caption = "Required field data recording")
 - GADM: https://gadm.org/
 - Natural Earth: https://www.naturalearthdata.com/
 
-## Appendix B: Troubleshooting Common Issues {-}
+### Appendix B: Troubleshooting Common Issues {-}
 
-### Memory Issues
+#### Memory Issues
 
 **Problem**: R runs out of memory during processing
 
@@ -1869,7 +1869,7 @@ memory.limit(size = 32000)  # 32 GB
 # Close unnecessary applications
 ```
 
-### CRS Misalignment
+#### CRS Misalignment
 
 **Problem**: Spatial layers don't overlap correctly
 
@@ -1884,7 +1884,7 @@ your_data <- sf::st_transform(your_data, crs = target_crs)
 your_raster <- terra::project(your_raster, target_crs)
 ```
 
-### Empty Geometry
+#### Empty Geometry
 
 **Problem**: SSU or TSU generation fails
 
@@ -1900,7 +1900,7 @@ your_sf_object <- st_make_valid(your_sf_object)
 your_sf_object <- your_sf_object[!st_is_empty(your_sf_object), ]
 ```
 
-## Appendix C: Acronyms and Abbreviations {-}
+### Appendix C: Acronyms and Abbreviations {-}
 
 ```{r acronyms, echo=FALSE}
 acronyms <- data.frame(

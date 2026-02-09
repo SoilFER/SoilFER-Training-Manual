@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -169,10 +170,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#what-this-tutorial-is-not"><i class="fa fa-check"></i>What this Tutorial is not</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#the-training-dataset"><i class="fa fa-check"></i>The Training Dataset</a>
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#data-structure"><i class="fa fa-check"></i>Data Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-manual"><i class="fa fa-check"></i>How to Use This Manual</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#manual-structure"><i class="fa fa-check"></i>Manual Structure</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a>
 <ul>
@@ -408,114 +412,90 @@ div.csl-indent {
 <li class="chapter" data-level="2.13.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-shapefiles"><i class="fa fa-check"></i><b>2.13.4</b> Export Shapefiles</a></li>
 </ul></li>
 <li class="chapter" data-level="2.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>2.14</b> Compute Alternative PSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>3</b> Merging Results from Multiple Land Uses</a>
+<li class="chapter" data-level="2.15" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#merging-results"><i class="fa fa-check"></i><b>2.15</b> Merging Results from Multiple Land Uses</a></li>
+<li class="chapter" data-level="2.16" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#assign-unique-ids"><i class="fa fa-check"></i><b>2.16</b> Assign Country-Wide Unique IDs</a></li>
+<li class="chapter" data-level="2.17" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-unified"><i class="fa fa-check"></i><b>2.17</b> Export Unified Datasets</a></li>
+<li class="chapter" data-level="2.18" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#summary-stats"><i class="fa fa-check"></i><b>2.18</b> Summary Statistics</a></li>
+<li class="chapter" data-level="2.19" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#distribution-maps"><i class="fa fa-check"></i><b>2.19</b> Create Distribution Maps</a></li>
+<li class="chapter" data-level="2.20" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#field-protocol"><i class="fa fa-check"></i><b>2.20</b> Field Sampling Protocol</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>3.1</b> Assign Country-Wide Unique IDs</a></li>
-<li class="chapter" data-level="3.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>3.2</b> Export Unified Datasets</a></li>
-<li class="chapter" data-level="3.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>3.3</b> Summary Statistics</a></li>
-<li class="chapter" data-level="3.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>3.4</b> Create Distribution Maps</a></li>
+<li class="chapter" data-level="2.20.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#gps-prep"><i class="fa fa-check"></i><b>2.20.1</b> GPS Device Preparation</a></li>
+<li class="chapter" data-level="2.20.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-procedure"><i class="fa fa-check"></i><b>2.20.2</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="2.20.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#data-recording"><i class="fa fa-check"></i><b>2.20.3</b> Data Recording</a></li>
+<li class="chapter" data-level="2.20.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#qc"><i class="fa fa-check"></i><b>2.20.4</b> Quality Control</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>4</b> Field Sampling Protocol</a>
+<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#appendices"><i class="fa fa-check"></i>Appendices</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>4.1</b> GPS Device Preparation</a>
+<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a></li>
+<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a></li>
+<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>3</b> TBD</a></li>
+<li class="chapter" data-level="4" data-path="soil-data-preparation-for-glosis.html"><a href="soil-data-preparation-for-glosis.html"><i class="fa fa-check"></i><b>4</b> Soil Data Preparation for GloSIS</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>4.1.1</b> Export to GPX Format</a></li>
-<li class="chapter" data-level="4.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>4.1.2</b> Load onto GPS Device</a></li>
+<li class="chapter" data-level="4.1" data-path="soil-data-preparation-for-glosis.html"><a href="soil-data-preparation-for-glosis.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="soil-data-preparation-for-glosis.html"><a href="soil-data-preparation-for-glosis.html#soil-data-harmonization"><i class="fa fa-check"></i><b>4.2</b> Soil Data Harmonization</a></li>
+<li class="chapter" data-level="4.3" data-path="soil-data-preparation-for-glosis.html"><a href="soil-data-preparation-for-glosis.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258"><i class="fa fa-check"></i><b>4.3</b> Concepts on digital exchange of soil-related data (ISO 28258)</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>4.2</b> Sampling Procedure</a></li>
-<li class="chapter" data-level="4.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>4.3</b> Data Recording</a></li>
-<li class="chapter" data-level="4.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>4.4</b> Quality Control</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
-<ul>
-<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>4.4.1</b> Software Requirements</a></li>
-<li class="chapter" data-level="4.4.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>4.4.2</b> Data Sources</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
-<ul>
-<li class="chapter" data-level="4.4.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>4.4.3</b> Memory Issues</a></li>
-<li class="chapter" data-level="4.4.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>4.4.4</b> CRS Misalignment</a></li>
-<li class="chapter" data-level="4.4.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>4.4.5</b> Empty Geometry</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>5</b> TBD</a></li>
-<li class="chapter" data-level="6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html"><i class="fa fa-check"></i><b>6</b> Soil Data Preparation</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-cleaning"><i class="fa fa-check"></i><b>6.2</b> Data cleaning</a></li>
-<li class="chapter" data-level="6.3" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#soil-data-harmonization"><i class="fa fa-check"></i><b>6.3</b> Soil Data Harmonization</a></li>
-<li class="chapter" data-level="6.4" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258"><i class="fa fa-check"></i><b>6.4</b> Concepts on digital exchange of soil-related data (ISO 28258)</a></li>
-<li class="chapter" data-level="6.5" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#plot-data"><i class="fa fa-check"></i><b>6.5</b> Plot data</a></li>
-<li class="chapter" data-level="6.6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#profile-data"><i class="fa fa-check"></i><b>6.6</b> Profile data</a></li>
-<li class="chapter" data-level="6.7" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#element-data"><i class="fa fa-check"></i><b>6.7</b> Element data</a></li>
-<li class="chapter" data-level="6.8" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#specimen-data"><i class="fa fa-check"></i><b>6.8</b> Specimen data</a></li>
-<li class="chapter" data-level="6.9" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#definition-of-laboratory-procedures"><i class="fa fa-check"></i><b>6.9</b> Definition of laboratory procedures</a></li>
-<li class="chapter" data-level="6.10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-transformation"><i class="fa fa-check"></i><b>6.10</b> Data transformation</a></li>
-<li class="chapter" data-level="6.11" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database"><i class="fa fa-check"></i><b>6.11</b> Organizing soil data according to the GloSIS database</a></li>
-<li class="chapter" data-level="6.12" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis"><i class="fa fa-check"></i><b>6.12</b> Tools for harmonization of soil databases within GloSIS</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>7</b> Digital Soil Mapping and Modeling</a>
+<li class="chapter" data-level="5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>5</b> Digital Soil Mapping and Modeling</a>
 <ul>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-i-theoretical-foundations"><i class="fa fa-check"></i>Part I: Theoretical Foundations</a></li>
-<li class="chapter" data-level="7.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>7.1</b> Fundamentals of Digital Soil Mapping</a>
+<li class="chapter" data-level="5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>5.1</b> Fundamentals of Digital Soil Mapping</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>7.1.1</b> Introduction to Digital Soil Mapping</a></li>
-<li class="chapter" data-level="7.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>7.1.2</b> The SCORPAN Framework</a></li>
-<li class="chapter" data-level="7.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>7.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
-<li class="chapter" data-level="7.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>7.1.4</b> Types of Soil Variables</a></li>
-<li class="chapter" data-level="7.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>7.1.5</b> Prediction Methods</a></li>
-<li class="chapter" data-level="7.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>7.1.6</b> Nonlinearity and Uncertainty</a></li>
+<li class="chapter" data-level="5.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>5.1.1</b> Introduction to Digital Soil Mapping</a></li>
+<li class="chapter" data-level="5.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>5.1.2</b> The SCORPAN Framework</a></li>
+<li class="chapter" data-level="5.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>5.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
+<li class="chapter" data-level="5.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>5.1.4</b> Types of Soil Variables</a></li>
+<li class="chapter" data-level="5.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>5.1.5</b> Prediction Methods</a></li>
+<li class="chapter" data-level="5.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>5.1.6</b> Nonlinearity and Uncertainty</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-ii-practical-application"><i class="fa fa-check"></i>Part II: Practical Application</a></li>
-<li class="chapter" data-level="7.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>7.2</b> Workflow Overview</a></li>
-<li class="chapter" data-level="7.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>7.3</b> Continuous Modelling (pH)</a>
+<li class="chapter" data-level="5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>5.2</b> Workflow Overview</a></li>
+<li class="chapter" data-level="5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>5.3</b> Continuous Modelling (pH)</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>7.3.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>7.3.2</b> Data and Covariates</a></li>
-<li class="chapter" data-level="7.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>7.3.3</b> Feature Selection (Boruta)</a></li>
-<li class="chapter" data-level="7.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>7.3.4</b> Model Training</a></li>
-<li class="chapter" data-level="7.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>7.3.5</b> Variable Importance</a></li>
-<li class="chapter" data-level="7.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>7.3.6</b> Validation Metrics</a></li>
-<li class="chapter" data-level="7.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>7.3.7</b> Prediction Maps</a></li>
+<li class="chapter" data-level="5.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>5.3.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="5.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>5.3.2</b> Data and Covariates</a></li>
+<li class="chapter" data-level="5.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>5.3.3</b> Feature Selection (Boruta)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>5.3.4</b> Model Training</a></li>
+<li class="chapter" data-level="5.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>5.3.5</b> Variable Importance</a></li>
+<li class="chapter" data-level="5.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>5.3.6</b> Validation Metrics</a></li>
+<li class="chapter" data-level="5.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>5.3.7</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>7.4</b> Nominal Classification (Clay_pH_Class)</a>
+<li class="chapter" data-level="5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>5.4</b> Nominal Classification (Clay_pH_Class)</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>7.4.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>7.4.2</b> Feature Selection</a></li>
-<li class="chapter" data-level="7.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>7.4.3</b> Model Training</a></li>
-<li class="chapter" data-level="7.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>7.4.4</b> Validation</a></li>
-<li class="chapter" data-level="7.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>7.4.5</b> Prediction Maps</a></li>
+<li class="chapter" data-level="5.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>5.4.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="5.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>5.4.2</b> Feature Selection</a></li>
+<li class="chapter" data-level="5.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>5.4.3</b> Model Training</a></li>
+<li class="chapter" data-level="5.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>5.4.4</b> Validation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>5.4.5</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>7.5</b> Ordinal Modelling (pH_Class)</a>
+<li class="chapter" data-level="5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>5.5</b> Ordinal Modelling (pH_Class)</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>7.5.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>7.5.2</b> Ordinal Encoding</a></li>
-<li class="chapter" data-level="7.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>7.5.3</b> Feature Selection</a></li>
-<li class="chapter" data-level="7.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>7.5.4</b> Model Training</a></li>
-<li class="chapter" data-level="7.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>7.5.5</b> Validation</a></li>
-<li class="chapter" data-level="7.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>7.5.6</b> Prediction Maps</a></li>
+<li class="chapter" data-level="5.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>5.5.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="5.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>5.5.2</b> Ordinal Encoding</a></li>
+<li class="chapter" data-level="5.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>5.5.3</b> Feature Selection</a></li>
+<li class="chapter" data-level="5.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>5.5.4</b> Model Training</a></li>
+<li class="chapter" data-level="5.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>5.5.5</b> Validation</a></li>
+<li class="chapter" data-level="5.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>5.5.6</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>7.6</b> Area of Applicability (AOA)</a>
+<li class="chapter" data-level="5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>5.6</b> Area of Applicability (AOA)</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>7.6.1</b> Why AOA is Necessary</a></li>
-<li class="chapter" data-level="7.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>7.6.2</b> Dissimilarity Index (DI)</a></li>
-<li class="chapter" data-level="7.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>7.6.3</b> AOA Binary Mask</a></li>
-<li class="chapter" data-level="7.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>7.6.4</b> Local Point Density (LPD)</a></li>
-<li class="chapter" data-level="7.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>7.6.5</b> Predictions Masked to AOA</a></li>
+<li class="chapter" data-level="5.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>5.6.1</b> Why AOA is Necessary</a></li>
+<li class="chapter" data-level="5.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>5.6.2</b> Dissimilarity Index (DI)</a></li>
+<li class="chapter" data-level="5.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>5.6.3</b> AOA Binary Mask</a></li>
+<li class="chapter" data-level="5.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>5.6.4</b> Local Point Density (LPD)</a></li>
+<li class="chapter" data-level="5.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>5.6.5</b> Predictions Masked to AOA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>7.7</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#references-2"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>8</b> Soil Data Sharing</a>
+<li class="chapter" data-level="6" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>6</b> Soil Data Sharing</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>8.1</b> Data sharing and export formats</a></li>
-<li class="chapter" data-level="8.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>8.2</b> Metadata</a></li>
-<li class="chapter" data-level="8.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>8.3</b> Web Services</a></li>
+<li class="chapter" data-level="6.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>6.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="6.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+<li class="chapter" data-level="6.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>6.3</b> Web Services</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references-3.html"><a href="references-3.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -567,31 +547,6 @@ div.csl-indent {
 <p><a href="https://rspatial.org/" title="Spatial Data Science with R and &#39;terra&#39;">Spatial Data Science with R and ‘terra’</a>: Online materials for spatial data analysis and modeling in R, with a focus on <code>{terra}</code>.</p>
 <p><a href="https://rstats.wtf/">What They Forgot to Teach You About R</a>: A short, practical guide with tips and workflows for working effectively in R.</p>
 </div>
-</div>
-<div id="how-to-use-this-book" class="section level2 unnumbered hasAnchor">
-<h2>How to use this book<a href="presentation-and-basics.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This tutorial manual introduces the essential concepts of soil data management and DSM. It is organized in 6 modules with different chapters:</p>
-<ul>
-<li><ol style="list-style-type: decimal">
-<li>Introduction to R and Preparation of Soil Data for Digital Soil Mapping</li>
-</ol></li>
-<li><ol start="2" style="list-style-type: decimal">
-<li>Soil Sampling Design</li>
-</ol></li>
-<li><ol start="3" style="list-style-type: decimal">
-<li>GloSIS Data Harmonization</li>
-</ol></li>
-<li><ol start="4" style="list-style-type: decimal">
-<li>Digital Soil Mapping</li>
-</ol></li>
-<li><ol start="5" style="list-style-type: decimal">
-<li>Soil Spectroscopy</li>
-</ol></li>
-<li><ol start="6" style="list-style-type: decimal">
-<li>Soil Data Sharing</li>
-</ol></li>
-</ul>
-<p>Each module combines conceptual explanations with practical coding exercises, tabular datasets, and spatial data. To follow the workflows as intended, participants are expected to work locally with the predefined project structure used throughout the SoilFER training</p>
 </div>
 <div id="the-training-dataset" class="section level2 unnumbered hasAnchor">
 <h2>The Training Dataset<a href="presentation-and-basics.html#the-training-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -927,6 +882,84 @@ Bicarbonate extraction for alkaline soils
 <li>Hybrid DSM approaches combining laboratory measurements with spectral inference</li>
 <li>Gap-filling strategies for properties with lower completeness using spectral predictions</li>
 </ul>
+</div>
+</div>
+<div id="how-to-use-this-manual" class="section level2 unnumbered hasAnchor">
+<h2>How to Use This Manual<a href="presentation-and-basics.html#how-to-use-this-manual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This tutorial manual introduces the essential concepts of soil data management, covering the complete workflow from soil sampling design through Digital Soil Mapping (DSM) to data sharing. It is organized into 6 modules with multiple sessions each, progressing from fundamental R programming skills through advanced spatial modeling and international data standardization. The manual is designed for hands-on learning, combining conceptual explanations with practical coding exercises, real soil datasets, and spatial data workflows.</p>
+<div id="manual-structure" class="section level3 unnumbered hasAnchor">
+<h3>Manual Structure<a href="presentation-and-basics.html#manual-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Each module builds upon the previous one, creating a comprehensive learning pathway for operational DSM implementation:</p>
+<hr />
+<div id="module-1-introduction-to-r-and-preparation-of-soil-data-for-digital-soil-mapping" class="section level4 unnumbered hasAnchor">
+<h4><strong>Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping</strong><a href="presentation-and-basics.html#module-1-introduction-to-r-and-preparation-of-soil-data-for-digital-soil-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This foundational module introduces R programming fundamentals specifically tailored for soil science applications. It consists of three sessions covering essential skills for soil data management and analysis.</p>
+<p><strong>Session 1.1 - Introduction to R for Soil Science</strong><br />
+Introduces the R programming environment, basic syntax, data types, operators, functions, and control structures. Participants learn to work with R objects, install and manage packages, and understand the RStudio interface. The session emphasizes practical soil science examples throughout all coding demonstrations.</p>
+<p><strong>Session 1.2 - Soil Data Preparation for Digital Soil Mapping</strong><br />
+Focuses on systematic soil data quality assessment and cleaning procedures essential before spatial modeling. Topics include coordinate validation, depth sequence checking, outlier detection and treatment, handling missing values, texture validation (sand-silt-clay constraints), duplicate resolution, and data harmonization techniques including depth standardization using mass-preserving splines.</p>
+<p><strong>Session 1.2.1 - Working with Spatial Data in R</strong><br />
+Covers fundamental concepts of spatial data handling using <code>{sf}</code> (for vector data) and <code>{terra}</code> (for raster data) packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.</p>
+<p><strong>Dataset</strong>: KSSL (Kellogg Soil Survey Laboratory) georeferenced soil data from Kansas, USA - 10,352 soil horizon measurements from 2,584 profiles with laboratory analyses and spectroscopy data.</p>
+<hr />
+</div>
+<div id="module-2-soil-sampling-design" class="section level4 unnumbered hasAnchor">
+<h4><strong>Module 2: Soil Sampling Design</strong><a href="presentation-and-basics.html#module-2-soil-sampling-design" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This module introduces the sampling methodology for soil surveys adopted in SoilFER.The module introduces SoilFER sampling procotol using the relationship between soils and the environmental diversity. The module presents the full process to create a proper sampling design according too such protocol.</p>
+<p><strong>Session 2.1. Sampling Design fundamentals</strong><br />
+- Soil forming factors and environmental variation: The SCORPAN model
+- Optimization of the sample size using the Kullback-Leibler Divergence.
+- Use of Covariate Space Coverage (CSC) sampling for the identification of representative locations for soil samples
+- Three-stage hierarchical SoilFER sampling design: Primary Sampling Units (PSUs - 2km × 2km), Secondary Sampling Units (SSUs - 100m × 100m), and Tertiary Sampling Units (TSUs - 20m × 20m)</p>
+<p><strong>Session 2.2. Practical Implementation:</strong>
+The module includes a comprehensive <strong>hands on</strong> exercise for:
+- Preparing environmental covariates
+- Calculation of minimum sample size for describing soils using the SCORPAN background.
+- Implementing Covariate Space Coverage (CSC) sampling for the identification of Primary Sampling Units
+- Generating Secondary and Tertiary Sampling Units (SSUs and TSUs) using stratified random sampling.
+- Creating site identification codes.</p>
+<hr />
+</div>
+<div id="module-3-glosis-data-preparation" class="section level4 unnumbered hasAnchor">
+<h4><strong>Module 3: GloSIS Data Preparation</strong><a href="presentation-and-basics.html#module-3-glosis-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This module covers the Global Soil Information System (GloSIS) framework including the GloSIS database specifications. These framework enables the publication, global data interoperability and sharing of soil data. Participants learn to prepare soil data compliant with international standards, making it shareable through global soil information systems and compatible with FAO reporting requirements.</p>
+<p><strong>Session 3.1. Harmonization of Soil Data for GloSIS</strong><br />
+- Understanding ISO-28250 standards and the GloSIS database structure
+- Features on Interest in the GloSIS database model
+- Soil property units and measurement methods in GloSIS
+- The GloSIS template for Soil Data Harmonization
+- Automated harmonization tools for Soil Data.</p>
+<p><strong>Session 3.2. GloSIS web services</strong><br />
+- Introduction to GloSIS web services
+- Docker tools for GloSIS deployment
+- ETL for ingestion of soil data into PostgreSQL
+- Metadata catalog service
+- Web mapping services (OpenLayers) for data visualization</p>
+</div>
+<div id="module-4-digital-soil-mapping" class="section level4 unnumbered hasAnchor">
+<h4><strong>Module 4: Digital Soil Mapping</strong><a href="presentation-and-basics.html#module-4-digital-soil-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This module provides comprehensive training in predictive soil mapping techniques, from covariate preparation through model validation and uncertainty quantification.</p>
+<p><strong>Learning Focus:</strong>
+- <strong>Covariate engineering</strong>: Deriving terrain attributes (slope, aspect, curvature, topographic wetness index), spectral indices (NDVI, EVI), climate summaries, and other environmental predictors
+- <strong>Feature selection</strong>: Identifying relevant covariates using correlation analysis, recursive feature elimination, and variable importance measures
+- <strong>Machine learning algorithms</strong>:
+- Random Forest for non-linear relationships and feature importance
+- Gradient Boosting Machines (GBM) for high-accuracy predictions
+- Support Vector Machines for classification tasks
+- Ensemble methods combining multiple models
+- <strong>Model training and tuning</strong>: Cross-validation, hyperparameter optimization, preventing overfitting
+- <strong>Spatial prediction</strong>: Generating wall-to-wall maps of soil properties across landscapes
+- <strong>Uncertainty quantification</strong>: Prediction intervals, confidence maps, and model reliability assessment
+- <strong>Map validation</strong>: Independent validation, spatial cross-validation, accuracy metrics (RMSE, R², CCC)</p>
+<p><strong>Practical Workflows:</strong>
+- Extracting covariate values at soil sample locations
+- Data splitting strategies for training and validation
+- Building prediction models using <code>{caret}</code> package
+- Raster prediction and map generation
+- Creating publication-quality maps with proper legends and scale bars</p>
+<p><strong>Target Soil Properties:</strong>
+Examples focus on mapping SOC (Soil Organic Carbon), pH, texture (clay, silt, sand), bulk density, CEC (Cation Exchange Capacity), and nutrient content across Kansas using the KSSL dataset.</p>
+</div>
 </div>
 </div>
 <div id="required-downloads" class="section level2 unnumbered hasAnchor">

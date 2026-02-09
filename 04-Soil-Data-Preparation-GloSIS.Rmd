@@ -1,13 +1,4 @@
-# Soil Data Preparation 
+# Soil Data Preparation for GloSIS
 ## Introduction
-## Data cleaning
 ##	Soil Data Harmonization
 ##	Concepts on digital exchange of soil-related data (ISO 28258)
-##	Plot data
-##	Profile data
-##	Element data
-##	Specimen data
-##	Definition of laboratory procedures
-##	Data transformation
-##	Organizing soil data according to the GloSIS database
-##	Tools for harmonization of soil databases within GloSIS
