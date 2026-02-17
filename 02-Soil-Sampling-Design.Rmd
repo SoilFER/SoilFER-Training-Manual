@@ -1822,7 +1822,56 @@ kable(field_data, caption = "Required field data recording")
 - Cross-reference photos with field records
 - Flag sites with large GPS deviation (>30m from waypoint)
 
-# References {-}
+# References {#references-sdg1}
+
+  - Bishop, T.F.A., McBratney, A.B. & Laslett, G.M. 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. https://doi.org/10.1016/s0016-7061(99)00003-8
+
+  - Breiman, L. 2001. Random forests. Machine Learning, 45(1): 5–32. https://doi.org/10.1023/A:1010933404324
+
+  - Breiman, L., Friedman, J.H., Olshen, R.A. & Stone, C.J. 1984. Classification and regression trees. Belmont, CA, Wadsworth.
+
+  - Hengl, T., Heuvelink, G.B.M. & Rossiter, D.G. 2007. About regression-kriging: From equations to case studies. Computers & Geosciences, 33: 1301–1315. https://doi.org/10.1016/j.cageo.2007.05.001
+
+  - Heuvelink, G.B.M., Kros, J., Reinds, G.J. & De Vries, W. 2016. Geostatistical prediction and simulation of european soil property maps. Geoderma Regional, 7: 201–215. https://doi.org/10.1016/j.geodrs.2016.04.002
+
+  - Heuvelink, G.B.M. & Webster, R. 2001. Modelling soil variation: Past, present, and future. Geoderma, 100: 269–301. https://doi.org/10.1016/S0016-7061(01)00025-8
+
+  - Jenny, H. 1941. A system of quantitative pedology. In “factors of soil formation”. McGraw Hill: New York.
+
+  - Kempen, B., Brus, D.J., Heuvelink, G.B.M. & Stoorvogel, J.J. 2009. Updating the 1:50,000 dutch soil map using legacy soil data: A multinomial logistic regression approach. Geoderma, 151: 311–326. https://doi.org/10.1016/j.geoderma.2009.04.023
+
+  - Kursa, M.B. & Rudnicki, W.R. 2010. Feature selection with the Boruta package. Journal of Statistical Software, 36(11): 1–13. https://doi.org/10.18637/jss.v036.i11
+
+  - Lagacherie, P. 2008. Digital soil mapping: A state of the art. In A.E. Hartemink, A.B. McBratney & M.L. Mendonça-Santos, eds. Digital soil mapping with limited data, pp. 3–14. Dordrecht, Springer.
+
+  - Lagacherie, P. & McBratney, A.B. 2006. Spatial soil information systems and spatial soil inference systems: Perspectives for digital soil mapping. In P. Lagacherie,   - A.B. McBratney & M. Voltz, eds. Digital soil mapping: An introductory perspective, pp. 3–22. Amsterdam, Elsevier.
+
+  - McBratney, A.B., Mendonça Santos, M.L. & Minasny, B. 2003. On digital soil mapping. Geoderma, 117: 3–52. https://doi.org/10.1016/S0016-7061(03)00223-4
+
+  - Meyer, H. & Pebesma, E. 2021. Predicting into unknown space? Estimating the area of applicability of spatial prediction models. Methods in Ecology and Evolution, 12: 1620–1633. https://doi.org/10.1111/2041-210X.13650
+
+  - Minasny, B. & McBratney, A.B. 2016. Digital soil mapping: A brief history and some lessons. Geoderma, 264: 301–311. https://doi.org/10.1016/j.geoderma.2015.07.017
+
+  - Odeh, I.O.A., McBratney, A.B. & Chittleborough, D.J. 1995. Further results on prediction of soil properties from terrain attributes: Heterotopic cokriging and regression-kriging. Geoderma, 67: 215–226. https://doi.org/10.1016/0016-7061(95)00007-B
+
+  - Odgers, N.P., McBratney, A.B. & Minasny, B. 2011. Bottom-up digital soil mapping. I. Soil layer classes. Geoderma, 163: 38–44. https://doi.org/10.1016/j.geoderma.2011.03.014
+
+  - Orton, T.G., Pringle, M.J., Page, K.L., Dalal, R.C. & Bishop, T.F.A. 2014. Spatial prediction of soil organic carbon stock using a linear model of coregionalisation. Geoderma, 230–231: 119–130. https://doi.org/10.1016/j.geoderma.2014.04.016
+
+  - Padarian, J. & McBratney, A.B. 2023. QuadMap: Variable resolution maps to communicate uncertainty. Computers and Geosciences, 181: 105480. https://doi.org/10.1016/j.cageo.2023.105480
+
+  - Roberts, D.R. & others. 2017. Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40: 913–929. https://doi.org/10.1111/ecog.02881
+
+  - Styc, Q. & Lagacherie, P. 2021. Combining spatial-environmental covariates and soil input data types to predict soil available water holding capacity. Geoderma, 401: 115171. https://doi.org/10.1016/j.geoderma.2021.115171
+
+  - Wadoux, A.M.J.-C., Minasny, B. & McBratney, A.B. 2021. Machine learning for digital soil mapping: Applications, challenges and suggested solutions. Earth-Science Reviews, 210: 103359. https://doi.org/10.1016/j.earscirev.2020.103359
+
+  - Webster, R., Lessells, C.M. & Hodgson, J.M. 1979. A reconnaissance soil survey of the ivybridge area of south devon. Soil Survey Technical Monograph, 12.
+
+  - Webster, R. & Oliver, M.A. 2007. Geostatistics for environmental scientists. 2nd edition. Chichester, John Wiley & Sons.
+
+  - Zhang, L., Heuvelink, G.B.M., Mulder, V.L., Chen, S., Deng, X. & Yang, L. 2024. Using process-oriented model output to enhance machine learning-based soil organic carbon prediction in space and time. Science of the Total Environment, 922: 170778. https://doi.org/10.1016/j.scitotenv.2024.170778
+
 
 <div id="refs"></div>
 
