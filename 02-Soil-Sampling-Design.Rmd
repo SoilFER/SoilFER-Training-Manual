@@ -1822,7 +1822,7 @@ kable(field_data, caption = "Required field data recording")
 - Cross-reference photos with field records
 - Flag sites with large GPS deviation (>30m from waypoint)
 
-# References {#references-sdg1}
+## References {#references-sdg1}
 
   - Bishop, T.F.A., McBratney, A.B. & Laslett, G.M. 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. https://doi.org/10.1016/s0016-7061(99)00003-8
 
