@@ -3596,7 +3596,7 @@ Spatial data is commonly stored in two major formats: vector and raster (Figure 
 <br>
 
 ```{r VectRast, echo=FALSE, fig.cap="<br>*Figure 3: Vector vs raster data representations*", out.width='80%'}
-knitr::include_graphics("images/4_1_vectorVSraster.png")
+knitr::include_graphics("images/module1/vectorVSraster.png")
 ```
 <br>
 
