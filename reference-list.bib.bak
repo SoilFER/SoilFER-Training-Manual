@@ -1,4 +1,4 @@
-@Book{xie2015,
+﻿@Book{xie2015,
   title = {Dynamic Documents with {R} and knitr},
   author = {Yihui Xie},
   publisher = {Chapman and Hall/CRC},
@@ -645,5 +645,7 @@
   zbl      = {1007.68152},
   zbmath   = {1687841},
 }
+
+
 
 @Comment{jabref-meta: databaseType:bibtex;}
