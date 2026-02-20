@@ -6,6 +6,13 @@ tab:design-comparison
 tab:soil-properties
 tab:psu-covariates
 tab:ssu-covariates
+fig:three-stage
+fig:grid-creation
+fig:grid-overlay
+fig:csc-application
+fig:psu-selection
+fig:ssu-detail
+fig:site-id
 tab:r-libraries
 tab:field-form
 tab:acronyms
@@ -213,7 +220,7 @@ exporting-and-sharing-spatial-data
 exporting-vector-data
 exporting-raster-data
 sampling-design-for-soil-surveys
-introduction
+introduction-ssd
 sampling-theory
 selection-methods
 inference-methods
@@ -304,9 +311,10 @@ data-sources
 memory-issues
 crs-misalignment
 empty-geometry
+section
 tbd
 glosis-soil-data-preparation
-introduction-2
+introduction
 the-glosis-database
 features-of-interest-understanding-the-xlsx-template
 plot-data-sheet

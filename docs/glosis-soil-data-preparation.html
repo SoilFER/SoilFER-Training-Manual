@@ -4,23 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making </title>
+  <title>Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
 
-<meta name="author" content="Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
+<meta name="author" content="Angelini, M.E., Rodriguez Lado, L., Mendes, W. S., Ribeiro, E., Luotto, I." />
 
 
 
@@ -363,13 +363,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>3</b> Sampling design for soil surveys</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#introduction-ssd"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-theory"><i class="fa fa-check"></i><b>3.2</b> Sampling methodologies for soil spatial survey</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#selection-methods"><i class="fa fa-check"></i><b>3.2.1</b> Selection of the sampling methodology</a></li>
 <li class="chapter" data-level="3.2.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#inference-methods"><i class="fa fa-check"></i><b>3.2.2</b> Inference Methods</a></li>
 <li class="chapter" data-level="3.2.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-purpose"><i class="fa fa-check"></i><b>3.2.3</b> Purpose of Sampling</a></li>
 <li class="chapter" data-level="3.2.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#design-types"><i class="fa fa-check"></i><b>3.2.4</b> Sampling Design Types</a></li>
+<li class="chapter" data-level="3.2.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soils4africa-example"><i class="fa fa-check"></i><b>3.2.5</b> Example: Soils4Africa Sampling Design</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soilfer-design"><i class="fa fa-check"></i><b>3.3</b> SoilFER Sampling Design</a>
 <ul>
@@ -377,7 +378,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#env-covariates"><i class="fa fa-check"></i><b>3.3.2</b> Environmental Covariates</a></li>
 <li class="chapter" data-level="3.3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#methodology"><i class="fa fa-check"></i><b>3.3.3</b> Understanding the Methodology</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#tutorial"><i class="fa fa-check"></i><b>3.4</b> Tutorial Using R</a>
+<li class="chapter" data-level="3.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#tutorial"><i class="fa fa-check"></i><b>3.4</b> Tutorial using R</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#setup"><i class="fa fa-check"></i><b>3.4.1</b> Setting Up the Environment</a></li>
 <li class="chapter" data-level="3.4.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#define-parameters"><i class="fa fa-check"></i><b>3.4.2</b> Define Variables and Parameters</a></li>
@@ -386,193 +387,140 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-boundaries"><i class="fa fa-check"></i><b>3.4.5</b> Load Country Boundaries and Legacy Data</a></li>
 <li class="chapter" data-level="3.4.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-covariates-psu"><i class="fa fa-check"></i><b>3.4.6</b> Load Environmental Covariates for PSUs</a></li>
 <li class="chapter" data-level="3.4.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>3.4.7</b> Load Main Environmental Covariates</a></li>
+<li class="chapter" data-level="3.4.8" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#pca"><i class="fa fa-check"></i><b>3.4.8</b> Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="3.4.9" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-universe"><i class="fa fa-check"></i><b>3.4.9</b> Organize the Sampling Universe</a></li>
+<li class="chapter" data-level="3.4.10" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-processed-land-use"><i class="fa fa-check"></i><b>3.4.10</b> Save Processed Land Use</a></li>
+<li class="chapter" data-level="3.4.11" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-psu-grid"><i class="fa fa-check"></i><b>3.4.11</b> Create Primary Sampling Units (PSU Grid)</a></li>
+<li class="chapter" data-level="3.4.12" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#select-psus"><i class="fa fa-check"></i><b>3.4.12</b> Select PSUs with Sufficient Land Use Coverage</a></li>
+<li class="chapter" data-level="3.4.13" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#rasterize-psus"><i class="fa fa-check"></i><b>3.4.13</b> Rasterize PSUs for Covariate Space Coverage</a></li>
+<li class="chapter" data-level="3.4.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#optimal-sample-size"><i class="fa fa-check"></i><b>3.4.14</b> Compute Optimal Sample Size</a></li>
+<li class="chapter" data-level="3.4.15" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#csc-computing"><i class="fa fa-check"></i><b>3.4.15</b> Covariate Space Coverage - Computing PSUs</a></li>
+<li class="chapter" data-level="3.4.16" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>3.4.16</b> Compute SSUs and TSUs</a></li>
+<li class="chapter" data-level="3.4.17" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-units"><i class="fa fa-check"></i><b>3.4.17</b> Export Sampling Units</a></li>
+<li class="chapter" data-level="3.4.18" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>3.4.18</b> Compute Alternative PSUs</a></li>
+<li class="chapter" data-level="3.4.19" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#merging-results"><i class="fa fa-check"></i><b>3.4.19</b> Merging Results from Multiple Land Uses</a></li>
+<li class="chapter" data-level="3.4.20" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#field-protocol"><i class="fa fa-check"></i><b>3.4.20</b> Field Sampling Protocol</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#pca"><i class="fa fa-check"></i><b>3.5</b> Principal Component Analysis (PCA)</a></li>
-<li class="chapter" data-level="3.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-universe"><i class="fa fa-check"></i><b>3.6</b> Organize the Sampling Universe</a>
-<ul>
-<li class="chapter" data-level="3.6.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>3.6.1</b> Load and Process Land Use Data</a></li>
-<li class="chapter" data-level="3.6.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#exclude-protected-areas"><i class="fa fa-check"></i><b>3.6.2</b> Exclude Protected Areas</a></li>
-<li class="chapter" data-level="3.6.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>3.6.3</b> Restrict to Accessible Slopes</a></li>
-<li class="chapter" data-level="3.6.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>3.6.4</b> Aggregate to 100m Resolution</a></li>
-<li class="chapter" data-level="3.6.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-processed-land-use"><i class="fa fa-check"></i><b>3.6.5</b> Save Processed Land Use</a></li>
-<li class="chapter" data-level="3.6.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-legacy-data"><i class="fa fa-check"></i><b>3.6.6</b> Filter Legacy Data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-psu-grid"><i class="fa fa-check"></i><b>3.7</b> Create Primary Sampling Units (PSU Grid)</a>
-<ul>
-<li class="chapter" data-level="3.7.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>3.7.1</b> Generate 2km × 2km Grid</a></li>
-<li class="chapter" data-level="3.7.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>3.7.2</b> Trim to Country Boundaries</a></li>
-<li class="chapter" data-level="3.7.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-psu-grid"><i class="fa fa-check"></i><b>3.7.3</b> Save PSU Grid</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#select-psus"><i class="fa fa-check"></i><b>3.8</b> Select PSUs with Sufficient Land Use Coverage</a>
-<ul>
-<li class="chapter" data-level="3.8.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>3.8.1</b> Calculate Land Use Percentage</a></li>
-<li class="chapter" data-level="3.8.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-psus"><i class="fa fa-check"></i><b>3.8.2</b> Filter PSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="3.9" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#rasterize-psus"><i class="fa fa-check"></i><b>3.9</b> Rasterize PSUs for Covariate Space Coverage</a></li>
-<li class="chapter" data-level="3.10" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#optimal-sample-size"><i class="fa fa-check"></i><b>3.10</b> Compute Optimal Sample Size</a>
-<ul>
-<li class="chapter" data-level="3.10.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#run-optimization"><i class="fa fa-check"></i><b>3.10.1</b> Run Optimization</a></li>
-<li class="chapter" data-level="3.10.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>3.10.2</b> Extract Optimal Sample Size</a></li>
-</ul></li>
-<li class="chapter" data-level="3.11" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#csc-computing"><i class="fa fa-check"></i><b>3.11</b> Covariate Space Coverage - Computing PSUs</a>
-<ul>
-<li class="chapter" data-level="3.11.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#prepare-function-parameters"><i class="fa fa-check"></i><b>3.11.1</b> Prepare Function Parameters</a></li>
-<li class="chapter" data-level="3.11.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>3.11.2</b> Perform K-means Clustering</a></li>
-<li class="chapter" data-level="3.11.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>3.11.3</b> Assign Clusters and Calculate Distances</a></li>
-<li class="chapter" data-level="3.11.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-selected-psus"><i class="fa fa-check"></i><b>3.11.4</b> Extract Selected PSUs</a></li>
-<li class="chapter" data-level="3.11.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>3.11.5</b> Visualize in Covariate Space</a></li>
-</ul></li>
-<li class="chapter" data-level="3.12" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>3.12</b> Compute SSUs and TSUs</a>
-<ul>
-<li class="chapter" data-level="3.12.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>3.12.1</b> Load High-Resolution Covariates</a></li>
-<li class="chapter" data-level="3.12.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#process-each-psu"><i class="fa fa-check"></i><b>3.12.2</b> Process Each PSU</a></li>
-<li class="chapter" data-level="3.12.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>3.12.3</b> Combine SSUs and TSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="3.13" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-units"><i class="fa fa-check"></i><b>3.13</b> Export Sampling Units</a>
-<ul>
-<li class="chapter" data-level="3.13.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-cluster-raster"><i class="fa fa-check"></i><b>3.13.1</b> Create Cluster Raster</a></li>
-<li class="chapter" data-level="3.13.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>3.13.2</b> Join Cluster Info to TSUs</a></li>
-<li class="chapter" data-level="3.13.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-site-ids"><i class="fa fa-check"></i><b>3.13.3</b> Create Site IDs</a></li>
-<li class="chapter" data-level="3.13.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-shapefiles"><i class="fa fa-check"></i><b>3.13.4</b> Export Shapefiles</a></li>
-</ul></li>
-<li class="chapter" data-level="3.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>3.14</b> Compute Alternative PSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>4</b> Merging Results from Multiple Land Uses</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>4.1</b> Assign Country-Wide Unique IDs</a></li>
-<li class="chapter" data-level="4.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>4.2</b> Export Unified Datasets</a></li>
-<li class="chapter" data-level="4.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>4.3</b> Summary Statistics</a></li>
-<li class="chapter" data-level="4.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>4.4</b> Create Distribution Maps</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>5</b> Field Sampling Protocol</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>5.1</b> GPS Device Preparation</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>5.1.1</b> Export to GPX Format</a></li>
-<li class="chapter" data-level="5.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>5.1.2</b> Load onto GPS Device</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>5.2</b> Sampling Procedure</a></li>
-<li class="chapter" data-level="5.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>5.3</b> Data Recording</a></li>
-<li class="chapter" data-level="5.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>5.4</b> Quality Control</a></li>
-<li class="chapter" data-level="5.5" data-path="field-protocol.html"><a href="field-protocol.html#references-sdg1"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+<li class="chapter" data-level="3.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#references-sdg1"><i class="fa fa-check"></i><b>3.5</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>5.5.1</b> Software Requirements</a></li>
-<li class="chapter" data-level="5.5.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>5.5.2</b> Data Sources</a></li>
+<li class="chapter" data-level="3.5.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>3.5.1</b> Software Requirements</a></li>
+<li class="chapter" data-level="3.5.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>3.5.2</b> Data Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
 <ul>
-<li class="chapter" data-level="5.5.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>5.5.3</b> Memory Issues</a></li>
-<li class="chapter" data-level="5.5.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>5.5.4</b> CRS Misalignment</a></li>
-<li class="chapter" data-level="5.5.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>5.5.5</b> Empty Geometry</a></li>
+<li class="chapter" data-level="3.5.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>3.5.3</b> Memory Issues</a></li>
+<li class="chapter" data-level="3.5.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>3.5.4</b> CRS Misalignment</a></li>
+<li class="chapter" data-level="3.5.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>3.5.5</b> Empty Geometry</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
+<li class="chapter" data-level="3.6" data-path="appendices.html"><a href="appendices.html#section"><i class="fa fa-check"></i><b>3.6</b> =======</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>6</b> TBD</a></li>
-<li class="chapter" data-level="7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html"><i class="fa fa-check"></i><b>7</b> GloSIS Soil Data Preparation</a>
+<li class="chapter" data-level="4" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>4</b> TBD</a></li>
+<li class="chapter" data-level="5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html"><i class="fa fa-check"></i><b>5</b> GloSIS Soil Data Preparation</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>7.2</b> The GloSIS database</a></li>
-<li class="chapter" data-level="7.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>7.3</b> Features of interest: Understanding the XLSX Template</a>
+<li class="chapter" data-level="5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>5.2</b> The GloSIS database</a></li>
+<li class="chapter" data-level="5.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>5.3</b> Features of interest: Understanding the XLSX Template</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> Plot Data Sheet</a></li>
-<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> Profile Data Sheet</a></li>
-<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> Element Data Sheet</a></li>
-<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> Specimen Data Sheet</a></li>
-<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> Procedures Sheet</a></li>
-<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> Metadata Sheet</a></li>
-<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> Original Data Sheet</a></li>
-<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> GloSIS Methods sheet</a></li>
+<li class="chapter" data-level="5.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>5.3.1</b> Plot Data Sheet</a></li>
+<li class="chapter" data-level="5.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>5.3.2</b> Profile Data Sheet</a></li>
+<li class="chapter" data-level="5.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>5.3.3</b> Element Data Sheet</a></li>
+<li class="chapter" data-level="5.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>5.3.4</b> Specimen Data Sheet</a></li>
+<li class="chapter" data-level="5.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>5.3.5</b> Procedures Sheet</a></li>
+<li class="chapter" data-level="5.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>5.3.6</b> Metadata Sheet</a></li>
+<li class="chapter" data-level="5.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>5.3.7</b> Original Data Sheet</a></li>
+<li class="chapter" data-level="5.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>5.3.8</b> GloSIS Methods sheet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>7.4</b> GloSIS-ETL</a>
+<li class="chapter" data-level="5.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>5.4</b> GloSIS-ETL</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-harmonization"><i class="fa fa-check"></i><b>7.4.1</b> GloSIS Data Harmonization</a></li>
-<li class="chapter" data-level="7.4.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping"><i class="fa fa-check"></i><b>7.4.2</b> Step 1: Data Ingestion &amp; Variable Mapping</a></li>
-<li class="chapter" data-level="7.4.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation"><i class="fa fa-check"></i><b>7.4.3</b> Step 2: Quality Check and Quality Report Generation</a></li>
-<li class="chapter" data-level="7.4.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation"><i class="fa fa-check"></i><b>7.4.4</b> Step 2a: Geographic Data Validation</a></li>
-<li class="chapter" data-level="7.4.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation"><i class="fa fa-check"></i><b>7.4.5</b> Step 2b: Soil Depth Validation</a></li>
-<li class="chapter" data-level="7.4.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation"><i class="fa fa-check"></i><b>7.4.6</b> Step 2c: Soil Properties Validation</a></li>
-<li class="chapter" data-level="7.4.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission"><i class="fa fa-check"></i><b>7.4.7</b> Step 3: Data Correction and Resubmission</a></li>
-<li class="chapter" data-level="7.4.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data"><i class="fa fa-check"></i><b>7.4.8</b> Step 4: Download Harmonized Data</a></li>
-<li class="chapter" data-level="7.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>7.4.9</b> GloSIS Data Standardization</a></li>
-<li class="chapter" data-level="7.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>7.4.10</b> GloSIS Data Viewer</a></li>
+<li class="chapter" data-level="5.4.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-harmonization"><i class="fa fa-check"></i><b>5.4.1</b> GloSIS Data Harmonization</a></li>
+<li class="chapter" data-level="5.4.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping"><i class="fa fa-check"></i><b>5.4.2</b> Step 1: Data Ingestion &amp; Variable Mapping</a></li>
+<li class="chapter" data-level="5.4.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation"><i class="fa fa-check"></i><b>5.4.3</b> Step 2: Quality Check and Quality Report Generation</a></li>
+<li class="chapter" data-level="5.4.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation"><i class="fa fa-check"></i><b>5.4.4</b> Step 2a: Geographic Data Validation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation"><i class="fa fa-check"></i><b>5.4.5</b> Step 2b: Soil Depth Validation</a></li>
+<li class="chapter" data-level="5.4.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation"><i class="fa fa-check"></i><b>5.4.6</b> Step 2c: Soil Properties Validation</a></li>
+<li class="chapter" data-level="5.4.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission"><i class="fa fa-check"></i><b>5.4.7</b> Step 3: Data Correction and Resubmission</a></li>
+<li class="chapter" data-level="5.4.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data"><i class="fa fa-check"></i><b>5.4.8</b> Step 4: Download Harmonized Data</a></li>
+<li class="chapter" data-level="5.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>5.4.9</b> GloSIS Data Standardization</a></li>
+<li class="chapter" data-level="5.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>5.4.10</b> GloSIS Data Viewer</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the GloSIS-ETL</a>
+<li class="chapter" data-level="5.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>5.5</b> Installation and Setup of the GloSIS-ETL</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>7.5.1</b> Install Docker Desktop</a></li>
-<li class="chapter" data-level="7.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>7.5.2</b> Install the GloSIS-ETL Services</a></li>
-<li class="chapter" data-level="7.5.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#verify-installation"><i class="fa fa-check"></i><b>7.5.3</b> Verify Installation</a></li>
-<li class="chapter" data-level="7.5.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#pgadmin"><i class="fa fa-check"></i><b>7.5.4</b> Optional: pgAdmin Web Interface</a></li>
+<li class="chapter" data-level="5.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>5.5.1</b> Install Docker Desktop</a></li>
+<li class="chapter" data-level="5.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>5.5.2</b> Install the GloSIS-ETL Services</a></li>
+<li class="chapter" data-level="5.5.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#verify-installation"><i class="fa fa-check"></i><b>5.5.3</b> Verify Installation</a></li>
+<li class="chapter" data-level="5.5.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#pgadmin"><i class="fa fa-check"></i><b>5.5.4</b> Optional: pgAdmin Web Interface</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#accessing-the-services"><i class="fa fa-check"></i><b>7.6</b> Accessing the Services</a>
+<li class="chapter" data-level="5.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#accessing-the-services"><i class="fa fa-check"></i><b>5.6</b> Accessing the Services</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#landing-page"><i class="fa fa-check"></i><b>7.6.1</b> Landing Page</a></li>
-<li class="chapter" data-level="7.6.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#shiny-application-modules"><i class="fa fa-check"></i><b>7.6.2</b> Shiny Application Modules</a></li>
-<li class="chapter" data-level="7.6.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-database"><i class="fa fa-check"></i><b>7.6.3</b> GloSIS Database</a></li>
+<li class="chapter" data-level="5.6.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#landing-page"><i class="fa fa-check"></i><b>5.6.1</b> Landing Page</a></li>
+<li class="chapter" data-level="5.6.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#shiny-application-modules"><i class="fa fa-check"></i><b>5.6.2</b> Shiny Application Modules</a></li>
+<li class="chapter" data-level="5.6.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-database"><i class="fa fa-check"></i><b>5.6.3</b> GloSIS Database</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#docker-compose-file"><i class="fa fa-check"></i><b>7.7</b> The <code>docker-compose.yml</code> File</a></li>
-<li class="chapter" data-level="7.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#env-file"><i class="fa fa-check"></i><b>7.8</b> The <code>.env</code> File</a></li>
+<li class="chapter" data-level="5.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#docker-compose-file"><i class="fa fa-check"></i><b>5.7</b> The <code>docker-compose.yml</code> File</a></li>
+<li class="chapter" data-level="5.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#env-file"><i class="fa fa-check"></i><b>5.8</b> The <code>.env</code> File</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>8</b> Digital Soil Mapping and Modeling</a>
+<li class="chapter" data-level="6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>6</b> Digital Soil Mapping and Modeling</a>
 <ul>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-i-theoretical-foundations"><i class="fa fa-check"></i>Part I: Theoretical Foundations</a></li>
-<li class="chapter" data-level="8.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1</b> Fundamentals of Digital Soil Mapping</a>
+<li class="chapter" data-level="6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>6.1</b> Fundamentals of Digital Soil Mapping</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1.1</b> Introduction to Digital Soil Mapping</a></li>
-<li class="chapter" data-level="8.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>8.1.2</b> The SCORPAN Framework</a></li>
-<li class="chapter" data-level="8.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>8.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
-<li class="chapter" data-level="8.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>8.1.4</b> Types of Soil Variables</a></li>
-<li class="chapter" data-level="8.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>8.1.5</b> Prediction Methods</a></li>
-<li class="chapter" data-level="8.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>8.1.6</b> Nonlinearity and Uncertainty</a></li>
+<li class="chapter" data-level="6.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>6.1.1</b> Introduction to Digital Soil Mapping</a></li>
+<li class="chapter" data-level="6.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>6.1.2</b> The SCORPAN Framework</a></li>
+<li class="chapter" data-level="6.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>6.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
+<li class="chapter" data-level="6.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>6.1.4</b> Types of Soil Variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>6.1.5</b> Prediction Methods</a></li>
+<li class="chapter" data-level="6.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>6.1.6</b> Nonlinearity and Uncertainty</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-ii-practical-application"><i class="fa fa-check"></i>Part II: Practical Application</a></li>
-<li class="chapter" data-level="8.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>8.2</b> Workflow Overview</a></li>
-<li class="chapter" data-level="8.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>8.3</b> Continuous Modelling (pH)</a>
+<li class="chapter" data-level="6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>6.2</b> Workflow Overview</a></li>
+<li class="chapter" data-level="6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>6.3</b> Continuous Modelling (pH)</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>8.3.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="8.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>8.3.2</b> Data and Covariates</a></li>
-<li class="chapter" data-level="8.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>8.3.3</b> Feature Selection (Boruta)</a></li>
-<li class="chapter" data-level="8.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>8.3.4</b> Model Training</a></li>
-<li class="chapter" data-level="8.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>8.3.5</b> Variable Importance</a></li>
-<li class="chapter" data-level="8.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>8.3.6</b> Validation Metrics</a></li>
-<li class="chapter" data-level="8.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>8.3.7</b> Prediction Maps</a></li>
+<li class="chapter" data-level="6.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>6.3.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="6.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>6.3.2</b> Data and Covariates</a></li>
+<li class="chapter" data-level="6.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>6.3.3</b> Feature Selection (Boruta)</a></li>
+<li class="chapter" data-level="6.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>6.3.4</b> Model Training</a></li>
+<li class="chapter" data-level="6.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>6.3.5</b> Variable Importance</a></li>
+<li class="chapter" data-level="6.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>6.3.6</b> Validation Metrics</a></li>
+<li class="chapter" data-level="6.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>6.3.7</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>8.4</b> Nominal Classification (Clay_pH_Class)</a>
+<li class="chapter" data-level="6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>6.4</b> Nominal Classification (Clay_pH_Class)</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>8.4.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="8.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>8.4.2</b> Feature Selection</a></li>
-<li class="chapter" data-level="8.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>8.4.3</b> Model Training</a></li>
-<li class="chapter" data-level="8.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>8.4.4</b> Validation</a></li>
-<li class="chapter" data-level="8.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>8.4.5</b> Prediction Maps</a></li>
+<li class="chapter" data-level="6.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>6.4.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="6.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>6.4.2</b> Feature Selection</a></li>
+<li class="chapter" data-level="6.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>6.4.3</b> Model Training</a></li>
+<li class="chapter" data-level="6.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>6.4.4</b> Validation</a></li>
+<li class="chapter" data-level="6.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>6.4.5</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>8.5</b> Ordinal Modelling (pH_Class)</a>
+<li class="chapter" data-level="6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>6.5</b> Ordinal Modelling (pH_Class)</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>8.5.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="8.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>8.5.2</b> Ordinal Encoding</a></li>
-<li class="chapter" data-level="8.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>8.5.3</b> Feature Selection</a></li>
-<li class="chapter" data-level="8.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>8.5.4</b> Model Training</a></li>
-<li class="chapter" data-level="8.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>8.5.5</b> Validation</a></li>
-<li class="chapter" data-level="8.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>8.5.6</b> Prediction Maps</a></li>
+<li class="chapter" data-level="6.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>6.5.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="6.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>6.5.2</b> Ordinal Encoding</a></li>
+<li class="chapter" data-level="6.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>6.5.3</b> Feature Selection</a></li>
+<li class="chapter" data-level="6.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>6.5.4</b> Model Training</a></li>
+<li class="chapter" data-level="6.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>6.5.5</b> Validation</a></li>
+<li class="chapter" data-level="6.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>6.5.6</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>8.6</b> Area of Applicability (AOA)</a>
+<li class="chapter" data-level="6.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>6.6</b> Area of Applicability (AOA)</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>8.6.1</b> Why AOA is Necessary</a></li>
-<li class="chapter" data-level="8.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>8.6.2</b> Dissimilarity Index (DI)</a></li>
-<li class="chapter" data-level="8.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>8.6.3</b> AOA Binary Mask</a></li>
-<li class="chapter" data-level="8.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>8.6.4</b> Local Point Density (LPD)</a></li>
-<li class="chapter" data-level="8.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>8.6.5</b> Predictions Masked to AOA</a></li>
+<li class="chapter" data-level="6.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>6.6.1</b> Why AOA is Necessary</a></li>
+<li class="chapter" data-level="6.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>6.6.2</b> Dissimilarity Index (DI)</a></li>
+<li class="chapter" data-level="6.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>6.6.3</b> AOA Binary Mask</a></li>
+<li class="chapter" data-level="6.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>6.6.4</b> Local Point Density (LPD)</a></li>
+<li class="chapter" data-level="6.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>6.6.5</b> Predictions Masked to AOA</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#references-1"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>9</b> Soil Data Sharing</a>
+<li class="chapter" data-level="7" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>7</b> Soil Data Sharing</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>9.1</b> Data sharing and export formats</a></li>
-<li class="chapter" data-level="9.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>9.2</b> Metadata</a></li>
-<li class="chapter" data-level="9.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>9.3</b> Web Services</a></li>
+<li class="chapter" data-level="7.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>7.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="7.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>7.2</b> Metadata</a></li>
+<li class="chapter" data-level="7.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>7.3</b> Web Services</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -593,18 +541,18 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="glosis-soil-data-preparation" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> GloSIS Soil Data Preparation<a href="glosis-soil-data-preparation.html#glosis-soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-2" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Introduction<a href="glosis-soil-data-preparation.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="glosis-soil-data-preparation" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> GloSIS Soil Data Preparation<a href="glosis-soil-data-preparation.html#glosis-soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction<a href="glosis-soil-data-preparation.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172" role="doc-biblioref">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
 <p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24" role="doc-biblioref">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realizing this potential requires solving the fragmentation problem through systematic standardization.</p>
 <p>In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralize all soil data into a single organization or location, GloSIS functions as a decentralized spatial data infrastructure that enables soil data management and sharing within a global harmonization framework. National soil institutes, research organizations, and other data holders maintain control of their data in their own systems, but contribute that data to the GloSIS platform following standardized formats and protocols for data preparaation and sharing.</p>
 <p>GloSIS makes data comparable across countries and regions. When data is submitted to GloSIS, it undergoes a standardization process that translates local data into a universally understood format, the PostgreSQL GloSIS database. This integration requires systematic preparation, validation, and standardization of individual datasets. This is where the technical infrastructure developed at FAO-GPS (the ETL system described in this manual) becomes essential. Before soil data can contribute meaningfully to global analysis, it must be carefully prepared, quality-checked, and transformed into the standardized format that GloSIS requires.</p>
 <p>In this section, we introduce the key concepts of data harmonization and standardization in line with GloSIS database requirements, and demonstrate how to use the <code>GloSIS-ETL</code> to prepare data and load it into the GloSIS database structure. The exercises use the soil legacy dataset provided in the training materials as a practical example.</p>
 </div>
-<div id="the-glosis-database" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> The GloSIS database<a href="glosis-soil-data-preparation.html#the-glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-glosis-database" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> The GloSIS database<a href="glosis-soil-data-preparation.html#the-glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The GloSIS database is a PostgreSQL/PostGIS relational database that implements the GloSIS data model to store soil observations in a standardized, quality-controlled structure. It is aligned with the concepts for the digital exchange of soil-related data outlined in ISO 28258 and it is designed to make soil data consistent and comparable across countries and projects by enforcing common structures, controlled vocabularies, and validation rules. It serves as the central repository for harmonized soil data—linking spatial sampling locations, methods and procedures, and analytical results—so that datasets from different sources can be integrated and compared consistently worldwide.</p>
 <p>The International Organization for Standardization (ISO) established <strong>ISO 28258: “Soil quality—Digital exchange of information on soil and soil-related data”</strong> as the international standard for digital soil data representation and exchange. ISO 28258 defines how soil-related information is logically organized, the hierarchical and relational structure connecting soil observations, definitions of soil concepts following international conventions, metadata requirements and quality assurance procedures.</p>
 <p>By aligning with ISO 28258, the GloSIS database provides the infrastructure needed for global soil data integration and interoperability.</p>
@@ -627,103 +575,103 @@ div.csl-indent {
 </ul>
 <p>Each of these ‘features of interest’ is represented by dedicated tables in the relational database. Because they describe different entities, they store different types of information and attributes. The challenge is to translate the raw soil data files into this structured database model.</p>
 </div>
-<div id="features-of-interest-understanding-the-xlsx-template" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Features of interest: Understanding the XLSX Template<a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="features-of-interest-understanding-the-xlsx-template" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Features of interest: Understanding the XLSX Template<a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Preparing data for GloSIS begins with organizing soil information according to the features of interest used in the GloSIS database (Site, Plot, Profile, Element, and Specimen). To support this process, GloSIS provides an XLSX template that offers a user-friendly way to compile soil data in a structure that mirrors the relational tables of the PostgreSQL/PostGIS database. When completed correctly, this template is used by the <code>GloSIS-ETL Standardization</code> tool to translate the information into the PostgreSQL database structure.</p>
 <p>The template contains multiple sheets, each corresponding to a specific feature of interest and its associated attributes. By completing these sheets, users effectively split raw or legacy datasets into the categories required for harmonization and standardization prior to loading.</p>
 <p>This organization can be done manually, by entering values directly into the template, or automatically using dedicated tools such as <code>GloSIS-ETL Harmonization</code> introduced in the next section. In both cases, understanding the structure and purpose of the XLSX template is essential to ensure that data are prepared correctly.</p>
 <p>In addition to the feature-of-interest sheets, the template includes dedicated tabs for documenting analytical procedures (including methods and units of measurement), metadata, and original analytical values, supporting traceability when unit conversions to GloSIS standards are required.</p>
 <p>The following sections provide a detailed overview of each sheet included in the XLSX template for data standardization.</p>
-<div id="plot-data-sheet" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Plot Data Sheet<a href="glosis-soil-data-preparation.html#plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>Plot Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:plot-tab">7.1</a>) provides information about the sampling location. It includes identification of the project in which the sample was collected (<code>project_code</code>), identifiers for the sampling site (<code>site_code</code>), plot (<code>plot_code</code>), plot type (<code>plot_type</code>) and profile (<code>profile_code</code>). The <code>plot_type</code> specifies the sampling method: <code>Borehole</code> (auger sample), <code>TrialPit</code> (open profile excavation), or <code>Surface</code> (area-based description).</p>
+<div id="plot-data-sheet" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Plot Data Sheet<a href="glosis-soil-data-preparation.html#plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>Plot Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:plot-tab">5.1</a>) provides information about the sampling location. It includes identification of the project in which the sample was collected (<code>project_code</code>), identifiers for the sampling site (<code>site_code</code>), plot (<code>plot_code</code>), plot type (<code>plot_type</code>) and profile (<code>profile_code</code>). The <code>plot_type</code> specifies the sampling method: <code>Borehole</code> (auger sample), <code>TrialPit</code> (open profile excavation), or <code>Surface</code> (area-based description).</p>
 <p>The <code>n_layers</code> column indicates the number of soil samples collected at different depths for a given site. The number of samples corresponds to the number of horizons or layers collected at each sampling profile. For example, if a soil profile contains three horizons and all contains have been sampled, the <code>n_layers</code> value will be <code>3</code>.</p>
 <p><code>Date</code> stores the date when the survey was conducted. The date must follow ISO-8601 (“YYYY-MM-DD” format).</p>
 <p>The following columns capture the georeferencing of the sampling site (<code>latitude</code>, <code>longitude</code>, and <code>altitude</code>), together with supporting location metadata (<code>positional_accuracy</code> - accuracy estimate, <code>extent</code> - spatial extent of sampling area and <code>map_sheet_code</code> - reference map sheet identifier; all of them not mandatory). Coordinates must be recorded in decimal degrees using the <code>EPSG:4326 (WGS84)</code> coordinate reference system to ensure global consistency and interoperability within the GloSIS database.</p>
 <div class="figure"><span style="display:block;" id="fig:plot-tab"></span>
 <img src="images/module4/plot_tab.png" alt="Information in the Plot Data Sheet." width="100%" />
 <p class="caption">
-Figure 7.1: Information in the Plot Data Sheet.
+Figure 5.1: Information in the Plot Data Sheet.
 </p>
 </div>
 <p>Finally, columns <code>N:BJ</code> describe the soil formation factors in the sampling plot following the FAO Guidelines for Soil Description 4th Ed. (2006) if available. These columns are optional and only can be updated manually directly on the XLSX template.</p>
 </div>
-<div id="profile-data-sheet" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> Profile Data Sheet<a href="glosis-soil-data-preparation.html#profile-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="profile-data-sheet" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Profile Data Sheet<a href="glosis-soil-data-preparation.html#profile-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This sheet includes profile identification <code>profile_code</code> and profile descriptors (FAO and Soil USDA classification Systems and Soil Depth classes according to the 4th edition of the FAO Guidelines for Soil Description. The <code>profile_code</code> column act as the join parameter to link profiles to the information on the other sheets, thus it is important to ensure its consistency over the whole file tabs.</p>
 <p>This sheet records the profile identifier (<code>profile_code</code>) and key profile descriptors, including soil profile classification (FAO and USDA Soil Taxonomy) and soil depth classes following the 4th edition of the FAO Guidelines for Soil Description. The <code>profile_code</code> field serves as the main join key linking profile records to related information in the other sheets, so it is essential to keep it consistent across all tabs in the file.</p>
 </div>
-<div id="element-data-sheet" class="section level3 hasAnchor" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> Element Data Sheet<a href="glosis-soil-data-preparation.html#element-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="element-data-sheet" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Element Data Sheet<a href="glosis-soil-data-preparation.html#element-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An <code>Element</code> is a depth-based subdivision of a soil profile and can be described as either:</p>
 <ul>
 <li><p><code>Horizon</code>: a natural, relatively homogeneous layer formed by pedogenesis</p></li>
 <li><p><code>Layer</code>: an arbitrarily defined section, often based on fixed depth intervals for sampling and analysis</p></li>
 </ul>
-<p>Figure <a href="glosis-soil-data-preparation.html#fig:element-fig">7.2</a> illustrates the differences between these two element types.</p>
+<p>Figure <a href="glosis-soil-data-preparation.html#fig:element-fig">5.2</a> illustrates the differences between these two element types.</p>
 <div class="figure"><span style="display:block;" id="fig:element-fig"></span>
 <img src="images/module4/element.png" alt="Horizon vs Layer en Element Features." width="100%" />
 <p class="caption">
-Figure 7.2: Horizon vs Layer en Element Features.
+Figure 5.2: Horizon vs Layer en Element Features.
 </p>
 </div>
 <p>For each sampled horizon or layer, the <code>Element Data</code> sheet records the identifiers used to link the profile and the element (<code>profile_code</code>, <code>element_code</code>), and where applicable, the horizon classification identifier (<code>horizon_code</code>) features. It also specifies the <code>element_type</code> (<code>Horizon</code> or <code>Layer</code>) and the depth limits of the element (<code>upper_depth</code>, <code>lower_depth</code>)</p>
-<p>As in the <code>Profile Data</code> sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns <code>H:CC</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:element-tab">7.3</a>).</p>
+<p>As in the <code>Profile Data</code> sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns <code>H:CC</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:element-tab">5.3</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:element-tab"></span>
 <img src="images/module4/element_tab.png" alt="Element Data Sheet in the XLSX template." width="100%" />
 <p class="caption">
-Figure 7.3: Element Data Sheet in the XLSX template.
+Figure 5.3: Element Data Sheet in the XLSX template.
 </p>
 </div>
 </div>
-<div id="specimen-data-sheet" class="section level3 hasAnchor" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> Specimen Data Sheet<a href="glosis-soil-data-preparation.html#specimen-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The main purpose of the <code>Specimen Data</code> is to store the laboratory analytical results for each horizon or layer registered in <code>Element Data</code>. It includes the identifiers needed to link analytical results to the corresponding profile and element (<code>profile_code</code>, <code>element_code</code>) and the laboratory sample label (<code>specimen_code</code>) in columns <code>A:C</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:specimen-tab">7.4</a>).</p>
+<div id="specimen-data-sheet" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Specimen Data Sheet<a href="glosis-soil-data-preparation.html#specimen-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The main purpose of the <code>Specimen Data</code> is to store the laboratory analytical results for each horizon or layer registered in <code>Element Data</code>. It includes the identifiers needed to link analytical results to the corresponding profile and element (<code>profile_code</code>, <code>element_code</code>) and the laboratory sample label (<code>specimen_code</code>) in columns <code>A:C</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:specimen-tab">5.4</a>).</p>
 <p>The subsequent columns contain the analytical values for each measured soil property.</p>
 <p>Because these values are loaded into the GloSIS database, all analytical results in this sheet <strong>must be expressed in the GloSIS standard units of measurement</strong>. If necessary, values should be converted to the required units prior to ingestion. These values are automatically transformed if the <code>GloSIS-ETL Harmonization</code> tool is used to create the template.</p>
 <div class="figure"><span style="display:block;" id="fig:specimen-tab"></span>
 <img src="images/module4/specimen_tab.png" alt="Specimen Data Sheet in the XLSX template." width="100%" />
 <p class="caption">
-Figure 7.4: Specimen Data Sheet in the XLSX template.
+Figure 5.4: Specimen Data Sheet in the XLSX template.
 </p>
 </div>
 <p>** Note that the values in this sheet are already converted to the corresponding GloSIS standard units of measurement. The original values remain as a backup in the sheet <code>Original Data</code>.</p>
 </div>
-<div id="procedures-sheet" class="section level3 hasAnchor" number="7.3.5">
-<h3><span class="header-section-number">7.3.5</span> Procedures Sheet<a href="glosis-soil-data-preparation.html#procedures-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="procedures-sheet" class="section level3 hasAnchor" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> Procedures Sheet<a href="glosis-soil-data-preparation.html#procedures-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>Procedures</code> sheet defines the relationship between the measured soil properties, their standardized GloSIS property names, the laboratory methods, and the units of measurement. This linkage is essential to ensure consistency and interoperability across datasets and to support correct ingestion into the GloSIS database.</p>
 <p>The sheet is linked to the reference list provided in the <code>GloSIS Methods</code> sheet, which contains the approved set of standardized soil property names, analytical procedures, and measurement units. Only properties, methods, and units included in <code>GloSIS Methods</code> can be uploaded to the GloSIS database. Any measured property, method, or unit that is not present in this list cannot be ingested and must either be removed or replaced with an accepted equivalent. Missing procedures can be reported to the GloSIS Working Group for possible inclusion, together with documentation describing the soil property, the analytical method, and the unit of measurement. The reference list is maintained and updated over time to incorporate new analytical properties, methods, and units.</p>
-<p>In practical terms, this sheet links the analytical values in <code>Specimen Data</code> to their corresponding analytical metadata (Fig. <a href="glosis-soil-data-preparation.html#fig:procedures-tab">7.5</a>). The first column (<code>soil_property</code>) lists the soil properties included in <code>Specimen Data</code>, in the same order in which they appear. Columns <code>B–D</code> provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the <code>GloSIS-ETL Harmonization</code> tool.</p>
+<p>In practical terms, this sheet links the analytical values in <code>Specimen Data</code> to their corresponding analytical metadata (Fig. <a href="glosis-soil-data-preparation.html#fig:procedures-tab">5.5</a>). The first column (<code>soil_property</code>) lists the soil properties included in <code>Specimen Data</code>, in the same order in which they appear. Columns <code>B–D</code> provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the <code>GloSIS-ETL Harmonization</code> tool.</p>
 <div class="figure"><span style="display:block;" id="fig:procedures-tab"></span>
 <img src="images/module4/procedures_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
 <p class="caption">
-Figure 7.5: Procedures Sheet in the XLSX template.
+Figure 5.5: Procedures Sheet in the XLSX template.
 </p>
 </div>
 </div>
-<div id="metadata-sheet" class="section level3 hasAnchor" number="7.3.6">
-<h3><span class="header-section-number">7.3.6</span> Metadata Sheet<a href="glosis-soil-data-preparation.html#metadata-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It includes detailed metadata to identify the different data providers (Fig. <a href="glosis-soil-data-preparation.html#fig:metadata-tab">7.6</a>) .</p>
+<div id="metadata-sheet" class="section level3 hasAnchor" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> Metadata Sheet<a href="glosis-soil-data-preparation.html#metadata-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It includes detailed metadata to identify the different data providers (Fig. <a href="glosis-soil-data-preparation.html#fig:metadata-tab">5.6</a>) .</p>
 <div class="figure"><span style="display:block;" id="fig:metadata-tab"></span>
 <img src="images/module4/metadata_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
 <p class="caption">
-Figure 7.6: Procedures Sheet in the XLSX template.
+Figure 5.6: Procedures Sheet in the XLSX template.
 </p>
 </div>
 </div>
-<div id="original-data-sheet" class="section level3 hasAnchor" number="7.3.7">
-<h3><span class="header-section-number">7.3.7</span> Original Data Sheet<a href="glosis-soil-data-preparation.html#original-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>Original Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:original-tab">7.7</a>) stores the raw values from soil analyses and descriptions. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.</p>
+<div id="original-data-sheet" class="section level3 hasAnchor" number="5.3.7">
+<h3><span class="header-section-number">5.3.7</span> Original Data Sheet<a href="glosis-soil-data-preparation.html#original-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>Original Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:original-tab">5.7</a>) stores the raw values from soil analyses and descriptions. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.</p>
 <div class="figure"><span style="display:block;" id="fig:original-tab"></span>
 <img src="images/module4/original_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
 <p class="caption">
-Figure 7.7: Procedures Sheet in the XLSX template.
+Figure 5.7: Procedures Sheet in the XLSX template.
 </p>
 </div>
 <p>Values in the <code>Original Data</code> sheet can be linked (e.g., via formulas) to the <code>Element Data</code> sheet, allowing adjusted values to be transformed and transferred automatically while preserving the original records. This helps users track how each soil property was measured and in which units the results were reported. The original data are automatically preserved when using the <code>GloSIS-ETL Harmonization</code> tool.</p>
 </div>
-<div id="glosis-methods-sheet" class="section level3 hasAnchor" number="7.3.8">
-<h3><span class="header-section-number">7.3.8</span> GloSIS Methods sheet<a href="glosis-soil-data-preparation.html#glosis-methods-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="glosis-methods-sheet" class="section level3 hasAnchor" number="5.3.8">
+<h3><span class="header-section-number">5.3.8</span> GloSIS Methods sheet<a href="glosis-soil-data-preparation.html#glosis-methods-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>GloSIS Methods</code> sheet is the reference table that defines which soil properties, analytical procedures, and units of measurement are accepted for loading data into the GloSIS database. It is used by the <code>Procedures</code> sheet (via drop-down lists) and by the <code>GloSIS-ETL Harmonization</code> tool to validate inputs and apply unit conversions consistently.</p>
 <p>The main columns are:</p>
 <ul>
@@ -738,12 +686,12 @@ Figure 7.7: Procedures Sheet in the XLSX template.
 </ul>
 </div>
 </div>
-<div id="glosis-etl" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> GloSIS-ETL<a href="glosis-soil-data-preparation.html#glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="glosis-etl" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> GloSIS-ETL<a href="glosis-soil-data-preparation.html#glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Because the GloSIS database enforces a structured model, data cannot be loaded reliably as free-form from heterogeneous legacy information. The <code>GloSIS-ETL</code> pipeline provides a practical workflow to harmonize, standardize, and load soil legacy data into the GloSIS PostgreSQL/PostGIS schema in a consistent and reproducible way.</p>
 <p><code>GloSIS-ETL</code> transforms raw datasets into database-ready tables by automating the harmonization and standardization tasks required in GloSIS. This streamlines ingestion into the relational database, improves accessibility for non-technical users, and ensures that soil datasets from different sources can be integrated and compared effectively.</p>
 <p>The <code>GloSIS-ETL</code> services are provided as <strong>Docker containers</strong>, which allow users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates. The installation and setup of the ETL are described in the last section of this session.</p>
-<p>The <code>GloSIS-ETL</code> (Figure <a href="glosis-soil-data-preparation.html#fig:glosis-etl">7.8</a>) includes three applications:</p>
+<p>The <code>GloSIS-ETL</code> (Figure <a href="glosis-soil-data-preparation.html#fig:glosis-etl">5.8</a>) includes three applications:</p>
 <ul>
 <li>GloSIS Data Harmonization: Checks and harmonizes raw input data (e.g., coordinates, depth intervals, missing or inconsistent fields, out-of-range lab values) and define units/methods for GloSIS conventions to produce a clean, consistent dataset for loading.</li>
 <li>GloSIS Data Standardization: Maps harmonized data to ISO 28258 and the GloSIS data model, applying controlled vocabularies and standardized identifiers so the dataset is fully compliant with the target schema.</li>
@@ -753,62 +701,62 @@ Figure 7.7: Procedures Sheet in the XLSX template.
 <div class="figure"><span style="display:block;" id="fig:glosis-etl"></span>
 <img src="images/module4/glosis_etl.png" alt="Application in the GloSIS-ETL." width="100%" />
 <p class="caption">
-Figure 7.8: Application in the GloSIS-ETL.
+Figure 5.8: Application in the GloSIS-ETL.
 </p>
 </div>
-<div id="glosis-data-harmonization" class="section level3 hasAnchor" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> GloSIS Data Harmonization<a href="glosis-soil-data-preparation.html#glosis-data-harmonization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>GloSIS-ETL Harmonization</code> tool (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization">7.9</a>) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.</p>
+<div id="glosis-data-harmonization" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> GloSIS Data Harmonization<a href="glosis-soil-data-preparation.html#glosis-data-harmonization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>GloSIS-ETL Harmonization</code> tool (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization">5.9</a>) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization"></span>
 <img src="images/module4/etl_harmonization.png" alt="GloSIS-ETL Harmonization Tool." width="100%" />
 <p class="caption">
-Figure 7.9: GloSIS-ETL Harmonization Tool.
+Figure 5.9: GloSIS-ETL Harmonization Tool.
 </p>
 </div>
-<p>The preparation of the data follows a 3-step quality assurance procedure (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-steps">7.10</a>) comprehensive data validation at each stage.</p>
+<p>The preparation of the data follows a 3-step quality assurance procedure (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-steps">5.10</a>) comprehensive data validation at each stage.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-steps"></span>
 <img src="images/module4/etl_harmonization_steps.png" alt="GloSIS-ETL Harmonization Tool." width="100%" />
 <p class="caption">
-Figure 7.10: GloSIS-ETL Harmonization Tool.
+Figure 5.10: GloSIS-ETL Harmonization Tool.
 </p>
 </div>
 <p>The application performs systematic data quality checks across three domains to produce a <code>XLSX</code> file following the GloSIS standards. This file, once correctly verified, will be used as input in the <code>GloSIS Data Standardization</code> tool to ingest soil data into the GloSIS database.</p>
 </div>
-<div id="step-1-data-ingestion-variable-mapping" class="section level3 hasAnchor" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> Step 1: Data Ingestion &amp; Variable Mapping<a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-1-data-ingestion-variable-mapping" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Step 1: Data Ingestion &amp; Variable Mapping<a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first step of the harmonization process involves uploading soil datasets and configuring variable mappings to align with GloSIS standard data structure and naming conventions.</p>
 <p>The application accepts the following data formats:</p>
 <ul>
 <li>Excel files (.xlsx)</li>
 <li>CSV files (.csv) - For comma-separated tabular data</li>
 </ul>
-<div id="data-upload-interface" class="section level4 hasAnchor" number="7.4.2.1">
-<h4><span class="header-section-number">7.4.2.1</span> Data Upload Interface<a href="glosis-soil-data-preparation.html#data-upload-interface" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="data-upload-interface" class="section level4 hasAnchor" number="5.4.2.1">
+<h4><span class="header-section-number">5.4.2.1</span> Data Upload Interface<a href="glosis-soil-data-preparation.html#data-upload-interface" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <strong><code>1) Upload your data (CSV or XLSX)</code></strong> section in the left-side menu allows users to upload their raw dataset into the application. Once data is uploaded, the application displays a warning message (Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-step1)) indicating which soil data site identification columns must be mapped to standard GloSIS nomenclature.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step1"></span>
 <img src="images/module4/etl_harmonization_step1.png" alt="Step 1 Warning Message: Required Site Parameter Identification." width="100%" />
 <p class="caption">
-Figure 7.11: Step 1 Warning Message: Required Site Parameter Identification.
+Figure 5.11: Step 1 Warning Message: Required Site Parameter Identification.
 </p>
 </div>
 </div>
-<div id="parameter-mapping-configuration" class="section level4 hasAnchor" number="7.4.2.2">
-<h4><span class="header-section-number">7.4.2.2</span> Parameter Mapping Configuration<a href="glosis-soil-data-preparation.html#parameter-mapping-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="parameter-mapping-configuration" class="section level4 hasAnchor" number="5.4.2.2">
+<h4><span class="header-section-number">5.4.2.2</span> Parameter Mapping Configuration<a href="glosis-soil-data-preparation.html#parameter-mapping-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Users must systematically map their dataset columns to GloSIS standard variable names through an interactive sidebar menu. The mapping process captures 2 essential categories:</p>
 <p><strong><code>2) Configure Project Settings</code></strong> <em>Site Identification Parameters (Optional - Default values provided if not mapped):</em> - Project Name - Site Code - Date of observation - Profile Code - Plot Code and Plot Type - Horizon ID and Horizon Type</p>
 <p><strong><code>3) Map Plot Parameters</code></strong> <em>Required Plot Parameters (Must be mapped explicitly):</em> - Sample ID (element_code or specimen_code) - Longitude (X coordinate, WGS84) - Latitude (Y coordinate, WGS84) - Upper Depth (cm) - Top boundary of soil layer - Lower Depth (cm) - Bottom boundary of soil layer - Soil analytical properties being measured (Multi-selection) - Each property must be mapped to GloSIS standard nomenclature</p>
 <p>The sidebar menu provides dropdown selections for each variable, fuzzy matching to assist in finding correct mappings, and validation warnings if required parameters are not mapped.</p>
 </div>
 </div>
-<div id="step-2-quality-check-and-quality-report-generation" class="section level3 hasAnchor" number="7.4.3">
-<h3><span class="header-section-number">7.4.3</span> Step 2: Quality Check and Quality Report Generation<a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-2-quality-check-and-quality-report-generation" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Step 2: Quality Check and Quality Report Generation<a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This step analyses the data values, its integrity and coherence and identifies potential issues with the data. It automatically generates Quality Report for verification and correction of potential mistakes or unconsistencies in the dataset. The validation occurs at three stages, geographic (horizontal location), soil depth (vertical position) and Analytical integrity (missing values, non valid data, data outliers):</p>
 </div>
-<div id="step-2a-geographic-data-validation" class="section level3 hasAnchor" number="7.4.4">
-<h3><span class="header-section-number">7.4.4</span> Step 2a: Geographic Data Validation<a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-2a-geographic-data-validation" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Step 2a: Geographic Data Validation<a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This validation phase ensures that every soil sample is correctly georeferenced with accurate spatial coordinates, maintaining the spatial integrity essential for the GloSIS database.</p>
-<div id="coordinate-reference-system-requirements" class="section level4 hasAnchor" number="7.4.4.1">
-<h4><span class="header-section-number">7.4.4.1</span> Coordinate Reference System Requirements<a href="glosis-soil-data-preparation.html#coordinate-reference-system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="coordinate-reference-system-requirements" class="section level4 hasAnchor" number="5.4.4.1">
+<h4><span class="header-section-number">5.4.4.1</span> Coordinate Reference System Requirements<a href="glosis-soil-data-preparation.html#coordinate-reference-system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The GloSIS database uses <strong>EPSG:4326</strong> (WGS84) as its standard coordinate reference system. All geographic coordinates must be identified using this global standard projection.</p>
 <p>The application systematically checks for the following geographic data issues:</p>
 <p><strong>Coordinate Completeness:</strong> - Identifies missing X (longitude) and/or Y (latitude) coordinates</p>
@@ -816,8 +764,8 @@ Figure 7.11: Step 1 Warning Message: Required Site Parameter Identification.
 <p><strong>Duplicate Site Detection:</strong> - Identifies potential duplicate sites (multiple profiles at identical coordinates)</p>
 </div>
 </div>
-<div id="step-2b-soil-depth-validation" class="section level3 hasAnchor" number="7.4.5">
-<h3><span class="header-section-number">7.4.5</span> Step 2b: Soil Depth Validation<a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-2b-soil-depth-validation" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Step 2b: Soil Depth Validation<a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>All soil profiles must include both upper and lower depth measurements for each sampled layer. This step ensures that the vertical intervals for each soil sample are physically and logically possible, maintaining the integrity of soil profile structure.</p>
 <p>The application checks for <strong>Depth Completeness</strong> and <strong>Depth Logical Consistency</strong>:</p>
 <ul>
@@ -826,8 +774,8 @@ Figure 7.11: Step 1 Warning Message: Required Site Parameter Identification.
 <li>Identifies soil profiles not starting at surface (top depth &gt; 0 cm when expected)</li>
 </ul>
 </div>
-<div id="step-2c-soil-properties-validation" class="section level3 hasAnchor" number="7.4.6">
-<h3><span class="header-section-number">7.4.6</span> Step 2c: Soil Properties Validation<a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-2c-soil-properties-validation" class="section level3 hasAnchor" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> Step 2c: Soil Properties Validation<a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This final validation step involves screening analytical soil property values against scientifically established analytical thresholds to identify unrealistic or impossible values. Out-of-bounds values are commonly known as outliers.</p>
 <p>The soil analytical properties selected through the sidebar menu (Step 1) will be displayed in the main dashboard. For each property, users must define:</p>
 <ol style="list-style-type: decimal">
@@ -838,20 +786,20 @@ Figure 7.11: Step 1 Warning Message: Required Site Parameter Identification.
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step2"></span>
 <img src="images/module4/etl_harmonization_step2.png" alt="Mapping analytical procedures and units of measurement" width="100%" />
 <p class="caption">
-Figure 7.12: Mapping analytical procedures and units of measurement
+Figure 5.12: Mapping analytical procedures and units of measurement
 </p>
 </div>
 <p>For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds (Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-step4)).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step4"></span>
 <img src="images/module4/etl_harmonization_step4.png" alt="Validation of analytical values" width="100%" />
 <p class="caption">
-Figure 7.13: Validation of analytical values
+Figure 5.13: Validation of analytical values
 </p>
 </div>
 <p>All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. Quality check results are displayed in a dedicated <code>Quality Checks</code> Tab which displays detailed validation results organized by issue type. Users can download a comprehensive <code>Quality Check Report (XLSX format)</code> for further analysis and data cleaning outside the application.</p>
 </div>
-<div id="step-3-data-correction-and-resubmission" class="section level3 hasAnchor" number="7.4.7">
-<h3><span class="header-section-number">7.4.7</span> Step 3: Data Correction and Resubmission<a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-3-data-correction-and-resubmission" class="section level3 hasAnchor" number="5.4.7">
+<h3><span class="header-section-number">5.4.7</span> Step 3: Data Correction and Resubmission<a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once data quality issues are identified in the Quality Check Report, users must correct the original dataset and resubmit for harmonization.</p>
 <div class="highlights">
 <ul>
@@ -862,12 +810,12 @@ Figure 7.13: Validation of analytical values
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step3"></span>
 <img src="images/module4/etl_harmonization_step3.png" alt="Quality Checks Tab." width="100%" />
 <p class="caption">
-Figure 7.14: Quality Checks Tab.
+Figure 5.14: Quality Checks Tab.
 </p>
 </div>
 </div>
-<div id="step-4-download-harmonized-data" class="section level3 hasAnchor" number="7.4.8">
-<h3><span class="header-section-number">7.4.8</span> Step 4: Download Harmonized Data<a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-4-download-harmonized-data" class="section level3 hasAnchor" number="5.4.8">
+<h3><span class="header-section-number">5.4.8</span> Step 4: Download Harmonized Data<a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once all critical data quality issues have been resolved and the dataset passes validation, users can download the harmonized data in a GloSIS-standard format. In the first step the <code>Prepare XLSX</code> button translates the data into the standardized GloSIS structure and store it in memory as a temporary file. The file then becomes available through the <code>Download XLSX</code> button.</p>
 <p>The downloaded file follows the GloSIS standard format, with data organized according to the hierarchical features of interest defined in ISO 28258.</p>
 <p><strong>Plot Data Sheet:</strong> - Project identifier - Site identifier - Plot identifier - Profile identifier - Plot type identifier (Borehole, TrialPit, Surface) - Number of layers / plot - Date of observation - Longitude (WGS84) - Latitude (WGS84)</p>
@@ -888,27 +836,27 @@ Figure 7.14: Quality Checks Tab.
 </ul>
 </div>
 </div>
-<div id="glosis-data-standardization" class="section level3 hasAnchor" number="7.4.9">
-<h3><span class="header-section-number">7.4.9</span> GloSIS Data Standardization<a href="glosis-soil-data-preparation.html#glosis-data-standardization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="glosis-data-standardization" class="section level3 hasAnchor" number="5.4.9">
+<h3><span class="header-section-number">5.4.9</span> GloSIS Data Standardization<a href="glosis-soil-data-preparation.html#glosis-data-standardization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The data injection of soil data into the Glosis database is performed thought a standardized Excel (<code>.xlsx</code>) template that serves as an intermediary format for structuring soil data before its integration into PostgreSQL. This template ensures that the data follows a predefined schema, aligning with the complex relational structure of the GloSIS database. The template consists of multiple sheets, each corresponding to a specific data entity, such as site information, soil horizons/layers, laboratory procedures, and analytical results structured in different sheets. Each column in these sheets is carefully labeled to match the expected database fields, reducing errors and ensuring data consistency. Users are required to fill in the template while adhering to specific data formats, such as numeric values for measurements, categorical values for predefined classifications, and geospatial coordinates in standard longitude and latitude formats. The structured nature of the template minimizes manual intervention and ensures that data is correctly mapped when it is processed by the <code>glosis-shiny</code> application. The application validates the input, identifies potential discrepancies, and harmonizes the dataset before transferring it into PostgreSQL, ultimately simplifying the data submission process while maintaining accuracy and comparability.</p>
 <p>The data in the standardized Excel template must be collected in a harmonized manner to ensure consistency and accuracy during integration into the GloSIS database. This requires harmonization of spatial coordinates to the EPSG:4326 coordinate system recorded in the <code>Plot_Data</code> sheet, ensuring homogeneous sample georeferencing. Additionally, the identification of standard soil property names, laboratory methods, and units of measurement must be correctly defined in the <code>Procedures</code> sheet. If the original data is recorded in different units, it must be converted to match the standardized units specified in the <code>Procedures</code> sheet before inclusion in the <code>Element Data</code> sheet.</p>
 <p>Furthermore, all soil properties listed in the <code>Element Data</code> and <code>Procedures</code> sheets must correspond to those available in the <code>Codelist</code> sheet, which contains the standardized soil properties defined in the GloSIS <strong><code>codelist</code></strong>. Any property not included in the <code>Codelist</code> sheet must be removed from the template before data injection to ensure compatibility with the GloSIS database. This harmonization process is essential for maintaining data consistency, facilitating data sharing, and ensuring seamless integration with the global soil information system.</p>
 <p>Ensuring the correct utilization of the template is essential for the successful execution of the data injection process. Proper adherence to the template structure guarantees data integrity, compatibility, and seamless integration into the PostgreSQL GloSIS Database.</p>
 </div>
-<div id="glosis-data-viewer" class="section level3 hasAnchor" number="7.4.10">
-<h3><span class="header-section-number">7.4.10</span> GloSIS Data Viewer<a href="glosis-soil-data-preparation.html#glosis-data-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Data Viewer component (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer">7.15</a>) provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
+<div id="glosis-data-viewer" class="section level3 hasAnchor" number="5.4.10">
+<h3><span class="header-section-number">5.4.10</span> GloSIS Data Viewer<a href="glosis-soil-data-preparation.html#glosis-data-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Data Viewer component (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer">5.15</a>) provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
 <p>The <code>GloSIS Viewer</code> enables the review of the geographic distribution of sampling sites on a interactive map, preview harmonized records in tabular format with sortable/filterable columns, visualize the variation of soil properties with depth in the soil profile and export selected data to othe formats</p>
 <div class="figure"><span style="display:block;" id="fig:etl-viewer"></span>
 <img src="images/module4/etl_viewer.png" alt="Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool" width="100%" />
 <p class="caption">
-Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool
+Figure 5.15: Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool
 </p>
 </div>
 </div>
 </div>
-<div id="installation-and-setup-of-the-glosis-etl" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Installation and Setup of the GloSIS-ETL<a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="installation-and-setup-of-the-glosis-etl" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Installation and Setup of the GloSIS-ETL<a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>GloSIS-ETL</code> services are provided as <strong>Docker containers</strong>, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.</p>
 <p><strong>Docker Compose</strong> is a tool used to define and run multi-container Docker applications. It allows users to <strong>orchestrate multiple services</strong> using a single configuration file (see Section <strong>The docker-compose.yml file</strong>). The key benefits of Docker Compose include:</p>
 <ul>
@@ -929,11 +877,11 @@ Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <p>An optional third service, <strong><code>glosis-pgadmin</code></strong>, provides a pgAdmin 4 web interface for direct database administration (see <strong>Optional Services</strong> below).</p>
 <p>These services are <strong>built from pre-configured Docker images</strong> and automatically deployed as containers using <strong>Docker Compose</strong>, meaning all dependencies are pre-configured, ensuring a consistent and reproducible execution across different operating systems (Windows, macOS, and Linux).</p>
 <p>This section provides step-by-step instructions to set up the <strong>GloSIS-ETL platform</strong>, including the installation of <strong>Docker Desktop</strong> and the deployment of the services. <strong>No manual installation of PostgreSQL, R, or any other dependency is required</strong> everything runs inside Docker.</p>
-<div id="install-docker-desktop" class="section level3 hasAnchor" number="7.5.1">
-<h3><span class="header-section-number">7.5.1</span> Install Docker Desktop<a href="glosis-soil-data-preparation.html#install-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="install-docker-desktop" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Install Docker Desktop<a href="glosis-soil-data-preparation.html#install-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before proceeding, <strong>Docker Desktop</strong> must be installed on your computer.</p>
-<div id="windows" class="section level4 hasAnchor" number="7.5.1.1">
-<h4><span class="header-section-number">7.5.1.1</span> Windows<a href="glosis-soil-data-preparation.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="windows" class="section level4 hasAnchor" number="5.5.1.1">
+<h4><span class="header-section-number">5.5.1.1</span> Windows<a href="glosis-soil-data-preparation.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li><p><strong>Enable Hyper-V</strong></p>
 <p>Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerShell to be installed and enabled. In most systems, the Docker Desktop installer enables it for you.</p>
@@ -948,16 +896,16 @@ Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <li><p>Open <strong>Docker Desktop</strong> and ensure it is running.</p></li>
 </ol>
 </div>
-<div id="macos" class="section level4 hasAnchor" number="7.5.1.2">
-<h4><span class="header-section-number">7.5.1.2</span> macOS<a href="glosis-soil-data-preparation.html#macos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="macos" class="section level4 hasAnchor" number="5.5.1.2">
+<h4><span class="header-section-number">5.5.1.2</span> macOS<a href="glosis-soil-data-preparation.html#macos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li>Download <strong>Docker Desktop for Mac</strong> from the <a href="https://docs.docker.com/desktop/install/mac-install/">official website</a>. Choose the correct version for your processor (<strong>Apple Silicon</strong> or <strong>Intel</strong>).</li>
 <li>Open the <code>.dmg</code> file and drag <strong>Docker</strong> into the Applications folder.</li>
 <li>Start <strong>Docker Desktop</strong> and allow any requested system permissions.</li>
 </ol>
 </div>
-<div id="linux" class="section level4 hasAnchor" number="7.5.1.3">
-<h4><span class="header-section-number">7.5.1.3</span> Linux<a href="glosis-soil-data-preparation.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="linux" class="section level4 hasAnchor" number="5.5.1.3">
+<h4><span class="header-section-number">5.5.1.3</span> Linux<a href="glosis-soil-data-preparation.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li><p>Open a terminal and run the following commands:</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="glosis-soil-data-preparation.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
@@ -974,8 +922,8 @@ Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Har
 </ol>
 </div>
 </div>
-<div id="install-the-glosis-etl-services" class="section level3 hasAnchor" number="7.5.2">
-<h3><span class="header-section-number">7.5.2</span> Install the GloSIS-ETL Services<a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="install-the-glosis-etl-services" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Install the GloSIS-ETL Services<a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The easiest way to install the GloSIS-ETL services is by downloading the repository and using Docker Compose to build and run the containers.</p>
 <p><strong>Steps:</strong></p>
 <ol style="list-style-type: decimal">
@@ -983,11 +931,11 @@ Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <li><p><strong>Download the GloSIS-ETL repository from GitHub:</strong></p>
 <p>Go to:</p>
 <pre><code>https://github.com/FAO-SID/glosis-etl</code></pre>
-<p>Click the green <strong>“Code”</strong> button, then select <strong>Download ZIP</strong> (Figure <a href="glosis-soil-data-preparation.html#fig:clone">7.16</a>).</p>
+<p>Click the green <strong>“Code”</strong> button, then select <strong>Download ZIP</strong> (Figure <a href="glosis-soil-data-preparation.html#fig:clone">5.16</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:clone"></span>
 <img src="images/module4/etl-clone.png" alt="Cloning the repository." width="100%" />
 <p class="caption">
-Figure 7.16: Cloning the repository.
+Figure 5.16: Cloning the repository.
 </p>
 </div>
 <p>Alternatively, if you have Git installed, you can clone the repository:</p>
@@ -1014,21 +962,21 @@ Figure 7.16: Cloning the repository.
 </blockquote></li>
 </ol>
 </div>
-<div id="verify-installation" class="section level3 hasAnchor" number="7.5.3">
-<h3><span class="header-section-number">7.5.3</span> Verify Installation<a href="glosis-soil-data-preparation.html#verify-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="using-docker-desktop" class="section level4 hasAnchor" number="7.5.3.1">
-<h4><span class="header-section-number">7.5.3.1</span> Using Docker Desktop<a href="glosis-soil-data-preparation.html#using-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Open Docker Desktop and check if the containers are running (Figure <a href="glosis-soil-data-preparation.html#fig:docker-desktop">7.17</a>).</p>
+<div id="verify-installation" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Verify Installation<a href="glosis-soil-data-preparation.html#verify-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="using-docker-desktop" class="section level4 hasAnchor" number="5.5.3.1">
+<h4><span class="header-section-number">5.5.3.1</span> Using Docker Desktop<a href="glosis-soil-data-preparation.html#using-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Open Docker Desktop and check if the containers are running (Figure <a href="glosis-soil-data-preparation.html#fig:docker-desktop">5.17</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:docker-desktop"></span>
 <img src="images/module4/docker_desktop.png" alt="Docker Desktop showing running containers." width="100%" />
 <p class="caption">
-Figure 7.17: Docker Desktop showing running containers.
+Figure 5.17: Docker Desktop showing running containers.
 </p>
 </div>
 <p>If everything is working, the project and service icons should be <strong>green</strong>. If any service fails, the icon will appear **orange*.</p>
 </div>
-<div id="using-the-terminal" class="section level4 hasAnchor" number="7.5.3.2">
-<h4><span class="header-section-number">7.5.3.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="using-the-terminal" class="section level4 hasAnchor" number="5.5.3.2">
+<h4><span class="header-section-number">5.5.3.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To manually check if the services are running, type:</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="glosis-soil-data-preparation.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
 <p>You should see an output similar to:</p>
@@ -1037,8 +985,8 @@ Figure 7.17: Docker Desktop showing running containers.
 cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 days ago     Up 7 days (healthy)     0.0.0.0:5442-&gt;5432/tcp   glosis-db</code></pre>
 <p>Both containers should show a status of <strong>(healthy)</strong>.</p>
 </div>
-<div id="stopping-the-services" class="section level4 hasAnchor" number="7.5.3.3">
-<h4><span class="header-section-number">7.5.3.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="stopping-the-services" class="section level4 hasAnchor" number="5.5.3.3">
+<h4><span class="header-section-number">5.5.3.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To stop the services at any time, use:</p>
 <div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="glosis-soil-data-preparation.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
 <p>This will stop and remove the containers, but your <strong>database data will remain intact</strong> in the Docker named volume <code>glosis-db-data</code>.</p>
@@ -1047,8 +995,8 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 </blockquote>
 </div>
 </div>
-<div id="pgadmin" class="section level3 hasAnchor" number="7.5.4">
-<h3><span class="header-section-number">7.5.4</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pgadmin" class="section level3 hasAnchor" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>docker-compose.yml</code> file includes an optional <strong>pgAdmin 4</strong> service for direct database management. To activate it:</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb210-1"><a href="glosis-soil-data-preparation.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
 <p>Once running, access pgAdmin at:</p>
@@ -1067,16 +1015,16 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 </ul>
 </div>
 </div>
-<div id="accessing-the-services" class="section level2 hasAnchor" number="7.6">
-<h2><span class="header-section-number">7.6</span> Accessing the Services<a href="glosis-soil-data-preparation.html#accessing-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="landing-page" class="section level3 hasAnchor" number="7.6.1">
-<h3><span class="header-section-number">7.6.1</span> Landing Page<a href="glosis-soil-data-preparation.html#landing-page" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="accessing-the-services" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Accessing the Services<a href="glosis-soil-data-preparation.html#accessing-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="landing-page" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Landing Page<a href="glosis-soil-data-preparation.html#landing-page" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To open the <strong>GloSIS-ETL</strong> platform, enter this address in your web browser:</p>
 <pre><code>http://localhost:3838/</code></pre>
 <p>This will load the <strong>landing page</strong> with links to the three application modules.</p>
 </div>
-<div id="shiny-application-modules" class="section level3 hasAnchor" number="7.6.2">
-<h3><span class="header-section-number">7.6.2</span> Shiny Application Modules<a href="glosis-soil-data-preparation.html#shiny-application-modules" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="shiny-application-modules" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Shiny Application Modules<a href="glosis-soil-data-preparation.html#shiny-application-modules" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Each module is accessible directly via its URL:</p>
 <table>
 <colgroup>
@@ -1110,9 +1058,9 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 </tbody>
 </table>
 </div>
-<div id="glosis-database" class="section level3 hasAnchor" number="7.6.3">
-<h3><span class="header-section-number">7.6.3</span> GloSIS Database<a href="glosis-soil-data-preparation.html#glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The GloSIS database is available for connection with external applications such as <strong>pgAdmin</strong>, <strong>DBeaver</strong>, <strong>QGIS</strong>, <strong>R</strong>, etc., using the parameters listed in Table <a href="glosis-soil-data-preparation.html#tab:db-connection">7.1</a>.</p>
+<div id="glosis-database" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> GloSIS Database<a href="glosis-soil-data-preparation.html#glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The GloSIS database is available for connection with external applications such as <strong>pgAdmin</strong>, <strong>DBeaver</strong>, <strong>QGIS</strong>, <strong>R</strong>, etc., using the parameters listed in Table <a href="glosis-soil-data-preparation.html#tab:db-connection">5.1</a>.</p>
 <pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
 ## Use &#39;xfun::attr2()&#39; instead.
 ## See help(&quot;Deprecated&quot;)
@@ -1121,7 +1069,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 ## Use &#39;xfun::attr2()&#39; instead.
 ## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
-<caption><span id="tab:db-connection">Table 7.1: </span>Database connection parameters.</caption>
+<caption><span id="tab:db-connection">Table 5.1: </span>Database connection parameters.</caption>
 <thead>
 <tr class="header">
 <th align="left">Parameter</th>
@@ -1157,8 +1105,8 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <p>With this setup, users can easily run and manage the GloSIS-ETL platform and its Shiny web interface while ensuring stability and avoiding conflicts with other PostgreSQL installations.</p>
 </div>
 </div>
-<div id="docker-compose-file" class="section level2 hasAnchor" number="7.7">
-<h2><span class="header-section-number">7.7</span> The <code>docker-compose.yml</code> File<a href="glosis-soil-data-preparation.html#docker-compose-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="docker-compose-file" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> The <code>docker-compose.yml</code> File<a href="glosis-soil-data-preparation.html#docker-compose-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>docker-compose.yml</code> file defines the complete GloSIS-ETL service architecture. Below is a summary of its key components:</p>
 <pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
 ## Use &#39;xfun::attr2()&#39; instead.
@@ -1168,7 +1116,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 ## Use &#39;xfun::attr2()&#39; instead.
 ## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
-<caption><span id="tab:docker-compose-summary">Table 7.2: </span>Docker Compose components.</caption>
+<caption><span id="tab:docker-compose-summary">Table 5.2: </span>Docker Compose components.</caption>
 <colgroup>
 <col width="23%" />
 <col width="10%" />
@@ -1211,8 +1159,8 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 </table>
 <p>The <code>glosis-etl</code> service <strong>depends on</strong> <code>postgis</code> and will only start once the database passes its health check (<code>pg_isready</code>). Environment variables (database credentials, logging level, etc.) are read from the <code>.env</code> file in the project root.</p>
 </div>
-<div id="env-file" class="section level2 hasAnchor" number="7.8">
-<h2><span class="header-section-number">7.8</span> The <code>.env</code> File<a href="glosis-soil-data-preparation.html#env-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="env-file" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> The <code>.env</code> File<a href="glosis-soil-data-preparation.html#env-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.env</code> file stores configuration values that are shared between the services. The available variables are:</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb215-1"><a href="glosis-soil-data-preparation.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
 <span id="cb215-2"><a href="glosis-soil-data-preparation.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
