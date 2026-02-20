@@ -464,9 +464,11 @@ If you see the results, R and RStudio are properly installed in your system.
 
 ## Understanding the RStudio Interface
 
-**RStudio** provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. 1):
+**RStudio** provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. \@ref(fig:rstudio)):
 
-[![Fig. 1: RStudio interface](images/2_RStudio-interface.png){width=100%}](images/2_RStudio-interface.png)
+```{r rstudio, echo=FALSE, out.width="100%",fig.cap = "RStudio interface."}
+knitr::include_graphics("images/module1/2_RStudio-interface.png")
+```
 
 ### 1. Console Pane (Bottom Left)
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -131,7 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -344,25 +343,22 @@ div.csl-indent {
 <li class="chapter" data-level="2.1.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#vector-vs-raster-data"><i class="fa fa-check"></i><b>2.1.1</b> Vector vs Raster Data</a></li>
 <li class="chapter" data-level="2.1.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#coordinate-reference-systems-crs-and-projections"><i class="fa fa-check"></i><b>2.1.2</b> Coordinate Reference Systems (CRS) and Projections</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong></a>
+<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing and Loading Spatial Packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> <strong>Working with Vector Data using <code>{sf}</code></strong></a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> Working with Vector Data using <code>{sf}</code></a></li>
 <li class="chapter" data-level="2.2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-vector-data"><i class="fa fa-check"></i><b>2.2.3</b> Importing Vector Data</a></li>
 <li class="chapter" data-level="2.2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-relationships-and-joins"><i class="fa fa-check"></i><b>2.2.4</b> Spatial Relationships and Joins</a></li>
+<li class="chapter" data-level="2.2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.2.5</b> Importing Raster Data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra"><i class="fa fa-check"></i><b>2.3</b> <strong>Working with Raster Data using <code>{terra}</code></strong></a>
+<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.3</b> Combining Vector and Raster Data</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.3.1</b> Importing Raster Data</a></li>
+<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.3.1</b> Extracting Raster Values to Points and Polygons</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.4</b> Combining Vector and Raster Data</a>
+<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.4</b> Exporting and Sharing Spatial Data</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.4.1</b> Extracting Raster Values to Points and Polygons</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.5</b> Exporting and Sharing Spatial Data</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.5.1</b> Exporting Vector Data</a></li>
-<li class="chapter" data-level="2.5.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.5.2</b> Exporting Raster Data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.4.1</b> Exporting Vector Data</a></li>
+<li class="chapter" data-level="2.4.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.4.2</b> Exporting Raster Data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>3</b> Sampling design for soil surveys</a>
@@ -482,14 +478,14 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>7.2</b> The GloSIS database</a></li>
 <li class="chapter" data-level="7.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>7.3</b> Features of interest: Understanding the XLSX Template</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> <code>Plot Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> <code>Profile Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> <code>Element Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> <code>Specimen Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> <code>Procedures</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> <code>Metadata</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> <code>Original Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> <code>GloSIS Methods</code> sheet</a></li>
+<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> Plot Data Sheet</a></li>
+<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> Profile Data Sheet</a></li>
+<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> Element Data Sheet</a></li>
+<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> Specimen Data Sheet</a></li>
+<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> Procedures Sheet</a></li>
+<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> Metadata Sheet</a></li>
+<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> Original Data Sheet</a></li>
+<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> GloSIS Methods sheet</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>7.4</b> GloSIS-ETL</a>
 <ul>
@@ -504,7 +500,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>7.4.9</b> GloSIS Data Standardization</a></li>
 <li class="chapter" data-level="7.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>7.4.10</b> GloSIS Data Viewer</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the <code>GloSIS-ETL</code></a>
+<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the GloSIS-ETL</a>
 <ul>
 <li class="chapter" data-level="7.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>7.5.1</b> Install Docker Desktop</a></li>
 <li class="chapter" data-level="7.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>7.5.2</b> Install the GloSIS-ETL Services</a></li>
@@ -601,8 +597,8 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 7</span> GloSIS Soil Data Preparation<a href="glosis-soil-data-preparation.html#glosis-soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introduction-2" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Introduction<a href="glosis-soil-data-preparation.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
-<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros2024"><strong>Medeiros2024?</strong></a>)</span>. However, realizing this potential requires solving the fragmentation problem through systematic standardization.</p>
+<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172" role="doc-biblioref">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
+<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24" role="doc-biblioref">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realizing this potential requires solving the fragmentation problem through systematic standardization.</p>
 <p>In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralize all soil data into a single organization or location, GloSIS functions as a decentralized spatial data infrastructure that enables soil data management and sharing within a global harmonization framework. National soil institutes, research organizations, and other data holders maintain control of their data in their own systems, but contribute that data to the GloSIS platform following standardized formats and protocols for data preparaation and sharing.</p>
 <p>GloSIS makes data comparable across countries and regions. When data is submitted to GloSIS, it undergoes a standardization process that translates local data into a universally understood format, the PostgreSQL GloSIS database. This integration requires systematic preparation, validation, and standardization of individual datasets. This is where the technical infrastructure developed at FAO-GPS (the ETL system described in this manual) becomes essential. Before soil data can contribute meaningfully to global analysis, it must be carefully prepared, quality-checked, and transformed into the standardized format that GloSIS requires.</p>
 <p>In this section, we introduce the key concepts of data harmonization and standardization in line with GloSIS database requirements, and demonstrate how to use the <code>GloSIS-ETL</code> to prepare data and load it into the GloSIS database structure. The exercises use the soil legacy dataset provided in the training materials as a practical example.</p>
@@ -614,20 +610,20 @@ div.csl-indent {
 <p>By aligning with ISO 28258, the GloSIS database provides the infrastructure needed for global soil data integration and interoperability.</p>
 <p>The Glosis database organizes data into the five standard soil-related categories, each with specific subcategories:</p>
 <ul>
-<li><code>Site</code>: Represents the broader environment where soil investigations occur, capturing context such as terrain, climate, and land-use.</li>
-<li><code>Plot</code>: A specific location for soil investigation where profiles and samples are collected. It is further classified into:
+<li><p><code>Site</code>: Represents the broader environment where soil investigations occur, capturing context such as terrain, climate, and land-use.</p></li>
+<li><p><code>Plot</code>: A specific location for soil investigation where profiles and samples are collected. It is further classified into:</p>
 <ul>
 <li><code>Surface</code>: A polygonal area where soil properties are assumed to be relatively homogeneous.</li>
 <li><code>TrialPit</code>: A manually excavated pit for detailed soil examination.</li>
 <li><code>Borehole</code>: A drilled hole for subsurface soil sampling.</li>
 </ul></li>
-<li><code>Profile</code>: A vertical sequence of soil horizons or layers at a given location (referred to as <code>ProfileElement</code> in ISO 28258).</li>
-<li><code>Element</code> – Subdivisions of a profile based on depth, further categorized as:
+<li><p><code>Profile</code>: A vertical sequence of soil horizons or layers at a given location (referred to as <code>ProfileElement</code> in ISO 28258).</p></li>
+<li><p><code>Element</code> – Subdivisions of a profile based on depth, further categorized as:</p>
 <ul>
 <li><code>Horizon</code> – A natural, homogeneous soil layer formed by pedogenesis.</li>
 <li><code>Layer</code> – An arbitrarily defined soil section for analysis at fixed depths.</li>
 </ul></li>
-<li><code>Specimen</code> – A physical sample extracted at a defined depth, typically analyzed in laboratories for chemical and physical properties.(referred to as <code>SoilSpecimen</code> in ISO 28258).</li>
+<li><p><code>Specimen</code> – A physical sample extracted at a defined depth, typically analyzed in laboratories for chemical and physical properties (referred to as <code>SoilSpecimen</code> in ISO 28258).</p></li>
 </ul>
 <p>Each of these ‘features of interest’ is represented by dedicated tables in the relational database. Because they describe different entities, they store different types of information and attributes. The challenge is to translate the raw soil data files into this structured database model.</p>
 </div>
@@ -639,13 +635,13 @@ div.csl-indent {
 <p>In addition to the feature-of-interest sheets, the template includes dedicated tabs for documenting analytical procedures (including methods and units of measurement), metadata, and original analytical values, supporting traceability when unit conversions to GloSIS standards are required.</p>
 <p>The following sections provide a detailed overview of each sheet included in the XLSX template for data standardization.</p>
 <div id="plot-data-sheet" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> <code>Plot Data</code> Sheet<a href="glosis-soil-data-preparation.html#plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>Plot Data</code> sheet (Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:plot-tab)) provides information about the sampling location. It includes identification of the project in which the sample was collected (<code>project_code</code>), identifiers for the sampling site (<code>site_code</code>), plot (<code>plot_code</code>), plot type (<code>plot_type</code>) and profile (<code>profile_code</code>). The <code>plot_type</code> specifies the sampling method: <code>Borehole</code> (auger sample), <code>TrialPit</code> (open profile excavation), or <code>Surface</code> (area-based description).</p>
+<h3><span class="header-section-number">7.3.1</span> Plot Data Sheet<a href="glosis-soil-data-preparation.html#plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>Plot Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:plot-tab">7.1</a>) provides information about the sampling location. It includes identification of the project in which the sample was collected (<code>project_code</code>), identifiers for the sampling site (<code>site_code</code>), plot (<code>plot_code</code>), plot type (<code>plot_type</code>) and profile (<code>profile_code</code>). The <code>plot_type</code> specifies the sampling method: <code>Borehole</code> (auger sample), <code>TrialPit</code> (open profile excavation), or <code>Surface</code> (area-based description).</p>
 <p>The <code>n_layers</code> column indicates the number of soil samples collected at different depths for a given site. The number of samples corresponds to the number of horizons or layers collected at each sampling profile. For example, if a soil profile contains three horizons and all contains have been sampled, the <code>n_layers</code> value will be <code>3</code>.</p>
 <p><code>Date</code> stores the date when the survey was conducted. The date must follow ISO-8601 (“YYYY-MM-DD” format).</p>
 <p>The following columns capture the georeferencing of the sampling site (<code>latitude</code>, <code>longitude</code>, and <code>altitude</code>), together with supporting location metadata (<code>positional_accuracy</code> - accuracy estimate, <code>extent</code> - spatial extent of sampling area and <code>map_sheet_code</code> - reference map sheet identifier; all of them not mandatory). Coordinates must be recorded in decimal degrees using the <code>EPSG:4326 (WGS84)</code> coordinate reference system to ensure global consistency and interoperability within the GloSIS database.</p>
 <div class="figure"><span style="display:block;" id="fig:plot-tab"></span>
-<img src="images/module4/sheet1.png" alt="Information in the Plot Data Sheet." width="60%" />
+<img src="images/module4/plot_tab.png" alt="Information in the Plot Data Sheet." width="100%" />
 <p class="caption">
 Figure 7.1: Information in the Plot Data Sheet.
 </p>
@@ -653,50 +649,81 @@ Figure 7.1: Information in the Plot Data Sheet.
 <p>Finally, columns <code>N:BJ</code> describe the soil formation factors in the sampling plot following the FAO Guidelines for Soil Description 4th Ed. (2006) if available. These columns are optional and only can be updated manually directly on the XLSX template.</p>
 </div>
 <div id="profile-data-sheet" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> <code>Profile Data</code> Sheet<a href="glosis-soil-data-preparation.html#profile-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">7.3.2</span> Profile Data Sheet<a href="glosis-soil-data-preparation.html#profile-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This sheet includes profile identification <code>profile_code</code> and profile descriptors (FAO and Soil USDA classification Systems and Soil Depth classes according to the 4th edition of the FAO Guidelines for Soil Description. The <code>profile_code</code> column act as the join parameter to link profiles to the information on the other sheets, thus it is important to ensure its consistency over the whole file tabs.</p>
 <p>This sheet records the profile identifier (<code>profile_code</code>) and key profile descriptors, including soil profile classification (FAO and USDA Soil Taxonomy) and soil depth classes following the 4th edition of the FAO Guidelines for Soil Description. The <code>profile_code</code> field serves as the main join key linking profile records to related information in the other sheets, so it is essential to keep it consistent across all tabs in the file.</p>
 </div>
 <div id="element-data-sheet" class="section level3 hasAnchor" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> <code>Element Data</code> Sheet<a href="glosis-soil-data-preparation.html#element-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">7.3.3</span> Element Data Sheet<a href="glosis-soil-data-preparation.html#element-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An <code>Element</code> is a depth-based subdivision of a soil profile and can be described as either:</p>
 <ul>
 <li><p><code>Horizon</code>: a natural, relatively homogeneous layer formed by pedogenesis</p></li>
 <li><p><code>Layer</code>: an arbitrarily defined section, often based on fixed depth intervals for sampling and analysis</p></li>
 </ul>
-<p>Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:element-tab) illustrates the differences between these two element types.</p>
-<p>For each sampled horizon or layer, the <code>Element Data</code> sheet records the identifiers used to link the profile and the element (<code>profile_code</code>, <code>element_code</code>), and where applicable, the horizon classification identifier (<code>horizon_code</code>) features. It also specifies the <code>element_type</code> (<code>Horizon</code> or <code>Layer</code>) and the depth limits of the element (<code>upper_depth</code>, <code>lower_depth</code>)</p>
-<p>As in the <code>Profile Data</code> sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns <code>H:CC</code>.</p>
-<div class="figure"><span style="display:block;" id="fig:element-tab"></span>
-<img src="images/module4/element.png" alt="Horizon vs Layer en Element Features." width="60%" />
+<p>Figure <a href="glosis-soil-data-preparation.html#fig:element-fig">7.2</a> illustrates the differences between these two element types.</p>
+<div class="figure"><span style="display:block;" id="fig:element-fig"></span>
+<img src="images/module4/element.png" alt="Horizon vs Layer en Element Features." width="100%" />
 <p class="caption">
 Figure 7.2: Horizon vs Layer en Element Features.
 </p>
 </div>
+<p>For each sampled horizon or layer, the <code>Element Data</code> sheet records the identifiers used to link the profile and the element (<code>profile_code</code>, <code>element_code</code>), and where applicable, the horizon classification identifier (<code>horizon_code</code>) features. It also specifies the <code>element_type</code> (<code>Horizon</code> or <code>Layer</code>) and the depth limits of the element (<code>upper_depth</code>, <code>lower_depth</code>)</p>
+<p>As in the <code>Profile Data</code> sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns <code>H:CC</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:element-tab">7.3</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:element-tab"></span>
+<img src="images/module4/element_tab.png" alt="Element Data Sheet in the XLSX template." width="100%" />
+<p class="caption">
+Figure 7.3: Element Data Sheet in the XLSX template.
+</p>
+</div>
 </div>
 <div id="specimen-data-sheet" class="section level3 hasAnchor" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> <code>Specimen Data</code> Sheet<a href="glosis-soil-data-preparation.html#specimen-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The main purpose of the <code>Specimen Data</code> is to store the laboratory analytical results for each horizon or layer registered in <code>Element Data</code>. It includes the identifiers needed to link analytical results to the corresponding profile and element (<code>profile_code</code>, <code>element_code</code>) and the laboratory sample label (<code>specimen_code</code>) in columns <code>A:C</code>.</p>
+<h3><span class="header-section-number">7.3.4</span> Specimen Data Sheet<a href="glosis-soil-data-preparation.html#specimen-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The main purpose of the <code>Specimen Data</code> is to store the laboratory analytical results for each horizon or layer registered in <code>Element Data</code>. It includes the identifiers needed to link analytical results to the corresponding profile and element (<code>profile_code</code>, <code>element_code</code>) and the laboratory sample label (<code>specimen_code</code>) in columns <code>A:C</code> (Fig. <a href="glosis-soil-data-preparation.html#fig:specimen-tab">7.4</a>).</p>
 <p>The subsequent columns contain the analytical values for each measured soil property.</p>
-<p>Because these values are loaded into the GloSIS database, all analytical results must be expressed in the GloSIS units of measurement. If necessary, values should be converted to the required units prior to ingestion. These values are automatically transformed if the <code>GloSIS-ETL Harmonization</code> tool is used to create the template.</p>
+<p>Because these values are loaded into the GloSIS database, all analytical results in this sheet <strong>must be expressed in the GloSIS standard units of measurement</strong>. If necessary, values should be converted to the required units prior to ingestion. These values are automatically transformed if the <code>GloSIS-ETL Harmonization</code> tool is used to create the template.</p>
+<div class="figure"><span style="display:block;" id="fig:specimen-tab"></span>
+<img src="images/module4/specimen_tab.png" alt="Specimen Data Sheet in the XLSX template." width="100%" />
+<p class="caption">
+Figure 7.4: Specimen Data Sheet in the XLSX template.
+</p>
+</div>
+<p>** Note that the values in this sheet are already converted to the corresponding GloSIS standard units of measurement. The original values remain as a backup in the sheet <code>Original Data</code>.</p>
 </div>
 <div id="procedures-sheet" class="section level3 hasAnchor" number="7.3.5">
-<h3><span class="header-section-number">7.3.5</span> <code>Procedures</code> Sheet<a href="glosis-soil-data-preparation.html#procedures-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">7.3.5</span> Procedures Sheet<a href="glosis-soil-data-preparation.html#procedures-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>Procedures</code> sheet defines the relationship between the measured soil properties, their standardized GloSIS property names, the laboratory methods, and the units of measurement. This linkage is essential to ensure consistency and interoperability across datasets and to support correct ingestion into the GloSIS database.</p>
-<p>The sheet is linked to the reference list provided in the <code>GloSIS Methods</code> tab, which contains the approved set of standardized soil property names, analytical procedures, and measurement units. Only properties, methods, and units included in <code>GloSIS Methods</code> can be uploaded to the GloSIS database. Any measured property, method, or unit that is not present in this list cannot be ingested and must either be removed or replaced with an accepted equivalent. Missing procedures can be reported to the GloSIS Working Group for possible inclusion, together with documentation describing the soil property, the analytical method, and the unit of measurement. The reference list is maintained and updated over time to incorporate new analytical properties, methods, and units.</p>
-<p>In practical terms, this sheet links the analytical values in <code>Specimen Data</code> to their corresponding analytical metadata. The first column (<code>soil_property</code>) lists the soil properties included in <code>Specimen Data</code>, in the same order in which they appear. Columns <code>B–D</code> provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the <code>GloSIS-ETL Harmonization</code> tool.</p>
+<p>The sheet is linked to the reference list provided in the <code>GloSIS Methods</code> sheet, which contains the approved set of standardized soil property names, analytical procedures, and measurement units. Only properties, methods, and units included in <code>GloSIS Methods</code> can be uploaded to the GloSIS database. Any measured property, method, or unit that is not present in this list cannot be ingested and must either be removed or replaced with an accepted equivalent. Missing procedures can be reported to the GloSIS Working Group for possible inclusion, together with documentation describing the soil property, the analytical method, and the unit of measurement. The reference list is maintained and updated over time to incorporate new analytical properties, methods, and units.</p>
+<p>In practical terms, this sheet links the analytical values in <code>Specimen Data</code> to their corresponding analytical metadata (Fig. <a href="glosis-soil-data-preparation.html#fig:procedures-tab">7.5</a>). The first column (<code>soil_property</code>) lists the soil properties included in <code>Specimen Data</code>, in the same order in which they appear. Columns <code>B–D</code> provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the <code>GloSIS-ETL Harmonization</code> tool.</p>
+<div class="figure"><span style="display:block;" id="fig:procedures-tab"></span>
+<img src="images/module4/procedures_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
+<p class="caption">
+Figure 7.5: Procedures Sheet in the XLSX template.
+</p>
+</div>
 </div>
 <div id="metadata-sheet" class="section level3 hasAnchor" number="7.3.6">
-<h3><span class="header-section-number">7.3.6</span> <code>Metadata</code> Sheet<a href="glosis-soil-data-preparation.html#metadata-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It includes detailed metadata to identify the different data providers.</p>
+<h3><span class="header-section-number">7.3.6</span> Metadata Sheet<a href="glosis-soil-data-preparation.html#metadata-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It includes detailed metadata to identify the different data providers (Fig. <a href="glosis-soil-data-preparation.html#fig:metadata-tab">7.6</a>) .</p>
+<div class="figure"><span style="display:block;" id="fig:metadata-tab"></span>
+<img src="images/module4/metadata_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
+<p class="caption">
+Figure 7.6: Procedures Sheet in the XLSX template.
+</p>
+</div>
 </div>
 <div id="original-data-sheet" class="section level3 hasAnchor" number="7.3.7">
-<h3><span class="header-section-number">7.3.7</span> <code>Original Data</code> Sheet<a href="glosis-soil-data-preparation.html#original-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>Original Data</code> sheet stores the raw values from soil analyses and descriptions. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.</p>
+<h3><span class="header-section-number">7.3.7</span> Original Data Sheet<a href="glosis-soil-data-preparation.html#original-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>Original Data</code> sheet (Fig. <a href="glosis-soil-data-preparation.html#fig:original-tab">7.7</a>) stores the raw values from soil analyses and descriptions. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.</p>
+<div class="figure"><span style="display:block;" id="fig:original-tab"></span>
+<img src="images/module4/original_tab.png" alt="Procedures Sheet in the XLSX template." width="100%" />
+<p class="caption">
+Figure 7.7: Procedures Sheet in the XLSX template.
+</p>
+</div>
 <p>Values in the <code>Original Data</code> sheet can be linked (e.g., via formulas) to the <code>Element Data</code> sheet, allowing adjusted values to be transformed and transferred automatically while preserving the original records. This helps users track how each soil property was measured and in which units the results were reported. The original data are automatically preserved when using the <code>GloSIS-ETL Harmonization</code> tool.</p>
 </div>
 <div id="glosis-methods-sheet" class="section level3 hasAnchor" number="7.3.8">
-<h3><span class="header-section-number">7.3.8</span> <code>GloSIS Methods</code> sheet<a href="glosis-soil-data-preparation.html#glosis-methods-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">7.3.8</span> GloSIS Methods sheet<a href="glosis-soil-data-preparation.html#glosis-methods-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>GloSIS Methods</code> sheet is the reference table that defines which soil properties, analytical procedures, and units of measurement are accepted for loading data into the GloSIS database. It is used by the <code>Procedures</code> sheet (via drop-down lists) and by the <code>GloSIS-ETL Harmonization</code> tool to validate inputs and apply unit conversions consistently.</p>
 <p>The main columns are:</p>
 <ul>
@@ -716,7 +743,7 @@ Figure 7.2: Horizon vs Layer en Element Features.
 <p>Because the GloSIS database enforces a structured model, data cannot be loaded reliably as free-form from heterogeneous legacy information. The <code>GloSIS-ETL</code> pipeline provides a practical workflow to harmonize, standardize, and load soil legacy data into the GloSIS PostgreSQL/PostGIS schema in a consistent and reproducible way.</p>
 <p><code>GloSIS-ETL</code> transforms raw datasets into database-ready tables by automating the harmonization and standardization tasks required in GloSIS. This streamlines ingestion into the relational database, improves accessibility for non-technical users, and ensures that soil datasets from different sources can be integrated and compared effectively.</p>
 <p>The <code>GloSIS-ETL</code> services are provided as <strong>Docker containers</strong>, which allow users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates. The installation and setup of the ETL are described in the last section of this session.</p>
-<p>The <code>GloSIS-ETL</code> (Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:glosis-etl)) includes three applications:</p>
+<p>The <code>GloSIS-ETL</code> (Figure <a href="glosis-soil-data-preparation.html#fig:glosis-etl">7.8</a>) includes three applications:</p>
 <ul>
 <li>GloSIS Data Harmonization: Checks and harmonizes raw input data (e.g., coordinates, depth intervals, missing or inconsistent fields, out-of-range lab values) and define units/methods for GloSIS conventions to produce a clean, consistent dataset for loading.</li>
 <li>GloSIS Data Standardization: Maps harmonized data to ISO 28258 and the GloSIS data model, applying controlled vocabularies and standardized identifiers so the dataset is fully compliant with the target schema.</li>
@@ -724,25 +751,25 @@ Figure 7.2: Horizon vs Layer en Element Features.
 </ul>
 <p>These applications are distributed as a containerized project in Docker, enabling deployment on any computer. The ETL package also includes PostgreSQL with access to the GloSIS database schema.</p>
 <div class="figure"><span style="display:block;" id="fig:glosis-etl"></span>
-<img src="images/module4/glosis_etl.png" alt="Application in the GloSIS-ETL." width="60%" />
+<img src="images/module4/glosis_etl.png" alt="Application in the GloSIS-ETL." width="100%" />
 <p class="caption">
-Figure 7.3: Application in the GloSIS-ETL.
+Figure 7.8: Application in the GloSIS-ETL.
 </p>
 </div>
 <div id="glosis-data-harmonization" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> GloSIS Data Harmonization<a href="glosis-soil-data-preparation.html#glosis-data-harmonization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>GloSIS-ETL Harmonization</code> tool (Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization)) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.</p>
+<p>The <code>GloSIS-ETL Harmonization</code> tool (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization">7.9</a>) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization"></span>
-<img src="images/module4/etl_harmonization.png" alt="GloSIS-ETL Harmonization Tool." width="60%" />
+<img src="images/module4/etl_harmonization.png" alt="GloSIS-ETL Harmonization Tool." width="100%" />
 <p class="caption">
-Figure 7.4: GloSIS-ETL Harmonization Tool.
+Figure 7.9: GloSIS-ETL Harmonization Tool.
 </p>
 </div>
-<p>The preparation of the data follows a 3-step quality assurance procedure (Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-steps)) comprehensive data validation at each stage.</p>
+<p>The preparation of the data follows a 3-step quality assurance procedure (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-steps">7.10</a>) comprehensive data validation at each stage.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-steps"></span>
-<img src="images/module4/etl_harmonization_steps.png" alt="GloSIS-ETL Harmonization Tool." width="60%" />
+<img src="images/module4/etl_harmonization_steps.png" alt="GloSIS-ETL Harmonization Tool." width="100%" />
 <p class="caption">
-Figure 7.5: GloSIS-ETL Harmonization Tool.
+Figure 7.10: GloSIS-ETL Harmonization Tool.
 </p>
 </div>
 <p>The application performs systematic data quality checks across three domains to produce a <code>XLSX</code> file following the GloSIS standards. This file, once correctly verified, will be used as input in the <code>GloSIS Data Standardization</code> tool to ingest soil data into the GloSIS database.</p>
@@ -757,41 +784,25 @@ Figure 7.5: GloSIS-ETL Harmonization Tool.
 </ul>
 <div id="data-upload-interface" class="section level4 hasAnchor" number="7.4.2.1">
 <h4><span class="header-section-number">7.4.2.1</span> Data Upload Interface<a href="glosis-soil-data-preparation.html#data-upload-interface" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <strong><code>1) Upload your data (CSV or XLSX)</code></strong> section in the left-side menu allows users to upload their raw dataset into the application. Once data is uploaded, the application displays a warning message (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-step1">7.6</a>) indicating which soil data site identification columns must be mapped to standard GloSIS nomenclature.</p>
+<p>The <strong><code>1) Upload your data (CSV or XLSX)</code></strong> section in the left-side menu allows users to upload their raw dataset into the application. Once data is uploaded, the application displays a warning message (Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-step1)) indicating which soil data site identification columns must be mapped to standard GloSIS nomenclature.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step1"></span>
-<img src="images/module4/etl_harmonization_step1.png" alt="Step 1 Warning Message: Required Site Parameter Identification." width="60%" />
+<img src="images/module4/etl_harmonization_step1.png" alt="Step 1 Warning Message: Required Site Parameter Identification." width="100%" />
 <p class="caption">
-Figure 7.6: Step 1 Warning Message: Required Site Parameter Identification.
+Figure 7.11: Step 1 Warning Message: Required Site Parameter Identification.
 </p>
 </div>
 </div>
 <div id="parameter-mapping-configuration" class="section level4 hasAnchor" number="7.4.2.2">
 <h4><span class="header-section-number">7.4.2.2</span> Parameter Mapping Configuration<a href="glosis-soil-data-preparation.html#parameter-mapping-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Users must systematically map their dataset columns to GloSIS standard variable names through an interactive sidebar menu. The mapping process captures 2 essential categories:</p>
-<p><strong><code>2) Configure Project Settings</code></strong>
-<em>Site Identification Parameters (Optional - Default values provided if not mapped):</em>
-- Project Name
-- Site Code
-- Date of observation
-- Profile Code
-- Plot Code and Plot Type
-- Horizon ID and Horizon Type</p>
-<p><strong><code>3) Map Plot Parameters</code></strong>
-<em>Required Plot Parameters (Must be mapped explicitly):</em>
-- Sample ID (element_code or specimen_code)
-- Longitude (X coordinate, WGS84)
-- Latitude (Y coordinate, WGS84)
-- Upper Depth (cm) - Top boundary of soil layer
-- Lower Depth (cm) - Bottom boundary of soil layer
-- Soil analytical properties being measured (Multi-selection)
-- Each property must be mapped to GloSIS standard nomenclature</p>
+<p><strong><code>2) Configure Project Settings</code></strong> <em>Site Identification Parameters (Optional - Default values provided if not mapped):</em> - Project Name - Site Code - Date of observation - Profile Code - Plot Code and Plot Type - Horizon ID and Horizon Type</p>
+<p><strong><code>3) Map Plot Parameters</code></strong> <em>Required Plot Parameters (Must be mapped explicitly):</em> - Sample ID (element_code or specimen_code) - Longitude (X coordinate, WGS84) - Latitude (Y coordinate, WGS84) - Upper Depth (cm) - Top boundary of soil layer - Lower Depth (cm) - Bottom boundary of soil layer - Soil analytical properties being measured (Multi-selection) - Each property must be mapped to GloSIS standard nomenclature</p>
 <p>The sidebar menu provides dropdown selections for each variable, fuzzy matching to assist in finding correct mappings, and validation warnings if required parameters are not mapped.</p>
 </div>
 </div>
 <div id="step-2-quality-check-and-quality-report-generation" class="section level3 hasAnchor" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> Step 2: Quality Check and Quality Report Generation<a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This step analyses the data values, its integrity and coherence and identifies potential issues with the data. It automatically generates Quality Report for verification and correction of potential mistakes or unconsistencies in the dataset.
-The validation occurs at three stages, geographic (horizontal location), soil depth (vertical position) and Analytical integrity (missing values, non valid data, data outliers):</p>
+<p>This step analyses the data values, its integrity and coherence and identifies potential issues with the data. It automatically generates Quality Report for verification and correction of potential mistakes or unconsistencies in the dataset. The validation occurs at three stages, geographic (horizontal location), soil depth (vertical position) and Analytical integrity (missing values, non valid data, data outliers):</p>
 </div>
 <div id="step-2a-geographic-data-validation" class="section level3 hasAnchor" number="7.4.4">
 <h3><span class="header-section-number">7.4.4</span> Step 2a: Geographic Data Validation<a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -800,13 +811,9 @@ The validation occurs at three stages, geographic (horizontal location), soil de
 <h4><span class="header-section-number">7.4.4.1</span> Coordinate Reference System Requirements<a href="glosis-soil-data-preparation.html#coordinate-reference-system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The GloSIS database uses <strong>EPSG:4326</strong> (WGS84) as its standard coordinate reference system. All geographic coordinates must be identified using this global standard projection.</p>
 <p>The application systematically checks for the following geographic data issues:</p>
-<p><strong>Coordinate Completeness:</strong>
-- Identifies missing X (longitude) and/or Y (latitude) coordinates</p>
-<p><strong>Coordinate Range Validation:</strong>
-- Longitude: −180° to +180°, Latitude: −90° to +90° (global bounds)
-- Flags coordinates outside standard global ranges as invalid</p>
-<p><strong>Duplicate Site Detection:</strong>
-- Identifies potential duplicate sites (multiple profiles at identical coordinates)</p>
+<p><strong>Coordinate Completeness:</strong> - Identifies missing X (longitude) and/or Y (latitude) coordinates</p>
+<p><strong>Coordinate Range Validation:</strong> - Longitude: −180° to +180°, Latitude: −90° to +90° (global bounds) - Flags coordinates outside standard global ranges as invalid</p>
+<p><strong>Duplicate Site Detection:</strong> - Identifies potential duplicate sites (multiple profiles at identical coordinates)</p>
 </div>
 </div>
 <div id="step-2b-soil-depth-validation" class="section level3 hasAnchor" number="7.4.5">
@@ -827,18 +834,18 @@ The validation occurs at three stages, geographic (horizontal location), soil de
 <li><strong>Analytical Procedure</strong>: The method used to determine the property (must exist in GloSIS <code>Procedures</code> Registry)</li>
 <li><strong>Unit of Measurement</strong>: The reporting unit used in original data</li>
 </ol>
-<p>If the reported soil units differ from GloSIS standard units, the application automatically applies conversion factors to satisfy GloSIS requirements (example shown in Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-step2">7.7</a>).</p>
+<p>If the reported soil units differ from GloSIS standard units, the application automatically applies conversion factors to satisfy GloSIS requirements (example shown in Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-step2)).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step2"></span>
-<img src="images/module4/etl_harmonization_step2.png" alt="Mapping analytical procedures and units of measurement" width="60%" />
+<img src="images/module4/etl_harmonization_step2.png" alt="Mapping analytical procedures and units of measurement" width="100%" />
 <p class="caption">
-Figure 7.7: Mapping analytical procedures and units of measurement
+Figure 7.12: Mapping analytical procedures and units of measurement
 </p>
 </div>
-<p>For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds (Figure <a href="glosis-soil-data-preparation.html#fig:etl-harmonization-step4">7.8</a>).</p>
+<p>For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds (Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:etl-harmonization-step4)).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step4"></span>
-<img src="images/module4/etl_harmonization_step4.png" alt="Validation of analytical values" width="60%" />
+<img src="images/module4/etl_harmonization_step4.png" alt="Validation of analytical values" width="100%" />
 <p class="caption">
-Figure 7.8: Validation of analytical values
+Figure 7.13: Validation of analytical values
 </p>
 </div>
 <p>All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. Quality check results are displayed in a dedicated <code>Quality Checks</code> Tab which displays detailed validation results organized by issue type. Users can download a comprehensive <code>Quality Check Report (XLSX format)</code> for further analysis and data cleaning outside the application.</p>
@@ -853,9 +860,9 @@ Figure 7.8: Validation of analytical values
 </ul>
 </div>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step3"></span>
-<img src="images/module4/etl_harmonization_step3.png" alt="Quality Checks Tab." width="60%" />
+<img src="images/module4/etl_harmonization_step3.png" alt="Quality Checks Tab." width="100%" />
 <p class="caption">
-Figure 7.9: Quality Checks Tab.
+Figure 7.14: Quality Checks Tab.
 </p>
 </div>
 </div>
@@ -863,44 +870,14 @@ Figure 7.9: Quality Checks Tab.
 <h3><span class="header-section-number">7.4.8</span> Step 4: Download Harmonized Data<a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once all critical data quality issues have been resolved and the dataset passes validation, users can download the harmonized data in a GloSIS-standard format. In the first step the <code>Prepare XLSX</code> button translates the data into the standardized GloSIS structure and store it in memory as a temporary file. The file then becomes available through the <code>Download XLSX</code> button.</p>
 <p>The downloaded file follows the GloSIS standard format, with data organized according to the hierarchical features of interest defined in ISO 28258.</p>
-<p><strong>Plot Data Sheet:</strong>
-- Project identifier
-- Site identifier
-- Plot identifier
-- Profile identifier
-- Plot type identifier (Borehole, TrialPit, Surface)
-- Number of layers / plot
-- Date of observation
-- Longitude (WGS84)
-- Latitude (WGS84)</p>
-<p><strong>Profile Data Sheet:</strong>
-- Profile identifier</p>
-<p><strong>Element Data Sheet:</strong>
-- Profile identifier
-- Element identifier
-- Element type (Horizon, Layer)
-- Order element (Element position in the profile)
-- Upper depth
-- Lower depth
-- Horizon identifier</p>
-<p><strong>Specimen Sheet:</strong>
-- Profile identifier
-- Element identifier
-- Specimen identifier
-- Analytical properties (GloSIS Standard Units)</p>
-<p><strong>Procedures Sheet:</strong>
-- Analytical properties
-- Analytical properties (GloSIS standard)
-- Analytical procedures
-- Unit of measure (GloSIS standard)</p>
-<p><strong>Metadata Sheet:</strong>
-- Plot identifier
-- Provider Metadata</p>
-<p><strong>Original Data Sheet:</strong>
-- Profile identifier
-- Analytical properties (Original Units)</p>
-<p><strong>GloSIS Methods Sheet:</strong>
-- GloSIS Procedures Registry List (Informative)</p>
+<p><strong>Plot Data Sheet:</strong> - Project identifier - Site identifier - Plot identifier - Profile identifier - Plot type identifier (Borehole, TrialPit, Surface) - Number of layers / plot - Date of observation - Longitude (WGS84) - Latitude (WGS84)</p>
+<p><strong>Profile Data Sheet:</strong> - Profile identifier</p>
+<p><strong>Element Data Sheet:</strong> - Profile identifier - Element identifier - Element type (Horizon, Layer) - Order element (Element position in the profile) - Upper depth - Lower depth - Horizon identifier</p>
+<p><strong>Specimen Sheet:</strong> - Profile identifier - Element identifier - Specimen identifier - Analytical properties (GloSIS Standard Units)</p>
+<p><strong>Procedures Sheet:</strong> - Analytical properties - Analytical properties (GloSIS standard) - Analytical procedures - Unit of measure (GloSIS standard)</p>
+<p><strong>Metadata Sheet:</strong> - Plot identifier - Provider Metadata</p>
+<p><strong>Original Data Sheet:</strong> - Profile identifier - Analytical properties (Original Units)</p>
+<p><strong>GloSIS Methods Sheet:</strong> - GloSIS Procedures Registry List (Informative)</p>
 <div class="warning-box">
 <ul>
 <li><p>All Analytical Procedures must exist in the available GloSIS <code>Procedures</code> Registry list. This ensures methodology traceability and standardization.</p></li>
@@ -920,18 +897,18 @@ Figure 7.9: Quality Checks Tab.
 </div>
 <div id="glosis-data-viewer" class="section level3 hasAnchor" number="7.4.10">
 <h3><span class="header-section-number">7.4.10</span> GloSIS Data Viewer<a href="glosis-soil-data-preparation.html#glosis-data-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Data Viewer component (Figure <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(fig:etl-viewer)) provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
+<p>The Data Viewer component (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer">7.15</a>) provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
 <p>The <code>GloSIS Viewer</code> enables the review of the geographic distribution of sampling sites on a interactive map, preview harmonized records in tabular format with sortable/filterable columns, visualize the variation of soil properties with depth in the soil profile and export selected data to othe formats</p>
 <div class="figure"><span style="display:block;" id="fig:etl-viewer"></span>
-<img src="images/module4/etl_viewer.png" alt="Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool" width="40%" />
+<img src="images/module4/etl_viewer.png" alt="Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool" width="100%" />
 <p class="caption">
-Figure 7.10: Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool
+Figure 7.15: Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool
 </p>
 </div>
 </div>
 </div>
 <div id="installation-and-setup-of-the-glosis-etl" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Installation and Setup of the <code>GloSIS-ETL</code><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">7.5</span> Installation and Setup of the GloSIS-ETL<a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>GloSIS-ETL</code> services are provided as <strong>Docker containers</strong>, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.</p>
 <p><strong>Docker Compose</strong> is a tool used to define and run multi-container Docker applications. It allows users to <strong>orchestrate multiple services</strong> using a single configuration file (see Section <strong>The docker-compose.yml file</strong>). The key benefits of Docker Compose include:</p>
 <ul>
@@ -983,15 +960,15 @@ Figure 7.10: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <h4><span class="header-section-number">7.5.1.3</span> Linux<a href="glosis-soil-data-preparation.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li><p>Open a terminal and run the following commands:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb190-1"><a href="glosis-soil-data-preparation.html#cb190-1" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb190-2"><a href="glosis-soil-data-preparation.html#cb190-2" tabindex="-1"></a><span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
-<span id="cb190-3"><a href="glosis-soil-data-preparation.html#cb190-3" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
-<span id="cb190-4"><a href="glosis-soil-data-preparation.html#cb190-4" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable docker</span></code></pre></div></li>
+<div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="glosis-soil-data-preparation.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb197-2"><a href="glosis-soil-data-preparation.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
+<span id="cb197-3"><a href="glosis-soil-data-preparation.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
+<span id="cb197-4"><a href="glosis-soil-data-preparation.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable docker</span></code></pre></div></li>
 <li><p>Add your user to the Docker group (to run Docker without <code>sudo</code>):</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb191-1"><a href="glosis-soil-data-preparation.html#cb191-1" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb198-1"><a href="glosis-soil-data-preparation.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div></li>
 <li><p><strong>Log out and log back in</strong> (or restart your computer) for the group change to take effect.</p></li>
 <li><p>Verify Docker is running:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb192-1"><a href="glosis-soil-data-preparation.html#cb192-1" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb199-1"><a href="glosis-soil-data-preparation.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
 <p>If the installation was successful, you should see output similar to:</p>
 <pre><code>Docker version 24.0.5, build 123456</code></pre></li>
 </ol>
@@ -1006,29 +983,29 @@ Figure 7.10: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <li><p><strong>Download the GloSIS-ETL repository from GitHub:</strong></p>
 <p>Go to:</p>
 <pre><code>https://github.com/FAO-SID/glosis-etl</code></pre>
-<p>Click the green <strong>“Code”</strong> button, then select <strong>Download ZIP</strong> (Figure <a href="glosis-soil-data-preparation.html#fig:clone">7.11</a>).</p>
+<p>Click the green <strong>“Code”</strong> button, then select <strong>Download ZIP</strong> (Figure <a href="glosis-soil-data-preparation.html#fig:clone">7.16</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:clone"></span>
-<img src="images/module4/etl-clone.png" alt="Cloning the repository." width="60%" />
+<img src="images/module4/etl-clone.png" alt="Cloning the repository." width="100%" />
 <p class="caption">
-Figure 7.11: Cloning the repository.
+Figure 7.16: Cloning the repository.
 </p>
 </div>
 <p>Alternatively, if you have Git installed, you can clone the repository:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb195-1"><a href="glosis-soil-data-preparation.html#cb195-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl.git</span></code></pre></div></li>
+<div class="sourceCode" id="cb202"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb202-1"><a href="glosis-soil-data-preparation.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl.git</span></code></pre></div></li>
 <li><p><strong>Extract the ZIP file</strong> (if downloaded) to a folder on your computer (e.g., the <code>Desktop</code> folder).</p></li>
 <li><p><strong>Configure the environment variables.</strong></p>
 <p>Inside the extracted folder you will find a file called <code>.env.example</code>. Copy it and rename the copy to <code>.env</code>:</p>
 <ul>
 <li><p><strong>Windows (Command Prompt):</strong></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb196-1"><a href="glosis-soil-data-preparation.html#cb196-1" tabindex="-1"></a><span class="ex">copy</span> .env.example .env</span></code></pre></div></li>
+<div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="glosis-soil-data-preparation.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="ex">copy</span> .env.example .env</span></code></pre></div></li>
 <li><p><strong>macOS / Linux:</strong></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="glosis-soil-data-preparation.html#cb197-1" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div></li>
+<div class="sourceCode" id="cb204"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb204-1"><a href="glosis-soil-data-preparation.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div></li>
 </ul>
 <p>The default values use <code>glosis</code> as the database name, user, and password. For production deployments, edit the <code>.env</code> file and change the <code>POSTGRES_PASSWORD</code> value.</p></li>
 <li><p><strong>Open a Terminal or Command Prompt</strong> and navigate to the extracted folder:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb198-1"><a href="glosis-soil-data-preparation.html#cb198-1" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl</span></code></pre></div></li>
+<div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="glosis-soil-data-preparation.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl</span></code></pre></div></li>
 <li><p><strong>Start the GloSIS services</strong> by running:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb199-1"><a href="glosis-soil-data-preparation.html#cb199-1" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb206-1"><a href="glosis-soil-data-preparation.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The <code>--build</code> flag is required the first time to build the <code>glosis-etl</code> Shiny application image from the Dockerfile. Subsequent runs can omit it unless the application code has changed. The first build may take <strong>10–15 minutes</strong> as it downloads base images and installs R packages.</p>
 </blockquote>
@@ -1041,11 +1018,11 @@ Figure 7.11: Cloning the repository.
 <h3><span class="header-section-number">7.5.3</span> Verify Installation<a href="glosis-soil-data-preparation.html#verify-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="using-docker-desktop" class="section level4 hasAnchor" number="7.5.3.1">
 <h4><span class="header-section-number">7.5.3.1</span> Using Docker Desktop<a href="glosis-soil-data-preparation.html#using-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Open Docker Desktop and check if the containers are running (Figure <a href="glosis-soil-data-preparation.html#fig:docker-desktop">7.12</a>).</p>
+<p>Open Docker Desktop and check if the containers are running (Figure <a href="glosis-soil-data-preparation.html#fig:docker-desktop">7.17</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:docker-desktop"></span>
-<img src="images/module4/docker_desktop.png" alt="Docker Desktop showing running containers." width="60%" />
+<img src="images/module4/docker_desktop.png" alt="Docker Desktop showing running containers." width="100%" />
 <p class="caption">
-Figure 7.12: Docker Desktop showing running containers.
+Figure 7.17: Docker Desktop showing running containers.
 </p>
 </div>
 <p>If everything is working, the project and service icons should be <strong>green</strong>. If any service fails, the icon will appear **orange*.</p>
@@ -1053,7 +1030,7 @@ Figure 7.12: Docker Desktop showing running containers.
 <div id="using-the-terminal" class="section level4 hasAnchor" number="7.5.3.2">
 <h4><span class="header-section-number">7.5.3.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To manually check if the services are running, type:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb200-1"><a href="glosis-soil-data-preparation.html#cb200-1" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="glosis-soil-data-preparation.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
 <p>You should see an output similar to:</p>
 <pre><code>CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                  PORTS                    NAMES
 415f97d8a445   glosis-etl-glosis-etl    &quot;/usr/bin/shiny-serv…&quot;   25 hours ago   Up 25 hours (healthy)   0.0.0.0:3838-&gt;3838/tcp   glosis-etl
@@ -1063,7 +1040,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="stopping-the-services" class="section level4 hasAnchor" number="7.5.3.3">
 <h4><span class="header-section-number">7.5.3.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To stop the services at any time, use:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb202-1"><a href="glosis-soil-data-preparation.html#cb202-1" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="glosis-soil-data-preparation.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
 <p>This will stop and remove the containers, but your <strong>database data will remain intact</strong> in the Docker named volume <code>glosis-db-data</code>.</p>
 <blockquote>
 <p><strong>Tip:</strong> To completely reset the database (remove all data), run: <code>docker compose down -v</code>. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.</p>
@@ -1073,7 +1050,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="pgadmin" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>docker-compose.yml</code> file includes an optional <strong>pgAdmin 4</strong> service for direct database management. To activate it:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="glosis-soil-data-preparation.html#cb203-1" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb210-1"><a href="glosis-soil-data-preparation.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
 <p>Once running, access pgAdmin at:</p>
 <pre><code>http://localhost:5050</code></pre>
 <p>Login credentials:</p>
@@ -1096,22 +1073,16 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <h3><span class="header-section-number">7.6.1</span> Landing Page<a href="glosis-soil-data-preparation.html#landing-page" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To open the <strong>GloSIS-ETL</strong> platform, enter this address in your web browser:</p>
 <pre><code>http://localhost:3838/</code></pre>
-<p>This will load the <strong>landing page</strong> with links to the three application modules (Figure <a href="glosis-soil-data-preparation.html#fig:etl-landing">7.13</a>).</p>
-<div class="figure"><span style="display:block;" id="fig:etl-landing"></span>
-<img src="images/module4/glosis_etl.png" alt="GloSIS-ETL landing page." width="60%" />
-<p class="caption">
-Figure 7.13: GloSIS-ETL landing page.
-</p>
-</div>
+<p>This will load the <strong>landing page</strong> with links to the three application modules.</p>
 </div>
 <div id="shiny-application-modules" class="section level3 hasAnchor" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> Shiny Application Modules<a href="glosis-soil-data-preparation.html#shiny-application-modules" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Each module is accessible directly via its URL:</p>
 <table>
 <colgroup>
-<col width="20%" />
+<col width="25%" />
+<col width="36%" />
 <col width="38%" />
-<col width="41%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1138,16 +1109,17 @@ Figure 7.13: GloSIS-ETL landing page.
 </tr>
 </tbody>
 </table>
-<div class="figure"><span style="display:block;" id="fig:etl-standardization"></span>
-<img src="images/module4/etl_standardization.png" alt="GloSIS Standardization service." width="60%" />
-<p class="caption">
-Figure 7.14: GloSIS Standardization service.
-</p>
-</div>
 </div>
 <div id="glosis-database" class="section level3 hasAnchor" number="7.6.3">
 <h3><span class="header-section-number">7.6.3</span> GloSIS Database<a href="glosis-soil-data-preparation.html#glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The GloSIS database is available for connection with external applications such as <strong>pgAdmin</strong>, <strong>DBeaver</strong>, <strong>QGIS</strong>, <strong>R</strong>, etc., using the parameters listed in Table <a href="glosis-soil-data-preparation.html#tab:db-connection">7.1</a>.</p>
+<pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)
+
+## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
 <caption><span id="tab:db-connection">Table 7.1: </span>Database connection parameters.</caption>
 <thead>
@@ -1188,6 +1160,13 @@ Figure 7.14: GloSIS Standardization service.
 <div id="docker-compose-file" class="section level2 hasAnchor" number="7.7">
 <h2><span class="header-section-number">7.7</span> The <code>docker-compose.yml</code> File<a href="glosis-soil-data-preparation.html#docker-compose-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>docker-compose.yml</code> file defines the complete GloSIS-ETL service architecture. Below is a summary of its key components:</p>
+<pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)
+
+## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
 <caption><span id="tab:docker-compose-summary">Table 7.2: </span>Docker Compose components.</caption>
 <colgroup>
@@ -1235,14 +1214,14 @@ Figure 7.14: GloSIS Standardization service.
 <div id="env-file" class="section level2 hasAnchor" number="7.8">
 <h2><span class="header-section-number">7.8</span> The <code>.env</code> File<a href="glosis-soil-data-preparation.html#env-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.env</code> file stores configuration values that are shared between the services. The available variables are:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb206-1"><a href="glosis-soil-data-preparation.html#cb206-1" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
-<span id="cb206-2"><a href="glosis-soil-data-preparation.html#cb206-2" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
-<span id="cb206-3"><a href="glosis-soil-data-preparation.html#cb206-3" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
-<span id="cb206-4"><a href="glosis-soil-data-preparation.html#cb206-4" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span>
-<span id="cb206-5"><a href="glosis-soil-data-preparation.html#cb206-5" tabindex="-1"></a></span>
-<span id="cb206-6"><a href="glosis-soil-data-preparation.html#cb206-6" tabindex="-1"></a><span class="co"># Application Environment</span></span>
-<span id="cb206-7"><a href="glosis-soil-data-preparation.html#cb206-7" tabindex="-1"></a><span class="va">SHINY_LOG_LEVEL</span><span class="op">=</span>INFO        <span class="co"># Options: DEBUG, INFO, WARN, ERROR</span></span>
-<span id="cb206-8"><a href="glosis-soil-data-preparation.html#cb206-8" tabindex="-1"></a><span class="va">R_MAX_MEM_SIZE</span><span class="op">=</span>2Gb          <span class="co"># R memory limit</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb215-1"><a href="glosis-soil-data-preparation.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
+<span id="cb215-2"><a href="glosis-soil-data-preparation.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
+<span id="cb215-3"><a href="glosis-soil-data-preparation.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
+<span id="cb215-4"><a href="glosis-soil-data-preparation.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span>
+<span id="cb215-5"><a href="glosis-soil-data-preparation.html#cb215-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-6"><a href="glosis-soil-data-preparation.html#cb215-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Application Environment</span></span>
+<span id="cb215-7"><a href="glosis-soil-data-preparation.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="va">SHINY_LOG_LEVEL</span><span class="op">=</span>INFO        <span class="co"># Options: DEBUG, INFO, WARN, ERROR</span></span>
+<span id="cb215-8"><a href="glosis-soil-data-preparation.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="va">R_MAX_MEM_SIZE</span><span class="op">=</span>2Gb          <span class="co"># R memory limit</span></span></code></pre></div>
 <blockquote>
 <p><strong>CAUTION:</strong> For production deployments, always change the default password (<code>glosis</code>) to a secure value.</p>
 </blockquote>
@@ -1250,9 +1229,12 @@ Figure 7.14: GloSIS Standardization service.
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body" entry-spacing="0">
+<div id="refs" class="references csl-bib-body">
 <div id="ref-ARROUAYS20172" class="csl-entry">
 <strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., PÃ¡sztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., ConceiÃ§Ã£o GonÃ§alves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., KozÃ¡k, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
+</div>
+<div id="ref-Medeiros24" class="csl-entry">
+<strong>Medeiros, B.M., Rossi, L.S., Caten, A.T., Pereira, G.E., Silva, E.B. &amp; U., Daboit.K.T.</strong> 2024. Soil legacy data: An opportunity for digital soil mapping. <em>Rev. Bras. Ciênc. Solo</em>, 48. <a href="https://doi.org/10.36783/18069657rbcs20230130">https://doi.org/10.36783/18069657rbcs20230130</a>
 </div>
 </div>
             </section>

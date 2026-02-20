@@ -1,4 +1,5 @@
 tab:table-properties
+fig:rstudio
 fig:VectRast
 fig:degreeLat
 tab:design-comparison
@@ -9,7 +10,12 @@ tab:r-libraries
 tab:field-form
 tab:acronyms
 fig:plot-tab
+fig:element-fig
 fig:element-tab
+fig:specimen-tab
+fig:procedures-tab
+fig:metadata-tab
+fig:original-tab
 fig:glosis-etl
 fig:etl-harmonization
 fig:etl-harmonization-steps
@@ -20,8 +26,6 @@ fig:etl-harmonization-step3
 fig:etl-viewer
 fig:clone
 fig:docker-desktop
-fig:etl-landing
-fig:etl-standardization
 tab:db-connection
 tab:docker-compose-summary
 fig:example-covariate
@@ -202,7 +206,6 @@ inspecting-and-manipulating-sf-object
 geometry-operations
 intersection-and-union-with-administrative-boundaries
 spatial-relationships-and-joins
-working-with-raster-data-using-terra
 importing-raster-data
 combining-vector-and-raster-data
 extracting-raster-values-to-points-and-polygons

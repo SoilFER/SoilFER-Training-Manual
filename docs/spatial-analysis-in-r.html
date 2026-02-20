@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Spatial Analysis in R | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Spatial Analysis in R | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -131,7 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -344,25 +343,22 @@ div.csl-indent {
 <li class="chapter" data-level="2.1.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#vector-vs-raster-data"><i class="fa fa-check"></i><b>2.1.1</b> Vector vs Raster Data</a></li>
 <li class="chapter" data-level="2.1.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#coordinate-reference-systems-crs-and-projections"><i class="fa fa-check"></i><b>2.1.2</b> Coordinate Reference Systems (CRS) and Projections</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong></a>
+<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing and Loading Spatial Packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> <strong>Working with Vector Data using <code>{sf}</code></strong></a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> Working with Vector Data using <code>{sf}</code></a></li>
 <li class="chapter" data-level="2.2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-vector-data"><i class="fa fa-check"></i><b>2.2.3</b> Importing Vector Data</a></li>
 <li class="chapter" data-level="2.2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-relationships-and-joins"><i class="fa fa-check"></i><b>2.2.4</b> Spatial Relationships and Joins</a></li>
+<li class="chapter" data-level="2.2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.2.5</b> Importing Raster Data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra"><i class="fa fa-check"></i><b>2.3</b> <strong>Working with Raster Data using <code>{terra}</code></strong></a>
+<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.3</b> Combining Vector and Raster Data</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.3.1</b> Importing Raster Data</a></li>
+<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.3.1</b> Extracting Raster Values to Points and Polygons</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.4</b> Combining Vector and Raster Data</a>
+<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.4</b> Exporting and Sharing Spatial Data</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.4.1</b> Extracting Raster Values to Points and Polygons</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.5</b> Exporting and Sharing Spatial Data</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.5.1</b> Exporting Vector Data</a></li>
-<li class="chapter" data-level="2.5.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.5.2</b> Exporting Raster Data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.4.1</b> Exporting Vector Data</a></li>
+<li class="chapter" data-level="2.4.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.4.2</b> Exporting Raster Data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>3</b> Sampling design for soil surveys</a>
@@ -482,14 +478,14 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>7.2</b> The GloSIS database</a></li>
 <li class="chapter" data-level="7.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>7.3</b> Features of interest: Understanding the XLSX Template</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> <code>Plot Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> <code>Profile Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> <code>Element Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> <code>Specimen Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> <code>Procedures</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> <code>Metadata</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> <code>Original Data</code> Sheet</a></li>
-<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> <code>GloSIS Methods</code> sheet</a></li>
+<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> Plot Data Sheet</a></li>
+<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> Profile Data Sheet</a></li>
+<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> Element Data Sheet</a></li>
+<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> Specimen Data Sheet</a></li>
+<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> Procedures Sheet</a></li>
+<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> Metadata Sheet</a></li>
+<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> Original Data Sheet</a></li>
+<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> GloSIS Methods sheet</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>7.4</b> GloSIS-ETL</a>
 <ul>
@@ -504,7 +500,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>7.4.9</b> GloSIS Data Standardization</a></li>
 <li class="chapter" data-level="7.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>7.4.10</b> GloSIS Data Viewer</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the <code>GloSIS-ETL</code></a>
+<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the GloSIS-ETL</a>
 <ul>
 <li class="chapter" data-level="7.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>7.5.1</b> Install Docker Desktop</a></li>
 <li class="chapter" data-level="7.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>7.5.2</b> Install the GloSIS-ETL Services</a></li>
@@ -628,7 +624,7 @@ In the context of this manual, all steps of digital soil mapping depend on the a
 <div id="spatial-data-concepts" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Spatial Data Concepts<a href="spatial-analysis-in-r.html#spatial-data-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.</p>
-<p>Soil properties are not randomly distributed in space but change across landscapes. Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time <span class="citation">(<a href="#ref-prieto2023">Prieto-Castrillo <em>et al.</em>, 2023</a>)</span>:</p>
+<p>Soil properties are not randomly distributed in space but change across landscapes. Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time <span class="citation">(<a href="#ref-prieto2023" role="doc-biblioref">Prieto-Castrillo <em>et al.</em>, 2023</a>)</span>:</p>
 <span class="math display">\[\begin{aligned} S= f(cl, o, r, p, t,\ldots ). \end{aligned}\]</span>
 <p>where ‘S’ represents soil formation, ‘cl’ is climate, ‘o’ is organisms, ‘r’ is relief, ‘p’ is the parent material and ‘t’ accounts for the time that took place to develop the soil profile.</p>
 <p>With these relationships soil scientists can describe, model, and predict variations in soil properties across the space.</p>
@@ -646,15 +642,13 @@ In the context of this manual, all steps of digital soil mapping depend on the a
 <hr />
 <div id="vector-vs-raster-data" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Vector vs Raster Data<a href="spatial-analysis-in-r.html#vector-vs-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Spatial data is commonly stored in two major formats: vector and raster (Figure 3).</p>
-<p><br></p>
+<p>Spatial data is commonly stored in two major formats: vector and raster (Fig. <a href="spatial-analysis-in-r.html#fig:VectRast">2.1</a>) .</p>
 <div class="figure"><span style="display:block;" id="fig:VectRast"></span>
-<img src="images/module1/vectorVSraster.png" alt="&lt;br&gt;*Figure 3: Vector vs raster data representations*" width="80%" />
+<img src="images/module1/vectorVSRaster.png" alt="Vector vs raster data representations" width="100%" />
 <p class="caption">
-Figure 2.1: <br><em>Figure 3: Vector vs raster data representations</em>
+Figure 2.1: Vector vs raster data representations
 </p>
 </div>
-<p><br></p>
 <p>Vector datasets represent features as geometries (POINT, LINE, POLYGON) linked to an attribute table. They are ideal for representing discrete spatial objects such as soil sampling points, field boundaries, or landscape units.</p>
 <p><em>Table 1. Example of layer types and their associated geometry</em></p>
 <table>
@@ -722,19 +716,16 @@ Figure 2.1: <br><em>Figure 3: Vector vs raster data representations</em>
 </div>
 <div id="geographic-vs-projected-coordinate-systems." class="section level4 hasAnchor" number="2.1.2.1">
 <h4><span class="header-section-number">2.1.2.1</span> Geographic vs projected coordinate systems.<a href="spatial-analysis-in-r.html#geographic-vs-projected-coordinate-systems." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in <code>degrees</code> (°) (e.g. common example: EPSG:4326 WGS84).</p>
-<p>Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Figure 4).
-This leads to distortions in distances areas calculations.</p>
-<p><br></p>
+<p>In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in <code>degrees</code> (°) (e.g. common <a href="example:%60EPSG:4326" class="uri">example:`EPSG:4326</a> (WGS84)`).</p>
+<p>Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Fig. <a href="spatial-analysis-in-r.html#fig:degreeLat">2.2</a>) . This leads to distortions in distances areas calculations.</p>
 <div class="figure"><span style="display:block;" id="fig:degreeLat"></span>
-<img src="images/module1/degreeEq.png" alt="&lt;br&gt;*Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude*" width="80%" />
+<img src="images/module1/degreeEq.png" alt="Distance distortion in GCS, where the physical distance of one degree varies by latitude" width="100%" />
 <p class="caption">
-Figure 2.2: <br><em>Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude</em>
+Figure 2.2: Distance distortion in GCS, where the physical distance of one degree varies by latitude
 </p>
 </div>
-<p><br></p>
 <p>Projected Coordinate Systems (PCS) have been designed to reduce distortion over a specific region. In PCS coordinates are expressed in linear units (usually meters) and are used for accurate geometric operations (distance, area, buffers).
-Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), national grid systems and local projections optimized for area-specific precision.</p>
+Typical examples for PCS include UTM zones (e.g., <code>EPSG:32614</code>, <code>EPSG:32632</code>), national grid systems and local projections optimized for area-specific precision.</p>
 <div class="highlights">
 <ul>
 <li><p>Always check the units in <code>st_crs()</code> before doing geometric calculations.</p></li>
@@ -747,7 +738,7 @@ Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), natio
 </div>
 </div>
 <div id="spatial-packages-in-r-sf-and-terra" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.2</span> Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="installing-and-loading-spatial-packages" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Installing and Loading Spatial Packages<a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this module we will work with two core spatial packages:</p>
@@ -761,20 +752,20 @@ Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), natio
 <p><strong>Reminder:</strong><br />
 - If the packages are not yet installed on your system, you can install them from CRAN using <code>install.packages()</code> function.
 <em>Example 4.1: Installation of <code>{sf}</code> and <code>{terra}</code> packages</em></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="spatial-analysis-in-r.html#cb120-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span>
-<span id="cb120-2"><a href="spatial-analysis-in-r.html#cb120-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="spatial-analysis-in-r.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb120-2"><a href="spatial-analysis-in-r.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Packages only need to be done once per system.<br />
 </li>
 <li>Once the packages are installed, you must load them in each R session before use:</li>
 </ul>
 <p><em>Example 4.2: Loading <code>{sf}</code> and <code>{terra}</code> packages</em></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="spatial-analysis-in-r.html#cb121-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb121-2"><a href="spatial-analysis-in-r.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="spatial-analysis-in-r.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb121-2"><a href="spatial-analysis-in-r.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
 </div>
 </div>
 <div id="working-with-vector-data-using-sf" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> <strong>Working with Vector Data using <code>{sf}</code></strong><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.2.2</span> Working with Vector Data using <code>{sf}</code><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>{sf}</code> package implements the <em>Simple Features</em> standard for spatial vector data in R.</p>
 <p>A <em>simple feature</em> is a geometric object (point, line, polygon, etc.) linked to one or more <strong>attributes</strong> (e.g., soil type, pH, land use).<br />
 </p>
@@ -813,19 +804,19 @@ The function <code>st_as_sf()</code> converts a data frame into a spatial (vecto
 </ul>
 <p><br><em>Example 4.3: Transforming a Data Frame into an <code>{sf}</code> Spatial Object</em>
 In the example below, <code>.csv</code> data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="spatial-analysis-in-r.html#cb122-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb122-2"><a href="spatial-analysis-in-r.html#cb122-2" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="spatial-analysis-in-r.html#cb122-3" tabindex="-1"></a><span class="co"># Import soil sampling data with coordinates (WGS84)</span></span>
-<span id="cb122-4"><a href="spatial-analysis-in-r.html#cb122-4" tabindex="-1"></a>k.data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/kansas_site_lab_data.csv&quot;</span>)</span>
-<span id="cb122-5"><a href="spatial-analysis-in-r.html#cb122-5" tabindex="-1"></a></span>
-<span id="cb122-6"><a href="spatial-analysis-in-r.html#cb122-6" tabindex="-1"></a><span class="co"># Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)</span></span>
-<span id="cb122-7"><a href="spatial-analysis-in-r.html#cb122-7" tabindex="-1"></a>soil_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(k.data, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb122-8"><a href="spatial-analysis-in-r.html#cb122-8" tabindex="-1"></a></span>
-<span id="cb122-9"><a href="spatial-analysis-in-r.html#cb122-9" tabindex="-1"></a><span class="co"># Print object geometry</span></span>
-<span id="cb122-10"><a href="spatial-analysis-in-r.html#cb122-10" tabindex="-1"></a>soil_sf<span class="sc">$</span>geometry</span>
-<span id="cb122-11"><a href="spatial-analysis-in-r.html#cb122-11" tabindex="-1"></a></span>
-<span id="cb122-12"><a href="spatial-analysis-in-r.html#cb122-12" tabindex="-1"></a><span class="co"># Print CRS details</span></span>
-<span id="cb122-13"><a href="spatial-analysis-in-r.html#cb122-13" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="spatial-analysis-in-r.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb122-2"><a href="spatial-analysis-in-r.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="spatial-analysis-in-r.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Import soil sampling data with coordinates (WGS84)</span></span>
+<span id="cb122-4"><a href="spatial-analysis-in-r.html#cb122-4" aria-hidden="true" tabindex="-1"></a>k.data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/kansas_site_lab_data.csv&quot;</span>)</span>
+<span id="cb122-5"><a href="spatial-analysis-in-r.html#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="spatial-analysis-in-r.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)</span></span>
+<span id="cb122-7"><a href="spatial-analysis-in-r.html#cb122-7" aria-hidden="true" tabindex="-1"></a>soil_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(k.data, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb122-8"><a href="spatial-analysis-in-r.html#cb122-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-9"><a href="spatial-analysis-in-r.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print object geometry</span></span>
+<span id="cb122-10"><a href="spatial-analysis-in-r.html#cb122-10" aria-hidden="true" tabindex="-1"></a>soil_sf<span class="sc">$</span>geometry</span>
+<span id="cb122-11"><a href="spatial-analysis-in-r.html#cb122-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-12"><a href="spatial-analysis-in-r.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print CRS details</span></span>
+<span id="cb122-13"><a href="spatial-analysis-in-r.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span></code></pre></div>
 <div class="highlights">
 <p><strong>Notes &amp; Best Practices</strong></p>
 <ul>
@@ -845,16 +836,16 @@ In the example below, <code>.csv</code> data containing soil sampling locations 
 <p>The <code>{sf}</code> package reads these formats using the universal function <code>st_read()</code>.
 You can import most vector formats using the same command, since <code>{sf}</code> automatically detects the file type.</p>
 <p><br><em>Example 4.4: Reading shapefiles with {sf}</em></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="spatial-analysis-in-r.html#cb123-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb123-2"><a href="spatial-analysis-in-r.html#cb123-2" tabindex="-1"></a></span>
-<span id="cb123-3"><a href="spatial-analysis-in-r.html#cb123-3" tabindex="-1"></a><span class="co"># Read a shapefile containing soil profile points</span></span>
-<span id="cb123-4"><a href="spatial-analysis-in-r.html#cb123-4" tabindex="-1"></a>soil_profiles <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/soil_profiles.shp&quot;</span>)</span>
-<span id="cb123-5"><a href="spatial-analysis-in-r.html#cb123-5" tabindex="-1"></a></span>
-<span id="cb123-6"><a href="spatial-analysis-in-r.html#cb123-6" tabindex="-1"></a><span class="co"># Inspect the first rows</span></span>
-<span id="cb123-7"><a href="spatial-analysis-in-r.html#cb123-7" tabindex="-1"></a><span class="fu">head</span>(soil_profiles)</span>
-<span id="cb123-8"><a href="spatial-analysis-in-r.html#cb123-8" tabindex="-1"></a></span>
-<span id="cb123-9"><a href="spatial-analysis-in-r.html#cb123-9" tabindex="-1"></a><span class="co"># Plot quick visualization</span></span>
-<span id="cb123-10"><a href="spatial-analysis-in-r.html#cb123-10" tabindex="-1"></a><span class="fu">plot</span>(soil_profiles[<span class="st">&quot;profile_id&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="spatial-analysis-in-r.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb123-2"><a href="spatial-analysis-in-r.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="spatial-analysis-in-r.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a shapefile containing soil profile points</span></span>
+<span id="cb123-4"><a href="spatial-analysis-in-r.html#cb123-4" aria-hidden="true" tabindex="-1"></a>soil_profiles <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/soil_profiles.shp&quot;</span>)</span>
+<span id="cb123-5"><a href="spatial-analysis-in-r.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-6"><a href="spatial-analysis-in-r.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first rows</span></span>
+<span id="cb123-7"><a href="spatial-analysis-in-r.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_profiles)</span>
+<span id="cb123-8"><a href="spatial-analysis-in-r.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="spatial-analysis-in-r.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot quick visualization</span></span>
+<span id="cb123-10"><a href="spatial-analysis-in-r.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soil_profiles[<span class="st">&quot;profile_id&quot;</span>])</span></code></pre></div>
 <p>This layer may represent individual soil pits or auger locations, each with coordinates and measured properties stored in the attribute table.</p>
 <hr />
 </div>
@@ -874,36 +865,36 @@ You can import most vector formats using the same command, since <code>{sf}</cod
 <li><p>Choosing an appropriate CRS for national soil projects.</p></li>
 </ul>
 <p>Example: converting the point dataset from WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG: 3857)</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="spatial-analysis-in-r.html#cb124-1" tabindex="-1"></a>plots_sf_utm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(plots_sf, <span class="at">crs =</span> <span class="dv">3857</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="spatial-analysis-in-r.html#cb124-1" aria-hidden="true" tabindex="-1"></a>plots_sf_utm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(plots_sf, <span class="at">crs =</span> <span class="dv">3857</span>)</span></code></pre></div>
 </div>
 <div id="inspecting-and-manipulating-sf-object" class="section level4 hasAnchor" number="2.2.3.5">
 <h4><span class="header-section-number">2.2.3.5</span> Inspecting and manipulating <code>{sf}</code> Object<a href="spatial-analysis-in-r.html#inspecting-and-manipulating-sf-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Because <code>sf</code> objects inherit from the <code>data.frame</code> class, you can explore an sf object with the same tools as data frames (<code>class()</code>,<code>str()</code>, <code>summary()</code>), plus a few <code>{sf}</code> helpers (<code>st_geometry_type()</code>).</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="spatial-analysis-in-r.html#cb125-1" tabindex="-1"></a><span class="co"># Check structure</span></span>
-<span id="cb125-2"><a href="spatial-analysis-in-r.html#cb125-2" tabindex="-1"></a><span class="fu">str</span>(soil_sf)</span>
-<span id="cb125-3"><a href="spatial-analysis-in-r.html#cb125-3" tabindex="-1"></a></span>
-<span id="cb125-4"><a href="spatial-analysis-in-r.html#cb125-4" tabindex="-1"></a><span class="co"># Summary of attributes + geometry</span></span>
-<span id="cb125-5"><a href="spatial-analysis-in-r.html#cb125-5" tabindex="-1"></a><span class="fu">summary</span>(soil_sf)</span>
-<span id="cb125-6"><a href="spatial-analysis-in-r.html#cb125-6" tabindex="-1"></a></span>
-<span id="cb125-7"><a href="spatial-analysis-in-r.html#cb125-7" tabindex="-1"></a><span class="co"># Extract the geometry column</span></span>
-<span id="cb125-8"><a href="spatial-analysis-in-r.html#cb125-8" tabindex="-1"></a><span class="fu">st_geometry</span>(soil_sf)</span>
-<span id="cb125-9"><a href="spatial-analysis-in-r.html#cb125-9" tabindex="-1"></a></span>
-<span id="cb125-10"><a href="spatial-analysis-in-r.html#cb125-10" tabindex="-1"></a><span class="co"># Check the geometry type. Use head to avoid long printing</span></span>
-<span id="cb125-11"><a href="spatial-analysis-in-r.html#cb125-11" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">st_geometry_type</span>(soil_sf))</span>
-<span id="cb125-12"><a href="spatial-analysis-in-r.html#cb125-12" tabindex="-1"></a></span>
-<span id="cb125-13"><a href="spatial-analysis-in-r.html#cb125-13" tabindex="-1"></a><span class="co"># Check the CRS:</span></span>
-<span id="cb125-14"><a href="spatial-analysis-in-r.html#cb125-14" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span>
-<span id="cb125-15"><a href="spatial-analysis-in-r.html#cb125-15" tabindex="-1"></a></span>
-<span id="cb125-16"><a href="spatial-analysis-in-r.html#cb125-16" tabindex="-1"></a><span class="co"># Check the spatial extent of the object:</span></span>
-<span id="cb125-17"><a href="spatial-analysis-in-r.html#cb125-17" tabindex="-1"></a><span class="fu">st_bbox</span>(soil_sf)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="spatial-analysis-in-r.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check structure</span></span>
+<span id="cb125-2"><a href="spatial-analysis-in-r.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil_sf)</span>
+<span id="cb125-3"><a href="spatial-analysis-in-r.html#cb125-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="spatial-analysis-in-r.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of attributes + geometry</span></span>
+<span id="cb125-5"><a href="spatial-analysis-in-r.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(soil_sf)</span>
+<span id="cb125-6"><a href="spatial-analysis-in-r.html#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="spatial-analysis-in-r.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the geometry column</span></span>
+<span id="cb125-8"><a href="spatial-analysis-in-r.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="fu">st_geometry</span>(soil_sf)</span>
+<span id="cb125-9"><a href="spatial-analysis-in-r.html#cb125-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-10"><a href="spatial-analysis-in-r.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the geometry type. Use head to avoid long printing</span></span>
+<span id="cb125-11"><a href="spatial-analysis-in-r.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">st_geometry_type</span>(soil_sf))</span>
+<span id="cb125-12"><a href="spatial-analysis-in-r.html#cb125-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-13"><a href="spatial-analysis-in-r.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the CRS:</span></span>
+<span id="cb125-14"><a href="spatial-analysis-in-r.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span>
+<span id="cb125-15"><a href="spatial-analysis-in-r.html#cb125-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-16"><a href="spatial-analysis-in-r.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the spatial extent of the object:</span></span>
+<span id="cb125-17"><a href="spatial-analysis-in-r.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(soil_sf)</span></code></pre></div>
 <p><code>{sf}</code> objects can be manipulated in the same way as standard data frames while retaining all spatial information.
 Base R and <code>{dplyr}</code> verbs such as <code>filter()</code>, <code>select()</code>, <code>mutate()</code>, can be directly applied on <code>sf</code> objects .</p>
 <p><em>Example: Selecting, filtering an creating new variables in an <code>sf</code> object with <code>{dplyr}</code></em></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="spatial-analysis-in-r.html#cb126-1" tabindex="-1"></a><span class="co"># Subset sf rows and columns using the pipping (%&gt;%) operator with {dplyr}</span></span>
-<span id="cb126-2"><a href="spatial-analysis-in-r.html#cb126-2" tabindex="-1"></a>soil_sf <span class="sc">%&gt;%</span></span>
-<span id="cb126-3"><a href="spatial-analysis-in-r.html#cb126-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb126-4"><a href="spatial-analysis-in-r.html#cb126-4" tabindex="-1"></a>  <span class="fu">select</span>(taxa, ph_h2o) <span class="sc">%&gt;%</span></span>
-<span id="cb126-5"><a href="spatial-analysis-in-r.html#cb126-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">saline =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="spatial-analysis-in-r.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset sf rows and columns using the pipping (%&gt;%) operator with {dplyr}</span></span>
+<span id="cb126-2"><a href="spatial-analysis-in-r.html#cb126-2" aria-hidden="true" tabindex="-1"></a>soil_sf <span class="sc">%&gt;%</span></span>
+<span id="cb126-3"><a href="spatial-analysis-in-r.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb126-4"><a href="spatial-analysis-in-r.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxa, ph_h2o) <span class="sc">%&gt;%</span></span>
+<span id="cb126-5"><a href="spatial-analysis-in-r.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">saline =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="highlights">
 <p><strong>What <code>dplyr::</code> means?</strong></p>
 <ul>
@@ -922,22 +913,22 @@ As a result, calling <code>filter()</code> alone may not work as expected for yo
 This behavior often occurs with the <code>select()</code> function in many operations in spatial analysis.</p>
 <p>To avoid this, you can explicitly specify which package the function should come from using the general form <code>package::function()</code>.
 For [<a href="example:\\" class="uri">example:\\</a>](<a href="example:\" class="uri">example:\</a>){.uri}</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="spatial-analysis-in-r.html#cb127-1" tabindex="-1"></a><span class="co"># Call the filter function from the `dplyr` package</span></span>
-<span id="cb127-2"><a href="spatial-analysis-in-r.html#cb127-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="spatial-analysis-in-r.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the filter function from the `dplyr` package</span></span>
+<span id="cb127-2"><a href="spatial-analysis-in-r.html#cb127-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()</span></code></pre></div>
 <p>However, this may not always be necessary.
 If no masking occurs and no errors appear in the console, you can safely use the functions directly without the <code>package::</code> prefix.</p>
 </div>
 <p>Further <code>{dplyr}</code> functions can be applied on <code>sf</code> objects to get in-depth analyses of soil properties</p>
 <p><em>Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH &gt; 9)</em></p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatial-analysis-in-r.html#cb128-1" tabindex="-1"></a><span class="co"># Filtering rows by pH value and subset columns with {dplyr}</span></span>
-<span id="cb128-2"><a href="spatial-analysis-in-r.html#cb128-2" tabindex="-1"></a>saline <span class="ot">&lt;-</span> soil_sf <span class="sc">%&gt;%</span></span>
-<span id="cb128-3"><a href="spatial-analysis-in-r.html#cb128-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb128-4"><a href="spatial-analysis-in-r.html#cb128-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxa, ph_h2o)</span>
-<span id="cb128-5"><a href="spatial-analysis-in-r.html#cb128-5" tabindex="-1"></a></span>
-<span id="cb128-6"><a href="spatial-analysis-in-r.html#cb128-6" tabindex="-1"></a><span class="co"># Calculate the mean pH for the different taxonomic groups in these new dataset</span></span>
-<span id="cb128-7"><a href="spatial-analysis-in-r.html#cb128-7" tabindex="-1"></a>saline <span class="sc">%&gt;%</span></span>
-<span id="cb128-8"><a href="spatial-analysis-in-r.html#cb128-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(taxa) <span class="sc">%&gt;%</span></span>
-<span id="cb128-9"><a href="spatial-analysis-in-r.html#cb128-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">mean_ph=</span><span class="fu">mean</span>(ph_h2o))</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatial-analysis-in-r.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows by pH value and subset columns with {dplyr}</span></span>
+<span id="cb128-2"><a href="spatial-analysis-in-r.html#cb128-2" aria-hidden="true" tabindex="-1"></a>saline <span class="ot">&lt;-</span> soil_sf <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="spatial-analysis-in-r.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb128-4"><a href="spatial-analysis-in-r.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxa, ph_h2o)</span>
+<span id="cb128-5"><a href="spatial-analysis-in-r.html#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="spatial-analysis-in-r.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean pH for the different taxonomic groups in these new dataset</span></span>
+<span id="cb128-7"><a href="spatial-analysis-in-r.html#cb128-7" aria-hidden="true" tabindex="-1"></a>saline <span class="sc">%&gt;%</span></span>
+<span id="cb128-8"><a href="spatial-analysis-in-r.html#cb128-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(taxa) <span class="sc">%&gt;%</span></span>
+<span id="cb128-9"><a href="spatial-analysis-in-r.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">mean_ph=</span><span class="fu">mean</span>(ph_h2o))</span></code></pre></div>
 </div>
 <div id="geometry-operations" class="section level4 hasAnchor" number="2.2.3.6">
 <h4><span class="header-section-number">2.2.3.6</span> Geometry Operations<a href="spatial-analysis-in-r.html#geometry-operations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -955,28 +946,28 @@ In soil applications, buffers can represent:</p>
 <li>Buffer zones around soil sampling points to define their spatial influence (point geometry).</li>
 </ul>
 <p>The function <code>st_buffer()</code> is used for this.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="spatial-analysis-in-r.html#cb129-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb129-2"><a href="spatial-analysis-in-r.html#cb129-2" tabindex="-1"></a><span class="co"># k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)</span></span>
-<span id="cb129-3"><a href="spatial-analysis-in-r.html#cb129-3" tabindex="-1"></a><span class="co"># kansas_sf &lt;- k.data[1:108,]</span></span>
-<span id="cb129-4"><a href="spatial-analysis-in-r.html#cb129-4" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> k.data[<span class="dv">1</span>,]</span>
-<span id="cb129-5"><a href="spatial-analysis-in-r.html#cb129-5" tabindex="-1"></a><span class="co"># Convert to spatial sf</span></span>
-<span id="cb129-6"><a href="spatial-analysis-in-r.html#cb129-6" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(kansas_sf,<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>),<span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb129-7"><a href="spatial-analysis-in-r.html#cb129-7" tabindex="-1"></a><span class="co"># transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)</span></span>
-<span id="cb129-8"><a href="spatial-analysis-in-r.html#cb129-8" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(kansas_sf, <span class="at">crs =</span> <span class="dv">26914</span>)  <span class="co"># UTM 14N, metres</span></span>
-<span id="cb129-9"><a href="spatial-analysis-in-r.html#cb129-9" tabindex="-1"></a></span>
-<span id="cb129-10"><a href="spatial-analysis-in-r.html#cb129-10" tabindex="-1"></a><span class="co"># &#39;kansas_sf&#39; contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units</span></span>
-<span id="cb129-11"><a href="spatial-analysis-in-r.html#cb129-11" tabindex="-1"></a><span class="fu">st_crs</span>(kansas_sf)</span>
-<span id="cb129-12"><a href="spatial-analysis-in-r.html#cb129-12" tabindex="-1"></a></span>
-<span id="cb129-13"><a href="spatial-analysis-in-r.html#cb129-13" tabindex="-1"></a><span class="co"># Create a 100 m buffer around each plot</span></span>
-<span id="cb129-14"><a href="spatial-analysis-in-r.html#cb129-14" tabindex="-1"></a>plots_buffer_100 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">100</span>)</span>
-<span id="cb129-15"><a href="spatial-analysis-in-r.html#cb129-15" tabindex="-1"></a></span>
-<span id="cb129-16"><a href="spatial-analysis-in-r.html#cb129-16" tabindex="-1"></a><span class="co"># Plot first point and its buffers</span></span>
-<span id="cb129-17"><a href="spatial-analysis-in-r.html#cb129-17" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_100), <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb129-18"><a href="spatial-analysis-in-r.html#cb129-18" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kansas_sf), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb129-19"><a href="spatial-analysis-in-r.html#cb129-19" tabindex="-1"></a></span>
-<span id="cb129-20"><a href="spatial-analysis-in-r.html#cb129-20" tabindex="-1"></a><span class="co"># Create a second 50 m buffer around the plot</span></span>
-<span id="cb129-21"><a href="spatial-analysis-in-r.html#cb129-21" tabindex="-1"></a>plots_buffer_50 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">50</span>)</span>
-<span id="cb129-22"><a href="spatial-analysis-in-r.html#cb129-22" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_50), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;navy&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="spatial-analysis-in-r.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb129-2"><a href="spatial-analysis-in-r.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)</span></span>
+<span id="cb129-3"><a href="spatial-analysis-in-r.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kansas_sf &lt;- k.data[1:108,]</span></span>
+<span id="cb129-4"><a href="spatial-analysis-in-r.html#cb129-4" aria-hidden="true" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> k.data[<span class="dv">1</span>,]</span>
+<span id="cb129-5"><a href="spatial-analysis-in-r.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to spatial sf</span></span>
+<span id="cb129-6"><a href="spatial-analysis-in-r.html#cb129-6" aria-hidden="true" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(kansas_sf,<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>),<span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb129-7"><a href="spatial-analysis-in-r.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)</span></span>
+<span id="cb129-8"><a href="spatial-analysis-in-r.html#cb129-8" aria-hidden="true" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(kansas_sf, <span class="at">crs =</span> <span class="dv">26914</span>)  <span class="co"># UTM 14N, metres</span></span>
+<span id="cb129-9"><a href="spatial-analysis-in-r.html#cb129-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="spatial-analysis-in-r.html#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;kansas_sf&#39; contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units</span></span>
+<span id="cb129-11"><a href="spatial-analysis-in-r.html#cb129-11" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(kansas_sf)</span>
+<span id="cb129-12"><a href="spatial-analysis-in-r.html#cb129-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-13"><a href="spatial-analysis-in-r.html#cb129-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 100 m buffer around each plot</span></span>
+<span id="cb129-14"><a href="spatial-analysis-in-r.html#cb129-14" aria-hidden="true" tabindex="-1"></a>plots_buffer_100 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">100</span>)</span>
+<span id="cb129-15"><a href="spatial-analysis-in-r.html#cb129-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-16"><a href="spatial-analysis-in-r.html#cb129-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot first point and its buffers</span></span>
+<span id="cb129-17"><a href="spatial-analysis-in-r.html#cb129-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_100), <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb129-18"><a href="spatial-analysis-in-r.html#cb129-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kansas_sf), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb129-19"><a href="spatial-analysis-in-r.html#cb129-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-20"><a href="spatial-analysis-in-r.html#cb129-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a second 50 m buffer around the plot</span></span>
+<span id="cb129-21"><a href="spatial-analysis-in-r.html#cb129-21" aria-hidden="true" tabindex="-1"></a>plots_buffer_50 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">50</span>)</span>
+<span id="cb129-22"><a href="spatial-analysis-in-r.html#cb129-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_50), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;navy&quot;</span>)</span></code></pre></div>
 <div id="intersection-and-union-with-administrative-boundaries" class="section level5 hasAnchor" number="2.2.3.6.1">
 <h5><span class="header-section-number">2.2.3.6.1</span> Intersection and Union with Administrative Boundaries<a href="spatial-analysis-in-r.html#intersection-and-union-with-administrative-boundaries" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Frequently, soil datasets need to be restricted to a study region (e.g., a province) or aggregated at administrative levels (e.g., districts, municipalities).</p>
@@ -998,37 +989,26 @@ In soil applications, buffers can represent:</p>
 <hr />
 <p>### Visualizing <code>{sf}</code> Objects</p>
 <p><code>{sf}</code> objects can be quickly visualized using the base R <code>plot()</code> function:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="spatial-analysis-in-r.html#cb130-1" tabindex="-1"></a><span class="co"># Simple plot of sampling locations</span></span>
-<span id="cb130-2"><a href="spatial-analysis-in-r.html#cb130-2" tabindex="-1"></a><span class="fu">plot</span>(soil_sf[<span class="st">&quot;ph_h2o&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="spatial-analysis-in-r.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple plot of sampling locations</span></span>
+<span id="cb130-2"><a href="spatial-analysis-in-r.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soil_sf[<span class="st">&quot;ph_h2o&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>)</span></code></pre></div>
 <p>In this example, each point represents a sampling site, and the color scale corresponds to the ph_h2o attribute.
 If no column is specified in the <code>plot()</code>function, the display will produce a series of panels, one for each attribute stored in the <code>{sf}</code> data frame.</p>
 <p>Unlike <code>plot()</code>, the <code>{ggplot2}</code> package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
 In this case, the geometry type is defined with <code>geom_sf()</code>.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="spatial-analysis-in-r.html#cb131-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb131-2"><a href="spatial-analysis-in-r.html#cb131-2" tabindex="-1"></a></span>
-<span id="cb131-3"><a href="spatial-analysis-in-r.html#cb131-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> soil_sf) <span class="sc">+</span></span>
-<span id="cb131-4"><a href="spatial-analysis-in-r.html#cb131-4" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">color =</span> ph_h2o)) <span class="sc">+</span></span>
-<span id="cb131-5"><a href="spatial-analysis-in-r.html#cb131-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb131-6"><a href="spatial-analysis-in-r.html#cb131-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb131-7"><a href="spatial-analysis-in-r.html#cb131-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb131-8"><a href="spatial-analysis-in-r.html#cb131-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>,</span>
-<span id="cb131-9"><a href="spatial-analysis-in-r.html#cb131-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;pH (H2O)&quot;</span></span>
-<span id="cb131-10"><a href="spatial-analysis-in-r.html#cb131-10" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="spatial-analysis-in-r.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb131-2"><a href="spatial-analysis-in-r.html#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="spatial-analysis-in-r.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> soil_sf) <span class="sc">+</span></span>
+<span id="cb131-4"><a href="spatial-analysis-in-r.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">color =</span> ph_h2o)) <span class="sc">+</span></span>
+<span id="cb131-5"><a href="spatial-analysis-in-r.html#cb131-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb131-6"><a href="spatial-analysis-in-r.html#cb131-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb131-7"><a href="spatial-analysis-in-r.html#cb131-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb131-8"><a href="spatial-analysis-in-r.html#cb131-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>,</span>
+<span id="cb131-9"><a href="spatial-analysis-in-r.html#cb131-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;pH (H2O)&quot;</span></span>
+<span id="cb131-10"><a href="spatial-analysis-in-r.html#cb131-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <hr />
-<p>## The <code>{terra}</code> Package (Raster &amp; Vector)</p>
-<ul>
-<li><p>SpatRaster and SpatVector objects.</p></li>
-<li><p>Differences from older <code>{raster}</code> package.</p></li>
-<li><p>Why <code>{terra}</code> is recommended in this course.</p></li>
-<li></li>
-</ul>
-<p>## <strong>Working with Vector Data using <code>{sf}</code></strong></p>
 </div>
-</div>
-<div id="working-with-raster-data-using-terra" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> <strong>Working with Raster Data using <code>{terra}</code></strong><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="importing-raster-data" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Importing Raster Data<a href="spatial-analysis-in-r.html#importing-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="importing-raster-data" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Importing Raster Data<a href="spatial-analysis-in-r.html#importing-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Reading single-layer and multi-layer rasters (<code>rast()</code>).</p></li>
 <li><p>Examples: DEM, SOC predictions, climate layers.</p></li>
@@ -1063,10 +1043,10 @@ In this case, the geometry type is defined with <code>geom_sf()</code>.</p>
 </ul>
 </div>
 </div>
-<div id="combining-vector-and-raster-data" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Combining Vector and Raster Data<a href="spatial-analysis-in-r.html#combining-vector-and-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="extracting-raster-values-to-points-and-polygons" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Extracting Raster Values to Points and Polygons<a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="combining-vector-and-raster-data" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Combining Vector and Raster Data<a href="spatial-analysis-in-r.html#combining-vector-and-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="extracting-raster-values-to-points-and-polygons" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Extracting Raster Values to Points and Polygons<a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Extract SOC, pH, climate values at soil profile locations (<code>extract()</code>).</p></li>
 <li><p>Zonal statistics for polygons (mean, min, max, sd).</p></li>
@@ -1098,18 +1078,18 @@ In this case, the geometry type is defined with <code>geom_sf()</code>.</p>
 </ul>
 </div>
 </div>
-<div id="exporting-and-sharing-spatial-data" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Exporting and Sharing Spatial Data<a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="exporting-vector-data" class="section level3 hasAnchor" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Exporting Vector Data<a href="spatial-analysis-in-r.html#exporting-vector-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exporting-and-sharing-spatial-data" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Exporting and Sharing Spatial Data<a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exporting-vector-data" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Exporting Vector Data<a href="spatial-analysis-in-r.html#exporting-vector-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Writing sf objects to disk (<code>st_write()</code>).</p></li>
 <li><p>Formats: Shapefile, GeoPackage, GeoJSON.</p></li>
 <li></li>
 </ul>
 </div>
-<div id="exporting-raster-data" class="section level3 hasAnchor" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Exporting Raster Data<a href="spatial-analysis-in-r.html#exporting-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exporting-raster-data" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Exporting Raster Data<a href="spatial-analysis-in-r.html#exporting-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Writing SpatRaster objects (<code>writeRaster()</code>).</p></li>
 <li><p>GeoTIFF and other formats.</p></li>
@@ -1120,7 +1100,7 @@ In this case, the geometry type is defined with <code>geom_sf()</code>.</p>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body" entry-spacing="0">
+<div id="refs" class="references csl-bib-body">
 <div id="ref-prieto2023" class="csl-entry">
 <strong>Prieto-Castrillo, F., Rodríguez-Rastrero, M., Yunta, F., Borondo, F. &amp; Borondo, J.</strong> 2023. Disentangling jenny’s equation by machine learning. <em>Scientific Reports</em>, 13(1): 20916. <a href="https://doi.org/10.1038/s41598-023-44171-x">https://doi.org/10.1038/s41598-023-44171-x</a>
 </div>
