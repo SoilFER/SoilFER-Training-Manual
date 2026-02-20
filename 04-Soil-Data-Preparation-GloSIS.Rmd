@@ -219,7 +219,7 @@ Users must systematically map their dataset columns to GloSIS standard variable 
 
 The sidebar menu provides dropdown selections for each variable, fuzzy matching to assist in finding correct mappings, and validation warnings if required parameters are not mapped.
 
----
+
 
 ### Step 2: Quality Check and Quality Report Generation
 
@@ -246,7 +246,6 @@ The application systematically checks for the following geographic data issues:
 **Duplicate Site Detection:**
 - Identifies potential duplicate sites (multiple profiles at identical coordinates)
 
----
 
 ### Step 2b: Soil Depth Validation
 
@@ -258,7 +257,7 @@ The application checks for **Depth Completeness** and **Depth Logical Consistenc
 - Detects depth inversions where top depth ≥ bottom depth (physically impossible)
 - Identifies soil profiles not starting at surface (top depth > 0 cm when expected)
 
----
+
 
 ### Step 2c: Soil Properties Validation
 
@@ -286,7 +285,7 @@ knitr::include_graphics("images/module4/etl_harmonization_step4.png")
 All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. Quality check results are displayed in a dedicated `Quality Checks` Tab which displays detailed validation results organized by issue type. Users can download a comprehensive `Quality Check Report (XLSX format)` for further analysis and data cleaning outside the application. 
 
 
----
+
 ### Step 3: Data Correction and Resubmission
 
 Once data quality issues are identified in the Quality Check Report, users must correct the original dataset and resubmit for harmonization.
@@ -305,7 +304,7 @@ Once data quality issues are identified in the Quality Check Report, users must 
 knitr::include_graphics("images/module4/etl_harmonization_step3.png")
 ```
 
----
+
 
 ### Step 4: Download Harmonized Data
 
@@ -359,7 +358,7 @@ The downloaded file follows the GloSIS standard format, with data organized acco
 **GloSIS Methods Sheet:**
 - GloSIS Procedures Registry List (Informative)
 
----
+
 
 :::warning-box
   - All Analytical Procedures must exist in the available GloSIS `Procedures` Registry list. This ensures methodology traceability and standardization.
@@ -419,7 +418,7 @@ An optional third service, **`glosis-pgadmin`**, provides a pgAdmin 4 web interf
 
 These services are **built from pre-configured Docker images** and automatically deployed as containers using **Docker Compose**, meaning all dependencies are pre-configured, ensuring a consistent and reproducible execution across different operating systems (Windows, macOS, and Linux).
 
-This section provides step-by-step instructions to set up the **GloSIS-ETL platform**, including the installation of **Docker Desktop** and the deployment of the services. **No manual installation of PostgreSQL, R, or any other dependency is required** --- everything runs inside Docker.
+This section provides step-by-step instructions to set up the **GloSIS-ETL platform**, including the installation of **Docker Desktop** and the deployment of the services. **No manual installation of PostgreSQL, R, or any other dependency is required**  everything runs inside Docker.
 
 
 ### Install Docker Desktop

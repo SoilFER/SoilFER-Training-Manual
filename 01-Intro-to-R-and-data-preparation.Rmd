@@ -1175,7 +1175,7 @@ By the end of this section, you will be able to:
   
 * [Geocomputation with R (Lovelace, Nowosad & Muenchow, 2025)](https://r.geocompx.org/ "Geocomputation with R") : A book on geographic data analysis, visualization and modeling.
 
-* [Spatial Data Science: With Applications in R (Pebesma, E., & Bivand, R., 2023)](https://r-spatial.org/book/ "Spatial Data Science: With applications in R") : A clear and practical introduction to the fundamental concepts of spatial data---its structures, representations, and analytical implications.
+* [Spatial Data Science: With Applications in R (Pebesma, E., & Bivand, R., 2023)](https://r-spatial.org/book/ "Spatial Data Science: With applications in R") : A clear and practical introduction to the fundamental concepts of spatial data its structures, representations, and analytical implications.
 
 :::
   
@@ -1275,7 +1275,7 @@ The choice of CRS has a major impact on the accuracy of distances, areas, buffer
 
 #### Geographic vs projected coordinate systems.
 
-In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example: EPSG:4326 --- WGS84).
+In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example: EPSG:4326 WGS84).
 
 Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Figure 4).
 This leads to distortions in distances areas calculations.

@@ -187,7 +187,7 @@ This tutorial manual introduces the essential concepts of soil data management, 
 
 Each module builds upon the previous one, creating a comprehensive learning pathway for operational DSM implementation:
 
----
+
 
 #### **Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping** {-}
 
@@ -203,7 +203,7 @@ Focuses on systematic soil data quality assessment and cleaning procedures essen
 Covers fundamental concepts of spatial data handling using `{sf}` and `{terra}` packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
 
 
----
+
 
 #### **Module 2: Soil Sampling Design** {-}
 
@@ -215,7 +215,7 @@ Establishes the theoretical foundation for representative soil sampling through 
 **Session 2.2 - Practical Implementation**  
 Provides hands-on training in implementing the SoilFER sampling protocol through a complete R workflow. The session guides participants through calculating minimum sample size, applying CSC sampling algorithms to identify Primary Sampling Units, generating Secondary and Tertiary Sampling Units through stratified random sampling, and establishing systematic site identification codes that maintain traceability throughout the sampling hierarchy..
 
----
+
 
 #### **Module 3: GloSIS Data Preparation** {-}
 
@@ -227,7 +227,7 @@ Introduces the ISO-28258 standards and GloSIS database model, focusing on Featur
 **Session 3.2 - GloSIS Web Services and Deployment**  
 Provides hands-on training in deploying the complete GloSIS software stack using Docker containerization. Participants configure a PostgreSQL database with PostGIS spatial extension for storing harmonized soil data, implement Extract-Transform-Load (ETL), establish a metadata catalog service that enables dataset discovery through standardized search protocols, and deploy web mapping interfaces for interactive spatial visualization. 
 
----
+
 #### **Module 4: Digital Soil Mapping** {-}
 
 This module provides comprehensive training in digital soil mapping (DSM) theory and practice, progressing from fundamental concepts through practical implementation using the standardized dataset produced in Module 1.
@@ -260,7 +260,7 @@ Introduces ISO 19115/19139 standards for creating spatial metadata that enables 
 **Session 6.2 - Web Services Deployment**  
 Demonstrates configuring web map servers for interactive soil data visualization and publishing datasets. The session provides practical training in establishing complete data sharing infrastructure, from database configuration through web service endpoints, ensuring participants can make their soil information FAIR (Findable, Accessible, Interoperable, Reusable) and contribute to global soil information systems while maintaining data quality and provenance.
 
----
+
 
 
 ## Required downloads {-}
@@ -395,7 +395,7 @@ In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soi
 
 :::
 
-------------------------------------------------------------------------
+
 
 ## Installing R and RStudio
 
@@ -427,7 +427,7 @@ To start using R, you need two main components:
 
 **Step 3**: Install RStudio by running the installer
 
-Once installed, R provides the underlying engine for data analysis---but working directly in base R can be challenging due to its command-line interface.
+Once installed, R provides the underlying engine for data analysis but working directly in base R can be challenging due to its command-line interface.
 
 ::: warning-box
 **Important**
@@ -460,7 +460,7 @@ R.version.string
 
 If you see the results, R and RStudio are properly installed in your system.
 
-------------------------------------------------------------------------
+
 
 ## Understanding the RStudio Interface
 
@@ -524,7 +524,6 @@ Working in the **Code Editor** also makes it easier to organize code for later u
 
 :::
 
-------------------------------------------------------------------------
 
 ## R Packages: Extending R's Capabilities
 
@@ -588,7 +587,7 @@ This is useful for accessing cutting-edge versions, experimental features, or to
 
 #### Manual Installation of R Packages
 
-You may need to install R *{packages}* manually---especially when working in environments without internet access or when using custom-built *{packages}*.
+You may need to install R *{packages}* manually especially when working in environments without internet access or when using custom-built *{packages}*.
 
 There are two common methods:
 
@@ -1701,7 +1700,7 @@ soil_data %>%
  count(ecosystem, wt = organic_carbon, name = "total SOC")
 ```
 
-------------------------------------------------------------------------
+
 
 ## Combining Data Frames {#dplyr-join}
 
@@ -2180,7 +2179,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
  - Imported columns are sometimes read with the wrong type (e.g., numbers stored as text).
 
- - The `str()` function is especially useful when you're not sure how R is interpreting your variables --- for example, whether a column is being read as text (character) or as a categorical variable (factor).
+ - The `str()` function is especially useful when you're not sure how R is interpreting your variables for example, whether a column is being read as text (character) or as a categorical variable (factor).
  
  - Check types with `str()` and convert when needed using `as.numeric()`, `as.character()`, or `as.Date()`.
  
