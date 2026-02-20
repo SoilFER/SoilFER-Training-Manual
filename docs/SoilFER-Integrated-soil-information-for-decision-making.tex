@@ -240,70 +240,10 @@ Technical Manual\\}}
 \end{titlepage}
 \includepdf{images/CB9015EN-Copyright-Disclaimer-v2.pdf}
 
-\frontmatter
-\addtocontents{toc}{\protect\hypersetup{hidelinks}}   
-\addtocontents{lof}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\addtocontents{lot}{\protect\hypersetup{hidelinks}}
-\tableofcontents
-\listoffigures
-\listoftables
-\nopagebreak[5]
+\hypertarget{pdf-disabled}{%
+\chapter{(PDF disabled)}\label{pdf-disabled}}
 
-\begin{figure}
-\includegraphics[width=41.67in]{images/frontcover} \end{figure}
-
-\hypertarget{licence}{%
-\chapter*{Licence}\label{licence}}
-\addcontentsline{toc}{chapter}{Licence}
-
-The Technical Manual is made available under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO licence
-
-\href{https://creativecommons.org/licenses/by-nc-sa/3.0/igo/legalcode}{CC BY-NC-SA 3.0 IGO}.
-
-\hypertarget{abbreviations-and-acronyms}{%
-\chapter*{Abbreviations and acronyms}\label{abbreviations-and-acronyms}}
-\addcontentsline{toc}{chapter}{Abbreviations and acronyms}
-
-\begin{description}
-\item[BD]
-Bulk density
-\item[CEC]
-Cation exchange capacity
-\item[CRAN]
-Comprehensive R archive network
-\item[DSM]
-Digital soil mapping
-\item[GEE]
-Google Earth Engine
-\item[GSP]
-Global Soil Partnership
-\item[INSII]
-International Network of Soil Information Institutions
-\item[ITPS]
-Intergovernmental Technical Panel on Soils
-\item[ME]
-Mean error
-\item[MAE]
-Mean absolute error
-\item[MEC]
-Modelling efficiency coefficient
-\item[NDVI]
-Normalized difference in vegetation index
-\item[QA/QC]
-Quality assurance/quality check
-\item[RMSE]
-Root mean squared error
-\item[SOC]
-Soil organic carbon
-\item[SOM]
-Soil organic matter
-\end{description}
-
-\hypertarget{contributors-and-reviewers}{%
-\chapter*{Contributors and reviewers}\label{contributors-and-reviewers}}
-\addcontentsline{toc}{chapter}{Contributors and reviewers}
+Placeholder
 
 \hypertarget{presentation-and-basics}{%
 \chapter*{Presentation and basics}\label{presentation-and-basics}}
@@ -796,6 +736,75 @@ Placeholder
 \section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
+\hypertarget{spatial-data-concepts}{%
+\section{Spatial Data Concepts}\label{spatial-data-concepts}}
+
+\hypertarget{vector-vs-raster-data}{%
+\subsection{Vector vs Raster Data}\label{vector-vs-raster-data}}
+
+\hypertarget{coordinate-reference-systems-crs-and-projections}{%
+\subsection{Coordinate Reference Systems (CRS) and Projections}\label{coordinate-reference-systems-crs-and-projections}}
+
+\hypertarget{geographic-vs-projected-coordinate-systems.}{%
+\subsubsection{Geographic vs projected coordinate systems.}\label{geographic-vs-projected-coordinate-systems.}}
+
+\hypertarget{spatial-packages-in-r-sf-and-terra}{%
+\section{\texorpdfstring{\textbf{Spatial Packages in R: \texttt{\{sf\}} and \texttt{\{terra\}}}}{Spatial Packages in R: \{sf\} and \{terra\}}}\label{spatial-packages-in-r-sf-and-terra}}
+
+\hypertarget{installing-and-loading-spatial-packages}{%
+\subsection{Installing and Loading Spatial Packages}\label{installing-and-loading-spatial-packages}}
+
+\hypertarget{working-with-vector-data-using-sf}{%
+\subsection{\texorpdfstring{\textbf{Working with Vector Data using \texttt{\{sf\}}}}{Working with Vector Data using \{sf\}}}\label{working-with-vector-data-using-sf}}
+
+\hypertarget{importing-vector-data}{%
+\subsection{Importing Vector Data}\label{importing-vector-data}}
+
+\hypertarget{creating-spatial-vector-objects-from-data-frames}{%
+\subsubsection{Creating spatial vector objects from data frames}\label{creating-spatial-vector-objects-from-data-frames}}
+
+\hypertarget{reading-shapefiles-with-st_read}{%
+\subsubsection{Reading Shapefiles with st\_read()}\label{reading-shapefiles-with-st_read}}
+
+\hypertarget{inspecting-and-setting-crs}{%
+\subsubsection{Inspecting and Setting CRS}\label{inspecting-and-setting-crs}}
+
+\hypertarget{reprojecting-spatial-data}{%
+\subsubsection{Reprojecting Spatial Data}\label{reprojecting-spatial-data}}
+
+\hypertarget{inspecting-and-manipulating-sf-object}{%
+\subsubsection{\texorpdfstring{Inspecting and manipulating \texttt{\{sf\}} Object}{Inspecting and manipulating \{sf\} Object}}\label{inspecting-and-manipulating-sf-object}}
+
+\hypertarget{geometry-operations}{%
+\subsubsection{Geometry Operations}\label{geometry-operations}}
+
+\hypertarget{intersection-and-union-with-administrative-boundaries}{%
+\paragraph{Intersection and Union with Administrative Boundaries}\label{intersection-and-union-with-administrative-boundaries}}
+
+\hypertarget{spatial-relationships-and-joins}{%
+\subsection{Spatial Relationships and Joins}\label{spatial-relationships-and-joins}}
+
+\hypertarget{working-with-raster-data-using-terra}{%
+\section{\texorpdfstring{\textbf{Working with Raster Data using \texttt{\{terra\}}}}{Working with Raster Data using \{terra\}}}\label{working-with-raster-data-using-terra}}
+
+\hypertarget{importing-raster-data}{%
+\subsection{Importing Raster Data}\label{importing-raster-data}}
+
+\hypertarget{combining-vector-and-raster-data}{%
+\section{Combining Vector and Raster Data}\label{combining-vector-and-raster-data}}
+
+\hypertarget{extracting-raster-values-to-points-and-polygons}{%
+\subsection{Extracting Raster Values to Points and Polygons}\label{extracting-raster-values-to-points-and-polygons}}
+
+\hypertarget{exporting-and-sharing-spatial-data}{%
+\section{Exporting and Sharing Spatial Data}\label{exporting-and-sharing-spatial-data}}
+
+\hypertarget{exporting-vector-data}{%
+\subsection{Exporting Vector Data}\label{exporting-vector-data}}
+
+\hypertarget{exporting-raster-data}{%
+\subsection{Exporting Raster Data}\label{exporting-raster-data}}
+
 \hypertarget{sampling-design-for-soil-surveys}{%
 \chapter{Sampling design for soil surveys}\label{sampling-design-for-soil-surveys}}
 
@@ -1050,6 +1059,9 @@ Placeholder
 \hypertarget{qc}{%
 \section{Quality Control}\label{qc}}
 
+\hypertarget{references-sdg1}{%
+\section{References}\label{references-sdg1}}
+
 \hypertarget{appendix-a-software-and-data-sources}{%
 \section*{Appendix A: Software and Data Sources}\label{appendix-a-software-and-data-sources}}
 \addcontentsline{toc}{section}{Appendix A: Software and Data Sources}
@@ -1080,44 +1092,127 @@ Placeholder
 \hypertarget{tbd}{%
 \chapter{TBD}\label{tbd}}
 
-\hypertarget{soil-data-preparation}{%
-\chapter{Soil Data Preparation}\label{soil-data-preparation}}
+\hypertarget{glosis-soil-data-preparation}{%
+\chapter{GloSIS Soil Data Preparation}\label{glosis-soil-data-preparation}}
+
+Placeholder
 
 \hypertarget{introduction-2}{%
 \section{Introduction}\label{introduction-2}}
 
-\hypertarget{data-cleaning}{%
-\section{Data cleaning}\label{data-cleaning}}
+\hypertarget{plot-data-sheet}{%
+\subsection{\texorpdfstring{\texttt{Plot\ Data} Sheet}{Plot Data Sheet}}\label{plot-data-sheet}}
 
-\hypertarget{soil-data-harmonization}{%
-\section{Soil Data Harmonization}\label{soil-data-harmonization}}
+\hypertarget{profile-data-sheet}{%
+\subsection{\texorpdfstring{\texttt{Profile\ Data} Sheet}{Profile Data Sheet}}\label{profile-data-sheet}}
 
-\hypertarget{concepts-on-digital-exchange-of-soil-related-data-iso-28258}{%
-\section{Concepts on digital exchange of soil-related data (ISO 28258)}\label{concepts-on-digital-exchange-of-soil-related-data-iso-28258}}
+\hypertarget{element-data-sheet}{%
+\subsection{\texorpdfstring{\texttt{Element\ Data} Sheet}{Element Data Sheet}}\label{element-data-sheet}}
 
-\hypertarget{plot-data}{%
-\section{Plot data}\label{plot-data}}
+\hypertarget{specimen-data-sheet}{%
+\subsection{\texorpdfstring{\texttt{Specimen\ Data} Sheet}{Specimen Data Sheet}}\label{specimen-data-sheet}}
 
-\hypertarget{profile-data}{%
-\section{Profile data}\label{profile-data}}
+\hypertarget{procedures-sheet}{%
+\subsection{\texorpdfstring{\texttt{Procedures} Sheet}{Procedures Sheet}}\label{procedures-sheet}}
 
-\hypertarget{element-data}{%
-\section{Element data}\label{element-data}}
+\hypertarget{metadata-sheet}{%
+\subsection{\texorpdfstring{\texttt{Metadata} Sheet}{Metadata Sheet}}\label{metadata-sheet}}
 
-\hypertarget{specimen-data}{%
-\section{Specimen data}\label{specimen-data}}
+\hypertarget{original-data-sheet}{%
+\subsection{\texorpdfstring{\texttt{Original\ Data} Sheet}{Original Data Sheet}}\label{original-data-sheet}}
 
-\hypertarget{definition-of-laboratory-procedures}{%
-\section{Definition of laboratory procedures}\label{definition-of-laboratory-procedures}}
+\hypertarget{glosis-etl}{%
+\section{GloSIS-ETL}\label{glosis-etl}}
 
-\hypertarget{data-transformation}{%
-\section{Data transformation}\label{data-transformation}}
+\hypertarget{glosis-data-harmonization}{%
+\subsection{GloSIS Data Harmonization}\label{glosis-data-harmonization}}
 
-\hypertarget{organizing-soil-data-according-to-the-glosis-database}{%
-\section{Organizing soil data according to the GloSIS database}\label{organizing-soil-data-according-to-the-glosis-database}}
+\hypertarget{step-1-data-ingestion-variable-mapping}{%
+\subsection{Step 1: Data Ingestion \& Variable Mapping}\label{step-1-data-ingestion-variable-mapping}}
 
-\hypertarget{tools-for-harmonization-of-soil-databases-within-glosis}{%
-\section{Tools for harmonization of soil databases within GloSIS}\label{tools-for-harmonization-of-soil-databases-within-glosis}}
+\hypertarget{data-upload-interface}{%
+\subsubsection{Data Upload Interface}\label{data-upload-interface}}
+
+\hypertarget{parameter-mapping-configuration}{%
+\subsubsection{Parameter Mapping Configuration}\label{parameter-mapping-configuration}}
+
+\hypertarget{step-2-quality-check-and-quality-report-generation}{%
+\subsection{Step 2: Quality Check and Quality Report Generation}\label{step-2-quality-check-and-quality-report-generation}}
+
+\hypertarget{step-2a-geographic-data-validation}{%
+\subsection{Step 2a: Geographic Data Validation}\label{step-2a-geographic-data-validation}}
+
+\hypertarget{coordinate-reference-system-requirements}{%
+\subsubsection{Coordinate Reference System Requirements}\label{coordinate-reference-system-requirements}}
+
+\hypertarget{step-2b-soil-depth-validation}{%
+\subsection{Step 2b: Soil Depth Validation}\label{step-2b-soil-depth-validation}}
+
+\hypertarget{step-2c-soil-properties-validation}{%
+\subsection{Step 2c: Soil Properties Validation}\label{step-2c-soil-properties-validation}}
+
+\hypertarget{step-3-data-correction-and-resubmission}{%
+\subsection{Step 3: Data Correction and Resubmission}\label{step-3-data-correction-and-resubmission}}
+
+\hypertarget{step-4-download-harmonized-data}{%
+\subsection{Step 4: Download Harmonized Data}\label{step-4-download-harmonized-data}}
+
+\hypertarget{glosis-data-standardization}{%
+\subsection{GloSIS Data Standardization}\label{glosis-data-standardization}}
+
+\hypertarget{glosis-data-viewer}{%
+\subsection{GloSIS Data Viewer}\label{glosis-data-viewer}}
+
+\hypertarget{installation-and-setup-of-the-glosis-etl}{%
+\section{\texorpdfstring{Installation and Setup of the \texttt{GloSIS-ETL}}{Installation and Setup of the GloSIS-ETL}}\label{installation-and-setup-of-the-glosis-etl}}
+
+\hypertarget{install-docker-desktop}{%
+\subsection{Install Docker Desktop}\label{install-docker-desktop}}
+
+\hypertarget{windows}{%
+\subsubsection{Windows}\label{windows}}
+
+\hypertarget{macos}{%
+\subsubsection{macOS}\label{macos}}
+
+\hypertarget{linux}{%
+\subsubsection{Linux}\label{linux}}
+
+\hypertarget{install-the-glosis-etl-services}{%
+\subsection{Install the GloSIS-ETL Services}\label{install-the-glosis-etl-services}}
+
+\hypertarget{verify-installation}{%
+\subsection{Verify Installation}\label{verify-installation}}
+
+\hypertarget{using-docker-desktop}{%
+\subsubsection{Using Docker Desktop}\label{using-docker-desktop}}
+
+\hypertarget{using-the-terminal}{%
+\subsubsection{Using the Terminal}\label{using-the-terminal}}
+
+\hypertarget{stopping-the-services}{%
+\subsubsection{Stopping the Services}\label{stopping-the-services}}
+
+\hypertarget{pgadmin}{%
+\subsection{Optional: pgAdmin Web Interface}\label{pgadmin}}
+
+\hypertarget{accessing-the-services}{%
+\section{Accessing the Services}\label{accessing-the-services}}
+
+\hypertarget{landing-page}{%
+\subsection{Landing Page}\label{landing-page}}
+
+\hypertarget{shiny-application-modules}{%
+\subsection{Shiny Application Modules}\label{shiny-application-modules}}
+
+\hypertarget{glosis-database}{%
+\subsection{GloSIS Database}\label{glosis-database}}
+
+\hypertarget{docker-compose-file}{%
+\section{\texorpdfstring{The \texttt{docker-compose.yml} File}{The docker-compose.yml File}}\label{docker-compose-file}}
+
+\hypertarget{env-file}{%
+\section{\texorpdfstring{The \texttt{.env} File}{The .env File}}\label{env-file}}
 
 \hypertarget{digital-soil-mapping-and-modeling}{%
 \chapter{Digital Soil Mapping and Modeling}\label{digital-soil-mapping-and-modeling}}
