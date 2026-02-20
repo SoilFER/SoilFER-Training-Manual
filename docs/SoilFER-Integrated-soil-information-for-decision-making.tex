@@ -1,0 +1,1314 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  b5paper,
+  oneside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\let\stdl@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{%
+  \stdl@chapter{\textcolor{astral}{#1}}{\textcolor{astral}{#2}}}
+
+\def\thm@space@setup{%
+  \thm@preskip=5cm
+  \thm@postskip=\thm@preskip
+
+}
+\usepackage{graphicx}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\pagestyle{plain} % default for report
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{-24pt}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{-24pt}{}{}
+\makeatother
+
+\makeatother
+\usepackage{sectsty}
+
+\definecolor{astral}{RGB}{153, 61, 15}
+\allsectionsfont{\sffamily\color{astral}}
+
+
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{astral}\leaders\hrule height \headrulewidth\hfill}}
+
+
+\setlength{\headheight}{5pt}
+
+\fancyhf{}
+\fancyhead[EL]{\nouppercase\leftmark}
+\fancyhead[OR]{\nouppercase\rightmark}
+\fancyhead[ER,OL]{\thepage}
+
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{adjustbox}
+\usepackage{rotating}
+\usepackage{tablefootnote}
+\usepackage[normalem]{ulem}
+% empty pages betwen chapters
+\usepackage{emptypage}
+
+
+\makeatletter
+\makeatother
+
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+
+\usepackage[sectionbib]{chapterbib}
+
+%% List of Abbreviations
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{Acronyms}
+%% to update run makeindex on docs folder and move results to / folder
+%% see nomencl manual
+%% e.g. makeindex SOCMapping.nlo -s nomencl.ist -o SOCMapping.nls
+
+%% index
+\usepackage{imakeidx}
+\makeindex
+
+\usepackage{xspace}
+
+% no title page
+\AtBeginDocument{\let\maketitle\relax}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=astral,
+	filecolor=astral,
+	urlcolor=astral,
+	citecolor=astral
+}
+
+\AtBeginDocument{\renewcommand{\chaptername}{Chapter}}
+\usepackage{titling}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{bookmark}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\DeclareUnicodeCharacter{2212}{\textendash}
+\usepackage{rotating, graphicx}
+\usepackage{listings}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={DRAFT - Integrated soil information for decision-making },
+  pdfauthor={Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I.},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DRAFT - Integrated soil information for decision-making}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making.}
+\author{Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I.}
+\date{}
+
+\begin{document}
+\maketitle
+
+\pagestyle{plain}
+\includepdf{images/frontcover.pdf}
+\afterpage{\blankpage}
+\thispagestyle{empty}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{4cm}
+        \Large
+
+        \textcolor{astral}{\textbf{Global Soil Nutrient and Nutrient Budgets maps (GSNmap) Phase I\\
+Technical Manual\\}}
+        \vspace{0.5cm}
+        \normalsize
+        \vfill
+        \noindent
+        {\color{astral}\rule{\linewidth}{0.5mm} }
+
+        Food and Agriculture Organization of the United Nations\\
+	Rome, 2022
+    \end{center}
+\end{titlepage}
+\includepdf{images/CB9015EN-Copyright-Disclaimer-v2.pdf}
+
+\frontmatter
+\addtocontents{toc}{\protect\hypersetup{hidelinks}}   
+\addtocontents{lof}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\addtocontents{lot}{\protect\hypersetup{hidelinks}}
+\tableofcontents
+\listoffigures
+\listoftables
+\nopagebreak[5]
+
+\begin{figure}
+\includegraphics[width=41.67in]{images/frontcover} \end{figure}
+
+\hypertarget{licence}{%
+\chapter*{Licence}\label{licence}}
+\addcontentsline{toc}{chapter}{Licence}
+
+The Technical Manual is made available under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO licence
+
+\href{https://creativecommons.org/licenses/by-nc-sa/3.0/igo/legalcode}{CC BY-NC-SA 3.0 IGO}.
+
+\hypertarget{abbreviations-and-acronyms}{%
+\chapter*{Abbreviations and acronyms}\label{abbreviations-and-acronyms}}
+\addcontentsline{toc}{chapter}{Abbreviations and acronyms}
+
+\begin{description}
+\item[BD]
+Bulk density
+\item[CEC]
+Cation exchange capacity
+\item[CRAN]
+Comprehensive R archive network
+\item[DSM]
+Digital soil mapping
+\item[GEE]
+Google Earth Engine
+\item[GSP]
+Global Soil Partnership
+\item[INSII]
+International Network of Soil Information Institutions
+\item[ITPS]
+Intergovernmental Technical Panel on Soils
+\item[ME]
+Mean error
+\item[MAE]
+Mean absolute error
+\item[MEC]
+Modelling efficiency coefficient
+\item[NDVI]
+Normalized difference in vegetation index
+\item[QA/QC]
+Quality assurance/quality check
+\item[RMSE]
+Root mean squared error
+\item[SOC]
+Soil organic carbon
+\item[SOM]
+Soil organic matter
+\end{description}
+
+\hypertarget{contributors-and-reviewers}{%
+\chapter*{Contributors and reviewers}\label{contributors-and-reviewers}}
+\addcontentsline{toc}{chapter}{Contributors and reviewers}
+
+\hypertarget{presentation-and-basics}{%
+\chapter*{Presentation and basics}\label{presentation-and-basics}}
+\addcontentsline{toc}{chapter}{Presentation and basics}
+
+Placeholder
+
+\hypertarget{what-this-tutorial-is-not}{%
+\section*{What this Tutorial is not}\label{what-this-tutorial-is-not}}
+\addcontentsline{toc}{section}{What this Tutorial is not}
+
+\hypertarget{the-training-dataset}{%
+\section*{The Training Dataset}\label{the-training-dataset}}
+\addcontentsline{toc}{section}{The Training Dataset}
+
+\hypertarget{data-structure}{%
+\subsection*{Data Structure}\label{data-structure}}
+\addcontentsline{toc}{subsection}{Data Structure}
+
+\hypertarget{how-to-use-this-manual}{%
+\section*{How to Use This Manual}\label{how-to-use-this-manual}}
+\addcontentsline{toc}{section}{How to Use This Manual}
+
+\hypertarget{manual-structure}{%
+\subsection*{Manual Structure}\label{manual-structure}}
+\addcontentsline{toc}{subsection}{Manual Structure}
+
+\hypertarget{module-1-introduction-to-r-and-preparation-of-soil-data-for-digital-soil-mapping}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping}}{Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping}}\label{module-1-introduction-to-r-and-preparation-of-soil-data-for-digital-soil-mapping}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping}}
+
+\hypertarget{module-2-soil-sampling-design}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 2: Soil Sampling Design}}{Module 2: Soil Sampling Design}}\label{module-2-soil-sampling-design}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 2: Soil Sampling Design}}
+
+\hypertarget{module-3-glosis-data-preparation}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 3: GloSIS Data Preparation}}{Module 3: GloSIS Data Preparation}}\label{module-3-glosis-data-preparation}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 3: GloSIS Data Preparation}}
+
+\hypertarget{module-4-digital-soil-mapping}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 4: Digital Soil Mapping}}{Module 4: Digital Soil Mapping}}\label{module-4-digital-soil-mapping}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 4: Digital Soil Mapping}}
+
+\hypertarget{module-5-soil-spectroscopy}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 5: Soil Spectroscopy}}{Module 5: Soil Spectroscopy}}\label{module-5-soil-spectroscopy}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 5: Soil Spectroscopy}}
+
+\hypertarget{module-6-soil-data-sharing}{%
+\subsubsection*{\texorpdfstring{\textbf{Module 6: Soil Data Sharing}}{Module 6: Soil Data Sharing}}\label{module-6-soil-data-sharing}}
+\addcontentsline{toc}{subsubsection}{\textbf{Module 6: Soil Data Sharing}}
+
+\hypertarget{required-downloads}{%
+\section*{Required downloads}\label{required-downloads}}
+\addcontentsline{toc}{section}{Required downloads}
+
+\hypertarget{step-by-step-setup-instructions}{%
+\subsection*{Step-by-step setup instructions}\label{step-by-step-setup-instructions}}
+\addcontentsline{toc}{subsection}{Step-by-step setup instructions}
+
+\hypertarget{step-1-download-and-extract-the-github-repository}{%
+\subsubsection*{Step 1: Download and extract the GitHub repository}\label{step-1-download-and-extract-the-github-repository}}
+\addcontentsline{toc}{subsubsection}{Step 1: Download and extract the GitHub repository}
+
+\hypertarget{step-2-download-the-google-drive-data}{%
+\subsubsection*{Step 2: Download the Google Drive data}\label{step-2-download-the-google-drive-data}}
+\addcontentsline{toc}{subsubsection}{Step 2: Download the Google Drive data}
+
+\hypertarget{step-3-inspect-the-project-folder-structure}{%
+\subsubsection*{Step 3: Inspect the project folder structure}\label{step-3-inspect-the-project-folder-structure}}
+\addcontentsline{toc}{subsubsection}{Step 3: Inspect the project folder structure}
+
+\hypertarget{step-4-place-google-drive-files-into-the-correct-module-folders}{%
+\subsubsection*{Step 4: Place Google Drive files into the correct module folders}\label{step-4-place-google-drive-files-into-the-correct-module-folders}}
+\addcontentsline{toc}{subsubsection}{Step 4: Place Google Drive files into the correct module folders}
+
+\hypertarget{what-is-r}{%
+\section{What is R?}\label{what-is-r}}
+
+\hypertarget{why-r-for-soil-science}{%
+\subsection{Why R for Soil Science?}\label{why-r-for-soil-science}}
+
+\hypertarget{installing-r-and-rstudio}{%
+\section{Installing R and RStudio}\label{installing-r-and-rstudio}}
+
+\hypertarget{installing-r}{%
+\subsection{Installing R}\label{installing-r}}
+
+\hypertarget{installing-rstudio}{%
+\subsection{Installing RStudio}\label{installing-rstudio}}
+
+\hypertarget{verifying-installation}{%
+\subsection{Verifying Installation}\label{verifying-installation}}
+
+\hypertarget{understanding-the-rstudio-interface}{%
+\section{Understanding the RStudio Interface}\label{understanding-the-rstudio-interface}}
+
+\hypertarget{console-pane-bottom-left}{%
+\subsection{1. Console Pane (Bottom Left)}\label{console-pane-bottom-left}}
+
+\hypertarget{code-editor-pane-top-left}{%
+\subsection{2. Code Editor Pane (Top Left)}\label{code-editor-pane-top-left}}
+
+\hypertarget{environmenthistory-pane-top-right}{%
+\subsection{3. Environment/History Pane (Top Right)}\label{environmenthistory-pane-top-right}}
+
+\hypertarget{filesplotspackageshelp-pane-bottom-right}{%
+\subsection{4. Files/Plots/Packages/Help Pane (Bottom Right)}\label{filesplotspackageshelp-pane-bottom-right}}
+
+\hypertarget{r-packages-extending-rs-capabilities}{%
+\section{R Packages: Extending R's Capabilities}\label{r-packages-extending-rs-capabilities}}
+
+\hypertarget{what-are-packages}{%
+\subsection{What are Packages?}\label{what-are-packages}}
+
+\hypertarget{installing-packages}{%
+\subsection{Installing Packages}\label{installing-packages}}
+
+\hypertarget{install-packages-from-github-or-other-sources}{%
+\subsubsection{Install Packages from GitHub or Other Sources}\label{install-packages-from-github-or-other-sources}}
+
+\hypertarget{manual-installation-of-r-packages}{%
+\subsubsection{Manual Installation of R Packages}\label{manual-installation-of-r-packages}}
+
+\hypertarget{loading-packages}{%
+\subsection{Loading Packages}\label{loading-packages}}
+
+\hypertarget{finding-help-on-packages}{%
+\subsection{Finding Help on Packages}\label{finding-help-on-packages}}
+
+\hypertarget{object-types}{%
+\section{R Basics: Objects and Data Types}\label{object-types}}
+
+\hypertarget{object-assignment}{%
+\subsection{Creating Objects with Assignment}\label{object-assignment}}
+
+\hypertarget{data-types}{%
+\subsection{Data Types in R}\label{data-types}}
+
+\hypertarget{numeric-data}{%
+\subsubsection{1. Numeric (Numbers)}\label{numeric-data}}
+
+\hypertarget{integer-data}{%
+\subsubsection{2. Integer (Whole Numbers)}\label{integer-data}}
+
+\hypertarget{text-data}{%
+\subsubsection{3. Character (Text Strings)}\label{text-data}}
+
+\hypertarget{logical-data}{%
+\subsubsection{4. Logical (TRUE/FALSE)}\label{logical-data}}
+
+\hypertarget{dates-data}{%
+\subsubsection{5. Dates}\label{dates-data}}
+
+\hypertarget{check-data}{%
+\subsection{Checking Data Types}\label{check-data}}
+
+\hypertarget{structure-data}{%
+\section{Data Structures in R}\label{structure-data}}
+
+\hypertarget{vector-data}{%
+\subsection{Vectors}\label{vector-data}}
+
+\hypertarget{create-vector}{%
+\subsubsection{Creating Vectors}\label{create-vector}}
+
+\hypertarget{operate-vector}{%
+\subsubsection{Vector Operations}\label{operate-vector}}
+
+\hypertarget{element-vector}{%
+\subsubsection{Accessing Vector Elements}\label{element-vector}}
+
+\hypertarget{factor-data}{%
+\subsection{Factors}\label{factor-data}}
+
+\hypertarget{matrix-data}{%
+\subsection{Matrices}\label{matrix-data}}
+
+\hypertarget{dataframe}{%
+\subsection{Data Frames}\label{dataframe}}
+
+\hypertarget{dataframe-create}{%
+\subsubsection{Creating Data Frames}\label{dataframe-create}}
+
+\hypertarget{dataframe-access}{%
+\subsubsection{Accessing Data Frame Elements}\label{dataframe-access}}
+
+\hypertarget{dataframe-cols}{%
+\subsubsection{Adding Columns}\label{dataframe-cols}}
+
+\hypertarget{list-data}{%
+\subsection{Lists}\label{list-data}}
+
+\hypertarget{operators}{%
+\section{Operators in R}\label{operators}}
+
+\hypertarget{arithmetic-operators}{%
+\subsection{Arithmetic Operators}\label{arithmetic-operators}}
+
+\hypertarget{comparison-operators}{%
+\subsection{Comparison Operators}\label{comparison-operators}}
+
+\hypertarget{logical-operators}{%
+\subsection{Logical Operators}\label{logical-operators}}
+
+\hypertarget{conditional-statements}{%
+\section{Control Structures: Conditional Statements}\label{conditional-statements}}
+
+\hypertarget{ifelse-statements}{%
+\subsection{If-Else Statements}\label{ifelse-statements}}
+
+\hypertarget{v-ifelse-statements}{%
+\subsection{\texorpdfstring{Vectorized If-Else: \texttt{ifelse()}}{Vectorized If-Else: ifelse()}}\label{v-ifelse-statements}}
+
+\hypertarget{cut-statements}{%
+\subsection{\texorpdfstring{Vectorized Cut: \texttt{cut()}}{Vectorized Cut: cut()}}\label{cut-statements}}
+
+\hypertarget{control-structures}{%
+\section{Control Structures: Loops}\label{control-structures}}
+
+\hypertarget{for-loop}{%
+\subsection{For Loops}\label{for-loop}}
+
+\hypertarget{while-loop}{%
+\subsection{While Loops}\label{while-loop}}
+
+\hypertarget{r-funtions}{%
+\section{Functions in R}\label{r-funtions}}
+
+\hypertarget{built-funtions}{%
+\subsection{Using Built-in Functions}\label{built-funtions}}
+
+\hypertarget{build-functions}{%
+\subsection{Creating Custom Functions}\label{build-functions}}
+
+\hypertarget{arguments-functions}{%
+\subsection{Function Arguments and Defaults}\label{arguments-functions}}
+
+\hypertarget{R-data-manipulation}{%
+\section{Data Manipulation with Base R}\label{R-data-manipulation}}
+
+\hypertarget{R-data-subset}{%
+\subsection{Subsetting and Filtering}\label{R-data-subset}}
+
+\hypertarget{delete-cols}{%
+\subsection{Deleting Columns}\label{delete-cols}}
+
+\hypertarget{sort-rows}{%
+\subsection{Sorting Data}\label{sort-rows}}
+
+\hypertarget{aggregate-rows}{%
+\subsection{Aggregating Data}\label{aggregate-rows}}
+
+\hypertarget{tidyverse-manipultation}{%
+\section{Data Manipulation with the Tidyverse}\label{tidyverse-manipultation}}
+
+\hypertarget{tidyverse-load}{%
+\subsection{Loading the Tidyverse}\label{tidyverse-load}}
+
+\hypertarget{tidyverse-tibbles}{%
+\subsection{Tibbles: Modern Data Frames}\label{tidyverse-tibbles}}
+
+\hypertarget{tidyverse-pipe}{%
+\subsection{\texorpdfstring{The Pipe Operator: \texttt{\%\textgreater{}\%}}{The Pipe Operator: \%\textgreater\%}}\label{tidyverse-pipe}}
+
+\hypertarget{manipulation-dplyr}{%
+\subsection{\texorpdfstring{Data Manipulation with \texttt{\{dplyr\}}}{Data Manipulation with \{dplyr\}}}\label{manipulation-dplyr}}
+
+\hypertarget{dplyr-select}{%
+\subsubsection{Selecting Columns}\label{dplyr-select}}
+
+\hypertarget{dplyr-filter}{%
+\subsubsection{Filtering Rows}\label{dplyr-filter}}
+
+\hypertarget{dplyr-rename}{%
+\subsection{\texorpdfstring{Renaming Columns with \texttt{rename()}}{Renaming Columns with rename()}}\label{dplyr-rename}}
+
+\hypertarget{dplyr-mutate}{%
+\subsubsection{\texorpdfstring{Creating/Modifying Columns with \texttt{mutate()}}{Creating/Modifying Columns with mutate()}}\label{dplyr-mutate}}
+
+\hypertarget{dplyr-arrange}{%
+\subsubsection{Arranging (Sorting) Data}\label{dplyr-arrange}}
+
+\hypertarget{dplyr-group}{%
+\subsection{Grouping and Summarizing Data by columns}\label{dplyr-group}}
+
+\hypertarget{dplyr-join}{%
+\section{Combining Data Frames}\label{dplyr-join}}
+
+\hypertarget{understand-joins}{%
+\subsection{Understanding Joins}\label{understand-joins}}
+
+\hypertarget{join-types}{%
+\subsubsection{Join types}\label{join-types}}
+
+\hypertarget{dplyr-join-example}{%
+\subsubsection{Example datasets and join operations}\label{dplyr-join-example}}
+
+\hypertarget{dplyr-bind_rows}{%
+\subsection{\texorpdfstring{Stacking Data with \texttt{bind\_rows()}}{Stacking Data with bind\_rows()}}\label{dplyr-bind_rows}}
+
+\hypertarget{NA}{%
+\section{Missing Data}\label{NA}}
+
+\hypertarget{identify-NA}{%
+\subsection{Identifying Missing Data}\label{identify-NA}}
+
+\hypertarget{handle-NA}{%
+\subsection{Handling Missing Data}\label{handle-NA}}
+
+\hypertarget{pivoting}{%
+\section{\texorpdfstring{Data Reshaping with \texttt{\{tidyr\}} package: Pivoting}{Data Reshaping with \{tidyr\} package: Pivoting}}\label{pivoting}}
+
+\hypertarget{wide-long}{%
+\subsubsection{Wide vs Long Data Format}\label{wide-long}}
+
+\hypertarget{pivot-long}{%
+\subsubsection{\texorpdfstring{\texttt{pivot\_longer()}: Wide to Long}{pivot\_longer(): Wide to Long}}\label{pivot-long}}
+
+\hypertarget{pivot-wider}{%
+\subsubsection{\texorpdfstring{\texttt{pivot\_wider()}: Long to Wide}{pivot\_wider(): Long to Wide}}\label{pivot-wider}}
+
+\hypertarget{pivot-table}{%
+\subsubsection{Advanced Pivoting: Multiple Measurements per Site (Replicates)}\label{pivot-table}}
+
+\hypertarget{dl-data}{%
+\section{Handling Below Detection Limit Data}\label{dl-data}}
+
+\hypertarget{soil-data}{%
+\section{Working with Soil Data}\label{soil-data}}
+
+\hypertarget{set-directory}{%
+\subsection{Setting Working Directory}\label{set-directory}}
+
+\hypertarget{load-packages}{%
+\subsection{Load packages}\label{load-packages}}
+
+\hypertarget{import-files}{%
+\subsection{Importing Data from Files}\label{import-files}}
+
+\hypertarget{read-csv}{%
+\subsubsection{Reading CSV Files}\label{read-csv}}
+
+\hypertarget{read-excel}{%
+\subsubsection{Reading Excel Files}\label{read-excel}}
+
+\hypertarget{data-exploration}{%
+\subsection{Exploring the Data}\label{data-exploration}}
+
+\hypertarget{references-m1}{%
+\section{References}\label{references-m1}}
+
+\hypertarget{data-preparation-for-digital-soil-mapping-in-r}{%
+\chapter{Data preparation for Digital Soil Mapping in R}\label{data-preparation-for-digital-soil-mapping-in-r}}
+
+Placeholder
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+\hypertarget{loading-data}{%
+\section{Loading and exploring raw soil data}\label{loading-data}}
+
+\hypertarget{basic-data-loading-and-structure}{%
+\subsection{Basic data loading and structure}\label{basic-data-loading-and-structure}}
+
+\hypertarget{data-components-and-organization}{%
+\subsection{Data components and organization}\label{data-components-and-organization}}
+
+\hypertarget{site-data-preparation}{%
+\section{Preparing site data for analysis}\label{site-data-preparation}}
+
+\hypertarget{adding-a-unique-row-identifier}{%
+\subsection{Adding a unique row identifier}\label{adding-a-unique-row-identifier}}
+
+\hypertarget{extracting-and-standardizing-column-names-for-sites}{%
+\subsection{Extracting and standardizing column names for sites}\label{extracting-and-standardizing-column-names-for-sites}}
+
+\hypertarget{creating-unique-profile-identifiers}{%
+\subsection{Creating unique profile identifiers}\label{creating-unique-profile-identifiers}}
+
+\hypertarget{remove-exact-duplicate-site-records}{%
+\subsection{Remove exact duplicate site records}\label{remove-exact-duplicate-site-records}}
+
+\hypertarget{coordinate-validation}{%
+\section{Coordinate validation and correction}\label{coordinate-validation}}
+
+\hypertarget{check-1-missing-coordinates}{%
+\subsection{Check 1: Missing coordinates}\label{check-1-missing-coordinates}}
+
+\hypertarget{check-2-valid-coordinate-ranges}{%
+\subsection{Check 2: Valid coordinate ranges}\label{check-2-valid-coordinate-ranges}}
+
+\hypertarget{depth-validation}{%
+\section{Soil depth validation and correction}\label{depth-validation}}
+
+\hypertarget{check-1-missing-depth-boundaries}{%
+\subsection{Check 1: Missing depth boundaries}\label{check-1-missing-depth-boundaries}}
+
+\hypertarget{check-2-negative-depth-values}{%
+\subsection{Check 2: Negative depth values}\label{check-2-negative-depth-values}}
+
+\hypertarget{check-3-zero-thickness-intervals}{%
+\subsection{Check 3: Zero-thickness intervals}\label{check-3-zero-thickness-intervals}}
+
+\hypertarget{check-4-invalid-depth-logic}{%
+\subsection{Check 4: Invalid depth logic}\label{check-4-invalid-depth-logic}}
+
+\hypertarget{check-5-profiles-without-a-surface-horizon-top-0}{%
+\subsection{Check 5: Profiles without a surface horizon (top \textgreater{} 0)}\label{check-5-profiles-without-a-surface-horizon-top-0}}
+
+\hypertarget{lab-validation}{%
+\section{Preparing lab data: harmonization and validation}\label{lab-validation}}
+
+\hypertarget{prepare-and-standardize-laboratory-columns}{%
+\subsection{Prepare and standardize laboratory columns}\label{prepare-and-standardize-laboratory-columns}}
+
+\hypertarget{check-1-check-each-property-against-feasible-analytical-thresholds}{%
+\subsection{Check 1: Check each property against feasible analytical thresholds}\label{check-1-check-each-property-against-feasible-analytical-thresholds}}
+
+\hypertarget{load-property-thresholds}{%
+\subsubsection{Load property thresholds}\label{load-property-thresholds}}
+
+\hypertarget{identify-out-of-bounds-values}{%
+\subsubsection{Identify out-of-bounds values}\label{identify-out-of-bounds-values}}
+
+\hypertarget{reporting-out-of-bounds-for-properties-and-audit-trail}{%
+\subsubsection{Reporting out-of-bounds for properties and audit trail}\label{reporting-out-of-bounds-for-properties-and-audit-trail}}
+
+\hypertarget{check-2-texture-validation}{%
+\subsection{Check 2: Texture validation}\label{check-2-texture-validation}}
+
+\hypertarget{check-3-correction-of-out-of-bounds-laboratory-values}{%
+\subsection{Check 3: Correction of out-of-bounds laboratory values}\label{check-3-correction-of-out-of-bounds-laboratory-values}}
+
+\hypertarget{option-1-targeted-corrections-when-error-mechanism-is-known}{%
+\subsubsection{Option 1: Targeted corrections (when error mechanism is known)}\label{option-1-targeted-corrections-when-error-mechanism-is-known}}
+
+\hypertarget{option-2-replace-out-of-bounds-values-with-na}{%
+\subsubsection{\texorpdfstring{Option 2: Replace out-of-bounds values with \texttt{NA}}{Option 2: Replace out-of-bounds values with NA}}\label{option-2-replace-out-of-bounds-values-with-na}}
+
+\hypertarget{duplicate-detection}{%
+\section{Resolving duplicated data in soil profiles}\label{duplicate-detection}}
+
+\hypertarget{why-duplicates-occur}{%
+\subsection{Why duplicates occur}\label{why-duplicates-occur}}
+
+\hypertarget{types-of-duplicate-situations}{%
+\subsection{Types of duplicate situations}\label{types-of-duplicate-situations}}
+
+\hypertarget{check-1-detect-potential-horizon-duplicates-within-profiles}{%
+\subsection{Check 1: Detect potential horizon duplicates within profiles}\label{check-1-detect-potential-horizon-duplicates-within-profiles}}
+
+\hypertarget{resolving-profile-duplicates}{%
+\subsection{Resolving Profile Duplicates}\label{resolving-profile-duplicates}}
+
+\hypertarget{check-1-average-duplicated-horizons-same-depth-intervals}{%
+\subsubsection{Check 1: Average duplicated horizons (same depth intervals)}\label{check-1-average-duplicated-horizons-same-depth-intervals}}
+
+\hypertarget{check-2-resolve-profid-for-multiple-depth-sequences}{%
+\subsubsection{Check 2: Resolve ProfID for multiple depth sequences}\label{check-2-resolve-profid-for-multiple-depth-sequences}}
+
+\hypertarget{remove-profiles-not-starting-at-the-surface}{%
+\subsection{Remove profiles not starting at the surface}\label{remove-profiles-not-starting-at-the-surface}}
+
+\hypertarget{check-1-remove-profiles-with-incomplete-surface-coverage}{%
+\subsubsection{Check 1: Remove profiles with incomplete surface coverage}\label{check-1-remove-profiles-with-incomplete-surface-coverage}}
+
+\hypertarget{result}{%
+\subsection{Result}\label{result}}
+
+\hypertarget{harmonization}{%
+\section{Harmonizing data for DSM}\label{harmonization}}
+
+\hypertarget{depth-standardization}{%
+\subsection{Depth standardization}\label{depth-standardization}}
+
+\hypertarget{processing-standardized-data}{%
+\subsection{Processing standardized data}\label{processing-standardized-data}}
+
+\hypertarget{exporting-standardized-data-for-digital-soil-mapping}{%
+\subsection{Exporting standardized data for Digital Soil Mapping}\label{exporting-standardized-data-for-digital-soil-mapping}}
+
+\hypertarget{spectroscopy}{%
+\section{Preparing data for spectroscopy analyses}\label{spectroscopy}}
+
+\hypertarget{exports}{%
+\section{Summary of exported files}\label{exports}}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{sampling-design-for-soil-surveys}{%
+\chapter{Sampling design for soil surveys}\label{sampling-design-for-soil-surveys}}
+
+Placeholder
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{sampling-theory}{%
+\section{Sampling methodologies for soil spatial survey}\label{sampling-theory}}
+
+\hypertarget{selection-methods}{%
+\subsection{Selection of the sampling methodology}\label{selection-methods}}
+
+\hypertarget{inference-methods}{%
+\subsection{Inference Methods}\label{inference-methods}}
+
+\hypertarget{sampling-purpose}{%
+\subsection{Purpose of Sampling}\label{sampling-purpose}}
+
+\hypertarget{design-types}{%
+\subsection{Sampling Design Types}\label{design-types}}
+
+\hypertarget{soils4africa-example}{%
+\subsubsection{Example: Soils4Africa Sampling Design}\label{soils4africa-example}}
+
+\hypertarget{soilfer-design}{%
+\section{SoilFER Sampling Design}\label{soilfer-design}}
+
+\hypertarget{soil-properties}{%
+\subsection{Soil Properties}\label{soil-properties}}
+
+\hypertarget{env-covariates}{%
+\subsection{Environmental Covariates}\label{env-covariates}}
+
+\hypertarget{methodology}{%
+\subsection{Understanding the Methodology}\label{methodology}}
+
+\hypertarget{psu-selection-process}{%
+\subsubsection{PSU Selection Process}\label{psu-selection-process}}
+
+\hypertarget{ssu-tsu-selection}{%
+\subsubsection{SSU and TSU Selection Process}\label{ssu-tsu-selection}}
+
+\hypertarget{site-id}{%
+\subsubsection{Site Identification System}\label{site-id}}
+
+\hypertarget{tutorial}{%
+\section{Tutorial Using R}\label{tutorial}}
+
+\hypertarget{setup}{%
+\subsection{Setting Up the Environment}\label{setup}}
+
+\hypertarget{install-libraries}{%
+\subsubsection{Install Required Libraries}\label{install-libraries}}
+
+\hypertarget{define-parameters}{%
+\subsection{Define Variables and Parameters}\label{define-parameters}}
+
+\hypertarget{country-iso-code}{%
+\subsection{Country ISO Code}\label{country-iso-code}}
+
+\hypertarget{land-use-type}{%
+\subsubsection{Land Use Type}\label{land-use-type}}
+
+\hypertarget{file-paths}{%
+\subsubsection{File Paths}\label{file-paths}}
+
+\hypertarget{coordinate-reference-system}{%
+\subsubsection{Coordinate Reference System}\label{coordinate-reference-system}}
+
+\hypertarget{sample-size-calculation}{%
+\subsubsection{Sample Size Calculation}\label{sample-size-calculation}}
+
+\hypertarget{sampling-unit-definitions}{%
+\subsubsection{Sampling Unit Definitions}\label{sampling-unit-definitions}}
+
+\hypertarget{algorithm-parameters}{%
+\subsubsection{Algorithm Parameters}\label{algorithm-parameters}}
+
+\hypertarget{custom-functions}{%
+\subsection{Custom Functions}\label{custom-functions}}
+
+\hypertarget{covariate-space-coverage-function-csis}{%
+\subsubsection{Covariate Space Coverage Function (CSIS)}\label{covariate-space-coverage-function-csis}}
+
+\hypertarget{tsu-generation-function}{%
+\subsubsection{TSU Generation Function}\label{tsu-generation-function}}
+
+\hypertarget{load-boundaries}{%
+\subsection{Load Country Boundaries and Legacy Data}\label{load-boundaries}}
+
+\hypertarget{visualize-boundaries-and-legacy-data}{%
+\subsubsection{Visualize Boundaries and Legacy Data}\label{visualize-boundaries-and-legacy-data}}
+
+\hypertarget{load-covariates-psu}{%
+\subsection{Load Environmental Covariates for PSUs}\label{load-covariates-psu}}
+
+\hypertarget{optional-auxiliary-data}{%
+\subsubsection{Optional Auxiliary Data}\label{optional-auxiliary-data}}
+
+\hypertarget{load-and-process-auxiliary-data}{%
+\subsubsection{Load and Process Auxiliary Data}\label{load-and-process-auxiliary-data}}
+
+\hypertarget{load-main-environmental-covariates}{%
+\subsection{Load Main Environmental Covariates}\label{load-main-environmental-covariates}}
+
+\hypertarget{load-and-process-soil-climate-data-newhall}{%
+\subsubsection{Load and Process Soil Climate Data (Newhall)}\label{load-and-process-soil-climate-data-newhall}}
+
+\hypertarget{convert-categorical-variables-to-dummy-variables}{%
+\subsubsection{Convert Categorical Variables to Dummy Variables}\label{convert-categorical-variables-to-dummy-variables}}
+
+\hypertarget{merge-all-covariate-layers}{%
+\subsubsection{Merge All Covariate Layers}\label{merge-all-covariate-layers}}
+
+\hypertarget{crop-and-save-covariates}{%
+\subsubsection{Crop and Save Covariates}\label{crop-and-save-covariates}}
+
+\hypertarget{pca}{%
+\section{Principal Component Analysis (PCA)}\label{pca}}
+
+\hypertarget{sampling-universe}{%
+\section{Organize the Sampling Universe}\label{sampling-universe}}
+
+\hypertarget{load-and-process-land-use-data}{%
+\subsection{Load and Process Land Use Data}\label{load-and-process-land-use-data}}
+
+\hypertarget{exclude-protected-areas}{%
+\subsection{Exclude Protected Areas}\label{exclude-protected-areas}}
+
+\hypertarget{restrict-to-accessible-slopes}{%
+\subsection{Restrict to Accessible Slopes}\label{restrict-to-accessible-slopes}}
+
+\hypertarget{aggregate-to-100m-resolution}{%
+\subsection{Aggregate to 100m Resolution}\label{aggregate-to-100m-resolution}}
+
+\hypertarget{save-processed-land-use}{%
+\subsection{Save Processed Land Use}\label{save-processed-land-use}}
+
+\hypertarget{filter-legacy-data}{%
+\subsection{Filter Legacy Data}\label{filter-legacy-data}}
+
+\hypertarget{create-psu-grid}{%
+\section{Create Primary Sampling Units (PSU Grid)}\label{create-psu-grid}}
+
+\hypertarget{generate-2km-2km-grid}{%
+\subsection{Generate 2km × 2km Grid}\label{generate-2km-2km-grid}}
+
+\hypertarget{trim-to-country-boundaries}{%
+\subsection{Trim to Country Boundaries}\label{trim-to-country-boundaries}}
+
+\hypertarget{save-psu-grid}{%
+\subsection{Save PSU Grid}\label{save-psu-grid}}
+
+\hypertarget{select-psus}{%
+\section{Select PSUs with Sufficient Land Use Coverage}\label{select-psus}}
+
+\hypertarget{calculate-land-use-percentage}{%
+\subsection{Calculate Land Use Percentage}\label{calculate-land-use-percentage}}
+
+\hypertarget{filter-psus}{%
+\subsection{Filter PSUs}\label{filter-psus}}
+
+\hypertarget{rasterize-psus}{%
+\section{Rasterize PSUs for Covariate Space Coverage}\label{rasterize-psus}}
+
+\hypertarget{optimal-sample-size}{%
+\section{Compute Optimal Sample Size}\label{optimal-sample-size}}
+
+\hypertarget{run-optimization}{%
+\subsection{Run Optimization}\label{run-optimization}}
+
+\hypertarget{extract-optimal-sample-size}{%
+\subsection{Extract Optimal Sample Size}\label{extract-optimal-sample-size}}
+
+\hypertarget{csc-computing}{%
+\section{Covariate Space Coverage - Computing PSUs}\label{csc-computing}}
+
+\hypertarget{prepare-function-parameters}{%
+\subsection{Prepare Function Parameters}\label{prepare-function-parameters}}
+
+\hypertarget{perform-k-means-clustering}{%
+\subsection{Perform K-means Clustering}\label{perform-k-means-clustering}}
+
+\hypertarget{assign-clusters-and-calculate-distances}{%
+\subsection{Assign Clusters and Calculate Distances}\label{assign-clusters-and-calculate-distances}}
+
+\hypertarget{extract-selected-psus}{%
+\subsection{Extract Selected PSUs}\label{extract-selected-psus}}
+
+\hypertarget{visualize-in-covariate-space}{%
+\subsection{Visualize in Covariate Space}\label{visualize-in-covariate-space}}
+
+\hypertarget{compute-ssu-tsu}{%
+\section{Compute SSUs and TSUs}\label{compute-ssu-tsu}}
+
+\hypertarget{load-high-resolution-covariates}{%
+\subsection{Load High-Resolution Covariates}\label{load-high-resolution-covariates}}
+
+\hypertarget{process-each-psu}{%
+\subsection{Process Each PSU}\label{process-each-psu}}
+
+\hypertarget{combine-ssus-and-tsus}{%
+\subsection{Combine SSUs and TSUs}\label{combine-ssus-and-tsus}}
+
+\hypertarget{export-units}{%
+\section{Export Sampling Units}\label{export-units}}
+
+\hypertarget{create-cluster-raster}{%
+\subsection{Create Cluster Raster}\label{create-cluster-raster}}
+
+\hypertarget{join-cluster-info-to-tsus}{%
+\subsection{Join Cluster Info to TSUs}\label{join-cluster-info-to-tsus}}
+
+\hypertarget{create-site-ids}{%
+\subsection{Create Site IDs}\label{create-site-ids}}
+
+\hypertarget{export-shapefiles}{%
+\subsection{Export Shapefiles}\label{export-shapefiles}}
+
+\hypertarget{alternative-psus}{%
+\section{Compute Alternative PSUs}\label{alternative-psus}}
+
+\hypertarget{assign-unique-ids}{%
+\section{Assign Country-Wide Unique IDs}\label{assign-unique-ids}}
+
+\hypertarget{export-unified}{%
+\section{Export Unified Datasets}\label{export-unified}}
+
+\hypertarget{summary-stats}{%
+\section{Summary Statistics}\label{summary-stats}}
+
+\hypertarget{distribution-maps}{%
+\section{Create Distribution Maps}\label{distribution-maps}}
+
+\hypertarget{gps-prep}{%
+\section{GPS Device Preparation}\label{gps-prep}}
+
+\hypertarget{export-to-gpx-format}{%
+\subsection{Export to GPX Format}\label{export-to-gpx-format}}
+
+\hypertarget{load-onto-gps-device}{%
+\subsection{Load onto GPS Device}\label{load-onto-gps-device}}
+
+\hypertarget{sampling-procedure}{%
+\section{Sampling Procedure}\label{sampling-procedure}}
+
+\hypertarget{data-recording}{%
+\section{Data Recording}\label{data-recording}}
+
+\hypertarget{qc}{%
+\section{Quality Control}\label{qc}}
+
+\hypertarget{appendix-a-software-and-data-sources}{%
+\section*{Appendix A: Software and Data Sources}\label{appendix-a-software-and-data-sources}}
+\addcontentsline{toc}{section}{Appendix A: Software and Data Sources}
+
+\hypertarget{software-requirements}{%
+\subsection{Software Requirements}\label{software-requirements}}
+
+\hypertarget{data-sources}{%
+\subsection{Data Sources}\label{data-sources}}
+
+\hypertarget{appendix-b-troubleshooting-common-issues}{%
+\section*{Appendix B: Troubleshooting Common Issues}\label{appendix-b-troubleshooting-common-issues}}
+\addcontentsline{toc}{section}{Appendix B: Troubleshooting Common Issues}
+
+\hypertarget{memory-issues}{%
+\subsection{Memory Issues}\label{memory-issues}}
+
+\hypertarget{crs-misalignment}{%
+\subsection{CRS Misalignment}\label{crs-misalignment}}
+
+\hypertarget{empty-geometry}{%
+\subsection{Empty Geometry}\label{empty-geometry}}
+
+\hypertarget{appendix-c-acronyms-and-abbreviations}{%
+\section*{Appendix C: Acronyms and Abbreviations}\label{appendix-c-acronyms-and-abbreviations}}
+\addcontentsline{toc}{section}{Appendix C: Acronyms and Abbreviations}
+
+\hypertarget{tbd}{%
+\chapter{TBD}\label{tbd}}
+
+\hypertarget{soil-data-preparation}{%
+\chapter{Soil Data Preparation}\label{soil-data-preparation}}
+
+\hypertarget{introduction-2}{%
+\section{Introduction}\label{introduction-2}}
+
+\hypertarget{data-cleaning}{%
+\section{Data cleaning}\label{data-cleaning}}
+
+\hypertarget{soil-data-harmonization}{%
+\section{Soil Data Harmonization}\label{soil-data-harmonization}}
+
+\hypertarget{concepts-on-digital-exchange-of-soil-related-data-iso-28258}{%
+\section{Concepts on digital exchange of soil-related data (ISO 28258)}\label{concepts-on-digital-exchange-of-soil-related-data-iso-28258}}
+
+\hypertarget{plot-data}{%
+\section{Plot data}\label{plot-data}}
+
+\hypertarget{profile-data}{%
+\section{Profile data}\label{profile-data}}
+
+\hypertarget{element-data}{%
+\section{Element data}\label{element-data}}
+
+\hypertarget{specimen-data}{%
+\section{Specimen data}\label{specimen-data}}
+
+\hypertarget{definition-of-laboratory-procedures}{%
+\section{Definition of laboratory procedures}\label{definition-of-laboratory-procedures}}
+
+\hypertarget{data-transformation}{%
+\section{Data transformation}\label{data-transformation}}
+
+\hypertarget{organizing-soil-data-according-to-the-glosis-database}{%
+\section{Organizing soil data according to the GloSIS database}\label{organizing-soil-data-according-to-the-glosis-database}}
+
+\hypertarget{tools-for-harmonization-of-soil-databases-within-glosis}{%
+\section{Tools for harmonization of soil databases within GloSIS}\label{tools-for-harmonization-of-soil-databases-within-glosis}}
+
+\hypertarget{digital-soil-mapping-and-modeling}{%
+\chapter{Digital Soil Mapping and Modeling}\label{digital-soil-mapping-and-modeling}}
+
+Placeholder
+
+\hypertarget{part-i-theoretical-foundations}{%
+\section*{Part I: Theoretical Foundations}\label{part-i-theoretical-foundations}}
+\addcontentsline{toc}{section}{Part I: Theoretical Foundations}
+
+\hypertarget{fundamentals-of-digital-soil-mapping}{%
+\section{Fundamentals of Digital Soil Mapping}\label{fundamentals-of-digital-soil-mapping}}
+
+\hypertarget{introduction-to-digital-soil-mapping}{%
+\subsection{Introduction to Digital Soil Mapping}\label{introduction-to-digital-soil-mapping}}
+
+\hypertarget{the-scorpan-framework}{%
+\subsection{The SCORPAN Framework}\label{the-scorpan-framework}}
+
+\hypertarget{statistical-theory-for-predictive-soil-mapping}{%
+\subsection{Statistical Theory for Predictive Soil Mapping}\label{statistical-theory-for-predictive-soil-mapping}}
+
+\hypertarget{mechanistic-versus-empirical-approaches}{%
+\subsubsection{Mechanistic versus Empirical Approaches}\label{mechanistic-versus-empirical-approaches}}
+
+\hypertarget{sources-of-residual-variance}{%
+\subsubsection{Sources of Residual Variance}\label{sources-of-residual-variance}}
+
+\hypertarget{covariates-as-proxies-of-soil-forming-factors}{%
+\subsubsection{Covariates as Proxies of Soil-Forming Factors}\label{covariates-as-proxies-of-soil-forming-factors}}
+
+\hypertarget{the-universal-model-of-soil-variation}{%
+\subsubsection{The Universal Model of Soil Variation}\label{the-universal-model-of-soil-variation}}
+
+\hypertarget{extending-the-model-space-depth-and-time-3dt}{%
+\subsubsection{Extending the Model: Space, Depth, and Time (3D+T)}\label{extending-the-model-space-depth-and-time-3dt}}
+
+\hypertarget{types-of-soil-variables}{%
+\subsection{Types of Soil Variables}\label{types-of-soil-variables}}
+
+\hypertarget{prediction-methods}{%
+\subsection{Prediction Methods}\label{prediction-methods}}
+
+\hypertarget{nonlinearity-and-uncertainty}{%
+\subsection{Nonlinearity and Uncertainty}\label{nonlinearity-and-uncertainty}}
+
+\hypertarget{part-ii-practical-application}{%
+\section*{Part II: Practical Application}\label{part-ii-practical-application}}
+\addcontentsline{toc}{section}{Part II: Practical Application}
+
+\hypertarget{workflow-overview}{%
+\section{Workflow Overview}\label{workflow-overview}}
+
+\hypertarget{continuous-modelling-ph}{%
+\section{Continuous Modelling (pH)}\label{continuous-modelling-ph}}
+
+\hypertarget{nature-of-the-variable}{%
+\subsection{Nature of the Variable}\label{nature-of-the-variable}}
+
+\hypertarget{data-and-covariates}{%
+\subsection{Data and Covariates}\label{data-and-covariates}}
+
+\hypertarget{feature-selection-boruta}{%
+\subsection{Feature Selection (Boruta)}\label{feature-selection-boruta}}
+
+\hypertarget{model-training}{%
+\subsection{Model Training}\label{model-training}}
+
+\hypertarget{variable-importance}{%
+\subsection{Variable Importance}\label{variable-importance}}
+
+\hypertarget{validation-metrics}{%
+\subsection{Validation Metrics}\label{validation-metrics}}
+
+\hypertarget{prediction-maps}{%
+\subsection{Prediction Maps}\label{prediction-maps}}
+
+\hypertarget{mean-ph-map}{%
+\subsubsection{Mean pH Map}\label{mean-ph-map}}
+
+\hypertarget{uncertainty-map-standard-deviation}{%
+\subsubsection{Uncertainty Map (Standard Deviation)}\label{uncertainty-map-standard-deviation}}
+
+\hypertarget{coefficient-of-variation-map}{%
+\subsubsection{Coefficient of Variation Map}\label{coefficient-of-variation-map}}
+
+\hypertarget{nominal-classification-clay_ph_class}{%
+\section{Nominal Classification (Clay\_pH\_Class)}\label{nominal-classification-clay_ph_class}}
+
+\hypertarget{nature-of-the-variable-1}{%
+\subsection{Nature of the Variable}\label{nature-of-the-variable-1}}
+
+\hypertarget{feature-selection}{%
+\subsection{Feature Selection}\label{feature-selection}}
+
+\hypertarget{model-training-1}{%
+\subsection{Model Training}\label{model-training-1}}
+
+\hypertarget{validation}{%
+\subsection{Validation}\label{validation}}
+
+\hypertarget{prediction-maps-1}{%
+\subsection{Prediction Maps}\label{prediction-maps-1}}
+
+\hypertarget{predicted-class-map}{%
+\subsubsection{Predicted Class Map}\label{predicted-class-map}}
+
+\hypertarget{maximum-probability-map}{%
+\subsubsection{Maximum Probability Map}\label{maximum-probability-map}}
+
+\hypertarget{uncertainty-map}{%
+\subsubsection{Uncertainty Map}\label{uncertainty-map}}
+
+\hypertarget{confident-predictions-map}{%
+\subsubsection{Confident Predictions Map}\label{confident-predictions-map}}
+
+\hypertarget{ordinal-modelling-ph_class}{%
+\section{Ordinal Modelling (pH\_Class)}\label{ordinal-modelling-ph_class}}
+
+\hypertarget{nature-of-the-variable-2}{%
+\subsection{Nature of the Variable}\label{nature-of-the-variable-2}}
+
+\hypertarget{ordinal-encoding}{%
+\subsection{Ordinal Encoding}\label{ordinal-encoding}}
+
+\hypertarget{feature-selection-1}{%
+\subsection{Feature Selection}\label{feature-selection-1}}
+
+\hypertarget{model-training-2}{%
+\subsection{Model Training}\label{model-training-2}}
+
+\hypertarget{validation-1}{%
+\subsection{Validation}\label{validation-1}}
+
+\hypertarget{prediction-maps-2}{%
+\subsection{Prediction Maps}\label{prediction-maps-2}}
+
+\hypertarget{latent-values-map}{%
+\subsubsection{Latent Values Map}\label{latent-values-map}}
+
+\hypertarget{reclassified-ordinal-class-map}{%
+\subsubsection{Reclassified Ordinal Class Map}\label{reclassified-ordinal-class-map}}
+
+\hypertarget{standard-deviation-map}{%
+\subsubsection{Standard Deviation Map}\label{standard-deviation-map}}
+
+\hypertarget{class-instability-map}{%
+\subsubsection{Class Instability Map}\label{class-instability-map}}
+
+\hypertarget{area-of-applicability-aoa}{%
+\section{Area of Applicability (AOA)}\label{area-of-applicability-aoa}}
+
+\hypertarget{why-aoa-is-necessary}{%
+\subsection{Why AOA is Necessary}\label{why-aoa-is-necessary}}
+
+\hypertarget{dissimilarity-index-di}{%
+\subsection{Dissimilarity Index (DI)}\label{dissimilarity-index-di}}
+
+\hypertarget{aoa-binary-mask}{%
+\subsection{AOA Binary Mask}\label{aoa-binary-mask}}
+
+\hypertarget{local-point-density-lpd}{%
+\subsection{Local Point Density (LPD)}\label{local-point-density-lpd}}
+
+\hypertarget{predictions-masked-to-aoa}{%
+\subsection{Predictions Masked to AOA}\label{predictions-masked-to-aoa}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{references-1}{%
+\section*{References}\label{references-1}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{soil-data-sharing}{%
+\chapter{Soil Data Sharing}\label{soil-data-sharing}}
+
+\hypertarget{data-sharing-and-export-formats}{%
+\section{Data sharing and export formats}\label{data-sharing-and-export-formats}}
+
+\hypertarget{metadata}{%
+\section{Metadata}\label{metadata}}
+
+\hypertarget{web-services}{%
+\section{Web Services}\label{web-services}}
+
+\hypertarget{references-2}{%
+\chapter*{References}\label{references-2}}
+\addcontentsline{toc}{chapter}{References}
+
+%\printindex
+\includepdf{images/backcover.pdf}
+
+\end{document}
