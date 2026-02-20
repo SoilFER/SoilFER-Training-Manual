@@ -1,26 +1,37 @@
 
-
 # Sampling design for soil surveys
 
-## Introduction {#introduction}
+## Introduction {#introduction-ssd}
 
-Soil surveys play a critical role in environmental monitoring, evaluating soil degradation, and formulating sustainable land use strategies [@bui2020]. They offer essential information on soil characteristics, including texture, structure, pH levels, organic matter content, nutrient availability, and other physicochemical attributes of interest. These data are essential for making informed choices about crop selection, fertilizer use, irrigation planning, and soil conservation and management strategies. Therefore, soil information and data are key components in any comprehensive soil survey that supplies necessary information for soil management decisions at local to global scales. In this sense, the Soil Mapping for Resilient Agrifood Systems (SoilFER) framework aims to provide open-access soil information system to support the formulation of digital soil maps, fertilizer recommendations, establish crop suitability, determine soil quality indicators, assess soil health, implement soil conservation practices, and create a national soil spectral library.
+Soil surveys play a critical role in environmental monitoring, evaluating soil degradation, and formulating sustainable land use strategies [@bui2020]. They offer essential information on soil characteristics, including texture, structure, pH levels, organic matter content, nutrient availability, and other physicochemical attributes of interest. These data are essential for making informed choices about crop selection, fertilizer use, irrigation planning, and soil conservation and management strategies. Therefore, soil information and data are key components in any comprehensive soil survey that supplies necessary information for soil management decisions at local to global scales. In this sense, the Soil Mapping for Resilient Agrifood Systems (SoilFER) framework aims to provide open-access soil information system to support the formulation of digital soil maps, fertiliser recommendations, establish crop suitability, determine soil quality indicators, assess soil health, implement soil conservation practices, and create a national soil spectral library.
 
-State-of-the-art soil sampling protocols incorporate a systematic approach that considers factors such as soil variability, sampling depth, current use of the land, farming activities, and sampling density [@brevik2016; @clay2018; @morton2000; @norris2020]. The SoilFER Sampling Design Technical Manual provides a general guidance on soil sampling design methodologies to ensure precision, reproducibility, and reliability in the proper collection of soil samples for digital soil mapping and monitoring. This manual presents a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling for soil mapping and monitoring within the SoilFER framework. The first and second hierarchical levels select respectively the primary and secondary sampling units using a covariate space coverage sampling method on environmental covariates (model-based), while the hierarchical third-level sampling selects the tertiary sampling units using simple random sampling, without replacement (design-based). This implementation standardizes soil sampling methodologies across the various countries involved in the project.
+State-of-the-art soil sampling protocols adopt a systematic approach that considers factors such as soil variability, sampling depth, land-use, farming activities, and sampling density [@brevik2016; @clay2018; @morton2000; @norris2020]. This chapter provides general guidance on soil sampling design methodologies to ensure precision, reproducibility, and reliability in the collection of soil samples for digital soil mapping and monitoring. It presents a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling for soil mapping and monitoring within the SoilFER framework. At the first and second hierarchical levels, the primary and secondary sampling units are selected using a covariate space coverage sampling method based on environmental covariates (model-based). At the third hierarchical level, the tertiary sampling units are selected using simple random sampling without replacement (design-based). This sampling approach standardises soil sampling methodologies across the countries participating in the project.
 
 ## Sampling methodologies for soil spatial survey {#sampling-theory}
 
-Soil monitoring and mapping are essential to understand soil variability and manage soil resources efficiently. In this context, it is important to understand the basics of choosing a sampling methodology that best fits the project's objectives, whether focused on mapping, monitoring, or a combination of both. The aim of this section is to provide an overview of sampling design concepts, making them understandable and accessible for both academic and non-academic audiences.
+Soil monitoring and mapping are essential to understand soil variability and manage soil resources efficiently. In this context, it is important to understand the basics of choosing a sampling methodology that best fits the project's objectives, whether focused on mapping, monitoring, or a combination of both. This section provides an overview of key sampling design concepts, presented in a manner accessible for both academic and non-academic audiences. Let's take a look!
 
 ### Selection of the sampling methodology {#selection-methods}
 
-Purposive (also known as traditional or expert) and probability sampling are the most used methods for selecting sampling units in soil surveys. Both methods differ basically in their objectives. In simple terms, expert sampling involves selecting specific points along a slope or landscape feature, either at individual locations or along transects, such as a catena or toposequence. This approach aims to capture the relationships between the variation in soil properties and the different geographical features that make up the landscape. This concept has been widely used as stated in the literature for soil mapping [@borden2020; @gobin2000; @milne1936]. This selection method effectively captures local variations in soil properties and is useful for understanding how these properties change in relation to terrain and hydrological characteristics. However, this sampling method may not always reflect the overall variability of soil properties across the entire study area. Moreover, implementing this approach generally requires significant effort, time, and funding, particularly for large study areas.
+**Purposive** (also known as *traditional* or *expert*) and **probability sampling** are the most used methods for selecting sampling units in soil surveys. Both methods differ basically in their objectives. In simple terms, *expert* sampling involves selecting specific points along a slope or landscape feature, either at individual locations or along transects, such as a [catena]{.underline} or [toposequence]{.underline}. This approach aims to capture the relationships between the variation in soil properties and the different geographical features that make up the landscape. This concept has been widely used as stated in the literature for soil mapping [@borden2020; @gobin2000; @milne1936]. This selection method effectively captures local variations in soil properties and is useful for understanding how these properties change in relation to terrain and hydrological characteristics. However, this sampling method may not always reflect the overall variability of soil properties across the entire study area. Moreover, implementing this approach generally requires significant effort, time, and funding, particularly for large study areas.
 
-On the other hand, probability sampling assigns a known probability of selection to each sampling unit, ensuring that each sampling unit has a chance of being included in the sample. This approach focuses on obtaining representative samples to make unbiased inferences about the entire population under study [@degruijter2006]. This method requires careful planning and implementation to ensure that the sampling design is both unbiased and representative of the population. In addition, its implementation can be more complex compared to the expert sampling method. However, its main advantage is that every sampling unit has a chance of being included in the sample, resulting in a more representative sample of the variability in the study area. Additionally, it allows statistical inferences about the entire population from the sample. This last aspect, if not the most important, allows soil surveyors to monitor and better report the current and future status of soil properties. In general, traditional/expert (non-probabilistic) sampling is less flexible than probabilistic sampling since the latter allows for both types of inference methods, as we will see in the next subsection.
+On the other hand, ***probability sampling*** assigns a known probability of selection to each sampling unit, ensuring that each sampling unit has a chance of being included in the sample. This approach focuses on obtaining representative samples to make unbiased inferences about the entire population under study [@degruijter2006]. This method requires careful planning and implementation to ensure that the sampling design is both *unbiased* and *representative* of the population. In addition, its implementation can be more complex compared to the expert sampling method. However, its main advantage is that every sampling unit has a chance of being included in the sample, resulting in a more representative sample of the variability in the study area. Additionally, it allows statistical inferences about the entire population from the sample. This last aspect, if not the most important, allows soil surveyors to monitor and better report the current and future status of soil properties. In general, traditional/expert (i.e., *non-probabilistic*) sampling is less flexible than *probabilistic* sampling since the latter allows for both types of inference methods, as we will see in the next subsection.
 
 ### Inference Methods {#inference-methods}
 
-Two primary statistical inference methods are used in soil survey: design- and model-based inference approaches [@degruijter2006]. Design-based inference utilizes the sample design to make inferences about the entire population including probabilities of the sampling units. This approach is suitable for estimating global quantities, such as means and totals, or local quantities for large domains based on the design of the sampling scheme. Briefly, global quantities encompass the spatial cumulative distribution function of the response variable in the sampling universe, or quantities derived from it, such as quantiles, median, mean, and standard deviation. Local quantities, on the other hand, pertain to individual estimates within sub-areas of the sampling universe, also known as domains. Model-based inference uses statistical models to make inferences about unsampled locations based on the relationships observed in the sampled data. This approach is valuable for predicting soil properties at unsampled locations, especially in areas where sampling is limited. Further information about design- and model-based approaches can be found in @brus2021.
+Two primary statistical inference methods are used in soil survey: *design*- and *model*-based inference approaches [@degruijter2006]. **Design-based** inference utilises the sample design to make inferences about the entire population including probabilities of the sampling units. This approach is suitable for estimating global quantities, such as means and totals, or local quantities for large domains based on the design of the sampling scheme. Briefly, global quantities encompass the spatial cumulative distribution function of the response variable in the sampling universe, or quantities derived from it, such as quantiles, median, mean, and standard deviation. Local quantities, on the other hand, pertain to individual estimates within sub-areas of the sampling universe, also known as domains. **Model-based** inference uses statistical models to make inferences about unsampled locations based on the relationships observed in the sampled data. This approach is valuable for predicting soil properties at unsampled locations, especially in areas where sampling is limited. Further information about design- and model-based approaches can be found in @brus2021. In simple words, the difference between them lies in where the uncertainty comes from and how conclusions are drawn.
+
+For instance, *design-based inference*, sampling locations are selected using a probability sampling design, such as simple random sampling without replacement. Every location in the study area has a known and non-zero probability of being selected. In this framework, randomness arises from the sampling process itself. The sampled data are then used to estimate characteristics of the entire study area. The validity of the results therefore depends on how well the sampling design was constructed and implemented. If the design is appropriate and correctly applied, the resulting estimates are unbiased, regardless of the spatial pattern of the soil property. Design-based inference can also be used to estimate values for sub-areas, or domains, provided that the sampling design ensures sufficient representation within those areas. In simple terms, the sample represents the whole study area if the sampling is random and properly designed. This approach is particularly useful for estimating population summaries (i.e., monitoring), such as mean soil organic carbon or total nutrient stocks.
+
+In contrast, *model-based inference* begins by collecting soil samples at selected locations and then fitting a statistical model that relates soil properties to environmental covariates, such as elevation, slope, or climate variables. The fitted model is subsequently used to predict soil properties at unsampled locations. In this case, randomness arises from the assumptions of the statistical model rather than from the sampling design. The validity of the inference depends on how well the model captures the relationship between the soil property and the explanatory variables (i.e., environmental covariates). If the model is appropriate, it can be used to generate continuous prediction maps across the entire study area. In simple terms, soil properties can be predicted everywhere if the model correctly describes the underlying relationships. This approach is particularly useful for spatial prediction and for filling gaps in areas where no samples were collected.
+
+**Summary**
+
+-   Monitoring: design-based inference is generally preferred.
+
+-   Mapping: model-based inference is generally preferred.
+
+-   Hybrid designs: combine both strenghts.
 
 ### Purpose of Sampling {#sampling-purpose}
 
@@ -28,11 +39,13 @@ Bounding together selection and inference methods, one can better determine whic
 
 ### Sampling Design Types {#design-types}
 
-The sequence of decision-making for a soil survey or monitoring project should follow a logical order to ensure that the objectives of the project are met effectively. Begin by defining the purpose of the project. Determine whether the goal is to monitor changes in soil properties over time or to map them across landscape. Based on the purpose, one can choose an appropriate selection method. After that, one can select the inference method which best suits the project. For instance, if the goal is monitoring, consider probability sampling. For mapping, consider either non-probability or probability methods. Once the purpose, selection and inference methods are defined, one can select the appropriate sampling design.
+The sequence of decision-making for a soil survey or monitoring project should follow a logical order to ensure that the objectives of the project are met effectively. *Begin by defining the purpose of the project*. Determine whether the goal is to monitor changes in soil properties over time or to map them across landscape. *Based on the purpose*, one can choose an appropriate *selection method*. After that, one can select the *inference method* which best suits the project. For instance, if the goal is monitoring, consider probability sampling. For mapping, consider either non-probability or probability methods. Once the *purpose, selection* and *inference methods* are defined, one can select the [*appropriate sampling design*]{.underline}.
 
-Before diving into the types of sampling design, it is important to take into consideration the stratification of the sampling universe. Stratification involves dividing the sampling universe into strata or sub-areas based on certain criteria, such as soil-climate types or land-use. This approach can increase the efficiency of the sampling design by obtaining separate estimates for each stratum, leading to more precise estimates for specific regions of interest (ROI). For example, if the ROI has distinct soil types, stratifying the sample by soil type can ensure that each soil type is adequately represented in the sample. Another example is using explanatory variables from remote sensing as a means of spatial coverage and stratification.
+Before diving into the types of sampling design, it is important to take into consideration the stratification of the sampling universe. Stratification involves dividing the sampling universe into strata or sub-areas based on certain criteria, such as soil-climate types or land-use. This approach can increase the efficiency of the sampling design by obtaining separate estimates for each stratum, leading to more precise estimates for specific regions of interest (ROI). For example, if the ROI has distinct soil types, stratifying the sample by soil type can ensure that each soil type is adequately represented in the sample. Another example is using explanatory variables (i.e., environmental covariates) from remote sensing as a means of spatial coverage and stratification.
 
-We divided the sampling design types into monitoring and mapping (Table \@ref(tab:design-comparison)). For monitoring, one can certainly choose among simple random sampling (SRS), stratified SRS, or two-stage cluster random sampling. In SRS, each sampling unit in the ROI has equal probability of being selected. This approach is straightforward and easy to implement but may not account for spatial variability in soil properties. Stratified simple random sampling divides the ROI into strata based on certain criteria, such as soil-climate types or land-use. Then, SRS is conducted within each stratum. This method ensures that each stratum is adequately represented in the sample, leading to more precise estimates for specific ROI. Finally, two-stage cluster random sampling, the sampling units are grouped into clusters, and then clusters are randomly selected for sampling. This method is useful for large study areas where it may be impractical to sample every unit individually. One interesting method, which is not specifically categorized as simple, stratified, or two-stage cluster random sampling, is called balanced acceptance sampling [@robertson2013]. This methodological approach can be applied within any of these sampling design types to ensure a balanced representation of different strata in the sample. For example, in a simple random sampling design, balanced acceptance sampling (BAS) would involve ensuring that each stratum is adequately represented in the random sample. In a stratified sampling design, BAS would aim to balance the number of sampling points across strata. In a two-stage cluster random sampling design, BAS would involve ensuring a balanced selection of clusters from each stratum. In essence, BAS is a principle or strategy that can be incorporated into various sampling design types to reduce bias in the estimation of soil properties.
+Stratification is not a separate sampling design type rather it is a structural feature that can be incorporated into different sampling designs to improve efficiency, representativeness, and precision. In other words, stratification modifies how a design is implemented, not the fundamental logic of the design itself. For clarity, sampling design types can be broadly grouped according to whether the primary objective is monitoring or mapping (Table \@ref(tab:design-comparison)). For monitoring, one can certainly choose among simple random sampling (SRS), stratified SRS, or two-stage cluster random sampling. In SRS, each sampling unit in the ROI has equal probability of being selected. This approach is straightforward and easy to implement but may not account for spatial variability in soil properties. Stratified simple random sampling divides the ROI into strata based on certain criteria, such as soil-climate types or land-use. Then, SRS is conducted within each stratum. This method ensures that each stratum is adequately represented in the sample, leading to more precise estimates for specific ROI. Finally, two-stage cluster random sampling, the sampling units are grouped into clusters, and then clusters are randomly selected for sampling. This method is useful for large study areas where it may be impractical to sample every unit individually.
+
+An important concept that can be incorporated into these probability-based designs is balanced acceptance sampling (BAS) [@robertson2013]. BAS is not a separate design category but rather a strategy that promotes spatial balance within a probability sampling framework. It can be applied within simple random, stratified, or cluster sampling to ensure that selected sampling units are well distributed across the study area or across strata. By improving spatial balance, BAS can enhance representativeness and reduce estimation variance while preserving the benefits of probability-based inference. In a stratified sampling design, BAS would aim to balance the number of sampling points across strata. In a two-stage cluster random sampling design, BAS would involve ensuring a balanced selection of clusters from each stratum. In essence, BAS is a principle or strategy that can be incorporated into various sampling design types to reduce bias in the estimation of soil properties.
 
 If the main goal of a sampling design is to map soil properties, non-probability methods such as conditioned Latin Hypercube sampling [@minasny2006], catena or topo-sequence sampling [@milne1936], grid sampling, or covariate space coverage sampling [@brus2018; @degruijter2006] are the most suitable choices. Conditioned Latin Hypercube sampling (CLHS) selects sampling points that ensure a representative distribution of soil properties across the study area. This approach is particularly useful for capturing spatial variability within the explanatory variables that describe the pattern of the response variable, leading to more accurate soil property maps. Catena or topo-sequence sampling was already discussed in section \@ref(selection-methods). Covariate space coverage sampling (CSCS) selects sampling points to provide complete spatial coverage of the ROI. @ma2020 compared the efficiency of SRS, CLHS, and CSCS, being the latter the most efficient.
 
@@ -54,12 +67,16 @@ design_types <- data.frame(
              "Complex variance estimation", "Requires careful planning")
 )
 
+colnames(design_types)[1] <- "Sampling Design"
+
 kable(design_types, caption = "Short description of pros and cons within each soil sampling design type")
 ```
 
-#### Example: Soils4Africa Sampling Design {#soils4africa-example}
+### Example: Soils4Africa Sampling Design {#soils4africa-example}
 
-The EU-funded project Soils4Africa aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project's purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:
+The EU-funded project Soils4Africa[^1] aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project's purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:
+
+[^1]: Soils4Africa Project Secretariat. Avaliable at: <https://www.soils4africa-h2020.eu/>
 
 **Primary Sampling Units (PSUs)**: PSUs constitute the broadest spatial units within the study area, typically defined based on geographical, administrative, ecological boundaries, or soil management types. The size of each PSU is 4 square kilometers (2 × 2 km grid cells). The total number of PSUs selected depends on the sample size and ideally should be sufficient to cover the range of environmental gradients present in the study area.
 
@@ -67,17 +84,17 @@ The EU-funded project Soils4Africa aimed to provide open-access information abou
 
 **Tertiary Sampling Units (TSUs)**: TSUs represent the most detailed level of sampling, focusing on specific points within SSUs. The number of TSUs within each SSU is 3, one which acts as the primary target point and 2 as replacement points for the primary point.
 
-The sampling design in Soils4Africa proceeds as follows: (i) A first selection of PSUs is made using a stratified random sampling on farming systems strata. The farming system classification data comes from the FAO farming systems map for Africa which provides information for 46 different farming classes or stratum. (ii) Within each of the selected PSUs, a second sampling level is done upon a regular division of the PSU into cells of 1 ha, the SSU. For each PSU, 4 random SSUs are selected for sampling and 3 additional cells are stored as alternative cells. These cells are used as replacements in case some of the target SSUs cannot be sampled for some reason. The selection of SSUs is done by simple random sampling within the PSU. (iii) Within each SSU, 3 simple random sampling points are located. The first point serves as the target point to be sampled and the remaining 2 are stored as replacement points to be used as in the previous step. This Hierarchical Sampling design helps reduce bias in the data, allowing for accurate assessments of soil constraints, quantification of risk factors, and reliable evaluations of changes in soil health/quality.
+The sampling design in Soils4Africa proceeds as follows: (i) a first selection of PSUs is made using a stratified random sampling on farming systems strata. The farming system classification data comes from the FAO farming systems map for Africa which provides information for 46 different farming classes or stratum. (ii) Within each of the selected PSUs, a second sampling level is done upon a regular division of the PSU into cells of 1 ha, the SSU. For each PSU, 4 random SSUs are selected for sampling and 3 additional cells are stored as alternative cells. These cells are used as replacements in case some of the target SSUs cannot be sampled for some reason. The selection of SSUs is done by simple random sampling within the PSU. (iii) Within each SSU, 3 simple random sampling points are located. The first point serves as the target point to be sampled and the remaining 2 are stored as replacement points to be used as in the previous step. This Hierarchical Sampling design helps reduce bias in the data, allowing for accurate assessments of soil constraints, quantification of risk factors, and reliable evaluations of changes in soil health/quality.
 
 ## SoilFER Sampling Design {#soilfer-design}
 
-The SoilFER soil spatial survey aims to estimate means and totals for a set of target soil properties and quality indicators within three domains: **croplands (85%)**, **grasslands (10%)**, and **forests (5%)** in a country. The percentages for each domain are relative to the total sampling points, considering the sampling density required for high-resolution digital soil maps. Once the purpose was defined, the most suitable selection method identified was probability sampling, which allows for both design- and model-based inference methods. Given the purpose, selection and inference methods, the final step was to choose the appropriate sampling design. Like the Soils4Africa project, the SoilFER project employs three sampling units, which are discrete entities in space, and thus a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling was selected for mapping and monitoring within the SoilFER sampling design.
+The SoilFER spatial soil sampling campaign is designed to support both monitoring and mapping objectives by integrating land-use stratification and environmental covariate information within a unified sampling framework. The survey aims to estimate population-level means and totals for a defined set of target soil properties and soil quality indicators across three principal land-use domains, namely croplands (85%), grasslands (10%), and forests (5%), within each participating country. The percentages for each domain are relative to the total sampling points, considering the sampling density required for high-resolution digital soil maps. Once the purpose was defined, the most suitable selection method identified was probability sampling, which allows for both design- and model-based inference methods. Given the purpose, selection and inference methods, the final step was to choose the appropriate sampling design. Like the Soils4Africa project, the SoilFER project employs three sampling units, which are discrete entities in space, and thus a three-stage hierarchical hybrid method incorporating both probability and non-probability sampling was selected for mapping and monitoring within the SoilFER sampling design.
 
 In the literature, covariate space coverage (CSC) sampling has proven to be more efficient than other approaches for mapping a continuous soil property or class [@brus2018; @degruijter2006; @ma2020; @schmidinger2024]. Therefore, in the SoilFER sampling design, the first stage or first hierarchical level selects the primary sampling units (PSUs) (i.e., 2km × 2km) using a CSC sampling method, or k-means sampling if you will (i.e., model-based). K-means is an unsupervised clustering method used when no response variable is available, partitioning data into k groups by maximizing similarity within groups and differences between them. Like the selection of PSUs, the second hierarchical level selects the secondary sampling units (SSUs) (i.e., 100m × 100m) using CSC sampling and a second set of environmental covariates (i.e., model-based). Lastly, the third hierarchical levels select the tertiary sampling units using simple random sampling without replacement (i.e., design-based). This multi-stage sampling framework enhances both spatial representativeness and statistical reliability.
 
 ### Soil Properties {#soil-properties}
 
-Understanding and assessing soil properties are critical for evaluating soil health, guiding fertilizer recommendations, and informing land management decisions. In the SoilFER project, both chemical and physical soil attributes are measured to provide a comprehensive evaluation of soil quality and health (Table \@ref(tab:soil-properties)). Some key chemical properties include soil organic carbon, pH, cation exchange capacity, and nutrient levels such as nitrogen, phosphorus, and potassium. On the physical side, attributes like soil texture, soil depth, rockiness of surface soil, drainage, surface cracks, soil color, soil erosion and gypsum content are analyzed to understand soil structure, compaction, and water infiltration rates. Collectively, these attributes offer valuable insights into the soil's ability to support plant growth, resist erosion, and store carbon, making them indispensable for both mapping soil health and tailoring site-specific fertilizer recommendations.
+Understanding and assessing soil properties are critical for evaluating soil health, guiding fertiliser recommendations, and informing land management decisions. In the SoilFER project, both chemical and physical soil attributes are measured to provide a comprehensive evaluation of soil quality and health (Table \@ref(tab:soil-properties)). Some key chemical properties include soil organic carbon, pH, cation exchange capacity, and nutrient levels such as nitrogen, phosphorus, and potassium. On the physical side, attributes like soil texture, soil depth, rockiness of surface soil, drainage, surface cracks, soil color, soil erosion and gypsum content are analyzed to understand soil structure, compaction, and water infiltration rates. Collectively, these attributes offer valuable insights into the soil's ability to support plant growth, resist erosion, and store carbon, making them indispensable for both mapping soil health and tailoring site-specific fertilizer recommendations. While biological indicators are widely recognised as important components of soil health assessment, they are not included in the current survey framework. Their omission reflects considerations related to methodological harmonisation, analytical complexity, and resource allocation within a large-scale, multi-country implementation. Biological measurements often require specialised laboratory protocols, strict sample handling procedures, and advanced analytical infrastructure to ensure comparability across regions. Given the project's emphasis on harmonised, scalable, and operationally feasible methodologies, the present design prioritises chemical and physical indicators that can be consistently standardised across participating countries.
 
 ```{r soil-properties, echo=FALSE}
 properties <- data.frame(
@@ -94,73 +111,74 @@ properties <- data.frame(
 kable(properties, caption = "Some of the chemical and physical soil properties to be quantified in the SoilFER project")
 ```
 
-> **Note**: Both wet and dry chemistry (i.e., infrared spectroscopy) will be conducted in the laboratory for soil analysis as part of the SoilFER project. These methods are not listed here, as a standard operating procedure exists for each one of them.
+::: warning-box
+**Note**: Both wet and dry chemistry (i.e., infrared spectroscopy) will be conducted in the laboratory for soil analysis as part of the SoilFER project. These methods are not listed here, as a standard operating procedure exists for each one of them.
+:::
 
 ### Environmental Covariates {#env-covariates}
 
-Environmental covariates, also referred to as explanatory or environmental variables or simply covariates, are essential for understanding the spatial variability of soil properties and landscape processes. The SoilFER sampling design incorporates **85 environmental covariates** (Table \@ref(tab:psu-covariates)) to optimise the identification and allocation of PSUs (2km × 2km) across diverse landscapes at a national scale. As SoilFER targets soil mapping at national scale, the first set of environmental covariates have pixel resolution varying from 250 m to 1 km. To align with the PSU size (2km × 2km), these covariates were upscaled to ensure that each PSU is represented by a single aggregated value per covariate. This resolution provides a balance between sufficient spatial detail and computational efficiency, ensuring accurate large-scale mapping while manageable computational processing requirements, ensuring efficient data handling and analysis. Moreover, this comprehensive set of covariates ensures that the selected PSUs capture the full range of environmental conditions and soil diversity within a country. 
+Environmental covariates, also referred to as explanatory or environmental variables or simply covariates, are essential for understanding the spatial variability of soil properties and landscape processes. The SoilFER sampling design incorporates **85 environmental covariates** (Table \@ref(tab:psu-covariates)) to optimise the identification and allocation of PSUs (2km × 2km) across diverse landscapes at a national scale. As SoilFER targets soil mapping at national scale, the first set of environmental covariates have pixel resolution varying from 250 m to 1 km. To align with the PSU size (2km × 2km), these covariates were upscaled to ensure that each PSU is represented by a single aggregated value per covariate. This resolution provides a balance between sufficient spatial detail and computational efficiency, ensuring accurate large-scale mapping while manageable computational processing requirements, ensuring efficient data handling and analysis. Moreover, this comprehensive set of covariates ensures that the selected PSUs capture the full range of environmental conditions and soil diversity within a country.
 
 Additionally, a second set of **24 environmental covariates** (Table \@ref(tab:ssu-covariates)) is used to refine site selection at farm level. This high-resolution dataset (e.g., ≤ 90 m pixel resolution) was upscaled to match the SSU size (100m × 100m), ensuring that each SSU is characterized by a single representative value for each covariate. This significantly enhances the precision of SSU selection by capturing finer spatial variability. If additional high-resolution environmental covariates are available for a given country, it is highly recommended to incorporate them into the analysis to further improve sampling precision. These two sets of environmental covariates were carefully chosen based on their relevance to soil formation processes, spatial variability, and their role as proxies for key soil properties. Further information on how to retrieve these environmental covariates can be found in the SoilFER GitHub repository.
 
 ```{r psu-covariates, echo=FALSE}
-# psu_covs <- data.frame(
-#   Source = c(rep("CHELSA Climate", 16), rep("MODIS Vegetation", 32), rep("OpenLandMap Terrain", 10),
-#              rep("Land Cover", 10), rep("Newhall Soil Climate", 17)),
-#   Variable = c("bio1 - Annual Mean Temperature", "bio5 - Max Temp Warmest Month", 
-#                "bio6 - Min Temp Coldest Month", "bio12 - Annual Precipitation",
-#                "bio13 - Precipitation Wettest Month", "bio14 - Precipitation Driest Month",
-#                "bio16 - Precipitation Wettest Quarter", "bio17 - Precipitation Driest Quarter",
-#                "ngd10 - Growing Degree Days", "pet_penman_max/mean/min/range",
-#                "sfcWind_max/mean/range", "...",
-#                "NDVI (4 quarters × mean/SD)", "FPAR (4 quarters × mean/SD)",
-#                "LST Day (4 quarters × mean/SD)", "NDLST (4 quarters × mean/SD)", "...",
-#                "Elevation", "Slope", "Aspect", "TPI", "TWI", "Geomorphology", "...",
-#                "Crop proportion", "Forest cover", "Grassland cover", "...",
-#                "Temperature Regime", "Moisture Regime", "Annual Water Balance", "..."),
-#   Resolution = c(rep("250-1000m", 16), rep("250-500m", 32), rep("250m", 10), 
-#                  rep("250-1000m", 10), rep("~4km", 17))
-# )
-# 
-# kable(head(psu_covs, 20), caption = "List of environmental covariates used to delineate the primary sampling units (first 20 shown)")
+ library(knitr)
 
-kable(properties, caption = "Some of the chemical and physical soil properties to be quantified in the SoilFER project")
+# Define number of variables per source
+n_chelsa  <- 16
+n_modis   <- 32
+n_olm     <- 10
+n_lc      <- 10
+n_newhall <- 17
 
+# Create source and resolution vectors
 src <- c(
-  rep("CHELSA Climate", 16),
-  rep("MODIS Vegetation", 32),
-  rep("OpenLandMap Terrain", 10),
-  rep("Land Cover", 10),
-  rep("Newhall Soil Climate", 17)
-)
-
-vars <- c(
-  "bio1 - Annual Mean Temperature", "bio5 - Max Temp Warmest Month",
-  "bio6 - Min Temp Coldest Month", "bio12 - Annual Precipitation",
-  "bio13 - Precipitation Wettest Month", "bio14 - Precipitation Driest Month",
-  "bio16 - Precipitation Wettest Quarter", "bio17 - Precipitation Driest Quarter",
-  "ngd10 - Growing Degree Days", "pet_penman_max/mean/min/range",
-  "sfcWind_max/mean/range", "...",
-  "NDVI (4 quarters × mean/SD)", "FPAR (4 quarters × mean/SD)",
-  "LST Day (4 quarters × mean/SD)", "NDLST (4 quarters × mean/SD)", "...",
-  "Elevation", "Slope", "Aspect", "TPI", "TWI", "Geomorphology", "...",
-  "Crop proportion", "Forest cover", "Grassland cover", "...",
-  "Temperature Regime", "Moisture Regime", "Annual Water Balance", "..."
+  rep("CHELSA Climate", n_chelsa),
+  rep("MODIS Vegetation", n_modis),
+  rep("OpenLandMap Terrain", n_olm),
+  rep("Land Cover", n_lc),
+  rep("Newhall Soil Climate", n_newhall)
 )
 
 res <- c(
-  rep("250-1000m", 16),
-  rep("250-500m", 32),
-  rep("250m", 10),
-  rep("250-1000m", 10),
-  rep("~4km", 17)
+  rep("250–1000 m", n_chelsa),
+  rep("250–500 m", n_modis),
+  rep("250 m", n_olm),
+  rep("250–1000 m", n_lc),
+  rep("~4 km", n_newhall)
 )
 
-# --- make lengths consistent ---
-if (length(vars) > length(src)) {
-  stop("Variable has more entries (", length(vars), ") than Source/Resolution (", length(src), ").")
-}
+# Define variable names (example subset)
+vars <- c(
+  "bio1 – Annual Mean Temperature",
+  "bio5 – Max Temperature (Warmest Month)",
+  "bio6 – Min Temperature (Coldest Month)",
+  "bio12 – Annual Precipitation",
+  "bio13 – Precipitation (Wettest Month)",
+  "bio14 – Precipitation (Driest Month)",
+  "bio16 – Precipitation (Wettest Quarter)",
+  "bio17 – Precipitation (Driest Quarter)",
+  "Growing Degree Days",
+  "Potential Evapotranspiration",
+  "Surface Wind Speed",
+  "NDVI (Quarterly Mean/SD)",
+  "FPAR (Quarterly Mean/SD)",
+  "LST Day (Quarterly Mean/SD)",
+  "Elevation",
+  "Slope",
+  "Aspect",
+  "Topographic Wetness Index",
+  "Crop Proportion",
+  "Forest Cover",
+  "Grassland Cover",
+  "Temperature Regime",
+  "Moisture Regime",
+  "Annual Water Balance"
+)
+
+# Expand variable list to full length if needed
 if (length(vars) < length(src)) {
-  vars <- c(vars, rep("...", length(src) - length(vars)))
+  vars <- c(vars, rep("Additional derived covariate", length(src) - length(vars)))
 }
 
 psu_covs <- data.frame(
@@ -170,32 +188,62 @@ psu_covs <- data.frame(
   stringsAsFactors = FALSE
 )
 
-
+kable(
+  psu_covs,
+  caption = "Environmental covariates used to delineate the primary sampling units"
+)
 ```
 
 > **Note**: NSM, Normalized Soil Moisture; SWIR, Shortwave Infrared. Full list contains 85 variables.
 
 ```{r ssu-covariates, echo=FALSE}
+library(knitr)
+
 ssu_covs <- data.frame(
-  Source = c(rep("SRTM Terrain", 5), rep("Sentinel-2 Spectral", 10), rep("Sentinel-2 Indices", 6),
-             rep("Geomorphology", 3)),
-  Variable = c("Elevation", "Slope", "Aspect", "TPI", "Hillshade",
-               "B2 (Blue)", "B3 (Green)", "B4 (Red)", "B5 (Red Edge 1)", "B6 (Red Edge 2)",
-               "B7 (Red Edge 3)", "B8 (NIR)", "B8A (NIR Narrow)", "B11 (SWIR 1)", "B12 (SWIR 2)",
-               "NDVI", "EVI", "NDBSI", "Brightness Index", "Redness Index", "VNSIR",
-               "Geomorphon Class 1-9", "...", "..."),
-  Resolution = c(rep("90-100m", 5), rep("10-20m", 10), rep("10-20m", 6), rep("90m", 3))
+  Source = c(
+    rep("SRTM Terrain", 5),
+    rep("Sentinel-2 Spectral", 10),
+    rep("Sentinel-2 Indices", 6),
+    rep("Geomorphology", 3)
+  ),
+  Variable = c(
+    # SRTM Terrain (5)
+    "Elevation", "Slope", "Aspect", "Topographic Position Index", "Hillshade",
+    
+    # Sentinel-2 Spectral Bands (10)
+    "B2 (Blue)", "B3 (Green)", "B4 (Red)",
+    "B5 (Red Edge 1)", "B6 (Red Edge 2)", "B7 (Red Edge 3)",
+    "B8 (NIR)", "B8A (NIR Narrow)",
+    "B11 (SWIR 1)", "B12 (SWIR 2)",
+    
+    # Sentinel-2 Indices (6)
+    "NDVI", "EVI", "NDBSI",
+    "Brightness Index", "Redness Index", "VNSIR",
+    
+    # Geomorphology (3)
+    "Geomorphon Class", "Landform Type", "Terrain Unit"
+  ),
+  Resolution = c(
+    rep("90–100 m", 5),
+    rep("10–20 m", 10),
+    rep("10–20 m", 6),
+    rep("90 m", 3)
+  ),
+  stringsAsFactors = FALSE
 )
 
-kable(ssu_covs, caption = "List of environmental covariates used to delineate the secondary sampling units")
+kable(
+  ssu_covs,
+  caption = "Environmental covariates used to delineate the secondary sampling units"
+)
 ```
 
 ### Understanding the Methodology {#methodology}
 
 The SoilFER sampling design methodology follows a hierarchical sampling approach with three levels of increasing spatial resolution: Primary Sampling Units (PSUs), Secondary Sampling Units (SSUs), and Tertiary Sampling Units (TSUs) (Figure \@ref(fig:three-stage)). This design is similar to the Soils4Africa project but differs in two key aspects. First, we use covariate space coverage (CSC) to select PSUs [@brus2022], whereas Soils4Africa employed stratified random sampling at this stage. At the first hierarchical level, CSC is used to select PSUs (2km × 2km areas), ensuring a well-distributed spread across the covariate space to maximise environmental variation and represent soil diversity across the region at national scale. Second key aspect, we select SSUs using CSC rather than simple random sampling, as done in Soils4Africa. At this second hierarchical level, CSC is applied to select SSUs (100m × 100m) based on a refined set of environmental covariates at farm scale. It is of note that each project adopted a methodology tailored to its specific objectives/purposes, ensuring that the sampling design aligns with its intended goals. Each PSU contains multiple SSUs, each measuring 100m × 100m, and each SSU consists of three TSUs, each measuring 20m × 20m. This structured yet flexible sampling design captures soil variability across different spatial scales (Figure \@ref(fig:three-stage)).
 
-```{r three-stage, echo=FALSE, fig.cap="Example of a primary sampling unit with seven secondary sampling units, each containing three tertiary sampling units. Target units or points are in green, and replacements are in red.", out.width='100%'}
-#knitr::include_graphics("images/figure1_three_stage.png")
+```{r three-stage, echo=FALSE, fig.cap="Example of a primary sampling unit with eight secondary sampling units, each containing three tertiary sampling units. Target units or points are in green, and replacements are in red.", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_1_sampling_design_explained_v7.png")
 
 ```
 
@@ -203,54 +251,32 @@ The SoilFER sampling design methodology follows a hierarchical sampling approach
 
 The process of selecting the PSUs is summarized as follows:
 
-**Step 1: Create 2km × 2km Grid** (Figure \@ref(fig:grid-creation))
-- A 2km × 2km grid covering the entire region of interest (ROI) is created
-- This grid serves as the foundational structure for stratification and spatial analysis
+**Step 1: Create 2km × 2km Grid** (Figure \@ref(fig:grid-creation)) - A 2km × 2km grid covering the entire region of interest (ROI) is created - This grid serves as the foundational structure for stratification and spatial analysis
 
-**Step 2: Overlay Land Use and Protected Areas** (Figure \@ref(fig:grid-overlay))
-- Land-use and land cover (LULC) mask layer identifying cropland, forest, or grassland is overlaid
-- Protected area boundaries are incorporated
-- Grid cells where cropland, forest, or grassland cover more than 10% (or specified percentage) are retained
-- This ensures that only PSUs containing target land uses are selected
+**Step 2: Overlay Land Use and Protected Areas** (Figure \@ref(fig:grid-overlay)) - Land-use and land cover (LULC) mask layer identifying cropland, forest, or grassland is overlaid - Protected area boundaries are incorporated - Grid cells where cropland, forest, or grassland cover more than 10% (or specified percentage) are retained - This ensures that only PSUs containing target land uses are selected
 
-**Step 3: Apply Covariate Space Coverage** (Figure \@ref(fig:csc-application))
-- PSUs are selected through CSC sampling using 85 environmental covariates
-- Covariates are resampled to 250m resolution
-- Principal Component Analysis (PCA) transforms covariates into PC layers
-- PC layers accounting for up to 99% of variance are retained
-- PC layers are upscaled to 2km × 2km resolution
+**Step 3: Apply Covariate Space Coverage** (Figure \@ref(fig:csc-application)) - PSUs are selected through CSC sampling using 85 environmental covariates - Covariates are resampled to 250m resolution - Principal Component Analysis (PCA) transforms covariates into PC layers - PC layers accounting for up to 99% of variance are retained - PC layers are upscaled to 2km × 2km resolution
 
-**Step 4: Determine Optimal Sample Size**
-- Optimal number of PSUs determined using divergence metrics
-- Kullback-Leibler Divergence (KLD) quantifies how well sampled data represent full environmental covariate space
-- Unlike Jensen-Shannon methods, KLD does not overestimate optimal sample size [@saurette2023]
+**Step 4: Determine Optimal Sample Size** - Optimal number of PSUs determined using divergence metrics - Kullback-Leibler Divergence (KLD) quantifies how well sampled data represent full environmental covariate space - Unlike Jensen-Shannon methods, KLD does not overestimate optimal sample size [@saurette2023]
 
-**Step 5: Perform K-means Clustering**
-- K-means clustering creates homogeneous clusters (strata)
-- Number of clusters equals total number of PSUs to be sampled
-- Legacy point data can be incorporated (clusters fixed at legacy locations)
-- Mean Squared Shortest Distance (MSSD) in covariate space is calculated
-- Process repeated 10 times, retaining trial with minimum MSSD
+**Step 5: Perform K-means Clustering** - K-means clustering creates homogeneous clusters (strata) - Number of clusters equals total number of PSUs to be sampled - Legacy point data can be incorporated (clusters fixed at legacy locations) - Mean Squared Shortest Distance (MSSD) in covariate space is calculated - Process repeated 10 times, retaining trial with minimum MSSD
 
-**Step 6: Select Target and Replacement PSUs** (Figure \@ref(fig:psu-selection))
-- PSUs allocated by minimizing MSSD within environmental covariate space
-- Output: N PSUs where N equals total number of samples
-- Replacement PSUs calculated by randomly selecting grid cells within same cluster class
+**Step 6: Select Target and Replacement PSUs** (Figure \@ref(fig:psu-selection)) - PSUs allocated by minimizing MSSD within environmental covariate space - Output: N PSUs where N equals total number of samples - Replacement PSUs calculated by randomly selecting grid cells within same cluster class
 
 ```{r grid-creation, echo=FALSE, fig.cap="A 2×2 km grid is created across the region of interest.", out.width='80%'}
-#knitr::include_graphics("images/figure2_grid.png")
+knitr::include_graphics("images/module2/fig_2_grid_creation.png")
 ```
 
 ```{r grid-overlay, echo=FALSE, fig.cap="The grid is overlaid with legacy point data, crop layer data and protected area boundaries.", out.width='80%'}
-#knitr::include_graphics("images/figure3_overlay.png")
+knitr::include_graphics("images/module2/fig_3_grid-overlay.png")
 ```
 
 ```{r csc-application, echo=FALSE, fig.cap="PSUs located in non-protected areas and containing more than 10% or any specified percentage of crop coverage are selected. The Covariate Space Coverage sampling method, incorporating 85 environmental covariates, is applied to identify target and replacement PSUs.", out.width='80%'}
-#knitr::include_graphics("images/figure4_csc.png")
+knitr::include_graphics("images/module2/Fig_4_csc-application.png")
 ```
 
 ```{r psu-selection, echo=FALSE, fig.cap="The selected target and replacement PSUs.", out.width='80%'}
-#knitr::include_graphics("images/figure5_selected.png")
+knitr::include_graphics("images/module2/fig_5_psu-selection.png")
 ```
 
 #### SSU and TSU Selection Process {#ssu-tsu-selection}
@@ -259,36 +285,22 @@ The process of selecting the PSUs is summarized as follows:
 
 The second stage involves selecting SSUs using Covariate Space Coverage Sampling (CSCS) based on 24 high-resolution environmental covariates. Each SSU represents a 100m × 100m (1 hectare) area divided into 25 regular sampling plots of 20m × 20m (Figure \@ref(fig:ssu-detail)).
 
-**Selection scheme**:
-- 8 SSUs selected from each PSU
-- 4 target SSUs (1-4): where samples will be collected  
-- 4 replacement SSUs (5-8): pre-identified substitutes
-- Replacement SSUs directly linked to targets (one-to-one basis):
-  - SSU 5 replaces SSU 1
-  - SSU 6 replaces SSU 2
-  - SSU 7 replaces SSU 3
-  - SSU 8 replaces SSU 4
+**Selection scheme**: - 8 SSUs selected from each PSU - 4 target SSUs (1-4): where samples will be collected\
+- 4 replacement SSUs (5-8): pre-identified substitutes - Replacement SSUs directly linked to targets (one-to-one basis): - SSU 5 replaces SSU 1 - SSU 6 replaces SSU 2 - SSU 7 replaces SSU 3 - SSU 8 replaces SSU 4
 
 If all SSUs within a target PSU are exhausted, missing SSUs must be selected from the designated PSU replacement. The designated PSU replacements were selected with the same spatial variability as their PSU targets.
 
 ```{r ssu-detail, echo=FALSE, fig.cap="Single primary sampling unit displaying secondary sampling units (a), and a zoomed-in view of a secondary sampling unit with tertiary sampling units (b).", out.width='100%'}
-#knitr::include_graphics("images/figure6_ssu_detail.png")
+knitr::include_graphics("images/module2/fig_6_ssu_detail.png")
 ```
 
 **Stage 3: Tertiary Sampling Units (TSUs)**
 
 The third and final stage involves selecting TSUs using **simple random sampling without replacement**. Each SSU contains 25 possible TSUs of 20m × 20m, corresponding to the pixel size of the crop raster layer.
 
-**Selection scheme**:
-- 3 TSUs per SSU:
-  - 1 target TSU (primary sampling location)
-  - 2 replacement TSUs (alternatives)
-- If a TSU is unsuitable, any replacement can be used
-- If all TSUs within an SSU are unsuitable, entire SSU is rejected
+**Selection scheme**: - 3 TSUs per SSU: - 1 target TSU (primary sampling location) - 2 replacement TSUs (alternatives) - If a TSU is unsuitable, any replacement can be used - If all TSUs within an SSU are unsuitable, entire SSU is rejected
 
-**Soil sampling protocol**:
-- Sampling conducted strictly at designated TSU locations
-- **Maximum shift**: 10 metres from defined coordinates
+**Soil sampling protocol**: - Sampling conducted strictly at designated TSU locations - **Maximum shift**: 10 metres from defined coordinates
 
 #### Site Identification System {#site-id}
 
@@ -296,28 +308,15 @@ The final site ID is an alphanumeric identifier structured as follows (Figure \@
 
 **Format**: `AAA####-#-#X`
 
-Where:
-- `AAA` = Three-letter country ISO code (e.g., KEN for Kenya)
-- `####` = Primary Sampling Unit number (zero-padded, e.g., 0001)
-- First `#` = Secondary Sampling Unit number (1-8)
-- Second `#` = Tertiary Sampling Unit number (1-3)
-- `X` = Land use type code:
-  - `C` = Cropland
-  - `G` = Grassland
-  - `F` = Forest
+Where: - `AAA` = Three-letter country ISO code (e.g., KEN for Kenya) - `####` = Primary Sampling Unit number (zero-padded, e.g., 0001) - First `#` = Secondary Sampling Unit number (1-8) - Second `#` = Tertiary Sampling Unit number (1-3) - `X` = Land use type code: - `C` = Cropland - `G` = Grassland - `F` = Forest
 
-**Example**: `KEN0001-1-1C`
-- Country: Kenya
-- PSU: 1
-- SSU: 1 (target)
-- TSU: 1 (target)
-- Land use: Cropland
+**Example**: `KEN0001-1-1C` - Country: Kenya - PSU: 1 - SSU: 1 (target) - TSU: 1 (target) - Land use: Cropland
 
 ```{r site-id, echo=FALSE, fig.cap="Deciphering the site identification.", out.width='60%'}
-#knitr::include_graphics("images/figure7_site_id.png")
+knitr::include_graphics("images/module2/Fig_7_site_id.png")
 ```
 
-## Tutorial Using R {#tutorial}
+## Tutorial using R {#tutorial}
 
 This tutorial is designed for users with a basic understanding of R programming and provides a comprehensive guide to implementing a soil sampling design for soil monitoring and mapping. All scripts and data are available at the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design).
 
@@ -460,20 +459,19 @@ The CSIS function is the backbone of clustering sampling units in covariate spac
 
 **How it works**:
 
-1. **Input Parameters**:
-   - `fixed`: Preselected (legacy) sampling points
-   - `nsup`: Number of additional (new) sampling points to select
-   - `nstarts`: Number of random starting points for clustering
-   - `mygrd`: Grid of covariate data for ROI
-
-2. **Workflow**:
-   - Extract fixed points and exclude from grid
-   - Randomly initialize new sampling points
-   - Combine fixed and new centers
-   - Compute distances and assign points to nearest cluster
-   - Update cluster centers iteratively until convergence
-   - Calculate Mean Squared Shortest Distance (MSSSD)
-   - Save best clustering result
+1.  **Input Parameters**:
+    -   `fixed`: Preselected (legacy) sampling points
+    -   `nsup`: Number of additional (new) sampling points to select
+    -   `nstarts`: Number of random starting points for clustering
+    -   `mygrd`: Grid of covariate data for ROI
+2.  **Workflow**:
+    -   Extract fixed points and exclude from grid
+    -   Randomly initialize new sampling points
+    -   Combine fixed and new centers
+    -   Compute distances and assign points to nearest cluster
+    -   Update cluster centers iteratively until convergence
+    -   Calculate Mean Squared Shortest Distance (MSSSD)
+    -   Save best clustering result
 
 ```{r csis-function, eval=FALSE}
 # Clustering CSC function with fixed legacy data
@@ -815,7 +813,7 @@ writeRaster(cov.dat,
 # cov.dat <- rast(paste0(raster.path, "cov_dat_stack.tif"))
 ```
 
-## Principal Component Analysis (PCA) {#pca}
+### Principal Component Analysis (PCA) {#pca}
 
 PCA reduces dimensionality while retaining the most important information. Components explaining 99% of variance are kept.
 
@@ -847,9 +845,9 @@ rm(pca)
 # cov.dat <- rast(paste0(results.path, "PCA_projected.tif"))
 ```
 
-## Organize the Sampling Universe {#sampling-universe}
+### Organize the Sampling Universe {#sampling-universe}
 
-### Load and Process Land Use Data
+#### Load and process land-use data
 
 ```{r load-landuse, eval=FALSE}
 # Define land-use raster path
@@ -869,7 +867,7 @@ crops
 #knitr::include_graphics("images/figure9_cropland_20m.png")
 ```
 
-### Exclude Protected Areas
+#### Exclude Protected Areas
 
 ```{r exclude-protected, eval=FALSE}
 if (exists("npa")) {
@@ -886,7 +884,7 @@ rm(npa)
 
 > **💡 Note**: Use the correct operation for your npa dataset type (shapefile or raster).
 
-### Restrict to Accessible Slopes
+#### Restrict to Accessible Slopes
 
 ```{r restrict-slopes, eval=FALSE}
 if (exists("slope")) {
@@ -898,7 +896,7 @@ if (exists("slope")) {
 rm(slope)
 ```
 
-### Aggregate to 100m Resolution
+#### Aggregate to 100m Resolution
 
 Resampling to 100m resolution significantly optimizes processing speed and reduces storage requirements.
 
@@ -926,7 +924,7 @@ writeRaster(lu,
 lu <- rast(paste0(raster.path, "cropland_zmb_100m_v1_epsg_3857.tif"))
 ```
 
-### Filter Legacy Data
+#### Filter Legacy Data
 
 ```{r filter-legacy, eval=FALSE}
 if (exists("legacy")) {
@@ -939,9 +937,9 @@ if (exists("legacy")) {
 }
 ```
 
-## Create Primary Sampling Units (PSU Grid) {#create-psu-grid}
+### Create Primary Sampling Units (PSU Grid) {#create-psu-grid}
 
-### Generate 2km × 2km Grid
+#### Generate 2km × 2km Grid
 
 ```{r generate-grid, eval=FALSE}
 # Create grid
@@ -954,7 +952,7 @@ psu_grid$ID <- 1:nrow(psu_grid)
 cat(sprintf("Generated %d PSU grid cells\n", nrow(psu_grid)))
 ```
 
-### Trim to Country Boundaries
+#### Trim to Country Boundaries
 
 ```{r trim-grid, eval=FALSE}
 # This operation is computationally intensive
@@ -963,7 +961,7 @@ psu_grid <- psu_grid[country_boundaries[1], ]
 cat(sprintf("PSUs within country boundaries: %d\n", nrow(psu_grid)))
 ```
 
-### Save PSU Grid
+#### Save PSU Grid
 
 ```{r save-psu-grid, eval=FALSE}
 write_sf(psu_grid, 
@@ -974,9 +972,9 @@ write_sf(psu_grid,
 psu_grid <- sf::st_read(file.path(paste0(results.path, "../grid2k.shp")))
 ```
 
-## Select PSUs with Sufficient Land Use Coverage {#select-psus}
+### Select PSUs with Sufficient Land Use Coverage {#select-psus}
 
-### Calculate Land Use Percentage
+#### Calculate Land Use Percentage
 
 ```{r calc-lu-percent, eval=FALSE}
 # Extract land-use values for each PSU
@@ -995,7 +993,7 @@ psu_grid$crop_perc <- crop_perc$crop_perc
 cat(sprintf("Crop percentage calculated for all PSUs\n"))
 ```
 
-### Filter PSUs
+#### Filter PSUs
 
 ```{r filter-psus, eval=FALSE}
 # Keep only PSUs with sufficient crop coverage
@@ -1014,7 +1012,7 @@ write_sf(psu_grid_filtered,
 #knitr::include_graphics("images/figure11_psu_filtered.png")
 ```
 
-## Rasterize PSUs for Covariate Space Coverage {#rasterize-psus}
+### Rasterize PSUs for Covariate Space Coverage {#rasterize-psus}
 
 ```{r rasterize-psus, eval=FALSE}
 # Create raster template at PSU resolution
@@ -1032,7 +1030,7 @@ cat(sprintf("Covariates resampled to PSU resolution\n"))
 
 > **💡 Why this matters**: Cropping and resampling ensure that spatial resolution and extent of covariates match the PSU grid, facilitating accurate clustering.
 
-## Compute Optimal Sample Size {#optimal-sample-size}
+### Compute Optimal Sample Size {#optimal-sample-size}
 
 After rasterizing PSUs for Covariate Space Coverage, calculate the optimal sample size based on divergence metrics [@saurette2023].
 
@@ -1050,7 +1048,7 @@ by.n <- 25          # Increment step
 iters <- 4          # Iterations per trial
 ```
 
-### Run Optimization
+#### Run Optimization
 
 ```{r run-optimization, eval=FALSE}
 # Calculate optimal sample size using normalized KL-divergence
@@ -1077,7 +1075,7 @@ print(opt_N_fcs$optimal_sites)
 #knitr::include_graphics("images/figure13_divergence.png")
 ```
 
-### Extract Optimal Sample Size
+#### Extract Optimal Sample Size
 
 ```{r extract-optimal, eval=FALSE}
 # Use Kullback-Leibler Divergence (most reliable)
@@ -1094,11 +1092,11 @@ cat(sprintf("Expected total target sites: %d\n", n.psu * 4))
 
 > **💡 Note**: The optimal sample size is based on Kullback-Leibler Divergence, which does not overestimate like Jensen-Shannon methods.
 
-## Covariate Space Coverage - Computing PSUs {#csc-computing}
+### Covariate Space Coverage - Computing PSUs {#csc-computing}
 
 Covariate Space Coverage (CSC) sampling ensures sampling units are distributed effectively across the multidimensional space of environmental covariates.
 
-### Prepare Function Parameters
+#### Prepare Function Parameters
 
 ```{r prepare-csc, eval=FALSE}
 # Convert raster to dataframe with coordinates
@@ -1114,7 +1112,7 @@ cat(sprintf("Prepared %d PSUs with %d covariates for clustering\n",
             nrow(mygrd), ncol(mygrd)))
 ```
 
-### Perform K-means Clustering
+#### Perform K-means Clustering
 
 ```{r kmeans-clustering, eval=FALSE}
 # With legacy data
@@ -1155,7 +1153,7 @@ if (exists("legacy")) {
 
 > **💡 Note**: Progress is printed as "X out of Y" for each clustering iteration.
 
-### Assign Clusters and Calculate Distances
+#### Assign Clusters and Calculate Distances
 
 ```{r assign-clusters, eval=FALSE}
 # Assign clusters to PSUs
@@ -1172,7 +1170,7 @@ MSSSD <- mean(dmin^2)
 cat(sprintf("MSSSD: %.6f\n", MSSSD))
 ```
 
-### Extract Selected PSUs
+#### Extract Selected PSUs
 
 ```{r extract-selected, eval=FALSE}
 # Get selected PSU coordinates and covariates
@@ -1214,17 +1212,17 @@ rm(new, dmin, MSSSD)
 #knitr::include_graphics("images/figure14_psu_selected.png")
 ```
 
-### Visualize in Covariate Space
+#### Visualize in Covariate Space
 
 ```{r viz-covariate-space, echo=FALSE, fig.cap="Distribution of Primary Sampling Units over the covariate space coverage (PC1 vs PC2).", out.width='80%'}
 #knitr::include_graphics("images/figure15_covariate_space.png")
 ```
 
-## Compute SSUs and TSUs {#compute-ssu-tsu}
+### Compute SSUs and TSUs {#compute-ssu-tsu}
 
 Now we generate Secondary Sampling Units (100m × 100m) within each PSU and Tertiary Sampling Units (20m × 20m points) within each SSU.
 
-### Load High-Resolution Covariates
+#### Load High-Resolution Covariates
 
 ```{r load-highres, eval=FALSE}
 # Load SSU-level covariates (100m resolution)
@@ -1249,7 +1247,7 @@ cov.dat.ssu[is.na(cov.dat.ssu)] <- 0
 cat(sprintf("Final SSU covariates: %d layers\n", nlyr(cov.dat.ssu)))
 ```
 
-### Process Each PSU
+#### Process Each PSU
 
 ```{r process-psus, eval=FALSE}
 # Initialize storage lists
@@ -1397,7 +1395,7 @@ cat(sprintf("  Successful PSUs: %d\n", length(selected_ssus)))
 #knitr::include_graphics("images/figure16_ssu_csc.png")
 ```
 
-### Combine SSUs and TSUs
+#### Combine SSUs and TSUs
 
 ```{r combine-ssu-tsu, eval=FALSE}
 # Combine all SSUs
@@ -1443,9 +1441,9 @@ cat(sprintf("✓ Target sampling sites: %d\n",
 #knitr::include_graphics("images/figure17_psu_example.png")
 ```
 
-## Export Sampling Units {#export-units}
+### Export Sampling Units {#export-units}
 
-### Create Cluster Raster
+#### Create Cluster Raster
 
 ```{r create-cluster-raster, eval=FALSE}
 # Convert cluster information to raster
@@ -1466,7 +1464,7 @@ all.PSU_clusters <- psu_grid_filtered %>%
 all.PSU_clusters <- na.omit(all.PSU_clusters)
 ```
 
-### Join Cluster Info to TSUs
+#### Join Cluster Info to TSUs
 
 ```{r join-clusters, eval=FALSE}
 # Rename cluster column
@@ -1483,7 +1481,7 @@ all_tsus <- all_tsus %>%
   ungroup()
 ```
 
-### Create Site IDs
+#### Create Site IDs
 
 ```{r create-site-ids, eval=FALSE}
 # Generate unique site IDs
@@ -1496,7 +1494,7 @@ all_tsus$site_id <- paste0(ISO.code,
 cat(sprintf("Created %d unique site IDs\n", nrow(all_tsus)))
 ```
 
-### Export Shapefiles
+#### Export Shapefiles
 
 ```{r export-shapefiles, eval=FALSE}
 # Export target PSUs
@@ -1523,7 +1521,7 @@ cat(sprintf("\n✓ All files exported successfully\n"))
 cat(sprintf("  Location: %s\n", results.path))
 ```
 
-## Compute Alternative PSUs {#alternative-psus}
+### Compute Alternative PSUs {#alternative-psus}
 
 Generate replacement PSUs from the same environmental clusters as targets.
 
@@ -1571,7 +1569,7 @@ write_sf(replacement_psus,
 
 > **Note**: Follow the same SSU and TSU generation process for replacement PSUs to create complete backup sampling locations.
 
-# Merging Results from Multiple Land Uses {#merging-results}
+### Merging Results from Multiple Land Uses {#merging-results}
 
 After running the sampling design separately for cropland, grassland, and forest, combine all results into a unified dataset with country-wide unique IDs.
 
@@ -1624,7 +1622,7 @@ cat(sprintf("Target PSUs: %d\n", nrow(psus_target)))
 cat(sprintf("Target TSUs: %d\n", nrow(tsus_target)))
 ```
 
-## Assign Country-Wide Unique IDs {#assign-unique-ids}
+#### Assign Country-Wide Unique IDs {#assign-unique-ids}
 
 ```{r assign-country-ids, eval=FALSE}
 # Assign sequential IDs to target PSUs
@@ -1658,7 +1656,7 @@ psus_target <- psus_target %>%
 cat(sprintf("\n✓ Assigned country-wide unique IDs\n"))
 ```
 
-## Export Unified Datasets {#export-unified}
+#### Export Unified Datasets {#export-unified}
 
 ```{r export-unified, eval=FALSE}
 # Export unified datasets
@@ -1670,7 +1668,7 @@ write_sf(tsus_repl, "results/all/all_tsus_replacements.shp", overwrite = TRUE)
 cat(sprintf("\n✓ All unified datasets exported to results/all/\n"))
 ```
 
-## Summary Statistics {#summary-stats}
+#### Summary Statistics {#summary-stats}
 
 ```{r final-summary, eval=FALSE}
 # Count target sites by land use
@@ -1702,7 +1700,7 @@ cat(sprintf("  - Forest: %d\n",
                 tsus_target$TSU_Type == "Target")))
 ```
 
-## Create Distribution Maps {#distribution-maps}
+#### Create Distribution Maps {#distribution-maps}
 
 ```{r final-maps, eval=FALSE, fig.cap="Final site distribution across all land uses"}
 library(ggplot2)
@@ -1735,11 +1733,11 @@ ggsave("results/all/final_site_distribution.png",
 cat(sprintf("\n✓ Distribution map saved\n"))
 ```
 
-# Field Sampling Protocol {#field-protocol}
+### Field Sampling Protocol {#field-protocol}
 
-## GPS Device Preparation {#gps-prep}
+#### GPS Device Preparation {#gps-prep}
 
-### Export to GPX Format
+##### Export to GPX Format
 
 ```{r export-gpx, eval=FALSE}
 # Load target TSUs
@@ -1761,34 +1759,33 @@ st_write(tsus_field_wgs84,
 cat(sprintf("✓ Exported %d waypoints to GPX\n", nrow(tsus_field_wgs84)))
 ```
 
-### Load onto GPS Device
+##### Load onto GPS Device
 
-1. Connect GPS device to computer
-2. Copy `field_sampling_points.gpx` to GPS memory
-3. Load waypoints in GPS software
-4. Waypoint names will be `site_id` values (e.g., KEN0001-1-1C)
+1.  Connect GPS device to computer
+2.  Copy `field_sampling_points.gpx` to GPS memory
+3.  Load waypoints in GPS software
+4.  Waypoint names will be `site_id` values (e.g., KEN0001-1-1C)
 
-## Sampling Procedure {#sampling-procedure}
+#### Sampling Procedure {#sampling-procedure}
 
 **For each PSU (in order of PSU_ID):**
 
-1. **Navigate to TSU 1** (SSU_ID=1, TSU_ID=1)
-   - If accessible → Sample at exact GPS location
-   - If inaccessible (physical barrier) → Use TSU 2 (Alternative 1) or TSU 3 (Alternative 2)
+1.  **Navigate to TSU 1** (SSU_ID=1, TSU_ID=1)
 
-2. **Navigate to TSU 2** (SSU_ID=2, TSU_ID=1)
-   - Repeat accessibility check and sampling
+    -   If accessible → Sample at exact GPS location
+    -   If inaccessible (physical barrier) → Use TSU 2 (Alternative 1) or TSU 3 (Alternative 2)
 
-3. **Navigate to TSU 3** (SSU_ID=3, TSU_ID=1)
+2.  **Navigate to TSU 2** (SSU_ID=2, TSU_ID=1)
 
-4. **Navigate to TSU 4** (SSU_ID=4, TSU_ID=1)
+    -   Repeat accessibility check and sampling
 
-**If entire PSU is inaccessible:**
-- Use `replacement_PSU_ID` to find backup PSU
-- Navigate to replacement PSU location
-- Sample at replacement TSUs (SSU_ID = 5, 6, 7, 8)
+3.  **Navigate to TSU 3** (SSU_ID=3, TSU_ID=1)
 
-## Data Recording {#data-recording}
+4.  **Navigate to TSU 4** (SSU_ID=4, TSU_ID=1)
+
+**If entire PSU is inaccessible:** - Use `replacement_PSU_ID` to find backup PSU - Navigate to replacement PSU location - Sample at replacement TSUs (SSU_ID = 5, 6, 7, 8)
+
+#### Data Recording {#data-recording}
 
 Field form should capture (Table \@ref(tab:field-form)):
 
@@ -1807,108 +1804,42 @@ field_data <- data.frame(
 kable(field_data, caption = "Required field data recording")
 ```
 
-## Quality Control {#qc}
+#### Quality Control {#qc}
 
-**During field work:**
-- ✅ Verify land use matches expected type
-- ✅ Document if alternative TSU used (and reason)
-- ✅ Take geotagged photos at each site
-- ✅ Record actual GPS coordinates
-- ✅ Note any anomalies or challenges
+**During field work:** - ✅ Verify land use matches expected type - ✅ Document if alternative TSU used (and reason) - ✅ Take geotagged photos at each site - ✅ Record actual GPS coordinates - ✅ Note any anomalies or challenges
 
-**Post-field QC:**
-- Check for duplicate `site_id` entries
-- Verify all mandatory fields completed
-- Cross-reference photos with field records
-- Flag sites with large GPS deviation (>30m from waypoint)
+**Post-field QC:** - Check for duplicate `site_id` entries - Verify all mandatory fields completed - Cross-reference photos with field records - Flag sites with large GPS deviation (\>30m from waypoint)
 
 ## References {#references-sdg1}
 
-  - Bishop, T.F.A., McBratney, A.B. & Laslett, G.M. 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. https://doi.org/10.1016/s0016-7061(99)00003-8
+::: {#refs}
+:::
 
-  - Breiman, L. 2001. Random forests. Machine Learning, 45(1): 5–32. https://doi.org/10.1023/A:1010933404324
+# Appendices {.unnumbered}
 
-  - Breiman, L., Friedman, J.H., Olshen, R.A. & Stone, C.J. 1984. Classification and regression trees. Belmont, CA, Wadsworth.
-
-  - Hengl, T., Heuvelink, G.B.M. & Rossiter, D.G. 2007. About regression-kriging: From equations to case studies. Computers & Geosciences, 33: 1301–1315. https://doi.org/10.1016/j.cageo.2007.05.001
-
-  - Heuvelink, G.B.M., Kros, J., Reinds, G.J. & De Vries, W. 2016. Geostatistical prediction and simulation of european soil property maps. Geoderma Regional, 7: 201–215. https://doi.org/10.1016/j.geodrs.2016.04.002
-
-  - Heuvelink, G.B.M. & Webster, R. 2001. Modelling soil variation: Past, present, and future. Geoderma, 100: 269–301. https://doi.org/10.1016/S0016-7061(01)00025-8
-
-  - Jenny, H. 1941. A system of quantitative pedology. In “factors of soil formation”. McGraw Hill: New York.
-
-  - Kempen, B., Brus, D.J., Heuvelink, G.B.M. & Stoorvogel, J.J. 2009. Updating the 1:50,000 dutch soil map using legacy soil data: A multinomial logistic regression approach. Geoderma, 151: 311–326. https://doi.org/10.1016/j.geoderma.2009.04.023
-
-  - Kursa, M.B. & Rudnicki, W.R. 2010. Feature selection with the Boruta package. Journal of Statistical Software, 36(11): 1–13. https://doi.org/10.18637/jss.v036.i11
-
-  - Lagacherie, P. 2008. Digital soil mapping: A state of the art. In A.E. Hartemink, A.B. McBratney & M.L. Mendonça-Santos, eds. Digital soil mapping with limited data, pp. 3–14. Dordrecht, Springer.
-
-  - Lagacherie, P. & McBratney, A.B. 2006. Spatial soil information systems and spatial soil inference systems: Perspectives for digital soil mapping. In P. Lagacherie,   - A.B. McBratney & M. Voltz, eds. Digital soil mapping: An introductory perspective, pp. 3–22. Amsterdam, Elsevier.
-
-  - McBratney, A.B., Mendonça Santos, M.L. & Minasny, B. 2003. On digital soil mapping. Geoderma, 117: 3–52. https://doi.org/10.1016/S0016-7061(03)00223-4
-
-  - Meyer, H. & Pebesma, E. 2021. Predicting into unknown space? Estimating the area of applicability of spatial prediction models. Methods in Ecology and Evolution, 12: 1620–1633. https://doi.org/10.1111/2041-210X.13650
-
-  - Minasny, B. & McBratney, A.B. 2016. Digital soil mapping: A brief history and some lessons. Geoderma, 264: 301–311. https://doi.org/10.1016/j.geoderma.2015.07.017
-
-  - Odeh, I.O.A., McBratney, A.B. & Chittleborough, D.J. 1995. Further results on prediction of soil properties from terrain attributes: Heterotopic cokriging and regression-kriging. Geoderma, 67: 215–226. https://doi.org/10.1016/0016-7061(95)00007-B
-
-  - Odgers, N.P., McBratney, A.B. & Minasny, B. 2011. Bottom-up digital soil mapping. I. Soil layer classes. Geoderma, 163: 38–44. https://doi.org/10.1016/j.geoderma.2011.03.014
-
-  - Orton, T.G., Pringle, M.J., Page, K.L., Dalal, R.C. & Bishop, T.F.A. 2014. Spatial prediction of soil organic carbon stock using a linear model of coregionalisation. Geoderma, 230–231: 119–130. https://doi.org/10.1016/j.geoderma.2014.04.016
-
-  - Padarian, J. & McBratney, A.B. 2023. QuadMap: Variable resolution maps to communicate uncertainty. Computers and Geosciences, 181: 105480. https://doi.org/10.1016/j.cageo.2023.105480
-
-  - Roberts, D.R. & others. 2017. Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40: 913–929. https://doi.org/10.1111/ecog.02881
-
-  - Styc, Q. & Lagacherie, P. 2021. Combining spatial-environmental covariates and soil input data types to predict soil available water holding capacity. Geoderma, 401: 115171. https://doi.org/10.1016/j.geoderma.2021.115171
-
-  - Wadoux, A.M.J.-C., Minasny, B. & McBratney, A.B. 2021. Machine learning for digital soil mapping: Applications, challenges and suggested solutions. Earth-Science Reviews, 210: 103359. https://doi.org/10.1016/j.earscirev.2020.103359
-
-  - Webster, R., Lessells, C.M. & Hodgson, J.M. 1979. A reconnaissance soil survey of the ivybridge area of south devon. Soil Survey Technical Monograph, 12.
-
-  - Webster, R. & Oliver, M.A. 2007. Geostatistics for environmental scientists. 2nd edition. Chichester, John Wiley & Sons.
-
-  - Zhang, L., Heuvelink, G.B.M., Mulder, V.L., Chen, S., Deng, X. & Yang, L. 2024. Using process-oriented model output to enhance machine learning-based soil organic carbon prediction in space and time. Science of the Total Environment, 922: 170778. https://doi.org/10.1016/j.scitotenv.2024.170778
-
-
-<div id="refs"></div>
-
-# Appendices {-}
-
-## Appendix A: Software and Data Sources {-}
+## Appendix A: Software and Data Sources {.unnumbered}
 
 ### Software Requirements
 
-- **R** (version ≥ 4.0): https://www.r-project.org/
-- **RStudio**: https://posit.co/products/open-source/rstudio/
-- **Google Earth Engine**: https://earthengine.google.com/
-- **QGIS** (optional): https://qgis.org/
+-   **R** (version ≥ 4.0): <https://www.r-project.org/>
+-   **RStudio**: <https://posit.co/products/open-source/rstudio/>
+-   **Google Earth Engine**: <https://earthengine.google.com/>
+-   **QGIS** (optional): <https://qgis.org/>
 
 ### Data Sources
 
-**Global Datasets:**
-- CHELSA Climate: https://chelsa-climate.org/
-- TerraClimate: https://www.climatologylab.org/terraclimate.html
-- MODIS: https://lpdaac.usgs.gov/products/mod13q1v006/
-- Sentinel-2: https://scihub.copernicus.eu/
-- SRTM DEM: https://earthexplorer.usgs.gov/
-- ESA WorldCover: https://esa-worldcover.org/
-- SoilGrids: https://soilgrids.org/
-- Geomorpho90m: https://www.geomorpho90m.org/
+**Global Datasets:** - CHELSA Climate: <https://chelsa-climate.org/> - TerraClimate: <https://www.climatologylab.org/terraclimate.html> - MODIS: <https://lpdaac.usgs.gov/products/mod13q1v006/> - Sentinel-2: <https://scihub.copernicus.eu/> - SRTM DEM: <https://earthexplorer.usgs.gov/> - ESA WorldCover: <https://esa-worldcover.org/> - SoilGrids: <https://soilgrids.org/> - Geomorpho90m: <https://www.geomorpho90m.org/>
 
-**Administrative Boundaries:**
-- GADM: https://gadm.org/
-- Natural Earth: https://www.naturalearthdata.com/
+**Administrative Boundaries:** - GADM: <https://gadm.org/> - Natural Earth: <https://www.naturalearthdata.com/>
 
-## Appendix B: Troubleshooting Common Issues {-}
+## Appendix B: Troubleshooting Common Issues {.unnumbered}
 
 ### Memory Issues
 
 **Problem**: R runs out of memory during processing
 
 **Solution**:
+
 ```{r memory-fix, eval=FALSE}
 # Increase memory limit (Windows)
 memory.limit(size = 32000)  # 32 GB
@@ -1923,6 +1854,7 @@ memory.limit(size = 32000)  # 32 GB
 **Problem**: Spatial layers don't overlap correctly
 
 **Solution**:
+
 ```{r crs-fix, eval=FALSE}
 # Always check CRS
 sf::st_crs(your_data)
@@ -1938,6 +1870,7 @@ your_raster <- terra::project(your_raster, target_crs)
 **Problem**: SSU or TSU generation fails
 
 **Solution**:
+
 ```{r geometry-fix, eval=FALSE}
 # Check for valid geometries
 st_is_valid(your_sf_object)
@@ -1949,7 +1882,7 @@ your_sf_object <- st_make_valid(your_sf_object)
 your_sf_object <- your_sf_object[!st_is_empty(your_sf_object), ]
 ```
 
-## Appendix C: Acronyms and Abbreviations {-}
+## Appendix C: Acronyms and Abbreviations {.unnumbered}
 
 ```{r acronyms, echo=FALSE}
 acronyms <- data.frame(
@@ -1983,6 +1916,10 @@ acronyms <- data.frame(
 kable(acronyms, caption = "List of acronyms and abbreviations used in this manual")
 ```
 
+\<\<\<\<\<\<\< Updated upstream
 
+## =======
+
+> > > > > > > Stashed changes
 
 *For questions, technical support, or to report issues, please visit the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design) or contact the SoilFER team at FAO.*
