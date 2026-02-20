@@ -3768,7 +3768,7 @@ To perform this conversion, you must specify:
 <br>*Example 4.3: Transforming a Data Frame into an `{sf}` Spatial Object*
 In the example below, `.csv` data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 library(sf)
 
 # Import soil sampling data with coordinates (WGS84)
@@ -3878,7 +3878,7 @@ Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be di
 
 *Example: Selecting, filtering an creating new variables in an `sf` object with `{dplyr}`*
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 # Subset sf rows and columns using the pipping (%>%) operator with {dplyr}
 soil_sf %>%
   dplyr::filter(ph_h2o > 9) %>%
@@ -3923,7 +3923,7 @@ If no masking occurs and no errors appear in the console, you can safely use the
 
 *Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH \> 9)*
   
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 # Filtering rows by pH value and subset columns with {dplyr}
 saline <- soil_sf %>%
   dplyr::filter(ph_h2o > 9) %>%
@@ -4013,7 +4013,7 @@ Example: Clip plots to an administrative region
   
   `{sf}` objects can be quickly visualized using the base R `plot()` function:
   
-  ```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 # Simple plot of sampling locations
 plot(soil_sf["ph_h2o"], main = "Soil sampling sites – pH (H2O)")
 ```
@@ -4024,7 +4024,7 @@ If no column is specified in the `plot()`function, the display will produce a se
 Unlike `plot()`, the `{ggplot2}` package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
 In this case, the geometry type is defined with `geom_sf()`.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 library(ggplot2)
 
 ggplot(data = soil_sf) +
