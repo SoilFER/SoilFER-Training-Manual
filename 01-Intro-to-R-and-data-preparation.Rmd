@@ -1387,7 +1387,7 @@ To perform this conversion, you must specify:
 <br>*Example 4.3: Transforming a Data Frame into an `{sf}` Spatial Object*
 In the example below, `.csv` data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 library(sf)
 
 # Import soil sampling data with coordinates (WGS84)

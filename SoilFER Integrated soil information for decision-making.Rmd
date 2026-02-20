@@ -3665,7 +3665,7 @@ This leads to distortions in distances areas calculations.
 <br>
 
 ```{r degreeLat, echo=FALSE, fig.cap="<br>*Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude*", out.width='80%'}
-knitr::include_graphics("images/4_2_degreeEq.png")
+knitr::include_graphics("images/module1/degreeEq.png")
 ```
 <br>
 
