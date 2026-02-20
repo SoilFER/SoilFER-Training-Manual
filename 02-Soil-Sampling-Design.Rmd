@@ -1983,6 +1983,6 @@ acronyms <- data.frame(
 kable(acronyms, caption = "List of acronyms and abbreviations used in this manual")
 ```
 
----
+
 
 *For questions, technical support, or to report issues, please visit the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design) or contact the SoilFER team at FAO.*

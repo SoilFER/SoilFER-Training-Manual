@@ -4,23 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making </title>
+  <title>Chapter 4 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Chapter 4 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Chapter 4 Merging Results from Multiple Land Uses | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
 
-<meta name="author" content="Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
+<meta name="author" content="Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
 
 
 
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -169,10 +170,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#what-this-tutorial-is-not"><i class="fa fa-check"></i>What this Tutorial is not</a></li>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#the-training-dataset"><i class="fa fa-check"></i>The Training Dataset</a>
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#data-structure"><i class="fa fa-check"></i>Data Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-manual"><i class="fa fa-check"></i>How to Use This Manual</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#manual-structure"><i class="fa fa-check"></i>Manual Structure</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a>
 <ul>
@@ -333,191 +337,248 @@ div.csl-indent {
 <li class="chapter" data-level="1.10" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#exports"><i class="fa fa-check"></i><b>1.10</b> Summary of exported files</a></li>
 <li class="chapter" data-level="" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#references"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>2</b> Sampling design for soil surveys</a>
+<li class="chapter" data-level="2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html"><i class="fa fa-check"></i><b>2</b> Spatial Analysis in R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-theory"><i class="fa fa-check"></i><b>2.2</b> Sampling methodologies for soil spatial survey</a>
+<li class="chapter" data-level="2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-data-concepts"><i class="fa fa-check"></i><b>2.1</b> Spatial Data Concepts</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#selection-methods"><i class="fa fa-check"></i><b>2.2.1</b> Selection of the sampling methodology</a></li>
-<li class="chapter" data-level="2.2.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#inference-methods"><i class="fa fa-check"></i><b>2.2.2</b> Inference Methods</a></li>
-<li class="chapter" data-level="2.2.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-purpose"><i class="fa fa-check"></i><b>2.2.3</b> Purpose of Sampling</a></li>
-<li class="chapter" data-level="2.2.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#design-types"><i class="fa fa-check"></i><b>2.2.4</b> Sampling Design Types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#vector-vs-raster-data"><i class="fa fa-check"></i><b>2.1.1</b> Vector vs Raster Data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#coordinate-reference-systems-crs-and-projections"><i class="fa fa-check"></i><b>2.1.2</b> Coordinate Reference Systems (CRS) and Projections</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soilfer-design"><i class="fa fa-check"></i><b>2.3</b> SoilFER Sampling Design</a>
+<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soil-properties"><i class="fa fa-check"></i><b>2.3.1</b> Soil Properties</a></li>
-<li class="chapter" data-level="2.3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#env-covariates"><i class="fa fa-check"></i><b>2.3.2</b> Environmental Covariates</a></li>
-<li class="chapter" data-level="2.3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#methodology"><i class="fa fa-check"></i><b>2.3.3</b> Understanding the Methodology</a></li>
+<li class="chapter" data-level="2.2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing and Loading Spatial Packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> <strong>Working with Vector Data using <code>{sf}</code></strong></a></li>
+<li class="chapter" data-level="2.2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-vector-data"><i class="fa fa-check"></i><b>2.2.3</b> Importing Vector Data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-relationships-and-joins"><i class="fa fa-check"></i><b>2.2.4</b> Spatial Relationships and Joins</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#tutorial"><i class="fa fa-check"></i><b>2.4</b> Tutorial Using R</a>
+<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra"><i class="fa fa-check"></i><b>2.3</b> <strong>Working with Raster Data using <code>{terra}</code></strong></a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#setup"><i class="fa fa-check"></i><b>2.4.1</b> Setting Up the Environment</a></li>
-<li class="chapter" data-level="2.4.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#define-parameters"><i class="fa fa-check"></i><b>2.4.2</b> Define Variables and Parameters</a></li>
-<li class="chapter" data-level="2.4.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#country-iso-code"><i class="fa fa-check"></i><b>2.4.3</b> Country ISO Code</a></li>
-<li class="chapter" data-level="2.4.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#custom-functions"><i class="fa fa-check"></i><b>2.4.4</b> Custom Functions</a></li>
-<li class="chapter" data-level="2.4.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-boundaries"><i class="fa fa-check"></i><b>2.4.5</b> Load Country Boundaries and Legacy Data</a></li>
-<li class="chapter" data-level="2.4.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-covariates-psu"><i class="fa fa-check"></i><b>2.4.6</b> Load Environmental Covariates for PSUs</a></li>
-<li class="chapter" data-level="2.4.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>2.4.7</b> Load Main Environmental Covariates</a></li>
+<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.3.1</b> Importing Raster Data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#pca"><i class="fa fa-check"></i><b>2.5</b> Principal Component Analysis (PCA)</a></li>
-<li class="chapter" data-level="2.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-universe"><i class="fa fa-check"></i><b>2.6</b> Organize the Sampling Universe</a>
+<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.4</b> Combining Vector and Raster Data</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>2.6.1</b> Load and Process Land Use Data</a></li>
-<li class="chapter" data-level="2.6.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#exclude-protected-areas"><i class="fa fa-check"></i><b>2.6.2</b> Exclude Protected Areas</a></li>
-<li class="chapter" data-level="2.6.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>2.6.3</b> Restrict to Accessible Slopes</a></li>
-<li class="chapter" data-level="2.6.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>2.6.4</b> Aggregate to 100m Resolution</a></li>
-<li class="chapter" data-level="2.6.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-processed-land-use"><i class="fa fa-check"></i><b>2.6.5</b> Save Processed Land Use</a></li>
-<li class="chapter" data-level="2.6.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-legacy-data"><i class="fa fa-check"></i><b>2.6.6</b> Filter Legacy Data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.4.1</b> Extracting Raster Values to Points and Polygons</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-psu-grid"><i class="fa fa-check"></i><b>2.7</b> Create Primary Sampling Units (PSU Grid)</a>
+<li class="chapter" data-level="2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.5</b> Exporting and Sharing Spatial Data</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>2.7.1</b> Generate 2km × 2km Grid</a></li>
-<li class="chapter" data-level="2.7.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>2.7.2</b> Trim to Country Boundaries</a></li>
-<li class="chapter" data-level="2.7.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-psu-grid"><i class="fa fa-check"></i><b>2.7.3</b> Save PSU Grid</a></li>
+<li class="chapter" data-level="2.5.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.5.1</b> Exporting Vector Data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.5.2</b> Exporting Raster Data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#select-psus"><i class="fa fa-check"></i><b>2.8</b> Select PSUs with Sufficient Land Use Coverage</a>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>3</b> Sampling design for soil surveys</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>2.8.1</b> Calculate Land Use Percentage</a></li>
-<li class="chapter" data-level="2.8.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-psus"><i class="fa fa-check"></i><b>2.8.2</b> Filter PSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="2.9" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#rasterize-psus"><i class="fa fa-check"></i><b>2.9</b> Rasterize PSUs for Covariate Space Coverage</a></li>
-<li class="chapter" data-level="2.10" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#optimal-sample-size"><i class="fa fa-check"></i><b>2.10</b> Compute Optimal Sample Size</a>
+<li class="chapter" data-level="3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-theory"><i class="fa fa-check"></i><b>3.2</b> Sampling methodologies for soil spatial survey</a>
 <ul>
-<li class="chapter" data-level="2.10.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#run-optimization"><i class="fa fa-check"></i><b>2.10.1</b> Run Optimization</a></li>
-<li class="chapter" data-level="2.10.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>2.10.2</b> Extract Optimal Sample Size</a></li>
+<li class="chapter" data-level="3.2.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#selection-methods"><i class="fa fa-check"></i><b>3.2.1</b> Selection of the sampling methodology</a></li>
+<li class="chapter" data-level="3.2.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#inference-methods"><i class="fa fa-check"></i><b>3.2.2</b> Inference Methods</a></li>
+<li class="chapter" data-level="3.2.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-purpose"><i class="fa fa-check"></i><b>3.2.3</b> Purpose of Sampling</a></li>
+<li class="chapter" data-level="3.2.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#design-types"><i class="fa fa-check"></i><b>3.2.4</b> Sampling Design Types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.11" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#csc-computing"><i class="fa fa-check"></i><b>2.11</b> Covariate Space Coverage - Computing PSUs</a>
+<li class="chapter" data-level="3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soilfer-design"><i class="fa fa-check"></i><b>3.3</b> SoilFER Sampling Design</a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#prepare-function-parameters"><i class="fa fa-check"></i><b>2.11.1</b> Prepare Function Parameters</a></li>
-<li class="chapter" data-level="2.11.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>2.11.2</b> Perform K-means Clustering</a></li>
-<li class="chapter" data-level="2.11.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>2.11.3</b> Assign Clusters and Calculate Distances</a></li>
-<li class="chapter" data-level="2.11.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-selected-psus"><i class="fa fa-check"></i><b>2.11.4</b> Extract Selected PSUs</a></li>
-<li class="chapter" data-level="2.11.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>2.11.5</b> Visualize in Covariate Space</a></li>
+<li class="chapter" data-level="3.3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soil-properties"><i class="fa fa-check"></i><b>3.3.1</b> Soil Properties</a></li>
+<li class="chapter" data-level="3.3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#env-covariates"><i class="fa fa-check"></i><b>3.3.2</b> Environmental Covariates</a></li>
+<li class="chapter" data-level="3.3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#methodology"><i class="fa fa-check"></i><b>3.3.3</b> Understanding the Methodology</a></li>
 </ul></li>
-<li class="chapter" data-level="2.12" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>2.12</b> Compute SSUs and TSUs</a>
+<li class="chapter" data-level="3.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#tutorial"><i class="fa fa-check"></i><b>3.4</b> Tutorial Using R</a>
 <ul>
-<li class="chapter" data-level="2.12.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>2.12.1</b> Load High-Resolution Covariates</a></li>
-<li class="chapter" data-level="2.12.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#process-each-psu"><i class="fa fa-check"></i><b>2.12.2</b> Process Each PSU</a></li>
-<li class="chapter" data-level="2.12.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>2.12.3</b> Combine SSUs and TSUs</a></li>
+<li class="chapter" data-level="3.4.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#setup"><i class="fa fa-check"></i><b>3.4.1</b> Setting Up the Environment</a></li>
+<li class="chapter" data-level="3.4.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#define-parameters"><i class="fa fa-check"></i><b>3.4.2</b> Define Variables and Parameters</a></li>
+<li class="chapter" data-level="3.4.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#country-iso-code"><i class="fa fa-check"></i><b>3.4.3</b> Country ISO Code</a></li>
+<li class="chapter" data-level="3.4.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#custom-functions"><i class="fa fa-check"></i><b>3.4.4</b> Custom Functions</a></li>
+<li class="chapter" data-level="3.4.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-boundaries"><i class="fa fa-check"></i><b>3.4.5</b> Load Country Boundaries and Legacy Data</a></li>
+<li class="chapter" data-level="3.4.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-covariates-psu"><i class="fa fa-check"></i><b>3.4.6</b> Load Environmental Covariates for PSUs</a></li>
+<li class="chapter" data-level="3.4.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>3.4.7</b> Load Main Environmental Covariates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.13" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-units"><i class="fa fa-check"></i><b>2.13</b> Export Sampling Units</a>
+<li class="chapter" data-level="3.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#pca"><i class="fa fa-check"></i><b>3.5</b> Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="3.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-universe"><i class="fa fa-check"></i><b>3.6</b> Organize the Sampling Universe</a>
 <ul>
-<li class="chapter" data-level="2.13.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-cluster-raster"><i class="fa fa-check"></i><b>2.13.1</b> Create Cluster Raster</a></li>
-<li class="chapter" data-level="2.13.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>2.13.2</b> Join Cluster Info to TSUs</a></li>
-<li class="chapter" data-level="2.13.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-site-ids"><i class="fa fa-check"></i><b>2.13.3</b> Create Site IDs</a></li>
-<li class="chapter" data-level="2.13.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-shapefiles"><i class="fa fa-check"></i><b>2.13.4</b> Export Shapefiles</a></li>
+<li class="chapter" data-level="3.6.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>3.6.1</b> Load and Process Land Use Data</a></li>
+<li class="chapter" data-level="3.6.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#exclude-protected-areas"><i class="fa fa-check"></i><b>3.6.2</b> Exclude Protected Areas</a></li>
+<li class="chapter" data-level="3.6.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>3.6.3</b> Restrict to Accessible Slopes</a></li>
+<li class="chapter" data-level="3.6.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>3.6.4</b> Aggregate to 100m Resolution</a></li>
+<li class="chapter" data-level="3.6.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-processed-land-use"><i class="fa fa-check"></i><b>3.6.5</b> Save Processed Land Use</a></li>
+<li class="chapter" data-level="3.6.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-legacy-data"><i class="fa fa-check"></i><b>3.6.6</b> Filter Legacy Data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>2.14</b> Compute Alternative PSUs</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>3</b> Merging Results from Multiple Land Uses</a>
+<li class="chapter" data-level="3.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-psu-grid"><i class="fa fa-check"></i><b>3.7</b> Create Primary Sampling Units (PSU Grid)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>3.1</b> Assign Country-Wide Unique IDs</a></li>
-<li class="chapter" data-level="3.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>3.2</b> Export Unified Datasets</a></li>
-<li class="chapter" data-level="3.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>3.3</b> Summary Statistics</a></li>
-<li class="chapter" data-level="3.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>3.4</b> Create Distribution Maps</a></li>
+<li class="chapter" data-level="3.7.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>3.7.1</b> Generate 2km × 2km Grid</a></li>
+<li class="chapter" data-level="3.7.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>3.7.2</b> Trim to Country Boundaries</a></li>
+<li class="chapter" data-level="3.7.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-psu-grid"><i class="fa fa-check"></i><b>3.7.3</b> Save PSU Grid</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>4</b> Field Sampling Protocol</a>
+<li class="chapter" data-level="3.8" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#select-psus"><i class="fa fa-check"></i><b>3.8</b> Select PSUs with Sufficient Land Use Coverage</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>4.1</b> GPS Device Preparation</a>
+<li class="chapter" data-level="3.8.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>3.8.1</b> Calculate Land Use Percentage</a></li>
+<li class="chapter" data-level="3.8.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-psus"><i class="fa fa-check"></i><b>3.8.2</b> Filter PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#rasterize-psus"><i class="fa fa-check"></i><b>3.9</b> Rasterize PSUs for Covariate Space Coverage</a></li>
+<li class="chapter" data-level="3.10" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#optimal-sample-size"><i class="fa fa-check"></i><b>3.10</b> Compute Optimal Sample Size</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>4.1.1</b> Export to GPX Format</a></li>
-<li class="chapter" data-level="4.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>4.1.2</b> Load onto GPS Device</a></li>
+<li class="chapter" data-level="3.10.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#run-optimization"><i class="fa fa-check"></i><b>3.10.1</b> Run Optimization</a></li>
+<li class="chapter" data-level="3.10.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>3.10.2</b> Extract Optimal Sample Size</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>4.2</b> Sampling Procedure</a></li>
-<li class="chapter" data-level="4.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>4.3</b> Data Recording</a></li>
-<li class="chapter" data-level="4.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>4.4</b> Quality Control</a></li>
+<li class="chapter" data-level="3.11" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#csc-computing"><i class="fa fa-check"></i><b>3.11</b> Covariate Space Coverage - Computing PSUs</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#prepare-function-parameters"><i class="fa fa-check"></i><b>3.11.1</b> Prepare Function Parameters</a></li>
+<li class="chapter" data-level="3.11.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>3.11.2</b> Perform K-means Clustering</a></li>
+<li class="chapter" data-level="3.11.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>3.11.3</b> Assign Clusters and Calculate Distances</a></li>
+<li class="chapter" data-level="3.11.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-selected-psus"><i class="fa fa-check"></i><b>3.11.4</b> Extract Selected PSUs</a></li>
+<li class="chapter" data-level="3.11.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>3.11.5</b> Visualize in Covariate Space</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="3.12" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>3.12</b> Compute SSUs and TSUs</a>
+<ul>
+<li class="chapter" data-level="3.12.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>3.12.1</b> Load High-Resolution Covariates</a></li>
+<li class="chapter" data-level="3.12.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#process-each-psu"><i class="fa fa-check"></i><b>3.12.2</b> Process Each PSU</a></li>
+<li class="chapter" data-level="3.12.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>3.12.3</b> Combine SSUs and TSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-units"><i class="fa fa-check"></i><b>3.13</b> Export Sampling Units</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-cluster-raster"><i class="fa fa-check"></i><b>3.13.1</b> Create Cluster Raster</a></li>
+<li class="chapter" data-level="3.13.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>3.13.2</b> Join Cluster Info to TSUs</a></li>
+<li class="chapter" data-level="3.13.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-site-ids"><i class="fa fa-check"></i><b>3.13.3</b> Create Site IDs</a></li>
+<li class="chapter" data-level="3.13.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-shapefiles"><i class="fa fa-check"></i><b>3.13.4</b> Export Shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>3.14</b> Compute Alternative PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>4</b> Merging Results from Multiple Land Uses</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>4.1</b> Assign Country-Wide Unique IDs</a></li>
+<li class="chapter" data-level="4.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>4.2</b> Export Unified Datasets</a></li>
+<li class="chapter" data-level="4.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>4.3</b> Summary Statistics</a></li>
+<li class="chapter" data-level="4.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>4.4</b> Create Distribution Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>5</b> Field Sampling Protocol</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>5.1</b> GPS Device Preparation</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>5.1.1</b> Export to GPX Format</a></li>
+<li class="chapter" data-level="5.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>5.1.2</b> Load onto GPS Device</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>5.2</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>5.3</b> Data Recording</a></li>
+<li class="chapter" data-level="5.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>5.4</b> Quality Control</a></li>
+<li class="chapter" data-level="5.5" data-path="field-protocol.html"><a href="field-protocol.html#references-sdg1"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>4.4.1</b> Software Requirements</a></li>
-<li class="chapter" data-level="4.4.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>4.4.2</b> Data Sources</a></li>
+<li class="chapter" data-level="5.5.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>5.5.1</b> Software Requirements</a></li>
+<li class="chapter" data-level="5.5.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>5.5.2</b> Data Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
 <ul>
-<li class="chapter" data-level="4.4.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>4.4.3</b> Memory Issues</a></li>
-<li class="chapter" data-level="4.4.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>4.4.4</b> CRS Misalignment</a></li>
-<li class="chapter" data-level="4.4.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>4.4.5</b> Empty Geometry</a></li>
+<li class="chapter" data-level="5.5.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>5.5.3</b> Memory Issues</a></li>
+<li class="chapter" data-level="5.5.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>5.5.4</b> CRS Misalignment</a></li>
+<li class="chapter" data-level="5.5.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>5.5.5</b> Empty Geometry</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>5</b> TBD</a></li>
-<li class="chapter" data-level="6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html"><i class="fa fa-check"></i><b>6</b> Soil Data Preparation</a>
+<li class="chapter" data-level="6" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>6</b> TBD</a></li>
+<li class="chapter" data-level="7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html"><i class="fa fa-check"></i><b>7</b> GloSIS Soil Data Preparation</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-cleaning"><i class="fa fa-check"></i><b>6.2</b> Data cleaning</a></li>
-<li class="chapter" data-level="6.3" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#soil-data-harmonization"><i class="fa fa-check"></i><b>6.3</b> Soil Data Harmonization</a></li>
-<li class="chapter" data-level="6.4" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#concepts-on-digital-exchange-of-soil-related-data-iso-28258"><i class="fa fa-check"></i><b>6.4</b> Concepts on digital exchange of soil-related data (ISO 28258)</a></li>
-<li class="chapter" data-level="6.5" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#plot-data"><i class="fa fa-check"></i><b>6.5</b> Plot data</a></li>
-<li class="chapter" data-level="6.6" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#profile-data"><i class="fa fa-check"></i><b>6.6</b> Profile data</a></li>
-<li class="chapter" data-level="6.7" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#element-data"><i class="fa fa-check"></i><b>6.7</b> Element data</a></li>
-<li class="chapter" data-level="6.8" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#specimen-data"><i class="fa fa-check"></i><b>6.8</b> Specimen data</a></li>
-<li class="chapter" data-level="6.9" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#definition-of-laboratory-procedures"><i class="fa fa-check"></i><b>6.9</b> Definition of laboratory procedures</a></li>
-<li class="chapter" data-level="6.10" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#data-transformation"><i class="fa fa-check"></i><b>6.10</b> Data transformation</a></li>
-<li class="chapter" data-level="6.11" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#organizing-soil-data-according-to-the-glosis-database"><i class="fa fa-check"></i><b>6.11</b> Organizing soil data according to the GloSIS database</a></li>
-<li class="chapter" data-level="6.12" data-path="soil-data-preparation.html"><a href="soil-data-preparation.html#tools-for-harmonization-of-soil-databases-within-glosis"><i class="fa fa-check"></i><b>6.12</b> Tools for harmonization of soil databases within GloSIS</a></li>
+<li class="chapter" data-level="7.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>7.2</b> The GloSIS database</a></li>
+<li class="chapter" data-level="7.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>7.3</b> Features of interest: Understanding the XLSX Template</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> <code>Plot Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> <code>Profile Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> <code>Element Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> <code>Specimen Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> <code>Procedures</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> <code>Metadata</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> <code>Original Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> <code>GloSIS Methods</code> sheet</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>7</b> Digital Soil Mapping and Modeling</a>
+<li class="chapter" data-level="7.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>7.4</b> GloSIS-ETL</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-harmonization"><i class="fa fa-check"></i><b>7.4.1</b> GloSIS Data Harmonization</a></li>
+<li class="chapter" data-level="7.4.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping"><i class="fa fa-check"></i><b>7.4.2</b> Step 1: Data Ingestion &amp; Variable Mapping</a></li>
+<li class="chapter" data-level="7.4.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation"><i class="fa fa-check"></i><b>7.4.3</b> Step 2: Quality Check and Quality Report Generation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation"><i class="fa fa-check"></i><b>7.4.4</b> Step 2a: Geographic Data Validation</a></li>
+<li class="chapter" data-level="7.4.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation"><i class="fa fa-check"></i><b>7.4.5</b> Step 2b: Soil Depth Validation</a></li>
+<li class="chapter" data-level="7.4.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation"><i class="fa fa-check"></i><b>7.4.6</b> Step 2c: Soil Properties Validation</a></li>
+<li class="chapter" data-level="7.4.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission"><i class="fa fa-check"></i><b>7.4.7</b> Step 3: Data Correction and Resubmission</a></li>
+<li class="chapter" data-level="7.4.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data"><i class="fa fa-check"></i><b>7.4.8</b> Step 4: Download Harmonized Data</a></li>
+<li class="chapter" data-level="7.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>7.4.9</b> GloSIS Data Standardization</a></li>
+<li class="chapter" data-level="7.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>7.4.10</b> GloSIS Data Viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the <code>GloSIS-ETL</code></a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>7.5.1</b> Install Docker Desktop</a></li>
+<li class="chapter" data-level="7.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>7.5.2</b> Install the GloSIS-ETL Services</a></li>
+<li class="chapter" data-level="7.5.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#verify-installation"><i class="fa fa-check"></i><b>7.5.3</b> Verify Installation</a></li>
+<li class="chapter" data-level="7.5.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#pgadmin"><i class="fa fa-check"></i><b>7.5.4</b> Optional: pgAdmin Web Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#accessing-the-services"><i class="fa fa-check"></i><b>7.6</b> Accessing the Services</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#landing-page"><i class="fa fa-check"></i><b>7.6.1</b> Landing Page</a></li>
+<li class="chapter" data-level="7.6.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#shiny-application-modules"><i class="fa fa-check"></i><b>7.6.2</b> Shiny Application Modules</a></li>
+<li class="chapter" data-level="7.6.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-database"><i class="fa fa-check"></i><b>7.6.3</b> GloSIS Database</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#docker-compose-file"><i class="fa fa-check"></i><b>7.7</b> The <code>docker-compose.yml</code> File</a></li>
+<li class="chapter" data-level="7.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#env-file"><i class="fa fa-check"></i><b>7.8</b> The <code>.env</code> File</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>8</b> Digital Soil Mapping and Modeling</a>
 <ul>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-i-theoretical-foundations"><i class="fa fa-check"></i>Part I: Theoretical Foundations</a></li>
-<li class="chapter" data-level="7.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>7.1</b> Fundamentals of Digital Soil Mapping</a>
+<li class="chapter" data-level="8.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1</b> Fundamentals of Digital Soil Mapping</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>7.1.1</b> Introduction to Digital Soil Mapping</a></li>
-<li class="chapter" data-level="7.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>7.1.2</b> The SCORPAN Framework</a></li>
-<li class="chapter" data-level="7.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>7.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
-<li class="chapter" data-level="7.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>7.1.4</b> Types of Soil Variables</a></li>
-<li class="chapter" data-level="7.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>7.1.5</b> Prediction Methods</a></li>
-<li class="chapter" data-level="7.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>7.1.6</b> Nonlinearity and Uncertainty</a></li>
+<li class="chapter" data-level="8.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1.1</b> Introduction to Digital Soil Mapping</a></li>
+<li class="chapter" data-level="8.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>8.1.2</b> The SCORPAN Framework</a></li>
+<li class="chapter" data-level="8.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>8.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
+<li class="chapter" data-level="8.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>8.1.4</b> Types of Soil Variables</a></li>
+<li class="chapter" data-level="8.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>8.1.5</b> Prediction Methods</a></li>
+<li class="chapter" data-level="8.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>8.1.6</b> Nonlinearity and Uncertainty</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-ii-practical-application"><i class="fa fa-check"></i>Part II: Practical Application</a></li>
-<li class="chapter" data-level="7.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>7.2</b> Workflow Overview</a></li>
-<li class="chapter" data-level="7.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>7.3</b> Continuous Modelling (pH)</a>
+<li class="chapter" data-level="8.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>8.2</b> Workflow Overview</a></li>
+<li class="chapter" data-level="8.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>8.3</b> Continuous Modelling (pH)</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>7.3.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>7.3.2</b> Data and Covariates</a></li>
-<li class="chapter" data-level="7.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>7.3.3</b> Feature Selection (Boruta)</a></li>
-<li class="chapter" data-level="7.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>7.3.4</b> Model Training</a></li>
-<li class="chapter" data-level="7.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>7.3.5</b> Variable Importance</a></li>
-<li class="chapter" data-level="7.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>7.3.6</b> Validation Metrics</a></li>
-<li class="chapter" data-level="7.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>7.3.7</b> Prediction Maps</a></li>
+<li class="chapter" data-level="8.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>8.3.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>8.3.2</b> Data and Covariates</a></li>
+<li class="chapter" data-level="8.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>8.3.3</b> Feature Selection (Boruta)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>8.3.4</b> Model Training</a></li>
+<li class="chapter" data-level="8.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>8.3.5</b> Variable Importance</a></li>
+<li class="chapter" data-level="8.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>8.3.6</b> Validation Metrics</a></li>
+<li class="chapter" data-level="8.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>8.3.7</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>7.4</b> Nominal Classification (Clay_pH_Class)</a>
+<li class="chapter" data-level="8.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>8.4</b> Nominal Classification (Clay_pH_Class)</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>7.4.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>7.4.2</b> Feature Selection</a></li>
-<li class="chapter" data-level="7.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>7.4.3</b> Model Training</a></li>
-<li class="chapter" data-level="7.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>7.4.4</b> Validation</a></li>
-<li class="chapter" data-level="7.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>7.4.5</b> Prediction Maps</a></li>
+<li class="chapter" data-level="8.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>8.4.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>8.4.2</b> Feature Selection</a></li>
+<li class="chapter" data-level="8.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>8.4.3</b> Model Training</a></li>
+<li class="chapter" data-level="8.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>8.4.4</b> Validation</a></li>
+<li class="chapter" data-level="8.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>8.4.5</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>7.5</b> Ordinal Modelling (pH_Class)</a>
+<li class="chapter" data-level="8.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>8.5</b> Ordinal Modelling (pH_Class)</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>7.5.1</b> Nature of the Variable</a></li>
-<li class="chapter" data-level="7.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>7.5.2</b> Ordinal Encoding</a></li>
-<li class="chapter" data-level="7.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>7.5.3</b> Feature Selection</a></li>
-<li class="chapter" data-level="7.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>7.5.4</b> Model Training</a></li>
-<li class="chapter" data-level="7.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>7.5.5</b> Validation</a></li>
-<li class="chapter" data-level="7.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>7.5.6</b> Prediction Maps</a></li>
+<li class="chapter" data-level="8.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>8.5.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>8.5.2</b> Ordinal Encoding</a></li>
+<li class="chapter" data-level="8.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>8.5.3</b> Feature Selection</a></li>
+<li class="chapter" data-level="8.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>8.5.4</b> Model Training</a></li>
+<li class="chapter" data-level="8.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>8.5.5</b> Validation</a></li>
+<li class="chapter" data-level="8.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>8.5.6</b> Prediction Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>7.6</b> Area of Applicability (AOA)</a>
+<li class="chapter" data-level="8.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>8.6</b> Area of Applicability (AOA)</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>7.6.1</b> Why AOA is Necessary</a></li>
-<li class="chapter" data-level="7.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>7.6.2</b> Dissimilarity Index (DI)</a></li>
-<li class="chapter" data-level="7.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>7.6.3</b> AOA Binary Mask</a></li>
-<li class="chapter" data-level="7.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>7.6.4</b> Local Point Density (LPD)</a></li>
-<li class="chapter" data-level="7.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>7.6.5</b> Predictions Masked to AOA</a></li>
+<li class="chapter" data-level="8.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>8.6.1</b> Why AOA is Necessary</a></li>
+<li class="chapter" data-level="8.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>8.6.2</b> Dissimilarity Index (DI)</a></li>
+<li class="chapter" data-level="8.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>8.6.3</b> AOA Binary Mask</a></li>
+<li class="chapter" data-level="8.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>8.6.4</b> Local Point Density (LPD)</a></li>
+<li class="chapter" data-level="8.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>8.6.5</b> Predictions Masked to AOA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>7.7</b> Summary</a></li>
-<li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#references-1"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>8</b> Soil Data Sharing</a>
+<li class="chapter" data-level="9" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>9</b> Soil Data Sharing</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>8.1</b> Data sharing and export formats</a></li>
-<li class="chapter" data-level="8.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>8.2</b> Metadata</a></li>
-<li class="chapter" data-level="8.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>8.3</b> Web Services</a></li>
+<li class="chapter" data-level="9.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>9.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="9.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>9.2</b> Metadata</a></li>
+<li class="chapter" data-level="9.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>9.3</b> Web Services</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references-3.html"><a href="references-3.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -536,308 +597,157 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="merging-results" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Merging Results from Multiple Land Uses<a href="merging-results.html#merging-results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="merging-results" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Merging Results from Multiple Land Uses<a href="merging-results.html#merging-results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>After running the sampling design separately for cropland, grassland, and forest, combine all results into a unified dataset with country-wide unique IDs.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="merging-results.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb173-2"><a href="merging-results.html#cb173-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-3"><a href="merging-results.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define land uses and codes</span></span>
-<span id="cb173-4"><a href="merging-results.html#cb173-4" aria-hidden="true" tabindex="-1"></a>landuses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cropland&quot;</span>, <span class="st">&quot;grassland&quot;</span>, <span class="st">&quot;forest&quot;</span>)</span>
-<span id="cb173-5"><a href="merging-results.html#cb173-5" aria-hidden="true" tabindex="-1"></a>lu_codes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
-<span id="cb173-6"><a href="merging-results.html#cb173-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-7"><a href="merging-results.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize storage lists</span></span>
-<span id="cb173-8"><a href="merging-results.html#cb173-8" aria-hidden="true" tabindex="-1"></a>psus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb173-9"><a href="merging-results.html#cb173-9" aria-hidden="true" tabindex="-1"></a>tsus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb173-10"><a href="merging-results.html#cb173-10" aria-hidden="true" tabindex="-1"></a>psus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb173-11"><a href="merging-results.html#cb173-11" aria-hidden="true" tabindex="-1"></a>tsus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb173-12"><a href="merging-results.html#cb173-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-13"><a href="merging-results.html#cb173-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all shapefiles</span></span>
-<span id="cb173-14"><a href="merging-results.html#cb173-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(landuses)) {</span>
-<span id="cb173-15"><a href="merging-results.html#cb173-15" aria-hidden="true" tabindex="-1"></a>  lu <span class="ot">&lt;-</span> landuses[i]</span>
-<span id="cb173-16"><a href="merging-results.html#cb173-16" aria-hidden="true" tabindex="-1"></a>  code <span class="ot">&lt;-</span> lu_codes[i]</span>
-<span id="cb173-17"><a href="merging-results.html#cb173-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb173-18"><a href="merging-results.html#cb173-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Target PSUs</span></span>
-<span id="cb173-19"><a href="merging-results.html#cb173-19" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/PSUs_target.shp&quot;</span>, lu)</span>
-<span id="cb173-20"><a href="merging-results.html#cb173-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
-<span id="cb173-21"><a href="merging-results.html#cb173-21" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb173-22"><a href="merging-results.html#cb173-22" aria-hidden="true" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
-<span id="cb173-23"><a href="merging-results.html#cb173-23" aria-hidden="true" tabindex="-1"></a>    psus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb173-24"><a href="merging-results.html#cb173-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target PSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
-<span id="cb173-25"><a href="merging-results.html#cb173-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb173-26"><a href="merging-results.html#cb173-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb173-27"><a href="merging-results.html#cb173-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Target TSUs</span></span>
-<span id="cb173-28"><a href="merging-results.html#cb173-28" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/TSUs_target.shp&quot;</span>, lu)</span>
-<span id="cb173-29"><a href="merging-results.html#cb173-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
-<span id="cb173-30"><a href="merging-results.html#cb173-30" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb173-31"><a href="merging-results.html#cb173-31" aria-hidden="true" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
-<span id="cb173-32"><a href="merging-results.html#cb173-32" aria-hidden="true" tabindex="-1"></a>    tsus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb173-33"><a href="merging-results.html#cb173-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target TSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
-<span id="cb173-34"><a href="merging-results.html#cb173-34" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb173-35"><a href="merging-results.html#cb173-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb173-36"><a href="merging-results.html#cb173-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replacement PSUs and TSUs</span></span>
-<span id="cb173-37"><a href="merging-results.html#cb173-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (similar loading process)</span></span>
-<span id="cb173-38"><a href="merging-results.html#cb173-38" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb173-39"><a href="merging-results.html#cb173-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-40"><a href="merging-results.html#cb173-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge using data.table (handles different column names)</span></span>
-<span id="cb173-41"><a href="merging-results.html#cb173-41" aria-hidden="true" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(psus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb173-42"><a href="merging-results.html#cb173-42" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(tsus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb173-43"><a href="merging-results.html#cb173-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-44"><a href="merging-results.html#cb173-44" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== MERGED DATASETS ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
-<span id="cb173-45"><a href="merging-results.html#cb173-45" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(psus_target)))</span>
-<span id="cb173-46"><a href="merging-results.html#cb173-46" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target TSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_target)))</span></code></pre></div>
-<div id="assign-unique-ids" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Assign Country-Wide Unique IDs<a href="merging-results.html#assign-unique-ids" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="merging-results.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign sequential IDs to target PSUs</span></span>
-<span id="cb174-2"><a href="merging-results.html#cb174-2" aria-hidden="true" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(psus_target)</span>
-<span id="cb174-3"><a href="merging-results.html#cb174-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-4"><a href="merging-results.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Continue numbering for replacements</span></span>
-<span id="cb174-5"><a href="merging-results.html#cb174-5" aria-hidden="true" tabindex="-1"></a>start_id <span class="ot">&lt;-</span> <span class="fu">nrow</span>(psus_target) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb174-6"><a href="merging-results.html#cb174-6" aria-hidden="true" tabindex="-1"></a>psus_repl<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> start_id<span class="sc">:</span>(start_id <span class="sc">+</span> <span class="fu">nrow</span>(psus_repl) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb174-7"><a href="merging-results.html#cb174-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-8"><a href="merging-results.html#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transfer country-wide IDs to TSUs</span></span>
-<span id="cb174-9"><a href="merging-results.html#cb174-9" aria-hidden="true" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(tsus_target<span class="sc">$</span>PSU_ID, <span class="st">&quot;-&quot;</span>, tsus_target<span class="sc">$</span>lulc)</span>
-<span id="cb174-10"><a href="merging-results.html#cb174-10" aria-hidden="true" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(psus_target<span class="sc">$</span>ID, <span class="st">&quot;-&quot;</span>, psus_target<span class="sc">$</span>lulc)</span>
-<span id="cb174-11"><a href="merging-results.html#cb174-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-12"><a href="merging-results.html#cb174-12" aria-hidden="true" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> psus_target<span class="sc">$</span>PSU_ID_country[</span>
-<span id="cb174-13"><a href="merging-results.html#cb174-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">match</span>(tsus_target<span class="sc">$</span>PSU_temp_ID, psus_target<span class="sc">$</span>PSU_temp_ID)</span>
-<span id="cb174-14"><a href="merging-results.html#cb174-14" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb174-15"><a href="merging-results.html#cb174-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-16"><a href="merging-results.html#cb174-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create final site IDs with country-wide PSU numbers</span></span>
-<span id="cb174-17"><a href="merging-results.html#cb174-17" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb174-18"><a href="merging-results.html#cb174-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%s%04d-%d-%d%s&quot;</span>, </span>
-<span id="cb174-19"><a href="merging-results.html#cb174-19" aria-hidden="true" tabindex="-1"></a>                          ISO.code, PSU_ID_country, SSU_ID, TSU_ID, lulc))</span>
-<span id="cb174-20"><a href="merging-results.html#cb174-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-21"><a href="merging-results.html#cb174-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up</span></span>
-<span id="cb174-22"><a href="merging-results.html#cb174-22" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb174-23"><a href="merging-results.html#cb174-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, SSU_ID, SSU_Type, TSU_ID, TSU_Type, </span>
-<span id="cb174-24"><a href="merging-results.html#cb174-24" aria-hidden="true" tabindex="-1"></a>         site_id, lulc, geometry)</span>
-<span id="cb174-25"><a href="merging-results.html#cb174-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-26"><a href="merging-results.html#cb174-26" aria-hidden="true" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> psus_target <span class="sc">%&gt;%</span></span>
-<span id="cb174-27"><a href="merging-results.html#cb174-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, lulc, geometry)</span>
-<span id="cb174-28"><a href="merging-results.html#cb174-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-29"><a href="merging-results.html#cb174-29" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Assigned country-wide unique IDs</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="merging-results.html#cb180-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb180-2"><a href="merging-results.html#cb180-2" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="merging-results.html#cb180-3" tabindex="-1"></a><span class="co"># Define land uses and codes</span></span>
+<span id="cb180-4"><a href="merging-results.html#cb180-4" tabindex="-1"></a>landuses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cropland&quot;</span>, <span class="st">&quot;grassland&quot;</span>, <span class="st">&quot;forest&quot;</span>)</span>
+<span id="cb180-5"><a href="merging-results.html#cb180-5" tabindex="-1"></a>lu_codes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb180-6"><a href="merging-results.html#cb180-6" tabindex="-1"></a></span>
+<span id="cb180-7"><a href="merging-results.html#cb180-7" tabindex="-1"></a><span class="co"># Initialize storage lists</span></span>
+<span id="cb180-8"><a href="merging-results.html#cb180-8" tabindex="-1"></a>psus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb180-9"><a href="merging-results.html#cb180-9" tabindex="-1"></a>tsus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb180-10"><a href="merging-results.html#cb180-10" tabindex="-1"></a>psus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb180-11"><a href="merging-results.html#cb180-11" tabindex="-1"></a>tsus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb180-12"><a href="merging-results.html#cb180-12" tabindex="-1"></a></span>
+<span id="cb180-13"><a href="merging-results.html#cb180-13" tabindex="-1"></a><span class="co"># Load all shapefiles</span></span>
+<span id="cb180-14"><a href="merging-results.html#cb180-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(landuses)) {</span>
+<span id="cb180-15"><a href="merging-results.html#cb180-15" tabindex="-1"></a>  lu <span class="ot">&lt;-</span> landuses[i]</span>
+<span id="cb180-16"><a href="merging-results.html#cb180-16" tabindex="-1"></a>  code <span class="ot">&lt;-</span> lu_codes[i]</span>
+<span id="cb180-17"><a href="merging-results.html#cb180-17" tabindex="-1"></a>  </span>
+<span id="cb180-18"><a href="merging-results.html#cb180-18" tabindex="-1"></a>  <span class="co"># Target PSUs</span></span>
+<span id="cb180-19"><a href="merging-results.html#cb180-19" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/PSUs_target.shp&quot;</span>, lu)</span>
+<span id="cb180-20"><a href="merging-results.html#cb180-20" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
+<span id="cb180-21"><a href="merging-results.html#cb180-21" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb180-22"><a href="merging-results.html#cb180-22" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
+<span id="cb180-23"><a href="merging-results.html#cb180-23" tabindex="-1"></a>    psus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
+<span id="cb180-24"><a href="merging-results.html#cb180-24" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target PSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
+<span id="cb180-25"><a href="merging-results.html#cb180-25" tabindex="-1"></a>  }</span>
+<span id="cb180-26"><a href="merging-results.html#cb180-26" tabindex="-1"></a>  </span>
+<span id="cb180-27"><a href="merging-results.html#cb180-27" tabindex="-1"></a>  <span class="co"># Target TSUs</span></span>
+<span id="cb180-28"><a href="merging-results.html#cb180-28" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/TSUs_target.shp&quot;</span>, lu)</span>
+<span id="cb180-29"><a href="merging-results.html#cb180-29" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
+<span id="cb180-30"><a href="merging-results.html#cb180-30" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb180-31"><a href="merging-results.html#cb180-31" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
+<span id="cb180-32"><a href="merging-results.html#cb180-32" tabindex="-1"></a>    tsus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
+<span id="cb180-33"><a href="merging-results.html#cb180-33" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target TSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
+<span id="cb180-34"><a href="merging-results.html#cb180-34" tabindex="-1"></a>  }</span>
+<span id="cb180-35"><a href="merging-results.html#cb180-35" tabindex="-1"></a>  </span>
+<span id="cb180-36"><a href="merging-results.html#cb180-36" tabindex="-1"></a>  <span class="co"># Replacement PSUs and TSUs</span></span>
+<span id="cb180-37"><a href="merging-results.html#cb180-37" tabindex="-1"></a>  <span class="co"># (similar loading process)</span></span>
+<span id="cb180-38"><a href="merging-results.html#cb180-38" tabindex="-1"></a>}</span>
+<span id="cb180-39"><a href="merging-results.html#cb180-39" tabindex="-1"></a></span>
+<span id="cb180-40"><a href="merging-results.html#cb180-40" tabindex="-1"></a><span class="co"># Merge using data.table (handles different column names)</span></span>
+<span id="cb180-41"><a href="merging-results.html#cb180-41" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(psus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb180-42"><a href="merging-results.html#cb180-42" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(tsus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb180-43"><a href="merging-results.html#cb180-43" tabindex="-1"></a></span>
+<span id="cb180-44"><a href="merging-results.html#cb180-44" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== MERGED DATASETS ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
+<span id="cb180-45"><a href="merging-results.html#cb180-45" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(psus_target)))</span>
+<span id="cb180-46"><a href="merging-results.html#cb180-46" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target TSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_target)))</span></code></pre></div>
+<div id="assign-unique-ids" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Assign Country-Wide Unique IDs<a href="merging-results.html#assign-unique-ids" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="merging-results.html#cb181-1" tabindex="-1"></a><span class="co"># Assign sequential IDs to target PSUs</span></span>
+<span id="cb181-2"><a href="merging-results.html#cb181-2" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(psus_target)</span>
+<span id="cb181-3"><a href="merging-results.html#cb181-3" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="merging-results.html#cb181-4" tabindex="-1"></a><span class="co"># Continue numbering for replacements</span></span>
+<span id="cb181-5"><a href="merging-results.html#cb181-5" tabindex="-1"></a>start_id <span class="ot">&lt;-</span> <span class="fu">nrow</span>(psus_target) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb181-6"><a href="merging-results.html#cb181-6" tabindex="-1"></a>psus_repl<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> start_id<span class="sc">:</span>(start_id <span class="sc">+</span> <span class="fu">nrow</span>(psus_repl) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb181-7"><a href="merging-results.html#cb181-7" tabindex="-1"></a></span>
+<span id="cb181-8"><a href="merging-results.html#cb181-8" tabindex="-1"></a><span class="co"># Transfer country-wide IDs to TSUs</span></span>
+<span id="cb181-9"><a href="merging-results.html#cb181-9" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(tsus_target<span class="sc">$</span>PSU_ID, <span class="st">&quot;-&quot;</span>, tsus_target<span class="sc">$</span>lulc)</span>
+<span id="cb181-10"><a href="merging-results.html#cb181-10" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(psus_target<span class="sc">$</span>ID, <span class="st">&quot;-&quot;</span>, psus_target<span class="sc">$</span>lulc)</span>
+<span id="cb181-11"><a href="merging-results.html#cb181-11" tabindex="-1"></a></span>
+<span id="cb181-12"><a href="merging-results.html#cb181-12" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> psus_target<span class="sc">$</span>PSU_ID_country[</span>
+<span id="cb181-13"><a href="merging-results.html#cb181-13" tabindex="-1"></a>  <span class="fu">match</span>(tsus_target<span class="sc">$</span>PSU_temp_ID, psus_target<span class="sc">$</span>PSU_temp_ID)</span>
+<span id="cb181-14"><a href="merging-results.html#cb181-14" tabindex="-1"></a>]</span>
+<span id="cb181-15"><a href="merging-results.html#cb181-15" tabindex="-1"></a></span>
+<span id="cb181-16"><a href="merging-results.html#cb181-16" tabindex="-1"></a><span class="co"># Create final site IDs with country-wide PSU numbers</span></span>
+<span id="cb181-17"><a href="merging-results.html#cb181-17" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
+<span id="cb181-18"><a href="merging-results.html#cb181-18" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%s%04d-%d-%d%s&quot;</span>, </span>
+<span id="cb181-19"><a href="merging-results.html#cb181-19" tabindex="-1"></a>                          ISO.code, PSU_ID_country, SSU_ID, TSU_ID, lulc))</span>
+<span id="cb181-20"><a href="merging-results.html#cb181-20" tabindex="-1"></a></span>
+<span id="cb181-21"><a href="merging-results.html#cb181-21" tabindex="-1"></a><span class="co"># Clean up</span></span>
+<span id="cb181-22"><a href="merging-results.html#cb181-22" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
+<span id="cb181-23"><a href="merging-results.html#cb181-23" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, SSU_ID, SSU_Type, TSU_ID, TSU_Type, </span>
+<span id="cb181-24"><a href="merging-results.html#cb181-24" tabindex="-1"></a>         site_id, lulc, geometry)</span>
+<span id="cb181-25"><a href="merging-results.html#cb181-25" tabindex="-1"></a></span>
+<span id="cb181-26"><a href="merging-results.html#cb181-26" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> psus_target <span class="sc">%&gt;%</span></span>
+<span id="cb181-27"><a href="merging-results.html#cb181-27" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, lulc, geometry)</span>
+<span id="cb181-28"><a href="merging-results.html#cb181-28" tabindex="-1"></a></span>
+<span id="cb181-29"><a href="merging-results.html#cb181-29" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Assigned country-wide unique IDs</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
 </div>
-<div id="export-unified" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Export Unified Datasets<a href="merging-results.html#export-unified" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="merging-results.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export unified datasets</span></span>
-<span id="cb175-2"><a href="merging-results.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(psus_target, <span class="st">&quot;results/all/all_psus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb175-3"><a href="merging-results.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_target, <span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb175-4"><a href="merging-results.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(psus_repl, <span class="st">&quot;results/all/all_psus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb175-5"><a href="merging-results.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_repl, <span class="st">&quot;results/all/all_tsus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb175-6"><a href="merging-results.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-7"><a href="merging-results.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ All unified datasets exported to results/all/</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
+<div id="export-unified" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Export Unified Datasets<a href="merging-results.html#export-unified" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="merging-results.html#cb182-1" tabindex="-1"></a><span class="co"># Export unified datasets</span></span>
+<span id="cb182-2"><a href="merging-results.html#cb182-2" tabindex="-1"></a><span class="fu">write_sf</span>(psus_target, <span class="st">&quot;results/all/all_psus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb182-3"><a href="merging-results.html#cb182-3" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_target, <span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb182-4"><a href="merging-results.html#cb182-4" tabindex="-1"></a><span class="fu">write_sf</span>(psus_repl, <span class="st">&quot;results/all/all_psus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb182-5"><a href="merging-results.html#cb182-5" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_repl, <span class="st">&quot;results/all/all_tsus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb182-6"><a href="merging-results.html#cb182-6" tabindex="-1"></a></span>
+<span id="cb182-7"><a href="merging-results.html#cb182-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ All unified datasets exported to results/all/</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
 </div>
-<div id="summary-stats" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Summary Statistics<a href="merging-results.html#summary-stats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="merging-results.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count target sites by land use</span></span>
-<span id="cb176-2"><a href="merging-results.html#cb176-2" aria-hidden="true" tabindex="-1"></a>summary_lu <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb176-3"><a href="merging-results.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb176-4"><a href="merging-results.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb176-5"><a href="merging-results.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lulc) <span class="sc">%&gt;%</span></span>
-<span id="cb176-6"><a href="merging-results.html#cb176-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb176-7"><a href="merging-results.html#cb176-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_PSUs =</span> <span class="fu">n_distinct</span>(PSU_ID),</span>
-<span id="cb176-8"><a href="merging-results.html#cb176-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_sites =</span> <span class="fu">n</span>(),</span>
-<span id="cb176-9"><a href="merging-results.html#cb176-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites_per_PSU =</span> n <span class="sc">/</span> <span class="fu">n_distinct</span>(PSU_ID)</span>
-<span id="cb176-10"><a href="merging-results.html#cb176-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb176-11"><a href="merging-results.html#cb176-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-12"><a href="merging-results.html#cb176-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_lu)</span>
-<span id="cb176-13"><a href="merging-results.html#cb176-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-14"><a href="merging-results.html#cb176-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Total counts</span></span>
-<span id="cb176-15"><a href="merging-results.html#cb176-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== FINAL SAMPLING DESIGN ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
-<span id="cb176-16"><a href="merging-results.html#cb176-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">n_distinct</span>(tsus_target<span class="sc">$</span>PSU_ID)))</span>
-<span id="cb176-17"><a href="merging-results.html#cb176-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total target sampling sites: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb176-18"><a href="merging-results.html#cb176-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb176-19"><a href="merging-results.html#cb176-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Cropland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb176-20"><a href="merging-results.html#cb176-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb176-21"><a href="merging-results.html#cb176-21" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb176-22"><a href="merging-results.html#cb176-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Grassland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb176-23"><a href="merging-results.html#cb176-23" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;G&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb176-24"><a href="merging-results.html#cb176-24" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb176-25"><a href="merging-results.html#cb176-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Forest: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb176-26"><a href="merging-results.html#cb176-26" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb176-27"><a href="merging-results.html#cb176-27" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span></code></pre></div>
+<div id="summary-stats" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Summary Statistics<a href="merging-results.html#summary-stats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="merging-results.html#cb183-1" tabindex="-1"></a><span class="co"># Count target sites by land use</span></span>
+<span id="cb183-2"><a href="merging-results.html#cb183-2" tabindex="-1"></a>summary_lu <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
+<span id="cb183-3"><a href="merging-results.html#cb183-3" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb183-4"><a href="merging-results.html#cb183-4" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb183-5"><a href="merging-results.html#cb183-5" tabindex="-1"></a>  <span class="fu">group_by</span>(lulc) <span class="sc">%&gt;%</span></span>
+<span id="cb183-6"><a href="merging-results.html#cb183-6" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb183-7"><a href="merging-results.html#cb183-7" tabindex="-1"></a>    <span class="at">n_PSUs =</span> <span class="fu">n_distinct</span>(PSU_ID),</span>
+<span id="cb183-8"><a href="merging-results.html#cb183-8" tabindex="-1"></a>    <span class="at">n_sites =</span> <span class="fu">n</span>(),</span>
+<span id="cb183-9"><a href="merging-results.html#cb183-9" tabindex="-1"></a>    <span class="at">sites_per_PSU =</span> n <span class="sc">/</span> <span class="fu">n_distinct</span>(PSU_ID)</span>
+<span id="cb183-10"><a href="merging-results.html#cb183-10" tabindex="-1"></a>  )</span>
+<span id="cb183-11"><a href="merging-results.html#cb183-11" tabindex="-1"></a></span>
+<span id="cb183-12"><a href="merging-results.html#cb183-12" tabindex="-1"></a><span class="fu">print</span>(summary_lu)</span>
+<span id="cb183-13"><a href="merging-results.html#cb183-13" tabindex="-1"></a></span>
+<span id="cb183-14"><a href="merging-results.html#cb183-14" tabindex="-1"></a><span class="co"># Total counts</span></span>
+<span id="cb183-15"><a href="merging-results.html#cb183-15" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== FINAL SAMPLING DESIGN ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
+<span id="cb183-16"><a href="merging-results.html#cb183-16" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">n_distinct</span>(tsus_target<span class="sc">$</span>PSU_ID)))</span>
+<span id="cb183-17"><a href="merging-results.html#cb183-17" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total target sampling sites: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb183-18"><a href="merging-results.html#cb183-18" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
+<span id="cb183-19"><a href="merging-results.html#cb183-19" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Cropland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb183-20"><a href="merging-results.html#cb183-20" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb183-21"><a href="merging-results.html#cb183-21" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
+<span id="cb183-22"><a href="merging-results.html#cb183-22" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Grassland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb183-23"><a href="merging-results.html#cb183-23" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;G&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb183-24"><a href="merging-results.html#cb183-24" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
+<span id="cb183-25"><a href="merging-results.html#cb183-25" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Forest: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb183-26"><a href="merging-results.html#cb183-26" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb183-27"><a href="merging-results.html#cb183-27" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span></code></pre></div>
 </div>
-<div id="distribution-maps" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Create Distribution Maps<a href="merging-results.html#distribution-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="merging-results.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb177-2"><a href="merging-results.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-3"><a href="merging-results.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to target sites only</span></span>
-<span id="cb177-4"><a href="merging-results.html#cb177-4" aria-hidden="true" tabindex="-1"></a>target_sites <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb177-5"><a href="merging-results.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb177-6"><a href="merging-results.html#cb177-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-7"><a href="merging-results.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load country boundaries</span></span>
-<span id="cb177-8"><a href="merging-results.html#cb177-8" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;shapes/roi_country_epsg_4326.shp&quot;</span>)</span>
-<span id="cb177-9"><a href="merging-results.html#cb177-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-10"><a href="merging-results.html#cb177-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create distribution map</span></span>
-<span id="cb177-11"><a href="merging-results.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb177-12"><a href="merging-results.html#cb177-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> country, <span class="at">fill =</span> <span class="st">&quot;gray95&quot;</span>, <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>) <span class="sc">+</span></span>
-<span id="cb177-13"><a href="merging-results.html#cb177-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> target_sites, <span class="fu">aes</span>(<span class="at">color =</span> lulc), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb177-14"><a href="merging-results.html#cb177-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb177-15"><a href="merging-results.html#cb177-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Land Use&quot;</span>,</span>
-<span id="cb177-16"><a href="merging-results.html#cb177-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;#F096FF&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFFF4C&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>),</span>
-<span id="cb177-17"><a href="merging-results.html#cb177-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;Cropland&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;Grassland&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;Forest&quot;</span>)</span>
-<span id="cb177-18"><a href="merging-results.html#cb177-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb177-19"><a href="merging-results.html#cb177-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;SoilFER Sampling Design - Final Site Distribution&quot;</span>,</span>
-<span id="cb177-20"><a href="merging-results.html#cb177-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%d sampling locations across %d PSUs&quot;</span>, </span>
-<span id="cb177-21"><a href="merging-results.html#cb177-21" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">nrow</span>(target_sites), <span class="fu">n_distinct</span>(target_sites<span class="sc">$</span>PSU_ID))) <span class="sc">+</span></span>
-<span id="cb177-22"><a href="merging-results.html#cb177-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb177-23"><a href="merging-results.html#cb177-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb177-24"><a href="merging-results.html#cb177-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-25"><a href="merging-results.html#cb177-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;results/all/final_site_distribution.png&quot;</span>, </span>
-<span id="cb177-26"><a href="merging-results.html#cb177-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb177-27"><a href="merging-results.html#cb177-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-28"><a href="merging-results.html#cb177-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Distribution map saved</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="merging-results.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb167-2"><a href="merging-results.html#cb167-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="merging-results.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define land uses and codes</span></span>
-<span id="cb167-4"><a href="merging-results.html#cb167-4" aria-hidden="true" tabindex="-1"></a>landuses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cropland&quot;</span>, <span class="st">&quot;grassland&quot;</span>, <span class="st">&quot;forest&quot;</span>)</span>
-<span id="cb167-5"><a href="merging-results.html#cb167-5" aria-hidden="true" tabindex="-1"></a>lu_codes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
-<span id="cb167-6"><a href="merging-results.html#cb167-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-7"><a href="merging-results.html#cb167-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize storage lists</span></span>
-<span id="cb167-8"><a href="merging-results.html#cb167-8" aria-hidden="true" tabindex="-1"></a>psus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb167-9"><a href="merging-results.html#cb167-9" aria-hidden="true" tabindex="-1"></a>tsus_target_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb167-10"><a href="merging-results.html#cb167-10" aria-hidden="true" tabindex="-1"></a>psus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb167-11"><a href="merging-results.html#cb167-11" aria-hidden="true" tabindex="-1"></a>tsus_repl_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb167-12"><a href="merging-results.html#cb167-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-13"><a href="merging-results.html#cb167-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all shapefiles</span></span>
-<span id="cb167-14"><a href="merging-results.html#cb167-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(landuses)) {</span>
-<span id="cb167-15"><a href="merging-results.html#cb167-15" aria-hidden="true" tabindex="-1"></a>  lu <span class="ot">&lt;-</span> landuses[i]</span>
-<span id="cb167-16"><a href="merging-results.html#cb167-16" aria-hidden="true" tabindex="-1"></a>  code <span class="ot">&lt;-</span> lu_codes[i]</span>
-<span id="cb167-17"><a href="merging-results.html#cb167-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb167-18"><a href="merging-results.html#cb167-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Target PSUs</span></span>
-<span id="cb167-19"><a href="merging-results.html#cb167-19" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/PSUs_target.shp&quot;</span>, lu)</span>
-<span id="cb167-20"><a href="merging-results.html#cb167-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
-<span id="cb167-21"><a href="merging-results.html#cb167-21" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb167-22"><a href="merging-results.html#cb167-22" aria-hidden="true" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
-<span id="cb167-23"><a href="merging-results.html#cb167-23" aria-hidden="true" tabindex="-1"></a>    psus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb167-24"><a href="merging-results.html#cb167-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target PSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
-<span id="cb167-25"><a href="merging-results.html#cb167-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb167-26"><a href="merging-results.html#cb167-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb167-27"><a href="merging-results.html#cb167-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Target TSUs</span></span>
-<span id="cb167-28"><a href="merging-results.html#cb167-28" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;results/%s/TSUs_target.shp&quot;</span>, lu)</span>
-<span id="cb167-29"><a href="merging-results.html#cb167-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(file_path)) {</span>
-<span id="cb167-30"><a href="merging-results.html#cb167-30" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(file_path, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb167-31"><a href="merging-results.html#cb167-31" aria-hidden="true" tabindex="-1"></a>    temp<span class="sc">$</span>lulc <span class="ot">&lt;-</span> code</span>
-<span id="cb167-32"><a href="merging-results.html#cb167-32" aria-hidden="true" tabindex="-1"></a>    tsus_target_list[[lu]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb167-33"><a href="merging-results.html#cb167-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;✓ Loaded %s target TSUs (%d)</span><span class="sc">\n</span><span class="st">&quot;</span>, lu, <span class="fu">nrow</span>(temp)))</span>
-<span id="cb167-34"><a href="merging-results.html#cb167-34" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb167-35"><a href="merging-results.html#cb167-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb167-36"><a href="merging-results.html#cb167-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replacement PSUs and TSUs</span></span>
-<span id="cb167-37"><a href="merging-results.html#cb167-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (similar loading process)</span></span>
-<span id="cb167-38"><a href="merging-results.html#cb167-38" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb167-39"><a href="merging-results.html#cb167-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-40"><a href="merging-results.html#cb167-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge using data.table (handles different column names)</span></span>
-<span id="cb167-41"><a href="merging-results.html#cb167-41" aria-hidden="true" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(psus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb167-42"><a href="merging-results.html#cb167-42" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">rbindlist</span>(tsus_target_list, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb167-43"><a href="merging-results.html#cb167-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-44"><a href="merging-results.html#cb167-44" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== MERGED DATASETS ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
-<span id="cb167-45"><a href="merging-results.html#cb167-45" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(psus_target)))</span>
-<span id="cb167-46"><a href="merging-results.html#cb167-46" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Target TSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">nrow</span>(tsus_target)))</span></code></pre></div>
-<div id="assign-unique-ids" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Assign Country-Wide Unique IDs<a href="merging-results.html#assign-unique-ids" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="merging-results.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign sequential IDs to target PSUs</span></span>
-<span id="cb168-2"><a href="merging-results.html#cb168-2" aria-hidden="true" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(psus_target)</span>
-<span id="cb168-3"><a href="merging-results.html#cb168-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-4"><a href="merging-results.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Continue numbering for replacements</span></span>
-<span id="cb168-5"><a href="merging-results.html#cb168-5" aria-hidden="true" tabindex="-1"></a>start_id <span class="ot">&lt;-</span> <span class="fu">nrow</span>(psus_target) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb168-6"><a href="merging-results.html#cb168-6" aria-hidden="true" tabindex="-1"></a>psus_repl<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> start_id<span class="sc">:</span>(start_id <span class="sc">+</span> <span class="fu">nrow</span>(psus_repl) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb168-7"><a href="merging-results.html#cb168-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-8"><a href="merging-results.html#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transfer country-wide IDs to TSUs</span></span>
-<span id="cb168-9"><a href="merging-results.html#cb168-9" aria-hidden="true" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(tsus_target<span class="sc">$</span>PSU_ID, <span class="st">&quot;-&quot;</span>, tsus_target<span class="sc">$</span>lulc)</span>
-<span id="cb168-10"><a href="merging-results.html#cb168-10" aria-hidden="true" tabindex="-1"></a>psus_target<span class="sc">$</span>PSU_temp_ID <span class="ot">&lt;-</span> <span class="fu">paste0</span>(psus_target<span class="sc">$</span>ID, <span class="st">&quot;-&quot;</span>, psus_target<span class="sc">$</span>lulc)</span>
-<span id="cb168-11"><a href="merging-results.html#cb168-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-12"><a href="merging-results.html#cb168-12" aria-hidden="true" tabindex="-1"></a>tsus_target<span class="sc">$</span>PSU_ID_country <span class="ot">&lt;-</span> psus_target<span class="sc">$</span>PSU_ID_country[</span>
-<span id="cb168-13"><a href="merging-results.html#cb168-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">match</span>(tsus_target<span class="sc">$</span>PSU_temp_ID, psus_target<span class="sc">$</span>PSU_temp_ID)</span>
-<span id="cb168-14"><a href="merging-results.html#cb168-14" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb168-15"><a href="merging-results.html#cb168-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-16"><a href="merging-results.html#cb168-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create final site IDs with country-wide PSU numbers</span></span>
-<span id="cb168-17"><a href="merging-results.html#cb168-17" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb168-18"><a href="merging-results.html#cb168-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%s%04d-%d-%d%s&quot;</span>, </span>
-<span id="cb168-19"><a href="merging-results.html#cb168-19" aria-hidden="true" tabindex="-1"></a>                          ISO.code, PSU_ID_country, SSU_ID, TSU_ID, lulc))</span>
-<span id="cb168-20"><a href="merging-results.html#cb168-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-21"><a href="merging-results.html#cb168-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up</span></span>
-<span id="cb168-22"><a href="merging-results.html#cb168-22" aria-hidden="true" tabindex="-1"></a>tsus_target <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb168-23"><a href="merging-results.html#cb168-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, SSU_ID, SSU_Type, TSU_ID, TSU_Type, </span>
-<span id="cb168-24"><a href="merging-results.html#cb168-24" aria-hidden="true" tabindex="-1"></a>         site_id, lulc, geometry)</span>
-<span id="cb168-25"><a href="merging-results.html#cb168-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-26"><a href="merging-results.html#cb168-26" aria-hidden="true" tabindex="-1"></a>psus_target <span class="ot">&lt;-</span> psus_target <span class="sc">%&gt;%</span></span>
-<span id="cb168-27"><a href="merging-results.html#cb168-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">PSU_ID =</span> PSU_ID_country, lulc, geometry)</span>
-<span id="cb168-28"><a href="merging-results.html#cb168-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-29"><a href="merging-results.html#cb168-29" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Assigned country-wide unique IDs</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
-</div>
-<div id="export-unified" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Export Unified Datasets<a href="merging-results.html#export-unified" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="merging-results.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export unified datasets</span></span>
-<span id="cb169-2"><a href="merging-results.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(psus_target, <span class="st">&quot;results/all/all_psus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb169-3"><a href="merging-results.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_target, <span class="st">&quot;results/all/all_tsus_target.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb169-4"><a href="merging-results.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(psus_repl, <span class="st">&quot;results/all/all_psus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb169-5"><a href="merging-results.html#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sf</span>(tsus_repl, <span class="st">&quot;results/all/all_tsus_replacements.shp&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb169-6"><a href="merging-results.html#cb169-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-7"><a href="merging-results.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ All unified datasets exported to results/all/</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
-</div>
-<div id="summary-stats" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Summary Statistics<a href="merging-results.html#summary-stats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="merging-results.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count target sites by land use</span></span>
-<span id="cb170-2"><a href="merging-results.html#cb170-2" aria-hidden="true" tabindex="-1"></a>summary_lu <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb170-3"><a href="merging-results.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb170-4"><a href="merging-results.html#cb170-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb170-5"><a href="merging-results.html#cb170-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lulc) <span class="sc">%&gt;%</span></span>
-<span id="cb170-6"><a href="merging-results.html#cb170-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb170-7"><a href="merging-results.html#cb170-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_PSUs =</span> <span class="fu">n_distinct</span>(PSU_ID),</span>
-<span id="cb170-8"><a href="merging-results.html#cb170-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_sites =</span> <span class="fu">n</span>(),</span>
-<span id="cb170-9"><a href="merging-results.html#cb170-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites_per_PSU =</span> n <span class="sc">/</span> <span class="fu">n_distinct</span>(PSU_ID)</span>
-<span id="cb170-10"><a href="merging-results.html#cb170-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb170-11"><a href="merging-results.html#cb170-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-12"><a href="merging-results.html#cb170-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_lu)</span>
-<span id="cb170-13"><a href="merging-results.html#cb170-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-14"><a href="merging-results.html#cb170-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Total counts</span></span>
-<span id="cb170-15"><a href="merging-results.html#cb170-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">=== FINAL SAMPLING DESIGN ===</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
-<span id="cb170-16"><a href="merging-results.html#cb170-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total PSUs: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="fu">n_distinct</span>(tsus_target<span class="sc">$</span>PSU_ID)))</span>
-<span id="cb170-17"><a href="merging-results.html#cb170-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Total target sampling sites: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb170-18"><a href="merging-results.html#cb170-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb170-19"><a href="merging-results.html#cb170-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Cropland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb170-20"><a href="merging-results.html#cb170-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb170-21"><a href="merging-results.html#cb170-21" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb170-22"><a href="merging-results.html#cb170-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Grassland: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb170-23"><a href="merging-results.html#cb170-23" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;G&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb170-24"><a href="merging-results.html#cb170-24" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span>
-<span id="cb170-25"><a href="merging-results.html#cb170-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;  - Forest: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
-<span id="cb170-26"><a href="merging-results.html#cb170-26" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(tsus_target<span class="sc">$</span>lulc <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> tsus_target<span class="sc">$</span>SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb170-27"><a href="merging-results.html#cb170-27" aria-hidden="true" tabindex="-1"></a>                tsus_target<span class="sc">$</span>TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)))</span></code></pre></div>
-</div>
-<div id="distribution-maps" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Create Distribution Maps<a href="merging-results.html#distribution-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="merging-results.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb171-2"><a href="merging-results.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="merging-results.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to target sites only</span></span>
-<span id="cb171-4"><a href="merging-results.html#cb171-4" aria-hidden="true" tabindex="-1"></a>target_sites <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
-<span id="cb171-5"><a href="merging-results.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
-<span id="cb171-6"><a href="merging-results.html#cb171-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-7"><a href="merging-results.html#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load country boundaries</span></span>
-<span id="cb171-8"><a href="merging-results.html#cb171-8" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;shapes/roi_country_epsg_4326.shp&quot;</span>)</span>
-<span id="cb171-9"><a href="merging-results.html#cb171-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-10"><a href="merging-results.html#cb171-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create distribution map</span></span>
-<span id="cb171-11"><a href="merging-results.html#cb171-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb171-12"><a href="merging-results.html#cb171-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> country, <span class="at">fill =</span> <span class="st">&quot;gray95&quot;</span>, <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>) <span class="sc">+</span></span>
-<span id="cb171-13"><a href="merging-results.html#cb171-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> target_sites, <span class="fu">aes</span>(<span class="at">color =</span> lulc), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb171-14"><a href="merging-results.html#cb171-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb171-15"><a href="merging-results.html#cb171-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Land Use&quot;</span>,</span>
-<span id="cb171-16"><a href="merging-results.html#cb171-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;#F096FF&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFFF4C&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>),</span>
-<span id="cb171-17"><a href="merging-results.html#cb171-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;Cropland&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;Grassland&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;Forest&quot;</span>)</span>
-<span id="cb171-18"><a href="merging-results.html#cb171-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb171-19"><a href="merging-results.html#cb171-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;SoilFER Sampling Design - Final Site Distribution&quot;</span>,</span>
-<span id="cb171-20"><a href="merging-results.html#cb171-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%d sampling locations across %d PSUs&quot;</span>, </span>
-<span id="cb171-21"><a href="merging-results.html#cb171-21" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">nrow</span>(target_sites), <span class="fu">n_distinct</span>(target_sites<span class="sc">$</span>PSU_ID))) <span class="sc">+</span></span>
-<span id="cb171-22"><a href="merging-results.html#cb171-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb171-23"><a href="merging-results.html#cb171-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb171-24"><a href="merging-results.html#cb171-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-25"><a href="merging-results.html#cb171-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;results/all/final_site_distribution.png&quot;</span>, </span>
-<span id="cb171-26"><a href="merging-results.html#cb171-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb171-27"><a href="merging-results.html#cb171-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-28"><a href="merging-results.html#cb171-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Distribution map saved</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
->>>>>>> 09353f7bba91108a9405f48ad50c7b944446d7a1
+<div id="distribution-maps" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Create Distribution Maps<a href="merging-results.html#distribution-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="merging-results.html#cb184-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb184-2"><a href="merging-results.html#cb184-2" tabindex="-1"></a></span>
+<span id="cb184-3"><a href="merging-results.html#cb184-3" tabindex="-1"></a><span class="co"># Filter to target sites only</span></span>
+<span id="cb184-4"><a href="merging-results.html#cb184-4" tabindex="-1"></a>target_sites <span class="ot">&lt;-</span> tsus_target <span class="sc">%&gt;%</span></span>
+<span id="cb184-5"><a href="merging-results.html#cb184-5" tabindex="-1"></a>  <span class="fu">filter</span>(SSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span> <span class="sc">&amp;</span> TSU_Type <span class="sc">==</span> <span class="st">&quot;Target&quot;</span>)</span>
+<span id="cb184-6"><a href="merging-results.html#cb184-6" tabindex="-1"></a></span>
+<span id="cb184-7"><a href="merging-results.html#cb184-7" tabindex="-1"></a><span class="co"># Load country boundaries</span></span>
+<span id="cb184-8"><a href="merging-results.html#cb184-8" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;shapes/roi_country_epsg_4326.shp&quot;</span>)</span>
+<span id="cb184-9"><a href="merging-results.html#cb184-9" tabindex="-1"></a></span>
+<span id="cb184-10"><a href="merging-results.html#cb184-10" tabindex="-1"></a><span class="co"># Create distribution map</span></span>
+<span id="cb184-11"><a href="merging-results.html#cb184-11" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb184-12"><a href="merging-results.html#cb184-12" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> country, <span class="at">fill =</span> <span class="st">&quot;gray95&quot;</span>, <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>) <span class="sc">+</span></span>
+<span id="cb184-13"><a href="merging-results.html#cb184-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> target_sites, <span class="fu">aes</span>(<span class="at">color =</span> lulc), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb184-14"><a href="merging-results.html#cb184-14" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb184-15"><a href="merging-results.html#cb184-15" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Land Use&quot;</span>,</span>
+<span id="cb184-16"><a href="merging-results.html#cb184-16" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;#F096FF&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;#FFFF4C&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;#006400&quot;</span>),</span>
+<span id="cb184-17"><a href="merging-results.html#cb184-17" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;Cropland&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;Grassland&quot;</span>, <span class="st">&quot;F&quot;</span> <span class="ot">=</span> <span class="st">&quot;Forest&quot;</span>)</span>
+<span id="cb184-18"><a href="merging-results.html#cb184-18" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb184-19"><a href="merging-results.html#cb184-19" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;SoilFER Sampling Design - Final Site Distribution&quot;</span>,</span>
+<span id="cb184-20"><a href="merging-results.html#cb184-20" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%d sampling locations across %d PSUs&quot;</span>, </span>
+<span id="cb184-21"><a href="merging-results.html#cb184-21" tabindex="-1"></a>                         <span class="fu">nrow</span>(target_sites), <span class="fu">n_distinct</span>(target_sites<span class="sc">$</span>PSU_ID))) <span class="sc">+</span></span>
+<span id="cb184-22"><a href="merging-results.html#cb184-22" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb184-23"><a href="merging-results.html#cb184-23" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span>
+<span id="cb184-24"><a href="merging-results.html#cb184-24" tabindex="-1"></a></span>
+<span id="cb184-25"><a href="merging-results.html#cb184-25" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;results/all/final_site_distribution.png&quot;</span>, </span>
+<span id="cb184-26"><a href="merging-results.html#cb184-26" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb184-27"><a href="merging-results.html#cb184-27" tabindex="-1"></a></span>
+<span id="cb184-28"><a href="merging-results.html#cb184-28" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">✓ Distribution map saved</span><span class="sc">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
 </div>
 </div>
             </section>

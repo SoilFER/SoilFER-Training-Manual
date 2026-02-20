@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Spatial Analysis in R | DRAFT - Integrated soil information for decision-making </title>
+  <meta name="description" content="SoilFER SID Technical Manual" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Spatial Analysis in R | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="SoilFER SID Technical Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Spatial Analysis in R | DRAFT - Integrated soil information for decision-making " />
+  
+  <meta name="twitter:description" content="SoilFER SID Technical Manual" />
+  
+
+<meta name="author" content="Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I." />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-preparation-for-digital-soil-mapping-in-r.html"/>
+<link rel="next" href="sampling-design-for-soil-surveys.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Licence</a></li>
+<li class="chapter" data-level="" data-path="abbreviations-and-acronyms.html"><a href="abbreviations-and-acronyms.html"><i class="fa fa-check"></i>Abbreviations and acronyms</a></li>
+<li class="chapter" data-level="" data-path="contributors-and-reviewers.html"><a href="contributors-and-reviewers.html"><i class="fa fa-check"></i>Contributors and reviewers</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i>Presentation and basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#what-this-tutorial-is-not"><i class="fa fa-check"></i>What this Tutorial is not</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#the-training-dataset"><i class="fa fa-check"></i>The Training Dataset</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#data-structure"><i class="fa fa-check"></i>Data Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#how-to-use-this-manual"><i class="fa fa-check"></i>How to Use This Manual</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#manual-structure"><i class="fa fa-check"></i>Manual Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#required-downloads"><i class="fa fa-check"></i>Required downloads</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#step-by-step-setup-instructions"><i class="fa fa-check"></i>Step-by-step setup instructions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html"><i class="fa fa-check"></i>Introduction to R programming</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#what-is-r"><i class="fa fa-check"></i><b>0.1</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#why-r-for-soil-science"><i class="fa fa-check"></i><b>0.1.1</b> Why R for Soil Science?</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>0.2</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-r"><i class="fa fa-check"></i><b>0.2.1</b> Installing R</a></li>
+<li class="chapter" data-level="0.2.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-rstudio"><i class="fa fa-check"></i><b>0.2.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="0.2.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#verifying-installation"><i class="fa fa-check"></i><b>0.2.3</b> Verifying Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#understanding-the-rstudio-interface"><i class="fa fa-check"></i><b>0.3</b> Understanding the RStudio Interface</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#console-pane-bottom-left"><i class="fa fa-check"></i><b>0.3.1</b> 1. Console Pane (Bottom Left)</a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#code-editor-pane-top-left"><i class="fa fa-check"></i><b>0.3.2</b> 2. Code Editor Pane (Top Left)</a></li>
+<li class="chapter" data-level="0.3.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#environmenthistory-pane-top-right"><i class="fa fa-check"></i><b>0.3.3</b> 3. Environment/History Pane (Top Right)</a></li>
+<li class="chapter" data-level="0.3.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#filesplotspackageshelp-pane-bottom-right"><i class="fa fa-check"></i><b>0.3.4</b> 4. Files/Plots/Packages/Help Pane (Bottom Right)</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#r-packages-extending-rs-capabilities"><i class="fa fa-check"></i><b>0.4</b> R Packages: Extending R’s Capabilities</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#what-are-packages"><i class="fa fa-check"></i><b>0.4.1</b> What are Packages?</a></li>
+<li class="chapter" data-level="0.4.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#installing-packages"><i class="fa fa-check"></i><b>0.4.2</b> Installing Packages</a></li>
+<li class="chapter" data-level="0.4.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#loading-packages"><i class="fa fa-check"></i><b>0.4.3</b> Loading Packages</a></li>
+<li class="chapter" data-level="0.4.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#finding-help-on-packages"><i class="fa fa-check"></i><b>0.4.4</b> Finding Help on Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#object-types"><i class="fa fa-check"></i><b>0.5</b> R Basics: Objects and Data Types</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#object-assignment"><i class="fa fa-check"></i><b>0.5.1</b> Creating Objects with Assignment</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#data-types"><i class="fa fa-check"></i><b>0.5.2</b> Data Types in R</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#check-data"><i class="fa fa-check"></i><b>0.5.3</b> Checking Data Types</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#structure-data"><i class="fa fa-check"></i><b>0.6</b> Data Structures in R</a>
+<ul>
+<li class="chapter" data-level="0.6.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#vector-data"><i class="fa fa-check"></i><b>0.6.1</b> Vectors</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#factor-data"><i class="fa fa-check"></i><b>0.6.2</b> Factors</a></li>
+<li class="chapter" data-level="0.6.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#matrix-data"><i class="fa fa-check"></i><b>0.6.3</b> Matrices</a></li>
+<li class="chapter" data-level="0.6.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dataframe"><i class="fa fa-check"></i><b>0.6.4</b> Data Frames</a></li>
+<li class="chapter" data-level="0.6.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#list-data"><i class="fa fa-check"></i><b>0.6.5</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#operators"><i class="fa fa-check"></i><b>0.7</b> Operators in R</a>
+<ul>
+<li class="chapter" data-level="0.7.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#arithmetic-operators"><i class="fa fa-check"></i><b>0.7.1</b> Arithmetic Operators</a></li>
+<li class="chapter" data-level="0.7.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#comparison-operators"><i class="fa fa-check"></i><b>0.7.2</b> Comparison Operators</a></li>
+<li class="chapter" data-level="0.7.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#logical-operators"><i class="fa fa-check"></i><b>0.7.3</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="0.8" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#conditional-statements"><i class="fa fa-check"></i><b>0.8</b> Control Structures: Conditional Statements</a>
+<ul>
+<li class="chapter" data-level="0.8.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#ifelse-statements"><i class="fa fa-check"></i><b>0.8.1</b> If-Else Statements</a></li>
+<li class="chapter" data-level="0.8.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#v-ifelse-statements"><i class="fa fa-check"></i><b>0.8.2</b> Vectorized If-Else: <code>ifelse()</code></a></li>
+<li class="chapter" data-level="0.8.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#cut-statements"><i class="fa fa-check"></i><b>0.8.3</b> Vectorized Cut: <code>cut()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="0.9" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#control-structures"><i class="fa fa-check"></i><b>0.9</b> Control Structures: Loops</a>
+<ul>
+<li class="chapter" data-level="0.9.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#for-loop"><i class="fa fa-check"></i><b>0.9.1</b> For Loops</a></li>
+<li class="chapter" data-level="0.9.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#while-loop"><i class="fa fa-check"></i><b>0.9.2</b> While Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="0.10" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#r-funtions"><i class="fa fa-check"></i><b>0.10</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="0.10.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#built-funtions"><i class="fa fa-check"></i><b>0.10.1</b> Using Built-in Functions</a></li>
+<li class="chapter" data-level="0.10.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#build-functions"><i class="fa fa-check"></i><b>0.10.2</b> Creating Custom Functions</a></li>
+<li class="chapter" data-level="0.10.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#arguments-functions"><i class="fa fa-check"></i><b>0.10.3</b> Function Arguments and Defaults</a></li>
+</ul></li>
+<li class="chapter" data-level="0.11" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#R-data-manipulation"><i class="fa fa-check"></i><b>0.11</b> Data Manipulation with Base R</a>
+<ul>
+<li class="chapter" data-level="0.11.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#R-data-subset"><i class="fa fa-check"></i><b>0.11.1</b> Subsetting and Filtering</a></li>
+<li class="chapter" data-level="0.11.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#delete-cols"><i class="fa fa-check"></i><b>0.11.2</b> Deleting Columns</a></li>
+<li class="chapter" data-level="0.11.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#sort-rows"><i class="fa fa-check"></i><b>0.11.3</b> Sorting Data</a></li>
+<li class="chapter" data-level="0.11.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#aggregate-rows"><i class="fa fa-check"></i><b>0.11.4</b> Aggregating Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.12" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-manipultation"><i class="fa fa-check"></i><b>0.12</b> Data Manipulation with the Tidyverse</a>
+<ul>
+<li class="chapter" data-level="0.12.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-load"><i class="fa fa-check"></i><b>0.12.1</b> Loading the Tidyverse</a></li>
+<li class="chapter" data-level="0.12.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-tibbles"><i class="fa fa-check"></i><b>0.12.2</b> Tibbles: Modern Data Frames</a></li>
+<li class="chapter" data-level="0.12.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#tidyverse-pipe"><i class="fa fa-check"></i><b>0.12.3</b> The Pipe Operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="0.12.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#manipulation-dplyr"><i class="fa fa-check"></i><b>0.12.4</b> Data Manipulation with <code>{dplyr}</code></a></li>
+<li class="chapter" data-level="0.12.5" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-rename"><i class="fa fa-check"></i><b>0.12.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="0.12.6" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-group"><i class="fa fa-check"></i><b>0.12.6</b> Grouping and Summarizing Data by columns</a></li>
+</ul></li>
+<li class="chapter" data-level="0.13" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-join"><i class="fa fa-check"></i><b>0.13</b> Combining Data Frames</a>
+<ul>
+<li class="chapter" data-level="0.13.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#understand-joins"><i class="fa fa-check"></i><b>0.13.1</b> Understanding Joins</a></li>
+<li class="chapter" data-level="0.13.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>0.13.2</b> Stacking Data with <code>bind_rows()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="0.14" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#NA"><i class="fa fa-check"></i><b>0.14</b> Missing Data</a>
+<ul>
+<li class="chapter" data-level="0.14.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#identify-NA"><i class="fa fa-check"></i><b>0.14.1</b> Identifying Missing Data</a></li>
+<li class="chapter" data-level="0.14.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#handle-NA"><i class="fa fa-check"></i><b>0.14.2</b> Handling Missing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.15" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#pivoting"><i class="fa fa-check"></i><b>0.15</b> Data Reshaping with <code>{tidyr}</code> package: Pivoting</a></li>
+<li class="chapter" data-level="0.16" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#dl-data"><i class="fa fa-check"></i><b>0.16</b> Handling Below Detection Limit Data</a></li>
+<li class="chapter" data-level="0.17" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#soil-data"><i class="fa fa-check"></i><b>0.17</b> Working with Soil Data</a>
+<ul>
+<li class="chapter" data-level="0.17.1" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#set-directory"><i class="fa fa-check"></i><b>0.17.1</b> Setting Working Directory</a></li>
+<li class="chapter" data-level="0.17.2" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#load-packages"><i class="fa fa-check"></i><b>0.17.2</b> Load packages</a></li>
+<li class="chapter" data-level="0.17.3" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#import-files"><i class="fa fa-check"></i><b>0.17.3</b> Importing Data from Files</a></li>
+<li class="chapter" data-level="0.17.4" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#data-exploration"><i class="fa fa-check"></i><b>0.17.4</b> Exploring the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="0.18" data-path="introduction-to-r-programming.html"><a href="introduction-to-r-programming.html#references-m1"><i class="fa fa-check"></i><b>0.18</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html"><i class="fa fa-check"></i><b>1</b> Data preparation for Digital Soil Mapping in R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#introduction-1"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#loading-data"><i class="fa fa-check"></i><b>1.2</b> Loading and exploring raw soil data</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#basic-data-loading-and-structure"><i class="fa fa-check"></i><b>1.2.1</b> Basic data loading and structure</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#data-components-and-organization"><i class="fa fa-check"></i><b>1.2.2</b> Data components and organization</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#site-data-preparation"><i class="fa fa-check"></i><b>1.3</b> Preparing site data for analysis</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#adding-a-unique-row-identifier"><i class="fa fa-check"></i><b>1.3.1</b> Adding a unique row identifier</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#extracting-and-standardizing-column-names-for-sites"><i class="fa fa-check"></i><b>1.3.2</b> Extracting and standardizing column names for sites</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#creating-unique-profile-identifiers"><i class="fa fa-check"></i><b>1.3.3</b> Creating unique profile identifiers</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-exact-duplicate-site-records"><i class="fa fa-check"></i><b>1.3.4</b> Remove exact duplicate site records</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#coordinate-validation"><i class="fa fa-check"></i><b>1.4</b> Coordinate validation and correction</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-1-missing-coordinates"><i class="fa fa-check"></i><b>1.4.1</b> Check 1: Missing coordinates</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-2-valid-coordinate-ranges"><i class="fa fa-check"></i><b>1.4.2</b> Check 2: Valid coordinate ranges</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#depth-validation"><i class="fa fa-check"></i><b>1.5</b> Soil depth validation and correction</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-1-missing-depth-boundaries"><i class="fa fa-check"></i><b>1.5.1</b> Check 1: Missing depth boundaries</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-2-negative-depth-values"><i class="fa fa-check"></i><b>1.5.2</b> Check 2: Negative depth values</a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-3-zero-thickness-intervals"><i class="fa fa-check"></i><b>1.5.3</b> Check 3: Zero-thickness intervals</a></li>
+<li class="chapter" data-level="1.5.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-4-invalid-depth-logic"><i class="fa fa-check"></i><b>1.5.4</b> Check 4: Invalid depth logic</a></li>
+<li class="chapter" data-level="1.5.5" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-5-profiles-without-a-surface-horizon-top-0"><i class="fa fa-check"></i><b>1.5.5</b> Check 5: Profiles without a surface horizon (top &gt; 0)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#lab-validation"><i class="fa fa-check"></i><b>1.6</b> Preparing lab data: harmonization and validation</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#prepare-and-standardize-laboratory-columns"><i class="fa fa-check"></i><b>1.6.1</b> Prepare and standardize laboratory columns</a></li>
+<li class="chapter" data-level="1.6.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-1-check-each-property-against-feasible-analytical-thresholds"><i class="fa fa-check"></i><b>1.6.2</b> Check 1: Check each property against feasible analytical thresholds</a></li>
+<li class="chapter" data-level="1.6.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-2-texture-validation"><i class="fa fa-check"></i><b>1.6.3</b> Check 2: Texture validation</a></li>
+<li class="chapter" data-level="1.6.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-3-correction-of-out-of-bounds-laboratory-values"><i class="fa fa-check"></i><b>1.6.4</b> Check 3: Correction of out-of-bounds laboratory values</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#duplicate-detection"><i class="fa fa-check"></i><b>1.7</b> Resolving duplicated data in soil profiles</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#why-duplicates-occur"><i class="fa fa-check"></i><b>1.7.1</b> Why duplicates occur</a></li>
+<li class="chapter" data-level="1.7.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#types-of-duplicate-situations"><i class="fa fa-check"></i><b>1.7.2</b> Types of duplicate situations</a></li>
+<li class="chapter" data-level="1.7.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#check-1-detect-potential-horizon-duplicates-within-profiles"><i class="fa fa-check"></i><b>1.7.3</b> Check 1: Detect potential horizon duplicates within profiles</a></li>
+<li class="chapter" data-level="1.7.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#resolving-profile-duplicates"><i class="fa fa-check"></i><b>1.7.4</b> Resolving Profile Duplicates</a></li>
+<li class="chapter" data-level="1.7.5" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-profiles-not-starting-at-the-surface"><i class="fa fa-check"></i><b>1.7.5</b> Remove profiles not starting at the surface</a></li>
+<li class="chapter" data-level="1.7.6" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#result"><i class="fa fa-check"></i><b>1.7.6</b> Result</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#harmonization"><i class="fa fa-check"></i><b>1.8</b> Harmonizing data for DSM</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#depth-standardization"><i class="fa fa-check"></i><b>1.8.1</b> Depth standardization</a></li>
+<li class="chapter" data-level="1.8.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#processing-standardized-data"><i class="fa fa-check"></i><b>1.8.2</b> Processing standardized data</a></li>
+<li class="chapter" data-level="1.8.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#exporting-standardized-data-for-digital-soil-mapping"><i class="fa fa-check"></i><b>1.8.3</b> Exporting standardized data for Digital Soil Mapping</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#spectroscopy"><i class="fa fa-check"></i><b>1.9</b> Preparing data for spectroscopy analyses</a></li>
+<li class="chapter" data-level="1.10" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#exports"><i class="fa fa-check"></i><b>1.10</b> Summary of exported files</a></li>
+<li class="chapter" data-level="" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html"><i class="fa fa-check"></i><b>2</b> Spatial Analysis in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-data-concepts"><i class="fa fa-check"></i><b>2.1</b> Spatial Data Concepts</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#vector-vs-raster-data"><i class="fa fa-check"></i><b>2.1.1</b> Vector vs Raster Data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#coordinate-reference-systems-crs-and-projections"><i class="fa fa-check"></i><b>2.1.2</b> Coordinate Reference Systems (CRS) and Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra"><i class="fa fa-check"></i><b>2.2</b> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing and Loading Spatial Packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf"><i class="fa fa-check"></i><b>2.2.2</b> <strong>Working with Vector Data using <code>{sf}</code></strong></a></li>
+<li class="chapter" data-level="2.2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-vector-data"><i class="fa fa-check"></i><b>2.2.3</b> Importing Vector Data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#spatial-relationships-and-joins"><i class="fa fa-check"></i><b>2.2.4</b> Spatial Relationships and Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra"><i class="fa fa-check"></i><b>2.3</b> <strong>Working with Raster Data using <code>{terra}</code></strong></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#importing-raster-data"><i class="fa fa-check"></i><b>2.3.1</b> Importing Raster Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#combining-vector-and-raster-data"><i class="fa fa-check"></i><b>2.4</b> Combining Vector and Raster Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons"><i class="fa fa-check"></i><b>2.4.1</b> Extracting Raster Values to Points and Polygons</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data"><i class="fa fa-check"></i><b>2.5</b> Exporting and Sharing Spatial Data</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-vector-data"><i class="fa fa-check"></i><b>2.5.1</b> Exporting Vector Data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="spatial-analysis-in-r.html"><a href="spatial-analysis-in-r.html#exporting-raster-data"><i class="fa fa-check"></i><b>2.5.2</b> Exporting Raster Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>3</b> Sampling design for soil surveys</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-theory"><i class="fa fa-check"></i><b>3.2</b> Sampling methodologies for soil spatial survey</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#selection-methods"><i class="fa fa-check"></i><b>3.2.1</b> Selection of the sampling methodology</a></li>
+<li class="chapter" data-level="3.2.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#inference-methods"><i class="fa fa-check"></i><b>3.2.2</b> Inference Methods</a></li>
+<li class="chapter" data-level="3.2.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-purpose"><i class="fa fa-check"></i><b>3.2.3</b> Purpose of Sampling</a></li>
+<li class="chapter" data-level="3.2.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#design-types"><i class="fa fa-check"></i><b>3.2.4</b> Sampling Design Types</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soilfer-design"><i class="fa fa-check"></i><b>3.3</b> SoilFER Sampling Design</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#soil-properties"><i class="fa fa-check"></i><b>3.3.1</b> Soil Properties</a></li>
+<li class="chapter" data-level="3.3.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#env-covariates"><i class="fa fa-check"></i><b>3.3.2</b> Environmental Covariates</a></li>
+<li class="chapter" data-level="3.3.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#methodology"><i class="fa fa-check"></i><b>3.3.3</b> Understanding the Methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#tutorial"><i class="fa fa-check"></i><b>3.4</b> Tutorial Using R</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#setup"><i class="fa fa-check"></i><b>3.4.1</b> Setting Up the Environment</a></li>
+<li class="chapter" data-level="3.4.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#define-parameters"><i class="fa fa-check"></i><b>3.4.2</b> Define Variables and Parameters</a></li>
+<li class="chapter" data-level="3.4.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#country-iso-code"><i class="fa fa-check"></i><b>3.4.3</b> Country ISO Code</a></li>
+<li class="chapter" data-level="3.4.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#custom-functions"><i class="fa fa-check"></i><b>3.4.4</b> Custom Functions</a></li>
+<li class="chapter" data-level="3.4.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-boundaries"><i class="fa fa-check"></i><b>3.4.5</b> Load Country Boundaries and Legacy Data</a></li>
+<li class="chapter" data-level="3.4.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-covariates-psu"><i class="fa fa-check"></i><b>3.4.6</b> Load Environmental Covariates for PSUs</a></li>
+<li class="chapter" data-level="3.4.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-main-environmental-covariates"><i class="fa fa-check"></i><b>3.4.7</b> Load Main Environmental Covariates</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#pca"><i class="fa fa-check"></i><b>3.5</b> Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="3.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#sampling-universe"><i class="fa fa-check"></i><b>3.6</b> Organize the Sampling Universe</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-and-process-land-use-data"><i class="fa fa-check"></i><b>3.6.1</b> Load and Process Land Use Data</a></li>
+<li class="chapter" data-level="3.6.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#exclude-protected-areas"><i class="fa fa-check"></i><b>3.6.2</b> Exclude Protected Areas</a></li>
+<li class="chapter" data-level="3.6.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#restrict-to-accessible-slopes"><i class="fa fa-check"></i><b>3.6.3</b> Restrict to Accessible Slopes</a></li>
+<li class="chapter" data-level="3.6.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#aggregate-to-100m-resolution"><i class="fa fa-check"></i><b>3.6.4</b> Aggregate to 100m Resolution</a></li>
+<li class="chapter" data-level="3.6.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-processed-land-use"><i class="fa fa-check"></i><b>3.6.5</b> Save Processed Land Use</a></li>
+<li class="chapter" data-level="3.6.6" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-legacy-data"><i class="fa fa-check"></i><b>3.6.6</b> Filter Legacy Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-psu-grid"><i class="fa fa-check"></i><b>3.7</b> Create Primary Sampling Units (PSU Grid)</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#generate-2km-2km-grid"><i class="fa fa-check"></i><b>3.7.1</b> Generate 2km × 2km Grid</a></li>
+<li class="chapter" data-level="3.7.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#trim-to-country-boundaries"><i class="fa fa-check"></i><b>3.7.2</b> Trim to Country Boundaries</a></li>
+<li class="chapter" data-level="3.7.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#save-psu-grid"><i class="fa fa-check"></i><b>3.7.3</b> Save PSU Grid</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#select-psus"><i class="fa fa-check"></i><b>3.8</b> Select PSUs with Sufficient Land Use Coverage</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#calculate-land-use-percentage"><i class="fa fa-check"></i><b>3.8.1</b> Calculate Land Use Percentage</a></li>
+<li class="chapter" data-level="3.8.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#filter-psus"><i class="fa fa-check"></i><b>3.8.2</b> Filter PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#rasterize-psus"><i class="fa fa-check"></i><b>3.9</b> Rasterize PSUs for Covariate Space Coverage</a></li>
+<li class="chapter" data-level="3.10" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#optimal-sample-size"><i class="fa fa-check"></i><b>3.10</b> Compute Optimal Sample Size</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#run-optimization"><i class="fa fa-check"></i><b>3.10.1</b> Run Optimization</a></li>
+<li class="chapter" data-level="3.10.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-optimal-sample-size"><i class="fa fa-check"></i><b>3.10.2</b> Extract Optimal Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#csc-computing"><i class="fa fa-check"></i><b>3.11</b> Covariate Space Coverage - Computing PSUs</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#prepare-function-parameters"><i class="fa fa-check"></i><b>3.11.1</b> Prepare Function Parameters</a></li>
+<li class="chapter" data-level="3.11.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#perform-k-means-clustering"><i class="fa fa-check"></i><b>3.11.2</b> Perform K-means Clustering</a></li>
+<li class="chapter" data-level="3.11.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#assign-clusters-and-calculate-distances"><i class="fa fa-check"></i><b>3.11.3</b> Assign Clusters and Calculate Distances</a></li>
+<li class="chapter" data-level="3.11.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#extract-selected-psus"><i class="fa fa-check"></i><b>3.11.4</b> Extract Selected PSUs</a></li>
+<li class="chapter" data-level="3.11.5" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#visualize-in-covariate-space"><i class="fa fa-check"></i><b>3.11.5</b> Visualize in Covariate Space</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#compute-ssu-tsu"><i class="fa fa-check"></i><b>3.12</b> Compute SSUs and TSUs</a>
+<ul>
+<li class="chapter" data-level="3.12.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#load-high-resolution-covariates"><i class="fa fa-check"></i><b>3.12.1</b> Load High-Resolution Covariates</a></li>
+<li class="chapter" data-level="3.12.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#process-each-psu"><i class="fa fa-check"></i><b>3.12.2</b> Process Each PSU</a></li>
+<li class="chapter" data-level="3.12.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#combine-ssus-and-tsus"><i class="fa fa-check"></i><b>3.12.3</b> Combine SSUs and TSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-units"><i class="fa fa-check"></i><b>3.13</b> Export Sampling Units</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-cluster-raster"><i class="fa fa-check"></i><b>3.13.1</b> Create Cluster Raster</a></li>
+<li class="chapter" data-level="3.13.2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#join-cluster-info-to-tsus"><i class="fa fa-check"></i><b>3.13.2</b> Join Cluster Info to TSUs</a></li>
+<li class="chapter" data-level="3.13.3" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#create-site-ids"><i class="fa fa-check"></i><b>3.13.3</b> Create Site IDs</a></li>
+<li class="chapter" data-level="3.13.4" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#export-shapefiles"><i class="fa fa-check"></i><b>3.13.4</b> Export Shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#alternative-psus"><i class="fa fa-check"></i><b>3.14</b> Compute Alternative PSUs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="merging-results.html"><a href="merging-results.html"><i class="fa fa-check"></i><b>4</b> Merging Results from Multiple Land Uses</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="merging-results.html"><a href="merging-results.html#assign-unique-ids"><i class="fa fa-check"></i><b>4.1</b> Assign Country-Wide Unique IDs</a></li>
+<li class="chapter" data-level="4.2" data-path="merging-results.html"><a href="merging-results.html#export-unified"><i class="fa fa-check"></i><b>4.2</b> Export Unified Datasets</a></li>
+<li class="chapter" data-level="4.3" data-path="merging-results.html"><a href="merging-results.html#summary-stats"><i class="fa fa-check"></i><b>4.3</b> Summary Statistics</a></li>
+<li class="chapter" data-level="4.4" data-path="merging-results.html"><a href="merging-results.html#distribution-maps"><i class="fa fa-check"></i><b>4.4</b> Create Distribution Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="field-protocol.html"><a href="field-protocol.html"><i class="fa fa-check"></i><b>5</b> Field Sampling Protocol</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="field-protocol.html"><a href="field-protocol.html#gps-prep"><i class="fa fa-check"></i><b>5.1</b> GPS Device Preparation</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="field-protocol.html"><a href="field-protocol.html#export-to-gpx-format"><i class="fa fa-check"></i><b>5.1.1</b> Export to GPX Format</a></li>
+<li class="chapter" data-level="5.1.2" data-path="field-protocol.html"><a href="field-protocol.html#load-onto-gps-device"><i class="fa fa-check"></i><b>5.1.2</b> Load onto GPS Device</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="field-protocol.html"><a href="field-protocol.html#sampling-procedure"><i class="fa fa-check"></i><b>5.2</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.3" data-path="field-protocol.html"><a href="field-protocol.html#data-recording"><i class="fa fa-check"></i><b>5.3</b> Data Recording</a></li>
+<li class="chapter" data-level="5.4" data-path="field-protocol.html"><a href="field-protocol.html#qc"><i class="fa fa-check"></i><b>5.4</b> Quality Control</a></li>
+<li class="chapter" data-level="5.5" data-path="field-protocol.html"><a href="field-protocol.html#references-sdg1"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i>Appendices</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-a-software-and-data-sources"><i class="fa fa-check"></i>Appendix A: Software and Data Sources</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="appendices.html"><a href="appendices.html#software-requirements"><i class="fa fa-check"></i><b>5.5.1</b> Software Requirements</a></li>
+<li class="chapter" data-level="5.5.2" data-path="appendices.html"><a href="appendices.html#data-sources"><i class="fa fa-check"></i><b>5.5.2</b> Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-b-troubleshooting-common-issues"><i class="fa fa-check"></i>Appendix B: Troubleshooting Common Issues</a>
+<ul>
+<li class="chapter" data-level="5.5.3" data-path="appendices.html"><a href="appendices.html#memory-issues"><i class="fa fa-check"></i><b>5.5.3</b> Memory Issues</a></li>
+<li class="chapter" data-level="5.5.4" data-path="appendices.html"><a href="appendices.html#crs-misalignment"><i class="fa fa-check"></i><b>5.5.4</b> CRS Misalignment</a></li>
+<li class="chapter" data-level="5.5.5" data-path="appendices.html"><a href="appendices.html#empty-geometry"><i class="fa fa-check"></i><b>5.5.5</b> Empty Geometry</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendices.html"><a href="appendices.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tbd.html"><a href="tbd.html"><i class="fa fa-check"></i><b>6</b> TBD</a></li>
+<li class="chapter" data-level="7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html"><i class="fa fa-check"></i><b>7</b> GloSIS Soil Data Preparation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#the-glosis-database"><i class="fa fa-check"></i><b>7.2</b> The GloSIS database</a></li>
+<li class="chapter" data-level="7.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#features-of-interest-understanding-the-xlsx-template"><i class="fa fa-check"></i><b>7.3</b> Features of interest: Understanding the XLSX Template</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>7.3.1</b> <code>Plot Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#profile-data-sheet"><i class="fa fa-check"></i><b>7.3.2</b> <code>Profile Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#element-data-sheet"><i class="fa fa-check"></i><b>7.3.3</b> <code>Element Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>7.3.4</b> <code>Specimen Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>7.3.5</b> <code>Procedures</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#metadata-sheet"><i class="fa fa-check"></i><b>7.3.6</b> <code>Metadata</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>7.3.7</b> <code>Original Data</code> Sheet</a></li>
+<li class="chapter" data-level="7.3.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-methods-sheet"><i class="fa fa-check"></i><b>7.3.8</b> <code>GloSIS Methods</code> sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-etl"><i class="fa fa-check"></i><b>7.4</b> GloSIS-ETL</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-harmonization"><i class="fa fa-check"></i><b>7.4.1</b> GloSIS Data Harmonization</a></li>
+<li class="chapter" data-level="7.4.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-1-data-ingestion-variable-mapping"><i class="fa fa-check"></i><b>7.4.2</b> Step 1: Data Ingestion &amp; Variable Mapping</a></li>
+<li class="chapter" data-level="7.4.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2-quality-check-and-quality-report-generation"><i class="fa fa-check"></i><b>7.4.3</b> Step 2: Quality Check and Quality Report Generation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2a-geographic-data-validation"><i class="fa fa-check"></i><b>7.4.4</b> Step 2a: Geographic Data Validation</a></li>
+<li class="chapter" data-level="7.4.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2b-soil-depth-validation"><i class="fa fa-check"></i><b>7.4.5</b> Step 2b: Soil Depth Validation</a></li>
+<li class="chapter" data-level="7.4.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-2c-soil-properties-validation"><i class="fa fa-check"></i><b>7.4.6</b> Step 2c: Soil Properties Validation</a></li>
+<li class="chapter" data-level="7.4.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-3-data-correction-and-resubmission"><i class="fa fa-check"></i><b>7.4.7</b> Step 3: Data Correction and Resubmission</a></li>
+<li class="chapter" data-level="7.4.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#step-4-download-harmonized-data"><i class="fa fa-check"></i><b>7.4.8</b> Step 4: Download Harmonized Data</a></li>
+<li class="chapter" data-level="7.4.9" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-standardization"><i class="fa fa-check"></i><b>7.4.9</b> GloSIS Data Standardization</a></li>
+<li class="chapter" data-level="7.4.10" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-data-viewer"><i class="fa fa-check"></i><b>7.4.10</b> GloSIS Data Viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl"><i class="fa fa-check"></i><b>7.5</b> Installation and Setup of the <code>GloSIS-ETL</code></a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-docker-desktop"><i class="fa fa-check"></i><b>7.5.1</b> Install Docker Desktop</a></li>
+<li class="chapter" data-level="7.5.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#install-the-glosis-etl-services"><i class="fa fa-check"></i><b>7.5.2</b> Install the GloSIS-ETL Services</a></li>
+<li class="chapter" data-level="7.5.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#verify-installation"><i class="fa fa-check"></i><b>7.5.3</b> Verify Installation</a></li>
+<li class="chapter" data-level="7.5.4" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#pgadmin"><i class="fa fa-check"></i><b>7.5.4</b> Optional: pgAdmin Web Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#accessing-the-services"><i class="fa fa-check"></i><b>7.6</b> Accessing the Services</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#landing-page"><i class="fa fa-check"></i><b>7.6.1</b> Landing Page</a></li>
+<li class="chapter" data-level="7.6.2" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#shiny-application-modules"><i class="fa fa-check"></i><b>7.6.2</b> Shiny Application Modules</a></li>
+<li class="chapter" data-level="7.6.3" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#glosis-database"><i class="fa fa-check"></i><b>7.6.3</b> GloSIS Database</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#docker-compose-file"><i class="fa fa-check"></i><b>7.7</b> The <code>docker-compose.yml</code> File</a></li>
+<li class="chapter" data-level="7.8" data-path="glosis-soil-data-preparation.html"><a href="glosis-soil-data-preparation.html#env-file"><i class="fa fa-check"></i><b>7.8</b> The <code>.env</code> File</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html"><i class="fa fa-check"></i><b>8</b> Digital Soil Mapping and Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-i-theoretical-foundations"><i class="fa fa-check"></i>Part I: Theoretical Foundations</a></li>
+<li class="chapter" data-level="8.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#fundamentals-of-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1</b> Fundamentals of Digital Soil Mapping</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#introduction-to-digital-soil-mapping"><i class="fa fa-check"></i><b>8.1.1</b> Introduction to Digital Soil Mapping</a></li>
+<li class="chapter" data-level="8.1.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#the-scorpan-framework"><i class="fa fa-check"></i><b>8.1.2</b> The SCORPAN Framework</a></li>
+<li class="chapter" data-level="8.1.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#statistical-theory-for-predictive-soil-mapping"><i class="fa fa-check"></i><b>8.1.3</b> Statistical Theory for Predictive Soil Mapping</a></li>
+<li class="chapter" data-level="8.1.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#types-of-soil-variables"><i class="fa fa-check"></i><b>8.1.4</b> Types of Soil Variables</a></li>
+<li class="chapter" data-level="8.1.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-methods"><i class="fa fa-check"></i><b>8.1.5</b> Prediction Methods</a></li>
+<li class="chapter" data-level="8.1.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nonlinearity-and-uncertainty"><i class="fa fa-check"></i><b>8.1.6</b> Nonlinearity and Uncertainty</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#part-ii-practical-application"><i class="fa fa-check"></i>Part II: Practical Application</a></li>
+<li class="chapter" data-level="8.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#workflow-overview"><i class="fa fa-check"></i><b>8.2</b> Workflow Overview</a></li>
+<li class="chapter" data-level="8.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#continuous-modelling-ph"><i class="fa fa-check"></i><b>8.3</b> Continuous Modelling (pH)</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable"><i class="fa fa-check"></i><b>8.3.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.3.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#data-and-covariates"><i class="fa fa-check"></i><b>8.3.2</b> Data and Covariates</a></li>
+<li class="chapter" data-level="8.3.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-boruta"><i class="fa fa-check"></i><b>8.3.3</b> Feature Selection (Boruta)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training"><i class="fa fa-check"></i><b>8.3.4</b> Model Training</a></li>
+<li class="chapter" data-level="8.3.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#variable-importance"><i class="fa fa-check"></i><b>8.3.5</b> Variable Importance</a></li>
+<li class="chapter" data-level="8.3.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-metrics"><i class="fa fa-check"></i><b>8.3.6</b> Validation Metrics</a></li>
+<li class="chapter" data-level="8.3.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps"><i class="fa fa-check"></i><b>8.3.7</b> Prediction Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nominal-classification-clay_ph_class"><i class="fa fa-check"></i><b>8.4</b> Nominal Classification (Clay_pH_Class)</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-1"><i class="fa fa-check"></i><b>8.4.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.4.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection"><i class="fa fa-check"></i><b>8.4.2</b> Feature Selection</a></li>
+<li class="chapter" data-level="8.4.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-1"><i class="fa fa-check"></i><b>8.4.3</b> Model Training</a></li>
+<li class="chapter" data-level="8.4.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation"><i class="fa fa-check"></i><b>8.4.4</b> Validation</a></li>
+<li class="chapter" data-level="8.4.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-1"><i class="fa fa-check"></i><b>8.4.5</b> Prediction Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-modelling-ph_class"><i class="fa fa-check"></i><b>8.5</b> Ordinal Modelling (pH_Class)</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#nature-of-the-variable-2"><i class="fa fa-check"></i><b>8.5.1</b> Nature of the Variable</a></li>
+<li class="chapter" data-level="8.5.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#ordinal-encoding"><i class="fa fa-check"></i><b>8.5.2</b> Ordinal Encoding</a></li>
+<li class="chapter" data-level="8.5.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#feature-selection-1"><i class="fa fa-check"></i><b>8.5.3</b> Feature Selection</a></li>
+<li class="chapter" data-level="8.5.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#model-training-2"><i class="fa fa-check"></i><b>8.5.4</b> Model Training</a></li>
+<li class="chapter" data-level="8.5.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#validation-1"><i class="fa fa-check"></i><b>8.5.5</b> Validation</a></li>
+<li class="chapter" data-level="8.5.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#prediction-maps-2"><i class="fa fa-check"></i><b>8.5.6</b> Prediction Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#area-of-applicability-aoa"><i class="fa fa-check"></i><b>8.6</b> Area of Applicability (AOA)</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#why-aoa-is-necessary"><i class="fa fa-check"></i><b>8.6.1</b> Why AOA is Necessary</a></li>
+<li class="chapter" data-level="8.6.2" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#dissimilarity-index-di"><i class="fa fa-check"></i><b>8.6.2</b> Dissimilarity Index (DI)</a></li>
+<li class="chapter" data-level="8.6.3" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#aoa-binary-mask"><i class="fa fa-check"></i><b>8.6.3</b> AOA Binary Mask</a></li>
+<li class="chapter" data-level="8.6.4" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#local-point-density-lpd"><i class="fa fa-check"></i><b>8.6.4</b> Local Point Density (LPD)</a></li>
+<li class="chapter" data-level="8.6.5" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#predictions-masked-to-aoa"><i class="fa fa-check"></i><b>8.6.5</b> Predictions Masked to AOA</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#summary"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="digital-soil-mapping-and-modeling.html"><a href="digital-soil-mapping-and-modeling.html#references-1"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html"><i class="fa fa-check"></i><b>9</b> Soil Data Sharing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#data-sharing-and-export-formats"><i class="fa fa-check"></i><b>9.1</b> Data sharing and export formats</a></li>
+<li class="chapter" data-level="9.2" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#metadata"><i class="fa fa-check"></i><b>9.2</b> Metadata</a></li>
+<li class="chapter" data-level="9.3" data-path="soil-data-sharing.html"><a href="soil-data-sharing.html#web-services"><i class="fa fa-check"></i><b>9.3</b> Web Services</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><p>DRAFT - Integrated soil information for decision-making
+<img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" /></p></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spatial-analysis-in-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Spatial Analysis in R<a href="spatial-analysis-in-r.html#spatial-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Spatial data has become an essential component of modern soil science.
+In the context of this manual, all steps of digital soil mapping depend on the ability to work with spatial datasets.</p>
+<p>This section introduces the fundamental concepts and tools needed to process, analyze, and visualize spatial data within R, using two specific R packages:</p>
+<ul>
+<li><strong><code>{sf}</code></strong> to work with vector data (points, lines, polygons), and<br />
+</li>
+<li><strong><code>{terra}</code></strong> for raster data (continuous surfaces, grids, remote sensing products).</li>
+</ul>
+<p>By the end of this section, you will be able to:</p>
+<ul>
+<li><p>Distinguish between <strong>vector</strong> and <strong>raster</strong> spatial data and their roles in soil science.</p></li>
+<li><p>Understand and manage <strong>coordinate reference systems (CRS)</strong> and projections.</p></li>
+<li><p>Import, explore, and visualize spatial data using <code>{sf}</code> and <code>{terra}</code>.</p></li>
+<li><p>Perform <strong>vector operations</strong> (buffer, intersection, union, spatial join).</p></li>
+<li><p>Perform <strong>raster operations</strong> (crop, mask, resample, raster algebra).</p></li>
+<li><p>Extract raster values at point or polygon locations for soil profiles and plots.</p></li>
+<li><p>Export processed spatial data to common GIS formats.<br />
+</p></li>
+</ul>
+<div class="highlights">
+<p><strong>Advanced online resources:</strong></p>
+<ul>
+<li><p><a href="https://r.geocompx.org/" title="Geocomputation with R">Geocomputation with R (Lovelace, Nowosad &amp; Muenchow, 2025)</a> : A book on geographic data analysis, visualization and modeling.</p></li>
+<li><p><a href="https://r-spatial.org/book/" title="Spatial Data Science: With applications in R">Spatial Data Science: With Applications in R (Pebesma, E., &amp; Bivand, R., 2023)</a> : A clear and practical introduction to the fundamental concepts of spatial data its structures, representations, and analytical implications.</p></li>
+</ul>
+</div>
+<div id="spatial-data-concepts" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Spatial Data Concepts<a href="spatial-analysis-in-r.html#spatial-data-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.</p>
+<p>Soil properties are not randomly distributed in space but change across landscapes. Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time <span class="citation">(<a href="#ref-prieto2023">Prieto-Castrillo <em>et al.</em>, 2023</a>)</span>:</p>
+<span class="math display">\[\begin{aligned} S= f(cl, o, r, p, t,\ldots ). \end{aligned}\]</span>
+<p>where ‘S’ represents soil formation, ‘cl’ is climate, ‘o’ is organisms, ‘r’ is relief, ‘p’ is the parent material and ‘t’ accounts for the time that took place to develop the soil profile.</p>
+<p>With these relationships soil scientists can describe, model, and predict variations in soil properties across the space.</p>
+<p>In R, spatial data is represented using two main data types:</p>
+<ul>
+<li><p>Vector data (points, lines, polygons) for discrete objects.</p></li>
+<li><p>Raster data (regular grids) for continuous surfaces.</p></li>
+</ul>
+<p>To work with them efficiently, this module focuses on two core R packages:</p>
+<ul>
+<li><p><code>{sf}</code> – for vector data (points, lines, polygons)</p></li>
+<li><p><code>{terra}</code> – for raster data (grids, surfaces, satellite images, soil predictions)</p></li>
+</ul>
+<p>These two packages will be using along this tutorial to script spatial workflows in R.</p>
+<hr />
+<div id="vector-vs-raster-data" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Vector vs Raster Data<a href="spatial-analysis-in-r.html#vector-vs-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Spatial data is commonly stored in two major formats: vector and raster (Figure 3).</p>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:VectRast"></span>
+<img src="images/module1/vectorVSraster.png" alt="&lt;br&gt;*Figure 3: Vector vs raster data representations*" width="80%" />
+<p class="caption">
+Figure 2.1: <br><em>Figure 3: Vector vs raster data representations</em>
+</p>
+</div>
+<p><br></p>
+<p>Vector datasets represent features as geometries (POINT, LINE, POLYGON) linked to an attribute table. They are ideal for representing discrete spatial objects such as soil sampling points, field boundaries, or landscape units.</p>
+<p><em>Table 1. Example of layer types and their associated geometry</em></p>
+<table>
+<thead>
+<tr class="header">
+<th>Layer Type</th>
+<th>Geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Soil profile locations</td>
+<td>POINT</td>
+</tr>
+<tr class="even">
+<td>Soil sampling locations</td>
+<td>POINT</td>
+</tr>
+<tr class="odd">
+<td>Rivers, roads</td>
+<td>LINE</td>
+</tr>
+<tr class="even">
+<td>Fields of sampling plots</td>
+<td>POLYGON</td>
+</tr>
+<tr class="odd">
+<td>Farms / Administrative boundaries</td>
+<td>POLYGON</td>
+</tr>
+<tr class="even">
+<td>Land units, physiographic regions</td>
+<td>POLYGON</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Raster data represents the landscape as a grid of equally sized cells, each storing a numeric value. Raster layers are ideal for continuous spatial phenomena—a central component in digital soil mapping and spatial modelling.</p>
+<p>Examples of raster layers used in soil science:</p>
+<ul>
+<li><p>Digital Elevation Models (DEM)</p></li>
+<li><p>Climate variables (rainfall, temperature)</p></li>
+<li><p>Remote sensing indices (NDVI, Sentinel-2 bands)</p></li>
+<li><p>Soil property predictions (SOC, pH, clay%)</p></li>
+<li><p>Moisture or vegetation products from satellites</p></li>
+</ul>
+<p>Each cell contains a value that represents the property at that location, enabling spatial modelling and interpolation.</p>
+<div class="highlights">
+<ul>
+<li>Vector data is best for discrete objects (profile locations, soil boundaries).</li>
+<li>Raster data is best for continuous surfaces (elevation, SOC, soil moisture, remote sensing layers).</li>
+</ul>
+</div>
+</div>
+<div id="coordinate-reference-systems-crs-and-projections" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Coordinate Reference Systems (CRS) and Projections<a href="spatial-analysis-in-r.html#coordinate-reference-systems-crs-and-projections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A Coordinate Reference System (CRS) defines how spatial coordinates relate to positions on Earth. Because Earth is curved, and maps are flat, different CRS systems use different mathematical models to translate the curved space to a planar surface.</p>
+<p>The choice of CRS has a major impact on the accuracy of distances, areas, buffer operations, overlays between layers, and spatial modelling outputs.</p>
+<div class="highlights">
+<ul>
+<li><p>All <code>{sf}</code> and <code>{terra}</code> objects must include a CRS.</p></li>
+<li><p>Many common spatial errors come from mixing layers with different or missing CRS.</p></li>
+<li><p>Always ensure all layers are in the same CRS before performing spatial operations.</p></li>
+</ul>
+</div>
+<div id="geographic-vs-projected-coordinate-systems." class="section level4 hasAnchor" number="2.1.2.1">
+<h4><span class="header-section-number">2.1.2.1</span> Geographic vs projected coordinate systems.<a href="spatial-analysis-in-r.html#geographic-vs-projected-coordinate-systems." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in <code>degrees</code> (°) (e.g. common example: EPSG:4326 WGS84).</p>
+<p>Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Figure 4).
+This leads to distortions in distances areas calculations.</p>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:degreeLat"></span>
+<img src="images/module1/degreeEq.png" alt="&lt;br&gt;*Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude*" width="80%" />
+<p class="caption">
+Figure 2.2: <br><em>Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude</em>
+</p>
+</div>
+<p><br></p>
+<p>Projected Coordinate Systems (PCS) have been designed to reduce distortion over a specific region. In PCS coordinates are expressed in linear units (usually meters) and are used for accurate geometric operations (distance, area, buffers).
+Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), national grid systems and local projections optimized for area-specific precision.</p>
+<div class="highlights">
+<ul>
+<li><p>Always check the units in <code>st_crs()</code> before doing geometric calculations.</p></li>
+<li><p>Use projected CRS when computing areas, distances, or buffers.</p></li>
+<li><p>If your data is in latitude/longitude, reproject to an appropriate PCS.</p></li>
+<li><p>Explore available CRS definitions using <a href="https://epsg.io/" title="epsg.io: Coordinate Systems Worldwide">https://epsg.io</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="spatial-packages-in-r-sf-and-terra" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> <strong>Spatial Packages in R: <code>{sf}</code> and <code>{terra}</code></strong><a href="spatial-analysis-in-r.html#spatial-packages-in-r-sf-and-terra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="installing-and-loading-spatial-packages" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Installing and Loading Spatial Packages<a href="spatial-analysis-in-r.html#installing-and-loading-spatial-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this module we will work with two core spatial packages:</p>
+<ul>
+<li><code>{sf}</code> for vector data (points, lines, polygons)</li>
+<li><code>{terra}</code> for raster data (grids, satellite images, continuous surfaces)</li>
+</ul>
+<p>You already learned how to install R packages in Module 1, so here we just show how this applies specifically to <code>{sf}</code> and {terra}.<br />
+</p>
+<div class="highlights">
+<p><strong>Reminder:</strong><br />
+- If the packages are not yet installed on your system, you can install them from CRAN using <code>install.packages()</code> function.
+<em>Example 4.1: Installation of <code>{sf}</code> and <code>{terra}</code> packages</em></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="spatial-analysis-in-r.html#cb120-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb120-2"><a href="spatial-analysis-in-r.html#cb120-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Packages only need to be done once per system.<br />
+</li>
+<li>Once the packages are installed, you must load them in each R session before use:</li>
+</ul>
+<p><em>Example 4.2: Loading <code>{sf}</code> and <code>{terra}</code> packages</em></p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="spatial-analysis-in-r.html#cb121-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb121-2"><a href="spatial-analysis-in-r.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
+</div>
+</div>
+<div id="working-with-vector-data-using-sf" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> <strong>Working with Vector Data using <code>{sf}</code></strong><a href="spatial-analysis-in-r.html#working-with-vector-data-using-sf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>{sf}</code> package implements the <em>Simple Features</em> standard for spatial vector data in R.</p>
+<p>A <em>simple feature</em> is a geometric object (point, line, polygon, etc.) linked to one or more <strong>attributes</strong> (e.g., soil type, pH, land use).<br />
+</p>
+<p>In practice, an <em><code>sf</code> object</em> is just a <em>data frame with a special geometry column</em>, plus metadata that tells R.
+An <code>sf</code> object combines:<br />
+</p>
+<ol style="list-style-type: decimal">
+<li><strong>Attributes</strong> – ordinary columns (e.g., plot ID, pH, SOC, soil type).<br />
+</li>
+<li><strong>Geometry column</strong> – typically named <code>geom</code> or <code>geometry</code>, storing coordinates and geometry type.<br />
+</li>
+<li><strong>CRS</strong> – information about the coordinate system used (e.g., WGS84, UTM), stored as part of the object.<br />
+</li>
+</ol>
+<div class="highlights">
+<p>An <code>sf</code> object is essentially a data frame that includes a geometry column.</p>
+<ul>
+<li><p>The attribute columns remain just like in a regular data frame.</p></li>
+<li><p>A geometry column (commonly named <code>geometry</code>) is added, storing the spatial features together with their geometry type.</p></li>
+<li><p>The object has the classes <code>sf</code> and <code>data.frame</code>, and it also stores CRS information.</p></li>
+</ul>
+</div>
+</div>
+<div id="importing-vector-data" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Importing Vector Data<a href="spatial-analysis-in-r.html#importing-vector-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vector spatial data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
+In R, vector data are typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files.</p>
+<div id="creating-spatial-vector-objects-from-data-frames" class="section level4 hasAnchor" number="2.2.3.1">
+<h4><span class="header-section-number">2.2.3.1</span> Creating spatial vector objects from data frames<a href="spatial-analysis-in-r.html#creating-spatial-vector-objects-from-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Spatial point layers in R can be created directly from regular data frames using the <code>{sf}</code> package.
+The function <code>st_as_sf()</code> converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).</p>
+<p>To perform this conversion, you must specify:</p>
+<ul>
+<li><p>Which columns contain the coordinates using <code>coords = c("X", "Y")</code></p></li>
+<li><p>The Coordinate Reference System (CRS) of those coordinates using <code>crs =</code></p></li>
+</ul>
+<p><br><em>Example 4.3: Transforming a Data Frame into an <code>{sf}</code> Spatial Object</em>
+In the example below, <code>.csv</code> data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="spatial-analysis-in-r.html#cb122-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb122-2"><a href="spatial-analysis-in-r.html#cb122-2" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="spatial-analysis-in-r.html#cb122-3" tabindex="-1"></a><span class="co"># Import soil sampling data with coordinates (WGS84)</span></span>
+<span id="cb122-4"><a href="spatial-analysis-in-r.html#cb122-4" tabindex="-1"></a>k.data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/kansas_site_lab_data.csv&quot;</span>)</span>
+<span id="cb122-5"><a href="spatial-analysis-in-r.html#cb122-5" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="spatial-analysis-in-r.html#cb122-6" tabindex="-1"></a><span class="co"># Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)</span></span>
+<span id="cb122-7"><a href="spatial-analysis-in-r.html#cb122-7" tabindex="-1"></a>soil_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(k.data, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb122-8"><a href="spatial-analysis-in-r.html#cb122-8" tabindex="-1"></a></span>
+<span id="cb122-9"><a href="spatial-analysis-in-r.html#cb122-9" tabindex="-1"></a><span class="co"># Print object geometry</span></span>
+<span id="cb122-10"><a href="spatial-analysis-in-r.html#cb122-10" tabindex="-1"></a>soil_sf<span class="sc">$</span>geometry</span>
+<span id="cb122-11"><a href="spatial-analysis-in-r.html#cb122-11" tabindex="-1"></a></span>
+<span id="cb122-12"><a href="spatial-analysis-in-r.html#cb122-12" tabindex="-1"></a><span class="co"># Print CRS details</span></span>
+<span id="cb122-13"><a href="spatial-analysis-in-r.html#cb122-13" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span></code></pre></div>
+<div class="highlights">
+<p><strong>Notes &amp; Best Practices</strong></p>
+<ul>
+<li><p>Always confirm that your coordinates are in the CRS you specify.</p></li>
+<li><p>If the CRS is unknown or incorrectly specified, spatial operations such as buffering, distance, or overlay may produce errors or misleading results.</p></li>
+<li><p>The order in <code>coords = c("X","Y")</code> matters:</p>
+<ul>
+<li>For lon/lat: X = longitude and Y = latitude.</li>
+<li>If your coordinate columns are named differently (e.g., lon, lat, easting, northing), adjust the <code>coords =</code> argument accordingly.</li>
+</ul></li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="reading-shapefiles-with-st_read" class="section level4 hasAnchor" number="2.2.3.2">
+<h4><span class="header-section-number">2.2.3.2</span> Reading Shapefiles with st_read()<a href="spatial-analysis-in-r.html#reading-shapefiles-with-st_read" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <code>{sf}</code> package reads these formats using the universal function <code>st_read()</code>.
+You can import most vector formats using the same command, since <code>{sf}</code> automatically detects the file type.</p>
+<p><br><em>Example 4.4: Reading shapefiles with {sf}</em></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="spatial-analysis-in-r.html#cb123-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb123-2"><a href="spatial-analysis-in-r.html#cb123-2" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="spatial-analysis-in-r.html#cb123-3" tabindex="-1"></a><span class="co"># Read a shapefile containing soil profile points</span></span>
+<span id="cb123-4"><a href="spatial-analysis-in-r.html#cb123-4" tabindex="-1"></a>soil_profiles <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/soil_profiles.shp&quot;</span>)</span>
+<span id="cb123-5"><a href="spatial-analysis-in-r.html#cb123-5" tabindex="-1"></a></span>
+<span id="cb123-6"><a href="spatial-analysis-in-r.html#cb123-6" tabindex="-1"></a><span class="co"># Inspect the first rows</span></span>
+<span id="cb123-7"><a href="spatial-analysis-in-r.html#cb123-7" tabindex="-1"></a><span class="fu">head</span>(soil_profiles)</span>
+<span id="cb123-8"><a href="spatial-analysis-in-r.html#cb123-8" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="spatial-analysis-in-r.html#cb123-9" tabindex="-1"></a><span class="co"># Plot quick visualization</span></span>
+<span id="cb123-10"><a href="spatial-analysis-in-r.html#cb123-10" tabindex="-1"></a><span class="fu">plot</span>(soil_profiles[<span class="st">&quot;profile_id&quot;</span>])</span></code></pre></div>
+<p>This layer may represent individual soil pits or auger locations, each with coordinates and measured properties stored in the attribute table.</p>
+<hr />
+</div>
+<div id="inspecting-and-setting-crs" class="section level4 hasAnchor" number="2.2.3.3">
+<h4><span class="header-section-number">2.2.3.3</span> Inspecting and Setting CRS<a href="spatial-analysis-in-r.html#inspecting-and-setting-crs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Checking CRS of sf objects (<code>st_crs()</code>).</p></li>
+<li><p>Checking CRS of terra objects (<code>crs()</code>).</p></li>
+<li></li>
+</ul>
+</div>
+<div id="reprojecting-spatial-data" class="section level4 hasAnchor" number="2.2.3.4">
+<h4><span class="header-section-number">2.2.3.4</span> Reprojecting Spatial Data<a href="spatial-analysis-in-r.html#reprojecting-spatial-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Reprojecting vector data with <code>{sf}</code> (<code>st_transform()</code>).</p></li>
+<li><p>Reprojecting raster data with <code>{terra}</code> (<code>project()</code>).</p></li>
+<li><p>Choosing an appropriate CRS for national soil projects.</p></li>
+</ul>
+<p>Example: converting the point dataset from WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG: 3857)</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="spatial-analysis-in-r.html#cb124-1" tabindex="-1"></a>plots_sf_utm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(plots_sf, <span class="at">crs =</span> <span class="dv">3857</span>)</span></code></pre></div>
+</div>
+<div id="inspecting-and-manipulating-sf-object" class="section level4 hasAnchor" number="2.2.3.5">
+<h4><span class="header-section-number">2.2.3.5</span> Inspecting and manipulating <code>{sf}</code> Object<a href="spatial-analysis-in-r.html#inspecting-and-manipulating-sf-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Because <code>sf</code> objects inherit from the <code>data.frame</code> class, you can explore an sf object with the same tools as data frames (<code>class()</code>,<code>str()</code>, <code>summary()</code>), plus a few <code>{sf}</code> helpers (<code>st_geometry_type()</code>).</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="spatial-analysis-in-r.html#cb125-1" tabindex="-1"></a><span class="co"># Check structure</span></span>
+<span id="cb125-2"><a href="spatial-analysis-in-r.html#cb125-2" tabindex="-1"></a><span class="fu">str</span>(soil_sf)</span>
+<span id="cb125-3"><a href="spatial-analysis-in-r.html#cb125-3" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="spatial-analysis-in-r.html#cb125-4" tabindex="-1"></a><span class="co"># Summary of attributes + geometry</span></span>
+<span id="cb125-5"><a href="spatial-analysis-in-r.html#cb125-5" tabindex="-1"></a><span class="fu">summary</span>(soil_sf)</span>
+<span id="cb125-6"><a href="spatial-analysis-in-r.html#cb125-6" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="spatial-analysis-in-r.html#cb125-7" tabindex="-1"></a><span class="co"># Extract the geometry column</span></span>
+<span id="cb125-8"><a href="spatial-analysis-in-r.html#cb125-8" tabindex="-1"></a><span class="fu">st_geometry</span>(soil_sf)</span>
+<span id="cb125-9"><a href="spatial-analysis-in-r.html#cb125-9" tabindex="-1"></a></span>
+<span id="cb125-10"><a href="spatial-analysis-in-r.html#cb125-10" tabindex="-1"></a><span class="co"># Check the geometry type. Use head to avoid long printing</span></span>
+<span id="cb125-11"><a href="spatial-analysis-in-r.html#cb125-11" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">st_geometry_type</span>(soil_sf))</span>
+<span id="cb125-12"><a href="spatial-analysis-in-r.html#cb125-12" tabindex="-1"></a></span>
+<span id="cb125-13"><a href="spatial-analysis-in-r.html#cb125-13" tabindex="-1"></a><span class="co"># Check the CRS:</span></span>
+<span id="cb125-14"><a href="spatial-analysis-in-r.html#cb125-14" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span>
+<span id="cb125-15"><a href="spatial-analysis-in-r.html#cb125-15" tabindex="-1"></a></span>
+<span id="cb125-16"><a href="spatial-analysis-in-r.html#cb125-16" tabindex="-1"></a><span class="co"># Check the spatial extent of the object:</span></span>
+<span id="cb125-17"><a href="spatial-analysis-in-r.html#cb125-17" tabindex="-1"></a><span class="fu">st_bbox</span>(soil_sf)</span></code></pre></div>
+<p><code>{sf}</code> objects can be manipulated in the same way as standard data frames while retaining all spatial information.
+Base R and <code>{dplyr}</code> verbs such as <code>filter()</code>, <code>select()</code>, <code>mutate()</code>, can be directly applied on <code>sf</code> objects .</p>
+<p><em>Example: Selecting, filtering an creating new variables in an <code>sf</code> object with <code>{dplyr}</code></em></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="spatial-analysis-in-r.html#cb126-1" tabindex="-1"></a><span class="co"># Subset sf rows and columns using the pipping (%&gt;%) operator with {dplyr}</span></span>
+<span id="cb126-2"><a href="spatial-analysis-in-r.html#cb126-2" tabindex="-1"></a>soil_sf <span class="sc">%&gt;%</span></span>
+<span id="cb126-3"><a href="spatial-analysis-in-r.html#cb126-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb126-4"><a href="spatial-analysis-in-r.html#cb126-4" tabindex="-1"></a>  <span class="fu">select</span>(taxa, ph_h2o) <span class="sc">%&gt;%</span></span>
+<span id="cb126-5"><a href="spatial-analysis-in-r.html#cb126-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">saline =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="highlights">
+<p><strong>What <code>dplyr::</code> means?</strong></p>
+<ul>
+<li><p>Several packages can contain functions with the same name.
+For example, the <code>filter()</code> function exists in:</p>
+<ul>
+<li><p><code>stats::filter()</code> (base R – for time-series filtering)</p></li>
+<li><p><code>dplyr::filter()</code> (for data frames / sf objects)</p></li>
+<li><p><code>terra::filter()</code> (for raster filtering)</p></li>
+<li><p><code>signal::filter()</code>, etc.</p></li>
+</ul></li>
+</ul>
+<p>When you load packages, R follows the search path.
+If a package containing its own <code>filter()</code> is loaded after <code>{dplyr}</code>, then that package’s <code>filter()</code> will mask the dplyr version.
+As a result, calling <code>filter()</code> alone may not work as expected for your object.
+This behavior often occurs with the <code>select()</code> function in many operations in spatial analysis.</p>
+<p>To avoid this, you can explicitly specify which package the function should come from using the general form <code>package::function()</code>.
+For [<a href="example:\\" class="uri">example:\\</a>](<a href="example:\" class="uri">example:\</a>){.uri}</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="spatial-analysis-in-r.html#cb127-1" tabindex="-1"></a><span class="co"># Call the filter function from the `dplyr` package</span></span>
+<span id="cb127-2"><a href="spatial-analysis-in-r.html#cb127-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()</span></code></pre></div>
+<p>However, this may not always be necessary.
+If no masking occurs and no errors appear in the console, you can safely use the functions directly without the <code>package::</code> prefix.</p>
+</div>
+<p>Further <code>{dplyr}</code> functions can be applied on <code>sf</code> objects to get in-depth analyses of soil properties</p>
+<p><em>Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH &gt; 9)</em></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatial-analysis-in-r.html#cb128-1" tabindex="-1"></a><span class="co"># Filtering rows by pH value and subset columns with {dplyr}</span></span>
+<span id="cb128-2"><a href="spatial-analysis-in-r.html#cb128-2" tabindex="-1"></a>saline <span class="ot">&lt;-</span> soil_sf <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="spatial-analysis-in-r.html#cb128-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ph_h2o <span class="sc">&gt;</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb128-4"><a href="spatial-analysis-in-r.html#cb128-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(taxa, ph_h2o)</span>
+<span id="cb128-5"><a href="spatial-analysis-in-r.html#cb128-5" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="spatial-analysis-in-r.html#cb128-6" tabindex="-1"></a><span class="co"># Calculate the mean pH for the different taxonomic groups in these new dataset</span></span>
+<span id="cb128-7"><a href="spatial-analysis-in-r.html#cb128-7" tabindex="-1"></a>saline <span class="sc">%&gt;%</span></span>
+<span id="cb128-8"><a href="spatial-analysis-in-r.html#cb128-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(taxa) <span class="sc">%&gt;%</span></span>
+<span id="cb128-9"><a href="spatial-analysis-in-r.html#cb128-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">mean_ph=</span><span class="fu">mean</span>(ph_h2o))</span></code></pre></div>
+</div>
+<div id="geometry-operations" class="section level4 hasAnchor" number="2.2.3.6">
+<h4><span class="header-section-number">2.2.3.6</span> Geometry Operations<a href="spatial-analysis-in-r.html#geometry-operations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Geometry operations allow you to modify and analyze the spatial shape of your vector features.<br />
+Typical tasks in soil science include defining sampling influence areas around plots, clipping soil data to administrative units, and calculating areas or lengths for reporting and analysis.</p>
+<div class="highlightsç">
+<p>Remember that geometry operations are safer if the data is transformed to a Projected Coordinate Cystem.</p>
+</div>
+<p>##### Buffering Plots (Sampling Influence Area)</p>
+<p>Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).<br />
+In soil applications, buffers can represent:</p>
+<ul>
+<li>The influence area of a contaminating facility (polygon geometry).</li>
+<li>Proximity zones around rivers or roads (line geometry).</li>
+<li>Buffer zones around soil sampling points to define their spatial influence (point geometry).</li>
+</ul>
+<p>The function <code>st_buffer()</code> is used for this.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="spatial-analysis-in-r.html#cb129-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb129-2"><a href="spatial-analysis-in-r.html#cb129-2" tabindex="-1"></a><span class="co"># k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)</span></span>
+<span id="cb129-3"><a href="spatial-analysis-in-r.html#cb129-3" tabindex="-1"></a><span class="co"># kansas_sf &lt;- k.data[1:108,]</span></span>
+<span id="cb129-4"><a href="spatial-analysis-in-r.html#cb129-4" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> k.data[<span class="dv">1</span>,]</span>
+<span id="cb129-5"><a href="spatial-analysis-in-r.html#cb129-5" tabindex="-1"></a><span class="co"># Convert to spatial sf</span></span>
+<span id="cb129-6"><a href="spatial-analysis-in-r.html#cb129-6" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(kansas_sf,<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>),<span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb129-7"><a href="spatial-analysis-in-r.html#cb129-7" tabindex="-1"></a><span class="co"># transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)</span></span>
+<span id="cb129-8"><a href="spatial-analysis-in-r.html#cb129-8" tabindex="-1"></a>kansas_sf <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(kansas_sf, <span class="at">crs =</span> <span class="dv">26914</span>)  <span class="co"># UTM 14N, metres</span></span>
+<span id="cb129-9"><a href="spatial-analysis-in-r.html#cb129-9" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="spatial-analysis-in-r.html#cb129-10" tabindex="-1"></a><span class="co"># &#39;kansas_sf&#39; contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units</span></span>
+<span id="cb129-11"><a href="spatial-analysis-in-r.html#cb129-11" tabindex="-1"></a><span class="fu">st_crs</span>(kansas_sf)</span>
+<span id="cb129-12"><a href="spatial-analysis-in-r.html#cb129-12" tabindex="-1"></a></span>
+<span id="cb129-13"><a href="spatial-analysis-in-r.html#cb129-13" tabindex="-1"></a><span class="co"># Create a 100 m buffer around each plot</span></span>
+<span id="cb129-14"><a href="spatial-analysis-in-r.html#cb129-14" tabindex="-1"></a>plots_buffer_100 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">100</span>)</span>
+<span id="cb129-15"><a href="spatial-analysis-in-r.html#cb129-15" tabindex="-1"></a></span>
+<span id="cb129-16"><a href="spatial-analysis-in-r.html#cb129-16" tabindex="-1"></a><span class="co"># Plot first point and its buffers</span></span>
+<span id="cb129-17"><a href="spatial-analysis-in-r.html#cb129-17" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_100), <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb129-18"><a href="spatial-analysis-in-r.html#cb129-18" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kansas_sf), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb129-19"><a href="spatial-analysis-in-r.html#cb129-19" tabindex="-1"></a></span>
+<span id="cb129-20"><a href="spatial-analysis-in-r.html#cb129-20" tabindex="-1"></a><span class="co"># Create a second 50 m buffer around the plot</span></span>
+<span id="cb129-21"><a href="spatial-analysis-in-r.html#cb129-21" tabindex="-1"></a>plots_buffer_50 <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(kansas_sf, <span class="at">dist =</span> <span class="dv">50</span>)</span>
+<span id="cb129-22"><a href="spatial-analysis-in-r.html#cb129-22" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(plots_buffer_50), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.3</span>), <span class="at">border =</span> <span class="st">&quot;navy&quot;</span>)</span></code></pre></div>
+<div id="intersection-and-union-with-administrative-boundaries" class="section level5 hasAnchor" number="2.2.3.6.1">
+<h5><span class="header-section-number">2.2.3.6.1</span> Intersection and Union with Administrative Boundaries<a href="spatial-analysis-in-r.html#intersection-and-union-with-administrative-boundaries" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Frequently, soil datasets need to be restricted to a study region (e.g., a province) or aggregated at administrative levels (e.g., districts, municipalities).</p>
+<p>We will use two key functions:</p>
+<p><code>st_intersection()</code> – keeps only the overlapping parts of two layers.</p>
+<p><code>st_union()</code> – dissolves or merges geometries into a single geometry (or by groups).</p>
+<p>Example: Clip plots to an administrative region</p>
+</div>
+</div>
+</div>
+<div id="spatial-relationships-and-joins" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Spatial Relationships and Joins<a href="spatial-analysis-in-r.html#spatial-relationships-and-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Spatial predicates (<code>st_intersects()</code>, <code>st_within()</code>, <code>st_distance()</code>).</p></li>
+<li><p>Spatial joins (<code>st_join()</code>) to attach attributes from one layer to another.</p></li>
+<li><p>Assigning soil profiles to polygons or administrative units.</p></li>
+<li></li>
+</ul>
+<hr />
+<p>### Visualizing <code>{sf}</code> Objects</p>
+<p><code>{sf}</code> objects can be quickly visualized using the base R <code>plot()</code> function:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="spatial-analysis-in-r.html#cb130-1" tabindex="-1"></a><span class="co"># Simple plot of sampling locations</span></span>
+<span id="cb130-2"><a href="spatial-analysis-in-r.html#cb130-2" tabindex="-1"></a><span class="fu">plot</span>(soil_sf[<span class="st">&quot;ph_h2o&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>)</span></code></pre></div>
+<p>In this example, each point represents a sampling site, and the color scale corresponds to the ph_h2o attribute.
+If no column is specified in the <code>plot()</code>function, the display will produce a series of panels, one for each attribute stored in the <code>{sf}</code> data frame.</p>
+<p>Unlike <code>plot()</code>, the <code>{ggplot2}</code> package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
+In this case, the geometry type is defined with <code>geom_sf()</code>.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="spatial-analysis-in-r.html#cb131-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb131-2"><a href="spatial-analysis-in-r.html#cb131-2" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="spatial-analysis-in-r.html#cb131-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> soil_sf) <span class="sc">+</span></span>
+<span id="cb131-4"><a href="spatial-analysis-in-r.html#cb131-4" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">color =</span> ph_h2o)) <span class="sc">+</span></span>
+<span id="cb131-5"><a href="spatial-analysis-in-r.html#cb131-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb131-6"><a href="spatial-analysis-in-r.html#cb131-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb131-7"><a href="spatial-analysis-in-r.html#cb131-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb131-8"><a href="spatial-analysis-in-r.html#cb131-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Soil sampling sites – pH (H2O)&quot;</span>,</span>
+<span id="cb131-9"><a href="spatial-analysis-in-r.html#cb131-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;pH (H2O)&quot;</span></span>
+<span id="cb131-10"><a href="spatial-analysis-in-r.html#cb131-10" tabindex="-1"></a>  )</span></code></pre></div>
+<hr />
+<p>## The <code>{terra}</code> Package (Raster &amp; Vector)</p>
+<ul>
+<li><p>SpatRaster and SpatVector objects.</p></li>
+<li><p>Differences from older <code>{raster}</code> package.</p></li>
+<li><p>Why <code>{terra}</code> is recommended in this course.</p></li>
+<li></li>
+</ul>
+<p>## <strong>Working with Vector Data using <code>{sf}</code></strong></p>
+</div>
+</div>
+<div id="working-with-raster-data-using-terra" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> <strong>Working with Raster Data using <code>{terra}</code></strong><a href="spatial-analysis-in-r.html#working-with-raster-data-using-terra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importing-raster-data" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Importing Raster Data<a href="spatial-analysis-in-r.html#importing-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Reading single-layer and multi-layer rasters (<code>rast()</code>).</p></li>
+<li><p>Examples: DEM, SOC predictions, climate layers.</p></li>
+<li></li>
+</ul>
+<p>### Exploring Raster Layers</p>
+<ul>
+<li><p>Inspecting basic properties: extent, resolution, CRS, number of layers.</p></li>
+<li><p>Summaries and histograms of raster values.</p></li>
+<li></li>
+</ul>
+<p>### Raster Visualization</p>
+<ul>
+<li><p>Basic plotting of rasters (<code>plot()</code>).</p></li>
+<li><p>Layered visualizations, color scales, and legends.</p></li>
+<li><p>Visualizing multiple layers (e.g., SOC and DEM).</p></li>
+<li></li>
+</ul>
+<p>### Spatial Operations on Rasters</p>
+<ul>
+<li><p>Crop and mask to study area (<code>crop()</code>, <code>mask()</code>).</p></li>
+<li><p>Resampling and alignment of rasters (<code>resample()</code>, <code>align()</code>).</p></li>
+<li><p>Reprojecting rasters to other CRS (<code>project()</code>).</p></li>
+<li></li>
+</ul>
+<p>### Raster Algebra and Map Algebra</p>
+<ul>
+<li><p>Simple arithmetic between rasters.</p></li>
+<li><p>Creating indices (e.g., terrain indices, SOC classes).</p></li>
+<li><p>Handling NoData values and masking.</p></li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="combining-vector-and-raster-data" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Combining Vector and Raster Data<a href="spatial-analysis-in-r.html#combining-vector-and-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="extracting-raster-values-to-points-and-polygons" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Extracting Raster Values to Points and Polygons<a href="spatial-analysis-in-r.html#extracting-raster-values-to-points-and-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Extract SOC, pH, climate values at soil profile locations (<code>extract()</code>).</p></li>
+<li><p>Zonal statistics for polygons (mean, min, max, sd).</p></li>
+<li></li>
+</ul>
+<p>### Preparing Covariates for Digital Soil Mapping</p>
+<ul>
+<li><p>Stacking rasters (covariate stack).</p></li>
+<li><p>Matching resolution and extent.</p></li>
+<li><p>Exporting covariate values for modeling (to CSV or tables).</p></li>
+<li></li>
+</ul>
+<hr />
+<p>## <strong>Practical Workflows for Soil Mapping</strong></p>
+<p>### Typical Workflow: From Raw Data to Analysis-Ready Layers</p>
+<ul>
+<li><p>Import raw vector and raster data.</p></li>
+<li><p>Clean and harmonize CRS.</p></li>
+<li><p>Clip to area of interest.</p></li>
+<li><p>Derive covariates (slopes, indices).</p></li>
+<li><p>Extract covariates at sample points for DSM.</p></li>
+<li></li>
+</ul>
+<p>### Case Example (Kansan / OSSL-like Dataset)</p>
+<ul>
+<li><p>Use soil points + DEM + land cover.</p></li>
+<li><p>Build a simple workflow (description + placeholders for code).</p></li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="exporting-and-sharing-spatial-data" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Exporting and Sharing Spatial Data<a href="spatial-analysis-in-r.html#exporting-and-sharing-spatial-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exporting-vector-data" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Exporting Vector Data<a href="spatial-analysis-in-r.html#exporting-vector-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Writing sf objects to disk (<code>st_write()</code>).</p></li>
+<li><p>Formats: Shapefile, GeoPackage, GeoJSON.</p></li>
+<li></li>
+</ul>
+</div>
+<div id="exporting-raster-data" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Exporting Raster Data<a href="spatial-analysis-in-r.html#exporting-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Writing SpatRaster objects (<code>writeRaster()</code>).</p></li>
+<li><p>GeoTIFF and other formats.</p></li>
+<li><p>Managing file size and compression.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="0">
+<div id="ref-prieto2023" class="csl-entry">
+<strong>Prieto-Castrillo, F., Rodríguez-Rastrero, M., Yunta, F., Borondo, F. &amp; Borondo, J.</strong> 2023. Disentangling jenny’s equation by machine learning. <em>Scientific Reports</em>, 13(1): 20916. <a href="https://doi.org/10.1038/s41598-023-44171-x">https://doi.org/10.1038/s41598-023-44171-x</a>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-preparation-for-digital-soil-mapping-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sampling-design-for-soil-surveys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": {},
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "fig_caption": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
