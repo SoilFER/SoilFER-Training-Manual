@@ -58,7 +58,7 @@ The `n_layers` column indicates the number of soil samples collected at differen
 
 The following columns capture the georeferencing of the sampling site (`latitude`, `longitude`, and `altitude`), together with supporting location metadata (`positional_accuracy` - accuracy estimate, `extent` - spatial extent of sampling area and `map_sheet_code` - reference map sheet identifier; all of them not mandatory). Coordinates must be recorded in decimal degrees using the `EPSG:4326 (WGS84)` coordinate reference system to ensure global consistency and interoperability within the GloSIS database.
 
-```{r plot-tab, echo=FALSE, out.width="60%",fig.cap = "Information in the Plot Data Sheet."}
+```{r plot-tab, echo=FALSE, out.width="100%",fig.cap = "Information in the Plot Data Sheet."}
 knitr::include_graphics("images/module4/sheet1.png")
 ```
 
@@ -84,7 +84,7 @@ For each sampled horizon or layer, the `Element Data` sheet records the identifi
 
 As in the `Profile Data` sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns `H:CC`. 
 
-```{r element-tab, echo=FALSE, out.width="60%",fig.cap = "Horizon vs Layer en Element Features."}
+```{r element-tab, echo=FALSE, out.width="100%",fig.cap = "Horizon vs Layer en Element Features."}
 knitr::include_graphics("images/module4/element.png")
 ```
 
@@ -156,7 +156,7 @@ The `GloSIS-ETL` (Figure @ref(fig:glosis-etl)) includes three applications:
   
 These applications are distributed as a containerized project in Docker, enabling deployment on any computer. The ETL package also includes PostgreSQL with access to the GloSIS database schema.
 
-```{r glosis-etl, echo=FALSE, out.width="60%",fig.cap = "Application in the GloSIS-ETL."}
+```{r glosis-etl, echo=FALSE, out.width="100%",fig.cap = "Application in the GloSIS-ETL."}
 knitr::include_graphics("images/module4/glosis_etl.png")
 ```
 
@@ -164,14 +164,14 @@ knitr::include_graphics("images/module4/glosis_etl.png")
 
 The `GloSIS-ETL Harmonization` tool (Figure @ref(fig:etl-harmonization)) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.
 
-```{r etl-harmonization, echo=FALSE, out.width="60%",fig.cap = "GloSIS-ETL Harmonization Tool."}
+```{r etl-harmonization, echo=FALSE, out.width="100%",fig.cap = "GloSIS-ETL Harmonization Tool."}
 knitr::include_graphics("images/module4/etl_harmonization.png")
 ```
 
 The preparation of the data follows a 3-step quality assurance procedure (Figure @ref(fig:etl-harmonization-steps)) comprehensive data validation at each stage. 
 
 
-```{r etl-harmonization-steps, echo=FALSE, out.width="60%",fig.cap = "GloSIS-ETL Harmonization Tool."}
+```{r etl-harmonization-steps, echo=FALSE, out.width="100%",fig.cap = "GloSIS-ETL Harmonization Tool."}
 knitr::include_graphics("images/module4/etl_harmonization_steps.png")
 ```
 
@@ -190,7 +190,7 @@ The application accepts the following data formats:
 
 The **`1) Upload your data (CSV or XLSX)`** section in the left-side menu allows users to upload their raw dataset into the application. Once data is uploaded, the application displays a warning message (Figure \@ref(fig:etl-harmonization-step1)) indicating which soil data site identification columns must be mapped to standard GloSIS nomenclature.
 
-```{r etl-harmonization-step1, echo=FALSE, out.width="60%",fig.cap = "Step 1 Warning Message: Required Site Parameter Identification."}
+```{r etl-harmonization-step1, echo=FALSE, out.width="100%",fig.cap = "Step 1 Warning Message: Required Site Parameter Identification."}
 knitr::include_graphics("images/module4/etl_harmonization_step1.png")
 ```
 
@@ -271,13 +271,13 @@ The soil analytical properties selected through the sidebar menu (Step 1) will b
 If the reported soil units differ from GloSIS standard units, the application automatically applies conversion factors to satisfy GloSIS requirements (example shown in Figure \@ref(fig:etl-harmonization-step2)).
 
 
-```{r etl-harmonization-step2, echo=FALSE, out.width="60%",fig.cap = "Mapping analytical procedures and units of measurement"}
+```{r etl-harmonization-step2, echo=FALSE, out.width="100%",fig.cap = "Mapping analytical procedures and units of measurement"}
 knitr::include_graphics("images/module4/etl_harmonization_step2.png")
 ```
 
 For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds (Figure \@ref(fig:etl-harmonization-step4)).
 
-```{r etl-harmonization-step4, echo=FALSE, out.width="60%",fig.cap = "Validation of analytical values"}
+```{r etl-harmonization-step4, echo=FALSE, out.width="100%",fig.cap = "Validation of analytical values"}
 knitr::include_graphics("images/module4/etl_harmonization_step4.png")
 ```
 
@@ -300,7 +300,7 @@ Once data quality issues are identified in the Quality Check Report, users must 
 :::
 
 
-```{r etl-harmonization-step3, echo=FALSE, out.width="60%",fig.cap = "Quality Checks Tab."}
+```{r etl-harmonization-step3, echo=FALSE, out.width="100%",fig.cap = "Quality Checks Tab."}
 knitr::include_graphics("images/module4/etl_harmonization_step3.png")
 ```
 
@@ -504,7 +504,7 @@ The easiest way to install the GloSIS-ETL services is by downloading the reposit
 
    Click the green **"Code"** button, then select **Download ZIP** (Figure \@ref(fig:clone)).
 
-   ```{r clone, echo=FALSE, out.width="60%", fig.cap="Cloning the repository."}
+   ```{r clone, echo=FALSE, out.width="100%", fig.cap="Cloning the repository."}
    knitr::include_graphics("images/module4/etl-clone.png")
    ```
 
@@ -557,7 +557,7 @@ The easiest way to install the GloSIS-ETL services is by downloading the reposit
 
 Open Docker Desktop and check if the containers are running (Figure \@ref(fig:docker-desktop)).
 
-```{r docker-desktop, echo=FALSE, out.width="60%", fig.cap="Docker Desktop showing running containers."}
+```{r docker-desktop, echo=FALSE, out.width="100%", fig.cap="Docker Desktop showing running containers."}
 knitr::include_graphics("images/module4/docker_desktop.png")
 ```
 
@@ -634,7 +634,7 @@ http://localhost:3838/
 
 This will load the **landing page** with links to the three application modules (Figure \@ref(fig:etl-landing)).
 
-```{r etl-landing, echo=FALSE, out.width="60%", fig.cap="GloSIS-ETL landing page."}
+```{r etl-landing, echo=FALSE, out.width="100%", fig.cap="GloSIS-ETL landing page."}
 knitr::include_graphics("images/module4/glosis_etl.png")
 ```
 
@@ -648,7 +648,7 @@ Each module is accessible directly via its URL:
 | **Standardization** | `http://localhost:3838/standardization` | Inject harmonized data into the database   |
 | **Data Viewer**     | `http://localhost:3838/dataviewer`      | Explore and visualize stored soil data     |
 
-```{r etl-standardization, echo=FALSE, out.width="60%", fig.cap="GloSIS Standardization service."}
+```{r etl-standardization, echo=FALSE, out.width="100%", fig.cap="GloSIS Standardization service."}
 knitr::include_graphics("images/module4/etl_standardization.png")
 ```
 
