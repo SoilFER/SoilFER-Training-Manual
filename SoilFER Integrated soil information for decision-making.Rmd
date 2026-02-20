@@ -3,9 +3,8 @@ title:  |
   DRAFT - Integrated soil information for decision-making
   <img src="images/frontcover.jpg" style="top:0px;height:100px;" align="right" />
 subtitle: "Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making."
-author: "Angelini, M.E, Rodriguez Lado, L.,de Sousa Mendes, W., Ribeiro, E., Luotto, I. "
+author: "Angelini, M.E., Rodriguez Lado, L., de Sousa Mendes, W., Ribeiro, E., Luotto, I."
 site: bookdown::bookdown_site
-
 output:
   bookdown::gitbook:
     config:
@@ -364,120 +363,74 @@ Each module builds upon the previous one, creating a comprehensive learning path
 
 #### **Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping** {-}
 
-This foundational module introduces R programming fundamentals specifically tailored for soil science applications. It consists of three sessions covering essential skills for soil data management and analysis.
+This module introduces R programming fundamentals for soil science applications. It consists of three sessions covering essential skills for soil data management and analysis.
 
 **Session 1.1 - Introduction to R for Soil Science**  
 Introduces the R programming environment, basic syntax, data types, operators, functions, and control structures. Participants learn to work with R objects, install and manage packages, and understand the RStudio interface. The session emphasizes practical soil science examples throughout all coding demonstrations.
 
 **Session 1.2 - Soil Data Preparation for Digital Soil Mapping**  
-Focuses on systematic soil data quality assessment and cleaning procedures essential before spatial modeling. Topics include coordinate validation, depth sequence checking, outlier detection and treatment, handling missing values, texture validation (sand-silt-clay constraints), duplicate resolution, and data harmonization techniques including depth standardization using mass-preserving splines.
+Focuses on systematic soil data quality assessment and cleaning procedures essential before spatial modeling. Topics include coordinate validation, depth sequence checking, outlier detection and treatment, handling missing values, texture validation, handling duplicated data, and data harmonization techniques including depth standardization for Digital Soil Mapping products.
 
-**Session 1.2.1 - Working with Spatial Data in R**  
-Covers fundamental concepts of spatial data handling using `{sf}` (for vector data) and `{terra}` (for raster data) packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
+**Session 1.3 - Working with Spatial Data in R**  
+Covers fundamental concepts of spatial data handling using `{sf}` and `{terra}` packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
 
-**Dataset**: KSSL (Kellogg Soil Survey Laboratory) georeferenced soil data from Kansas, USA - 10,352 soil horizon measurements from 2,584 profiles with laboratory analyses and spectroscopy data.
 
 ---
 
 #### **Module 2: Soil Sampling Design** {-}
 
-This module introduces the sampling methodology for soil surveys adopted in SoilFER.The module introduces SoilFER sampling procotol using the relationship between soils and the environmental diversity. The module presents the full process to create a proper sampling design according too such protocol.
+This module introduces scientific sampling methodologies for soil surveys and monitoring, with particular emphasis on the SoilFER project's three-stage hierarchical hybrid sampling approach. This methodology reflects current best practices in spatial soil survey design, combining a strong statistical basis with operational feasibility for developing soil sampling designs.
 
-**Session 2.1. Sampling Design fundamentals**  
-- Soil forming factors and environmental variation: The SCORPAN model 
-- Optimization of the sample size using the Kullback-Leibler Divergence.
-- Use of Covariate Space Coverage (CSC) sampling for the identification of representative locations for soil samples
-- Three-stage hierarchical SoilFER sampling design: Primary Sampling Units (PSUs - 2km × 2km), Secondary Sampling Units (SSUs - 100m × 100m), and Tertiary Sampling Units (TSUs - 20m × 20m)
+**Session 2.1 - Sampling Design Fundamentals**  
+Establishes the theoretical foundation for representative soil sampling through the SCORPAN model. Participants learn to optimize sample size and use Covariate Space Coverage (CSC) sampling as a method for identifying representative sampling. The session then presents the nested SoilFER three-stage hierarchical sampling framework, progressing from broad-scale Primary Sampling Units down to field-scale units.
 
-**Session 2.2. Practical Implementation:**
-The module includes a comprehensive **hands on** exercise for:
-- Preparing environmental covariates
-- Calculation of minimum sample size for describing soils using the SCORPAN background.
-- Implementing Covariate Space Coverage (CSC) sampling for the identification of Primary Sampling Units
-- Generating Secondary and Tertiary Sampling Units (SSUs and TSUs) using stratified random sampling.
-- Creating site identification codes.
+**Session 2.2 - Practical Implementation**  
+Provides hands-on training in implementing the SoilFER sampling protocol through a complete R workflow. The session guides participants through calculating minimum sample size, applying CSC sampling algorithms to identify Primary Sampling Units, generating Secondary and Tertiary Sampling Units through stratified random sampling, and establishing systematic site identification codes that maintain traceability throughout the sampling hierarchy..
 
 ---
 
-
 #### **Module 3: GloSIS Data Preparation** {-}
 
-This module covers the Global Soil Information System (GloSIS) framework including the GloSIS database specifications. These framework enables the publication, global data interoperability and sharing of soil data. Participants learn to prepare soil data compliant with international standards, making it shareable through global soil information systems and compatible with FAO reporting requirements.
+This module covers the Global Soil Information System (GloSIS) framework and database specifications for standardizing soil data to international standards, enabling global interoperability and exchange through web services.
 
-**Session 3.1. Harmonization of Soil Data for GloSIS**  
-- Understanding ISO-28250 standards and the GloSIS database structure
-- Features on Interest in the GloSIS database model
-- Soil property units and measurement methods in GloSIS
-- The GloSIS template for Soil Data Harmonization
-- Automated harmonization tools for Soil Data.
+**Session 3.1 - Harmonization of Soil Data for GloSIS**  
+Introduces the ISO-28258 standards and GloSIS database model, focusing on Features of Interest that define how soil observations are structured in the system. Participants learn to harmonize soil property units and measurement methods across different laboratory protocols using the GloSIS template, a structured spreadsheet format designed to standardize heterogeneous national datasets. The session demonstrates automated harmonization tools that convert legacy soil data into GloSIS-compliant formats, addressing common challenges such as unit conversions, classification system mapping, and quality flag assignment. This preparation ensures datasets become compatible with FAO reporting requirements and accessible through international soil information platforms.
 
-**Session 3.2. GloSIS web services**  
-- Introduction to GloSIS web services
-- Docker tools for GloSIS deployment
-- ETL for ingestion of soil data into PostgreSQL
-- Metadata catalog service
-- Web mapping services (OpenLayers) for data visualization
+**Session 3.2 - GloSIS Web Services and Deployment**  
+Provides hands-on training in deploying the complete GloSIS software stack using Docker containerization. Participants configure a PostgreSQL database with PostGIS spatial extension for storing harmonized soil data, implement Extract-Transform-Load (ETL), establish a metadata catalog service that enables dataset discovery through standardized search protocols, and deploy web mapping interfaces for interactive spatial visualization. 
 
+---
 #### **Module 4: Digital Soil Mapping** {-}
 
-This module provides comprehensive training in digital soil mapping (DSM) theory and practice, progressing from fundamental concepts through practical implementation of predictive soil mapping workflows.
-The training focus on mapping SOC (Soil Organic Carbon), pH and texture (clay, silt, sand) across Kansas using the standardized KSSL dataset produced in Module 1.
+This module provides comprehensive training in digital soil mapping (DSM) theory and practice, progressing from fundamental concepts through practical implementation using the standardized dataset produced in Module 1.
 
-**Session 4.1. Data preparation and theoretical background for DSM**  
-- **Feature selection**: Identifying relevant covariates to explain spatial differences in the target parameters 
-- **Machine learning algorithms**: 
-  - Random Forest for non-linear relationships and feature importance
-  - Gradient Boosting Machines (GBM) for high-accuracy predictions
-  - Support Vector Machines for classification tasks
-  - Ensemble methods combining multiple models
-- **Model training and tuning**: Cross-validation, hyperparameter optimization, preventing overfitting
-- **Spatial prediction**: Generating wall-to-wall maps of soil properties across landscapes
-- **Uncertainty quantification**: Prediction intervals, confidence maps, and model reliability assessment
-- **Map validation**: Independent validation, spatial cross-validation, accuracy metrics (RMSE, R², CCC)
+**Session 4.1 - Theoretical Foundations and Model Development**  
+Introduces feature selection techniques for identifying relevant environmental information to explain spatial patterns in soil properties. The module present several machine learning algorithms predictive models  to produce raster predictions of soil properties, addresses model training, cross-validation, and quantification of the prediction uncertainties.
 
-**Session 4.2. Practical Workflows:**
-- Extracting relevant covariate values at soil sample locations
-- Data splitting strategies for training and validation
-- Building prediction models for:
-  - Continuous Variables (pH)
-  - Nominal Classes (unordered soil classes combining clay content and pH categories)
-  - Ordinal Classes (ordered classes of soil pH - `very_acid < acid < neutral < alkaline < very_alkaline`)
-  - Raster predictive maps of soil parameters and its associated accuracy
+**Session 4.2 - Practical Implementation Workflows**  
+The session provides hands-on experience building prediction models for three variable types: continuous properties such as pH using regression approaches, nominal classes representing unordered categories combining clay content and pH, and ordinal soil pH classes. Each workflow produces raster prediction maps with associated uncertainty estimates and accuracy assessments.
 
 
 #### **Module 5: Soil Spectroscopy** {-}
 
-This module introduces soil infrared spectroscopy as a rapid, cost-effective method for predicting soil properties, and its integration into DSM workflows.
-The module uses the KSSL dataset's wet chemistry analyses (14 soil properties) linked to mid-infrared spectral scans, providing a real-world example of spectroscopy-DSM integration.
+This module introduces soil infrared spectroscopy as a rapid, cost-effective method for predicting soil properties and demonstrates its integration into DSM workflows.
 
-**Session 5.1. Spectroscopy fundamentals**
-- **Spectral fundamentals and data preprocessing**: Baseline correction, smoothing, derivative transformations, scatter correction
-- **Quality control**: Spectral outlier detection, replicate measurement analysis
-- **Chemometric modeling**: Partial Least Squares Regression (PLSR), support vector regression, random forest for spectral calibration
-- **Spectral library development**: Building and maintaining reference spectral databases
-- **Gap-filling strategies**: Using spectroscopy to predict properties with low laboratory analysis completeness
+**Session 5.1 - Spectroscopy Fundamentals and Calibration**  
+The session introduces essential spectral data preprocessing techniques, quality control procedures and advanced chemometric modeling approaches for building spectral calibration models.
 
-
-**Session 5.2. Practical Exercises:**
-- Processing raw spectral scans from the KSSL dataset (4 replicates per sample)
-- Building calibration models for SOC, texture, pH, and other properties
-- Integration of spectral predictions into DSM workflows
+**Session 5.2 - Practical Spectroscopy Workflows**  
+Provides hands-on experience processing raw spectral scans from the KSSL dataset, build calibration models for soil properties, and integrate spectral predictions into complete DSM workflows.
 
 
 #### **Module 6: Soil Data Sharing** {-}
 
-This module covers the technical and organizational aspects of making soil data discoverable, accessible, and interoperable through web services and international data sharing platforms.
+This module covers the technical and organizational aspects of making soil data discoverable, accessible, and interoperable through web services and international platforms.
 
-**Session 6.1: Data standards and formats**
-- **Metadata creation**: ISO 19115/19139 standards for spatial metadata
-- **Web service deployment**: Setting up OGC-compliant data services
-- **Data licensing and attribution**: Creative Commons, open data principles, proper citation practices
-- **Integration with global platforms**: Contributing to FAO GloSIS, ISRIC WoSIS (World Soil Information Service), national soil databases
-- **API development**: RESTful APIs for programmatic data access
+**Session 6.1 - Standards, Metadata, and Interoperability**  
+Introduces ISO 19115/19139 standards for creating spatial metadata that enables dataset discovery and proper documentation. The session covers deploying web services for standardized data access, establishing appropriate data licensing and data attribution. 
 
-**Session 6.2: Technical Implementation:**
-- Configuring web map servers for soil data visualization
-- Publishing soil datasets through GeoServer or similar platforms
+**Session 6.2 - Web Services Deployment**  
+Demonstrates configuring web map servers for interactive soil data visualization and publishing datasets. The session provides practical training in establishing complete data sharing infrastructure, from database configuration through web service endpoints, ensuring participants can make their soil information FAIR (Findable, Accessible, Interoperable, Reusable) and contribute to global soil information systems while maintaining data quality and provenance.
 
 ---
 
@@ -3570,6 +3523,659 @@ rm(spec)
 
 
 
+# Spatial Analysis in R
+
+Spatial data has become an essential component of modern soil science.
+In the context of this manual, all steps of digital soil mapping depend on the ability to work with spatial datasets.
+
+This section introduces the fundamental concepts and tools needed to process, analyze, and visualize spatial data within R, using two specific R packages:
+  
+ - **`{sf}`** to work with vector data (points, lines, polygons), and\
+ - **`{terra}`** for raster data (continuous surfaces, grids, remote sensing products).
+
+By the end of this section, you will be able to:
+  
+-   Distinguish between **vector** and **raster** spatial data and their roles in soil science.
+
+-   Understand and manage **coordinate reference systems (CRS)** and projections.
+
+-   Import, explore, and visualize spatial data using `{sf}` and `{terra}`.
+
+-   Perform **vector operations** (buffer, intersection, union, spatial join).
+
+-   Perform **raster operations** (crop, mask, resample, raster algebra).
+
+-   Extract raster values at point or polygon locations for soil profiles and plots.
+
+-   Export processed spatial data to common GIS formats.\
+
+
+::: highlights
+
+**Advanced online resources:**
+  
+* [Geocomputation with R (Lovelace, Nowosad & Muenchow, 2025)](https://r.geocompx.org/ "Geocomputation with R") : A book on geographic data analysis, visualization and modeling.
+
+* [Spatial Data Science: With Applications in R (Pebesma, E., & Bivand, R., 2023)](https://r-spatial.org/book/ "Spatial Data Science: With applications in R") : A clear and practical introduction to the fundamental concepts of spatial data---its structures, representations, and analytical implications.
+
+:::
+  
+
+## Spatial Data Concepts
+
+Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.
+
+Soil properties are not randomly distributed in space but change across landscapes. Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time [@prieto2023]:
+
+\begin{aligned} S= f(cl, o, r, p, t,\ldots ). \end{aligned}
+
+where 'S' represents soil formation, 'cl' is climate, 'o' is organisms, 'r' is relief, 'p' is the parent material and 't' accounts for the time that took place to develop the soil profile.
+
+With these relationships soil scientists can describe, model, and predict variations in soil properties across the space.
+
+In R, spatial data is represented using two main data types:
+
+ - Vector data (points, lines, polygons) for discrete objects.
+
+ - Raster data (regular grids) for continuous surfaces.
+
+To work with them efficiently, this module focuses on two core R packages:
+
+ - `{sf}` – for vector data (points, lines, polygons)
+
+ - `{terra}` – for raster data (grids, surfaces, satellite images, soil predictions)
+
+These two packages will be using along this tutorial to script spatial workflows in R.
+
+------------------------------------------------------------------------
+
+### Vector vs Raster Data
+
+Spatial data is commonly stored in two major formats: vector and raster (Figure 3).
+
+<br>
+
+```{r VectRast, echo=FALSE, fig.cap="<br>*Figure 3: Vector vs raster data representations*", out.width='80%'}
+knitr::include_graphics("images/module1/vectorVSraster.png")
+```
+<br>
+
+
+Vector datasets represent features as geometries (POINT, LINE, POLYGON) linked to an attribute table. They are ideal for representing discrete spatial objects such as soil sampling points, field boundaries, or landscape units.
+
+*Table 1. Example of layer types and their associated geometry*
+
+| Layer Type                        | Geometry |
+|-----------------------------------|----------|
+| Soil profile locations            | POINT    |
+| Soil sampling locations           | POINT    |
+| Rivers, roads                     | LINE     |
+| Fields of sampling plots          | POLYGON  |
+| Farms / Administrative boundaries | POLYGON  |
+| Land units, physiographic regions | POLYGON  |
+
+------------------------------------------------------------------------
+
+Raster data represents the landscape as a grid of equally sized cells, each storing a numeric value. Raster layers are ideal for continuous spatial phenomena—a central component in digital soil mapping and spatial modelling.
+
+Examples of raster layers used in soil science:
+
+ - Digital Elevation Models (DEM)
+
+ - Climate variables (rainfall, temperature)
+
+ - Remote sensing indices (NDVI, Sentinel-2 bands)
+
+ - Soil property predictions (SOC, pH, clay%)
+
+ - Moisture or vegetation products from satellites
+
+Each cell contains a value that represents the property at that location, enabling spatial modelling and interpolation.
+
+::: highlights
+- Vector data is best for discrete objects (profile locations, soil boundaries).
+- Raster data is best for continuous surfaces (elevation, SOC, soil moisture, remote sensing layers).
+:::
+
+
+###  Coordinate Reference Systems (CRS) and Projections
+
+A Coordinate Reference System (CRS) defines how spatial coordinates relate to positions on Earth. Because Earth is curved, and maps are flat, different CRS systems use different mathematical models to translate the curved space to a planar surface.
+
+The choice of CRS has a major impact on the accuracy of distances, areas, buffer operations, overlays between layers, and spatial modelling outputs.
+
+::: highlights
+
+ - All `{sf}` and `{terra}` objects must include a CRS.
+
+ - Many common spatial errors come from mixing layers with different or missing CRS.
+
+ - Always ensure all layers are in the same CRS before performing spatial operations.
+:::
+
+
+#### Geographic vs projected coordinate systems.
+
+In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example: EPSG:4326 --- WGS84).
+
+Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Figure 4).
+This leads to distortions in distances areas calculations.
+
+
+<br>
+
+```{r degreeLat, echo=FALSE, fig.cap="<br>*Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude*", out.width='80%'}
+knitr::include_graphics("images/module1/degreeEq.png")
+```
+<br>
+
+
+Projected Coordinate Systems (PCS) have been designed to reduce distortion over a specific region. In PCS coordinates are expressed in linear units (usually meters) and are used for accurate geometric operations (distance, area, buffers).
+Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), national grid systems and local projections optimized for area-specific precision.
+
+::: highlights
+-   Always check the units in `st_crs()` before doing geometric calculations.
+
+-   Use projected CRS when computing areas, distances, or buffers.
+
+-   If your data is in latitude/longitude, reproject to an appropriate PCS.
+
+-   Explore available CRS definitions using [https://epsg.io](https://epsg.io/ "epsg.io: Coordinate Systems Worldwide").
+:::
+
+
+
+## **Spatial Packages in R: `{sf}` and `{terra}`**
+
+### Installing and Loading Spatial Packages
+
+In this module we will work with two core spatial packages:
+
+-   `{sf}` for vector data (points, lines, polygons)
+-   `{terra}` for raster data (grids, satellite images, continuous surfaces)
+
+You already learned how to install R packages in Module 1, so here we just show how this applies specifically to `{sf}` and {terra}.\
+
+
+::: highlights
+
+  **Reminder:**\
+   - If the packages are not yet installed on your system, you can install them from CRAN using `install.packages()` function.
+  *Example 4.1: Installation of `{sf}` and `{terra}` packages*
+  ```{r, echo=TRUE, eval=FALSE}
+  install.packages("sf")
+  install.packages("terra")
+  ```
+  
+  - Packages only need to be done once per system.\
+  - Once the packages are installed, you must load them in each R session before use:
+  
+  *Example 4.2: Loading `{sf}` and `{terra}` packages*
+  ```{r, echo=TRUE, eval=FALSE}
+  library(sf)
+  library(terra)
+  ```
+
+:::
+
+
+### **Working with Vector Data using `{sf}`**
+
+The `{sf}` package implements the *Simple Features* standard for spatial vector data in R.
+
+A *simple feature* is a geometric object (point, line, polygon, etc.) linked to one or more **attributes** (e.g., soil type, pH, land use).\
+
+In practice, an *`sf` object* is just a *data frame with a special geometry column*, plus metadata that tells R.
+An `sf` object combines:\
+
+1.  **Attributes** -- ordinary columns (e.g., plot ID, pH, SOC, soil type).\
+2.  **Geometry column** -- typically named `geom` or `geometry`, storing coordinates and geometry type.\
+3.  **CRS** -- information about the coordinate system used (e.g., WGS84, UTM), stored as part of the object.\
+
+
+::: highlights
+
+An `sf` object is essentially a data frame that includes a geometry column.
+
+-   The attribute columns remain just like in a regular data frame.
+
+-   A geometry column (commonly named `geometry`) is added, storing the spatial features together with their geometry type.
+
+-   The object has the classes `sf` and `data.frame`, and it also stores CRS information.
+
+:::
+
+
+### Importing Vector Data
+
+Vector spatial data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
+In R, vector data are typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files.
+
+
+#### Creating spatial vector objects from data frames
+
+Spatial point layers in R can be created directly from regular data frames using the `{sf}` package.
+The function `st_as_sf()` converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).
+
+To perform this conversion, you must specify:
+
+- Which columns contain the coordinates using `coords = c("X", "Y")`
+
+- The Coordinate Reference System (CRS) of those coordinates using `crs =`
+
+
+
+<br>*Example 4.3: Transforming a Data Frame into an `{sf}` Spatial Object*
+In the example below, `.csv` data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+
+# Import soil sampling data with coordinates (WGS84)
+k.data <- read.csv("data/kansas_site_lab_data.csv")
+
+# Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
+soil_sf <- st_as_sf(k.data, coords = c("X", "Y"), crs = 4326)
+
+# Print object geometry
+soil_sf$geometry
+
+# Print CRS details
+st_crs(soil_sf)
+```
+
+::: highlights
+**Notes & Best Practices**
+
+- Always confirm that your coordinates are in the CRS you specify.
+
+- If the CRS is unknown or incorrectly specified, spatial operations such as buffering, distance, or overlay may produce errors or misleading results.
+
+- The order in `coords = c("X","Y")` matters:
+    - For lon/lat: X = longitude and Y = latitude.
+    - If your coordinate columns are named differently (e.g., lon, lat, easting, northing), adjust the `coords =` argument accordingly.
+
+:::
+
+
+------------------------------------------------------------------------
+
+#### Reading Shapefiles with st_read()
+
+The `{sf}` package reads these formats using the universal function `st_read()`.
+You can import most vector formats using the same command, since `{sf}` automatically detects the file type.
+
+<br>*Example 4.4: Reading shapefiles with {sf}*
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+
+# Read a shapefile containing soil profile points
+soil_profiles <- st_read("data/soil_profiles.shp")
+
+# Inspect the first rows
+head(soil_profiles)
+
+# Plot quick visualization
+plot(soil_profiles["profile_id"])
+```
+
+This layer may represent individual soil pits or auger locations, each with coordinates and measured properties stored in the attribute table.
+
+------------------------------------------------------------------------
+
+#### Inspecting and Setting CRS
+
+-   Checking CRS of sf objects (`st_crs()`).
+
+-   Checking CRS of terra objects (`crs()`).
+
+-   
+
+#### Reprojecting Spatial Data
+
+-   Reprojecting vector data with `{sf}` (`st_transform()`).
+
+-   Reprojecting raster data with `{terra}` (`project()`).
+
+-   Choosing an appropriate CRS for national soil projects.
+
+Example: converting the point dataset from WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG: 3857)
+
+```{r, echo=TRUE, eval=FALSE}
+plots_sf_utm <- st_transform(plots_sf, crs = 3857)
+```
+
+
+
+#### Inspecting and manipulating `{sf}` Object
+
+Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`,`str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
+
+```{r, echo=TRUE, eval=FALSE}
+# Check structure
+str(soil_sf)
+
+# Summary of attributes + geometry
+summary(soil_sf)
+
+# Extract the geometry column
+st_geometry(soil_sf)
+
+# Check the geometry type. Use head to avoid long printing
+head(st_geometry_type(soil_sf))
+
+# Check the CRS:
+st_crs(soil_sf)
+
+# Check the spatial extent of the object:
+st_bbox(soil_sf)
+```
+
+
+`{sf}` objects can be manipulated in the same way as standard data frames while retaining all spatial information.
+Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be directly applied on `sf` objects .
+
+*Example: Selecting, filtering an creating new variables in an `sf` object with `{dplyr}`*
+
+```{r, echo=TRUE, eval=FALSE}
+# Subset sf rows and columns using the pipping (%>%) operator with {dplyr}
+soil_sf %>%
+  dplyr::filter(ph_h2o > 9) %>%
+  select(taxa, ph_h2o) %>%
+  mutate(saline = TRUE)
+
+```
+
+::: highlights
+
+**What `dplyr::` means?**
+
+-   Several packages can contain functions with the same name.
+    For example, the `filter()` function exists in:
+
+    -   `stats::filter()` (base R -- for time-series filtering)
+
+    -   `dplyr::filter()` (for data frames / sf objects)
+
+    -   `terra::filter()` (for raster filtering)
+
+    -   `signal::filter()`, etc.
+
+When you load packages, R follows the search path.
+If a package containing its own `filter()` is loaded after `{dplyr}`, then that package's `filter()` will mask the dplyr version.
+As a result, calling `filter()` alone may not work as expected for your object.
+This behavior often occurs with the `select()` function in many operations in spatial analysis.
+
+To avoid this, you can explicitly specify which package the function should come from using the general form `package::function()`.
+For [example:\\](example:\){.uri}
+
+```{r, echo=TRUE, eval=FALSE}
+# Call the filter function from the `dplyr` package
+dplyr::filter()
+```
+
+However, this may not always be necessary.
+If no masking occurs and no errors appear in the console, you can safely use the functions directly without the `package::` prefix.
+:::
+  
+  Further `{dplyr}` functions can be applied on `sf` objects to get in-depth analyses of soil properties
+
+*Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH \> 9)*
+  
+```{r, echo=TRUE, eval=FALSE}
+# Filtering rows by pH value and subset columns with {dplyr}
+saline <- soil_sf %>%
+  dplyr::filter(ph_h2o > 9) %>%
+  dplyr::select(taxa, ph_h2o)
+
+# Calculate the mean pH for the different taxonomic groups in these new dataset
+saline %>%
+  dplyr::group_by(taxa) %>%
+  dplyr::summarize(mean_ph=mean(ph_h2o))
+
+```
+
+
+
+
+#### Geometry Operations
+  
+  Geometry operations allow you to modify and analyze the spatial shape of your vector features.\
+Typical tasks in soil science include defining sampling influence areas around plots, clipping soil data to administrative units, and calculating areas or lengths for reporting and analysis.
+
+::: highlightsç
+Remember that geometry operations are safer if the data is transformed to a Projected Coordinate Cystem.
+:::
+  
+  ##### Buffering Plots (Sampling Influence Area)
+  
+  Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).\
+In soil applications, buffers can represent:
+  
+  -   The influence area of a contaminating facility (polygon geometry).
+-   Proximity zones around rivers or roads (line geometry).
+-   Buffer zones around soil sampling points to define their spatial influence (point geometry).
+
+The function `st_buffer()` is used for this.
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+# k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)
+# kansas_sf <- k.data[1:108,]
+kansas_sf <- k.data[1,]
+# Convert to spatial sf
+kansas_sf <- st_as_sf(kansas_sf,coords = c("X", "Y"),crs = 4326)
+# transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)
+kansas_sf <- st_transform(kansas_sf, crs = 26914)  # UTM 14N, metres
+
+# 'kansas_sf' contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units
+st_crs(kansas_sf)
+
+# Create a 100 m buffer around each plot
+plots_buffer_100 <- st_buffer(kansas_sf, dist = 100)
+
+# Plot first point and its buffers
+plot(st_geometry(plots_buffer_100), col = rgb(0, 0, 1, 0.3), border = "blue")
+plot(st_geometry(kansas_sf), add = TRUE, pch = 16, col = "red")
+
+# Create a second 50 m buffer around the plot
+plots_buffer_50 <- st_buffer(kansas_sf, dist = 50)
+plot(st_geometry(plots_buffer_50), add = TRUE, col = rgb(0, 0, 1, 0.3), border = "navy")
+
+```
+
+##### Intersection and Union with Administrative Boundaries
+
+Frequently, soil datasets need to be restricted to a study region (e.g., a province) or aggregated at administrative levels (e.g., districts, municipalities).
+
+We will use two key functions:
+  
+  `st_intersection()` -- keeps only the overlapping parts of two layers.
+
+`st_union()` -- dissolves or merges geometries into a single geometry (or by groups).
+
+Example: Clip plots to an administrative region
+
+### Spatial Relationships and Joins
+
+-   Spatial predicates (`st_intersects()`, `st_within()`, `st_distance()`).
+
+-   Spatial joins (`st_join()`) to attach attributes from one layer to another.
+
+-   Assigning soil profiles to polygons or administrative units.
+
+-   
+  
+  ------------------------------------------------------------------------
+  
+  ### Visualizing `{sf}` Objects
+  
+  `{sf}` objects can be quickly visualized using the base R `plot()` function:
+  
+```{r, echo=TRUE, eval=FALSE}
+# Simple plot of sampling locations
+plot(soil_sf["ph_h2o"], main = "Soil sampling sites – pH (H2O)")
+```
+
+In this example, each point represents a sampling site, and the color scale corresponds to the ph_h2o attribute.
+If no column is specified in the `plot()`function, the display will produce a series of panels, one for each attribute stored in the `{sf}` data frame.
+
+Unlike `plot()`, the `{ggplot2}` package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
+In this case, the geometry type is defined with `geom_sf()`.
+
+```{r, echo=TRUE, eval=FALSE}
+library(ggplot2)
+
+ggplot(data = soil_sf) +
+  geom_sf(aes(color = ph_h2o)) +
+  scale_color_viridis_c() +
+  theme_minimal() +
+  labs(
+    title = "Soil sampling sites – pH (H2O)",
+    color = "pH (H2O)"
+  )
+```
+
+
+
+------------------------------------------------------------------------
+  
+  ## The `{terra}` Package (Raster & Vector)
+  
+  -   SpatRaster and SpatVector objects.
+
+-   Differences from older `{raster}` package.
+
+-   Why `{terra}` is recommended in this course.
+
+-   
+  
+  ## **Working with Vector Data using `{sf}`**
+  
+
+  
+
+## **Working with Raster Data using `{terra}`**
+
+### Importing Raster Data
+
+-   Reading single-layer and multi-layer rasters (`rast()`).
+
+-   Examples: DEM, SOC predictions, climate layers.
+
+-   
+  
+  ### Exploring Raster Layers
+  
+  -   Inspecting basic properties: extent, resolution, CRS, number of layers.
+
+-   Summaries and histograms of raster values.
+
+-   
+  
+  ### Raster Visualization
+  
+  -   Basic plotting of rasters (`plot()`).
+
+-   Layered visualizations, color scales, and legends.
+
+-   Visualizing multiple layers (e.g., SOC and DEM).
+
+-   
+  
+  ### Spatial Operations on Rasters
+  
+  -   Crop and mask to study area (`crop()`, `mask()`).
+
+-   Resampling and alignment of rasters (`resample()`, `align()`).
+
+-   Reprojecting rasters to other CRS (`project()`).
+
+-   
+  
+  ### Raster Algebra and Map Algebra
+  
+  -   Simple arithmetic between rasters.
+
+-   Creating indices (e.g., terrain indices, SOC classes).
+
+-   Handling NoData values and masking.
+
+-   
+
+## Combining Vector and Raster Data
+  
+### Extracting Raster Values to Points and Polygons
+  
+  -   Extract SOC, pH, climate values at soil profile locations (`extract()`).
+
+-   Zonal statistics for polygons (mean, min, max, sd).
+
+-   
+  
+  ### Preparing Covariates for Digital Soil Mapping
+  
+  -   Stacking rasters (covariate stack).
+
+-   Matching resolution and extent.
+
+-   Exporting covariate values for modeling (to CSV or tables).
+
+-   
+  
+  ------------------------------------------------------------------------
+  
+  ## **Practical Workflows for Soil Mapping**
+  
+  ### Typical Workflow: From Raw Data to Analysis-Ready Layers
+  
+  -   Import raw vector and raster data.
+
+-   Clean and harmonize CRS.
+
+-   Clip to area of interest.
+
+-   Derive covariates (slopes, indices).
+
+-   Extract covariates at sample points for DSM.
+
+-   
+  
+  ### Case Example (Kansan / OSSL-like Dataset)
+  
+  -   Use soil points + DEM + land cover.
+
+-   Build a simple workflow (description + placeholders for code).
+
+-   
+  
+ 
+## Exporting and Sharing Spatial Data
+  
+### Exporting Vector Data
+  
+-   Writing sf objects to disk (`st_write()`).
+
+-   Formats: Shapefile, GeoPackage, GeoJSON.
+
+-   
+  
+### Exporting Raster Data
+  
+-   Writing SpatRaster objects (`writeRaster()`).
+
+-   GeoTIFF and other formats.
+
+-   Managing file size and compression.
+
+   
+  
+
+
+
+
+
 <!--chapter:end:01-Intro-to-R-and-data-preparation.Rmd-->
 
 
@@ -5396,7 +6002,56 @@ kable(field_data, caption = "Required field data recording")
 - Cross-reference photos with field records
 - Flag sites with large GPS deviation (>30m from waypoint)
 
-# References {-}
+## References {#references-sdg1}
+
+  - Bishop, T.F.A., McBratney, A.B. & Laslett, G.M. 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. https://doi.org/10.1016/s0016-7061(99)00003-8
+
+  - Breiman, L. 2001. Random forests. Machine Learning, 45(1): 5–32. https://doi.org/10.1023/A:1010933404324
+
+  - Breiman, L., Friedman, J.H., Olshen, R.A. & Stone, C.J. 1984. Classification and regression trees. Belmont, CA, Wadsworth.
+
+  - Hengl, T., Heuvelink, G.B.M. & Rossiter, D.G. 2007. About regression-kriging: From equations to case studies. Computers & Geosciences, 33: 1301–1315. https://doi.org/10.1016/j.cageo.2007.05.001
+
+  - Heuvelink, G.B.M., Kros, J., Reinds, G.J. & De Vries, W. 2016. Geostatistical prediction and simulation of european soil property maps. Geoderma Regional, 7: 201–215. https://doi.org/10.1016/j.geodrs.2016.04.002
+
+  - Heuvelink, G.B.M. & Webster, R. 2001. Modelling soil variation: Past, present, and future. Geoderma, 100: 269–301. https://doi.org/10.1016/S0016-7061(01)00025-8
+
+  - Jenny, H. 1941. A system of quantitative pedology. In “factors of soil formation”. McGraw Hill: New York.
+
+  - Kempen, B., Brus, D.J., Heuvelink, G.B.M. & Stoorvogel, J.J. 2009. Updating the 1:50,000 dutch soil map using legacy soil data: A multinomial logistic regression approach. Geoderma, 151: 311–326. https://doi.org/10.1016/j.geoderma.2009.04.023
+
+  - Kursa, M.B. & Rudnicki, W.R. 2010. Feature selection with the Boruta package. Journal of Statistical Software, 36(11): 1–13. https://doi.org/10.18637/jss.v036.i11
+
+  - Lagacherie, P. 2008. Digital soil mapping: A state of the art. In A.E. Hartemink, A.B. McBratney & M.L. Mendonça-Santos, eds. Digital soil mapping with limited data, pp. 3–14. Dordrecht, Springer.
+
+  - Lagacherie, P. & McBratney, A.B. 2006. Spatial soil information systems and spatial soil inference systems: Perspectives for digital soil mapping. In P. Lagacherie,   - A.B. McBratney & M. Voltz, eds. Digital soil mapping: An introductory perspective, pp. 3–22. Amsterdam, Elsevier.
+
+  - McBratney, A.B., Mendonça Santos, M.L. & Minasny, B. 2003. On digital soil mapping. Geoderma, 117: 3–52. https://doi.org/10.1016/S0016-7061(03)00223-4
+
+  - Meyer, H. & Pebesma, E. 2021. Predicting into unknown space? Estimating the area of applicability of spatial prediction models. Methods in Ecology and Evolution, 12: 1620–1633. https://doi.org/10.1111/2041-210X.13650
+
+  - Minasny, B. & McBratney, A.B. 2016. Digital soil mapping: A brief history and some lessons. Geoderma, 264: 301–311. https://doi.org/10.1016/j.geoderma.2015.07.017
+
+  - Odeh, I.O.A., McBratney, A.B. & Chittleborough, D.J. 1995. Further results on prediction of soil properties from terrain attributes: Heterotopic cokriging and regression-kriging. Geoderma, 67: 215–226. https://doi.org/10.1016/0016-7061(95)00007-B
+
+  - Odgers, N.P., McBratney, A.B. & Minasny, B. 2011. Bottom-up digital soil mapping. I. Soil layer classes. Geoderma, 163: 38–44. https://doi.org/10.1016/j.geoderma.2011.03.014
+
+  - Orton, T.G., Pringle, M.J., Page, K.L., Dalal, R.C. & Bishop, T.F.A. 2014. Spatial prediction of soil organic carbon stock using a linear model of coregionalisation. Geoderma, 230–231: 119–130. https://doi.org/10.1016/j.geoderma.2014.04.016
+
+  - Padarian, J. & McBratney, A.B. 2023. QuadMap: Variable resolution maps to communicate uncertainty. Computers and Geosciences, 181: 105480. https://doi.org/10.1016/j.cageo.2023.105480
+
+  - Roberts, D.R. & others. 2017. Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40: 913–929. https://doi.org/10.1111/ecog.02881
+
+  - Styc, Q. & Lagacherie, P. 2021. Combining spatial-environmental covariates and soil input data types to predict soil available water holding capacity. Geoderma, 401: 115171. https://doi.org/10.1016/j.geoderma.2021.115171
+
+  - Wadoux, A.M.J.-C., Minasny, B. & McBratney, A.B. 2021. Machine learning for digital soil mapping: Applications, challenges and suggested solutions. Earth-Science Reviews, 210: 103359. https://doi.org/10.1016/j.earscirev.2020.103359
+
+  - Webster, R., Lessells, C.M. & Hodgson, J.M. 1979. A reconnaissance soil survey of the ivybridge area of south devon. Soil Survey Technical Monograph, 12.
+
+  - Webster, R. & Oliver, M.A. 2007. Geostatistics for environmental scientists. 2nd edition. Chichester, John Wiley & Sons.
+
+  - Zhang, L., Heuvelink, G.B.M., Mulder, V.L., Chen, S., Deng, X. & Yang, L. 2024. Using process-oriented model output to enhance machine learning-based soil organic carbon prediction in space and time. Science of the Total Environment, 922: 170778. https://doi.org/10.1016/j.scitotenv.2024.170778
+
 
 <div id="refs"></div>
 
@@ -5518,19 +6173,717 @@ kable(acronyms, caption = "List of acronyms and abbreviations used in this manua
 
 <!--chapter:end:03-Soil-Spectral-Analysis.Rmd-->
 
-# Soil Data Preparation 
+# GloSIS Soil Data Preparation
+
 ## Introduction
-## Data cleaning
-##	Soil Data Harmonization
-##	Concepts on digital exchange of soil-related data (ISO 28258)
-##	Plot data
-##	Profile data
-##	Element data
-##	Specimen data
-##	Definition of laboratory procedures
-##	Data transformation
-##	Organizing soil data according to the GloSIS database
-##	Tools for harmonization of soil databases within GloSIS
+
+For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe [@ARROUAYS20172]. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
+
+However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities [@Medeiros2024]. However, realizing this potential requires solving the fragmentation problem through systematic standardization.
+
+In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralize all soil data into a single organization or location, GloSIS functions as a decentralized spatial data infrastructure that enables soil data management and sharing within a global harmonization framework. National soil institutes, research organizations, and other data holders maintain control of their data in their own systems, but contribute that data to the GloSIS platform following standardized formats and protocols for data preparaation and sharing. 
+
+GloSIS makes data comparable across countries and regions. When data is submitted to GloSIS, it undergoes a standardization process that translates local data into a universally understood format, the PostgreSQL GloSIS database. This integration requires systematic preparation, validation, and standardization of individual datasets. This is where the technical infrastructure developed at FAO-GPS (the ETL system described in this manual) becomes essential. Before soil data can contribute meaningfully to global analysis, it must be carefully prepared, quality-checked, and transformed into the standardized format that GloSIS requires.
+
+In this section, we introduce the key concepts of data harmonization and standardization in line with GloSIS database requirements, and demonstrate how to use the `GloSIS-ETL` to prepare data and load it into the GloSIS database structure. The exercises use the soil legacy dataset provided in the training materials as a practical example.
+
+##	The GloSIS database
+
+The GloSIS database is a PostgreSQL/PostGIS relational database that implements the GloSIS data model to store soil observations in a standardized, quality-controlled structure. It is aligned with the concepts for the digital exchange of soil-related data outlined in ISO 28258 and it is designed to make soil data consistent and comparable across countries and projects by enforcing common structures, controlled vocabularies, and validation rules. It serves as the central repository for harmonized soil data—linking spatial sampling locations, methods and procedures, and analytical results—so that datasets from different sources can be integrated and compared consistently worldwide.
+
+The International Organization for Standardization (ISO) established **ISO 28258: "Soil quality—Digital exchange of information on soil and soil-related data"** as the international standard for digital soil data representation and exchange. ISO 28258 defines how soil-related information is logically organized, the hierarchical and relational structure connecting soil observations, definitions of soil concepts following international conventions, metadata requirements and quality assurance procedures. 
+
+By aligning with ISO 28258, the GloSIS database provides the infrastructure needed for global soil data integration and interoperability. 
+
+The Glosis database organizes data into the five standard soil-related categories, each with specific subcategories:
+
+- `Site`: Represents the broader environment where soil investigations occur, capturing context such as terrain, climate, and land-use.
+- `Plot`: A specific location for soil investigation where profiles and samples are collected. It is further classified into:
+  - `Surface`: A polygonal area where soil properties are assumed to be relatively homogeneous.
+  - `TrialPit`: A manually excavated pit for detailed soil examination.
+  - `Borehole`: A drilled hole for subsurface soil sampling.
+- `Profile`: A vertical sequence of soil horizons or layers at a given location (referred to as `ProfileElement` in ISO 28258).
+- `Element` – Subdivisions of a profile based on depth, further categorized as:
+  - `Horizon` – A natural, homogeneous soil layer formed by pedogenesis.
+  - `Layer` – An arbitrarily defined soil section for analysis at fixed depths.
+- `Specimen` – A physical sample extracted at a defined depth, typically analyzed in laboratories for chemical and physical properties.(referred to as `SoilSpecimen` in ISO 28258).
+
+Each of these 'features of interest' is represented by dedicated tables in the relational database. Because they describe different entities, they store different types of information and attributes. The challenge is to translate the raw soil data files into this structured database model.
+
+
+##	Features of interest: Understanding the XLSX Template
+
+Preparing data for GloSIS begins with organizing soil information according to the features of interest used in the GloSIS database (Site, Plot, Profile, Element, and Specimen). To support this process, GloSIS provides an XLSX template that offers a user-friendly way to compile soil data in a structure that mirrors the relational tables of the PostgreSQL/PostGIS database. When completed correctly, this template is used by the `GloSIS-ETL Standardization` tool to translate the information into the PostgreSQL database structure.
+
+The template contains multiple sheets, each corresponding to a specific feature of interest and its associated attributes. By completing these sheets, users effectively split raw or legacy datasets into the categories required for harmonization and standardization prior to loading.
+
+This organization can be done manually, by entering values directly into the template, or automatically using dedicated tools such as `GloSIS-ETL Harmonization` introduced in the next section. In both cases, understanding the structure and purpose of the XLSX template is essential to ensure that data are prepared correctly.
+
+In addition to the feature-of-interest sheets, the template includes dedicated tabs for documenting analytical procedures (including methods and units of measurement), metadata, and original analytical values, supporting traceability when unit conversions to GloSIS standards are required.
+
+The following sections provide a detailed overview of each sheet included in the XLSX template for data standardization.
+
+### `Plot Data` Sheet
+
+The `Plot Data` sheet (Figure @ref(fig:plot-tab)) provides information about the sampling location. It includes identification of the project in which the sample was collected (`project_code`), identifiers for the sampling site (`site_code`), plot (`plot_code`), plot type (`plot_type`) and profile (`profile_code`). The `plot_type` specifies the sampling method: `Borehole` (auger sample), `TrialPit` (open profile excavation), or `Surface` (area-based description). 
+
+The `n_layers` column indicates the number of soil samples collected at different depths for a given site. The number of samples corresponds to the number of horizons or layers collected at each sampling profile. For example, if a soil profile contains three horizons and all contains have been sampled, the `n_layers` value will be `3`.
+
+`Date` stores the date when the survey was conducted. The date must follow ISO-8601 ("YYYY-MM-DD" format).
+
+The following columns capture the georeferencing of the sampling site (`latitude`, `longitude`, and `altitude`), together with supporting location metadata (`positional_accuracy` - accuracy estimate, `extent` - spatial extent of sampling area and `map_sheet_code` - reference map sheet identifier; all of them not mandatory). Coordinates must be recorded in decimal degrees using the `EPSG:4326 (WGS84)` coordinate reference system to ensure global consistency and interoperability within the GloSIS database.
+
+```{r plot-tab, echo=FALSE, out.width="60%",fig.cap = "Information in the Plot Data Sheet."}
+knitr::include_graphics("images/module4/sheet1.png")
+```
+
+Finally, columns `N:BJ` describe the soil formation factors in the sampling plot following the FAO Guidelines for Soil Description 4th Ed. (2006) if available. These columns are optional and only can be updated manually directly on the XLSX template.
+
+### `Profile Data` Sheet
+
+This sheet includes profile identification `profile_code` and profile descriptors (FAO and Soil USDA classification Systems and Soil Depth classes according to the 4th edition of the FAO Guidelines for Soil Description. The `profile_code` column act as the join parameter to link profiles to the information on the other sheets, thus it is important to ensure its consistency over the whole file tabs.
+
+This sheet records the profile identifier (`profile_code`) and key profile descriptors, including soil profile classification (FAO and USDA Soil Taxonomy) and soil depth classes following the 4th edition of the FAO Guidelines for Soil Description. The `profile_code` field serves as the main join key linking profile records to related information in the other sheets, so it is essential to keep it consistent across all tabs in the file.
+
+### `Element Data` Sheet
+
+An `Element` is a depth-based subdivision of a soil profile and can be described as either:
+
+ - `Horizon`: a natural, relatively homogeneous layer formed by pedogenesis
+
+ - `Layer`: an arbitrarily defined section, often based on fixed depth intervals for sampling and analysis
+ 
+Figure @ref(fig:element-tab) illustrates the differences between these two element types.
+
+For each sampled horizon or layer, the `Element Data` sheet records the identifiers used to link the profile and the element (`profile_code`, `element_code`), and where applicable, the horizon classification identifier (`horizon_code`) features. It also specifies the `element_type` (`Horizon` or `Layer`) and the depth limits of the element (`upper_depth`, `lower_depth`)
+
+As in the `Profile Data` sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns `H:CC`. 
+
+```{r element-tab, echo=FALSE, out.width="60%",fig.cap = "Horizon vs Layer en Element Features."}
+knitr::include_graphics("images/module4/element.png")
+```
+
+
+###  `Specimen Data` Sheet
+
+The main purpose of the `Specimen Data` is to store the laboratory analytical results for each horizon or layer registered in `Element Data`. It includes the identifiers needed to link analytical results to the corresponding profile and element (`profile_code`, `element_code`) and the laboratory sample label (`specimen_code`) in columns `A:C`.
+
+The subsequent columns contain the analytical values for each measured soil property.
+
+Because these values are loaded into the GloSIS database, all analytical results must be expressed in the GloSIS units of measurement. If necessary, values should be converted to the required units prior to ingestion. These values are automatically transformed if the `GloSIS-ETL Harmonization` tool is used to create the template.
+
+
+### `Procedures` Sheet
+
+The `Procedures` sheet defines the relationship between the measured soil properties, their standardized GloSIS property names, the laboratory methods, and the units of measurement. This linkage is essential to ensure consistency and interoperability across datasets and to support correct ingestion into the GloSIS database.
+
+The sheet is linked to the reference list provided in the `GloSIS Methods` tab, which contains the approved set of standardized soil property names, analytical procedures, and measurement units. Only properties, methods, and units included in `GloSIS Methods` can be uploaded to the GloSIS database. Any measured property, method, or unit that is not present in this list cannot be ingested and must either be removed or replaced with an accepted equivalent. Missing procedures can be reported to the GloSIS Working Group for possible inclusion, together with documentation describing the soil property, the analytical method, and the unit of measurement. The reference list is maintained and updated over time to incorporate new analytical properties, methods, and units.
+
+In practical terms, this sheet links the analytical values in `Specimen Data` to their corresponding analytical metadata. The first column (`soil_property`) lists the soil properties included in `Specimen Data`, in the same order in which they appear. Columns `B–D` provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the `GloSIS-ETL Harmonization` tool.
+
+### `Metadata` Sheet
+
+It includes detailed metadata to identify the different data providers.
+
+### `Original Data` Sheet
+
+The `Original Data` sheet stores the raw values from soil analyses and descriptions. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.
+
+Values in the `Original Data` sheet can be linked (e.g., via formulas) to the `Element Data` sheet, allowing adjusted values to be transformed and transferred automatically while preserving the original records. This helps users track how each soil property was measured and in which units the results were reported. The original data are automatically preserved when using the `GloSIS-ETL Harmonization` tool.
+
+###	`GloSIS Methods` sheet
+
+The `GloSIS Methods` sheet is the reference table that defines which soil properties, analytical procedures, and units of measurement are accepted for loading data into the GloSIS database. It is used by the `Procedures` sheet (via drop-down lists) and by the `GloSIS-ETL Harmonization` tool to validate inputs and apply unit conversions consistently.
+
+The main columns are:
+
+- `property_phys_chem_id`: The standardized GloSIS name for the soil property (e.g., Acidity – exchangeable).
+
+- `procedure_phys_chem_idv: The standardized identifier for the analytical method used to measure that property (e.g., ExchAcid_ph0-kcl1m).
+
+- `unit_of_measure_id`: The required unit for storing the value in GloSIS (e.g., cmol/kg).
+
+- `value_min / value_max`: The admissible bounds for quality control. Values outside this range can be flagged during harmonization/validation.
+
+- `definition`: A short description of what is being measured and how (e.g., exchangeable acidity (H+Al) extracted with 1 M KCl).
+
+- `common_input_units`: A list of commonly encountered units in legacy datasets that can be converted into the GloSIS standard units.
+
+- `conversion_factors`: The factors applied to each unit listed in `common_input_units`, in the same order, to convert to the GloSIS unit.
+
+- `notes`: Additional clarifications (e.g., equivalences between units).
+
+
+
+## GloSIS-ETL
+
+Because the GloSIS database enforces a structured model, data cannot be loaded reliably as free-form from heterogeneous legacy information. The `GloSIS-ETL` pipeline provides a practical workflow to harmonize, standardize, and load soil legacy data into the GloSIS PostgreSQL/PostGIS schema in a consistent and reproducible way.
+
+`GloSIS-ETL` transforms raw datasets into database-ready tables by automating the harmonization and standardization tasks required in GloSIS. This streamlines ingestion into the relational database, improves accessibility for non-technical users, and ensures that soil datasets from different sources can be integrated and compared effectively.
+
+The `GloSIS-ETL` services are provided as **Docker containers**, which allow users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates. The installation and setup of the ETL are described in the last section of this session.
+
+The `GloSIS-ETL` (Figure @ref(fig:glosis-etl)) includes three applications:
+
+  * GloSIS Data Harmonization: Checks and harmonizes raw input data (e.g., coordinates, depth intervals, missing or inconsistent fields, out-of-range lab values) and define units/methods for GloSIS conventions to produce a clean, consistent dataset for loading.
+  * GloSIS Data Standardization: Maps harmonized data to ISO 28258 and the GloSIS data model, applying controlled vocabularies and standardized identifiers so the dataset is fully compliant with the target schema.
+  * GloSIS Data Viewer: Allows users to explore and validate the standardized data before and/or after loading to confirm that records, attributes, and values were ingested correctly in the database.
+  
+These applications are distributed as a containerized project in Docker, enabling deployment on any computer. The ETL package also includes PostgreSQL with access to the GloSIS database schema.
+
+```{r glosis-etl, echo=FALSE, out.width="60%",fig.cap = "Application in the GloSIS-ETL."}
+knitr::include_graphics("images/module4/glosis_etl.png")
+```
+
+### GloSIS Data Harmonization
+
+The `GloSIS-ETL Harmonization` tool (Figure @ref(fig:etl-harmonization)) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.
+
+```{r etl-harmonization, echo=FALSE, out.width="60%",fig.cap = "GloSIS-ETL Harmonization Tool."}
+knitr::include_graphics("images/module4/etl_harmonization.png")
+```
+
+The preparation of the data follows a 3-step quality assurance procedure (Figure @ref(fig:etl-harmonization-steps)) comprehensive data validation at each stage. 
+
+
+```{r etl-harmonization-steps, echo=FALSE, out.width="60%",fig.cap = "GloSIS-ETL Harmonization Tool."}
+knitr::include_graphics("images/module4/etl_harmonization_steps.png")
+```
+
+The application performs systematic data quality checks across three domains to produce a `XLSX` file following the GloSIS standards. This file, once correctly verified, will be used as input in the `GloSIS Data Standardization` tool to ingest soil data into the GloSIS database.
+
+### Step 1: Data Ingestion & Variable Mapping
+
+The first step of the harmonization process involves uploading soil datasets and configuring variable mappings to align with GloSIS standard data structure and naming conventions.
+
+The application accepts the following data formats:
+
+ - Excel files (.xlsx)
+ - CSV files (.csv) - For comma-separated tabular data
+
+#### Data Upload Interface
+
+The **`1) Upload your data (CSV or XLSX)`** section in the left-side menu allows users to upload their raw dataset into the application. Once data is uploaded, the application displays a warning message (Figure \@ref(fig:etl-harmonization-step1)) indicating which soil data site identification columns must be mapped to standard GloSIS nomenclature.
+
+```{r etl-harmonization-step1, echo=FALSE, out.width="60%",fig.cap = "Step 1 Warning Message: Required Site Parameter Identification."}
+knitr::include_graphics("images/module4/etl_harmonization_step1.png")
+```
+
+#### Parameter Mapping Configuration
+
+Users must systematically map their dataset columns to GloSIS standard variable names through an interactive sidebar menu. The mapping process captures 2 essential categories:
+
+**`2) Configure Project Settings`**
+*Site Identification Parameters (Optional - Default values provided if not mapped):*
+- Project Name
+- Site Code
+- Date of observation
+- Profile Code
+- Plot Code and Plot Type
+- Horizon ID and Horizon Type
+
+**`3) Map Plot Parameters`**
+*Required Plot Parameters (Must be mapped explicitly):*
+- Sample ID (element_code or specimen_code)
+- Longitude (X coordinate, WGS84)
+- Latitude (Y coordinate, WGS84)
+- Upper Depth (cm) - Top boundary of soil layer
+- Lower Depth (cm) - Bottom boundary of soil layer
+- Soil analytical properties being measured (Multi-selection)
+- Each property must be mapped to GloSIS standard nomenclature
+
+The sidebar menu provides dropdown selections for each variable, fuzzy matching to assist in finding correct mappings, and validation warnings if required parameters are not mapped.
+
+---
+
+### Step 2: Quality Check and Quality Report Generation
+
+This step analyses the data values, its integrity and coherence and identifies potential issues with the data. It automatically generates Quality Report for verification and correction of potential mistakes or unconsistencies in the dataset.
+The validation occurs at three stages, geographic (horizontal location), soil depth (vertical position) and Analytical integrity (missing values, non valid data, data outliers):
+
+### Step 2a: Geographic Data Validation
+
+This validation phase ensures that every soil sample is correctly georeferenced with accurate spatial coordinates, maintaining the spatial integrity essential for the GloSIS database.
+
+#### Coordinate Reference System Requirements
+
+The GloSIS database uses **EPSG:4326** (WGS84) as its standard coordinate reference system. All geographic coordinates must be identified using this global standard projection. 
+
+The application systematically checks for the following geographic data issues:
+
+**Coordinate Completeness:**
+- Identifies missing X (longitude) and/or Y (latitude) coordinates
+
+**Coordinate Range Validation:**
+- Longitude: −180° to +180°, Latitude: −90° to +90° (global bounds)
+- Flags coordinates outside standard global ranges as invalid
+
+**Duplicate Site Detection:**
+- Identifies potential duplicate sites (multiple profiles at identical coordinates)
+
+---
+
+### Step 2b: Soil Depth Validation
+
+All soil profiles must include both upper and lower depth measurements for each sampled layer. This step ensures that the vertical intervals for each soil sample are physically and logically possible, maintaining the integrity of soil profile structure.
+
+The application checks for **Depth Completeness** and **Depth Logical Consistency**:
+
+- Identifies records with missing top and/or bottom depth measurements
+- Detects depth inversions where top depth ≥ bottom depth (physically impossible)
+- Identifies soil profiles not starting at surface (top depth > 0 cm when expected)
+
+---
+
+### Step 2c: Soil Properties Validation
+
+This final validation step involves screening analytical soil property values against scientifically established analytical thresholds to identify unrealistic or impossible values. Out-of-bounds values are commonly known as outliers.
+
+The soil analytical properties selected through the sidebar menu (Step 1) will be displayed in the main dashboard. For each property, users must define:
+
+1. **Analytical Procedure**: The method used to determine the property (must exist in GloSIS `Procedures` Registry)
+2. **Unit of Measurement**: The reporting unit used in original data
+
+If the reported soil units differ from GloSIS standard units, the application automatically applies conversion factors to satisfy GloSIS requirements (example shown in Figure \@ref(fig:etl-harmonization-step2)).
+
+
+```{r etl-harmonization-step2, echo=FALSE, out.width="60%",fig.cap = "Mapping analytical procedures and units of measurement"}
+knitr::include_graphics("images/module4/etl_harmonization_step2.png")
+```
+
+For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds (Figure \@ref(fig:etl-harmonization-step4)).
+
+```{r etl-harmonization-step4, echo=FALSE, out.width="60%",fig.cap = "Validation of analytical values"}
+knitr::include_graphics("images/module4/etl_harmonization_step4.png")
+```
+
+
+All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. Quality check results are displayed in a dedicated `Quality Checks` Tab which displays detailed validation results organized by issue type. Users can download a comprehensive `Quality Check Report (XLSX format)` for further analysis and data cleaning outside the application. 
+
+
+---
+### Step 3: Data Correction and Resubmission
+
+Once data quality issues are identified in the Quality Check Report, users must correct the original dataset and resubmit for harmonization.
+
+
+
+::: highlights
+
+  - The `Metadata` tab provides a way to manually add metadata to the exported results.
+  - The `Procedures Reference` tab includes information on the analytical procedures in GloSIS, including their units and descriptions.
+
+:::
+
+
+```{r etl-harmonization-step3, echo=FALSE, out.width="60%",fig.cap = "Quality Checks Tab."}
+knitr::include_graphics("images/module4/etl_harmonization_step3.png")
+```
+
+---
+
+### Step 4: Download Harmonized Data
+
+Once all critical data quality issues have been resolved and the dataset passes validation, users can download the harmonized data in a GloSIS-standard format. In the first step the `Prepare XLSX` button translates the data into the standardized GloSIS structure and store it in memory as a temporary file. The file then becomes available through the `Download XLSX` button.
+
+The downloaded file follows the GloSIS standard format, with data organized according to the hierarchical features of interest defined in ISO 28258.
+
+**Plot Data Sheet:**
+- Project identifier
+- Site identifier
+- Plot identifier
+- Profile identifier
+- Plot type identifier (Borehole, TrialPit, Surface)
+- Number of layers / plot
+- Date of observation
+- Longitude (WGS84)
+- Latitude (WGS84)
+
+**Profile Data Sheet:**
+- Profile identifier
+
+**Element Data Sheet:**
+- Profile identifier
+- Element identifier
+- Element type (Horizon, Layer)
+- Order element (Element position in the profile)
+- Upper depth
+- Lower depth
+- Horizon identifier
+
+**Specimen Sheet:**
+- Profile identifier
+- Element identifier
+- Specimen identifier
+- Analytical properties (GloSIS Standard Units)
+
+**Procedures Sheet:**
+- Analytical properties
+- Analytical properties (GloSIS standard)
+- Analytical procedures
+- Unit of measure (GloSIS standard)
+
+**Metadata Sheet:**
+- Plot identifier
+- Provider Metadata
+
+**Original Data Sheet:**
+- Profile identifier
+- Analytical properties (Original Units)
+
+**GloSIS Methods Sheet:**
+- GloSIS Procedures Registry List (Informative)
+
+---
+
+:::warning-box
+  - All Analytical Procedures must exist in the available GloSIS `Procedures` Registry list. This ensures methodology traceability and standardization.
+  
+  - Each dataset is unique and may have specific data-quality issues requiring investigation and resolution.
+  
+  - The `Procedures` list is flexible and can incorporate new, well-documented analytical procedures upon request to the GloSIS Working Group team.
+  
+  - Properties not in the standard `Procedures` list must be removed from the analyses before data injection into the database to ensure compatibility within GloSIS. 
+
+  - Users must resolve all Critical Issues before proceeding to data download. Warning Issues should be carefully reviewed; users can override if values are scientifically justified.
+
+:::
+
+### GloSIS Data Standardization
+
+The data injection of soil data into the Glosis database is performed thought a standardized Excel (`.xlsx`) template that serves as an intermediary format for structuring soil data before its integration into PostgreSQL. This template ensures that the data follows a predefined schema, aligning with the complex relational structure of the GloSIS database. The template consists of multiple sheets, each corresponding to a specific data entity, such as site information, soil horizons/layers, laboratory procedures, and analytical results structured in different sheets. Each column in these sheets is carefully labeled to match the expected database fields, reducing errors and ensuring data consistency. Users are required to fill in the template while adhering to specific data formats, such as numeric values for measurements, categorical values for predefined classifications, and geospatial coordinates in standard longitude and latitude formats. The structured nature of the template minimizes manual intervention and ensures that data is correctly mapped when it is processed by the `glosis-shiny` application. The application validates the input, identifies potential discrepancies, and harmonizes the dataset before transferring it into PostgreSQL, ultimately simplifying the data submission process while maintaining accuracy and comparability.
+
+The data in the standardized Excel template must be collected in a harmonized manner to ensure consistency and accuracy during integration into the GloSIS database. This requires harmonization of spatial coordinates to the EPSG:4326 coordinate system recorded in the `Plot_Data` sheet, ensuring homogeneous sample georeferencing. Additionally, the identification of standard soil property names, laboratory methods, and units of measurement must be correctly defined in the `Procedures` sheet. If the original data is recorded in different units, it must be converted to match the standardized units specified in the `Procedures` sheet before inclusion in the `Element Data` sheet.
+
+Furthermore, all soil properties listed in the `Element Data` and `Procedures` sheets must correspond to those available in the `Codelist` sheet, which contains the standardized soil properties defined in the GloSIS **`codelist`**. Any property not included in the `Codelist` sheet must be removed from the template before data injection to ensure compatibility with the GloSIS database. This harmonization process is essential for maintaining data consistency, facilitating data sharing, and ensuring seamless integration with the global soil information system.
+
+Ensuring the correct utilization of the template is essential for the successful execution of the data injection process. Proper adherence to the template structure guarantees data integrity, compatibility, and seamless integration into the PostgreSQL GloSIS Database.
+
+
+### GloSIS Data Viewer
+
+The Data Viewer component (Figure @ref(fig:etl-viewer)) provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.
+
+The `GloSIS Viewer` enables the review of the geographic distribution of sampling sites on a interactive map, preview harmonized records in tabular format with sortable/filterable columns, visualize the variation of soil properties with depth in the soil profile and export selected data to othe formats
+
+```{r etl-viewer, echo=FALSE, out.width="40%",fig.cap = "Automated Units Conversion in the Information in the GloSIS ETL-Harmonization tool"}
+knitr::include_graphics("images/module4/etl_viewer.png")
+```
+
+
+## Installation and Setup of the `GloSIS-ETL`
+
+The `GloSIS-ETL` services are provided as **Docker containers**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.
+
+**Docker Compose** is a tool used to define and run multi-container Docker applications. It allows users to **orchestrate multiple services** using a single configuration file (see Section **The docker-compose.yml file**). The key benefits of Docker Compose include:
+
+-  **Simplified Deployment** -- Automatically pulls and runs multiple containers with a single command.
+-  **Predefined Configuration** -- Ensures all services are correctly configured and work together.
+-  **Portability** -- The same configuration can be used across different systems without installation issues.
+
+The system consists of two main **services**, both running as Docker containers:
+
+1. **`glosis-db`** -- A **PostGIS-enabled PostgreSQL database** (based on `postgis/postgis:17-3.5`) that stores soil data following the **GloSIS / ISO 28258** standard. It is automatically initialized with the GloSIS schema via SQL scripts bundled in the repository.
+
+2. **`glosis-etl`** -- A **Shiny Server** application that serves a **landing page** and three web modules:
+   - **Harmonization** (`/harmonization`) -- Converts local soil data into GloSIS-compatible format using Excel templates.
+   - **Standardization** (`/standardization`) -- Injects harmonized Excel data into the PostgreSQL database.
+   - **Data Viewer** (`/dataviewer`) -- An interactive dashboard to explore, visualize, and subset the data stored in the database.
+
+An optional third service, **`glosis-pgadmin`**, provides a pgAdmin 4 web interface for direct database administration (see **Optional Services** below).
+
+These services are **built from pre-configured Docker images** and automatically deployed as containers using **Docker Compose**, meaning all dependencies are pre-configured, ensuring a consistent and reproducible execution across different operating systems (Windows, macOS, and Linux).
+
+This section provides step-by-step instructions to set up the **GloSIS-ETL platform**, including the installation of **Docker Desktop** and the deployment of the services. **No manual installation of PostgreSQL, R, or any other dependency is required** --- everything runs inside Docker.
+
+
+### Install Docker Desktop
+
+Before proceeding, **Docker Desktop** must be installed on your computer.
+
+#### Windows
+
+1. **Enable Hyper-V**
+
+   Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerShell to be installed and enabled. In most systems, the Docker Desktop installer enables it for you.
+
+   To test if Hyper-V is enabled, go to the start menu and type:
+
+   ```
+   Turn Windows features on or off
+   ```
+
+   and press enter. In the subsequent screen, verify that Hyper-V is enabled.
+
+   To install Hyper-V manually, see [Install Hyper-V on Windows 10](https://learn.microsoft.com/es-es/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V?pivots=windows-server). A reboot is required after installation. If you install Hyper-V without rebooting, Docker Desktop does not work correctly.
+
+   In some Windows systems, [Virtualization](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) must be enabled in the BIOS. Note that many Windows devices already have virtualization enabled, so this may not apply.
+
+2. Download **Docker Desktop for Windows** from the [official website](https://docs.docker.com/desktop/install/windows-install/).
+3. Run the installer and follow the on-screen instructions.
+4. After installation, restart your computer.
+5. Open **Docker Desktop** and ensure it is running.
+
+#### macOS
+
+1. Download **Docker Desktop for Mac** from the [official website](https://docs.docker.com/desktop/install/mac-install/). Choose the correct version for your processor (**Apple Silicon** or **Intel**).
+2. Open the `.dmg` file and drag **Docker** into the Applications folder.
+3. Start **Docker Desktop** and allow any requested system permissions.
+
+#### Linux
+
+1. Open a terminal and run the following commands:
+
+   ```bash
+   sudo apt update
+   sudo apt install docker.io docker-compose -y
+   sudo systemctl start docker
+   sudo systemctl enable docker
+   ```
+
+2. Add your user to the Docker group (to run Docker without `sudo`):
+
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
+
+3. **Log out and log back in** (or restart your computer) for the group change to take effect.
+
+4. Verify Docker is running:
+
+   ```bash
+   docker --version
+   ```
+
+   If the installation was successful, you should see output similar to:
+
+   ```
+   Docker version 24.0.5, build 123456
+   ```
+
+
+### Install the GloSIS-ETL Services
+
+The easiest way to install the GloSIS-ETL services is by downloading the repository and using Docker Compose to build and run the containers.
+
+**Steps:**
+
+1. **Ensure Docker Desktop is running.**
+
+2. **Download the GloSIS-ETL repository from GitHub:**
+
+   Go to:
+
+   ```
+   https://github.com/FAO-SID/glosis-etl
+   ```
+
+   Click the green **"Code"** button, then select **Download ZIP** (Figure \@ref(fig:clone)).
+
+   ```{r clone, echo=FALSE, out.width="60%", fig.cap="Cloning the repository."}
+   knitr::include_graphics("images/module4/etl-clone.png")
+   ```
+
+   Alternatively, if you have Git installed, you can clone the repository:
+
+   ```bash
+   git clone https://github.com/FAO-SID/glosis-etl.git
+   ```
+
+3. **Extract the ZIP file** (if downloaded) to a folder on your computer (e.g., the `Desktop` folder).
+
+4. **Configure the environment variables.**
+
+   Inside the extracted folder you will find a file called `.env.example`. Copy it and rename the copy to `.env`:
+
+   - **Windows (Command Prompt):**
+
+     ```bash
+     copy .env.example .env
+     ```
+
+   - **macOS / Linux:**
+
+     ```bash
+     cp .env.example .env
+     ```
+
+   The default values use `glosis` as the database name, user, and password. For production deployments, edit the `.env` file and change the `POSTGRES_PASSWORD` value.
+
+5. **Open a Terminal or Command Prompt** and navigate to the extracted folder:
+
+   ```bash
+   cd Desktop/glosis-etl
+   ```
+
+6. **Start the GloSIS services** by running:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+   > **Note:** The `--build` flag is required the first time to build the `glosis-etl` Shiny application image from the Dockerfile. Subsequent runs can omit it unless the application code has changed. The first build may take **10--15 minutes** as it downloads base images and installs R packages.
+
+   > **Note:** On older systems you may need to use `docker-compose` (with a hyphen) instead of `docker compose`.
+
+
+### Verify Installation
+
+#### Using Docker Desktop
+
+Open Docker Desktop and check if the containers are running (Figure \@ref(fig:docker-desktop)).
+
+```{r docker-desktop, echo=FALSE, out.width="60%", fig.cap="Docker Desktop showing running containers."}
+knitr::include_graphics("images/module4/docker_desktop.png")
+```
+
+If everything is working, the project and service icons should be **green**. If any service fails, the icon will appear **orange*.
+
+
+#### Using the Terminal
+
+To manually check if the services are running, type:
+
+```bash
+docker ps
+```
+
+You should see an output similar to:
+
+```
+CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                  PORTS                    NAMES
+415f97d8a445   glosis-etl-glosis-etl    "/usr/bin/shiny-serv…"   25 hours ago   Up 25 hours (healthy)   0.0.0.0:3838->3838/tcp   glosis-etl
+cb414728ebfd   postgis/postgis:17-3.5   "docker-entrypoint.s…"   7 days ago     Up 7 days (healthy)     0.0.0.0:5442->5432/tcp   glosis-db
+```
+
+Both containers should show a status of **(healthy)**.
+
+#### Stopping the Services
+
+To stop the services at any time, use:
+
+```bash
+docker compose down
+```
+
+This will stop and remove the containers, but your **database data will remain intact** in the Docker named volume `glosis-db-data`.
+
+> **Tip:** To completely reset the database (remove all data), run: `docker compose down -v`. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.
+
+
+### Optional: pgAdmin Web Interface {#pgadmin}
+
+The `docker-compose.yml` file includes an optional **pgAdmin 4** service for direct database management. To activate it:
+
+```bash
+docker compose --profile admin up -d
+```
+
+Once running, access pgAdmin at:
+
+```
+http://localhost:5050
+```
+
+Login credentials:
+
+- **Email:** `admin@glosis.org`
+- **Password:** `admin`
+
+To connect to the GloSIS database from pgAdmin, create a new server with:
+
+- **Host:** `postgis`
+- **Port:** `5432`
+- **Database:** `glosis`
+- **User / Password:** `glosis` / `glosis`
+
+
+## Accessing the Services
+
+### Landing Page
+
+To open the **GloSIS-ETL** platform, enter this address in your web browser:
+
+```
+http://localhost:3838/
+```
+
+This will load the **landing page** with links to the three application modules (Figure \@ref(fig:etl-landing)).
+
+```{r etl-landing, echo=FALSE, out.width="60%", fig.cap="GloSIS-ETL landing page."}
+knitr::include_graphics("images/module4/glosis_etl.png")
+```
+
+### Shiny Application Modules
+
+Each module is accessible directly via its URL:
+
+| Module              | URL                                    | Description                                |
+|:--------------------|:---------------------------------------|:-------------------------------------------|
+| **Harmonization**   | `http://localhost:3838/harmonization`   | Convert local soil data into GloSIS format |
+| **Standardization** | `http://localhost:3838/standardization` | Inject harmonized data into the database   |
+| **Data Viewer**     | `http://localhost:3838/dataviewer`      | Explore and visualize stored soil data     |
+
+```{r etl-standardization, echo=FALSE, out.width="60%", fig.cap="GloSIS Standardization service."}
+knitr::include_graphics("images/module4/etl_standardization.png")
+```
+
+### GloSIS Database
+
+The GloSIS database is available for connection with external applications such as **pgAdmin**, **DBeaver**, **QGIS**, **R**, etc., using the parameters listed in Table \@ref(tab:db-connection).
+
+```{r db-connection, echo=FALSE}
+db_params <- data.frame(
+  Parameter = c("Host", "Port", "Database", "User", "Password"),
+  Value = c("localhost", "5442", "glosis", "glosis", "glosis (default)")
+)
+knitr::kable(db_params, caption = "Database connection parameters.")
+```
+
+> **Note:** The port is `5442` (not the standard `5432`) to avoid conflicts with any locally installed PostgreSQL server.
+
+With this setup, users can easily run and manage the GloSIS-ETL platform and its Shiny web interface while ensuring stability and avoiding conflicts with other PostgreSQL installations.
+
+
+## The `docker-compose.yml` File {#docker-compose-file}
+
+The `docker-compose.yml` file defines the complete GloSIS-ETL service architecture. Below is a summary of its key components:
+
+```{r docker-compose-summary, echo=FALSE}
+dc_summary <- data.frame(
+  Component = c("postgis", "glosis-etl", "pgadmin (optional)",
+                "glosis-db-data", "glosis-net"),
+  Type = c("Service", "Service", "Service", "Volume", "Network"),
+  Purpose = c(
+    "PostgreSQL 17 + PostGIS 3.5 database",
+    "Shiny Server with landing page and three app modules",
+    "pgAdmin 4 web UI for database management",
+    "Persistent storage for PostgreSQL data",
+    "Bridge network connecting all services"
+  )
+)
+knitr::kable(dc_summary, caption = "Docker Compose components.")
+```
+
+The `glosis-etl` service **depends on** `postgis` and will only start once the database passes its health check (`pg_isready`). Environment variables (database credentials, logging level, etc.) are read from the `.env` file in the project root.
+
+
+## The `.env` File {#env-file}
+
+The `.env` file stores configuration values that are shared between the services. The available variables are:
+
+```bash
+# PostgreSQL Database Configuration
+POSTGRES_DB=glosis
+POSTGRES_USER=glosis
+POSTGRES_PASSWORD=glosis    # Change in production!
+
+# Application Environment
+SHINY_LOG_LEVEL=INFO        # Options: DEBUG, INFO, WARN, ERROR
+R_MAX_MEM_SIZE=2Gb          # R memory limit
+```
+
+> **CAUTION:** For production deployments, always change the default password (`glosis`) to a secure value.
 
 <!--chapter:end:04-Soil-Data-Preparation-GloSIS.Rmd-->
 
