@@ -395,8 +395,6 @@ In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soi
 
 :::
 
-
-
 ## Installing R and RStudio
 
 To start using R, you need two main components:
@@ -461,13 +459,12 @@ R.version.string
 If you see the results, R and RStudio are properly installed in your system.
 
 
-
 ## Understanding the RStudio Interface
 
 **RStudio** provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. \@ref(fig:rstudio)):
 
 ```{r rstudio, echo=FALSE, out.width="100%",fig.cap = "RStudio interface."}
-knitr::include_graphics("images/module1/2_RStudio-interface.png")
+knitr::include_graphics("images/module1/RStudio-interface.png")
 ```
 
 ### 1. Console Pane (Bottom Left)

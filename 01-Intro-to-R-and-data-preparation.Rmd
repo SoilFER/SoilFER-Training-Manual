@@ -1765,7 +1765,165 @@ ggplot(data = soil_sf) +
 -   Managing file size and compression.
 
    
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
   
+
+# Preparation of Environmental Covariates with Google Earth Engine
+
+## What is Google Earth Engine?
+
+Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.
+
+At its core, GEE combines three key elements: a multi-petabyte data catalog hosted on Google's servers, a high-performance parallel computing infrastructure, and a programming interface (API) accessible through both a JavaScript-based Code Editor and a Python client library. Users write analysis scripts that run directly on Google's servers, where the data already resides, meaning computationally intensive operations that would take days on a local machine can complete in minutes.
+
+:::key-concept
+**Why GEE for Digital Soil Mapping?**
+
+Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.
+:::
+
+In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas), including CHELSA bioclimatic variables, TerraClimate time series, SRTM-derived terrain attributes, MODIS FPAR seasonality layers, Sentinel-2 spectral indices, ESA WorldCover land cover, and geomorphological features from Geomorpho90m. The exported rasters are then used as covariates to:
+
+- Create a robust soil sampling design based on the SCORPAN framework
+- Predict soil properties in the Digital Soil Mapping workflow.
+
+
+## Setting Up Google Earth Engine
+
+### Step 1: Create a Google Account
+
+GEE requires a Google account. If you do not already have one, create a free account at [https://accounts.google.com](https://accounts.google.com). Use an institutional email address (university or research organization) if possible, as this can facilitate the approval process.
+
+### Step 2: Register for a GEE Account
+
+GEE access requires prior registration. Navigate to the Earth Engine registration page:
+
+[https://earthengine.google.com/register](https://earthengine.google.com/register)
+
+Select **Register a Noncommercial or Commercial Cloud project**. On the next screen, choose **Unpaid usage** and then select the project type that best describes your work (e.g., *Academia & Research*).
+
+:::warning-box
+**Note on Account Approval**
+
+GEE registration is subject to manual review by Google. Approval typically takes between a few hours and two business days. You will receive a confirmation email once your account is activated. Register well in advance of any practical session that requires GEE access.
+:::
+
+### Step 3: Create or Select a Google Cloud Project
+
+GEE now operates within the Google Cloud infrastructure. During registration you will be prompted to either create a new Google Cloud project or link an existing one. For training purposes, create a new project with a descriptive name such as `soilfer-training`. Note the **Project ID**, as you will need it when initializing GEE from Python or when sharing scripts with colleagues.
+
+### Step 4: Access the GEE Code Editor
+
+Once your account is approved, open the JavaScript-based Code Editor at:
+
+[https://code.earthengine.google.com](https://code.earthengine.google.com)
+
+The GEE Code Editor ([https://code.earthengine.google.com](https://code.earthengine.google.com)) is a browser-based integrated development environment (IDE) designed specifically for writing, testing, and running Earth Engine scripts in JavaScript. It requires no local software installation beyond a modern web browser and provides immediate access to the full GEE API and data catalog. Figure \@ref(fig:gee-editor) shows a schematic of the interface layout.
+
+```{r gee-editor, echo=FALSE, fig.cap="Layout of the Google Earth Engine Code Editor interface.", out.width="100%"}
+knitr::include_graphics("images/module1/gee_editor.png")
+```
+
+The interface is organized into four functional zones: a left panel with navigation and data discovery tools, a central code editing area, a right panel for output inspection and task management, and a lower interactive map.
+
+#### Left Panel: Scripts, Assets, and Documentation
+
+The left panel is divided into three tabs. The **Scripts** tab provides a personal repository for saving and organizing your GEE scripts, organized into folders. Scripts can be shared with other GEE users by generating a link, which is useful for collaborative training exercises. A **Reader** and **Writer** permission system controls who can view or edit shared scripts. The **Examples** folder within the Scripts tab contains a large collection of community-contributed scripts covering common use cases, which serve as an excellent learning resource.
+
+The **Assets** tab allows you to upload and manage personal geospatial assets --- raster images, vector feature collections, or tables --- that can then be loaded into scripts using `ee.Image()` or `ee.FeatureCollection()` calls. The FAO GSP shared assets used in this training (e.g., CHELSA climate layers and OpenLandMap terrain derivatives) are hosted in a shared project asset folder (`projects/digital-soil-mapping-gsp-fao`) that your account must be authorized to access.
+
+The **Docs** tab provides a searchable, offline-accessible reference for the entire JavaScript GEE API. Every function, data type, and parameter is documented here with descriptions and usage examples. When you are uncertain about a function's arguments or return type, searching Docs is usually faster than consulting external documentation.
+
+#### Central Panel: The Code Editor
+
+The central panel is where scripts are written and executed. It provides syntax highlighting for JavaScript, basic autocompletion for GEE API methods, and inline error indicators. Scripts are saved automatically to your personal repository. The toolbar above the editor contains several important controls:
+
+The **Run** button (or `Ctrl+Enter` / `Cmd+Enter`) executes the entire script. GEE processes the script server-side, so execution does not transfer data to your browser --- only the final computed outputs and any `print()` statements are returned. This means that even very large computations feel responsive in the editor, as you are only waiting for metadata and visualization tiles rather than raw data downloads.
+
+The **Save** button commits the current script state to your repository. It is good practice to save frequently and to use the **Get Link** button to generate a shareable URL that encodes the current script state. This URL is particularly useful for sharing reproducible workflows in a training context.
+
+The **Reset** button clears all layers from the map and resets the console, without deleting your script. Use this when you want to re-run a script cleanly after making changes.
+
+The **Apps** button allows you to publish a script as a standalone GEE application with a simplified user interface, which is useful for sharing tools with non-technical audiences.
+
+
+### Right Panel: Console, Inspector, and Tasks
+
+The right panel has three tabs that serve distinct purposes during script development and execution.
+
+The **Console** tab displays the output of `print()` statements in your script. Printing an Earth Engine object such as an image collection or feature collection shows its metadata: the number of elements, band names, projection, spatial extent, and property dictionary. This is the primary tool for debugging scripts and verifying that filtering and processing steps are producing the expected results. For example, printing the Sentinel-2 collection after applying cloud filters confirms how many scenes are available before computing the median composite.
+
+The **Inspector** tab activates a point-query tool. When active, clicking any location on the map returns the pixel values of all currently displayed layers at that point, along with their band names and data types. This is particularly useful for quickly checking that computed indices or terrain derivatives have realistic values across the study area without exporting the full raster.
+
+The **Tasks** tab is essential for managing data exports. GEE does not automatically execute export operations when a script is run --- instead, exports are queued as tasks that must be submitted manually. After running a script that contains `Export.image.toDrive()` calls, pending tasks appear in this tab with a yellow **Run** button. Clicking **Run** for each task opens a dialog where you can confirm or modify the export parameters (description, folder, scale, CRS) before submission. Once submitted, tasks progress through *READY*, *RUNNING*, and *COMPLETED* states. Completed exports appear in the designated Google Drive folder as GeoTIFF files. Failed tasks display an error message that can help diagnose issues related to computation limits, memory, or invalid geometries.
+
+### Lower Section: The Interactive Map
+
+The lower section of the Code Editor is an interactive map, similar in functionality to Google Maps, onto which computed layers are rendered as tiled overlays. Layers are added using `Map.addLayer()`, which accepts an Earth Engine image or feature collection, a visualization parameter dictionary specifying band names, color palettes, and value ranges, and an optional display name.
+
+The map toolbar provides tools for navigating (pan and zoom), measuring distances, and drawing geometries. The geometry drawing tools --- point, line, polygon, and rectangle --- allow you to define regions of interest directly on the map and reference them as variables in your script. This is a convenient way to quickly define a custom study area without needing to upload a vector file. Drawn geometries are automatically added to the **Geometry Imports** section at the top of the script.
+
+The layer manager in the upper right corner of the map lists all currently added layers with toggle controls for visibility and opacity sliders. Each layer can be independently shown or hidden, making it easy to compare multiple products --- for instance, toggling between the ESA WorldCover land cover and the Sentinel-2 RGB composite to verify that the cropland mask aligns with visible agricultural patterns.
+
+:::warning-box
+**Browser Compatibility**
+
+The GEE Code Editor is optimized for Google Chrome. While it functions in other modern browsers (Firefox, Edge), some features such as autocompletion and the geometry import panel may behave differently. For the best experience during training sessions, use an up-to-date version of Google Chrome.
+:::
+
+
+### Step 5: Prepare Your Google Drive Export Folder
+
+The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named `GEE_Exports` in the root of your Google Drive at [https://drive.google.com](https://drive.google.com). This folder name is referenced explicitly in the export configuration of the script (see the `exportFolder` variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.
+
+
+## The SoilFER Environmental Covariates Script
+
+The script provided for this training (`1_gee_soilfer_env_covariates.txt`) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.
+
+**Climate data** is sourced from two complementary products. 
+
+  - **CHELSA** (Climatologies at High resolution for the Earth's Land Surface Areas) provides long-term bioclimatic variables including mean annual temperature (bio1), annual precipitation (bio12), and extreme temperature and precipitation metrics (bio5, bio6, bio13, bio14, bio16, bio17), alongside potential evapotranspiration computed using the Penman-Monteith method and surface wind statistics. 
+  
+  - **TerraClimate** contributes monthly time series of maximum and minimum temperature, precipitation, and potential evapotranspiration spanning 1981 to the present, which are exported as multi-band images for subsequent temporal aggregation in R.
+
+**Terrain data** is derived from the USGS SRTM 30 m Digital Elevation Model, from which slope, aspect, Topographic Position Index (TPI), and hillshade are computed on-the-fly within GEE. Geomorphological landform classification at 90 m resolution is obtained from the `Geomorpho90m` dataset. Additionally, pre-computed terrain derivatives at 250 m resolution (elevation, slope, curvature, TPI, TWI) are loaded from the FAO GSP shared GEE asset library hosted at `projects/digital-soil-mapping-gsp-fao`.
+
+**Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
+
+**Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
+
+All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.
+
+
+## Running the Script
+
+Copy the full contents of `1_gee_soilfer_env_covariates.txt` into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.
+
+The `aoi` variable defines the `area of interest`. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:
+
+```javascript
+var aoi = ee.FeatureCollection('TIGER/2018/States')
+  .filter(ee.Filter.eq('NAME', 'Kansas'));
+```
+
+To adapt the script to a different study area, replace this definition with a custom geometry or a different administrative boundary. Update `countryName` to a short descriptor used in the exported file names.
+
+The date range for TerraClimate is controlled by `climateStartDate` and `climateEndDate`. The default configuration covers the full 1981--2023 record. For exploratory or training purposes, restricting this range (e.g., 2000--2023) reduces processing time and export file sizes.
+
+Export spatial resolutions are defined individually for each product category, reflecting the native resolution of each data source: 250 m for the primary CHELSA/MODIS covariate stack, 100 m for high-resolution terrain and Sentinel-2 layers, 90 m for geomorphons, 20 m for the cropland mask, and 4000 m for TerraClimate time series.
+
+Click **Run** to execute the script. Visualization layers (SRTM DEM, Sentinel-2 RGB composite, and cropland mask) will appear on the map immediately. Export tasks do not start automatically --- navigate to the **Tasks** tab in the right panel and click **Run** next to each pending task to initiate the exports to Google Drive.
+
+:::warning-box
+**Processing Time and Quotas**
+
+Large exports, particularly TerraClimate time series and Sentinel-2 layers over large regions, can take tens of minutes to several hours depending on server load and area size. GEE free-tier accounts are subject to computation quotas. If a task fails with a computation timeout or memory error, consider reducing the export resolution or splitting the time series into shorter periods. Monitor task progress in the **Tasks** tab; completed files will appear in your `GEE_Exports` Google Drive folder once finished.
+:::
+
+Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the `terra` package and stacked into the covariate array used for model training and spatial prediction.
 
 
 
