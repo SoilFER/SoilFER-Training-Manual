@@ -1141,3 +1141,790 @@ rm(spec)
 ## References {.unnumbered}
 
 
+
+# Spatial Analysis in R
+
+Spatial data has become an essential component of modern soil science.
+In the context of this manual, all steps of digital soil mapping depend on the ability to work with spatial datasets.
+
+This section introduces the fundamental concepts and tools needed to process, analyze, and visualize spatial data within R, using two specific R packages:
+  
+ - **`{sf}`** to work with vector data (points, lines, polygons), and\
+ - **`{terra}`** for raster data (continuous surfaces, grids, remote sensing products).
+
+By the end of this section, you will be able to:
+  
+-   Distinguish between **vector** and **raster** spatial data and their roles in soil science.
+
+-   Understand and manage **coordinate reference systems (CRS)** and projections.
+
+-   Import, explore, and visualize spatial data using `{sf}` and `{terra}`.
+
+-   Perform **vector operations** (buffer, intersection, union, spatial join).
+
+-   Perform **raster operations** (crop, mask, resample, raster algebra).
+
+-   Extract raster values at point or polygon locations for soil profiles and plots.
+
+-   Export processed spatial data to common GIS formats.\
+
+
+::: highlights
+
+**Advanced online resources:**
+  
+* [Geocomputation with R (Lovelace, Nowosad & Muenchow, 2025)](https://r.geocompx.org/ "Geocomputation with R") : A book on geographic data analysis, visualization and modeling.
+
+* [Spatial Data Science: With Applications in R (Pebesma, E., & Bivand, R., 2023)](https://r-spatial.org/book/ "Spatial Data Science: With applications in R") : A clear and practical introduction to the fundamental concepts of spatial data its structures, representations, and analytical implications.
+
+:::
+  
+
+## Spatial Data Concepts
+
+Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.
+
+Soil properties are not randomly distributed in space but change across landscapes. Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time [@prieto2023]:
+
+\begin{aligned} S= f(cl, o, r, p, t,\ldots ). \end{aligned}
+
+where 'S' represents soil formation, 'cl' is climate, 'o' is organisms, 'r' is relief, 'p' is the parent material and 't' accounts for the time that took place to develop the soil profile.
+
+With these relationships soil scientists can describe, model, and predict variations in soil properties across the space.
+
+In R, spatial data is represented using two main data types:
+
+ - Vector data (points, lines, polygons) for discrete objects.
+
+ - Raster data (regular grids) for continuous surfaces.
+
+To work with them efficiently, this module focuses on two core R packages:
+
+ - `{sf}` – for vector data (points, lines, polygons)
+
+ - `{terra}` – for raster data (grids, surfaces, satellite images, soil predictions)
+
+These two packages will be using along this tutorial to script spatial workflows in R.
+
+------------------------------------------------------------------------
+
+### Vector vs Raster Data
+
+Spatial data is commonly stored in two major formats: vector and raster (Fig. \@ref(fig:VectRast)) .
+
+
+```{r VectRast, echo=FALSE, fig.cap="Vector vs raster data representations", out.width='100%'}
+knitr::include_graphics("images/module1/vectorVSraster.png")
+```
+
+Vector datasets represent features as geometries (POINT, LINE, POLYGON) linked to an attribute table. They are ideal for representing discrete spatial objects such as soil sampling points, field boundaries, or landscape units.
+
+*Table 1. Example of layer types and their associated geometry*
+
+| Layer Type                        | Geometry |
+|-----------------------------------|----------|
+| Soil profile locations            | POINT    |
+| Soil sampling locations           | POINT    |
+| Rivers, roads                     | LINE     |
+| Fields of sampling plots          | POLYGON  |
+| Farms / Administrative boundaries | POLYGON  |
+| Land units, physiographic regions | POLYGON  |
+
+------------------------------------------------------------------------
+
+Raster data represents the landscape as a grid of equally sized cells, each storing a numeric value. Raster layers are ideal for continuous spatial phenomena—a central component in digital soil mapping and spatial modelling.
+
+Examples of raster layers used in soil science:
+
+ - Digital Elevation Models (DEM)
+
+ - Climate variables (rainfall, temperature)
+
+ - Remote sensing indices (NDVI, Sentinel-2 bands)
+
+ - Soil property predictions (SOC, pH, clay%)
+
+ - Moisture or vegetation products from satellites
+
+Each cell contains a value that represents the property at that location, enabling spatial modelling and interpolation.
+
+::: highlights
+- Vector data is best for discrete objects (profile locations, soil boundaries).
+- Raster data is best for continuous surfaces (elevation, SOC, soil moisture, remote sensing layers).
+:::
+
+
+###  Coordinate Reference Systems (CRS) and Projections
+
+A Coordinate Reference System (CRS) defines how spatial coordinates relate to positions on Earth. Because Earth is curved, and maps are flat, different CRS systems use different mathematical models to translate the curved space to a planar surface.
+
+The choice of CRS has a major impact on the accuracy of distances, areas, buffer operations, overlays between layers, and spatial modelling outputs.
+
+::: highlights
+
+ - All `{sf}` and `{terra}` objects must include a CRS.
+
+ - Many common spatial errors come from mixing layers with different or missing CRS.
+
+ - Always ensure all layers are in the same CRS before performing spatial operations.
+:::
+
+
+#### Geographic vs projected coordinate systems.
+
+In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example:`EPSG:4326 (WGS84)`).
+
+Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Fig. \@ref(fig:degreeLat)) . This leads to distortions in distances areas calculations.
+
+```{r degreeLat, echo=FALSE, fig.cap="Distance distortion in GCS, where the physical distance of one degree varies by latitude", out.width='100%'}
+knitr::include_graphics("images/module1/degreeEq.png")
+```
+
+
+Projected Coordinate Systems (PCS) have been designed to reduce distortion over a specific region. In PCS coordinates are expressed in linear units (usually meters) and are used for accurate geometric operations (distance, area, buffers).
+Typical examples for PCS include UTM zones (e.g., `EPSG:32614`, `EPSG:32632`), national grid systems and local projections optimized for area-specific precision.
+
+::: highlights
+-   Always check the units in `st_crs()` before doing geometric calculations.
+
+-   Use projected CRS when computing areas, distances, or buffers.
+
+-   If your data is in latitude/longitude, reproject to an appropriate PCS.
+
+-   Explore available CRS definitions using [https://epsg.io](https://epsg.io/ "epsg.io: Coordinate Systems Worldwide").
+:::
+
+
+
+## Spatial Packages in R: `{sf}` and `{terra}`
+
+### Installing and Loading Spatial Packages
+
+In this module we will work with two core spatial packages:
+
+-   `{sf}` for vector data (points, lines, polygons)
+-   `{terra}` for raster data (grids, satellite images, continuous surfaces)
+
+You already learned how to install R packages in Module 1, so here we just show how this applies specifically to `{sf}` and {terra}.\
+
+
+::: highlights
+
+  **Reminder:**\
+   - If the packages are not yet installed on your system, you can install them from CRAN using `install.packages()` function.
+  *Example 4.1: Installation of `{sf}` and `{terra}` packages*
+  ```{r, echo=TRUE, eval=FALSE}
+  install.packages("sf")
+  install.packages("terra")
+  ```
+  
+  - Packages only need to be done once per system.\
+  - Once the packages are installed, you must load them in each R session before use:
+  
+  *Example 4.2: Loading `{sf}` and `{terra}` packages*
+  ```{r, echo=TRUE, eval=FALSE}
+  library(sf)
+  library(terra)
+  ```
+
+:::
+
+
+### Working with Vector Data using `{sf}`
+
+The `{sf}` package implements the *Simple Features* standard for spatial vector data in R.
+
+A *simple feature* is a geometric object (point, line, polygon, etc.) linked to one or more **attributes** (e.g., soil type, pH, land use).\
+
+In practice, an *`sf` object* is just a *data frame with a special geometry column*, plus metadata that tells R.
+An `sf` object combines:\
+
+1.  **Attributes** -- ordinary columns (e.g., plot ID, pH, SOC, soil type).\
+2.  **Geometry column** -- typically named `geom` or `geometry`, storing coordinates and geometry type.\
+3.  **CRS** -- information about the coordinate system used (e.g., WGS84, UTM), stored as part of the object.\
+
+
+::: highlights
+
+An `sf` object is essentially a data frame that includes a geometry column.
+
+-   The attribute columns remain just like in a regular data frame.
+
+-   A geometry column (commonly named `geometry`) is added, storing the spatial features together with their geometry type.
+
+-   The object has the classes `sf` and `data.frame`, and it also stores CRS information.
+
+:::
+
+
+### Importing Vector Data
+
+Vector spatial data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
+In R, vector data are typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files.
+
+
+#### Creating spatial vector objects from data frames
+
+Spatial point layers in R can be created directly from regular data frames using the `{sf}` package.
+The function `st_as_sf()` converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).
+
+To perform this conversion, you must specify:
+
+- Which columns contain the coordinates using `coords = c("X", "Y")`
+
+- The Coordinate Reference System (CRS) of those coordinates using `crs =`
+
+
+
+<br>*Example 4.3: Transforming a Data Frame into an `{sf}` Spatial Object*
+In the example below, `.csv` data containing soil sampling locations (longitude/latitude in WGS84) is imported as a data frame and converted into a POINT geometry layer.
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+
+# Import soil sampling data with coordinates (WGS84)
+k.data <- read.csv("data/kansas_site_lab_data.csv")
+
+# Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
+soil_sf <- st_as_sf(k.data, coords = c("X", "Y"), crs = 4326)
+
+# Print object geometry
+soil_sf$geometry
+
+# Print CRS details
+st_crs(soil_sf)
+```
+
+::: highlights
+**Notes & Best Practices**
+
+- Always confirm that your coordinates are in the CRS you specify.
+
+- If the CRS is unknown or incorrectly specified, spatial operations such as buffering, distance, or overlay may produce errors or misleading results.
+
+- The order in `coords = c("X","Y")` matters:
+    - For lon/lat: X = longitude and Y = latitude.
+    - If your coordinate columns are named differently (e.g., lon, lat, easting, northing), adjust the `coords =` argument accordingly.
+
+:::
+
+
+------------------------------------------------------------------------
+
+#### Reading Shapefiles with st_read()
+
+The `{sf}` package reads these formats using the universal function `st_read()`.
+You can import most vector formats using the same command, since `{sf}` automatically detects the file type.
+
+<br>*Example 4.4: Reading shapefiles with {sf}*
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+
+# Read a shapefile containing soil profile points
+soil_profiles <- st_read("data/soil_profiles.shp")
+
+# Inspect the first rows
+head(soil_profiles)
+
+# Plot quick visualization
+plot(soil_profiles["profile_id"])
+```
+
+This layer may represent individual soil pits or auger locations, each with coordinates and measured properties stored in the attribute table.
+
+------------------------------------------------------------------------
+
+#### Inspecting and Setting CRS
+
+-   Checking CRS of sf objects (`st_crs()`).
+
+-   Checking CRS of terra objects (`crs()`).
+
+-   
+
+#### Reprojecting Spatial Data
+
+-   Reprojecting vector data with `{sf}` (`st_transform()`).
+
+-   Reprojecting raster data with `{terra}` (`project()`).
+
+-   Choosing an appropriate CRS for national soil projects.
+
+Example: converting the point dataset from WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG: 3857)
+
+```{r, echo=TRUE, eval=FALSE}
+plots_sf_utm <- st_transform(plots_sf, crs = 3857)
+```
+
+
+
+#### Inspecting and manipulating `{sf}` Object
+
+Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`,`str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
+
+```{r, echo=TRUE, eval=FALSE}
+# Check structure
+str(soil_sf)
+
+# Summary of attributes + geometry
+summary(soil_sf)
+
+# Extract the geometry column
+st_geometry(soil_sf)
+
+# Check the geometry type. Use head to avoid long printing
+head(st_geometry_type(soil_sf))
+
+# Check the CRS:
+st_crs(soil_sf)
+
+# Check the spatial extent of the object:
+st_bbox(soil_sf)
+```
+
+
+`{sf}` objects can be manipulated in the same way as standard data frames while retaining all spatial information.
+Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be directly applied on `sf` objects .
+
+*Example: Selecting, filtering an creating new variables in an `sf` object with `{dplyr}`*
+
+```{r, echo=TRUE, eval=FALSE}
+# Subset sf rows and columns using the pipping (%>%) operator with {dplyr}
+soil_sf %>%
+  dplyr::filter(ph_h2o > 9) %>%
+  select(taxa, ph_h2o) %>%
+  mutate(saline = TRUE)
+
+```
+
+::: highlights
+
+**What `dplyr::` means?**
+
+-   Several packages can contain functions with the same name.
+    For example, the `filter()` function exists in:
+
+    -   `stats::filter()` (base R -- for time-series filtering)
+
+    -   `dplyr::filter()` (for data frames / sf objects)
+
+    -   `terra::filter()` (for raster filtering)
+
+    -   `signal::filter()`, etc.
+
+When you load packages, R follows the search path.
+If a package containing its own `filter()` is loaded after `{dplyr}`, then that package's `filter()` will mask the dplyr version.
+As a result, calling `filter()` alone may not work as expected for your object.
+This behavior often occurs with the `select()` function in many operations in spatial analysis.
+
+To avoid this, you can explicitly specify which package the function should come from using the general form `package::function()`.
+For [example:\\](example:\){.uri}
+
+```{r, echo=TRUE, eval=FALSE}
+# Call the filter function from the `dplyr` package
+dplyr::filter()
+```
+
+However, this may not always be necessary.
+If no masking occurs and no errors appear in the console, you can safely use the functions directly without the `package::` prefix.
+:::
+  
+  Further `{dplyr}` functions can be applied on `sf` objects to get in-depth analyses of soil properties
+
+*Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH \> 9)*
+  
+```{r, echo=TRUE, eval=FALSE}
+# Filtering rows by pH value and subset columns with {dplyr}
+saline <- soil_sf %>%
+  dplyr::filter(ph_h2o > 9) %>%
+  dplyr::select(taxa, ph_h2o)
+
+# Calculate the mean pH for the different taxonomic groups in these new dataset
+saline %>%
+  dplyr::group_by(taxa) %>%
+  dplyr::summarize(mean_ph=mean(ph_h2o))
+
+```
+
+
+
+
+#### Geometry Operations
+  
+  Geometry operations allow you to modify and analyze the spatial shape of your vector features.\
+Typical tasks in soil science include defining sampling influence areas around plots, clipping soil data to administrative units, and calculating areas or lengths for reporting and analysis.
+
+::: highlightsç
+Remember that geometry operations are safer if the data is transformed to a Projected Coordinate Cystem.
+:::
+  
+  ##### Buffering Plots (Sampling Influence Area)
+  
+  Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).\
+In soil applications, buffers can represent:
+  
+  -   The influence area of a contaminating facility (polygon geometry).
+-   Proximity zones around rivers or roads (line geometry).
+-   Buffer zones around soil sampling points to define their spatial influence (point geometry).
+
+The function `st_buffer()` is used for this.
+
+```{r, echo=TRUE, eval=FALSE}
+library(sf)
+# k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)
+# kansas_sf <- k.data[1:108,]
+kansas_sf <- k.data[1,]
+# Convert to spatial sf
+kansas_sf <- st_as_sf(kansas_sf,coords = c("X", "Y"),crs = 4326)
+# transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)
+kansas_sf <- st_transform(kansas_sf, crs = 26914)  # UTM 14N, metres
+
+# 'kansas_sf' contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units
+st_crs(kansas_sf)
+
+# Create a 100 m buffer around each plot
+plots_buffer_100 <- st_buffer(kansas_sf, dist = 100)
+
+# Plot first point and its buffers
+plot(st_geometry(plots_buffer_100), col = rgb(0, 0, 1, 0.3), border = "blue")
+plot(st_geometry(kansas_sf), add = TRUE, pch = 16, col = "red")
+
+# Create a second 50 m buffer around the plot
+plots_buffer_50 <- st_buffer(kansas_sf, dist = 50)
+plot(st_geometry(plots_buffer_50), add = TRUE, col = rgb(0, 0, 1, 0.3), border = "navy")
+
+```
+
+##### Intersection and Union with Administrative Boundaries
+
+Frequently, soil datasets need to be restricted to a study region (e.g., a province) or aggregated at administrative levels (e.g., districts, municipalities).
+
+We will use two key functions:
+  
+  `st_intersection()` -- keeps only the overlapping parts of two layers.
+
+`st_union()` -- dissolves or merges geometries into a single geometry (or by groups).
+
+Example: Clip plots to an administrative region
+
+### Spatial Relationships and Joins
+
+-   Spatial predicates (`st_intersects()`, `st_within()`, `st_distance()`).
+
+-   Spatial joins (`st_join()`) to attach attributes from one layer to another.
+
+-   Assigning soil profiles to polygons or administrative units.
+
+-   
+  
+  ------------------------------------------------------------------------
+  
+  ### Visualizing `{sf}` Objects
+  
+  `{sf}` objects can be quickly visualized using the base R `plot()` function:
+  
+```{r, echo=TRUE, eval=FALSE}
+# Simple plot of sampling locations
+plot(soil_sf["ph_h2o"], main = "Soil sampling sites – pH (H2O)")
+```
+
+In this example, each point represents a sampling site, and the color scale corresponds to the ph_h2o attribute.
+If no column is specified in the `plot()`function, the display will produce a series of panels, one for each attribute stored in the `{sf}` data frame.
+
+Unlike `plot()`, the `{ggplot2}` package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
+In this case, the geometry type is defined with `geom_sf()`.
+
+```{r, echo=TRUE, eval=FALSE}
+library(ggplot2)
+
+ggplot(data = soil_sf) +
+  geom_sf(aes(color = ph_h2o)) +
+  scale_color_viridis_c() +
+  theme_minimal() +
+  labs(
+    title = "Soil sampling sites – pH (H2O)",
+    color = "pH (H2O)"
+  )
+```
+
+
+------------------------------------------------------------------------
+  
+
+
+### Importing Raster Data
+
+-   Reading single-layer and multi-layer rasters (`rast()`).
+
+-   Examples: DEM, SOC predictions, climate layers.
+
+-   
+  
+  ### Exploring Raster Layers
+  
+  -   Inspecting basic properties: extent, resolution, CRS, number of layers.
+
+-   Summaries and histograms of raster values.
+
+-   
+  
+  ### Raster Visualization
+  
+  -   Basic plotting of rasters (`plot()`).
+
+-   Layered visualizations, color scales, and legends.
+
+-   Visualizing multiple layers (e.g., SOC and DEM).
+
+-   
+  
+  ### Spatial Operations on Rasters
+  
+  -   Crop and mask to study area (`crop()`, `mask()`).
+
+-   Resampling and alignment of rasters (`resample()`, `align()`).
+
+-   Reprojecting rasters to other CRS (`project()`).
+
+-   
+  
+  ### Raster Algebra and Map Algebra
+  
+  -   Simple arithmetic between rasters.
+
+-   Creating indices (e.g., terrain indices, SOC classes).
+
+-   Handling NoData values and masking.
+
+-   
+
+## Combining Vector and Raster Data
+  
+### Extracting Raster Values to Points and Polygons
+  
+  -   Extract SOC, pH, climate values at soil profile locations (`extract()`).
+
+-   Zonal statistics for polygons (mean, min, max, sd).
+
+-   
+  
+  ### Preparing Covariates for Digital Soil Mapping
+  
+  -   Stacking rasters (covariate stack).
+
+-   Matching resolution and extent.
+
+-   Exporting covariate values for modeling (to CSV or tables).
+
+-   
+  
+  ------------------------------------------------------------------------
+  
+  ## **Practical Workflows for Soil Mapping**
+  
+  ### Typical Workflow: From Raw Data to Analysis-Ready Layers
+  
+  -   Import raw vector and raster data.
+
+-   Clean and harmonize CRS.
+
+-   Clip to area of interest.
+
+-   Derive covariates (slopes, indices).
+
+-   Extract covariates at sample points for DSM.
+
+-   
+  
+  ### Case Example (Kansan / OSSL-like Dataset)
+  
+  -   Use soil points + DEM + land cover.
+
+-   Build a simple workflow (description + placeholders for code).
+
+-   
+  
+ 
+## Exporting and Sharing Spatial Data
+  
+### Exporting Vector Data
+  
+-   Writing sf objects to disk (`st_write()`).
+
+-   Formats: Shapefile, GeoPackage, GeoJSON.
+
+-   
+  
+### Exporting Raster Data
+  
+-   Writing SpatRaster objects (`writeRaster()`).
+
+-   GeoTIFF and other formats.
+
+-   Managing file size and compression.
+
+   
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+  
+
+# Preparation of Environmental Covariates with Google Earth Engine
+
+## What is Google Earth Engine?
+
+Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.
+
+At its core, GEE combines three key elements: a multi-petabyte data catalog hosted on Google's servers, a high-performance parallel computing infrastructure, and a programming interface (API) accessible through both a JavaScript-based Code Editor and a Python client library. Users write analysis scripts that run directly on Google's servers, where the data already resides, meaning computationally intensive operations that would take days on a local machine can complete in minutes.
+
+:::key-concept
+**Why GEE for Digital Soil Mapping?**
+
+Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.
+:::
+
+In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas), including CHELSA bioclimatic variables, TerraClimate time series, SRTM-derived terrain attributes, MODIS FPAR seasonality layers, Sentinel-2 spectral indices, ESA WorldCover land cover, and geomorphological features from Geomorpho90m. The exported rasters are then used as covariates to:
+
+- Create a robust soil sampling design based on the SCORPAN framework
+- Predict soil properties in the Digital Soil Mapping workflow.
+
+
+## Setting Up Google Earth Engine
+
+### Step 1: Create a Google Account
+
+GEE requires a Google account. If you do not already have one, create a free account at [https://accounts.google.com](https://accounts.google.com). Use an institutional email address (university or research organization) if possible, as this can facilitate the approval process.
+
+### Step 2: Register for a GEE Account
+
+GEE access requires prior registration. Navigate to the Earth Engine registration page:
+
+[https://earthengine.google.com/register](https://earthengine.google.com/register)
+
+Select **Register a Noncommercial or Commercial Cloud project**. On the next screen, choose **Unpaid usage** and then select the project type that best describes your work (e.g., *Academia & Research*).
+
+:::warning-box
+**Note on Account Approval**
+
+GEE registration is subject to manual review by Google. Approval typically takes between a few hours and two business days. You will receive a confirmation email once your account is activated. Register well in advance of any practical session that requires GEE access.
+:::
+
+### Step 3: Create or Select a Google Cloud Project
+
+GEE now operates within the Google Cloud infrastructure. During registration you will be prompted to either create a new Google Cloud project or link an existing one. For training purposes, create a new project with a descriptive name such as `soilfer-training`. Note the **Project ID**, as you will need it when initializing GEE from Python or when sharing scripts with colleagues.
+
+### Step 4: Access the GEE Code Editor
+
+Once your account is approved, open the JavaScript-based Code Editor at:
+
+[https://code.earthengine.google.com](https://code.earthengine.google.com)
+
+The GEE Code Editor ([https://code.earthengine.google.com](https://code.earthengine.google.com)) is a browser-based integrated development environment (IDE) designed specifically for writing, testing, and running Earth Engine scripts in JavaScript. It requires no local software installation beyond a modern web browser and provides immediate access to the full GEE API and data catalog. Figure \@ref(fig:gee-editor) shows a schematic of the interface layout.
+
+```{r gee-editor, echo=FALSE, fig.cap="Layout of the Google Earth Engine Code Editor interface.", out.width="100%"}
+knitr::include_graphics("images/module1/gee_editor.png")
+```
+
+The interface is organized into four functional zones: a left panel with navigation and data discovery tools, a central code editing area, a right panel for output inspection and task management, and a lower interactive map.
+
+#### Left Panel: Scripts, Assets, and Documentation
+
+The left panel is divided into three tabs. The **Scripts** tab provides a personal repository for saving and organizing your GEE scripts, organized into folders. Scripts can be shared with other GEE users by generating a link, which is useful for collaborative training exercises. A **Reader** and **Writer** permission system controls who can view or edit shared scripts. The **Examples** folder within the Scripts tab contains a large collection of community-contributed scripts covering common use cases, which serve as an excellent learning resource.
+
+The **Assets** tab allows you to upload and manage personal geospatial assets --- raster images, vector feature collections, or tables --- that can then be loaded into scripts using `ee.Image()` or `ee.FeatureCollection()` calls. The FAO GSP shared assets used in this training (e.g., CHELSA climate layers and OpenLandMap terrain derivatives) are hosted in a shared project asset folder (`projects/digital-soil-mapping-gsp-fao`) that your account must be authorized to access.
+
+The **Docs** tab provides a searchable, offline-accessible reference for the entire JavaScript GEE API. Every function, data type, and parameter is documented here with descriptions and usage examples. When you are uncertain about a function's arguments or return type, searching Docs is usually faster than consulting external documentation.
+
+#### Central Panel: The Code Editor
+
+The central panel is where scripts are written and executed. It provides syntax highlighting for JavaScript, basic autocompletion for GEE API methods, and inline error indicators. Scripts are saved automatically to your personal repository. The toolbar above the editor contains several important controls:
+
+The **Run** button (or `Ctrl+Enter` / `Cmd+Enter`) executes the entire script. GEE processes the script server-side, so execution does not transfer data to your browser --- only the final computed outputs and any `print()` statements are returned. This means that even very large computations feel responsive in the editor, as you are only waiting for metadata and visualization tiles rather than raw data downloads.
+
+The **Save** button commits the current script state to your repository. It is good practice to save frequently and to use the **Get Link** button to generate a shareable URL that encodes the current script state. This URL is particularly useful for sharing reproducible workflows in a training context.
+
+The **Reset** button clears all layers from the map and resets the console, without deleting your script. Use this when you want to re-run a script cleanly after making changes.
+
+The **Apps** button allows you to publish a script as a standalone GEE application with a simplified user interface, which is useful for sharing tools with non-technical audiences.
+
+
+### Right Panel: Console, Inspector, and Tasks
+
+The right panel has three tabs that serve distinct purposes during script development and execution.
+
+The **Console** tab displays the output of `print()` statements in your script. Printing an Earth Engine object such as an image collection or feature collection shows its metadata: the number of elements, band names, projection, spatial extent, and property dictionary. This is the primary tool for debugging scripts and verifying that filtering and processing steps are producing the expected results. For example, printing the Sentinel-2 collection after applying cloud filters confirms how many scenes are available before computing the median composite.
+
+The **Inspector** tab activates a point-query tool. When active, clicking any location on the map returns the pixel values of all currently displayed layers at that point, along with their band names and data types. This is particularly useful for quickly checking that computed indices or terrain derivatives have realistic values across the study area without exporting the full raster.
+
+The **Tasks** tab is essential for managing data exports. GEE does not automatically execute export operations when a script is run --- instead, exports are queued as tasks that must be submitted manually. After running a script that contains `Export.image.toDrive()` calls, pending tasks appear in this tab with a yellow **Run** button. Clicking **Run** for each task opens a dialog where you can confirm or modify the export parameters (description, folder, scale, CRS) before submission. Once submitted, tasks progress through *READY*, *RUNNING*, and *COMPLETED* states. Completed exports appear in the designated Google Drive folder as GeoTIFF files. Failed tasks display an error message that can help diagnose issues related to computation limits, memory, or invalid geometries.
+
+### Lower Section: The Interactive Map
+
+The lower section of the Code Editor is an interactive map, similar in functionality to Google Maps, onto which computed layers are rendered as tiled overlays. Layers are added using `Map.addLayer()`, which accepts an Earth Engine image or feature collection, a visualization parameter dictionary specifying band names, color palettes, and value ranges, and an optional display name.
+
+The map toolbar provides tools for navigating (pan and zoom), measuring distances, and drawing geometries. The geometry drawing tools --- point, line, polygon, and rectangle --- allow you to define regions of interest directly on the map and reference them as variables in your script. This is a convenient way to quickly define a custom study area without needing to upload a vector file. Drawn geometries are automatically added to the **Geometry Imports** section at the top of the script.
+
+The layer manager in the upper right corner of the map lists all currently added layers with toggle controls for visibility and opacity sliders. Each layer can be independently shown or hidden, making it easy to compare multiple products --- for instance, toggling between the ESA WorldCover land cover and the Sentinel-2 RGB composite to verify that the cropland mask aligns with visible agricultural patterns.
+
+:::warning-box
+**Browser Compatibility**
+
+The GEE Code Editor is optimized for Google Chrome. While it functions in other modern browsers (Firefox, Edge), some features such as autocompletion and the geometry import panel may behave differently. For the best experience during training sessions, use an up-to-date version of Google Chrome.
+:::
+
+
+### Step 5: Prepare Your Google Drive Export Folder
+
+The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named `GEE_Exports` in the root of your Google Drive at [https://drive.google.com](https://drive.google.com). This folder name is referenced explicitly in the export configuration of the script (see the `exportFolder` variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.
+
+
+## The SoilFER Environmental Covariates Script
+
+The script provided for this training (`1_gee_soilfer_env_covariates.txt`) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.
+
+**Climate data** is sourced from two complementary products. 
+
+  - **CHELSA** (Climatologies at High resolution for the Earth's Land Surface Areas) provides long-term bioclimatic variables including mean annual temperature (bio1), annual precipitation (bio12), and extreme temperature and precipitation metrics (bio5, bio6, bio13, bio14, bio16, bio17), alongside potential evapotranspiration computed using the Penman-Monteith method and surface wind statistics. 
+  
+  - **TerraClimate** contributes monthly time series of maximum and minimum temperature, precipitation, and potential evapotranspiration spanning 1981 to the present, which are exported as multi-band images for subsequent temporal aggregation in R.
+
+**Terrain data** is derived from the USGS SRTM 30 m Digital Elevation Model, from which slope, aspect, Topographic Position Index (TPI), and hillshade are computed on-the-fly within GEE. Geomorphological landform classification at 90 m resolution is obtained from the `Geomorpho90m` dataset. Additionally, pre-computed terrain derivatives at 250 m resolution (elevation, slope, curvature, TPI, TWI) are loaded from the FAO GSP shared GEE asset library hosted at `projects/digital-soil-mapping-gsp-fao`.
+
+**Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
+
+**Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
+
+All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.
+
+
+## Running the Script
+
+Copy the full contents of `1_gee_soilfer_env_covariates.txt` into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.
+
+The `aoi` variable defines the `area of interest`. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:
+
+```javascript
+var aoi = ee.FeatureCollection('TIGER/2018/States')
+  .filter(ee.Filter.eq('NAME', 'Kansas'));
+```
+
+To adapt the script to a different study area, replace this definition with a custom geometry or a different administrative boundary. Update `countryName` to a short descriptor used in the exported file names.
+
+The date range for TerraClimate is controlled by `climateStartDate` and `climateEndDate`. The default configuration covers the full 1981--2023 record. For exploratory or training purposes, restricting this range (e.g., 2000--2023) reduces processing time and export file sizes.
+
+Export spatial resolutions are defined individually for each product category, reflecting the native resolution of each data source: 250 m for the primary CHELSA/MODIS covariate stack, 100 m for high-resolution terrain and Sentinel-2 layers, 90 m for geomorphons, 20 m for the cropland mask, and 4000 m for TerraClimate time series.
+
+Click **Run** to execute the script. Visualization layers (SRTM DEM, Sentinel-2 RGB composite, and cropland mask) will appear on the map immediately. Export tasks do not start automatically --- navigate to the **Tasks** tab in the right panel and click **Run** next to each pending task to initiate the exports to Google Drive.
+
+:::warning-box
+**Processing Time and Quotas**
+
+Large exports, particularly TerraClimate time series and Sentinel-2 layers over large regions, can take tens of minutes to several hours depending on server load and area size. GEE free-tier accounts are subject to computation quotas. If a task fails with a computation timeout or memory error, consider reducing the export resolution or splitting the time series into shorter periods. Monitor task progress in the **Tasks** tab; completed files will appear in your `GEE_Exports` Google Drive folder once finished.
+:::
+
+Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the `terra` package and stacked into the covariate array used for model training and spatial prediction.
+
+
+
+
