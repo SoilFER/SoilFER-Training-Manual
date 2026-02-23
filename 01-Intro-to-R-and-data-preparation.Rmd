@@ -1210,15 +1210,12 @@ These two packages will be using along this tutorial to script spatial workflows
 
 ### Vector vs Raster Data
 
-Spatial data is commonly stored in two major formats: vector and raster (Figure 3).
+Spatial data is commonly stored in two major formats: vector and raster (Fig. \@ref(fig:VectRast)) .
 
-<br>
 
-```{r VectRast, echo=FALSE, fig.cap="<br>*Figure 3: Vector vs raster data representations*", out.width='80%'}
+```{r VectRast, echo=FALSE, fig.cap="Vector vs raster data representations", out.width='100%'}
 knitr::include_graphics("images/module1/vectorVSraster.png")
 ```
-<br>
-
 
 Vector datasets represent features as geometries (POINT, LINE, POLYGON) linked to an attribute table. They are ideal for representing discrete spatial objects such as soil sampling points, field boundaries, or landscape units.
 
@@ -1275,22 +1272,17 @@ The choice of CRS has a major impact on the accuracy of distances, areas, buffer
 
 #### Geographic vs projected coordinate systems.
 
-In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example: EPSG:4326 WGS84).
+In Geographic Coordinate Systems (GCS), coordinates are expressed in latitude and longitude with units in `degrees` (°) (e.g. common example:`EPSG:4326 (WGS84)`).
 
-Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Figure 4).
-This leads to distortions in distances areas calculations.
+Geographic Coordinate Systems are good for storing global data, but not suitable for distance, area, or buffering calculations because degrees are angular units, and the physical distance of one degree changes with latitude (Fig. \@ref(fig:degreeLat)) . This leads to distortions in distances areas calculations.
 
-
-<br>
-
-```{r degreeLat, echo=FALSE, fig.cap="<br>*Figure 4: Distance distortion in GCS, where the physical distance of one degree varies by latitude*", out.width='80%'}
+```{r degreeLat, echo=FALSE, fig.cap="Distance distortion in GCS, where the physical distance of one degree varies by latitude", out.width='100%'}
 knitr::include_graphics("images/module1/degreeEq.png")
 ```
-<br>
 
 
 Projected Coordinate Systems (PCS) have been designed to reduce distortion over a specific region. In PCS coordinates are expressed in linear units (usually meters) and are used for accurate geometric operations (distance, area, buffers).
-Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), national grid systems and local projections optimized for area-specific precision.
+Typical examples for PCS include UTM zones (e.g., `EPSG:32614`, `EPSG:32632`), national grid systems and local projections optimized for area-specific precision.
 
 ::: highlights
 -   Always check the units in `st_crs()` before doing geometric calculations.
@@ -1304,7 +1296,7 @@ Typical examples for PCS include UTM zones (e.g., EPSG:32614, EPSG:32632), natio
 
 
 
-## **Spatial Packages in R: `{sf}` and `{terra}`**
+## Spatial Packages in R: `{sf}` and `{terra}`
 
 ### Installing and Loading Spatial Packages
 
@@ -1338,7 +1330,7 @@ You already learned how to install R packages in Module 1, so here we just show 
 :::
 
 
-### **Working with Vector Data using `{sf}`**
+### Working with Vector Data using `{sf}`
 
 The `{sf}` package implements the *Simple Features* standard for spatial vector data in R.
 
@@ -1657,25 +1649,9 @@ ggplot(data = soil_sf) +
 ```
 
 
-
 ------------------------------------------------------------------------
   
-  ## The `{terra}` Package (Raster & Vector)
-  
-  -   SpatRaster and SpatVector objects.
 
--   Differences from older `{raster}` package.
-
--   Why `{terra}` is recommended in this course.
-
--   
-  
-  ## **Working with Vector Data using `{sf}`**
-  
-
-  
-
-## **Working with Raster Data using `{terra}`**
 
 ### Importing Raster Data
 
