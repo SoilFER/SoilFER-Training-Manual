@@ -620,7 +620,7 @@ With this setup, users can easily run and manage the GloSIS-ETL platform and its
 
 The `docker-compose.yml` file defines the complete GloSIS-ETL service architecture. Below is a summary of its key components:
 
-```{r docker-compose-summary, echo=FALSE}
+```{r docker-compose-summary, echo=FALSE, warning = FALSE}
 dc_summary <- data.frame(
   Component = c("postgis", "glosis-etl", "pgadmin (optional)",
                 "glosis-db-data", "glosis-net"),
@@ -653,4 +653,9 @@ SHINY_LOG_LEVEL=INFO        # Options: DEBUG, INFO, WARN, ERROR
 R_MAX_MEM_SIZE=2Gb          # R memory limit
 ```
 
-> **CAUTION:** For production deployments, always change the default password (`glosis`) to a secure value.
+:::warning-box
+**CAUTION:**
+
+- For production deployments, always change the default password (`glosis`) to a secure value.
+:::
+
