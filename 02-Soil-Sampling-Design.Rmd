@@ -51,7 +51,7 @@ If the main goal of a sampling design is to map soil properties, non-probability
 
 In addition to the aforementioned methods, there are sampling approaches designed to produce samples that are evenly distributed across the study area, known as spatially balanced designs. These methods ensure that all areas are considered for inclusion in fieldwork, often requiring fewer samples compared to simple random sampling (SRS). Generalized Random Tessellation Stratified (GRTS) sampling [@stevens1999] and BAS are two popular approaches within the balanced sampling framework. The rationale behind these methods is that for estimating overall properties over a landscape, such as mean soil carbon, the estimate is most reliable when samples cover all areas of interest. While SRS, GRTS, and BAS are among the many sampling methods available, each with its own set of advantages and disadvantages, selecting the most suitable method can be daunting for field scientists. They often need to choose sites for fieldwork while adhering to constraints such as budget and time. For instance, the GRTS method can be used to provide a spatially balanced, probability sample with design-based, unbiased variance estimators with a minimum sample size.
 
-```{r design-comparison, echo=FALSE}
+```{r design-comparison, echo=FALSE, warning=FALSE}
 library(knitr)
 design_types <- data.frame(
   "Sampling Design" = c("Simple Random (SR)", "Stratified Simple Random (SSR)", 
@@ -96,7 +96,7 @@ In the literature, covariate space coverage (CSC) sampling has proven to be more
 
 Understanding and assessing soil properties are critical for evaluating soil health, guiding fertiliser recommendations, and informing land management decisions. In the SoilFER project, both chemical and physical soil attributes are measured to provide a comprehensive evaluation of soil quality and health (Table \@ref(tab:soil-properties)). Some key chemical properties include soil organic carbon, pH, cation exchange capacity, and nutrient levels such as nitrogen, phosphorus, and potassium. On the physical side, attributes like soil texture, soil depth, rockiness of surface soil, drainage, surface cracks, soil color, soil erosion and gypsum content are analyzed to understand soil structure, compaction, and water infiltration rates. Collectively, these attributes offer valuable insights into the soil's ability to support plant growth, resist erosion, and store carbon, making them indispensable for both mapping soil health and tailoring site-specific fertilizer recommendations. While biological indicators are widely recognised as important components of soil health assessment, they are not included in the current survey framework. Their omission reflects considerations related to methodological harmonisation, analytical complexity, and resource allocation within a large-scale, multi-country implementation. Biological measurements often require specialised laboratory protocols, strict sample handling procedures, and advanced analytical infrastructure to ensure comparability across regions. Given the project's emphasis on harmonised, scalable, and operationally feasible methodologies, the present design prioritises chemical and physical indicators that can be consistently standardised across participating countries.
 
-```{r soil-properties, echo=FALSE}
+```{r soil-properties, echo=FALSE, warning=FALSE}
 properties <- data.frame(
   Category = c(rep("Chemical", 8), rep("Physical", 8)),
   Property = c("Soil Organic Carbon", "pH", "Cation Exchange Capacity", "Total Nitrogen",
@@ -121,7 +121,7 @@ Environmental covariates, also referred to as explanatory or environmental varia
 
 Additionally, a second set of **24 environmental covariates** (Table \@ref(tab:ssu-covariates)) is used to refine site selection at farm level. This high-resolution dataset (e.g., ≤ 90 m pixel resolution) was upscaled to match the SSU size (100m × 100m), ensuring that each SSU is characterized by a single representative value for each covariate. This significantly enhances the precision of SSU selection by capturing finer spatial variability. If additional high-resolution environmental covariates are available for a given country, it is highly recommended to incorporate them into the analysis to further improve sampling precision. These two sets of environmental covariates were carefully chosen based on their relevance to soil formation processes, spatial variability, and their role as proxies for key soil properties. Further information on how to retrieve these environmental covariates can be found in the SoilFER GitHub repository.
 
-```{r psu-covariates, echo=FALSE}
+```{r psu-covariates, echo=FALSE, warning=FALSE}
  library(knitr)
 
 # Define number of variables per source
@@ -196,7 +196,7 @@ kable(
 
 > **Note**: NSM, Normalized Soil Moisture; SWIR, Shortwave Infrared. Full list contains 85 variables.
 
-```{r ssu-covariates, echo=FALSE}
+```{r ssu-covariates, echo=FALSE, warning=FALSE}
 library(knitr)
 
 ssu_covs <- data.frame(
