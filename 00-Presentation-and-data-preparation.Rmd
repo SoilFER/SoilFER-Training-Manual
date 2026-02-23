@@ -22,32 +22,6 @@ The objectives of this manual are to:
 By integrating these components, the manual equips users to move from raw samples to reliable soil information products that inform policy, guide sustainable soil management, and strengthen food and nutrition security. 
 
 
-## What this Tutorial is not {-}
-
-::: highlights
-
-This is not a comprehensive course on R, statistics, or modeling. Instead, it focuses on the essential skills needed to work effectively with soil data.
-
-The main strength of this tutorial is that it provides a complete learning environment that combines lessons, hands-on examples, and assessments—with a strong emphasis on soil data workflows. The goal is to help you build practical skills in soil data management, soil sampling design, Digital Soil Mapping, and soil spectroscopy using R.
-
-For more information, we recommend the following dedicated resources:
-
-[R for Data Science (Grolemund & Wickham, 2017)](https://r4ds.had.co.nz/ "R for Data Science") : A free, beginner-friendly guide to doing data science with R, emphasizing best practices for reproducible and efficient analysis.
-
-[Spatial Sampling with R (DJ Brus, 2023)](https://dickbrus.github.io/SpatialSamplingwithR/ "Spatial Sampling with R") : A practical guide to designing and analyzing spatial surveys in R, with examples and exercises for environmental and natural resource studies.
-
-[Predictive Soil Mapping with R (Hengl & MacMillan, 2019)](https://soilmapper.org/ "Predictive Soil Mapping with R"): [@hengl2019] An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
-
-[Statistics for Soil Survey (Soil Survey Staff, 2025)](https://ncss-tech.github.io/stats_for_soil_example/ "USDA Statistics for Soil Survey"): An open, R-based textbook covering core statistical methods for soil survey,  with practical examples and a strong focus on *Algorithms for Quantitative Pedology* using the`{aqp}` package.
-
-[Spatial Data Science: With Applications in R (Pebesma & Bivand, 2023)](https://rspatial.org/ "https://r-spatial.org/book/"): Book and online materials for spatial data analysis in R, with a focus on the `{sf}` package.
-
-[Spatial Data Science with R and 'terra'](https://rspatial.org/ "Spatial Data Science with R and 'terra'"): Online materials for spatial data analysis and modeling in R, with a focus on `{terra}`.
-
-[What They Forgot to Teach You About R](https://rstats.wtf/): A short, practical guide with tips and workflows for working effectively in R.
-:::
-
-
 ## The Training Dataset {-}
 
 This manual uses the **KSSL (Kellogg Soil Survey Laboratory) soil dataset from Kansas, USA** as a comprehensive example for implementing the complete Digital Soil Mapping (DSM) workflow. The dataset provides a realistic foundation for learning DSM techniques, from inspection and cleaning of raw soil laboratory data through advanced spatial modeling and uncertainty assessment. It also demonstrates the integration of soil spectroscopy data and its application in operational DSM production.
@@ -367,31 +341,27 @@ This community continuously develops new tools and packages that extend R's capa
 
 R is particularly well-suited for soil science applications because it offers comprehensive tools for:
 
--   **Data management**: Efficiently handle, clean, and transform large soil datasets
+-   *Data management*: Efficiently handle, clean, and transform large soil datasets
 
--   **Statistical analysis**: Perform descriptive and inferential statistics, ANOVA, regression models, and more
+-   *Statistical analysis*: Perform descriptive and inferential statistics, ANOVA, regression models, and more
 
--   **Spatial analysis**: Work with geographic data using packages like `{terra}` and `{sf}`
+-   *Spatial analysis*: Work with geographic data using packages like `{terra}` and `{sf}`
 
--   **Digital Soil Mapping**: Apply machine learning algorithms for predictive soil mapping
+-   *Digital Soil Mapping*: Apply machine learning algorithms for predictive soil mapping
 
--   **Visualization**: Create publication-quality maps, charts, and graphs using `{ggplot2}` and other visualization tools
+-   *Visualization*: Create publication-quality maps, charts, and graphs using `{ggplot2}` and other visualization tools
 
--   **Reproducibility**: Share analyses through scripts that others can replicate and verify
+-   *Reproducibility*: Share analyses through scripts that others can replicate and verify
 
 In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soil Mapping initiatives, R provides standardized workflows that promote collaboration, transparency, and scientific rigor.
 
-::: highlights
- - R is a analytical go-to platform which unites statistical, spatial, and visualization capabilities in a single ecosystem.
- - It powers digital soil mapping, supports machine learning and reproducible reporting, and connects seamlessly with GIS and database tools.
-
-:::
 
 To start using R, you need two main components:
 
 1.  **R**: The core programming language and computational engine
 
 2.  **RStudio**: An integrated development environment (IDE) that makes working with R easier
+
 
 ### Installing R
 
@@ -545,9 +515,24 @@ The GEE Code Editor is optimized for Google Chrome. While it functions in other 
 The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named `GEE_Exports` in the root of your Google Drive at [https://drive.google.com](https://drive.google.com). This folder name is referenced explicitly in the export configuration of the script (see the `exportFolder` variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.
 
 
+## Installation of QGIS
+QGIS is a free and open-source desktop GIS application used to visualise and inspect spatial datasets. The Long-Term Release (LTR) version is recommended for stability.
+Go to the [QGIS download page](https://qgis.org/download/) and choose your installation: 
+
+### Windows
+  • Use the OSGeo4W installer.
+
+  • Choose "Express Install" and select either QGIS (latest) or QGIS LTR (stable long-term support).
+
+### macOS / Linux
+  • Use the installers or package-manager instructions shown on the QGIS download page for your operating system.
+    
+    
 ## Installation of Docker Desktop and Docker Compose
 
-**Docker Desktop** is the application you install on your computer to run Docker containers locally. It provides the Docker engine, a graphical interface to manage running containers and images, and it bundles **Docker Compose** as an integrated component, so no separate installation of Compose is required.
+Docker is an open-source platform that lets you build, deploy, and run applications inside lightweight, portable units called containers. A container bundles the code, runtime, libraries, and configuration into a single package, so the application behaves identically on any machine – Windows, macOS, or Linux.
+
+The `GloSIS-ETL` application used in module 4 is delivered as a set of 2 Docker containers that runs and are orchestrated simultaneously with a single command. **Docker Desktop** is the GUI tool that manages containers on your local machine. It provides the Docker engine, a graphical interface to manage running containers and images, and bundles Docker Compose as an integrated component, so no separate installation of Compose is required.
 
 **Docker Compose** is a tool used to define and run multi-container Docker applications. Rather than starting each container individually, Compose reads a single configuration file (`docker-compose.yml`) that describes all the services, their dependencies, and how they connect to each other, then starts everything with a single command. The key benefits of this approach include:
 
@@ -555,72 +540,60 @@ The SoilFER covariate extraction script exports raster files directly to your Go
 -   **Predefined Configuration**: Ensures all services are correctly configured and work together.
 -   **Portability**: The same configuration runs on Windows, macOS, and Linux without modification.
 
-The GloSIS-ETL application used in Module 4 is a multi-container system managed by **Docker Compose**. Installing **Docker Desktop** is therefore the only prerequisite. It provides both the container runtime and the Compose tool needed to deploy GloSIS.
+Installing **Docker Desktop** is the only prerequisite to deploy the `GloSIS-ETL`.
 
-### Install Docker Desktop
+### Windows
 
-#### Windows
+**System requirements**: Windows 10 (build 19041 or later) or Windows 11, with hardware virtualization enabled. On most modern machines this is already active, but if Docker fails to start, check your BIOS settings and enable virtualization manually. See Enable [Virtualization on Windows](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) for guidance.
 
-1.  **Enable Hyper-V**
+**Installation steps**:
+    1. **Check that Hyper-V is enabled**. Open the Start menu, type Turn Windows features on or off, and press Enter. In the list that appears, verify that Hyper-V and Hyper-V Module for Windows PowerShell are both checked. If they are not, enable them and restart your computer before continuing. The Docker Desktop installer will attempt to enable Hyper-V automatically in most cases, but verifying this beforehand avoids installation failures. For manual installation instructions see [Install Hyper-V on Windows](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V). 
+    
+    2. **Download Docker Desktop** from the [official website](https://docs.docker.com/desktop/install/windows-install/) and run the installer. 
+    
+    3. **Follow the installation prompts**, accepting the default settings. When asked, enable **WSL 2** (Windows Subsystem for Linux), which is required for running Linux containers on Windows. 
+    
+    4. **Restart your computer** once the installation completes. 
+    
+    5. **Launch Docker Desktop** from the Start menu. Wait until the whale icon in the system tray turns green, which confirms the Docker engine is running and the application is ready to use.
+    
 
-    Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerShell to be installed and enabled. In most systems, the Docker Desktop installer enables it for you.
-
-    To test if Hyper-V is enabled, go to the start menu and type:
-
-    ```         
-    Turn Windows features on or off
-    ```
-
-    and press enter. In the subsequent screen, verify that Hyper-V is enabled.
-
-    To install Hyper-V manually, see [Install Hyper-V on Windows 10](https://learn.microsoft.com/es-es/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V?pivots=windows-server). A reboot is required after installation. If you install Hyper-V without rebooting, Docker Desktop does not work correctly.
-
-    In some Windows systems, [Virtualization](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) must be enabled in the BIOS. Note that many Windows devices already have virtualization enabled, so this may not apply.
-
-2.  Download **Docker Desktop for Windows** from the [official website](https://docs.docker.com/desktop/install/windows-install/).
-
-3.  Run the installer and follow the on-screen instructions.
-
-4.  After installation, restart your computer.
-
-5.  Open **Docker Desktop** and ensure it is running.
-
-#### macOS
+### macOS
 
 1.  Download **Docker Desktop for Mac** from the [official website](https://docs.docker.com/desktop/install/mac-install/). Choose the correct version for your processor (**Apple Silicon** or **Intel**).
 2.  Open the `.dmg` file and drag **Docker** into the Applications folder.
 3.  Start **Docker Desktop** and allow any requested system permissions.
 
-#### Linux
+### Linux
 
 1.  Open a terminal and run the following commands:
 
-    ``` bash
-    sudo apt update
-    sudo apt install docker.io docker-compose -y
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    ```
+``` bash
+  sudo apt update
+  sudo apt install docker.io docker-compose -y
+  sudo systemctl start docker
+  sudo systemctl enable docker
+```
 
 2.  Add your user to the Docker group (to run Docker without `sudo`):
 
-    ``` bash
-    sudo usermod -aG docker $USER
-    ```
+``` bash
+  sudo usermod -aG docker $USER
+```
 
 3.  **Log out and log back in** (or restart your computer) for the group change to take effect.
 
 4.  Verify Docker is running:
 
-    ``` bash
-    docker --version
-    ```
+``` bash
+docker --version
+```
 
-    If the installation was successful, you should see output similar to:
+If the installation was successful, you should see output similar to:
 
-    ```         
-    Docker version 24.0.5, build 123456
-    ```
+``` bash
+  Docker version 24.0.5, build 123456
+```
 
 
 #	Introduction to R programming {-}
@@ -633,9 +606,7 @@ The GloSIS-ETL application used in Module 4 is a multi-container system managed 
 knitr::include_graphics("images/module1/RStudio-interface.png")
 ```
 
-### 1. Console Pane (Bottom Left)
-
-The **Console** is where R code is executed.
+The **Console**  (Bottom Left) is where R code is executed.
 You can type commands directly here or run them from your script.
 The Console displays results, warnings, and error messages.
 
@@ -647,9 +618,7 @@ The Console displays results, warnings, and error messages.
 # [1] 15
 ```
 
-### 2. Code Editor Pane (Top Left)
-
-You can write commands directly in the Console and execute them line by line. However, it is usually more convenient to write code in a script editor—the **Code Editor** pane. Here you can create and edit R scripts (`.R` files), R Markdown documents (`.Rmd` files), and other file types. Scripts allow you to save your code and run it repeatedly, which is essential for reproducible analysis.
+You can write commands directly in the Console  (Top Left) and execute them line by line. However, it is usually more convenient to write code in a script editor—the **Code Editor** pane. Here you can create and edit R scripts (`.R` files), R Markdown documents (`.Rmd` files), and other file types. Scripts allow you to save your code and run it repeatedly, which is essential for reproducible analysis.
 
 Working in the **Code Editor** also makes it easier to organize code for later use. You can send any line or selected block of code to the **Console** for execution by pressing `Ctrl + Enter` (Windows/Linux) or `Cmd + Enter` (macOS). You can also run code by clicking the **Run** button in the top-right corner of the **Code Editor** pane.
 
@@ -664,13 +633,13 @@ Working in the **Code Editor** also makes it easier to organize code for later u
 
 :::
 
-### 3. Environment/History Pane (Top Right)
+Top Right Pane (Environment/History) is divided into:
 
 -   **Environment**: Shows all objects (variables, datasets, functions) currently in your R session
 
 -   **History**: Records all commands you've run during the session
 
-### 4. Files/Plots/Packages/Help Pane (Bottom Right)
+Finally, the Bottom Right Pane shows
 
 -   **Files**: Browse your computer's file system
 
@@ -688,7 +657,6 @@ Working in the **Code Editor** also makes it easier to organize code for later u
 - Scripts preserve your workflow and make your analysis reproducible.
 
 :::
-
 
 ## R Packages: Extending R's Capabilities
 
@@ -718,7 +686,7 @@ For soil science work, key packages include:
 Packages need to be installed once before you can use them.
 Use `install.packages()`:
 
-```{r install-packages, echo=TRUE, eval=FALSE}
+```{r install-package, echo=TRUE, eval=FALSE}
 # Install a single package
 install.packages("tidyverse")
 
@@ -733,7 +701,7 @@ You can check which *{packages}* are installed with:
 ```{r installed-packages, echo=TRUE, eval=FALSE}
 installed.packages()
 ```
-<br>
+
 
 #### Install Packages from GitHub or Other Sources
 
@@ -2351,20 +2319,24 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 :::
 
 
+## Additional resources {#r-resources}
+
+[R for Data Science (Grolemund & Wickham, 2017)](https://r4ds.had.co.nz/ "R for Data Science") : A free, beginner-friendly guide to doing data science with R, emphasizing best practices for reproducible and efficient analysis.
+
+[Spatial Sampling with R](https://dickbrus.github.io/SpatialSamplingwithR/ "Spatial Sampling with R")[@brus2022b]: A practical guide to designing and analyzing spatial surveys in R, with examples and exercises for environmental and natural resource studies.
+
+[Predictive Soil Mapping with R](https://soilmapper.org/ "Predictive Soil Mapping with R") [@hengl2019]: An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
+
+[Statistics for Soil Survey (Soil Survey Staff, 2025)](https://ncss-tech.github.io/stats_for_soil_example/ "USDA Statistics for Soil Survey"): An open, R-based textbook covering core statistical methods for soil survey,  with practical examples and a strong focus on *Algorithms for Quantitative Pedology* using the`{aqp}` package.
+
+[Spatial Data Science: With Applications in R](https://rspatial.org/ "https://r-spatial.org/book/")[@pebesma2023]: Book and online materials for spatial data analysis in R, with a focus on the `{sf}` package.
+
+[Spatial Data Science with R and 'terra'](https://rspatial.org/ "Spatial Data Science with R and 'terra'"): Online materials for spatial data analysis and modeling in R, with a focus on `{terra}`.
+
+[What They Forgot to Teach You About R](https://rstats.wtf/): A short, practical guide with tips and workflows for working effectively in R.
+
+
 ## References {#references-m1}
-
- - Brus, D.J.(2022). Spatial Sampling with R, CRC Press, New York. https://dickbrus.github.io/SpatialSamplingwithR/
- 
- - Grolemund, G., & Wickham, H. (2017). R for Data Science. O’Reilly Media.
-
- - Hengl, T., & MacMillan, R. A. (2019). Predictive Soil Mapping with R. Zenodo. https://doi.org/10.5281/zenodo.2561035
-
- - Pebesma, E.; Bivand, R. (2023). Spatial Data Science: With Applications in R (1st ed.). 314 pages. Chapman and Hall/CRC, Boca Raton. https://doi.org/10.1201/9780429459016
-
- - Soil Survey Staff (2025). Statistics for Soil Survey. https://ncss-tech.github.io/stats_for_soil_example/
-
- - Spatial Data Science with R and 'terra' (2025). https://rspatial.org/
-
 
 
 
