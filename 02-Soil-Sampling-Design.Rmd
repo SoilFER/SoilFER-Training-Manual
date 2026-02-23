@@ -1,4 +1,3 @@
-
 # Sampling design for soil surveys
 
 ## Introduction {#introduction-ssd}
@@ -74,9 +73,9 @@ kable(design_types, caption = "Short description of pros and cons within each so
 
 ### Example: Soils4Africa Sampling Design {#soils4africa-example}
 
-The EU-funded project Soils4Africa[^1] aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project's purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:
+The EU-funded project Soils4Africa[^02-soil-sampling-design-1] aimed to provide open-access information about the condition and spatio-temporal dynamics of African soils, accompanied by a methodology for repeated soil monitoring and mapping across the African continent to support sustainable agriculture in Africa. The project's purpose was to monitor and map African Soils. Given this purpose, probability sampling was identified as the most suitable selection method. This method allowed both inference methods, design- and model-based mapping. Once the purpose, selection and inference methods are defined, the final step was to choose the appropriate sampling design, which was a three-stage random sampling. The sampling design was based in a hierarchical sampling method with involves the selection of sampling sites at three scale levels:
 
-[^1]: Soils4Africa Project Secretariat. Avaliable at: <https://www.soils4africa-h2020.eu/>
+[^02-soil-sampling-design-1]: Soils4Africa Project Secretariat. Avaliable at: <https://www.soils4africa-h2020.eu/>
 
 **Primary Sampling Units (PSUs)**: PSUs constitute the broadest spatial units within the study area, typically defined based on geographical, administrative, ecological boundaries, or soil management types. The size of each PSU is 4 square kilometers (2 × 2 km grid cells). The total number of PSUs selected depends on the sample size and ideally should be sufficient to cover the range of environmental gradients present in the study area.
 
@@ -224,9 +223,9 @@ ssu_covs <- data.frame(
     "Geomorphon Class", "Landform Type", "Terrain Unit"
   ),
   Resolution = c(
-    rep("90–100 m", 5),
-    rep("10–20 m", 10),
-    rep("10–20 m", 6),
+    rep("90-100 m", 5),
+    rep("10-20 m", 10),
+    rep("10-20 m", 6),
     rep("90 m", 3)
   ),
   stringsAsFactors = FALSE
@@ -312,17 +311,19 @@ Where: - `AAA` = Three-letter country ISO code (e.g., KEN for Kenya) - `####` = 
 
 **Example**: `KEN0001-1-1C` - Country: Kenya - PSU: 1 - SSU: 1 (target) - TSU: 1 (target) - Land use: Cropland
 
-```{r site-id, echo=FALSE, fig.cap="Deciphering the site identification.", out.width='60%'}
+```{r site-id, echo=FALSE, fig.cap="Deciphering the site identification.", out.width='100%'}
 knitr::include_graphics("images/module2/Fig_7_site_id.png")
 ```
 
 ## Tutorial using R {#tutorial}
 
-This tutorial is designed for users with a basic understanding of R programming and provides a comprehensive guide to implementing a soil sampling design for soil monitoring and mapping. All scripts and data are available at the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design).
+This tutorial is designed for users with a basic understanding of R programming and provides a comprehensive guide to implementing a soil sampling design for soil monitoring and mapping. All scripts and data are available in the [SoilFER Training Resources](https://github.com/SoilFER/SoilFER-Training-Resources/tree/main) GitHub repository specifically within the [scripts](02_scripts/module2) and [initial data](01_data/module2) directories.
 
-> **💡 Note**: Ensure you have the `tinytex`, `knitr`, `rmarkdown`, and `rstudioapi` R packages installed to successfully run and render R Markdown documents before running this script. Additionally, install tinytex by running `tinytex::install_tinytex()` to enable LaTeX support for PDF generation.
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: Ensure you have the `tinytex`, `knitr`, `rmarkdown`, and `rstudioapi` R packages installed to successfully run and render R Markdown documents before running this script. Additionally, install tinytex by running `tinytex::install_tinytex()` to enable LaTeX support for PDF generation.
+:::
 
-### Setting Up the Environment {#setup}
+### Setting up the environment {#setup}
 
 First, set the working directory to the location of your R script. This ensures that all paths in the script are relative to the script's location.
 
@@ -332,7 +333,7 @@ setwd("../") # Move wd down to the main folder
 getwd()
 ```
 
-#### Install Required Libraries {#install-libraries}
+### Install required libraries {#install-libraries}
 
 The script uses several R libraries, each serving a specific purpose (Table \@ref(tab:r-libraries)).
 
@@ -367,29 +368,33 @@ invisible(lapply(packages, library, character.only = TRUE))
 rm(packages)
 ```
 
-> **Alternative method**: In RStudio, use the **Packages** tab in the bottom-right pane → click **Install** → type package name → ensure "Install dependencies" is checked → click **Install**.
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**Alternative method**: In RStudio, use the **Packages** tab in the bottom-right pane → click **Install** → type package name → ensure "Install dependencies" is checked → click **Install**.
+:::
 
-### Define Variables and Parameters {#define-parameters}
+### Define variables and parameters {#define-parameters}
 
 Several variables and parameters must be defined to establish a consistent framework for the script.
 
-### Country ISO Code
+#### Country ISO code
 
 ```{r iso-code, eval=FALSE}
-ISO.code <- "ZMB"  # Zambia example
+ISO.code <- "KANSAS"  
 ```
 
-> **💡 Note**: Use the Alpha-3 ISO code for your country of interest.
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: Use the Alpha-3 ISO code for your country of interest.
+:::
 
-#### Land Use Type
+#### Land-use type
 
-The SoilFER project focuses on three primary land-use types: croplands (80%), grasslands (15%), and forests (5%).
+The SoilFER project focuses on three primary land-use types: croplands (85%), grasslands (10%), and forests (5%).
 
 ```{r landuse, eval=FALSE}
 landuse <- "crops"  # Options: "crops", "grassland", "forest"
 ```
 
-#### File Paths
+#### File paths
 
 ```{r file-paths, eval=FALSE}
 # Path to data folders
@@ -398,68 +403,63 @@ shp.path <- "data/shapes/"
 other.path <- "data/other/"
 landuse_dir <- paste0("data/results/", landuse, "/")
    
-# Check if landuse directory exists; if not, create it
-if (!file.exists(landuse_dir)) {
-  dir.create(landuse_dir)
-}
-
+# Check if the directory exists; if not, create it
+dir.create(other.path, showWarnings = FALSE, recursive = TRUE)
+dir.create("results",  showWarnings = FALSE, recursive = TRUE)
+if (!file.exists(landuse_dir)) dir.create(landuse_dir)
 results.path <- landuse_dir
 ```
 
-#### Coordinate Reference System
+#### Coordinate reference system
 
 ```{r crs, eval=FALSE}
-epsg <- "EPSG:3857"  # WGS 84 / Pseudo-Mercator
+epsg <- "EPSG:3857"  # NAD27 UTM Zone 14N – adjust for your study area
 # Find your CRS at: https://epsg.io/
 ```
 
-#### Sample Size Calculation
+#### Sample size calculation
 
 ```{r sample-size, eval=FALSE}
+# Manual set-up
 nsamples <- 300  # Total sampling sites
 share <- 0.80    # 80% for this land use (croplands)
 nsites <- nsamples * share  # Final number of sites
 
-# However, we will calculate the optimal sample size statistically later
 ```
 
-#### Sampling Unit Definitions
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: Optimal sample size (N) is calculated statistically later.
+:::
+
+#### Sampling unit definitions
 
 ```{r sampling-units, eval=FALSE}
-# Define the number of PSUs to sample
-n.psu <- round(nsamples/8)  # Will be optimized later
-  
 # Define PSU and SSU sizes 
-psu_size <- 2000  # 2km × 2 km
-ssu_size <- 100   # 100m × 100m = 1 ha
-  
+psu_size <- 2000   # PSU: 2km × 2 km
+ssu_size <- 100    # SSU: 100m × 100m = 1 ha
+
 # Define number of target and alternative SSUs at each PSU
-num_primary_ssus <- 4
-num_alternative_ssus <- 4
-    
-# Define number of TSUs at each SSU
-number_TSUs <- 3
+num_primary_ssus     <- 4   # Target SSUs per PSU
+num_alternative_ssus <- 4   # Replacement SSUs per PSU
+number_TSUs          <- 3   # TSU points per SSU
 ```
 
-#### Algorithm Parameters
+#### Algorithm parameters
 
 ```{r algorithm-params, eval=FALSE}
-# Number of iterations for clustering algorithm
-iterations <- 10  # 10 is sufficient
-
-# Minimum crop percentage in selected PSUs
-percent_crop <- 10  # At least 10% crop coverage
+iterations   <- 10   # K-means random starts
+percent_crop <- 20   # Minimum crop coverage for PSU selection (%)
 ```
 
-### Custom Functions {#custom-functions}
+### Custom functions {#custom-functions}
 
-#### Covariate Space Coverage Function (CSIS)
+#### Covariate Space Coverage (CSIS)
 
 The CSIS function is the backbone of clustering sampling units in covariate space. It ensures optimal distribution while considering any fixed legacy data.
 
 **How it works**:
 
-1.  **Input Parameters**:
+1.  **Input parameters**:
     -   `fixed`: Preselected (legacy) sampling points
     -   `nsup`: Number of additional (new) sampling points to select
     -   `nstarts`: Number of random starting points for clustering
@@ -474,8 +474,14 @@ The CSIS function is the backbone of clustering sampling units in covariate spac
     -   Save best clustering result
 
 ```{r csis-function, eval=FALSE}
-# Clustering CSC function with fixed legacy data
+## This function performs constrained k-means clustering
 CSIS <- function(fixed, nsup, nstarts, mygrd) {
+  # Args:
+  #   fixed: Data frame of fixed legacy points
+  #   nsup: Number of supplementary points to select
+  #   nstarts: Number of random starts for optimization
+  #   mygrd: Grid of all potential sampling locations
+  
   n_fix <- nrow(fixed)
   p <- ncol(mygrd)
   units <- fixed$units
@@ -496,7 +502,7 @@ CSIS <- function(fixed, nsup, nstarts, mygrd) {
         centers[, i] <- tapply(mygrd[, i], INDEX = cluster, FUN = mean)
       }
       
-      # Restore fixed centers
+      # Restore fixed centers (legacy data points don't move)
       centers[1:n_fix, ] <- centers_cur[1:n_fix, ]
       
       # Check convergence
@@ -514,34 +520,80 @@ CSIS <- function(fixed, nsup, nstarts, mygrd) {
         break
       }
     }
-    
-    print(paste0(s, " out of ", nstarts))
+    print(paste0(s," out of ",nstarts))
   }
-  
   list(centers = centers_best, cluster = clusters_best)
 }
 ```
 
-> **💡 Note**: This function creates spatially balanced sampling designs by considering existing sampling points and covariate distributions.
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: This function creates spatially balanced sampling designs by considering existing sampling points and covariate distributions.
+:::
 
-#### TSU Generation Function
+#### K-means with progress reporting
+
+```{r kmeans-progress-function}
+kmeans_with_progress <- function(data, centers, iter.max = 10000, nstart = 100) {
+  # Provides visual feedback during long k-means operations
+  best_result <- NULL
+  best_totss <- Inf
+  
+  cat("Running k-means clustering with", nstart, "random starts...\n")
+  
+  for (s in 1:nstart) {
+    result <- kmeans(data, centers = centers, iter.max = iter.max, nstart = 1)
+    
+    if (result$tot.withinss < best_totss) {
+      best_result <- result
+      best_totss <- result$tot.withinss
+    }
+    
+    print(paste0(s, " out of ", nstart))
+  }
+  
+  cat("Best tot.withinss:", best_totss, "\n")
+  return(best_result)
+}
+```
+
+#### TSU generation
 
 This function generates TSUs within SSUs, ensuring random distribution while respecting land-use constraints.
 
 ```{r tsu-function, eval=FALSE}
+## This function creates random point samples within each SSU polygon
 generate_tsu_points_within_ssu <- function(ssu, number_TSUs, index, ssu_type, crops) {
-  # Convert SSU to SpatVector for masking
-  ssu_vect <- ssu_grid_sf[index, ]
+  # Args:
+  #   ssu: Single SSU polygon (sf object)
+  #   number_TSUs: Number of points to generate
+  #   index: SSU identifier
+  #   ssu_type: "Target" or "Replacement"
+  #   crops: Crop mask raster (20m resolution)
   
-  # Clip the raster to the SSU boundaries
-  clipped_lu <- crop(crops, ssu_vect)
+  ssu_vect <- vect(ssu)
   
-  # Generate random points within the clipped raster
-  sampled_points <- sample_srs(clipped_lu, nSamp = number_TSUs)
+  # Validate geometry
+  if (is.null(ssu_vect) || nrow(ssu_vect) == 0 || is.na(ext(ssu_vect))) {
+    warning(paste("SSU", index, "has invalid geometry. Skipping TSU generation."))
+    return(NULL)
+  }
   
-  # Ensure required number of TSUs
-  while (nrow(sampled_points) < number_TSUs) {
-    sampled_points <- spatSample(clipped_lu, size = number_TSUs)
+  # Clip crop raster to SSU
+  clipped_lu <- try(crop(crops, ssu_vect), silent = TRUE)
+  if (inherits(clipped_lu, "try-error") || is.null(clipped_lu)) {
+    warning(paste("SSU", index, "could not crop land use raster. Skipping."))
+    return(NULL)
+  }
+  
+  # Sample points (tries two methods)
+  sampled_points <- try(sample_srs(clipped_lu, nSamp = number_TSUs), silent = TRUE)
+  if (inherits(sampled_points, "try-error") || is.null(sampled_points) || nrow(sampled_points) == 0) {
+    sampled_points <- try(spatSample(clipped_lu, size = number_TSUs, na.rm = TRUE, method = "random"), silent = TRUE)
+  }
+  
+  if (inherits(sampled_points, "try-error") || is.null(sampled_points) || nrow(sampled_points) == 0) {
+    warning(paste("SSU", index, "failed to generate TSUs. Skipping."))
+    return(NULL)
   }
   
   # Add metadata
@@ -549,238 +601,415 @@ generate_tsu_points_within_ssu <- function(ssu, number_TSUs, index, ssu_type, cr
   sampled_points$SSU_ID <- index
   sampled_points$TSU_ID <- seq_len(nrow(sampled_points))
   sampled_points$SSU_Type <- ssu_type
-  sampled_points$TSU_Name <- paste0(ISO.code, sprintf("%04d", sampled_points$PSU_ID),
-                                    "-", sampled_points$SSU_ID, "-", 
-                                    seq_len(nrow(sampled_points)))
+  sampled_points$TSU_Name <- paste0(sampled_points$PSU_ID, ".", index, ".", seq_len(nrow(sampled_points)))
   
   return(sampled_points)
 }
 ```
 
-### Load Country Boundaries and Legacy Data {#load-boundaries}
+### Load country boundaries and legacy data {#load-boundaries}
 
 Load and transform country boundaries and legacy soil data to the desired CRS:
 
 ```{r load-boundaries, eval=FALSE}
-# Define file locations
-country_boundaries <- file.path(paste0(shp.path, "roi_epsg_3857.shp"))
-legacy <- file.path(paste0(shp.path, "zmb_legacy_v2_clipped_epsg_3857.shp"))
+# Purpose: Import study area boundaries and existing soil sample locations
 
-# Load and transform country boundaries
-country_boundaries <- sf::st_read(country_boundaries, quiet = TRUE)
+# Load country/region boundaries
+country_boundaries <- file.path(paste0(shp.path,"roi_kansas_us_epsg_4326.shp"))
+country_boundaries <- sf::st_read(country_boundaries, quiet=TRUE)
 
-if (sf::st_crs(country_boundaries)$epsg != epsg) {
-  country_boundaries <- sf::st_transform(country_boundaries, crs = epsg)
+# Reproject if necessary
+if(crs(country_boundaries)!=epsg){
+  country_boundaries <- country_boundaries %>%
+    st_as_sf() %>% sf::st_transform(crs=epsg)
 }
 
-# Load legacy data (if it exists)
-if (file.exists(legacy)) {
-  legacy <- sf::st_read(legacy, quiet = TRUE)
-  
-  # Transform coordinates
-  if (sf::st_crs(legacy)$epsg != epsg) {
-    legacy <- sf::st_transform(legacy, crs = epsg)
+# Load legacy soil data (optional - existing sample points)
+legacy <- file.path(paste0(shp.path,"soil_legacy_data_kansas_epsg_4326.shp"))
+
+if(file.exists(legacy)){
+  legacy <- sf::st_read(legacy, quiet=TRUE)
+  if(crs(legacy)!=epsg){
+    legacy <- legacy %>% sf::st_transform(crs=epsg)
   }
 } else {
-  # If legacy data does not exist, delete the object
-  rm(legacy)
+  rm(legacy)  # Remove if doesn't exist
+} 
+
+# Clean legacy data
+if(exists("legacy")){
+  legacy <- dplyr::select(legacy, geometry)
+  legacy <- legacy[!duplicated(st_geometry(legacy)), ]  # Remove duplicates
 }
 ```
 
-> **💡 Note**: Always verify that all geospatial datasets use the same CRS before performing spatial operations. Misaligned CRSs can lead to incorrect analyses.
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: Always verify that all geospatial datasets use the same CRS before performing spatial operations. Misaligned CRSs can lead to incorrect analyses.
+:::
 
-#### Visualize Boundaries and Legacy Data
+#### Visualize boundaries and legacy data
 
-```{r viz-boundaries, eval=FALSE, fig.cap="Black rectangle outlines the region of interest, while black dots represent the geolocations of the legacy data points."}
-library(ggplot2)
-library(ggspatial)
-
-basemap <- annotation_map_tile("osm")
-
-ggplot(data = country_boundaries) +
-  basemap +
-  geom_sf(fill = "transparent", color = "black") +
-  geom_sf(data = legacy, aes(geometry = geometry),
-          color = "black", size = 0.3) +
-  labs(title = "Country Boundaries and Legacy Data",
-       caption = "Data source: OpenStreetMap") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5))
+```{r viz-boundaries, eval=FALSE}
+# Visualize boundaries and legacy points
+ggplot() +
+  geom_spatvector(data = country_boundaries, fill = NA, color = "black") +
+  geom_spatvector(data = legacy, aes(geometry = geometry), size = 0.7, color = "red") +
+  theme_minimal()
 ```
 
-```{r legacy-map, echo=FALSE, fig.cap="Black rectangle outlines the region of interest, while black dots represent the geolocations of the legacy data points.", out.width='80%'}
-#knitr::include_graphics("images/figure8_legacy.png")
+```{r legacy-map, echo=FALSE, fig.cap="Grey rectangle outlines the region of interest, while red dots represent the geolocations of the legacy data points.", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_8_legacy_map.png")
 ```
 
-### Load Environmental Covariates for PSUs {#load-covariates-psu}
+### Load environmental covariates for PSUs {#load-covariates-psu}
 
-#### Optional Auxiliary Data
+In many sampling campaigns, not all areas within the country or region of interest are suitable for fieldwork. Protected areas may be legally restricted, steep terrain may be unsafe or inaccessible, and other constraints (e.g., water bodies, urban zones) can reduce the feasible sampling space. For this reason, SoilFER treats “exclusion layers” as optional inputs that refine the accessible area without changing the overall survey objective. When an exclusion layer is available, it is loaded, reprojected to the common CRS used in the project, and then converted into a mask that can be applied to the sampling universe. If a layer is not available, the script continues without it, ensuring that the workflow remains robust across countries with different data availability.
 
-Additional data layers can improve PSU selection:
+In addition to exclusion layers, ancillary datasets such as geology or geomorphology can be used for stratification. These layers do not exclude areas from sampling; instead, they provide categorical information that may help define strata or interpret spatial patterns during mapping and analysis.
 
-```{r aux-data, eval=FALSE}
-# Non-protected areas (shapefile or raster)
-npa <- file.path(paste0(shp.path, "zmb_national_parks_zari_clipped_epsg_3857.shp"))
+#### Protected areas mask (exclude from sampling)
 
-# High slopes (binary raster: 1 = <50%, NA = >=50%)
-slope <- file.path(paste0(raster.path, "zmb_clipped_slope_mask_epsg_3857.tif")) 
+This chunk checks whether a protected-areas shapefile exists. If it does, the polygons are read, transformed to the project CRS if needed, dissolved into a single geometry, and then subtracted from the country boundary. The result is a “non-protected” mask representing areas where sampling is allowed.
 
-# Geology
-geo <- file.path(paste0(shp.path, "zmb_geology_clipped_epsg_3857.shp"))
-geo.classes <- "GEO"  # Field name for geologic classes
+```{r load-protected-areas, eval=FALSE}
+# Protected areas (areas to EXCLUDE from sampling)
+npa <- file.path(paste0(shp.path,"protected_areas_epsg_4326.shp"))
 
-# Geomorphology
-geomorph <- file.path(paste0(raster.path, "zmb_clipped_Geomorphon.tif"))
-geomorph.classes <- "CODR"  # Field name for geomorphology classes
-```
-
-#### Load and Process Auxiliary Data
-
-```{r process-aux, eval=FALSE}
-# Non-protected areas
-if (file.exists(npa)) {
+if(file.exists(npa)){
   npa <- sf::st_read(npa, quiet = FALSE)
-  npa <- sf::st_union(npa)
-  npa <- sf::st_difference(country_boundaries, npa)
-  
-  if (sf::st_crs(npa)$epsg != epsg) {
-    npa <- sf::st_transform(npa, crs = epsg)
+  if(crs(npa)!=epsg){
+    npa <- npa %>% sf::st_transform(crs = epsg)
   }
+  npa <- sf::st_union(npa)
+  npa <- sf::st_difference(country_boundaries, npa)  # Create "non-protected" mask
 } else {
   rm(npa)
 }
+```
 
-# Slope mask
-if (file.exists(slope)) {
+```{r viz-npa, eval=FALSE}
+ggplot() +
+  geom_sf(data = npa, fill = "grey90", color = "black", linewidth = 0.3) +
+  coord_sf(datum = NA) +
+  labs(title = "Accessible area mask (non-protected in grey)") +
+  theme_minimal(base_size = 11)
+```
+
+```{r npa-map, echo=FALSE, fig.cap="Protected areas (empty shapes)", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_9_non_protected_map.png")
+```
+
+#### Slope mask (exclude steep terrain)
+
+This chunk checks whether a pre-processed binary slope raster exists. If it does, the raster is loaded, reprojected to the project CRS if needed, normalised to a strict binary mask (1/NA) by dividing by itself, and then clipped to the country boundary. The result is a raster where cells with value 1 represent accessible slopes and all excluded cells are NA. If the file is not found the object is removed so downstream code knows no slope filter applies.
+
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+💡 **Note:** The slope mask must be prepared before running this script. In QGIS, use the Raster Calculator with the formula ("[Slope\@1](mailto:Slope@1){.email}" \<= 30) \* 1 to create a binary raster (1: accessible, 0: excluded), then use the Set Null tool to convert 0 to NA.\
+Threshold guidelines: gentle terrain 0-15%, moderate terrain 15-30% (typical field-work threshold), steep terrain \> 30% (usually excluded).
+:::
+
+```{r load-slope-mask, eval=FALSE}
+slope <- file.path(paste0(raster.path,"slope_mask_epsg_4326.tif"))
+
+if(file.exists(slope)){
   slope <- rast(slope)
-  if (crs(slope) != epsg) {
-    slope <- project(slope, epsg, method = "near")
+  if(crs(slope)!=epsg){
+    slope <- project(slope, epsg, method="near")
   }
-  slope <- slope / slope  # Normalize to 0/1
+  slope <- slope/slope  # Convert to binary mask
+  slope <- terra::mask(slope, country_boundaries)
 } else {
   rm(slope)
 }
+```
 
-# Geology
-if (file.exists(geo)) {
-  geo <- sf::st_read(geo, quiet = TRUE)
-  if (sf::st_crs(geo)$epsg != epsg) {
-    geo <- sf::st_transform(geo, crs = epsg)
+```{r viz-slope, eval=FALSE}
+plot(slope,
+     col = "#66c2a5",
+     legend = FALSE,
+     main = "Slope accessibility mask in green")
+```
+
+```{r slope-map, echo=FALSE, fig.cap="Slope accessibility areas", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_10_Slope.png")
+```
+
+#### Ecoregions / Geology data (for stratification)
+
+This chunk checks whether an ecoregions shapefile exists. If it does, the polygons are read, reprojected to the project CRS if needed, and a numeric GEO field is created by converting the ecoregion name column to a factor and then to an integer. This numeric encoding is required for rasterization and dummy-variable conversion in later steps. If the file is not found the object is removed so downstream code knows no geology stratification applies.
+
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+💡 **Note**: For Kansas, ecoregion boundaries (*US_L3NAME* field) are used as a geology proxy. For other study areas, replace the shapefile path and update geo.classes to match the field name containing your geological or ecoregion classification. Any polygon layer with a categorical attribute can be used here.
+:::
+
+```{r load-geology-ecoreg, eval=FALSE}
+# Geology data (for stratification) - If available
+geo <- file.path(paste0(shp.path,"ecoregions_kansas_epsg_4326.shp"))
+geo.classes <- "US_L3NAME"  # Field name for geology classes
+
+if(file.exists(geo)){
+  geo <- sf::st_read(geo, quiet=TRUE)
+  if(crs(geo)!=epsg){
+    geo <- geo %>% sf::st_transform(crs=epsg)
   }
   geo$GEO <- as.numeric(as.factor(geo[[geo.classes]]))
 } else {
   rm(geo)
 }
+```
 
-# Geomorphology
+```{r viz-geo-eco, eval=FALSE}
+ggplot() +
+  geom_sf(data = geo, aes(fill = US_L3NAME), color = "black", linewidth = 0.2) +
+  labs(title = "Level III Ecoregions",
+       fill = "Ecoregion (US_L3NAME)") +
+  theme_minimal(base_size = 11) +
+  theme(legend.position = "right")
+```
+
+```{r geo-eco-map, echo=FALSE, fig.cap="Ecoregions", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_11_geology_ecoregion_map.png")
+```
+
+#### Geomorphology data (for stratification)
+
+This chunk checks whether a geomorphology file exists and handles two possible formats. If the file is a raster (.tif), it is loaded, renamed to GEOMORPH, and reprojected if needed. If it is a shapefile (.shp), it is read as a vector, reprojected if needed, and a numeric GEOMORPH field is created by encoding the class column as integers. In both cases the result is clipped to the country boundary. If the file is not found the object is removed so downstream code knows no geomorphology stratification applies.
+
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+💡 **Note**: For Kansas, the geomorphology raster is exported from Google Earth Engine (GEE_Exports/) using the Geomorphon landform classification. Both raster (.tif) and vector (.shp) formats are supported. Update the file path and geomorph.classes field name to match your dataset. If using a shapefile, ensure the classification column contains categorical landform labels that can be factorised into integer codes.
+:::
+
+```{r load-geomorph, eval=FALSE}
+# Geomorphology data (for stratification) - if available
+geomorph <- file.path(paste0(raster.path, "/GEE_Exports/Geomorphon_Landforms_KANSAS.tif"))
+geomorph.classes <- "Class"  # Field name for geomorphology classes (shapefile only)
+
 if (file.exists(geomorph)) {
   file_extension <- tools::file_ext(geomorph)
-  
+
   if (file_extension == "tif") {
     geomorph <- rast(geomorph)
-    names(geomorph) <- 'GEOMORPH'
-    
+    names(geomorph) <- "GEOMORPH"
     if (crs(geomorph) != epsg) {
       geomorph <- project(geomorph, epsg, method = "near")
     }
   } else if (file_extension == "shp") {
     geomorph <- sf::st_read(geomorph, quiet = TRUE)
-    
     if (sf::st_crs(geomorph)$epsg != epsg) {
       geomorph <- sf::st_transform(geomorph, crs = epsg)
     }
-    geomorph$GEOMORPH <- as.numeric(as.factor(geomorph[[geomorph.classes]]))
-  } else {
-    warning("File format not recognized. Expected .tif or .shp.")
-    rm(geomorph)
+    geomorph$GEOMORPH <- as.numeric(as.factor(geomorph[[geomorph.classes]]))  # Encode as integers
   }
+
+  geomorph <- terra::mask(geomorph, country_boundaries)
 } else {
   rm(geomorph)
 }
 ```
 
-### Load Main Environmental Covariates
+```{r viz-geomorph, eval=FALSE}
+# Create a class lookup table (Geomorpho90m / geomorphons)
+geomorph_lut <- data.frame(
+  value = 1:10,
+  class = c(
+    "Flat",
+    "Peak / summit",
+    "Ridge",
+    "Shoulder",
+    "Spur",
+    "Slope",
+    "Hollow",
+    "Footslope",
+    "Valley",
+    "Pit / depression"
+  )
+)
+
+# Semantically meaningful colors: warm tones for highs, cool tones for lows
+geomorph_colors <- c(
+  "Flat"             = "#F5F5DC",  # beige      – level ground
+  "Peak / summit"    = "#8B0000",  # dark red   – highest points
+  "Ridge"            = "#CD5C5C",  # indian red – elongated highs
+  "Shoulder"         = "#D2691E",  # chocolate  – convex upper slopes
+  "Spur"             = "#DAA520",  # goldenrod  – diverging slopes
+  "Slope"            = "#6B8E23",  # olive      – planar slopes
+  "Hollow"           = "#4682B4",  # steel blue – converging slopes
+  "Footslope"        = "#5F9EA0",  # cadet blue – concave lower slopes
+  "Valley"           = "#00008B",  # dark blue  – linear lows
+  "Pit / depression" = "#191970"   # midnight   – lowest points
+)
+
+# Attach labels to the raster as categories
+geomorph_cat <- as.factor(geomorph)
+levels(geomorph_cat) <- list(data.frame(
+  ID    = geomorph_lut$value,
+  class = geomorph_lut$class
+))
+
+par(mar = c(3, 3, 4, 3), bg = "white")
+
+plot(
+  geomorph_cat,
+  col  = geomorph_colors[levels(geomorph_cat)[[1]]$class],
+  main = "Geomorphology",
+  axes = FALSE,
+  box = FALSE,
+  plg = list(
+    inset = c(0.02, 0.03),
+    cex = 0.75,
+    title = "Geomorphons",
+    bty = "n"
+  )
+)
+
+```
+
+```{r geomorph-map, echo=FALSE, fig.cap="Geomorphology retrieved from GEE", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_12_geomorph_classes.png")
+```
+
+#### Environmental covariates created/retrieved from previous Chapter
+
+This section loads and prepares the environmental covariates used to delineate Primary Sampling Units (PSUs). These variables define the environmental space within which PSUs are distributed. First, the script locates and loads the environmental raster stack exported from Google Earth Engine (GEE). The raster file contains multiple environmental layers (e.g., climate, terrain, vegetation indices) at 250 m resolution. Second, the coordinate reference system (CRS) is checked. If the raster CRS does not match the project CRS (epsg), the data are reprojected using nearest-neighbour interpolation to preserve categorical values. Third, the raster stack is resampled to the PSU spatial resolution (2 km). A template raster is created using the desired PSU grid size (psu_size). The environmental layers are then aggregated to this coarser resolution using bilinear interpolation. This ensures that environmental variability is represented at the same spatial scale at which PSUs will be defined. It is essential that the aggregation resolution matches the PSU size; otherwise, inconsistencies may arise between environmental stratification and sampling unit geometry. Finally, the raster stack is masked to the country boundary, ensuring that environmental data are retained only within the region of interest.
 
 ```{r load-main-covs, eval=FALSE}
-# Load covariate stack
-cov.dat <- list.files(raster.path, 
-                      pattern = "covs_zam_clipped.tif$",  
-                      recursive = TRUE, 
-                      full.names = TRUE)
+# Purpose: Load environmental data at 2km resolution for PSU selection from GEE code
+# Note: These covariates determine WHERE PSUs are placed
+
+cov.dat <- list.files(paste0(raster.path, "GEE_Exports/"), 
+                      pattern = "Environmental_Covariates_250m_KANSAS.tif$",  
+                      recursive = TRUE, full.names = TRUE)
 cov.dat <- terra::rast(cov.dat)
 
-cat(sprintf("Loaded %d environmental covariates\n", nlyr(cov.dat)))
-
-# Display covariate names in a table
-cov.dat.names <- matrix(names(cov.dat), ncol = 3, byrow = TRUE)
-knitr::kable(cov.dat.names, format = "markdown", 
-             caption = "Environmental covariates")
-```
-
-> **💡 Note**: Initial number of environmental covariates: 68
-
-#### Load and Process Soil Climate Data (Newhall)
-
-```{r load-newhall, eval=FALSE}
-# Load soil climate data
-newhall <- list.files(raster.path, 
-                      pattern = "newhall_zam_clipped.tif$",  
-                      recursive = TRUE, 
-                      full.names = TRUE)
-newhall <- terra::rast(newhall)
-
-# Display variable names
-newhall.names <- matrix(names(newhall), ncol = 3, byrow = TRUE)
-knitr::kable(newhall.names, format = "markdown", 
-             caption = "Soil climate variables")
-
-# Remove unnecessary subdivisions
-newhall$regimeSubdivision1 <- c()
-newhall$regimeSubdivision2 <- c()
-
-cat(sprintf("Soil climate variables: %d (after removing subdivisions)\n", nlyr(newhall)))
-```
-
-#### Convert Categorical Variables to Dummy Variables
-
-```{r dummy-vars, eval=FALSE}
-# Convert temperatureRegime and moistureRegime to dummy variables
-temperatureRegime <- dummies(ca.rast = newhall$temperatureRegime, 
-                             preval = 1, absval = 0)
-moistureRegime <- dummies(ca.rast = newhall$moistureRegime, 
-                          preval = 1, absval = 0)
-
-# Remove original categorical layers
-newhall$temperatureRegime <- c()
-newhall$moistureRegime <- c()
-```
-
-#### Merge All Covariate Layers
-
-```{r merge-covs, eval=FALSE}
-# Merge covariates and climate data
-cov.dat <- c(cov.dat, newhall, temperatureRegime, moistureRegime)
-    
-# Project if necessary
-if (crs(cov.dat) != epsg) {
-  cov.dat <- terra::project(cov.dat, epsg, method = "near")
+# Reproject if necessary
+if(crs(cov.dat)!=epsg){
+  cov.dat <- terra::project(cov.dat, epsg, method="near")
 }
 
-# Add geology if exists
-if (exists("geo")) {
-  geo <- rasterize(as(geo, "SpatVector"), cov.dat, field = "GEO")
+# Resample to PSU resolution (2km)
+# IMPORTANT: This aggregation must match your PSU size
+psu_size_template <- rast(ext(cov.dat), resolution = psu_size, crs = crs(cov.dat))
+cov.dat <- resample(cov.dat, psu_size_template, method = "bilinear")
+cov.dat <- terra::mask(cov.dat, country_boundaries)
+```
+
+```{r table-main-covs, echo=FALSE}
+cov_table <- data.frame(
+  Category = c(
+    rep("Climate (CHELSA)", 8),
+    rep("Energy & Water Balance", 8),
+    rep("Vegetation Indices (MODIS)", 24),
+    rep("Land Cover", 6),
+    rep("Terrain Derivatives (DTM)", 12)
+  ),
+  Variable = c(
+    # Climate
+    "bio1", "bio5", "bio6", "bio12", "bio13", "bio14", "bio16", "bio17",
+    
+    # Energy & water
+    "ngd10", "pet_penman_max", "pet_penman_mean", "pet_penman_min",
+    "pet_penman_range", "sfcWind_max", "sfcWind_mean", "sfcWind_range",
+    
+    # Vegetation
+    "fpar_*_mean/sd", 
+    "lstd_*_mean/sd",
+    "ndlst_*_mean/sd",
+    "ndvi_*_mean/sd",
+    "snow_cover",
+    "swir_060708_500m_mean",
+    rep("", 18),  # placeholder to align count
+    
+    # Land cover
+    "crops", "flooded_vegetation", "grass",
+    "shrub_and_scrub", "trees", "",
+    
+    # Terrain
+    "dtm_elevation_250m",
+    "dtm_slope_250m",
+    "dtm_tpi_250m",
+    "dtm_twi_500m",
+    "dtm_curvature_250m",
+    "dtm_upslopecurvature_250m",
+    "dtm_downslopecurvature_250m",
+    "dtm_vbf_250m",
+    "dtm_mrn_250m",
+    "dtm_dvm_250m",
+    "dtm_dvm2_250m",
+    ""
+  )
+)
+
+kable(
+  subset(cov_table, Variable != ""),
+  caption = "Environmental covariates used for Primary Sampling Unit (PSU) delineation."
+)
+```
+
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: Initial number of environmental covariates is 66.
+:::
+
+#### Load and process soil-climate data (Newhall)
+
+The Newhall soil-climate dataset provides categorical (i.e., regime classes) and continuous variables describing soil temperature and moisture regimes. This section loads the Newhall raster, ensures it matches the project CRS, removes layers that are not required, and then harmonises all remaining layers to the same grid as the environmental covariates (cov.dat). Categorical layers are resampled using nearest-neighbour interpolation to preserve class identities, whereas continuous layers can be resampled with default interpolation.
+
+```{r load-newhall, eval=FALSE}
+# Load and process soil climate data
+newhall <- list.files(raster.path, pattern = "newhall.tif$", recursive = TRUE, full.names = TRUE)
+newhall <- terra::rast(newhall)
+
+if(crs(newhall)!=epsg){
+  newhall <- terra::project(newhall, epsg, method="near")
+}
+
+# Remove unnecessary layers
+newhall$regimeSubdivision1 <- NULL
+newhall$regimeSubdivision2 <- NULL
+
+# Process categorical variables (preserve factor levels)
+temperatureRegime <- project(newhall$temperatureRegime, cov.dat, method = "near")
+moistureRegime <- project(newhall$moistureRegime, cov.dat, method = "near")
+
+newhall$temperatureRegime <- NULL
+newhall$moistureRegime <- NULL
+newhall <- terra::resample(newhall, cov.dat)
+```
+
+#### Convert soil-climate regimes to dummy variables
+
+The Newhall soil-climate dataset includes categorical variables describing soil temperature and moisture regimes. Since these are nominal classes (e.g., mesic, thermic, ustic), they cannot be directly used in most statistical or machine-learning models. To incorporate them as predictors in the PSU selection workflow, each regime class is converted into a set of binary (dummy) variables. Each dummy layer represents the presence (1) or absence (0) of a specific regime class.
+
+```{r dummy-vars, eval=FALSE}
+# Convert to dummy variables (one column per category)
+temperatureRegime <- as.factor(temperatureRegime)
+temperatureRegime <- dummies(ca.rast = temperatureRegime, preval = 1, absval = 0)
+moistureRegime <- as.factor(moistureRegime)
+moistureRegime <- dummies(ca.rast = moistureRegime, preval = 1, absval = 0)
+```
+
+#### Integrating all layers and finalising the Covariate Stack
+
+At this stage, all continuous and categorical environmental predictors are combined into a single covariate stack (cov.dat). This stack defines the environmental feature space used for PSU placement. Optional stratification layers such as geology and geomorphology can be included when available. Because these layers are categorical, they are first rasterised to the covariate grid and then converted to dummy variables (one binary layer per class). Before merging, all optional layers are checked and harmonised to ensure they match the covariate stack in extent and resolution. Finally, the complete stack is cropped and masked to the study boundary and written to disk for reuse.
+
+```{r merge-covs, eval=FALSE}
+# Merge all covariates
+cov.dat <- c(cov.dat, newhall, temperatureRegime, moistureRegime)
+
+# Add geology if available
+if(exists("geo")){
+  geo <- rasterize(as(geo,"SpatVector"), cov.dat, field="GEO")
   geo <- dummies(ca.rast = geo$GEO, preval = 1, absval = 0)
   cov.dat <- c(cov.dat, geo)
 }
 
-# Add geomorphology if exists
+# Add geomorphology if available
 if (exists("geomorph")) {
   if (!inherits(geomorph, "SpatRaster")) {
     geomorph <- rasterize(as(geomorph, "SpatVector"), cov.dat, field = "GEOMORPH")
   }
   geomorph <- dummies(ca.rast = geomorph$GEOMORPH, preval = 1, absval = 0)
   
-  # Ensure matching extent and resolution
+  # Ensure matching extents
   if (!identical(ext(cov.dat), ext(geomorph))) {
     geomorph <- extend(geomorph, cov.dat)
   }
@@ -791,151 +1020,339 @@ if (exists("geomorph")) {
   cov.dat <- c(cov.dat, geomorph)
 }
 
-# Cleanup
-rm(newhall, geomorph, geo)
+# Clean up
+rm(newhall, geomorph)
 gc()
 
-cat(sprintf("\nFinal covariate stack: %d layers\n", nlyr(cov.dat)))
-```
-
-> **💡 Note**: **Stacking** is the process of combining multiple spatial data layers (raster datasets) into a single multi-layer object. This is useful when multiple variables need to be analyzed together.
-
-#### Crop and Save Covariates
-
-```{r crop-save-covs, eval=FALSE}
-# Crop covariates to administrative boundary
-cov.dat <- crop(cov.dat, country_boundaries, mask = TRUE, overwrite = TRUE)
-writeRaster(cov.dat, 
-            paste0(raster.path, "cov_dat_stack.tif"), 
-            overwrite = TRUE)
+# Crop to study area
+cov.dat <- crop(cov.dat, country_boundaries, mask=TRUE, overwrite=TRUE)
+## Saving the covariate stack if R clashes
+writeRaster(cov.dat, paste0(raster.path,"cov_dat_stack_psus.tif"), overwrite=TRUE)
 
 # Reload if needed
-# cov.dat <- rast(paste0(raster.path, "cov_dat_stack.tif"))
+# cov.dat <- rast(paste0(raster.path, "cov_dat_stack_psus.tif"))
+
 ```
+
+```{r table-final-covs, echo=FALSE}
+cov_summary <- data.frame(
+  Category = c(
+    "Climate (CHELSA bioclim)",
+    "Energy & Atmospheric Variables",
+    "Vegetation Indices (MODIS seasonal)",
+    "Land Cover",
+    "Terrain Derivatives (DTM)",
+    "Soil Climate (Newhall continuous)",
+    "Soil Climate Regimes (Dummy variables)",
+    "Geology (Dummy variables)",
+    "Geomorphology (Dummy variables)"
+  ),
+  Description = c(
+    "Temperature and precipitation bioclimatic variables (bio1–bio17)",
+    "Growing degree days, PET, wind statistics",
+    "FPAR, LST day/night, NDVI (seasonal mean and SD)",
+    "Fractional land cover classes (crops, trees, grass, etc.)",
+    "Elevation, slope, curvature, TPI, TWI, VBF and derivatives",
+    "Water balance and moisture/temperature regime metrics",
+    "Binary layers representing temperature and moisture regime classes",
+    "Binary layers representing geology/ecoregion classes",
+    "Binary layers representing geomorphon landform classes"
+  ),
+  Number_of_Layers = c(
+    8,   # bio variables
+    8,   # energy variables
+    32,  # vegetation metrics
+    6,   # land cover
+    12,  # terrain
+    15,  # Newhall continuous
+    6,   # regime dummies
+    8,   # GEO dummies
+    10   # geomorph dummies
+  )
+)
+
+names(cov_summary)[3] <- "Number of layers"
+
+kable(cov_summary, caption = "Summary of environmental covariates included in the PSU selection stack (2 km resolution).")
+
+```
+
+::: {style="background-color:#fff9c4;border-left:4px solid #fbc02d; padding:10px; font-size:0.9em;"}
+**💡 Note**: **Stacking** is the process of combining multiple spatial data layers (raster datasets) into a single multi-layer object. This is useful when multiple variables need to be analysed together. The final dataset comprises 85 environmental covariates, which expand to 105 raster layers after converting categorical variables into dummy (binary) layers.
+:::
 
 ### Principal Component Analysis (PCA) {#pca}
 
-PCA reduces dimensionality while retaining the most important information. Components explaining 99% of variance are kept.
+Environmental covariates such as satellite-derived spectral indices often exhibit strong inter-correlation because they are calculated from overlapping spectral bands and capture related biophysical properties (e.g., vegetation vigor, moisture content, surface reflectance characteristics). Such redundancy can inflate dimensionality and negatively affect clustering or classification procedures. To address this issue, a Principal Component Analysis (PCA) was applied to the standardised environmental covariate raster stack. Standardisation ensured that indices with different value ranges contributed equally to the analysis.
+
+The PCA transforms correlated indices into orthogonal components representing dominant gradients across the landscape. These components summarise major patterns in surface reflectance and vegetation structure while removing multicollinearity among indices. Only the minimum number of principal components explaining more than **99% of the cumulative** variance were retained. This threshold preserves nearly all information while substantially reducing data dimensionality and computational burden. The resulting principal component rasters were then exported for subsequent spatial clustering and landscape characterisation.
 
 ```{r pca, eval=FALSE}
-# Perform PCA
-pca <- synoptReg::raster_pca(cov.dat)  # Faster than terra::princomp
+pca <- scale(cov.dat)
+pca <- synoptReg::raster_pca(pca)  # Fast PCA for rasters
 
-# Get SpatRaster layers
 cov.dat <- pca$PCA
 
-# Display summary
-summary(cov.dat)
-
-# Subset to main PCs (variance explained >= 0.99)
+# Keep only components explaining 99% of variance
 n_comps <- first(which(pca$summaryPCA[3,] > 0.99))
 cov.dat <- pca$PCA[[1:n_comps]]
 
-cat(sprintf("\nRetained %d principal components (99%% variance)\n", n_comps))
+cat(sprintf("Using %d principal components (explaining >99%% variance)\n", n_comps))
 
-# Save PCA rasters
-writeRaster(cov.dat, 
-            paste0(results.path, "PCA_projected.tif"), 
-            overwrite = TRUE)
-
-# Cleanup
+# Save PCA results
+writeRaster(cov.dat, paste0(results.path,"PCA_projected.tif"), overwrite=TRUE)
 rm(pca)
 
-# Reload if needed
-# cov.dat <- rast(paste0(results.path, "PCA_projected.tif"))
+# Reload for further processing
+# Why this is useful:
+#  - Previous sections (data loading, PCA) can take 30+ minutes
+#  - If script crashes or needs modification, you can load here
+#  - If the file exists in the folder from previous processing
+# cov.dat <- rast(paste0(results.path,"PCA_projected.tif"))
+
+# Reproject if necessary
+if(crs(cov.dat)!=epsg){
+  cov.dat <- terra::project(cov.dat, epsg, method="near")
+}
+
 ```
 
-### Organize the Sampling Universe {#sampling-universe}
+```{r viz-pcas, eval=FALSE}
+# Visualising maps from PC1-PC3
+# Consistent color scale across PC1–PC3
+minmax_vals <- minmax(pca$PCA[[1:3]])
+zlim_vals <- range(minmax_vals)
 
-#### Load and process land-use data
+cols <- hcl.colors(100, "Blue-Red 3", rev = TRUE)
 
-```{r load-landuse, eval=FALSE}
-# Define land-use raster path
-landuse <- file.path(paste0(raster.path, "cropland_clipped_zmb_v1_epsg_3857.tif"))
+par(mfrow = c(1,3), mar = c(3,3,3,6))  # extra space for legend
 
-# Load binary raster (1 = target land use, NA = other)
-crops <- rast(landuse)
-crops <- crops / crops  # Normalize
+plot(pca$PCA[[1]],
+     col = cols,
+     zlim = zlim_vals,
+     main = "PC1",
+     axes = FALSE,
+     box = FALSE,
+     plg = list(title = "PC value"))
 
+plot(pca$PCA[[2]],
+     col = cols,
+     zlim = zlim_vals,
+     axes = FALSE,
+     box = FALSE,
+     main = "PC2",
+     plg = list(title = "PC value"))
+
+plot(pca$PCA[[3]],
+     col = cols,
+     zlim = zlim_vals,
+     main = "PC3",
+     axes = FALSE,
+     box = FALSE,
+     plg = list(title = "PC value"))
+
+# Plot cumulative variance
+cum_var <- pca$summaryPCA["Cumulative", ]
+
+plot(cum_var,
+     type = "l",
+     lwd = 2,
+     xlab = "Principal Component",
+     ylab = "Cumulative Variance Explained",
+     main = "Cumulative Variance")
+
+abline(h = 0.99, col = "red", lty = 2)
+
+```
+
+```{r vis-pca-maps, echo=FALSE, fig.cap="Spatial distribution of the first three principal components (PC1-PC3).", out.width='100%'}
+knitr::include_graphics("images/module2/fig_14_pcas_map.png")
+```
+
+```{r cum-var-pca-plot, echo=FALSE, fig.cap="Cumulative variance explained.", out.width='100%'}
+knitr::include_graphics("images/module2/fig_13_cum_var_pcas_map.png")
+```
+
+### Load and prepare land-use data {#sec-landuse}
+
+This section defines the sampling universe. That is the spatial area where sampling units are allowed to be placed. Two spatial resolutions are used:
+
+-   20 m resolution: precise placement of Temporary Sampling Units (TSUs),
+
+-   100 m resolution: filtering and aggregation for Primary Sampling Units (PSUs).
+
+The cropland raster is loaded and converted to a binary mask where: 1 = cropland and NA = non-cropland. This ensures that subsequent sampling occurs only within agricultural areas.
+
+```{r load-crop-mask-landuse, eval=FALSE}
+# Define file path
+landuse_file <- file.path(paste0(raster.path,"Cropland_Mask_KANSAS_merged.tif"))
+
+# Load raster
+crops <- rast(landuse_file)
+
+# Convert to binary mask (1 = crop, NA = other)
+crops <- crops / crops
 names(crops) <- "lu"
+
+```
+
+The land-use raster is reprojected to match the coordinate reference system (CRS) used throughout the analysis. Nearest-neighbor interpolation is applied to preserve categorical values.
+
+```{r reproj-crop-mask-landuse, eval=FALSE}
+if(crs(crops) != epsg){
+  crops <- terra::project(crops, epsg, method = "near")
+}
 
 # Display raster info
 crops
+
 ```
 
-```{r cropland-20m, echo=FALSE, fig.cap="Spatial distribution of crops represented at a 20-meter pixel resolution.", out.width='80%'}
-#knitr::include_graphics("images/figure9_cropland_20m.png")
+```{r table-crop-raster-info, echo=FALSE}
+meta <- data.frame(
+  Property = c("Class",
+               "Dimensions (rows, cols, layers)",
+               "Resolution (x, y)",
+               "Extent (xmin, xmax, ymin, ymax)",
+               "Coordinate Reference System",
+               "Value Range"),
+  Value = c(
+    "SpatRaster",
+    "21007 × 40716 × 1",
+    "16.32943 × 16.32943",
+    "228591.3, 893460.4, 4093884, 4436916",
+    "NAD27 / UTM zone 14N (EPSG:26714)",
+    "1–1 (binary mask)"
+  )
+)
+
+kable(meta, caption = "Metadata of the cropland mask raster.")
 ```
 
-#### Exclude Protected Areas
 
-```{r exclude-protected, eval=FALSE}
-if (exists("npa")) {
-  # If npa is a shapefile
+```{r cropland-original, echo=FALSE, fig.cap="Spatial distribution of crops represented at the original pixel resolution (i.e., 16-meter pixel resolution).", out.width='100%'}
+knitr::include_graphics("images/module2/Fig_15_crop_original_map.png")
+```
+
+The raster is resampled to 20 m resolution, which determines the spatial precision of TSU placement.
+This resolution directly controls sampling accuracy. Nearest-neighbor resampling is used to maintain categorical integrity. 
+
+```{r resampled-crop-mask-landuse, eval=FALSE}
+# Create 20 m template
+lulc_size_template <- rast(ext(crops), resolution = 20, crs = crs(crops))
+
+crops <- as.factor(crops)
+crops <- resample(crops, lulc_size_template, method = "near")
+
+```
+
+Optional spatial masks are applied: (i) npa excludes protected or restricted areas and (ii) slope excludes unsuitable terrain. These masks refine the sampling universe to feasible agricultural locations, increasing the likelihood that soil surveyors will be able to access the selected sites.
+
+```{r optional-npa-slope-crop-mask-landuse, eval=FALSE}
+if(exists("npa")){
   crops <- mask(crops, npa)
-  
-  # If npa is a raster (uncomment if applicable)
-  # npa <- resample(npa, crops, method = "near")
-  # crops <- crops * npa
 }
 
-rm(npa)
-```
-
-> **💡 Note**: Use the correct operation for your npa dataset type (shapefile or raster).
-
-#### Restrict to Accessible Slopes
-
-```{r restrict-slopes, eval=FALSE}
-if (exists("slope")) {
-  # Resample to match crops resolution
-  slope <- resample(slope, crops, method = "near")
+if(exists("slope")){
+  slope <- resample(slope, crops, method="near")
   crops <- crops * slope
 }
 
-rm(slope)
+# rm(npa, slope)
 ```
 
-#### Aggregate to 100m Resolution
+```{r table-crop-raster-info2, echo=FALSE}
+meta <- data.frame(
+  Property = c("Class",
+               "Dimensions (rows, cols, layers)",
+               "Resolution (x, y)",
+               "Extent (xmin, xmax, ymin, ymax)",
+               "Coordinate Reference System",
+               "Value Range"),
+  Value = c(
+    "SpatRaster",
+    "17152 × 33243 × 1",
+    "20.00027 × 19.99955",
+    "228591.3, 893460.4, 4093884, 4436916",
+    "NAD27 / UTM zone 14N (EPSG:26714)",
+    "1–1 (binary mask)"
+  )
+)
 
-Resampling to 100m resolution significantly optimizes processing speed and reduces storage requirements.
+kable(meta, caption = "Metadata of the resampled cropland mask raster.")
+```
+
+
+```{r cropland-20m, echo=FALSE, fig.cap="Spatial distribution of crops represented at 20-meter pixel resolution and excluding protected-areas and unaccessible slopes.", out.width='100%'}
+knitr::include_graphics("images/module2/fig_16_crop_20m_map.png")
+```
+
+The processed 20 m cropland mask is saved and reloaded to ensure consistency and memory stability.
+
+```{r save-load-crop-mask-20m-landuse, eval=FALSE}
+# Save 20m resolution crop mask
+writeRaster(crops, paste0(raster.path,"crop_mask_20m_clean.tif"), overwrite=TRUE)
+# Same situation as loading "cov.dat"
+crops <- rast(paste0(raster.path,"crop_mask_20m_clean.tif"))
+```
+
+**Aggregate to 100 m resolution**
+
+Resampling to 100 m resolution significantly optimises processing speed and reduces storage requirements.The 20 m raster is aggregated to 100 m resolution using the modal (majority) value. This coarser layer is used for PSU filtering and landscape-scale stratification at 1 ha (100 m x 100 m).
 
 ```{r aggregate-100m, eval=FALSE}
-# Aggregate 20m pixels to 100m (5×5 grid using modal value)
-lu <- aggregate(crops, 5, fun = modal, cores = 4, na.rm = TRUE)
-lu <- lu / lu
+# Create 100m resolution version for PSU filtering
+# Aggregate: (20m × 5) = 100m pixels
+lu <- aggregate(crops, 5, fun=modal, cores = 4, na.rm=T)
+names(lu) <- "lu"
+writeRaster(lu, paste0(raster.path,"crop_mask_100m.tif"), overwrite=TRUE)
+# Same situation as loading "cov.dat"
+# lu <- rast(paste0(raster.path,"crop_mask_100m.tif"))
+
+# Filter legacy data to crop areas
+if (exists("legacy")){
+  legacy$INSIDE <- terra::extract(crops, legacy) %>% dplyr::select(lu)
+  legacy <- legacy[!is.na(legacy$INSIDE),] %>% dplyr::select(-"INSIDE")
+}
 
 # Display new resolution
 lu
+
+# Visualize (it takes a few minutes)
+ggplot() +
+  geom_spatraster(data = as.factor(crops)) +
+  scale_fill_viridis_d(na.value = "transparent") +
+  geom_spatvector(data = country_boundaries, fill = NA, color = "black") +
+  geom_spatvector(data = legacy, size = 0.7, color = "red") +
+  theme_minimal()
 ```
 
-```{r cropland-100m, echo=FALSE, fig.cap="Spatial distribution of crops aggregated/upscaled from the original 20-meter pixel resolution to a coarser 100-meter pixel resolution for improved visualization and analysis.", out.width='80%'}
-#knitr::include_graphics("images/figure10_cropland_100m.png")
+```{r table-crop-raster-100m-info, echo=FALSE}
+meta <- data.frame(
+  Property = c("Class",
+               "Dimensions (rows, cols, layers)",
+               "Resolution (x, y)",
+               "Extent (xmin, xmax, ymin, ymax)",
+               "Coordinate Reference System",
+               "Value Range"),
+  Value = c(
+    "SpatRaster",
+    "3431 × 6649 × 1",
+    "100.0014 × 99.99777",
+    "228591.3, 893500.4, 4093824, 4436916",
+    "NAD27 / UTM zone 14N (EPSG:26714)",
+    "1–1 (binary mask)"
+  )
+)
+
+kable(meta, caption = "Metadata of the resampled cropland mask raster at 100-metre pixel resolution.")
 ```
 
-### Save Processed Land Use
 
-```{r save-landuse, eval=FALSE}
-writeRaster(lu, 
-            paste0(raster.path, "cropland_zmb_100m_v1_epsg_3857.tif"), 
-            overwrite = TRUE)
-
-# Reload if needed
-lu <- rast(paste0(raster.path, "cropland_zmb_100m_v1_epsg_3857.tif"))
+```{r cropland-100m, echo=FALSE, fig.cap="Spatial distribution of crops aggregated/upscaled from the original 20-meter pixel resolution to a coarser 100-meter pixel resolution for improved visualization and analysis.", out.width='100%'}
+knitr::include_graphics("images/module2/fig_17_crop_100m_legacy_map.png")
 ```
 
-#### Filter Legacy Data
-
-```{r filter-legacy, eval=FALSE}
-if (exists("legacy")) {
-  # Keep only legacy points within land-use areas
-  legacy$INSIDE <- terra::extract(crops, legacy) %>% dplyr::select(lu)
-  legacy <- legacy[!is.na(legacy$INSIDE), ] %>%
-    dplyr::select(-"INSIDE")
-  
-  cat(sprintf("Legacy points within land-use areas: %d\n", nrow(legacy)))
-}
-```
 
 ### Create Primary Sampling Units (PSU Grid) {#create-psu-grid}
 
@@ -1810,31 +2227,26 @@ kable(field_data, caption = "Required field data recording")
 
 **Post-field QC:** - Check for duplicate `site_id` entries - Verify all mandatory fields completed - Cross-reference photos with field records - Flag sites with large GPS deviation (\>30m from waypoint)
 
-## References {#references-sdg1}
+### Appendices {.unnumbered}
 
-::: {#refs}
-:::
+#### Appendix A: Software and Data Sources {.unnumbered}
 
-# Appendices {.unnumbered}
-
-## Appendix A: Software and Data Sources {.unnumbered}
-
-### Software Requirements
+##### Software Requirements
 
 -   **R** (version ≥ 4.0): <https://www.r-project.org/>
 -   **RStudio**: <https://posit.co/products/open-source/rstudio/>
 -   **Google Earth Engine**: <https://earthengine.google.com/>
 -   **QGIS** (optional): <https://qgis.org/>
 
-### Data Sources
+##### Data Sources
 
 **Global Datasets:** - CHELSA Climate: <https://chelsa-climate.org/> - TerraClimate: <https://www.climatologylab.org/terraclimate.html> - MODIS: <https://lpdaac.usgs.gov/products/mod13q1v006/> - Sentinel-2: <https://scihub.copernicus.eu/> - SRTM DEM: <https://earthexplorer.usgs.gov/> - ESA WorldCover: <https://esa-worldcover.org/> - SoilGrids: <https://soilgrids.org/> - Geomorpho90m: <https://www.geomorpho90m.org/>
 
 **Administrative Boundaries:** - GADM: <https://gadm.org/> - Natural Earth: <https://www.naturalearthdata.com/>
 
-## Appendix B: Troubleshooting Common Issues {.unnumbered}
+#### Appendix B: Troubleshooting Common Issues {.unnumbered}
 
-### Memory Issues
+##### Memory Issues
 
 **Problem**: R runs out of memory during processing
 
@@ -1849,7 +2261,7 @@ memory.limit(size = 32000)  # 32 GB
 # Close unnecessary applications
 ```
 
-### CRS Misalignment
+##### CRS Misalignment
 
 **Problem**: Spatial layers don't overlap correctly
 
@@ -1865,7 +2277,7 @@ your_data <- sf::st_transform(your_data, crs = target_crs)
 your_raster <- terra::project(your_raster, target_crs)
 ```
 
-### Empty Geometry
+##### Empty Geometry
 
 **Problem**: SSU or TSU generation fails
 
@@ -1882,7 +2294,7 @@ your_sf_object <- st_make_valid(your_sf_object)
 your_sf_object <- your_sf_object[!st_is_empty(your_sf_object), ]
 ```
 
-## Appendix C: Acronyms and Abbreviations {.unnumbered}
+#### Appendix C: Acronyms and Abbreviations {.unnumbered}
 
 ```{r acronyms, echo=FALSE}
 acronyms <- data.frame(
@@ -1916,10 +2328,11 @@ acronyms <- data.frame(
 kable(acronyms, caption = "List of acronyms and abbreviations used in this manual")
 ```
 
-\<\<\<\<\<\<\< Updated upstream
-
-## =======
-
-> > > > > > > Stashed changes
-
 *For questions, technical support, or to report issues, please visit the [SoilFER GitHub repository](https://github.com/FAO-GSP/SoilFER-sampling-design) or contact the SoilFER team at FAO.*
+
+## References {#references-sdg1}
+
+::: {#refs}
+:::
+
+::::
