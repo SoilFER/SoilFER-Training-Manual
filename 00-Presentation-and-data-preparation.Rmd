@@ -36,7 +36,7 @@ For more information, we recommend the following dedicated resources:
 
 [Spatial Sampling with R (DJ Brus, 2023)](https://dickbrus.github.io/SpatialSamplingwithR/ "Spatial Sampling with R") : A practical guide to designing and analyzing spatial surveys in R, with examples and exercises for environmental and natural resource studies.
 
-[Predictive Soil Mapping with R (Hengl & MacMillan, 2019)](https://soilmapper.org/ "Predictive Soil Mapping with R"): An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
+[Predictive Soil Mapping with R (Hengl & MacMillan, 2019)](https://soilmapper.org/ "Predictive Soil Mapping with R"): [@hengl2019] An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
 
 [Statistics for Soil Survey (Soil Survey Staff, 2025)](https://ncss-tech.github.io/stats_for_soil_example/ "USDA Statistics for Soil Survey"): An open, R-based textbook covering core statistical methods for soil survey,  with practical examples and a strong focus on *Algorithms for Quantitative Pedology* using the`{aqp}` package.
 
@@ -188,7 +188,6 @@ This tutorial manual introduces the essential concepts of soil data management, 
 Each module builds upon the previous one, creating a comprehensive learning pathway for operational DSM implementation:
 
 
-
 #### **Module 1: Introduction to R and Preparation of Soil Data for Digital Soil Mapping** {-}
 
 This module introduces R programming fundamentals for soil science applications. It consists of three sessions covering essential skills for soil data management and analysis.
@@ -203,8 +202,6 @@ Focuses on systematic soil data quality assessment and cleaning procedures essen
 Covers fundamental concepts of spatial data handling using `{sf}` and `{terra}` packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
 
 
-
-
 #### **Module 2: Soil Sampling Design** {-}
 
 This module introduces scientific sampling methodologies for soil surveys and monitoring, with particular emphasis on the SoilFER project's three-stage hierarchical hybrid sampling approach. This methodology reflects current best practices in spatial soil survey design, combining a strong statistical basis with operational feasibility for developing soil sampling designs.
@@ -214,7 +211,6 @@ Establishes the theoretical foundation for representative soil sampling through 
 
 **Session 2.2 - Practical Implementation**  
 Provides hands-on training in implementing the SoilFER sampling protocol through a complete R workflow. The session guides participants through calculating minimum sample size, applying CSC sampling algorithms to identify Primary Sampling Units, generating Secondary and Tertiary Sampling Units through stratified random sampling, and establishing systematic site identification codes that maintain traceability throughout the sampling hierarchy..
-
 
 
 #### **Module 3: GloSIS Data Preparation** {-}
@@ -259,7 +255,6 @@ Introduces ISO 19115/19139 standards for creating spatial metadata that enables 
 
 **Session 6.2 - Web Services Deployment**  
 Demonstrates configuring web map servers for interactive soil data visualization and publishing datasets. The session provides practical training in establishing complete data sharing infrastructure, from database configuration through web service endpoints, ensuring participants can make their soil information FAIR (Findable, Accessible, Interoperable, Reusable) and contribute to global soil information systems while maintaining data quality and provenance.
-
 
 
 
@@ -360,18 +355,15 @@ Verify that each subfolder under `01_data/` corresponds to a module in this manu
 :::
 
 
-#	Introduction to R programming {-}
+#	Software installation {-}
 
-## What is R?
+## Installing R and RStudio
 
-<img src="images/Rlogo.png" width="20" style="vertical-align:top;"/> is a programming language and software environment designed for statistical computing, data analysis, and visualization.
+R is a programming language and software environment designed for statistical computing, data analysis, and visualization.
 It was created in the early 1990s by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and has since grown into one of the most widely used tools in data science, particularly for statistical modeling.
 
 R is open-source, meaning it is freely available and supported by a large global community of users and developers.
 This community continuously develops new tools and packages that extend R's capabilities, making it highly adaptable to diverse fields such as ecology, genetics, economics, social sciences and, as in this case, soil science.
-
-
-### Why R for Soil Science?
 
 R is particularly well-suited for soil science applications because it offers comprehensive tools for:
 
@@ -394,8 +386,6 @@ In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soi
  - It powers digital soil mapping, supports machine learning and reproducible reporting, and connects seamlessly with GIS and database tools.
 
 :::
-
-## Installing R and RStudio
 
 To start using R, you need two main components:
 
@@ -458,6 +448,182 @@ R.version.string
 
 If you see the results, R and RStudio are properly installed in your system.
 
+
+## Setting Up Google Earth Engine
+
+Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.
+
+In this manual, GEE is used to access to the different soil covariates that are used to:
+
+- Create a robust soil sampling design based on the SCORPAN framework
+- Predict soil properties in the Digital Soil Mapping workflow.
+
+
+### Step 1: Create a Google Account
+
+GEE requires a Google account. If you do not already have one, create a free account at [https://accounts.google.com](https://accounts.google.com). Use an institutional address (university or research organization) if possible, as this can facilitate the approval process.
+
+### Step 2: Register for a GEE Account
+
+GEE access requires prior registration. Navigate to the Earth Engine registration page:
+
+[https://earthengine.google.com/register](https://earthengine.google.com/register)
+
+Select **Register a Noncommercial or Commercial Cloud project**. On the next screen, choose **Unpaid usage** and then select the project type that best describes your work (e.g., *Academia & Research*).
+
+:::warning-box
+**Note on Account Approval**
+
+GEE registration is subject to manual review by Google. Approval typically takes between a few hours and two business days. You will receive a confirmation email once your account is activated. Register well in advance of any practical session that requires GEE access.
+:::
+
+### Step 3: Create or Select a Google Cloud Project
+
+GEE now operates within the Google Cloud infrastructure. During registration you will be prompted to either create a new Google Cloud project or link an existing one. For training purposes, create a new project with a descriptive name such as `soilfer-training`. Note the **Project ID**, as you will need it when initializing GEE from Python or when sharing scripts with colleagues.
+
+### Step 4: Access the GEE Code Editor
+
+Once your account is approved, open the JavaScript-based Code Editor at:
+
+[https://code.earthengine.google.com](https://code.earthengine.google.com)
+
+The GEE Code Editor ([https://code.earthengine.google.com](https://code.earthengine.google.com)) is a browser-based integrated development environment (IDE) designed specifically for writing, testing, and running Earth Engine scripts in JavaScript. It requires no local software installation beyond a modern web browser and provides immediate access to the full GEE API and data catalog. Figure \@ref(fig:gee-editor) shows a schematic of the interface layout.
+
+```{r gee-editor, echo=FALSE, fig.cap="Layout of the Google Earth Engine Code Editor interface.", out.width="100%"}
+knitr::include_graphics("images/module1/gee_editor.png")
+```
+
+The interface is organized into four functional zones: a left panel with navigation and data discovery tools, a central code editing area, a right panel for output inspection and task management, and a lower interactive map.
+
+#### Left Panel: Scripts, Assets, and Documentation
+
+The left panel is divided into three tabs. The **Scripts** tab provides a personal repository for saving and organizing your GEE scripts, organized into folders. Scripts can be shared with other GEE users by generating a link, which is useful for collaborative training exercises. A **Reader** and **Writer** permission system controls who can view or edit shared scripts. The **Examples** folder within the Scripts tab contains a large collection of community-contributed scripts covering common use cases, which serve as an excellent learning resource.
+
+The **Assets** tab allows you to upload and manage personal geospatial assets --- raster images, vector feature collections, or tables --- that can then be loaded into scripts using `ee.Image()` or `ee.FeatureCollection()` calls. The FAO GSP shared assets used in this training (e.g., CHELSA climate layers and OpenLandMap terrain derivatives) are hosted in a shared project asset folder (`projects/digital-soil-mapping-gsp-fao`) that your account must be authorized to access.
+
+The **Docs** tab provides a searchable, offline-accessible reference for the entire JavaScript GEE API. Every function, data type, and parameter is documented here with descriptions and usage examples. When you are uncertain about a function's arguments or return type, searching Docs is usually faster than consulting external documentation.
+
+#### Central Panel: The Code Editor
+
+The central panel is where scripts are written and executed. It provides syntax highlighting for JavaScript, basic autocompletion for GEE API methods, and inline error indicators. Scripts are saved automatically to your personal repository. The toolbar above the editor contains several important controls:
+
+The **Run** button (or `Ctrl+Enter` / `Cmd+Enter`) executes the entire script. GEE processes the script server-side, so execution does not transfer data to your browser --- only the final computed outputs and any `print()` statements are returned. This means that even very large computations feel responsive in the editor, as you are only waiting for metadata and visualization tiles rather than raw data downloads.
+
+The **Save** button commits the current script state to your repository. It is good practice to save frequently and to use the **Get Link** button to generate a shareable URL that encodes the current script state. This URL is particularly useful for sharing reproducible workflows in a training context.
+
+The **Reset** button clears all layers from the map and resets the console, without deleting your script. Use this when you want to re-run a script cleanly after making changes.
+
+The **Apps** button allows you to publish a script as a standalone GEE application with a simplified user interface, which is useful for sharing tools with non-technical audiences.
+
+
+### Right Panel: Console, Inspector, and Tasks
+
+The right panel has three tabs that serve distinct purposes during script development and execution.
+
+The **Console** tab displays the output of `print()` statements in your script. Printing an Earth Engine object such as an image collection or feature collection shows its metadata: the number of elements, band names, projection, spatial extent, and property dictionary. This is the primary tool for debugging scripts and verifying that filtering and processing steps are producing the expected results. For example, printing the Sentinel-2 collection after applying cloud filters confirms how many scenes are available before computing the median composite.
+
+The **Inspector** tab activates a point-query tool. When active, clicking any location on the map returns the pixel values of all currently displayed layers at that point, along with their band names and data types. This is particularly useful for quickly checking that computed indices or terrain derivatives have realistic values across the study area without exporting the full raster.
+
+The **Tasks** tab is essential for managing data exports. GEE does not automatically execute export operations when a script is run --- instead, exports are queued as tasks that must be submitted manually. After running a script that contains `Export.image.toDrive()` calls, pending tasks appear in this tab with a yellow **Run** button. Clicking **Run** for each task opens a dialog where you can confirm or modify the export parameters (description, folder, scale, CRS) before submission. Once submitted, tasks progress through *READY*, *RUNNING*, and *COMPLETED* states. Completed exports appear in the designated Google Drive folder as GeoTIFF files. Failed tasks display an error message that can help diagnose issues related to computation limits, memory, or invalid geometries.
+
+### Lower Section: The Interactive Map
+
+The lower section of the Code Editor is an interactive map, similar in functionality to Google Maps, onto which computed layers are rendered as tiled overlays. Layers are added using `Map.addLayer()`, which accepts an Earth Engine image or feature collection, a visualization parameter dictionary specifying band names, color palettes, and value ranges, and an optional display name.
+
+The map toolbar provides tools for navigating (pan and zoom), measuring distances, and drawing geometries. The geometry drawing tools --- point, line, polygon, and rectangle --- allow you to define regions of interest directly on the map and reference them as variables in your script. This is a convenient way to quickly define a custom study area without needing to upload a vector file. Drawn geometries are automatically added to the **Geometry Imports** section at the top of the script.
+
+The layer manager in the upper right corner of the map lists all currently added layers with toggle controls for visibility and opacity sliders. Each layer can be independently shown or hidden, making it easy to compare multiple products --- for instance, toggling between the ESA WorldCover land cover and the Sentinel-2 RGB composite to verify that the cropland mask aligns with visible agricultural patterns.
+
+:::warning-box
+**Browser Compatibility**
+
+The GEE Code Editor is optimized for Google Chrome. While it functions in other modern browsers (Firefox, Edge), some features such as autocompletion and the geometry import panel may behave differently. For the best experience during training sessions, use an up-to-date version of Google Chrome.
+:::
+
+### Step 5: Prepare Your Google Drive Export Folder
+
+The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named `GEE_Exports` in the root of your Google Drive at [https://drive.google.com](https://drive.google.com). This folder name is referenced explicitly in the export configuration of the script (see the `exportFolder` variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.
+
+
+## Installation of Docker Desktop and Docker Compose
+
+**Docker Desktop** is the application you install on your computer to run Docker containers locally. It provides the Docker engine, a graphical interface to manage running containers and images, and it bundles **Docker Compose** as an integrated component, so no separate installation of Compose is required.
+
+**Docker Compose** is a tool used to define and run multi-container Docker applications. Rather than starting each container individually, Compose reads a single configuration file (`docker-compose.yml`) that describes all the services, their dependencies, and how they connect to each other, then starts everything with a single command. The key benefits of this approach include:
+
+-   **Simplified Deployment**: Automatically pulls and runs multiple containers with a single command.
+-   **Predefined Configuration**: Ensures all services are correctly configured and work together.
+-   **Portability**: The same configuration runs on Windows, macOS, and Linux without modification.
+
+The GloSIS-ETL application used in Module 4 is a multi-container system managed by **Docker Compose**. Installing **Docker Desktop** is therefore the only prerequisite. It provides both the container runtime and the Compose tool needed to deploy GloSIS.
+
+### Install Docker Desktop
+
+#### Windows
+
+1.  **Enable Hyper-V**
+
+    Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerShell to be installed and enabled. In most systems, the Docker Desktop installer enables it for you.
+
+    To test if Hyper-V is enabled, go to the start menu and type:
+
+    ```         
+    Turn Windows features on or off
+    ```
+
+    and press enter. In the subsequent screen, verify that Hyper-V is enabled.
+
+    To install Hyper-V manually, see [Install Hyper-V on Windows 10](https://learn.microsoft.com/es-es/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V?pivots=windows-server). A reboot is required after installation. If you install Hyper-V without rebooting, Docker Desktop does not work correctly.
+
+    In some Windows systems, [Virtualization](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) must be enabled in the BIOS. Note that many Windows devices already have virtualization enabled, so this may not apply.
+
+2.  Download **Docker Desktop for Windows** from the [official website](https://docs.docker.com/desktop/install/windows-install/).
+
+3.  Run the installer and follow the on-screen instructions.
+
+4.  After installation, restart your computer.
+
+5.  Open **Docker Desktop** and ensure it is running.
+
+#### macOS
+
+1.  Download **Docker Desktop for Mac** from the [official website](https://docs.docker.com/desktop/install/mac-install/). Choose the correct version for your processor (**Apple Silicon** or **Intel**).
+2.  Open the `.dmg` file and drag **Docker** into the Applications folder.
+3.  Start **Docker Desktop** and allow any requested system permissions.
+
+#### Linux
+
+1.  Open a terminal and run the following commands:
+
+    ``` bash
+    sudo apt update
+    sudo apt install docker.io docker-compose -y
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    ```
+
+2.  Add your user to the Docker group (to run Docker without `sudo`):
+
+    ``` bash
+    sudo usermod -aG docker $USER
+    ```
+
+3.  **Log out and log back in** (or restart your computer) for the group change to take effect.
+
+4.  Verify Docker is running:
+
+    ``` bash
+    docker --version
+    ```
+
+    If the installation was successful, you should see output similar to:
+
+    ```         
+    Docker version 24.0.5, build 123456
+    ```
+
+
+#	Introduction to R programming {-}
 
 ## Understanding the RStudio Interface
 
@@ -552,7 +718,7 @@ For soil science work, key packages include:
 Packages need to be installed once before you can use them.
 Use `install.packages()`:
 
-```{r install-package-1, echo=TRUE, eval=FALSE}
+```{r install-packages, echo=TRUE, eval=FALSE}
 # Install a single package
 install.packages("tidyverse")
 
@@ -564,7 +730,7 @@ You only need to install a package once, but you must load it with `library()` e
 
 You can check which *{packages}* are installed with:
 
-```{r, echo=TRUE, eval=FALSE}
+```{r installed-packages, echo=TRUE, eval=FALSE}
 installed.packages()
 ```
 <br>
@@ -574,7 +740,7 @@ installed.packages()
 Some *{packages}* are not yet available on CRAN or you may want a newer development versions from GitHub, Gitlab, bitbucket, or an URL.
 In these cases, you can use the `remotes` or `devtools` *{packages}*, with the functions `install_github()`, `install_gitlab()`, `install_bitbucket()` or `install_url()`:
 
-```{r, echo=TRUE, eval=FALSE}
+```{r remotes-installation, echo=TRUE, eval=FALSE}
 # First, install remotes package (if not already installed)
 install.packages("remotes")
 
@@ -593,13 +759,13 @@ There are two common methods:
 - **1. Installing from a compressed source package file** (e.g., `mypackage_1.0.0.tar.gz`)
 
 
-```{r, echo=TRUE, eval=FALSE}
+```{r manual-installation, echo=TRUE, eval=FALSE}
 install.packages("path/to/mypackage_1.0.0.tar.gz", repos = NULL, type = "source")
 ```
 
 - **2. Installing from a Local `.zip` file** (Windows Binary)
 
-```{r, echo=TRUE, eval=FALSE}
+```{r install-from-zip, echo=TRUE, eval=FALSE}
 install.packages("path/to/mypackage.zip", repos = NULL, type = "win.binary")
 ```
 
@@ -662,7 +828,7 @@ You can assign values to objects using either `<-` or `=`.
 
 However, the preferred and most common assignment operator is `<-` while `=` is most commonly used inside function calls to name arguments. This avoids confusion between assigning objects and passing inputs to functions.
 
-```{r assignment, echo=TRUE, eval=FALSE}
+```{r variable-assignment, echo=TRUE, eval=FALSE}
 # Assign a value to a variable
 soil_depth <- 30
 
@@ -714,7 +880,7 @@ R has several basic data types:
 
 Numeric values store measurements that can include decimals (e.g., pH, clay %, temperature).
 
-```{r numeric, echo=TRUE, eval=FALSE}
+```{r numeric-type, echo=TRUE, eval=FALSE}
 # Numeric values
 ph_value <- 6.8
 clay_percent <- 25.5
@@ -725,7 +891,7 @@ temperature <- 15.2
 
 Integers are whole numbers. In R, you can create them explicitly using the L suffix.
 
-```{r integer, echo=TRUE, eval=FALSE}
+```{r integer-type, echo=TRUE, eval=FALSE}
 # Integer values (use L suffix)
 sample_count <- 100L
 plot_number <- 5L
@@ -735,7 +901,7 @@ plot_number <- 5L
 
 Character values store text (soil types, locations, notes). They must be written inside quotes.
 
-```{r character, echo=TRUE, eval=FALSE}
+```{r character-typea, echo=TRUE, eval=FALSE}
 # Character values (use quotes)
 soil_type <- "Acrisol"
 location <- "Kansas"
@@ -746,7 +912,7 @@ notes <- "Sample collected from topsoil"
 
 Logical values represent yes/no conditions and are commonly used for filtering and decision-making.
 
-```{r logical, echo=TRUE, eval=FALSE}
+```{r logical-type, echo=TRUE, eval=FALSE}
 # Logical values
 is_valid <- TRUE
 has_missing_data <- FALSE
@@ -756,7 +922,7 @@ has_missing_data <- FALSE
 
 Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.
 
-```{r date, echo=TRUE, eval=FALSE}
+```{r date-type, echo=TRUE, eval=FALSE}
 # ISO 8601 date format, YYYY-MM-DD
 sampling_date <- "2024-03-12"
 sampling_date <- as.Date(sampling_date, format = "%Y-%m-%d")
@@ -878,7 +1044,7 @@ ph_values[-c(1,2)]  # All except first two
 **Factors** are used to represent categorical data.
 They store values as levels (categories).
 
-```{r factors, echo=TRUE, eval=FALSE}
+```{r factor-type, echo=TRUE, eval=FALSE}
 # Create a factor from character vector
 soil_class <- factor(c("Clay", "Loam", "Sand", "Clay", "Loam"))
 print(soil_class)
@@ -902,7 +1068,7 @@ print(texture_class)
 
 A **matrix** is a two-dimensional structure where all elements must be of the same type.
 
-```{r matrices, echo=TRUE, eval=FALSE}
+```{r matrix-class, echo=TRUE, eval=FALSE}
 # Create a matrix
 soil_matrix <- matrix(
   c(5.2, 25, 30,
@@ -932,7 +1098,7 @@ It's like a spreadsheet: rows represent observations, columns represent variable
 
 #### Creating Data Frames {#dataframe-create}
 
-```{r dataframes-create, echo=TRUE, eval=FALSE}
+```{r dataframe-class, echo=TRUE, eval=FALSE}
 # Create a data frame
 soil_data <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004", "P005"),
@@ -1002,7 +1168,7 @@ head(soil_data)
 
 A **list** is a flexible structure that can contain elements of different types and sizes (vectors, data frames, other lists, etc.).
 
-```{r lists, echo=TRUE, eval=FALSE}
+```{r lists-class, echo=TRUE, eval=FALSE}
 # Create a list
 soil_analysis <- list(
   site_name = "Kansas Field",
@@ -1030,7 +1196,7 @@ Operators perform operations on objects. R has several types of operators:
 
 ### Arithmetic Operators {#arithmetic-operators}
 
-```{r arithmetic, echo=TRUE, eval=FALSE}
+```{r arithmetic-operators, echo=TRUE, eval=FALSE}
 # Basic arithmetic
 10 + 5      # Addition
 10 - 5      # Subtraction
@@ -1048,7 +1214,7 @@ result
 
 ### Comparison Operators {#comparison-operators}
 
-```{r comparison, echo=TRUE, eval=FALSE}
+```{r comparison-operators, echo=TRUE, eval=FALSE}
 # Comparison operators return TRUE or FALSE
 5 == 5      # Equal to
 5 != 3      # Not equal to
@@ -1066,7 +1232,7 @@ ph_values[ph_values > 6]          # Values greater than 6
 
 ### Logical Operators {#logical-operators}
 
-```{r logical-ops, echo=TRUE, eval=FALSE}
+```{r logical-operators, echo=TRUE, eval=FALSE}
 # AND operator: & (element-wise) or && (single values)
 TRUE & TRUE      # TRUE
 TRUE & FALSE     # FALSE
@@ -1332,7 +1498,7 @@ In data frames, data access is organized by *rows* and *columns* using the patte
 In this context, **filtering** usually refers to selecting rows, while **subsetting** often refers to selecting columns. In the example below, we use this structure to filter rows and subset columns from a `soil_data` data frame.
 
 
-```{r subsetting, echo=TRUE, eval=FALSE}
+```{r subsetting-df, echo=TRUE, eval=FALSE}
 # Example data frame
 soil_data <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004", "P005"),
@@ -1373,12 +1539,12 @@ subset_data <- soil_data[, c("plot_id", "ph", "soil_type")]
 subset_data
 ```
 
-### Deleting Columns {#delete-cols}
+### Deleting Columns and Rows {#delete-cols}
 
 You can remove columns or rows from a data frame using names, indices, or logical conditions. This is useful when you want to drop unnecessary variables, remove incomplete records, or exclude outliers before analysis.
 
 
-```{r deleting, echo=TRUE, eval=FALSE}
+```{r delete-cols-rows, echo=TRUE, eval=FALSE}
 # Example data frame
 data <- data.frame(
   Plot = c("P001", "P002", "P003"),
@@ -1421,7 +1587,7 @@ data <- data[data$pH >= 6, ]
 
 Sorting is useful for quickly identifying extreme values (e.g., highest pH, highest clay content) or for preparing tables for reporting.
 
-```{r sorting, echo=TRUE, eval=FALSE}
+```{r sorting-data, echo=TRUE, eval=FALSE}
 # Sort by pH (ascending)
 soil_data[order(soil_data$ph), ]
 
@@ -1436,7 +1602,7 @@ soil_data[order(soil_data$soil_type, soil_data$ph), ]
 
 Aggregation means computing summary statistics by group, such as mean pH per soil type.
 
-```{r aggregating, echo=TRUE, eval=FALSE}
+```{r aggregating-data, echo=TRUE, eval=FALSE}
 # Mean pH by soil type
 aggregate(ph ~ soil_type, data = soil_data, FUN = mean)
 
@@ -1486,7 +1652,7 @@ library(tidyverse)
 
 A **tibble** is the tidyverse’s modern version of a data frame. It behaves like a regular data frame, but it prints in a cleaner way and is generally more user-friendly. For example, tibbles show only the first rows by default, keep long text from cluttering your console, and display column types so you can quickly confirm how R has interpreted your data. Tibbles also avoid some older base R behaviors (such as automatically converting text to factors in older R versions), which makes them a reliable default for data analysis workflows.
 
-```{r tibbles, echo=TRUE, eval=FALSE}
+```{r tibble, echo=TRUE, eval=FALSE}
 # Convert data frame to tibble
 soil_tbl <- as_tibble(soil_data)
 soil_tbl
@@ -1994,7 +2160,7 @@ In soil laboratory datasets, some results are reported as below the detection (o
 
 *Example: Converting "<DL" to DL/2*
 
-```{r dl-dl2, echo=TRUE, eval=FALSE}
+```{r detection-limits, echo=TRUE, eval=FALSE}
 soil_lab <- data.frame(
   plot_id = c("P001", "P002", "P003", "P004"),
   no3_mgkg_raw = c("0.12", "<0.05", "0.31", "<0.05"),

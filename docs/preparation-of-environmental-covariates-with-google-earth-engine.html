@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | DRAFT - Integrated soil information for decision-making </title>
+  <title>Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="spatial-analysis-in-r.html"/>
+<link rel="next" href="sampling-design-for-soil-surveys.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -558,19 +558,129 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="preparation-of-environmental-covariates-with-google-earth-engine" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Preparation of Environmental Covariates with Google Earth Engine<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#preparation-of-environmental-covariates-with-google-earth-engine" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-google-earth-engine" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> What is Google Earth Engine?<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#what-is-google-earth-engine" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.</p>
+<p>At its core, GEE combines three key elements: a multi-petabyte data catalog hosted on Google’s servers, a high-performance parallel computing infrastructure, and a programming interface (API) accessible through both a JavaScript-based Code Editor and a Python client library. Users write analysis scripts that run directly on Google’s servers, where the data already resides, meaning computationally intensive operations that would take days on a local machine can complete in minutes.</p>
+<div class="key-concept">
+<p><strong>Why GEE for Digital Soil Mapping?</strong></p>
+<p>Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.</p>
+</div>
+<p>In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas), including CHELSA bioclimatic variables, TerraClimate time series, SRTM-derived terrain attributes, MODIS FPAR seasonality layers, Sentinel-2 spectral indices, ESA WorldCover land cover, and geomorphological features from Geomorpho90m. The exported rasters are then used as covariates to:</p>
+<ul>
+<li>Create a robust soil sampling design based on the SCORPAN framework</li>
+<li>Predict soil properties in the Digital Soil Mapping workflow.</li>
+</ul>
+</div>
+<div id="setting-up-google-earth-engine" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Setting Up Google Earth Engine<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#setting-up-google-earth-engine" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="step-1-create-a-google-account" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Step 1: Create a Google Account<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#step-1-create-a-google-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GEE requires a Google account. If you do not already have one, create a free account at <a href="https://accounts.google.com">https://accounts.google.com</a>. Use an institutional email address (university or research organization) if possible, as this can facilitate the approval process.</p>
+</div>
+<div id="step-2-register-for-a-gee-account" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Step 2: Register for a GEE Account<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#step-2-register-for-a-gee-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GEE access requires prior registration. Navigate to the Earth Engine registration page:</p>
+<p><a href="https://earthengine.google.com/register">https://earthengine.google.com/register</a></p>
+<p>Select <strong>Register a Noncommercial or Commercial Cloud project</strong>. On the next screen, choose <strong>Unpaid usage</strong> and then select the project type that best describes your work (e.g., <em>Academia &amp; Research</em>).</p>
+<div class="warning-box">
+<p><strong>Note on Account Approval</strong></p>
+<p>GEE registration is subject to manual review by Google. Approval typically takes between a few hours and two business days. You will receive a confirmation email once your account is activated. Register well in advance of any practical session that requires GEE access.</p>
+</div>
+</div>
+<div id="step-3-create-or-select-a-google-cloud-project" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Step 3: Create or Select a Google Cloud Project<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#step-3-create-or-select-a-google-cloud-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GEE now operates within the Google Cloud infrastructure. During registration you will be prompted to either create a new Google Cloud project or link an existing one. For training purposes, create a new project with a descriptive name such as <code>soilfer-training</code>. Note the <strong>Project ID</strong>, as you will need it when initializing GEE from Python or when sharing scripts with colleagues.</p>
+</div>
+<div id="step-4-access-the-gee-code-editor" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Step 4: Access the GEE Code Editor<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#step-4-access-the-gee-code-editor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once your account is approved, open the JavaScript-based Code Editor at:</p>
+<p><a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a></p>
+<p>The GEE Code Editor (<a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>) is a browser-based integrated development environment (IDE) designed specifically for writing, testing, and running Earth Engine scripts in JavaScript. It requires no local software installation beyond a modern web browser and provides immediate access to the full GEE API and data catalog. Figure <a href="preparation-of-environmental-covariates-with-google-earth-engine.html#fig:gee-editor">3.1</a> shows a schematic of the interface layout.</p>
+<div class="figure"><span style="display:block;" id="fig:gee-editor"></span>
+<img src="images/module1/gee_editor.png" alt="Layout of the Google Earth Engine Code Editor interface." width="100%" />
+<p class="caption">
+Figure 3.1: Layout of the Google Earth Engine Code Editor interface.
+</p>
+</div>
+<p>The interface is organized into four functional zones: a left panel with navigation and data discovery tools, a central code editing area, a right panel for output inspection and task management, and a lower interactive map.</p>
+<div id="left-panel-scripts-assets-and-documentation" class="section level4 hasAnchor" number="3.2.4.1">
+<h4><span class="header-section-number">3.2.4.1</span> Left Panel: Scripts, Assets, and Documentation<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#left-panel-scripts-assets-and-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The left panel is divided into three tabs. The <strong>Scripts</strong> tab provides a personal repository for saving and organizing your GEE scripts, organized into folders. Scripts can be shared with other GEE users by generating a link, which is useful for collaborative training exercises. A <strong>Reader</strong> and <strong>Writer</strong> permission system controls who can view or edit shared scripts. The <strong>Examples</strong> folder within the Scripts tab contains a large collection of community-contributed scripts covering common use cases, which serve as an excellent learning resource.</p>
+<p>The <strong>Assets</strong> tab allows you to upload and manage personal geospatial assets — raster images, vector feature collections, or tables — that can then be loaded into scripts using <code>ee.Image()</code> or <code>ee.FeatureCollection()</code> calls. The FAO GSP shared assets used in this training (e.g., CHELSA climate layers and OpenLandMap terrain derivatives) are hosted in a shared project asset folder (<code>projects/digital-soil-mapping-gsp-fao</code>) that your account must be authorized to access.</p>
+<p>The <strong>Docs</strong> tab provides a searchable, offline-accessible reference for the entire JavaScript GEE API. Every function, data type, and parameter is documented here with descriptions and usage examples. When you are uncertain about a function’s arguments or return type, searching Docs is usually faster than consulting external documentation.</p>
+</div>
+<div id="central-panel-the-code-editor" class="section level4 hasAnchor" number="3.2.4.2">
+<h4><span class="header-section-number">3.2.4.2</span> Central Panel: The Code Editor<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#central-panel-the-code-editor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The central panel is where scripts are written and executed. It provides syntax highlighting for JavaScript, basic autocompletion for GEE API methods, and inline error indicators. Scripts are saved automatically to your personal repository. The toolbar above the editor contains several important controls:</p>
+<p>The <strong>Run</strong> button (or <code>Ctrl+Enter</code> / <code>Cmd+Enter</code>) executes the entire script. GEE processes the script server-side, so execution does not transfer data to your browser — only the final computed outputs and any <code>print()</code> statements are returned. This means that even very large computations feel responsive in the editor, as you are only waiting for metadata and visualization tiles rather than raw data downloads.</p>
+<p>The <strong>Save</strong> button commits the current script state to your repository. It is good practice to save frequently and to use the <strong>Get Link</strong> button to generate a shareable URL that encodes the current script state. This URL is particularly useful for sharing reproducible workflows in a training context.</p>
+<p>The <strong>Reset</strong> button clears all layers from the map and resets the console, without deleting your script. Use this when you want to re-run a script cleanly after making changes.</p>
+<p>The <strong>Apps</strong> button allows you to publish a script as a standalone GEE application with a simplified user interface, which is useful for sharing tools with non-technical audiences.</p>
+</div>
+</div>
+<div id="right-panel-console-inspector-and-tasks" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Right Panel: Console, Inspector, and Tasks<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#right-panel-console-inspector-and-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The right panel has three tabs that serve distinct purposes during script development and execution.</p>
+<p>The <strong>Console</strong> tab displays the output of <code>print()</code> statements in your script. Printing an Earth Engine object such as an image collection or feature collection shows its metadata: the number of elements, band names, projection, spatial extent, and property dictionary. This is the primary tool for debugging scripts and verifying that filtering and processing steps are producing the expected results. For example, printing the Sentinel-2 collection after applying cloud filters confirms how many scenes are available before computing the median composite.</p>
+<p>The <strong>Inspector</strong> tab activates a point-query tool. When active, clicking any location on the map returns the pixel values of all currently displayed layers at that point, along with their band names and data types. This is particularly useful for quickly checking that computed indices or terrain derivatives have realistic values across the study area without exporting the full raster.</p>
+<p>The <strong>Tasks</strong> tab is essential for managing data exports. GEE does not automatically execute export operations when a script is run — instead, exports are queued as tasks that must be submitted manually. After running a script that contains <code>Export.image.toDrive()</code> calls, pending tasks appear in this tab with a yellow <strong>Run</strong> button. Clicking <strong>Run</strong> for each task opens a dialog where you can confirm or modify the export parameters (description, folder, scale, CRS) before submission. Once submitted, tasks progress through <em>READY</em>, <em>RUNNING</em>, and <em>COMPLETED</em> states. Completed exports appear in the designated Google Drive folder as GeoTIFF files. Failed tasks display an error message that can help diagnose issues related to computation limits, memory, or invalid geometries.</p>
+</div>
+<div id="lower-section-the-interactive-map" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Lower Section: The Interactive Map<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#lower-section-the-interactive-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The lower section of the Code Editor is an interactive map, similar in functionality to Google Maps, onto which computed layers are rendered as tiled overlays. Layers are added using <code>Map.addLayer()</code>, which accepts an Earth Engine image or feature collection, a visualization parameter dictionary specifying band names, color palettes, and value ranges, and an optional display name.</p>
+<p>The map toolbar provides tools for navigating (pan and zoom), measuring distances, and drawing geometries. The geometry drawing tools — point, line, polygon, and rectangle — allow you to define regions of interest directly on the map and reference them as variables in your script. This is a convenient way to quickly define a custom study area without needing to upload a vector file. Drawn geometries are automatically added to the <strong>Geometry Imports</strong> section at the top of the script.</p>
+<p>The layer manager in the upper right corner of the map lists all currently added layers with toggle controls for visibility and opacity sliders. Each layer can be independently shown or hidden, making it easy to compare multiple products — for instance, toggling between the ESA WorldCover land cover and the Sentinel-2 RGB composite to verify that the cropland mask aligns with visible agricultural patterns.</p>
+<div class="warning-box">
+<p><strong>Browser Compatibility</strong></p>
+<p>The GEE Code Editor is optimized for Google Chrome. While it functions in other modern browsers (Firefox, Edge), some features such as autocompletion and the geometry import panel may behave differently. For the best experience during training sessions, use an up-to-date version of Google Chrome.</p>
+</div>
+</div>
+<div id="step-5-prepare-your-google-drive-export-folder" class="section level3 hasAnchor" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Step 5: Prepare Your Google Drive Export Folder<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#step-5-prepare-your-google-drive-export-folder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named <code>GEE_Exports</code> in the root of your Google Drive at <a href="https://drive.google.com">https://drive.google.com</a>. This folder name is referenced explicitly in the export configuration of the script (see the <code>exportFolder</code> variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.</p>
+</div>
+</div>
+<div id="the-soilfer-environmental-covariates-script" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> The SoilFER Environmental Covariates Script<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#the-soilfer-environmental-covariates-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The script provided for this training (<code>1_gee_soilfer_env_covariates.txt</code>) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.</p>
+<p><strong>Climate data</strong> is sourced from two complementary products.</p>
+<ul>
+<li><p><strong>CHELSA</strong> (Climatologies at High resolution for the Earth’s Land Surface Areas) provides long-term bioclimatic variables including mean annual temperature (bio1), annual precipitation (bio12), and extreme temperature and precipitation metrics (bio5, bio6, bio13, bio14, bio16, bio17), alongside potential evapotranspiration computed using the Penman-Monteith method and surface wind statistics.</p></li>
+<li><p><strong>TerraClimate</strong> contributes monthly time series of maximum and minimum temperature, precipitation, and potential evapotranspiration spanning 1981 to the present, which are exported as multi-band images for subsequent temporal aggregation in R.</p></li>
+</ul>
+<p><strong>Terrain data</strong> is derived from the USGS SRTM 30 m Digital Elevation Model, from which slope, aspect, Topographic Position Index (TPI), and hillshade are computed on-the-fly within GEE. Geomorphological landform classification at 90 m resolution is obtained from the <code>Geomorpho90m</code> dataset. Additionally, pre-computed terrain derivatives at 250 m resolution (elevation, slope, curvature, TPI, TWI) are loaded from the FAO GSP shared GEE asset library hosted at <code>projects/digital-soil-mapping-gsp-fao</code>.</p>
+<p><strong>Vegetation and soil indices</strong> are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2_SR_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.</p>
+<p><strong>Land cover</strong> is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.</p>
+<p>All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.</p>
+</div>
+<div id="running-the-script" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Running the Script<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#running-the-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Copy the full contents of <code>1_gee_soilfer_env_covariates.txt</code> into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.</p>
+<p>The <code>aoi</code> variable defines the <code>area of interest</code>. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb132-1"><a href="preparation-of-environmental-covariates-with-google-earth-engine.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> aoi <span class="op">=</span> ee<span class="op">.</span><span class="fu">FeatureCollection</span>(<span class="st">&#39;TIGER/2018/States&#39;</span>)</span>
+<span id="cb132-2"><a href="preparation-of-environmental-covariates-with-google-earth-engine.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">filter</span>(ee<span class="op">.</span><span class="at">Filter</span><span class="op">.</span><span class="fu">eq</span>(<span class="st">&#39;NAME&#39;</span><span class="op">,</span> <span class="st">&#39;Kansas&#39;</span>))<span class="op">;</span></span></code></pre></div>
+<p>To adapt the script to a different study area, replace this definition with a custom geometry or a different administrative boundary. Update <code>countryName</code> to a short descriptor used in the exported file names.</p>
+<p>The date range for TerraClimate is controlled by <code>climateStartDate</code> and <code>climateEndDate</code>. The default configuration covers the full 1981–2023 record. For exploratory or training purposes, restricting this range (e.g., 2000–2023) reduces processing time and export file sizes.</p>
+<p>Export spatial resolutions are defined individually for each product category, reflecting the native resolution of each data source: 250 m for the primary CHELSA/MODIS covariate stack, 100 m for high-resolution terrain and Sentinel-2 layers, 90 m for geomorphons, 20 m for the cropland mask, and 4000 m for TerraClimate time series.</p>
+<p>Click <strong>Run</strong> to execute the script. Visualization layers (SRTM DEM, Sentinel-2 RGB composite, and cropland mask) will appear on the map immediately. Export tasks do not start automatically — navigate to the <strong>Tasks</strong> tab in the right panel and click <strong>Run</strong> next to each pending task to initiate the exports to Google Drive.</p>
+<div class="warning-box">
+<p><strong>Processing Time and Quotas</strong></p>
+<p>Large exports, particularly TerraClimate time series and Sentinel-2 layers over large regions, can take tens of minutes to several hours depending on server load and area size. GEE free-tier accounts are subject to computation quotas. If a task fails with a computation timeout or memory error, consider reducing the export resolution or splitting the time series into shorter periods. Monitor task progress in the <strong>Tasks</strong> tab; completed files will appear in your <code>GEE_Exports</code> Google Drive folder once finished.</p>
+</div>
+<p>Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the <code>terra</code> package and stacked into the covariate array used for model training and spatial prediction.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="spatial-analysis-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sampling-design-for-soil-surveys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
