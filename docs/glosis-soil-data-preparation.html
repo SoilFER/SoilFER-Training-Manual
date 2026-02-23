@@ -908,15 +908,15 @@ Figure 5.15: Automated Units Conversion in the Information in the GloSIS ETL-Har
 <h4><span class="header-section-number">5.5.1.3</span> Linux<a href="glosis-soil-data-preparation.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li><p>Open a terminal and run the following commands:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="glosis-soil-data-preparation.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb197-2"><a href="glosis-soil-data-preparation.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
-<span id="cb197-3"><a href="glosis-soil-data-preparation.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
-<span id="cb197-4"><a href="glosis-soil-data-preparation.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable docker</span></code></pre></div></li>
+<div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="glosis-soil-data-preparation.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb193-2"><a href="glosis-soil-data-preparation.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
+<span id="cb193-3"><a href="glosis-soil-data-preparation.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
+<span id="cb193-4"><a href="glosis-soil-data-preparation.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable docker</span></code></pre></div></li>
 <li><p>Add your user to the Docker group (to run Docker without <code>sudo</code>):</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb198-1"><a href="glosis-soil-data-preparation.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb194"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb194-1"><a href="glosis-soil-data-preparation.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div></li>
 <li><p><strong>Log out and log back in</strong> (or restart your computer) for the group change to take effect.</p></li>
 <li><p>Verify Docker is running:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb199-1"><a href="glosis-soil-data-preparation.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb195-1"><a href="glosis-soil-data-preparation.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
 <p>If the installation was successful, you should see output similar to:</p>
 <pre><code>Docker version 24.0.5, build 123456</code></pre></li>
 </ol>
@@ -939,21 +939,21 @@ Figure 5.16: Cloning the repository.
 </p>
 </div>
 <p>Alternatively, if you have Git installed, you can clone the repository:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb202-1"><a href="glosis-soil-data-preparation.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl.git</span></code></pre></div></li>
+<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb198-1"><a href="glosis-soil-data-preparation.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl.git</span></code></pre></div></li>
 <li><p><strong>Extract the ZIP file</strong> (if downloaded) to a folder on your computer (e.g., the <code>Desktop</code> folder).</p></li>
 <li><p><strong>Configure the environment variables.</strong></p>
 <p>Inside the extracted folder you will find a file called <code>.env.example</code>. Copy it and rename the copy to <code>.env</code>:</p>
 <ul>
 <li><p><strong>Windows (Command Prompt):</strong></p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="glosis-soil-data-preparation.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="ex">copy</span> .env.example .env</span></code></pre></div></li>
+<div class="sourceCode" id="cb199"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb199-1"><a href="glosis-soil-data-preparation.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="ex">copy</span> .env.example .env</span></code></pre></div></li>
 <li><p><strong>macOS / Linux:</strong></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb204-1"><a href="glosis-soil-data-preparation.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div></li>
+<div class="sourceCode" id="cb200"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb200-1"><a href="glosis-soil-data-preparation.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div></li>
 </ul>
 <p>The default values use <code>glosis</code> as the database name, user, and password. For production deployments, edit the <code>.env</code> file and change the <code>POSTGRES_PASSWORD</code> value.</p></li>
 <li><p><strong>Open a Terminal or Command Prompt</strong> and navigate to the extracted folder:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="glosis-soil-data-preparation.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl</span></code></pre></div></li>
+<div class="sourceCode" id="cb201"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb201-1"><a href="glosis-soil-data-preparation.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl</span></code></pre></div></li>
 <li><p><strong>Start the GloSIS services</strong> by running:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb206-1"><a href="glosis-soil-data-preparation.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb202-1"><a href="glosis-soil-data-preparation.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The <code>--build</code> flag is required the first time to build the <code>glosis-etl</code> Shiny application image from the Dockerfile. Subsequent runs can omit it unless the application code has changed. The first build may take <strong>10–15 minutes</strong> as it downloads base images and installs R packages.</p>
 </blockquote>
@@ -978,7 +978,7 @@ Figure 5.17: Docker Desktop showing running containers.
 <div id="using-the-terminal" class="section level4 hasAnchor" number="5.5.3.2">
 <h4><span class="header-section-number">5.5.3.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To manually check if the services are running, type:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="glosis-soil-data-preparation.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="glosis-soil-data-preparation.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
 <p>You should see an output similar to:</p>
 <pre><code>CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                  PORTS                    NAMES
 415f97d8a445   glosis-etl-glosis-etl    &quot;/usr/bin/shiny-serv…&quot;   25 hours ago   Up 25 hours (healthy)   0.0.0.0:3838-&gt;3838/tcp   glosis-etl
@@ -988,7 +988,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="stopping-the-services" class="section level4 hasAnchor" number="5.5.3.3">
 <h4><span class="header-section-number">5.5.3.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To stop the services at any time, use:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="glosis-soil-data-preparation.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="glosis-soil-data-preparation.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
 <p>This will stop and remove the containers, but your <strong>database data will remain intact</strong> in the Docker named volume <code>glosis-db-data</code>.</p>
 <blockquote>
 <p><strong>Tip:</strong> To completely reset the database (remove all data), run: <code>docker compose down -v</code>. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.</p>
@@ -998,7 +998,7 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="pgadmin" class="section level3 hasAnchor" number="5.5.4">
 <h3><span class="header-section-number">5.5.4</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>docker-compose.yml</code> file includes an optional <strong>pgAdmin 4</strong> service for direct database management. To activate it:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb210-1"><a href="glosis-soil-data-preparation.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb206-1"><a href="glosis-soil-data-preparation.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
 <p>Once running, access pgAdmin at:</p>
 <pre><code>http://localhost:5050</code></pre>
 <p>Login credentials:</p>
@@ -1108,13 +1108,6 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="docker-compose-file" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> The <code>docker-compose.yml</code> File<a href="glosis-soil-data-preparation.html#docker-compose-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>docker-compose.yml</code> file defines the complete GloSIS-ETL service architecture. Below is a summary of its key components:</p>
-<pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
-## Use &#39;xfun::attr2()&#39; instead.
-## See help(&quot;Deprecated&quot;)
-
-## Warning: &#39;xfun::attr()&#39; is deprecated.
-## Use &#39;xfun::attr2()&#39; instead.
-## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
 <caption><span id="tab:docker-compose-summary">Table 5.2: </span>Docker Compose components.</caption>
 <colgroup>
@@ -1162,17 +1155,20 @@ cb414728ebfd   postgis/postgis:17-3.5   &quot;docker-entrypoint.s…&quot;   7 d
 <div id="env-file" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> The <code>.env</code> File<a href="glosis-soil-data-preparation.html#env-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.env</code> file stores configuration values that are shared between the services. The available variables are:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb215-1"><a href="glosis-soil-data-preparation.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
-<span id="cb215-2"><a href="glosis-soil-data-preparation.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
-<span id="cb215-3"><a href="glosis-soil-data-preparation.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
-<span id="cb215-4"><a href="glosis-soil-data-preparation.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span>
-<span id="cb215-5"><a href="glosis-soil-data-preparation.html#cb215-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb215-6"><a href="glosis-soil-data-preparation.html#cb215-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Application Environment</span></span>
-<span id="cb215-7"><a href="glosis-soil-data-preparation.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="va">SHINY_LOG_LEVEL</span><span class="op">=</span>INFO        <span class="co"># Options: DEBUG, INFO, WARN, ERROR</span></span>
-<span id="cb215-8"><a href="glosis-soil-data-preparation.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="va">R_MAX_MEM_SIZE</span><span class="op">=</span>2Gb          <span class="co"># R memory limit</span></span></code></pre></div>
-<blockquote>
-<p><strong>CAUTION:</strong> For production deployments, always change the default password (<code>glosis</code>) to a secure value.</p>
-</blockquote>
+<div class="sourceCode" id="cb210"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb210-1"><a href="glosis-soil-data-preparation.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
+<span id="cb210-2"><a href="glosis-soil-data-preparation.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
+<span id="cb210-3"><a href="glosis-soil-data-preparation.html#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
+<span id="cb210-4"><a href="glosis-soil-data-preparation.html#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span>
+<span id="cb210-5"><a href="glosis-soil-data-preparation.html#cb210-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-6"><a href="glosis-soil-data-preparation.html#cb210-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Application Environment</span></span>
+<span id="cb210-7"><a href="glosis-soil-data-preparation.html#cb210-7" aria-hidden="true" tabindex="-1"></a><span class="va">SHINY_LOG_LEVEL</span><span class="op">=</span>INFO        <span class="co"># Options: DEBUG, INFO, WARN, ERROR</span></span>
+<span id="cb210-8"><a href="glosis-soil-data-preparation.html#cb210-8" aria-hidden="true" tabindex="-1"></a><span class="va">R_MAX_MEM_SIZE</span><span class="op">=</span>2Gb          <span class="co"># R memory limit</span></span></code></pre></div>
+<div class="warning-box">
+<p><strong>CAUTION:</strong></p>
+<ul>
+<li>For production deployments, always change the default password (<code>glosis</code>) to a secure value.</li>
+</ul>
+</div>
 
 </div>
 </div>
