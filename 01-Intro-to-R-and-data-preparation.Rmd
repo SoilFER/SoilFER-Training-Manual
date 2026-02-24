@@ -764,10 +764,14 @@ site_lab <- site_lab %>%
 ```
 
 ::: key-concept
+**Note that:**
+
  - Replicates increase measurement reliability.
+
  - Averaging avoids discarding valid analytical information.
 
 :::
+
 
 #### Check 2: Resolve ProfID for multiple depth sequences
 
