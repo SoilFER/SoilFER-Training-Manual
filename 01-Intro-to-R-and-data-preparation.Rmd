@@ -1158,17 +1158,16 @@ The tutorial includes concepts as **vector** and **raster** spatial data **coord
 
 Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.
 
-Soil properties are not randomly distributed in space but change in close relationship with different features in the landscape.
-
-Following Jenny´s equation of soil forming factors, soil is a function of environmental factors interacting over time [@prieto2023]:
+In the case of soils, following Jenny’s equation of soil-forming factors [@jenny1941], soil properties are a function of climate, organisms, relief, parent material, and time, leading to non-random spatial distributions:
 
 \begin{aligned} S= f(cl, o, r, p, t,\ldots ). \end{aligned}
 
 where 'S' represents soil formation, 'cl' is climate, 'o' is organisms, 'r' is relief, 'p' is the parent material and 't' accounts for the time that took place to develop the soil profile.
 
-These relationships have been tratitionally used by soil scientists to ascertain the distribution of different soil tyes in traditional soil mapping activities. 
+These relationships have traditionally been used by soil scientists to infer the distribution of different soil types in conventional soil mapping activities. Modern frameworks now use machine learning approaches (e.g., Self-Organizing Maps) to help 'disentangle' these complex relationships, transforming qualitative soil-forming factors into quantitative, high-resolution predictive models [@prieto2023]. 
 
-These relationships can be also used in modern framewosk for soil mapping to model and predict variations in soil properties across the space.
+This deterministic perspective—linking environmental variation to soil variation—forms the basis of Digital Soil Mapping. In practice, soil properties measured at point locations (vector data) are related to environmental characteristics represented as raster covariates, and these relationships are used to fit statistical or machine learning models which can predict soil properties continuously across space using the available raster-based environmental information.
+
 
 ### Spatial Data Types: Vector vs Raster Data  {#spatialtypes}
 
