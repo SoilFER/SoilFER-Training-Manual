@@ -32,7 +32,6 @@ The Kansas KSSL dataset used throughout this section provides real-world example
 
 :::
 
-
 ## Loading and exploring raw soil data {#loading-data}
 
 Before performing any data cleaning or validation, you must first understand the structure and content of your raw data. This exploratory phase reveals data types, identifies potential problems, and informs your validation strategy.
@@ -1765,8 +1764,66 @@ ggplot(data = soil_sf) +
 -   Managing file size and compression.
 
    
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
   
 
+# Preparation of Environmental Covariates with Google Earth Engine
 
+Sampling Design and Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.
+
+In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas). The exported rasters are then used as covariates to:
+
+- Create a robust soil sampling design based on the SCORPAN framework
+
+- Predict soil properties in the Digital Soil Mapping workflow.
+
+
+## The SoilFER Environmental Covariates Script
+
+The script provided for this training (`1_gee_soilfer_env_covariates.txt`) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.
+
+**Climate data** is sourced from two complementary products. 
+
+  - **CHELSA** (Climatologies at High resolution for the Earth's Land Surface Areas) provides long-term bioclimatic variables including mean annual temperature (bio1), annual precipitation (bio12), and extreme temperature and precipitation metrics (bio5, bio6, bio13, bio14, bio16, bio17), alongside potential evapotranspiration computed using the Penman-Monteith method and surface wind statistics. 
+  
+  - **TerraClimate** contributes monthly time series of maximum and minimum temperature, precipitation, and potential evapotranspiration spanning 1981 to the present, which are exported as multi-band images for subsequent temporal aggregation in R.
+
+**Terrain data** is derived from the USGS SRTM 30 m Digital Elevation Model, from which slope, aspect, Topographic Position Index (TPI), and hillshade are computed on-the-fly within GEE. Geomorphological landform classification at 90 m resolution is obtained from the `Geomorpho90m` dataset. Additionally, pre-computed terrain derivatives at 250 m resolution (elevation, slope, curvature, TPI, TWI) are loaded from the FAO GSP shared GEE asset library hosted at `projects/digital-soil-mapping-gsp-fao`.
+
+**Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
+
+**Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
+
+All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.
+
+
+## Running the Script
+
+Copy the full contents of `1_gee_soilfer_env_covariates.txt` into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.
+
+The `aoi` variable defines the `area of interest`. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:
+
+```javascript
+var aoi = ee.FeatureCollection('TIGER/2018/States')
+  .filter(ee.Filter.eq('NAME', 'Kansas'));
+```
+
+To adapt the script to a different study area, replace this definition with a custom geometry or a different administrative boundary. Update `countryName` to a short descriptor used in the exported file names.
+
+The date range for TerraClimate is controlled by `climateStartDate` and `climateEndDate`. The default configuration covers the full 1981--2023 record. For exploratory or training purposes, restricting this range (e.g., 2000--2023) reduces processing time and export file sizes.
+
+Export spatial resolutions are defined individually for each product category, reflecting the native resolution of each data source: 250 m for the primary CHELSA/MODIS covariate stack, 100 m for high-resolution terrain and Sentinel-2 layers, 90 m for geomorphons, 20 m for the cropland mask, and 4000 m for TerraClimate time series.
+
+Click **Run** to execute the script. Visualization layers (SRTM DEM, Sentinel-2 RGB composite, and cropland mask) will appear on the map immediately. Export tasks do not start automatically --- navigate to the **Tasks** tab in the right panel and click **Run** next to each pending task to initiate the exports to Google Drive.
+
+:::warning-box
+**Processing Time and Quotas**
+
+Large exports, particularly **TerraClimate** time series and **Sentinel-2** layers over large regions, can take tens of minutes to several hours depending on server load and area size. GEE free-tier accounts are subject to computation quotas. If a task fails with a computation timeout or memory error, consider reducing the export resolution or splitting the time series into shorter periods. Monitor task progress in the **Tasks** tab; completed files will appear in your `GEE_Exports` Google Drive folder once finished.
+:::
+
+Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the `terra` package and stacked into the covariate array used in the next modules.
 
 

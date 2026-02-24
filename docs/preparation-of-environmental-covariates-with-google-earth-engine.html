@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 TBD | DRAFT - Integrated soil information for decision-making </title>
+  <title>Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 TBD | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 TBD | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Chapter 3 Preparation of Environmental Covariates with Google Earth Engine | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="appendices.html"/>
-<link rel="next" href="glosis-soil-data-preparation.html"/>
+<link rel="prev" href="spatial-analysis-in-r.html"/>
+<link rel="next" href="sampling-design-for-soil-surveys.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -552,17 +552,52 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tbd" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> TBD<a href="tbd.html#tbd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="preparation-of-environmental-covariates-with-google-earth-engine" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Preparation of Environmental Covariates with Google Earth Engine<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#preparation-of-environmental-covariates-with-google-earth-engine" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Sampling Design and Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.</p>
+<p>In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas). The exported rasters are then used as covariates to:</p>
+<ul>
+<li><p>Create a robust soil sampling design based on the SCORPAN framework</p></li>
+<li><p>Predict soil properties in the Digital Soil Mapping workflow.</p></li>
+</ul>
+<div id="the-soilfer-environmental-covariates-script" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> The SoilFER Environmental Covariates Script<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#the-soilfer-environmental-covariates-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The script provided for this training (<code>1_gee_soilfer_env_covariates.txt</code>) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.</p>
+<p><strong>Climate data</strong> is sourced from two complementary products.</p>
+<ul>
+<li><p><strong>CHELSA</strong> (Climatologies at High resolution for the Earth’s Land Surface Areas) provides long-term bioclimatic variables including mean annual temperature (bio1), annual precipitation (bio12), and extreme temperature and precipitation metrics (bio5, bio6, bio13, bio14, bio16, bio17), alongside potential evapotranspiration computed using the Penman-Monteith method and surface wind statistics.</p></li>
+<li><p><strong>TerraClimate</strong> contributes monthly time series of maximum and minimum temperature, precipitation, and potential evapotranspiration spanning 1981 to the present, which are exported as multi-band images for subsequent temporal aggregation in R.</p></li>
+</ul>
+<p><strong>Terrain data</strong> is derived from the USGS SRTM 30 m Digital Elevation Model, from which slope, aspect, Topographic Position Index (TPI), and hillshade are computed on-the-fly within GEE. Geomorphological landform classification at 90 m resolution is obtained from the <code>Geomorpho90m</code> dataset. Additionally, pre-computed terrain derivatives at 250 m resolution (elevation, slope, curvature, TPI, TWI) are loaded from the FAO GSP shared GEE asset library hosted at <code>projects/digital-soil-mapping-gsp-fao</code>.</p>
+<p><strong>Vegetation and soil indices</strong> are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2_SR_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.</p>
+<p><strong>Land cover</strong> is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.</p>
+<p>All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.</p>
+</div>
+<div id="running-the-script" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Running the Script<a href="preparation-of-environmental-covariates-with-google-earth-engine.html#running-the-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Copy the full contents of <code>1_gee_soilfer_env_covariates.txt</code> into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.</p>
+<p>The <code>aoi</code> variable defines the <code>area of interest</code>. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb137-1"><a href="preparation-of-environmental-covariates-with-google-earth-engine.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> aoi <span class="op">=</span> ee<span class="op">.</span><span class="fu">FeatureCollection</span>(<span class="st">&#39;TIGER/2018/States&#39;</span>)</span>
+<span id="cb137-2"><a href="preparation-of-environmental-covariates-with-google-earth-engine.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">filter</span>(ee<span class="op">.</span><span class="at">Filter</span><span class="op">.</span><span class="fu">eq</span>(<span class="st">&#39;NAME&#39;</span><span class="op">,</span> <span class="st">&#39;Kansas&#39;</span>))<span class="op">;</span></span></code></pre></div>
+<p>To adapt the script to a different study area, replace this definition with a custom geometry or a different administrative boundary. Update <code>countryName</code> to a short descriptor used in the exported file names.</p>
+<p>The date range for TerraClimate is controlled by <code>climateStartDate</code> and <code>climateEndDate</code>. The default configuration covers the full 1981–2023 record. For exploratory or training purposes, restricting this range (e.g., 2000–2023) reduces processing time and export file sizes.</p>
+<p>Export spatial resolutions are defined individually for each product category, reflecting the native resolution of each data source: 250 m for the primary CHELSA/MODIS covariate stack, 100 m for high-resolution terrain and Sentinel-2 layers, 90 m for geomorphons, 20 m for the cropland mask, and 4000 m for TerraClimate time series.</p>
+<p>Click <strong>Run</strong> to execute the script. Visualization layers (SRTM DEM, Sentinel-2 RGB composite, and cropland mask) will appear on the map immediately. Export tasks do not start automatically — navigate to the <strong>Tasks</strong> tab in the right panel and click <strong>Run</strong> next to each pending task to initiate the exports to Google Drive.</p>
+<div class="warning-box">
+<p><strong>Processing Time and Quotas</strong></p>
+<p>Large exports, particularly <strong>TerraClimate</strong> time series and <strong>Sentinel-2</strong> layers over large regions, can take tens of minutes to several hours depending on server load and area size. GEE free-tier accounts are subject to computation quotas. If a task fails with a computation timeout or memory error, consider reducing the export resolution or splitting the time series into shorter periods. Monitor task progress in the <strong>Tasks</strong> tab; completed files will appear in your <code>GEE_Exports</code> Google Drive folder once finished.</p>
+</div>
+<p>Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the <code>terra</code> package and stacked into the covariate array used in the next modules.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="appendices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="glosis-soil-data-preparation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spatial-analysis-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sampling-design-for-soil-surveys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
