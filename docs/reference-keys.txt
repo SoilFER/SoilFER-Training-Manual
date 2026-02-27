@@ -269,7 +269,7 @@ resampling-and-alignment-resample
 combine-and-remove-rasters-in-a-raster-stack
 raster-algebra
 combining-environmental-raster-and-soil-vector-information
-preparation-of-soilclimate-covariates-newhall-simulation-model
+calculation-of-soilclimate-rasters-newhall-simulation-model
 environment-setup
 prepare-monthly-average-rasters-of-climatic-data
 prepare-monthly-average-stack-of-climatic-data

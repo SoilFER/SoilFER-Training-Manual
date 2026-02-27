@@ -1770,8 +1770,10 @@ The preparation of covariates is a time-consuming task. Therefore this tutorial 
 
 **Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
 
-**Soil Available Water Content** is represented by the Available Water Content layer estimated at 200 cm depth at....
+**Soil Available Water Content** represent the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
+
 **Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
+
 
 > Note: users need to have a google account to access the covariate data.
 
@@ -2157,7 +2159,7 @@ soil_sf <- cbind(soil_sf, cov_values[ , -1, drop = FALSE])
 This dataset contains all the information to be used in further analyses of Sampling Design and calibration of Digital Soil Mapping models.
 
 
-### Preparation of Soil–Climate Covariates (Newhall Simulation Model)
+### Calculation of Soil–Climate Rasters (Newhall Simulation Model)
 
 The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.
 
