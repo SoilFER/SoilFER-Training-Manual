@@ -331,7 +331,7 @@ Verify that each subfolder under `01_data/` corresponds to a module in this manu
 
 #	Software installation {-}
 
-## Installing R and RStudio
+## Installing R and RStudio {-}
 
 R is a programming language and software environment designed for statistical computing, data analysis, and visualization.
 It was created in the early 1990s by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and has since grown into one of the most widely used tools in data science, particularly for statistical modeling.
@@ -419,7 +419,7 @@ R.version.string
 If you see the results, R and RStudio are properly installed in your system.
 
 
-## Setting Up Google Earth Engine
+## Setting Up Google Earth Engine {-}
 
 Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.
 
@@ -515,7 +515,8 @@ The GEE Code Editor is optimized for Google Chrome. While it functions in other 
 The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named `GEE_Exports` in the root of your Google Drive at [https://drive.google.com](https://drive.google.com). This folder name is referenced explicitly in the export configuration of the script (see the `exportFolder` variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.
 
 
-## Installation of QGIS
+## Installation of QGIS {-}
+
 QGIS is a free and open-source desktop GIS application used to visualise and inspect spatial datasets. The Long-Term Release (LTR) version is recommended for stability.
 Go to the [QGIS download page](https://qgis.org/download/) and choose your installation: 
 
@@ -528,7 +529,7 @@ Go to the [QGIS download page](https://qgis.org/download/) and choose your insta
   • Use the installers or package-manager instructions shown on the QGIS download page for your operating system.
     
     
-## Installation of Docker Desktop and Docker Compose
+## Installation of Docker Desktop and Docker Compose {-}
 
 Docker is an open-source platform that lets you build, deploy, and run applications inside lightweight, portable units called containers. A container bundles the code, runtime, libraries, and configuration into a single package, so the application behaves identically on any machine – Windows, macOS, or Linux.
 
@@ -596,7 +597,7 @@ If the installation was successful, you should see output similar to:
 ```
 
 
-#	Introduction to R programming {-}
+#	Introduction to R programming
 
 ## Understanding the RStudio Interface
 
@@ -2336,7 +2337,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 [What They Forgot to Teach You About R](https://rstats.wtf/): A short, practical guide with tips and workflows for working effectively in R.
 
 
-## References {#references-m1}
+## References  {.unnumbered}
 
 
 

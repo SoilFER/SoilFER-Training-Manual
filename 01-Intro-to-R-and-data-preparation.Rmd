@@ -1,11 +1,40 @@
-
 # Data preparation for Digital Soil Mapping in R
+
+
+```{r setup-ch1, include=FALSE, echo=FALSE, eval=TRUE}
+#knitr::opts_knit$set(root.dir = normalizePath("../SoilFER-Training-Resources", mustWork = FALSE))
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, fig.width=10, fig.height=7)
+
+# Load libraries
+library(tidyverse)        # Data manipulation and visualization
+library(readxl)           # Read Excel files
+library(writexl)          # Write Excel files
+library(knitr)            # For formatted tables
+library(sf)               # Manipulation of Vector Data
+library(terra)            # Manipulation of Raster Data
+
+# training_folder <- "../SoilFER-Training-Resources/"
+# output_dir <- paste0(training_folder,"03_outputs/module1/")
+# raw_data <- read_excel(paste0(training_folder,"01_data/module1/KSSL_data.xlsx"), sheet = 1) 
+# property_thresholds <- read_csv(paste0(training_folder,"01_data/module1/property_thresholds.csv"))
+# kdata <- read.csv (paste0(output_dir,"KSSL_DSM_0-30.csv"))
+# soil_sf <- st_read(paste0(output_dir,"soil_profiles.shp"))
+# admin <- st_read(paste0(training_folder,"01_data/module1/Tiger_2020_Counties.shp"))
+#save.image("SoilFER-Training-Resources/01_outputs/module1.RData")
+load("SoilFER-Training-Resources/01_outputs/module1.RData")
+
+#training_rasters <- "../SoilFER-Rasters/"
+#crops  <- rast(paste0(training_rasters,"Cropland_Mask_KANSAS.tif"))
+#covs <- rast(paste0(training_rasters,"Env_Cov_250m_KANSAS.tif"))
+
+```
+
 
 ## Introduction {#introduction-1}
 
 Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps. 
 
-This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the **Kansas KSSL dataset** as a practical example. The training dataset as well as a tutorial on how to download it can be found in the following section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
+This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the Kansas **KSSL dataset** as a practical example. The training dataset as well as a tutorial on how to download it can be found in the following section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
 
 Raw soil laboratory data commonly contains the following types of quality issues:
 
@@ -19,7 +48,7 @@ Raw soil laboratory data commonly contains the following types of quality issues
 
 -   **Logical inconsistencies**: Values that are physically or chemically impossible given soil science constraints
 
-The Kansas KSSL dataset used throughout this section provides real-world examples of these issues, allowing you to practice identifying and correcting them systematically using reproducible R workflows. 
+The KSSL dataset used throughout this section provides real-world examples of these issues, allowing you to practice identifying and correcting them systematically using reproducible R workflows. 
 
 :::warning-box
 **Considerations**
@@ -42,13 +71,19 @@ Before performing any data cleaning or validation, you must first understand the
 # Load libraries
 library(tidyverse)        # Data manipulation and visualization
 library(readxl)           # Read Excel files
+library(writexl)          # Write Excel files
 library(knitr)            # For formatted tables
+library(sf)               # Manipulation of Vector Data
+library(terra)            # Manipulation of Raster Data
+
+# Set working directory to the training resources folder
+setwd( "../SoilFER-Training-Resources")
 
 # Read Excel file containing raw soil data
-raw_data <- read_excel("../../01_data/module1/KSSL_data.xlsx", sheet = 1) 
+raw_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = 1) 
 
 # Define the folder to store the results of the exercise
-output_dir <-"../../03_outputs/module1/"
+output_dir <-"03_outputs/module1/"
 
 # Create the output directory if not existing
 if (!file.exists(output_dir)){
@@ -405,22 +440,29 @@ Soil properties have physically and analytically plausible bounds. Values outsid
 
 #### Load property thresholds
 
-Store thresholds in a configuration file (e.g., `property_thresholds.csv`) to ensure transparency and reproducibility.
-
+Thresholds are stored in a configuration file (`property_thresholds.csv`) to ensure transparency and reproducibility.
 
 ```{r thresholds-lab, eval=FALSE}
 # Load valid ranges for soil properties
-# NOTE: These thresholds are based on global soil datasets and literature.
-#       Adjust for your specific region and soil types.
-property_thresholds <- read_csv("property_thresholds.csv")
-# Display thresholds
-print(property_thresholds)
+# NOTE: These thresholds are based on global soil datasets and literature and using the same measurement units as the KSSL dataset
+#       Adjust for your specific region and soil types and units.
+property_thresholds <- read_csv("01_data/module1/property_thresholds.csv")
+```
+
+The values of the analytical thresholds for the KSSL dataset are shown in Table \@ref(tab:thresholds-print).
+
+```{r thresholds-print, eval=TRUE, echo=FALSE}
+# Print table
+library(kableExtra)
+knitr::kable(property_thresholds, caption = "Analytical property thresholds") |>
+  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
 
 ```
 
 #### Identify out-of-bounds values
 
 Each soil analytical property is evaluated against its min/max thresholds. Out-of-bounds values are compiled into a structured issue log (`out_of_bounds_issues`) to support inspection, reporting, and correction.
+
 
 ```{r check1-lab, eval=FALSE}
 # Identify out-of-bounds values
@@ -463,7 +505,8 @@ rm(i,idx,max_val,min_val, prop,prop_desc,x)
 
 #### Reporting out-of-bounds for properties and audit trail
 
-Generate a summary by property, identify records with issues (often indicative of systematic errors), and export a full QC report for review and documentation.
+The following code generates an out-of-bounds summary by property, identify records with issues (often indicative of systematic errors), and export a full QC report for review and documentation. All issues identified in the dataset should be reviewed and, where necessary, corrected in the original input file. The `soil_property_validation_report.xlsx` file created serves as a guide to support and speed up this process.
+
 
 ```{r check1-report-lab, eval=FALSE}
 # Report out-of-bounds if present
@@ -525,9 +568,10 @@ if (length(out_of_bounds_issues) > 0) {
 ```
 
 
+
 ### Check 2: Texture validation
 
-Particle-size fractions should sum to approximately 100%. This check is used to flag potential inconsistencies (rounding, unit conversion issues, or data errors). The following code just flag  inconsistencies in Particle-size fractions. Values failing this check should be reviewed rather than automatically removed. 
+Particle-size fractions should sum to 100%. This check is used to flag potential inconsistencies (rounding, unit conversion issues, or data errors). The following code just flag  inconsistencies in Particle-size fractions. Values failing this check should be reviewed rather than automatically removed. 
 
 ```{r texture-validation, eval=FALSE}
 # Print rows with texture validation incosistencies 
@@ -730,9 +774,9 @@ duplicates <- site_lab %>%
 
 Duplicate handling should follow the order below:
 
-**1 → merge duplicated horizons**  
-**2 → resolve competing depth sequences**  
-**3 → remove incomplete profiles**
+**1.- merge duplicated horizons**  
+**2.- resolve competing depth sequences**  
+**3.- remove incomplete profiles**
 
 This order prevents premature data loss and preserves maximum analytical information.
 
@@ -1051,7 +1095,7 @@ subset_data <- data %>%
   )
 
 # Save to CSV
-output_csv <- paste0(output_dir,"KSSL_DSM_0-301.csv")
+output_csv <- paste0(output_dir,"KSSL_DSM_0-30.csv")
 write.csv(subset_data, output_csv, row.names = FALSE)
 cat(" Saved to:", output_csv, "\n")
 
@@ -1061,7 +1105,7 @@ write_xlsx(subset_data, output_xlsx)
 cat(" Saved to:", output_xlsx, "\n")
 
 cat(" Subset data ready for Digital Soil Mapping\n")
-cat("  Output file: KSSL_DSM\n")
+cat("  Output file: KSSL_DSM_0-30\n")
 ```
 
 
@@ -1134,9 +1178,9 @@ rm(spec)
 | File                           | Description                                                                 |
 |--------------------------------|-----------------------------------------------------------------------------|
 | KSSL_cleaned                   | Clean horizon-level dataset with validated analytical data                  |
-| KSSL_spectral_cleaned          | Clean horizon-level dataset with validated analytical and spectroscopic data |
-| KSSL_standardized              | Depth-harmonized dataset (0–30 cm; 30–60 cm) of all soil properties       |
-| KSSL_DSM                       | Depth-harmonized dataset (0–30 cm) for Digital Soil Mapping       |
+| KSSL_spectral_cleaned          | Clean horizon-level dataset with validated analytical and spectroscopic data|
+| KSSL_standardized              | Depth-harmonized dataset (0–30 cm; 30–60 cm) of all soil properties         |
+| KSSL_DSM_0-30                  | Depth-harmonized dataset (0–30 cm) for Digital Soil Mapping                 |
 | soil_property_validation_report| Detailed report of analytical properties outside valid ranges               |
 
 
@@ -1270,138 +1314,118 @@ In practice, an *`sf` object* is essentially a data frame that includes a geomet
 3.  **CRS** -- information about the coordinate system used (e.g., WGS84, UTM), as part of the object.\
 
 
-### Importing Vector Data
+### Importing and Exporting Vector Data
 
 Vector data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
 Vector data is typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files, but can also be stored in plain files with associated coordinates such as `CSV` files.
 
 
-##### Creating spatial vector objects from data frames
+#### Creating spatial vector objects from `CSV` files.
 
 Spatial point layers in R can be created directly from regular data frames using the `{sf}` package.
 The function `st_as_sf()` converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).
-
-To perform this conversion, users must specify the columns containing the coordinates:
-
-```{r dataframe-to-sf, echo=TRUE, eval=FALSE}
-library(sf)
-
-# Create a dataframe with spatial coordinates (WGS84) within Kansas 
-k.data <- data.frame(
-  site_id = c("KS_01", "KS_02", "KS_03", "KS_04", "KS_05"),
-  X = c(-96.70, -97.61, -95.24, -100.00, -94.90),  # longitude
-  Y = c(39.03, 38.84, 37.69, 37.20, 39.10),        # latitude
-  soc_gkg = c(18.2, 14.7, 21.5, 10.9, 16.3)         # example soil variable
-)
-
-# Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
-soil_sf <- st_as_sf(k.data, coords = c("X", "Y"), crs = 4326)
-
-# Print object geometry
-soil_sf$geometry
-
-# Print CRS details
-st_crs(soil_sf)
-```
-
-In the example above, the Coordinate Reference System (CRS) as been defined as an argument within the  `st_as_sf()` function
-
-##### Creating spatial vector objects from `CSV` files.
+To perform this conversion, users must specify the columns containing the coordinates. Even if not mandatory, it is highly recommended also to set the coordinate reference system:
 
 Since importing a `.csv` file in R typically produces a data frame, the workflow is essentially the same as in the previous example. Once the table is loaded and includes coordinate columns (e.g., X and Y in longitude/latitude), it can be converted to an sf object using `st_as_sf()` by specifying the coordinate columns and the CRS.
 
 ```{r csv-to-sf, echo=TRUE, eval=FALSE}
-library(sf)
-
-# Import soil sampling data with coordinates (WGS84)
-k.data <- read.csv("data/kansas_site_lab_data.csv")
+# Import the previously standardized dataset for 0-30 cm depth 
+kdata <- read.csv (paste0(output_dir,"KSSL_DSM_0-30.csv"))
 
 # Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
-soil_sf <- st_as_sf(k.data, coords = c("X", "Y"), crs = 4326)
+soil_sf <- st_as_sf(kdata, coords = c("lon", "lat"), crs = 4326)
 
 # Print object geometry
 soil_sf$geometry
 
 # Print CRS details
 st_crs(soil_sf)
+
 ```
 
-:::warning-box
-**Notes & Best Practices**
+The Coordinate Reference System (CRS) has been provided as an argument within the  `st_as_sf()` function. Users can visualize CRS of sf objects with `st_crs()`. the sf object can be transformed to shapefile with `st_write`.
 
-- Always confirm that your coordinates are in the CRS you specify.
-
-- If the CRS is unknown or incorrectly specified, spatial operations such as buffering, distance, or overlay may fail or produce errors or misleading results.
-
-- The order in `coords = c("X","Y")` matters:
-    - For lon/lat: X = longitude and Y = latitude.
-    - If your coordinate columns are named differently (e.g., lon, lat, easting, northing), adjust the `coords =` argument accordingly.
-
-:::
-
-#### Reading Shapefiles with st_read()
+#### Importing Shapefiles
 
 Shapefiles can be directly imported into R using the `st_read()` function. You can also import most other vector formats with the same command, because `{sf}` automatically detects the file type.
 
 ```{r shp-to-sf, echo=TRUE, eval=FALSE}
-library(sf)
-# Read a shapefile containing soil profile points
-soil_profiles <- st_read("data/soil_profiles.shp")
 
+# Read the previously created shapefile containing soil profile points
+soil_sf <- st_read(paste0(output_dir,"soil_profiles.shp"))
 # Inspect the first rows
-head(soil_profiles)
+head(soil_sf)
+
+# Read shapefile of Kansas Counties
+admin <- st_read("01_data/module1/Tiger_2020_Counties.shp")
+# Ensure both layers share the same CRS
+admin <- st_transform(admin, st_crs(soil_sf))
 
 # Quick visualization
-plot(soil_profiles["profile_id"])
+# Plot points colored by pH, then overlay county borders
+plot(soil_sf["pH"], pch = 16, cex = 0.6, key.pos = 1)  # key.pos controls legend position
+plot(st_geometry(admin), add = TRUE, col = NA, border = "black", lwd = 0.7)
 
 ```
+
+```{r shp-to-sf-hidden, echo=FALSE, eval=TRUE}
+# Inspect the first rows
+head(soil_sf)
+
+# Ensure both layers share the same CRS
+admin <- st_transform(admin, st_crs(soil_sf))
+
+# Quick visualization
+# Plot points colored by pH, then overlay county borders
+plot(soil_sf["pH"], pch = 16, cex = 0.6, key.pos = 1)  # key.pos controls legend position
+plot(st_geometry(admin), add = TRUE, col = NA, border = "black", lwd = 0.7)
+
+```
+
 
 This layer may represent individual soil pits or auger locations, with coordinates and measured properties stored in the attribute table.
 
-#### Inspecting and Setting CRS
+#### Exporting sf objects
+Simple features objects can be saved to files or databases using the `st_write()` function.
 
--   Checking CRS of sf objects (`st_crs()`).
+```{r sf-to-file, echo=TRUE, eval=FALSE}
+# Export as shapefile
+st_write(soil_sf, paste0(output_dir,"soil_profiles.shp"), delete_layer = TRUE) # overwrites shp
 
--   Checking CRS of terra objects (`crs()`).
-
--   
-
-#### Reprojecting Spatial Data
-
--   Reprojecting vector data with `{sf}` (`st_transform()`).
-
--   Reprojecting raster data with `{terra}` (`project()`).
-
--   Choosing an appropriate CRS for national soil projects.
-
-Example: converting the point dataset from WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG: 3857)
-
-```{r, echo=TRUE, eval=FALSE}
-plots_sf_utm <- st_transform(plots_sf, crs = 3857)
 ```
 
 
+### Setting and Reprojecting CRS for vector data
 
-#### Inspecting and manipulating `{sf}` Object
+It is good practice to always confirm the Coordinate Reference System (CRS) of your spatial data. If the CRS is missing or incorrectly specified, spatial operations such as buffering, distance, and overlay may fail or return misleading results.
+
+As shown previously, the CRS can be defined when creating an sf object (e.g., with `st_as_sf()`). You can inspect the CRS of an `sf` object with `st_crs()`. If the CRS is missing, you can assign it with `st_set_crs()`. To reproject the data into a different CRS (i.e., change the coordinate values to a new reference system), use `st_transform()`.
+
+Example: Converting the sf object `soil_sf` from Geographic WGS84 (EPSG:4326) to WGS 84 / Pseudo-Mercator (EPSG:3857), a projection commonly used for web mapping.
+
+```{r vector-transform, echo=TRUE, eval=TRUE}
+sf_3857 <- st_transform(soil_sf, 3857)
+
+# Preview of the projected object
+sf_3857
+```
+
+
+### Inspecting and manipulating `{sf}` Object
 
 Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`,`str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
 
-```{r, echo=TRUE, eval=FALSE}
+```{r vector-geom, echo=TRUE, eval=TRUE}
 # Check structure
 str(soil_sf)
-
 # Summary of attributes + geometry
 summary(soil_sf)
-
 # Extract the geometry column
 st_geometry(soil_sf)
-
 # Check the geometry type. Use head to avoid long printing
 head(st_geometry_type(soil_sf))
-
 # Check the CRS:
 st_crs(soil_sf)
-
 # Check the spatial extent of the object:
 st_bbox(soil_sf)
 ```
@@ -1410,385 +1434,354 @@ st_bbox(soil_sf)
 `{sf}` objects can be manipulated in the same way as standard data frames while retaining all spatial information.
 Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be directly applied on `sf` objects .
 
-*Example: Selecting, filtering an creating new variables in an `sf` object with `{dplyr}`*
-
-```{r, echo=TRUE, eval=FALSE}
+```{r vector-dplyr, echo=TRUE, eval=TRUE}
 # Subset sf rows and columns using the pipping (%>%) operator with {dplyr}
-soil_sf %>%
-  dplyr::filter(ph_h2o > 9) %>%
-  select(taxa, ph_h2o) %>%
-  mutate(saline = TRUE)
-
+alkaline <- soil_sf %>%
+  filter(pH > 7.4) %>%
+  select(ProfID, pH) %>%
+  mutate(alkaline = TRUE)
+# Preview alkaline data
+alkaline
 ```
 
-::: highlights
 
-**What `dplyr::` means?**
+### Geometry Operations
 
--   Several packages can contain functions with the same name.
-    For example, the `filter()` function exists in:
+Geometry operations help you **create new geometries** (e.g., buffers) and **combine layers** (e.g., clip points to a boundary). In soil science, they are often used to define sampling influence areas, restrict data to an administrative unit, or summarize results by region.
 
-    -   `stats::filter()` (base R -- for time-series filtering)
-
-    -   `dplyr::filter()` (for data frames / sf objects)
-
-    -   `terra::filter()` (for raster filtering)
-
-    -   `signal::filter()`, etc.
-
-When you load packages, R follows the search path.
-If a package containing its own `filter()` is loaded after `{dplyr}`, then that package's `filter()` will mask the dplyr version.
-As a result, calling `filter()` alone may not work as expected for your object.
-This behavior often occurs with the `select()` function in many operations in spatial analysis.
-
-To avoid this, you can explicitly specify which package the function should come from using the general form `package::function()`.
-For [example:\\](example:\){.uri}
-
-```{r, echo=TRUE, eval=FALSE}
-# Call the filter function from the `dplyr` package
-dplyr::filter()
-```
-
-However, this may not always be necessary.
-If no masking occurs and no errors appear in the console, you can safely use the functions directly without the `package::` prefix.
+:::warning-box
+For distance and area-based operations (buffers, distances, areas), work in a Projected CRS (units in metres), not in lon/lat degrees.
+Before any geometry operation, make sure both layers are in the same CRS.
 :::
+
+
+#### Buffering Plots (Influence Area)
   
-  Further `{dplyr}` functions can be applied on `sf` objects to get in-depth analyses of soil properties
-
-*Example: Calculate mean pH values by taxonomic groups on (taxa) potential saline soils (pH \> 9)*
-  
-```{r, echo=TRUE, eval=FALSE}
-# Filtering rows by pH value and subset columns with {dplyr}
-saline <- soil_sf %>%
-  dplyr::filter(ph_h2o > 9) %>%
-  dplyr::select(taxa, ph_h2o)
-
-# Calculate the mean pH for the different taxonomic groups in these new dataset
-saline %>%
-  dplyr::group_by(taxa) %>%
-  dplyr::summarize(mean_ph=mean(ph_h2o))
-
-```
-
-
-
-
-#### Geometry Operations
-  
-  Geometry operations allow you to modify and analyze the spatial shape of your vector features.\
-Typical tasks in soil science include defining sampling influence areas around plots, clipping soil data to administrative units, and calculating areas or lengths for reporting and analysis.
-
-::: highlightsç
-Remember that geometry operations are safer if the data is transformed to a Projected Coordinate Cystem.
-:::
-  
-  ##### Buffering Plots (Sampling Influence Area)
-  
-  Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).\
+Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).\
 In soil applications, buffers can represent:
   
-  -   The influence area of a contaminating facility (polygon geometry).
+-   The influence area of a contaminating facility (polygon geometry).
 -   Proximity zones around rivers or roads (line geometry).
 -   Buffer zones around soil sampling points to define their spatial influence (point geometry).
 
-The function `st_buffer()` is used for this.
+The function `st_buffer()` is used for this. If the input dataset is in a Geographic Coordinate System (longitude/latitude in degrees), you should first transform it to a Projected Coordinate System (units in metres) before buffering.
 
-```{r, echo=TRUE, eval=FALSE}
-library(sf)
-# k.data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)
-# kansas_sf <- k.data[1:108,]
-kansas_sf <- k.data[1,]
-# Convert to spatial sf
-kansas_sf <- st_as_sf(kansas_sf,coords = c("X", "Y"),crs = 4326)
-# transform to NAD83 / UTM kansas_sf 14N (EPSG: 26914)
-kansas_sf <- st_transform(kansas_sf, crs = 26914)  # UTM 14N, metres
+```{r vector-buffer, echo=TRUE, eval=TRUE}
+# Original KSSL data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)
+# Transform the subset of alkaline soils to NAD83 / UTM 14N (EPSG: 26914)
+alkaline_utm <- st_transform(alkaline, crs = 26914)  # UTM 14N, distance in metres
 
-# 'kansas_sf' contains plot centroids (POINT geometries) and is already in a projected CRS with metres as units
-st_crs(kansas_sf)
+# Create a 1 km buffer around each plot
+plots_buffer_1k <- st_buffer(alkaline_utm, dist = 1000)
 
-# Create a 100 m buffer around each plot
-plots_buffer_100 <- st_buffer(kansas_sf, dist = 100)
-
-# Plot first point and its buffers
-plot(st_geometry(plots_buffer_100), col = rgb(0, 0, 1, 0.3), border = "blue")
-plot(st_geometry(kansas_sf), add = TRUE, pch = 16, col = "red")
-
-# Create a second 50 m buffer around the plot
-plots_buffer_50 <- st_buffer(kansas_sf, dist = 50)
-plot(st_geometry(plots_buffer_50), add = TRUE, col = rgb(0, 0, 1, 0.3), border = "navy")
+# Plot buffers (first 3 plots) and then overlay the same points
+plot(st_geometry(plots_buffer_1k[1:3, ]), 
+     col = rgb(0, 0, 1, 0.3), border = "blue",
+     main = "Plot of first 3 alkaline soils with 1 km buffers")
+# Overlay the original sample locations
+plot(st_geometry(alkaline_utm[1:3, ]), 
+     add = TRUE, pch = 16, col = "red")
 
 ```
 
-##### Intersection and Union with Administrative Boundaries
+```{r vector-buffer-image, echo=FALSE, eval=FALSE}
+# This chunk is only to create the image. No eval or echo
+png("SoilFER-Training-Resources/01_outputs/buffer_samples.png", width = 862, height = 708, res = 150)
+# --- Nicer plot (with coordinates, grid, and cleaner titles) ---
+# Use a tight common extent around the 3 buffers
+bb  <- st_bbox(plots_buffer_1k[1:3, ])
+pad <- 0.08
+xpad <- as.numeric(bb$xmax - bb$xmin) * pad
+ypad <- as.numeric(bb$ymax - bb$ymin) * pad
+xlim <- c(bb$xmin - xpad, bb$xmax + xpad)
+ylim <- c(bb$ymin - ypad, bb$ymax + ypad)
 
-Frequently, soil datasets need to be restricted to a study region (e.g., a province) or aggregated at administrative levels (e.g., districts, municipalities).
+op <- par(mar = c(3.2, 3.2, 1.4, 0.8), xaxs = "i", yaxs = "i", cex.axis = 0.8)
 
-We will use two key functions:
-  
-  `st_intersection()` -- keeps only the overlapping parts of two layers.
+# Buffers first
+plot(st_geometry(plots_buffer_1k[1:3, ]),
+     col = rgb(0, 0, 1, 0.25), border = "blue",
+     xlim = xlim, ylim = ylim, asp = 1,
+     axes = TRUE, xlab = "", ylab = "")
 
-`st_union()` -- dissolves or merges geometries into a single geometry (or by groups).
+grid(nx = NULL, ny = NULL, lty = 3, col = "grey85")
+title("1 km buffer around sampling sites", line = 0.2, cex.main = 0.95)
+mtext("Easting (m)", side = 1, line = 2.0, cex = 0.9)
+mtext("Northing (m)", side = 2, line = 2.0, cex = 0.9)
 
-Example: Clip plots to an administrative region
+# Points on top (slightly transparent)
+plot(st_geometry(alkaline_utm[1:3, ]),
+     add = TRUE, pch = 16, cex = 0.5,
+     col = rgb(1, 0, 0, 0.75))
 
-### Spatial Relationships and Joins
+legend("topright",
+       legend = c("1 km buffer", "Sampling site"),
+       pt.cex = c(NA, 1),
+       pch = c(NA, 16),
+       lwd = c(NA, NA),
+       fill = c(rgb(0, 0, 1, 0.25), NA),
+       border = c("blue", NA),
+       bty = "n")
 
--   Spatial predicates (`st_intersects()`, `st_within()`, `st_distance()`).
-
--   Spatial joins (`st_join()`) to attach attributes from one layer to another.
-
--   Assigning soil profiles to polygons or administrative units.
-
--   
-  
-  ------------------------------------------------------------------------
-  
-  ### Visualizing `{sf}` Objects
-  
-  `{sf}` objects can be quickly visualized using the base R `plot()` function:
-  
-```{r, echo=TRUE, eval=FALSE}
-# Simple plot of sampling locations
-plot(soil_sf["ph_h2o"], main = "Soil sampling sites – pH (H2O)")
+par(op)
+dev.off()
 ```
 
-In this example, each point represents a sampling site, and the color scale corresponds to the ph_h2o attribute.
-If no column is specified in the `plot()`function, the display will produce a series of panels, one for each attribute stored in the `{sf}` data frame.
 
-Unlike `plot()`, the `{ggplot2}` package provides extensive control over themes, labels, legends, and color palettes, for more flexible plots.
-In this case, the geometry type is defined with `geom_sf()`.
+```{r, echo=FALSE, fig.cap="1 km buffer around sampling points ", out.width='70%', fig.align='center'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/buffer_samples.png")
+```
 
-```{r, echo=TRUE, eval=FALSE}
+
+#### Clip Soil Data to Defined Boundaries
+
+In soil data management workflows, it is common to restrict analyses to a defined study area (e.g., a county, district, watershed, or project boundary). This helps ensure that summaries, maps, and models are computed only for the relevant spatial extent.
+
+Two core operations are used repeatedly in Soil Data Management and Digital Soil Mapping:
+
+* **Clip / subset by boundary** (`st_intersection()`): keeps only the features (or parts of features) that fall inside a target boundary.
+
+* **Dissolve boundaries** (`st_union()`): merges multiple polygons into a single boundary by removing internal borders.
+
+Use **clipping** to restrict soil profiles, samples, or observations to a target area before analysis or reporting.
+
+Use **dissolving** to build a clean study boundary for masking, cropping, mapping, or aggregating results at a higher level.
+
+
+**Example 1: Clip sampling points to one administrative unit**
+
+In this example, we clip KSSL sampling points to Riley County. The steps are:
+
+ - Read the administrative boundaries layer.
+
+ - Transform it to the CRS of the soil points (so layers align).
+
+ - Select the target polygon (Riley).
+
+ - Clip the soil points to that polygon.
+
+```{r vector-clip, echo=TRUE, eval=FALSE}
+# Read administrative boundaries (example file)
+admin <- st_read("01_data/module1/Tiger_2020_Counties.shp")
+# Ensure both layers share the same CRS
+admin <- st_transform(admin, st_crs(soil_sf))
+# Example: select one unit (replace with your column/value)
+study_area <- admin[admin$NAME == "Riley", ]
+# Keep only points inside the study area
+soil_clip <- st_intersection(soil_sf, study_area)
+# Plot result
+plot(st_geometry(study_area), col = NA, border = "black", main="Sampled soils in Riley County", cex.main = 1 )
+plot(st_geometry(soil_clip), add = TRUE, pch = 16, col = "red", cex = 0.6)
+```
+
+
+```{r vector-clip-image, echo=FALSE, eval=FALSE}
+# This chunk is only to create the image. No eval or echo
+png("SoilFER-Training-Resources/01_outputs/riley_samples.png", width = 862, height = 708, res = 150)
+# Ensure both layers share the same CRS
+admin <- st_transform(admin, st_crs(soil_sf))
+# Example: select one unit (replace with your column/value)
+study_area <- admin[admin$NAME == "Riley", ]
+# Keep only points inside the study area
+soil_clip <- st_intersection(soil_sf, study_area)
+# Plot result
+plot(st_geometry(study_area), col = NA, border = "black", main="Sampled soils in Riley County", cex.main = 1 )
+plot(st_geometry(soil_clip), add = TRUE, pch = 16, col = "red", cex = 0.6)
+dev.off()
+```
+
+```{r, echo=FALSE, fig.cap="Sampled soils in Riley County", out.width='50%', fig.align='center'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/riley_samples.png")
+```
+
+
+In this case, `soil_clip` preserves all attributes from the original sampling dataset (`soil_sf`) and includes the attributes of the administrative polygon `admin` at each point.
+
+**Example 2: Dissolve polygons to create a single study region boundary**
+
+Dissolving is useful when you want a single boundary for a larger study region. For example, you may want to combine all counties into a single Kansas state outline (or merge multiple polygons representing a project area).
+
+`st_union()` merges all polygons into one geometry and removes internal borders.
+
+```{r vector-dissolve, echo=TRUE, eval=FALSE}
+# Dissolve all counties into one Kansas boundary
+admin_dissolved <- st_union(admin)
+
+# Plot comparison: before vs after dissolve
+# Adjust graphics settings to 1 row x 2 columns layout with tight margins
+op <- par(
+  mfrow = c(1, 2),
+  mar = c(0.5, 0.5, 0.1, 0.5),  # very small top margin
+  xaxs = "i", yaxs = "i"
+)
+
+plot(st_geometry(admin[1]),
+     col = NA, border = "black",
+     axes = FALSE, asp = 1)
+title("Before dissolve", line = -0.6, cex.main = 0.95)
+
+plot(st_geometry(admin_dissolved),
+     col = NA, border = "black",
+     axes = FALSE, asp = 1)
+title("After dissolve", line = -0.6, cex.main = 0.95)
+# restore graphics settings
+par(op)
+```
+
+```{r vector-dissolve-image, echo=FALSE, eval=FALSE}
+# This chunk is only to create the image. No eval or echo
+png("SoilFER-Training-Resources/01_outputs/dissolve_before_after.png",
+    width = 1800, height = 900, res = 200)
+
+bb <- st_bbox(admin_dissolved)
+pad <- 0.02
+xpad <- as.numeric(bb$xmax - bb$xmin) * pad
+ypad <- as.numeric(bb$ymax - bb$ymin) * pad
+xlim <- c(bb$xmin - xpad, bb$xmax + xpad)
+ylim <- c(bb$ymin - ypad, bb$ymax + ypad)
+
+op <- par(
+  mfrow = c(1, 2),
+  mar = c(3.0, 3.0, 1.2, 0.8),
+  xaxs = "i", yaxs = "i",
+  cex.axis = 0.6   # smaller tick labels
+)
+
+plot(st_geometry(admin),
+     col = NA, border = "black",
+     xlim = xlim, ylim = ylim,
+     axes = TRUE, asp = 1,
+     xlab = "", ylab = "")
+grid(nx = NULL, ny = NULL, lty = 3, col = "grey85")
+title("Before dissolve", line = 0.2, cex.main = 0.95)
+mtext("Longitude", side = 1, line = 2.0, cex = 0.85)
+mtext("Latitude",  side = 2, line = 2.0, cex = 0.85)
+
+plot(st_geometry(admin_dissolved),
+     col = NA, border = "black",
+     xlim = xlim, ylim = ylim,
+     axes = TRUE, asp = 1,
+     xlab = "", ylab = "")
+grid(nx = NULL, ny = NULL, lty = 3, col = "grey85")
+title("After dissolve", line = 0.2, cex.main = 0.95)
+mtext("Longitude", side = 1, line = 2.0, cex = 0.85)
+mtext("Latitude",  side = 2, line = 2.0, cex = 0.85)
+
+par(op)
+dev.off()
+```
+
+```{r, echo=FALSE, fig.cap="Dissolving polygons on Kansas County vector data", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/dissolve_before_after.png")
+```
+
+
+#### Spatial Relationships and Joins
+
+Spatial relationships help answer questions about how spatial features relate to one another (e.g., whether a point falls inside a polygon, or how far two features are apart).
+
+**Spatial predicates** (return TRUE/FALSE relationships):
+
+ - `st_intersects()` (touch/overlap)
+
+ - `st_within()` (inside)
+
+ - `st_distance()` (distance between features)
+
+**Spatial joins** attach attributes from one layer to another:
+
+ - `st_join()` (e.g., assign each soil profile to an administrative unit)
+
+Example: assign each sampling point to an administrative polygon.
+
+```{r vector-join, echo=TRUE, eval=TRUE}
+# Ensure both layers share the same CRS
+alkaline <- st_transform(alkaline, st_crs(admin))
+# Join admin attributes to points (points inherit polygon attributes)
+alkaline_with_admin <- st_join(alkaline, admin, join = st_within)
+# Preview result
+head(alkaline_with_admin)
+```
+
+
+### Visualizing `{sf}` Objects
+  
+As shown previously, `{sf}` objects can be quickly visualized using the base R `plot()` function. This is convenient for fast checks (e.g., verifying geometry and extent), but it offers limited control over plot appearance and legend design.
+
+In contrast, `{ggplot2}` provides a consistent *'grammar of graphics'* that makes it easier to produce publication-ready maps. Key benefits include:
+
+- Full control of aesthetics (colors, symbol size, line width, transparency) and clear legends.
+
+- High-quality themes and consistent styling across figures (useful in reports and publications).
+
+- Easy layering of multiple spatial objects (points, polygons, buffers, rasters—when combined with other tools).
+
+- Faceting to compare maps by groups (e.g., land use class, sampling campaign, depth interval).
+
+In `{ggplot2}`, spatial geometries are plotted with `geom_sf().`
+
+
+```{r vector-plot, echo=TRUE, eval=FALSE}
 library(ggplot2)
-
 ggplot(data = soil_sf) +
-  geom_sf(aes(color = ph_h2o)) +
+  geom_sf(aes(color = pH), size = 2) +
   scale_color_viridis_c() +
   theme_minimal() +
   labs(
-    title = "Soil sampling sites – pH (H2O)",
-    color = "pH (H2O)"
+    title = "Soil sampling sites – pH",
+    color = "pH"
   )
-```
-
-
-### Importing Raster Data
-
-The `{terra}` package provides the `rast()` function to read both single-layer and multi-layer raster files (e.g., GeoTIFF).
-
-Single-layer raster: one variable (e.g., a cropland mask, DEM, SOC map).
-
-Multi-layer raster: a stack/collection of variables in one file (e.g., multiple environmental covariates).
-
--   Reading single-layer and multi-layer rasters (`rast()`).
-
-```{r read-raster, echo=TRUE, eval=FALSE}
-library(terra)
-
-# Read single-layer raster tif file (binary cropland mask)
-crops <- rast("Cropland_Mask_KANSAS.tif")
-
-# Basic visualization
-plot(crops)
-
-# Read multi-layer raster tif file (environmental covariates stack)
-covs <- rast("Env_Cov_250m_KANSAS.tif")
-
-# Visualize the first four layers
-plot(covs[1:4])
 
 ```
 
+```{r vector-plot-image, echo=FALSE, eval=FALSE}
+# This chunk is only to create the image. No eval or echo
+png("SoilFER-Training-Resources/01_outputs/ggplot_ph.png", width = 1800, height = 900, res = 200)
 
-### Exploring Raster Layers
-
-Before using rasters in analysis or modeling, it is important to inspect their spatial basic properties (extent, resolution, CRS), number of layers and value ranges. This helps identify issues such as mismatched CRS, unexpected resolution, incorrect extents, data reanges and missing data patterns.
-
-```{r raster-inspection, echo=TRUE, eval=FALSE}
-library(terra)
-
-# Basic metadata
-crops
-covs
-
-# Number of layers
-nlyr(crops)
-nlyr(covs)
-
-# Extent, resolution, and CRS
-ext(crops)
-res(crops)
-crs(crops)
-
-ext(covs)
-res(covs)
-crs(covs)
-
-# Layer names (multi-layer rasters)
-names(covs)
-
-# Quick summaries (min/max etc.)
-global(crops, fun = "range", na.rm = TRUE)
-global(covs[[1]], fun = "range", na.rm = TRUE)
-
-# Simple histogram of values (single layer)
-hist(covs[[1]], main = "Histogram of covariate layer 1", xlab = names(covs)[1])
-```
-
-:::warning-box
-For most raster operations, rasters should share the same CRS, resolution, and extent. 
-If they do not, they have to be adjusted typically with `resample`, `project`, or `crop` before combining.
-:::
-
-
-  ### Raster Visualization
-  
-  -   Basic plotting of rasters (`plot()`).
-
--   Layered visualizations, color scales, and legends.
-
--   Visualizing multiple layers (e.g., SOC and DEM).
-
--   
-  
-  ### Spatial Operations on Rasters
-  
-  **Merge rasters**
-  
-Adjacent raster tiles can be merged into a single, continuous layer using a mosaic operation. In the example below, two binary cropland mask tiles (1 = cropland presence; NA = NoData/no cropland) are combined into one raster. The resulting mosaic is then written as a compact GeoTIFF using an 8-bit unsigned integer datatype to reduce file size while maintaining the mask structure.
-This operation can be used to merge raster tiles produced during the raster exportation in Google Earth Engine.
-  
-```{r crop-mosaic, echo=TRUE, eval=FALSE}
-library(terra)
-
-# Read adjacent cropland binary (1= presence, NA=absence) mask tiles
-r1 <- rast("Cropland_Mask_KANSAS_1.tif")
-r2 <- rast("Cropland_Mask_KANSAS_2.tif")
-
-# Mosaic tiles (keep cropland presence where either tile has value 1)
-m <- mosaic(r1, r2, fun = "max")
-
-# Cast to integer (suitable for a Byte mask)
-m <- as.int(m)
-
-# Write a compact GeoTIFF (Byte + compression), preserving NA as NoData
-writeRaster(
-  m,
-  "Cropland_Mask_KANSAS.tif",
-  overwrite = TRUE,
-  wopt = list(
-    datatype = "INT1U",
-    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
+ggplot(data = soil_sf) +
+  geom_sf(aes(color = pH), size = 2) +
+  scale_color_viridis_c() +
+  theme_minimal() +
+  labs(
+    title = "Soil sampling sites – pH",
+    color = "pH"
   )
-)
 
+dev.off()
 ```
 
+```{r, echo=FALSE, fig.cap="Visualization of pH values with ggplot2", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/ggplot_ph.png")
+```
 
-  
-**Crop and mask to study area (`crop()`, `mask()`) **
+The possibilities for visualization with `{ggplot2}` are extensive. For more examples and options, see the `{ggplot2}` documentation and the `{sf}` vignettes on plotting with `geom_sf()`.
 
-**Resampling and alignment of rasters (`resample()`, `align()`) **
+------------------------------------------------------------------------
 
- **Reprojecting rasters to other CRS (`project()`) **
+## Working with Raster Data using `{terra}`  {#spatialRaster}
 
+The `{terra}` package is the main framework for working with raster spatial data in R. A raster represents space as a regular grid of cells, where each cell stores a value (e.g., elevation, land cover class, rainfall, SOC prediction). Raster layers are widely used in Digital Soil Mapping both as covariates (environmental predictors) and as model outputs (predicted soil properties).
+
+In practice, a `terra::SpatRaster` object combines:
+
+ * Cell values: the data stored in the grid cells (continuous values like temperature, or categorical values like land cover).
+
+ * Spatial geometry: the grid definition given by the extent (spatial coverage) and resolution (cell size).
+
+ * CRS: the coordinate reference system used (e.g., WGS84, UTM).
+
+ * Layers: a raster can have one layer (e.g., DEM, SOC) or multiple layers (a covariate stack).
  
-  
-  ### Raster Algebra and Map Algebra
-  
-  -   Simple arithmetic between rasters.
-
--   Creating indices (e.g., terrain indices, SOC classes).
-
--   Handling NoData values and masking.
-
--   
-
-## Combining Vector and Raster Data
-  
-### Extracting Raster Values to Points and Polygons
-  
-  -   Extract SOC, pH, climate values at soil profile locations (`extract()`).
-
--   Zonal statistics for polygons (mean, min, max, sd).
-
--   
-  
-  ### Preparing Covariates for Digital Soil Mapping
-  
-  -   Stacking rasters (covariate stack).
-
--   Matching resolution and extent.
-
--   Exporting covariate values for modeling (to CSV or tables).
-
--   
-  
-  ------------------------------------------------------------------------
-  
-  ## **Practical Workflows for Soil Mapping**
-  
-  ### Typical Workflow: From Raw Data to Analysis-Ready Layers
-  
-  -   Import raw vector and raster data.
-
--   Clean and harmonize CRS.
-
--   Clip to area of interest.
-
--   Derive covariates (slopes, indices).
-
--   Extract covariates at sample points for DSM.
-
--   
-  
-  ### Case Example (Kansan / OSSL-like Dataset)
-  
-  -   Use soil points + DEM + land cover.
-
--   Build a simple workflow (description + placeholders for code).
-
--   
-  
  
-## Exporting and Sharing Spatial Data
-  
-### Exporting Vector Data
-  
--   Writing sf objects to disk (`st_write()`).
+### Preparing Covariates for Sampling Design and Digital Soil Mapping
 
--   Formats: Shapefile, GeoPackage, GeoJSON.
+The workflows presented in this tutorial use environmental covariates as proxies to describe the spatial variation of soil properties. These covariates support two key steps:
 
--   
-  
-### Exporting Raster Data
-  
--   Writing SpatRaster objects (`writeRaster()`).
+- **Sampling design**: covariates are used to identify environmental clusters that should be sampled, helping maximize the representation of soil variability while optimizing sampling effort.
 
--   GeoTIFF and other formats.
+- **Digital Soil Mapping**: soil properties measured at known point locations (vector data) are related to environmental characteristics (raster covariates) to train statistical or machine learning models that predict soil properties continuously across space.
 
--   Managing file size and compression.
-
-   
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-  
-
-# Preparation of Environmental Covariates with Google Earth Engine
-
-Sampling Design and Digital Soil Mapping relies heavily on environmental covariates that represent the soil-forming factors of climate, organisms, relief, parent material, and time (the SCORPAN framework). Assembling these covariates from global datasets such as CHELSA climate surfaces, SRTM terrain derivatives, MODIS vegetation indices, and Sentinel-2 spectral bands traditionally requires managing dozens of large files across different formats and projections. GEE provides direct access to all these datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest with a single script.
-
-In the context of this training, we use GEE to extract and export a comprehensive set of environmental covariates for our study area (Kansas). The exported rasters are then used as covariates to:
-
-- Create a robust soil sampling design based on the SCORPAN framework
-
-- Predict soil properties in the Digital Soil Mapping workflow.
-
-
-## The SoilFER Environmental Covariates Script
-
-The script provided for this training (`1_gee_soilfer_env_covariates.txt`) provides the instructions to download covariate data from the GEE platform. It assembles five categories of environmental covariates within a single, configurable workflow.
+The preparation of covariates is a time-consuming task. Therefore this tutorial uses a pre-compiled set of environmental covariates to fulfil these tasks. It assembles five categories of environmental covariates cloud-optimized GeoTIFF files.
 
 **Climate data** is sourced from two complementary products. 
 
@@ -1802,14 +1795,56 @@ The script provided for this training (`1_gee_soilfer_env_covariates.txt`) provi
 
 **Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
 
-All outputs are exported as cloud-optimized GeoTIFF files to Google Drive at their native or user-specified resolutions, ready for import into R for the modeling workflow.
+> Note: users need to have a google account to access the covariate data.
 
 
-## Running the Script
+#### Download Covariate Rasters
+
+A dedicate Google Drive folder has been created to store large raster files used in this tutorial. Users can obtain the data directly from the following link:
+[https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21](https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21)
+
+Data in this folder includes:
+
+ - [**Cropland_Mask_KANSAS.tif**](https://drive.google.com/file/d/1wh6xSW03YKrCHScJJa0c_cSA1XZ8tYY-/view?usp=drive_link) (22.5 mb): Binary raster with presence (1) and absence (NA) of crops in Kansas at 20 meter resolution. This file is used as a mask to avoid non-cropped areas in the analyses. 
+ - [**Env_Cov_250m_KANSAS.tif**](https://drive.google.com/file/d/1wURPmPLi2LdYq6zBhZN1e91EiiZsk8oX/view?usp=drive_link) (203.2 mb): Multi-layer raster stack with climatic, remote sensing, topographic information at 250 meter resolution. Used for both Sampling Design and Digital Soil Mapping.
+ - [**HighRes_Cov_100m_Kansas.tif**](https://drive.google.com/file/d/1xf89gn4pBKsb5ynVIfKZd4MbT3ZL1Nf2/view?usp=drive_link) (535.6 mb). 100 m resolution rasters with remote sensing derived information. Used in Sampling Design.
+
+#### Obtain Covariate Data from Google Earth Engine (GEE)
+ 
+The data can also be generated directly using Google Earth Engine (GEE). GEE provides direct access to many environmental datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest using a single script.
+
+The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform.
+
+The file `Cropland_Mask_KANSAS.tif`be split into two adjacent tiff files (`Cropland_Mask_KANSAS-0000000000-0000000000.tif` and `Cropland_Mask_KANSAS-0000000000-0000023296.tif`) that must be merged using this R script, and already presented in section `Spatial Operations on Rasters` as an example to merge rasters.
+
+```{r merge-gee-crops, echo=TRUE, eval=FALSE}
+library(terra)
+# Read input rasters (adjacent tiles)
+
+r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
+r2 <- rast("CCropland_Mask_KANSAS-0000000000-0000023296.tif")
+
+# Mosaic into a single raster
+m <- mosaic(r1, r2, fun = "max")
+
+# Cast to integer to optimize file size
+# This ensures the output is written as integer values (1 and NA),
+m <- as.int(m)
+
+# Write output with compression to reduce file size
+writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
+  wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
+    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
+  )
+)
+
+```
+
+#### Running the GEE Script
 
 Copy the full contents of `1_gee_soilfer_env_covariates.txt` into the GEE Code Editor. Before running, review and adjust the configuration variables at the top of the script (Section 1) to match your study area and requirements.
 
-The `aoi` variable defines the `area of interest`. For the Kansas training exercise, this is already configured to use the US Census TIGER state boundary layer:
+The `aoi` variable defines the `area of interest`. For the training exercise, this is already configured to use the US Census TIGER state boundary layer:
 
 ```javascript
 var aoi = ee.FeatureCollection('TIGER/2018/States')
@@ -1831,5 +1866,292 @@ Large exports, particularly **TerraClimate** time series and **Sentinel-2** laye
 :::
 
 Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the `terra` package and stacked into the covariate array used in the next modules.
+
+### Raster Data Management with `{terra}` 
+
+#### Importing and Exporting Raster Data
+
+Raster files are commonly distributed as GeoTIFFs (.tif). The function `rast()` reads both single-layer and multi-layer rasters. Rasters can be exported back to disk with `writeRaster()`.
+
+
+```{r read-raster, echo=TRUE, eval=FALSE}
+library(terra)
+
+# Read a single-layer raster (e.g., cropland mask or DEM)
+crops <- rast("Cropland_Mask_KANSAS.tif")
+
+# Read a multi-layer raster (e.g., environmental covariates stack)
+covs <- rast("Env_Cov_250m_KANSAS.tif")
+```
+
+
+To save raster data to disk use `writeRaster`:
+
+```{r write-raster, echo=TRUE, eval=FALSE}
+# Export a raster as GeoTIFF
+writeRaster(crops, "Cropland_Mask_KANSAS_copy.tif", overwrite = TRUE) # overwrites tif
+```
+
+#### Inspecting and Exploring `SpatRaster` Objects
+
+Before analysis, inspect the spatial properties (extent, resolution, CRS), the number of layers, and the value ranges. This helps detect common issues such as mismatched CRS, unexpected resolution, incorrect extents, or missing data patterns.
+
+```{r raster-inspection, echo=TRUE, eval=FALSE}
+# Basic metadata (prints summary to console)
+covs
+
+# Number of layers
+nlyr(covs)
+
+# Spatial properties
+ext(covs)
+res(covs)
+crs(covs)
+
+# Layer names (multi-layer rasters)
+names(covs)
+
+# Value ranges for the first 4 layers
+global(covs[[1:4]], fun = "range", na.rm = TRUE)
+
+# Histograms of the first 4 layers
+# Adjust graphics settings to 2 row x 2 columns layout with tight margins
+op <- par(
+  mfrow = c(2, 2),
+  mar  = c(3.5, 3.5, 2.2, 1.2),  # more space around each panel
+  oma  = c(1, 1, 1, 1),          # extra space around the whole figure
+  mgp  = c(2.2, 0.7, 0)          # axis title/labels spacing
+)
+
+for (i in 1:4) {
+  hist(covs[[i]],
+       main = paste("Histogram of", names(covs)[i]),
+       xlab = names(covs)[i])
+}
+# restore previous graphics settings
+par(op)
+```
+
+
+```{r, echo=FALSE, fig.cap="Visualization of histograms of covariates", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/hist_covs.png")
+```
+
+:::warning-box
+For most raster operations, rasters should share the same CRS, resolution, and extent. If they do not, they typically need adjustment using functions such as `project()`, `resample()`, and `crop()` before combining.
+:::
+
+#### Raster Visualization
+
+Rasters can be quickly visualized using `plot()`. For multi-layer rasters, it is common to plot a subset of layers.
+
+```{r plot-raster, echo=TRUE, eval=FALSE}
+# Plot single-layer crops raster mask
+plot(crops, main="Cropland Mask")
+```
+
+```{r, echo=FALSE, fig.cap="Visualization of raster crop mask", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/plot_crops.png")
+```
+
+```{r plot-raster-covs, echo=TRUE, eval=FALSE}
+# Plot a multi-layer raster (e.g., environmental covariates stack)
+plot(covs)
+```
+
+```{r, echo=FALSE, fig.cap="Visualization of covariates", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/plot_covs.png")
+```
+
+You can also plot specific layers by name:
+
+```{r raster-plot-byname, echo=TRUE, eval=FALSE}
+# Plot Elevation and Temperature from the covs stack
+# Adjust graphics settings to 1 row x 2 columns layout with tight margins
+op <- par(
+  mfrow = c(1, 2),
+  mar = c(0.5, 0.5, 0.5, 0.5),
+  xaxs = "i", yaxs = "i"
+)
+plot(covs[["dtm_elevation_250m"]], main = "Elevation (DEM)", cex.main = .8)
+plot(covs[["bio1"]], main = "Annual Mean Temperature", cex.main = .8)
+par(op) # restore previous graphics settings
+```
+
+```{r, echo=FALSE, fig.cap="Visualization of Elevation and Temperature", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/plot_E_T.png")
+```
+
+
+#### Setting and Reprojecting CRS for Raster Data
+Rasters also have a CRS. You can inspect it with `crs()`. To reproject a raster to a new CRS, use `project()`. Reprojection may change the grid and requires interpolation (resampling), so it is more computationally intensive than vector reprojection.
+
+```{r raster-reproject, echo=TRUE, eval=FALSE}
+# Inspect CRS
+crs(covs)
+
+# Reproject raster (example: to EPSG:3857)
+covs_3857 <- project(covs, "EPSG:3857")
+```
+
+
+#### Spatial Operations on Rasters
+
+Raster operations are used to prepare consistent covariate stacks, restrict layers to a study area, and combine tiled outputs.
+
+##### Merge rasters (mosaic)
+
+Adjacent raster tiles can be merged into a single, continuous layer using `mosaic()`. This is common when rasters are exported as tiles (e.g., from Google Earth Engine). In the example below, two binary cropland mask tiles are mosaicked and written as a compact GeoTIFF.
+
+```{r raster-mosaic, echo=TRUE, eval=FALSE}
+# Read input rasters (adjacent tiles)
+r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
+r2 <- rast("Cropland_Mask_KANSAS-0000000000-0000023296.tif")
+
+# Mosaic into a single raster
+m <- mosaic(r1, r2, fun = "max")
+
+# Cast to integer to optimize file size (not valid for non-integer continuous data)
+m <- as.int(m)
+
+# Write output with compression to reduce file size
+writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
+  wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
+    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
+  )
+)
+```
+
+ 
+##### Crop and mask to study area (`crop()`, `mask()`)
+
+Use `crop()` to reduce the raster extent, and `mask()` to set values outside the boundary to NA.
+
+```{r raster-crop, echo=TRUE, eval=FALSE}
+# Crop and mask covariates to the extent of Riley
+# Align CRS of both datasets
+admin <- st_transform(admin, crs(covs))
+# Crop covariates to the extent of the county
+covs_crop <- crop(covs, admin[admin$NAME=="Riley",])
+# Mask covariates
+covs_mask <- mask(covs_crop, admin[admin$NAME=="Riley",])
+
+# Plot covariate (bio1 = temperature) in Riley County
+# Adjust graphics settings to 1 row x 2 columns layout with tight margins
+op <- par(
+  mfrow = c(1, 2),
+  mar = c(0.5, 0.5, 0.5, 0.5),
+  xaxs = "i", yaxs = "i"
+)
+plot(covs_crop[["bio1"]], main= "Crop", cex.main = 1)
+plot(covs_mask[["bio1"]], main= "Mask", cex.main = 1)
+# restore previous graphics settings
+par(op) 
+
+```
+
+
+```{r, echo=FALSE, fig.cap="Differences of Crop and Mask outputs in raster data", out.width='80%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/crop_riley.png")
+```
+
+
+:::warning-box
+**`crop()` and `mask()` are complementary operations.**
+
+- `crop()`  reduces a raster to the extent of a vector polygon (it keeps all cells within the polygon’s bounding box), while `mask()` retains only the cells inside the polygon and sets values outside to `NA`.
+
+- If you want to limit a raster to a specific boundary and keep only the data within that area, first apply `crop()`  and then `mask()`.
+
+:::
+
+##### Resampling and alignment (`resample()`)
+
+When combining rasters, they often need to be aligned to a common grid (same origin, resolution, and extent). The function `resample()` transfers values from one `SpatRaster` to the grid of another.
+
+A key argument is method, which controls how new cell values are computed. Use `method = "near"` (nearest neighbour) for categorical/class rasters (e.g., land cover, masks) to avoid creating artificial mixed classes. Use `method = "bilinear"` (the default for numeric rasters) for continuous variables (e.g., temperature, elevation), where interpolation is appropriate.
+
+```{r raster-resample, echo=TRUE, eval=FALSE}
+# Align raster of crops to the grid of covariates
+ crops_aligned <- resample(crops, covs, method = "near")
+
+# Spatial properties of aligned crops and covariates are equal
+ext(crops_aligned)
+ext(covs)
+res(covs)
+res(crops_aligned)
+
+```
+
+Other methods (e.g., "cubic", "cubicspline", "lanczos") can produce smoother results for continuous surfaces, while summary methods such as "sum", "min", or "average" are useful when aggregating values from multiple input cells into larger output cells.
+
+##### Combine and remove rasters in a raster stack
+
+Rasters with the same grid definition (same CRS, origin, resolution, and extent) can be combined into a single multi-layer `SpatRaster` (a 'stack'). This is useful for building covariate stacks for raster operations in Digital Soil Mapping.
+
+```{r raster-combine, echo=TRUE, eval=FALSE}
+# Set a clear layer name for the aligned cropland mask
+names(crops_aligned) <- "crops"
+# Add the cropland layer to the covariate stack
+covs <- c(covs,crops_aligned)
+# Check layer names
+names(covs)
+```
+
+Layers can also be removed from the stack by subsetting the layers you want to keep.
+
+```{r raster-remove, echo=TRUE, eval=FALSE}
+# Remove "crops" from the stack
+covs <- covs[[names(covs) != "crops"]]
+# Check layer names
+names(covs)
+```
+
+##### Raster Algebra
+
+Raster algebra creates raster layers by applying cell by cell mathematical or logical operations on existing rasters. It is used to derive new raster products such as indices, threshold-based masks, or reclassified maps. Rasters must have the same definition (CRS, origin, resolution, and extent).
+
+
+```{r raster-algebra, echo=TRUE, eval=FALSE}
+# Example: classify a continuous covariate into two classes
+high_temperature <- covs[[1]] > 12
+
+# Adjust graphics settings to 1 row x 2 columns layout with tight margins
+op <- par(
+  mfrow = c(1, 2),
+  mar = c(0.5, 0.5, 0.5, 0.5),
+  xaxs = "i", yaxs = "i"
+)
+plot(covs[["bio1"]], main= "Annual Mean Temperature", cex.main = .8)
+plot(high_temperature, main= "High Temperature (>12ºC)", cex.main = .8)
+par(op) # restore previous graphics settings
+```
+
+```{r, echo=FALSE, fig.cap="Reclassification of raster values with map algebra", out.width='100%'}
+knitr::include_graphics("SoilFER-Training-Resources/01_outputs/high_temp.png")
+```
+
+
+##### Combining environmental (Raster) and soil (Vector) information
+
+In Digital Soil Mapping, the calibration of statistical model need to link the analytical properties of soils with the environmental covariates. This is done by their overlapping position. To link soil observations (points) with environmental covariates (rasters), extract raster values at sample locations using `extract()`.
+
+```{r raster-extract, echo=TRUE, eval=FALSE}
+# Extract covariate values at point locations (soils_sf)
+cov_values <- extract(covs, soil_sf)
+```
+
+
+The new object `cov_values` is a data frame which does not have the original data of the sf object `soil_sf`. A simple column bind command (`cbind`) can be used bind covariates to `soil_sf`, which remains an sf object keeping geometry (coordinates) and all original columns, plus the covariate columns.
+
+```{r raster-bind, echo=TRUE, eval=FALSE}
+# cov_values includes an ID column in the first column
+soil_sf <- cbind(soil_sf, cov_values[ , -1, drop = FALSE])
+
+```
+
+This dataset contains all the information to be used in further analyses of Sampling Design and calibration of Digital Soil Mapping models.
+
+
 
 
