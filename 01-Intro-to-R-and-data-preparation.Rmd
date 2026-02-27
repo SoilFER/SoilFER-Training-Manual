@@ -1331,16 +1331,12 @@ Since importing a `.csv` file in R typically produces a data frame, the workflow
 ```{r csv-to-sf, echo=TRUE, eval=FALSE}
 # Import the previously standardized dataset for 0-30 cm depth 
 kdata <- read.csv (paste0(output_dir,"KSSL_DSM_0-30.csv"))
-
 # Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
 soil_sf <- st_as_sf(kdata, coords = c("lon", "lat"), crs = 4326)
-
 # Print object geometry
 soil_sf$geometry
-
 # Print CRS details
 st_crs(soil_sf)
-
 ```
 
 The Coordinate Reference System (CRS) has been provided as an argument within the  `st_as_sf()` function. Users can visualize CRS of sf objects with `st_crs()`. the sf object can be transformed to shapefile with `st_write`.
@@ -1349,41 +1345,25 @@ The Coordinate Reference System (CRS) has been provided as an argument within th
 
 Shapefiles can be directly imported into R using the `st_read()` function. You can also import most other vector formats with the same command, because `{sf}` automatically detects the file type.
 
-```{r shp-to-sf, echo=TRUE, eval=FALSE}
+The following chunk imports the soil sampling locations from the cleaned KSSL dataset. This layer represents individual soil pits or auger locations, with coordinates and measured properties stored in the attribute table. The chunk also plots pH values for a quick visual check of the spatial distribution of the data.
 
+```{r shp-to-sf, echo=TRUE, eval=FALSE}
 # Read the previously created shapefile containing soil profile points
 soil_sf <- st_read(paste0(output_dir,"soil_profiles.shp"))
 # Inspect the first rows
 head(soil_sf)
-
-# Read shapefile of Kansas Counties
-admin <- st_read("01_data/module1/Tiger_2020_Counties.shp")
-# Ensure both layers share the same CRS
-admin <- st_transform(admin, st_crs(soil_sf))
-
 # Quick visualization
-# Plot points colored by pH, then overlay county borders
 plot(soil_sf["pH"], pch = 16, cex = 0.6, key.pos = 1)  # key.pos controls legend position
-plot(st_geometry(admin), add = TRUE, col = NA, border = "black", lwd = 0.7)
 
 ```
 
 ```{r shp-to-sf-hidden, echo=FALSE, eval=TRUE}
 # Inspect the first rows
 head(soil_sf)
-
-# Ensure both layers share the same CRS
-admin <- st_transform(admin, st_crs(soil_sf))
-
 # Quick visualization
-# Plot points colored by pH, then overlay county borders
 plot(soil_sf["pH"], pch = 16, cex = 0.6, key.pos = 1)  # key.pos controls legend position
-plot(st_geometry(admin), add = TRUE, col = NA, border = "black", lwd = 0.7)
-
 ```
 
-
-This layer may represent individual soil pits or auger locations, with coordinates and measured properties stored in the attribute table.
 
 #### Exporting sf objects
 Simple features objects can be saved to files or databases using the `st_write()` function.
@@ -1466,7 +1446,7 @@ In soil applications, buffers can represent:
 
 The function `st_buffer()` is used for this. If the input dataset is in a Geographic Coordinate System (longitude/latitude in degrees), you should first transform it to a Projected Coordinate System (units in metres) before buffering.
 
-```{r vector-buffer, echo=TRUE, eval=TRUE}
+```{r vector-buffer, echo=TRUE, eval=FALSE}
 # Original KSSL data is in WGS84 EPSG:4326  geographic coordinates(lon/lat)
 # Transform the subset of alkaline soils to NAD83 / UTM 14N (EPSG: 26914)
 alkaline_utm <- st_transform(alkaline, crs = 26914)  # UTM 14N, distance in metres
@@ -1606,7 +1586,6 @@ Dissolving is useful when you want a single boundary for a larger study region. 
 ```{r vector-dissolve, echo=TRUE, eval=FALSE}
 # Dissolve all counties into one Kansas boundary
 admin_dissolved <- st_union(admin)
-
 # Plot comparison: before vs after dissolve
 # Adjust graphics settings to 1 row x 2 columns layout with tight margins
 op <- par(
@@ -1614,12 +1593,10 @@ op <- par(
   mar = c(0.5, 0.5, 0.1, 0.5),  # very small top margin
   xaxs = "i", yaxs = "i"
 )
-
 plot(st_geometry(admin[1]),
      col = NA, border = "black",
      axes = FALSE, asp = 1)
 title("Before dissolve", line = -0.6, cex.main = 0.95)
-
 plot(st_geometry(admin_dissolved),
      col = NA, border = "black",
      axes = FALSE, asp = 1)
@@ -1820,24 +1797,19 @@ The file `Cropland_Mask_KANSAS.tif`be split into two adjacent tiff files (`Cropl
 ```{r merge-gee-crops, echo=TRUE, eval=FALSE}
 library(terra)
 # Read input rasters (adjacent tiles)
-
 r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
 r2 <- rast("CCropland_Mask_KANSAS-0000000000-0000023296.tif")
-
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
-
 # Cast to integer to optimize file size
 # This ensures the output is written as integer values (1 and NA),
 m <- as.int(m)
-
 # Write output with compression to reduce file size
 writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
   wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
     gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
   )
 )
-
 ```
 
 #### Running the GEE Script
@@ -1876,10 +1848,8 @@ Raster files are commonly distributed as GeoTIFFs (.tif). The function `rast()` 
 
 ```{r read-raster, echo=TRUE, eval=FALSE}
 library(terra)
-
 # Read a single-layer raster (e.g., cropland mask or DEM)
 crops <- rast("Cropland_Mask_KANSAS.tif")
-
 # Read a multi-layer raster (e.g., environmental covariates stack)
 covs <- rast("Env_Cov_250m_KANSAS.tif")
 ```
@@ -1899,21 +1869,16 @@ Before analysis, inspect the spatial properties (extent, resolution, CRS), the n
 ```{r raster-inspection, echo=TRUE, eval=FALSE}
 # Basic metadata (prints summary to console)
 covs
-
 # Number of layers
 nlyr(covs)
-
 # Spatial properties
 ext(covs)
 res(covs)
 crs(covs)
-
 # Layer names (multi-layer rasters)
 names(covs)
-
 # Value ranges for the first 4 layers
 global(covs[[1:4]], fun = "range", na.rm = TRUE)
-
 # Histograms of the first 4 layers
 # Adjust graphics settings to 2 row x 2 columns layout with tight margins
 op <- par(
@@ -1989,7 +1954,6 @@ Rasters also have a CRS. You can inspect it with `crs()`. To reproject a raster 
 ```{r raster-reproject, echo=TRUE, eval=FALSE}
 # Inspect CRS
 crs(covs)
-
 # Reproject raster (example: to EPSG:3857)
 covs_3857 <- project(covs, "EPSG:3857")
 ```
@@ -2007,13 +1971,10 @@ Adjacent raster tiles can be merged into a single, continuous layer using `mosai
 # Read input rasters (adjacent tiles)
 r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
 r2 <- rast("Cropland_Mask_KANSAS-0000000000-0000023296.tif")
-
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
-
 # Cast to integer to optimize file size (not valid for non-integer continuous data)
 m <- as.int(m)
-
 # Write output with compression to reduce file size
 writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
   wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
@@ -2074,7 +2035,6 @@ A key argument is method, which controls how new cell values are computed. Use `
 ```{r raster-resample, echo=TRUE, eval=FALSE}
 # Align raster of crops to the grid of covariates
  crops_aligned <- resample(crops, covs, method = "near")
-
 # Spatial properties of aligned crops and covariates are equal
 ext(crops_aligned)
 ext(covs)
@@ -2115,7 +2075,6 @@ Raster algebra creates raster layers by applying cell by cell mathematical or lo
 ```{r raster-algebra, echo=TRUE, eval=FALSE}
 # Example: classify a continuous covariate into two classes
 high_temperature <- covs[[1]] > 12
-
 # Adjust graphics settings to 1 row x 2 columns layout with tight margins
 op <- par(
   mfrow = c(1, 2),
