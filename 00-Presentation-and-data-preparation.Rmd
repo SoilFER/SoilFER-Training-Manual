@@ -173,7 +173,7 @@ Introduces the R programming environment, basic syntax, data types, operators, f
 Focuses on systematic soil data quality assessment and cleaning procedures essential before spatial modeling. Topics include coordinate validation, depth sequence checking, outlier detection and treatment, handling missing values, texture validation, handling duplicated data, and data harmonization techniques including depth standardization for Digital Soil Mapping products.
 
 **Session 1.3 - Working with Spatial Data in R**  
-Covers fundamental concepts of spatial data handling using `{sf}` and `{terra}` packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization and methods for extracting environmental covariate values at soil sampling locations.
+Covers fundamental concepts of spatial data handling using `{sf}` and `{terra}` packages. Participants learn coordinate reference systems, spatial transformations, geometric operations, raster processing, data visualization, covariate preparation and methods for extracting environmental covariate values at soil sampling locations. 
 
 
 #### **Module 2: Soil Sampling Design** {-}

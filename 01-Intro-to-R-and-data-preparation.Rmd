@@ -1770,6 +1770,7 @@ The preparation of covariates is a time-consuming task. Therefore this tutorial 
 
 **Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
 
+**Soil Available Water Content** is represented by the Available Water Content layer estimated at 200 cm depth at....
 **Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
 
 > Note: users need to have a google account to access the covariate data.
@@ -1783,8 +1784,34 @@ A dedicate Google Drive folder has been created to store large raster files used
 Data in this folder includes:
 
  - [**Cropland_Mask_KANSAS.tif**](https://drive.google.com/file/d/1wh6xSW03YKrCHScJJa0c_cSA1XZ8tYY-/view?usp=drive_link) (22.5 mb): Binary raster with presence (1) and absence (NA) of crops in Kansas at 20 meter resolution. This file is used as a mask to avoid non-cropped areas in the analyses. 
- - [**Env_Cov_250m_KANSAS.tif**](https://drive.google.com/file/d/1wURPmPLi2LdYq6zBhZN1e91EiiZsk8oX/view?usp=drive_link) (203.2 mb): Multi-layer raster stack with climatic, remote sensing, topographic information at 250 meter resolution. Used for both Sampling Design and Digital Soil Mapping.
- - [**HighRes_Cov_100m_Kansas.tif**](https://drive.google.com/file/d/1xf89gn4pBKsb5ynVIfKZd4MbT3ZL1Nf2/view?usp=drive_link) (535.6 mb). 100 m resolution rasters with remote sensing derived information. Used in Sampling Design.
+ - [**Environmental_Covariates_250m_KANSAS.tif**](https://drive.google.com/file/d/1wURPmPLi2LdYq6zBhZN1e91EiiZsk8oX/view?usp=drive_link) (203.2 mb): Multi-layer raster stack with climatic, remote sensing, topographic information at 250 meter resolution.
+ - [**HighRes_Covariates_100m_Kansas.tif**](https://drive.google.com/file/d/1xf89gn4pBKsb5ynVIfKZd4MbT3ZL1Nf2/view?usp=drive_link) (535.6 mb). 100 m resolution rasters with remote sensing derived information.
+ - [**DEM_KANSAS.tif**](https://drive.google.com/file/d/14KmmjjTfVD7jTEuQqCLkfcQmXy0VBDkA/view?usp=drive_link) (21.4 mb). 100 m resolution rasters with remote sensing derived information.
+ - [**Slope_KANSAS.tif**](https://drive.google.com/file/d/1rESziVFlEvEEmrKacb88R1pKZxbrU7qS/view?usp=drive_link) (61.2 mb). 100 m resolution rasters with remote sensing derived information.
+ - [**Geomorphon_Landforms_KANSAS**][@amatulli2020_geomorpho90m](https://drive.google.com/file/d/1E03U42UPl9SKMfUGZZ8qDCno2H_kPxUB/view?usp=drive_link) (14.9 mb). 90 m resolution raster of geomorphological types from Geomorpho90m – Global High-Resolution Geomorphometry Layers.
+ - [**TerraClimate_AvgTemp_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1TyyErHkQeNW9Q_wchW9Fa_0UpdaWS_-_/view?usp=drive_link) (17.7 mb). 100 m TerraClimate monthly averaged Temperature rasters from 1981-2023.
+ - [**TerraClimate_PET_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1b9wM3zwggBFS98pFEyWUFtpKN9ORq9we/view?usp=drive_link) (17.2 mb). 100 m TerraClimate monthly averaged Potential Evapotranspiration rasters from 1981-2023.
+ - [**TerraClimate_Precip_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb).  100 m TerraClimate monthly accumulated mean Precipitation rasters from 1981-2023.
+ - [**sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif**][@gupta_zenodo_2019](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link).  250-meter resolution geospatial raster dataset representing the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
+ - [**ESA_WorldCover_2021_KANSAS**][@zanaga2022_worldcover2021_v200](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb). 10 m resolution rasters of landcover types from the European Space Agency WorldCover,  based on Sentinel-1 and Sentinel-2 data.
+ 
+ 
+*Table. ESA WorldCover (global land cover) legend, the class codes and color in the Map band.*
+
+   | Value | Class                    | Color (hex) |
+   | ----: | ------------------------ | ----------- |
+   |    10 | Tree cover               | `#006400`   |
+   |    20 | Shrubland                | `#ffbb22`   |
+   |    30 | Grassland                | `#ffff4c`   |
+   |    40 | Cropland                 | `#f096ff`   |
+   |    50 | Built-up                 | `#fa0000`   |
+   |    60 | Bare / sparse vegetation | `#b4b4b4`   |
+   |    70 | Snow and ice             | `#f0f0f0`   |
+   |    80 | Permanent water bodies   | `#0064c8`   |
+   |    90 | Herbaceous wetland       | `#0096a0`   |
+   |    95 | Mangroves                | `#00cf75`   |
+   |   100 | Moss and lichen          | `#fae6a0`   |
+
 
 #### Obtain Covariate Data from Google Earth Engine (GEE)
  
@@ -1792,13 +1819,14 @@ The data can also be generated directly using Google Earth Engine (GEE). GEE pro
 
 The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform.
 
-The file `Cropland_Mask_KANSAS.tif`be split into two adjacent tiff files (`Cropland_Mask_KANSAS-0000000000-0000000000.tif` and `Cropland_Mask_KANSAS-0000000000-0000023296.tif`) that must be merged using this R script, and already presented in section `Spatial Operations on Rasters` as an example to merge rasters.
+The files `Cropland_Mask_KANSAS.tif` and `ESA_WorldCover_2021_KANSAS` be split into two adjacent tiff files ([`Cropland_Mask_KANSAS-0000000000-0000000000.tif` , `Cropland_Mask_KANSAS-0000000000-0000023296.tif`] and [`ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif`,`ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif` ]) that must be merged using this R script, and already presented in section `Spatial Operations on Rasters` as an example to merge rasters.
 
 ```{r merge-gee-crops, echo=TRUE, eval=FALSE}
 library(terra)
-# Read input rasters (adjacent tiles)
+# Merge Crop mask rasters (two adjacent tiles)
+# Read input rasters
 r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
-r2 <- rast("CCropland_Mask_KANSAS-0000000000-0000023296.tif")
+r2 <- rast("Cropland_Mask_KANSAS-0000000000-0000023296.tif")
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
 # Cast to integer to optimize file size
@@ -1810,6 +1838,23 @@ writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
     gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
   )
 )
+
+# Merge ESA rasters (two adjacent tiles)
+# Read input rasters
+r1 <- rast("ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif")
+r2 <- rast("ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif")
+# Mosaic into a single raster
+m <- mosaic(r1, r2, fun = "max")
+# Cast to integer to optimize file size
+# This ensures the output is written as integer values
+m <- as.int(m)
+# Write output with compression to reduce file size
+writeRaster(m,"ESA_WorldCover_2021_KANSAS.tif", overwrite = TRUE,
+  wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
+    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
+  )
+)
+
 ```
 
 #### Running the GEE Script
@@ -2110,6 +2155,216 @@ soil_sf <- cbind(soil_sf, cov_values[ , -1, drop = FALSE])
 ```
 
 This dataset contains all the information to be used in further analyses of Sampling Design and calibration of Digital Soil Mapping models.
+
+
+### Preparation of Soil–Climate Covariates (Newhall Simulation Model)
+
+The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.
+
+The Newhall Simulation Model requires several raster layers as inputs:
+
+ * Monthly precipitation (pJan … pDec): drives water inputs into the soil water balance.
+
+ * Monthly temperature (tJan … tDec): controls evapotranspiration demand and soil temperature dynamics.
+
+
+ In addition to monthly precipitation and temperature, the Newhall Simulation Model also requires site descriptors that influence soil water balance and seasonality:
+
+ * Elevation (DEM): to account for altitude-related effects on temperature (and therefore evapotranspiration and soil temperature patterns).
+
+ * Available Water Capacity (AWC): to represent how much water the soil can store (typically for a reference depth, e.g., 0–200 cm), which controls how quickly soils dry after rainfall.
+
+ * Longitude and latitude: to provide each grid cell’s geographic position, supporting calculations that depend on seasonal timing and and solar geometry (e.g., daylength patterns and the timing of solstices used in some Newhall metrics such as 'days after summer solstice' or 'after winter solstice').
+ 
+This workflow processes monthly temperature and precipitation data from large time series (1981--2023), computes long-term monthly averages, and prepares all the above described rasters in a stack to run the Newhall soil–climate model (via `{jNSMR}`). The output includes soil-climate diagnostics and regime classifications (e.g., temperature and moisture regimes), which can be used as covariates in Sampling Design and Digital Soil Mapping.
+
+#### Environment setup
+ 
+The first step is to prepare the Environment setup (loading packages, define path to data files, and set the CRS).
+
+```{r newhall-setup, echo=TRUE, eval=FALSE}
+# Packages
+library(terra)
+library(sf)
+library(dplyr)
+library(jNSMR)
+
+# Paths (adapt to your project structure)
+raster.path <- "rasters/" # Path to your raster covariates 
+shp.path    <- "shapes/" # Path to your shapefiles 
+
+# Target CRS for the workflow (use a projected CRS for analysis)
+epsg <- "EPSG:3857"   # Web Mercator (meters). Replace if needed.
+agg.factor <- 1       # Optional aggregation to speed up Newhall calculations (1 = no aggregation)
+
+```
+
+#### Prepare monthly average rasters of climatic data
+
+TerraClimate files contains large time series (1981-2020) of climatic records. Monthly temperature and precipitation averages from these series must be calculated as independent raster files. Temperature in this dataset if scaled (e.g., ×10) to avoid decimal point data and save storage space this it has to be adjusted to real values. The following chunk computes the averages for every month across all years, producing a 12-layer raster stack of monthly averages.
+
+```{r newhall-t-p-avg, echo=TRUE, eval=FALSE}
+# Monthly temperature time series (multi-year, monthly layers)
+tmp <- rast(file.path(raster.path, "GEE_Exports/TerraClimate_AvgTemp_1981_2023_KANSAS.tif"))
+
+# Number of years in the stack (assuming complete years)
+nyears <- nlyr(tmp) / 12
+
+# Monthly means across all years
+temp_list <- vector("list", 12)
+tmp_ref <- tmp[[1]]  # reference layer for initializing
+for(i in 1:12){
+  var_sum <- tmp_ref * 0
+  k <- i
+  for(j in 1:nyears){
+    var_sum <- var_sum + tmp[[k]]
+    k <- k + 12
+  }
+  temp_list[[i]] <- var_sum / nyears
+}
+# Convert to stack
+Temp_Stack <- rast(temp_list) * 0.1  # convert scaled values to °C (×0.1)
+# Write to disk
+writeRaster(Temp_Stack, file.path(raster.path, "Temp_Stack_monthlyMean.tif"), overwrite = TRUE)
+
+
+# Monthly precipitation time series (multi-year, monthly layers)
+prec_mm <- rast(file.path(raster.path, "GEE_Exports/TerraClimate_Precip_1981_2023_KANSAS.tif"))
+# Number of years in the stack (assuming complete years
+nyears <- nlyr(prec_mm) / 12
+# Monthly means across all years
+prec_list <- vector("list", 12)
+pre_ref <- prec_mm[[1]] # reference layer for initializing
+for(i in 1:12){
+  var_sum <- pre_ref * 0
+  k <- i
+  for(j in 1:nyears){
+    var_sum <- var_sum + prec_mm[[k]]
+    k <- k + 12
+  }
+  prec_list[[i]] <- var_sum / nyears
+}
+# Convert to stack
+Prec_Stack <- rast(prec_list)
+# Write to disk
+writeRaster(Prec_Stack, file.path(raster.path, "Prec_Stack_monthlyMean.tif"), overwrite = TRUE)
+```
+
+#### Prepare monthly average stack of climatic data
+
+NSM expects monthly precipitation and temperature layers with specific, predefined layer names.
+
+```{r newhall-stack, echo=TRUE, eval=FALSE}
+# Load outputs (or reuse objects from above)
+Prec_Stack <- rast(file.path(raster.path, "Prec_Stack_monthlyMean.tif"))
+Temp_Stack <- rast(file.path(raster.path, "Temp_Stack_monthlyMean.tif"))
+
+names(Prec_Stack) <- c("pJan","pFeb","pMar","pApr","pMay","pJun","pJul","pAug","pSep","pOct","pNov","pDec")
+names(Temp_Stack) <- c("tJan","tFeb","tMar","tApr","tMay","tJun","tJul","tAug","tSep","tOct","tNov","tDec")
+
+combined_stack <- c(Prec_Stack, Temp_Stack)
+writeRaster(combined_stack, file.path(raster.path, "climate_vars.tif"), overwrite = TRUE)
+````
+
+
+#### Prepare site descriptors that influence soil water balance and seasonality
+
+In addition to monthly precipitation and temperature, NSM uses a number of site descriptors influencing soil climate:
+
+ - Elevation (DEM).
+
+ - Available Water Capacity (AWC).
+
+ - Longitude and latitude.
+ 
+ These raster layers are obtained from different sources thus their geometry have to be harmonized to create a unique raster stack for the calculations. 
+ 
+ 
+```{r newhall-resample, echo=TRUE, eval=FALSE}
+# ROI boundary
+# Read ROI from chapefile
+roi <- st_read(file.path(shp.path, "roi_kansas_us_epsg_4326.shp"), quiet = TRUE)
+# Align CRS to the common EPSG
+if(st_crs(roi)$wkt != st_crs(epsg)$wkt) roi <- st_transform(roi, epsg)
+
+# DEM
+# Define path to raster
+elev_file <- list.files(raster.path, pattern = "DEM_KANSAS.tif$", recursive = TRUE, full.names = TRUE)
+# Read raster
+elev <- rast(elev_file)
+# Align CRS to the common EPSG
+if(crs(elev) != epsg) elev <- project(elev, epsg, method = "near")
+
+# AWC (0–200 cm)
+# Define path to raster
+awc <- rast(file.path(raster.path, "sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif"))
+# Align CRS to the common EPSG
+if(crs(awc) != epsg) awc <- project(awc, epsg, method = "near")
+# Crop raster to the limits of the Region-on-Interest
+awc <- crop(awc, vect(roi))
+# Align geometries with the DEM raster
+awc <- resample(awc, elev)
+# Define name
+names(awc) <- "awc"
+
+# Temperature and Precipitation
+# Read climate stack
+newhall <- rast(file.path(raster.path, "climate_vars.tif"))
+# Align CRS to the common EPSG
+if(crs(newhall) != epsg) newhall <- project(newhall, epsg, method = "near")
+# Align geometries with the DEM raster
+newhall <- resample(newhall, elev)
+
+# Longitude and Latitude 
+# calculate lon/lat from the climate stack
+newhall$lonDD <- init(newhall[[1]], "x")
+newhall$latDD <- init(newhall[[1]], "y")
+
+# Mask climate stack to DEM valid area and add DEM/AWC to the stack
+newhall <- mask(newhall, elev)
+newhall$awc  <- awc
+newhall$elev <- elev
+
+# Save full NSM input stack
+writeRaster(newhall, file.path(raster.path, "climate_newhall_vars.tif"), overwrite = TRUE)
+```
+
+#### Calculate NSM outputs
+
+Depending on resolution and extent, the calculation of the NSM can take hours. To reduce runtime you may aggregate the input stack (optional), then run `newhall_batch()` with multiple cores.
+
+```{r newhall-compute, echo=TRUE, eval=FALSE}
+# Read the full Newhall input stack
+newhall <- rast(file.path(raster.path, "climate_newhall_vars.tif"))
+
+# Optional: aggregate to speed up (e.g., fact = 2, 3, ...)
+# newhall <- aggregate(newhall, fact = agg.factor)
+
+system.time({
+  newhall_results <- jNSMR::newhall_batch(newhall, cores = 4)
+})
+```
+
+#### Inspect and export results (compact outputs)
+
+
+```{r newhall-export, echo=TRUE, eval=FALSE}
+# Simple validity mask
+mask_valid <- newhall_results$annualRainfall * 0 + 1
+
+# Apply mask and export
+results <- mask(newhall_results, mask_valid)
+writeRaster(results, file.path(raster.path, "newhall.tif"), overwrite = TRUE)
+
+# Optional compact integer exports (×10 preserves 1 decimal place)
+results_climate_int <- app(newhall,  function(x) as.integer(x * 10))
+writeRaster(results_climate_int, file.path(raster.path, "climate_intx10.tif"), overwrite = TRUE)
+
+results_newhall_int <- app(results, function(x) as.integer(x * 10))
+writeRaster(results_newhall_int, file.path(raster.path, "newhall_intx10.tif"), overwrite = TRUE)
+```
+
+The raster stack `newhall_results` contains the NSM outputs that can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.
 
 
 

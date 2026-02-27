@@ -269,6 +269,13 @@ resampling-and-alignment-resample
 combine-and-remove-rasters-in-a-raster-stack
 raster-algebra
 combining-environmental-raster-and-soil-vector-information
+preparation-of-soilclimate-covariates-newhall-simulation-model
+environment-setup
+prepare-monthly-average-rasters-of-climatic-data
+prepare-monthly-average-stack-of-climatic-data
+prepare-site-descriptors-that-influence-soil-water-balance-and-seasonality
+calculate-nsm-outputs
+inspect-and-export-results-compact-outputs
 sampling-design-for-soil-surveys
 introduction-ssd
 sampling-theory
