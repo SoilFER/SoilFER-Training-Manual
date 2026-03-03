@@ -309,7 +309,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#adding-a-unique-row-identifier"><i class="fa fa-check"></i><b>2.3.1</b> Adding a unique row identifier</a></li>
 <li class="chapter" data-level="2.3.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#extracting-and-standardizing-column-names-for-sites"><i class="fa fa-check"></i><b>2.3.2</b> Extracting and standardizing column names for sites</a></li>
 <li class="chapter" data-level="2.3.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#creating-unique-profile-identifiers"><i class="fa fa-check"></i><b>2.3.3</b> Creating unique profile identifiers</a></li>
-<li class="chapter" data-level="2.3.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-exact-duplicate-site-records"><i class="fa fa-check"></i><b>2.3.4</b> Remove exact duplicate site records</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-duplicate-site-records"><i class="fa fa-check"></i><b>2.3.4</b> Remove duplicate site records</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#coordinate-validation"><i class="fa fa-check"></i><b>2.4</b> Coordinate validation and correction</a>
 <ul>
@@ -691,9 +691,14 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <p>However, the preferred and most common assignment operator is <code>&lt;-</code> while <code>=</code> is most commonly used inside function calls to name arguments. This avoids confusion between assigning objects and passing inputs to functions.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-r-programming.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign a value to a variable</span></span>
 <span id="cb17-2"><a href="introduction-to-r-programming.html#cb17-2" aria-hidden="true" tabindex="-1"></a>soil_depth <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb17-3"><a href="introduction-to-r-programming.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="introduction-to-r-programming.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assignment `&lt;-` to objects and `=` to function arguments</span></span>
-<span id="cb17-5"><a href="introduction-to-r-programming.html#cb17-5" aria-hidden="true" tabindex="-1"></a>soil_depth <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="at">x =</span> ph_values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb17-3"><a href="introduction-to-r-programming.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View the content of soil_depth</span></span>
+<span id="cb17-4"><a href="introduction-to-r-programming.html#cb17-4" aria-hidden="true" tabindex="-1"></a>soil_depth</span>
+<span id="cb17-5"><a href="introduction-to-r-programming.html#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="introduction-to-r-programming.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assignment `&lt;-` to objects and `=` to function arguments</span></span>
+<span id="cb17-7"><a href="introduction-to-r-programming.html#cb17-7" aria-hidden="true" tabindex="-1"></a>soil_depth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb17-8"><a href="introduction-to-r-programming.html#cb17-8" aria-hidden="true" tabindex="-1"></a>mean_soil_depth <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="at">x =</span> soil_depth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-9"><a href="introduction-to-r-programming.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the content of mean_soil_depth</span></span>
+<span id="cb17-10"><a href="introduction-to-r-programming.html#cb17-10" aria-hidden="true" tabindex="-1"></a>mean_soil_depth</span></code></pre></div>
 <div class="warning-box">
 <p><strong>Naming Rules:</strong>
 - Object names must start with a letter
@@ -710,12 +715,13 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <span id="cb18-7"><a href="introduction-to-r-programming.html#cb18-7" aria-hidden="true" tabindex="-1"></a>plot_id <span class="ot">&lt;-</span> <span class="st">&quot;P001&quot;</span>      <span class="co"># snake_case (recommended)</span></span>
 <span id="cb18-8"><a href="introduction-to-r-programming.html#cb18-8" aria-hidden="true" tabindex="-1"></a>plotID <span class="ot">&lt;-</span> <span class="st">&quot;P001&quot;</span>       <span class="co"># camelCase (alternative)</span></span></code></pre></div>
 <p><strong>Avoid:</strong></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-programming.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Too short, unclear</span></span>
-<span id="cb19-2"><a href="introduction-to-r-programming.html#cb19-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">6.5</span></span>
-<span id="cb19-3"><a href="introduction-to-r-programming.html#cb19-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">2.1</span></span>
-<span id="cb19-4"><a href="introduction-to-r-programming.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="introduction-to-r-programming.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Too long</span></span>
-<span id="cb19-6"><a href="introduction-to-r-programming.html#cb19-6" aria-hidden="true" tabindex="-1"></a>the_ph_value_of_the_topsoil_at_site_one <span class="ot">&lt;-</span> <span class="fl">6.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-programming.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad naming practices — too short, too long, unclear</span></span>
+<span id="cb19-2"><a href="introduction-to-r-programming.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Too short, unclear</span></span>
+<span id="cb19-3"><a href="introduction-to-r-programming.html#cb19-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">6.5</span></span>
+<span id="cb19-4"><a href="introduction-to-r-programming.html#cb19-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">2.1</span></span>
+<span id="cb19-5"><a href="introduction-to-r-programming.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="introduction-to-r-programming.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Too long</span></span>
+<span id="cb19-7"><a href="introduction-to-r-programming.html#cb19-7" aria-hidden="true" tabindex="-1"></a>the_ph_value_of_the_topsoil_at_site_one <span class="ot">&lt;-</span> <span class="fl">6.5</span></span></code></pre></div>
 </div>
 </div>
 <div id="data-types" class="section level3 hasAnchor" number="1.3.2">
@@ -757,8 +763,9 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <p>Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-to-r-programming.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ISO 8601 date format, YYYY-MM-DD</span></span>
 <span id="cb24-2"><a href="introduction-to-r-programming.html#cb24-2" aria-hidden="true" tabindex="-1"></a>sampling_date <span class="ot">&lt;-</span> <span class="st">&quot;2024-03-12&quot;</span></span>
-<span id="cb24-3"><a href="introduction-to-r-programming.html#cb24-3" aria-hidden="true" tabindex="-1"></a>sampling_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(sampling_date, <span class="at">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>)</span>
-<span id="cb24-4"><a href="introduction-to-r-programming.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sampling_date)</span></code></pre></div>
+<span id="cb24-3"><a href="introduction-to-r-programming.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to date (%Y = 4-digit year; %y = 2-digit year)</span></span>
+<span id="cb24-4"><a href="introduction-to-r-programming.html#cb24-4" aria-hidden="true" tabindex="-1"></a>sampling_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(sampling_date, <span class="at">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>)</span>
+<span id="cb24-5"><a href="introduction-to-r-programming.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sampling_date)</span></code></pre></div>
 <div class="warning-box">
 <ul>
 <li>The ISO 8601 date format (<strong>YYYY-MM-DD</strong>) is preferred for storing date values, since it is the date format adopted in the <strong>GloSIS</strong> database.</li>
@@ -774,12 +781,13 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <span id="cb25-4"><a href="introduction-to-r-programming.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(is_valid)   <span class="co"># &quot;logical&quot;</span></span>
 <span id="cb25-5"><a href="introduction-to-r-programming.html#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-6"><a href="introduction-to-r-programming.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the internal storage type</span></span>
-<span id="cb25-7"><a href="introduction-to-r-programming.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(ph_value)</span>
-<span id="cb25-8"><a href="introduction-to-r-programming.html#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="introduction-to-r-programming.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Helpful checks</span></span>
-<span id="cb25-10"><a href="introduction-to-r-programming.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(ph_value)</span>
-<span id="cb25-11"><a href="introduction-to-r-programming.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(soil_type)</span>
-<span id="cb25-12"><a href="introduction-to-r-programming.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(is_valid)</span></code></pre></div>
+<span id="cb25-7"><a href="introduction-to-r-programming.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(sample_count)</span>
+<span id="cb25-8"><a href="introduction-to-r-programming.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(ph_value)</span>
+<span id="cb25-9"><a href="introduction-to-r-programming.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="introduction-to-r-programming.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Helpful checks</span></span>
+<span id="cb25-11"><a href="introduction-to-r-programming.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(ph_value)</span>
+<span id="cb25-12"><a href="introduction-to-r-programming.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(soil_type)</span>
+<span id="cb25-13"><a href="introduction-to-r-programming.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(is_valid)</span></code></pre></div>
 <p><code>class()</code> is what you’ll use most in practice. <code>typeof()</code> is more ‘internal’ (how R stores the object).</p>
 <div class="highlights">
 <ul>
@@ -812,18 +820,19 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction-to-r-programming.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a numeric vector using c() (combine)</span></span>
 <span id="cb26-2"><a href="introduction-to-r-programming.html#cb26-2" aria-hidden="true" tabindex="-1"></a>ph_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.5</span>, <span class="fl">7.1</span>, <span class="fl">5.8</span>, <span class="fl">6.9</span>)</span>
 <span id="cb26-3"><a href="introduction-to-r-programming.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ph_values)</span>
-<span id="cb26-4"><a href="introduction-to-r-programming.html#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="introduction-to-r-programming.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector</span></span>
-<span id="cb26-6"><a href="introduction-to-r-programming.html#cb26-6" aria-hidden="true" tabindex="-1"></a>soil_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Acrisol&quot;</span>, <span class="st">&quot;Ferralsol&quot;</span>, <span class="st">&quot;Vertisol&quot;</span>, <span class="st">&quot;Andosol&quot;</span>, <span class="st">&quot;Cambisol&quot;</span>)</span>
-<span id="cb26-7"><a href="introduction-to-r-programming.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(soil_types)</span>
-<span id="cb26-8"><a href="introduction-to-r-programming.html#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="introduction-to-r-programming.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical vector</span></span>
-<span id="cb26-10"><a href="introduction-to-r-programming.html#cb26-10" aria-hidden="true" tabindex="-1"></a>valid_samples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb26-11"><a href="introduction-to-r-programming.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(valid_samples)</span>
-<span id="cb26-12"><a href="introduction-to-r-programming.html#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="introduction-to-r-programming.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences</span></span>
-<span id="cb26-14"><a href="introduction-to-r-programming.html#cb26-14" aria-hidden="true" tabindex="-1"></a>depths <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>                    <span class="co"># Integers from 0 to 100</span></span>
-<span id="cb26-15"><a href="introduction-to-r-programming.html#cb26-15" aria-hidden="true" tabindex="-1"></a>depths_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)   <span class="co"># 0, 10, 20, ..., 100</span></span></code></pre></div>
+<span id="cb26-4"><a href="introduction-to-r-programming.html#cb26-4" aria-hidden="true" tabindex="-1"></a>ph_values <span class="co"># Equivalent to print(ph_values)</span></span>
+<span id="cb26-5"><a href="introduction-to-r-programming.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="introduction-to-r-programming.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector</span></span>
+<span id="cb26-7"><a href="introduction-to-r-programming.html#cb26-7" aria-hidden="true" tabindex="-1"></a>soil_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Acrisol&quot;</span>, <span class="st">&quot;Ferralsol&quot;</span>, <span class="st">&quot;Vertisol&quot;</span>, <span class="st">&quot;Andosol&quot;</span>, <span class="st">&quot;Cambisol&quot;</span>)</span>
+<span id="cb26-8"><a href="introduction-to-r-programming.html#cb26-8" aria-hidden="true" tabindex="-1"></a>soil_types</span>
+<span id="cb26-9"><a href="introduction-to-r-programming.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="introduction-to-r-programming.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical vector</span></span>
+<span id="cb26-11"><a href="introduction-to-r-programming.html#cb26-11" aria-hidden="true" tabindex="-1"></a>valid_samples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb26-12"><a href="introduction-to-r-programming.html#cb26-12" aria-hidden="true" tabindex="-1"></a>valid_samples</span>
+<span id="cb26-13"><a href="introduction-to-r-programming.html#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="introduction-to-r-programming.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences</span></span>
+<span id="cb26-15"><a href="introduction-to-r-programming.html#cb26-15" aria-hidden="true" tabindex="-1"></a>depths <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>                    <span class="co"># Integers from 0 to 100</span></span>
+<span id="cb26-16"><a href="introduction-to-r-programming.html#cb26-16" aria-hidden="true" tabindex="-1"></a>depths_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)   <span class="co"># 0, 10, 20, ..., 100</span></span></code></pre></div>
 </div>
 <div id="operate-vector" class="section level4 hasAnchor" number="1.4.1.2">
 <h4><span class="header-section-number">1.4.1.2</span> Vector Operations<a href="introduction-to-r-programming.html#operate-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -836,23 +845,27 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <span id="cb27-7"><a href="introduction-to-r-programming.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ph_values)</span>
 <span id="cb27-8"><a href="introduction-to-r-programming.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ph_values)        <span class="co"># standard deviation</span></span>
 <span id="cb27-9"><a href="introduction-to-r-programming.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(ph_values)</span>
-<span id="cb27-10"><a href="introduction-to-r-programming.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(ph_values)</span></code></pre></div>
+<span id="cb27-10"><a href="introduction-to-r-programming.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(ph_values)</span>
+<span id="cb27-11"><a href="introduction-to-r-programming.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs affect the statistic results</span></span>
+<span id="cb27-12"><a href="introduction-to-r-programming.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(ph_values,<span class="cn">NA</span>))</span>
+<span id="cb27-13"><a href="introduction-to-r-programming.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(ph_values,<span class="cn">NA</span>), <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># Remove NAs from calculations</span></span></code></pre></div>
 </div>
 <div id="element-vector" class="section level4 hasAnchor" number="1.4.1.3">
 <h4><span class="header-section-number">1.4.1.3</span> Accessing Vector Elements<a href="introduction-to-r-programming.html#element-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduction-to-r-programming.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access by index (position)</span></span>
-<span id="cb28-2"><a href="introduction-to-r-programming.html#cb28-2" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="dv">1</span>]        <span class="co"># First element</span></span>
-<span id="cb28-3"><a href="introduction-to-r-programming.html#cb28-3" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="dv">3</span>]        <span class="co"># Third element</span></span>
-<span id="cb28-4"><a href="introduction-to-r-programming.html#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="introduction-to-r-programming.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple elements</span></span>
-<span id="cb28-6"><a href="introduction-to-r-programming.html#cb28-6" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]  <span class="co"># Elements 1, 3, and 5</span></span>
-<span id="cb28-7"><a href="introduction-to-r-programming.html#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="introduction-to-r-programming.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Access by logical condition</span></span>
-<span id="cb28-9"><a href="introduction-to-r-programming.html#cb28-9" aria-hidden="true" tabindex="-1"></a>ph_values[ph_values <span class="sc">&gt;</span> <span class="dv">6</span>]     <span class="co"># All pH values greater than 6</span></span>
-<span id="cb28-10"><a href="introduction-to-r-programming.html#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="introduction-to-r-programming.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Negative indices exclude elements</span></span>
-<span id="cb28-12"><a href="introduction-to-r-programming.html#cb28-12" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="sc">-</span><span class="dv">1</span>]       <span class="co"># All except first</span></span>
-<span id="cb28-13"><a href="introduction-to-r-programming.html#cb28-13" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]  <span class="co"># All except first two</span></span></code></pre></div>
+<span id="cb28-2"><a href="introduction-to-r-programming.html#cb28-2" aria-hidden="true" tabindex="-1"></a>ph_values           <span class="co"># Complete data</span></span>
+<span id="cb28-3"><a href="introduction-to-r-programming.html#cb28-3" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="dv">1</span>]        <span class="co"># First element</span></span>
+<span id="cb28-4"><a href="introduction-to-r-programming.html#cb28-4" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="dv">3</span>]        <span class="co"># Third element</span></span>
+<span id="cb28-5"><a href="introduction-to-r-programming.html#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="introduction-to-r-programming.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple elements</span></span>
+<span id="cb28-7"><a href="introduction-to-r-programming.html#cb28-7" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]  <span class="co"># Elements 1, 3, and 5</span></span>
+<span id="cb28-8"><a href="introduction-to-r-programming.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="introduction-to-r-programming.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Access by logical condition</span></span>
+<span id="cb28-10"><a href="introduction-to-r-programming.html#cb28-10" aria-hidden="true" tabindex="-1"></a>ph_values[ph_values <span class="sc">&gt;</span> <span class="dv">6</span>]     <span class="co"># All pH values greater than 6</span></span>
+<span id="cb28-11"><a href="introduction-to-r-programming.html#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="introduction-to-r-programming.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Negative indices exclude elements</span></span>
+<span id="cb28-13"><a href="introduction-to-r-programming.html#cb28-13" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="sc">-</span><span class="dv">1</span>]       <span class="co"># All except first</span></span>
+<span id="cb28-14"><a href="introduction-to-r-programming.html#cb28-14" aria-hidden="true" tabindex="-1"></a>ph_values[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]  <span class="co"># All except first two</span></span></code></pre></div>
 </div>
 </div>
 <div id="factor-data" class="section level3 hasAnchor" number="1.4.2">
@@ -861,7 +874,7 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 They store values as levels (categories).</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introduction-to-r-programming.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a factor from character vector</span></span>
 <span id="cb29-2"><a href="introduction-to-r-programming.html#cb29-2" aria-hidden="true" tabindex="-1"></a>soil_class <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;Clay&quot;</span>, <span class="st">&quot;Loam&quot;</span>, <span class="st">&quot;Sand&quot;</span>, <span class="st">&quot;Clay&quot;</span>, <span class="st">&quot;Loam&quot;</span>))</span>
-<span id="cb29-3"><a href="introduction-to-r-programming.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(soil_class)</span>
+<span id="cb29-3"><a href="introduction-to-r-programming.html#cb29-3" aria-hidden="true" tabindex="-1"></a>soil_class</span>
 <span id="cb29-4"><a href="introduction-to-r-programming.html#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-5"><a href="introduction-to-r-programming.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check levels</span></span>
 <span id="cb29-6"><a href="introduction-to-r-programming.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(soil_class)</span>
@@ -875,7 +888,7 @@ They store values as levels (categories).</p>
 <span id="cb29-14"><a href="introduction-to-r-programming.html#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Coarse&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Fine&quot;</span>),</span>
 <span id="cb29-15"><a href="introduction-to-r-programming.html#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
 <span id="cb29-16"><a href="introduction-to-r-programming.html#cb29-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-17"><a href="introduction-to-r-programming.html#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(texture_class)</span></code></pre></div>
+<span id="cb29-17"><a href="introduction-to-r-programming.html#cb29-17" aria-hidden="true" tabindex="-1"></a>texture_class</span></code></pre></div>
 </div>
 <div id="matrix-data" class="section level3 hasAnchor" number="1.4.3">
 <h3><span class="header-section-number">1.4.3</span> Matrices<a href="introduction-to-r-programming.html#matrix-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -919,15 +932,15 @@ It’s like a spreadsheet: rows represent observations, columns represent variab
 <span id="cb31-10"><a href="introduction-to-r-programming.html#cb31-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb31-11"><a href="introduction-to-r-programming.html#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-12"><a href="introduction-to-r-programming.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame</span></span>
-<span id="cb31-13"><a href="introduction-to-r-programming.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(soil_data)</span>
+<span id="cb31-13"><a href="introduction-to-r-programming.html#cb31-13" aria-hidden="true" tabindex="-1"></a>soil_data</span>
 <span id="cb31-14"><a href="introduction-to-r-programming.html#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-15"><a href="introduction-to-r-programming.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure</span></span>
 <span id="cb31-16"><a href="introduction-to-r-programming.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil_data)</span>
 <span id="cb31-17"><a href="introduction-to-r-programming.html#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-18"><a href="introduction-to-r-programming.html#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few rows</span></span>
+<span id="cb31-18"><a href="introduction-to-r-programming.html#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View first rows</span></span>
 <span id="cb31-19"><a href="introduction-to-r-programming.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_data)</span>
 <span id="cb31-20"><a href="introduction-to-r-programming.html#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-21"><a href="introduction-to-r-programming.html#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co"># View last few rows</span></span>
+<span id="cb31-21"><a href="introduction-to-r-programming.html#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co"># View last rows</span></span>
 <span id="cb31-22"><a href="introduction-to-r-programming.html#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(soil_data)</span>
 <span id="cb31-23"><a href="introduction-to-r-programming.html#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-24"><a href="introduction-to-r-programming.html#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dimensions</span></span>
@@ -987,8 +1000,8 @@ It’s like a spreadsheet: rows represent observations, columns represent variab
 <span id="cb34-14"><a href="introduction-to-r-programming.html#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-15"><a href="introduction-to-r-programming.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Access list elements</span></span>
 <span id="cb34-16"><a href="introduction-to-r-programming.html#cb34-16" aria-hidden="true" tabindex="-1"></a>soil_analysis<span class="sc">$</span>site_name</span>
-<span id="cb34-17"><a href="introduction-to-r-programming.html#cb34-17" aria-hidden="true" tabindex="-1"></a>soil_analysis[[<span class="dv">1</span>]]           <span class="co"># First element</span></span>
-<span id="cb34-18"><a href="introduction-to-r-programming.html#cb34-18" aria-hidden="true" tabindex="-1"></a>soil_analysis[[<span class="st">&quot;measurements&quot;</span>]]  <span class="co"># measurements data frame</span></span></code></pre></div>
+<span id="cb34-17"><a href="introduction-to-r-programming.html#cb34-17" aria-hidden="true" tabindex="-1"></a>soil_analysis[[<span class="dv">1</span>]]                <span class="co"># First element</span></span>
+<span id="cb34-18"><a href="introduction-to-r-programming.html#cb34-18" aria-hidden="true" tabindex="-1"></a>soil_analysis[[<span class="st">&quot;measurements&quot;</span>]]   <span class="co"># View measurements data frame</span></span></code></pre></div>
 </div>
 </div>
 <div id="operators" class="section level2 hasAnchor" number="1.5">
@@ -1187,7 +1200,7 @@ If you have a vector of values, use a vectorized approach such as <code>ifelse()
 <span id="cb43-14"><a href="introduction-to-r-programming.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span>
 <span id="cb43-15"><a href="introduction-to-r-programming.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">2</span>)</span>
 <span id="cb43-16"><a href="introduction-to-r-programming.html#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="sc">-</span><span class="dv">5</span>)</span>
-<span id="cb43-17"><a href="introduction-to-r-programming.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb43-17"><a href="introduction-to-r-programming.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="dv">2</span>)</span></code></pre></div>
 <div class="highlights">
 <p>Function <strong>arguments</strong> can be provided by position (e.g., round(3.14159, 2)) or by name (e.g., round(<strong>x =</strong> 3.14159, <strong>digits =</strong> 2)).
 Using names is often clearer and reduces mistakes.</p>
@@ -1265,14 +1278,14 @@ You can still use <code>return()</code> when you want to exit early or make the 
 <span id="cb46-11"><a href="introduction-to-r-programming.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Select column by index: Show second column</span></span>
 <span id="cb46-12"><a href="introduction-to-r-programming.html#cb46-12" aria-hidden="true" tabindex="-1"></a>soil_data[, <span class="dv">2</span>]</span>
 <span id="cb46-13"><a href="introduction-to-r-programming.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Select column by index: Show first and third columns</span></span>
-<span id="cb46-14"><a href="introduction-to-r-programming.html#cb46-14" aria-hidden="true" tabindex="-1"></a>soil_data[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>]</span>
+<span id="cb46-14"><a href="introduction-to-r-programming.html#cb46-14" aria-hidden="true" tabindex="-1"></a>soil_data[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
 <span id="cb46-15"><a href="introduction-to-r-programming.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Select column  by name: Show texture columns</span></span>
-<span id="cb46-16"><a href="introduction-to-r-programming.html#cb46-16" aria-hidden="true" tabindex="-1"></a>soil_data[, <span class="fu">c</span>(<span class="st">&quot;clay&quot;</span>,<span class="st">&quot;silt&quot;</span>,<span class="st">&quot;sand&quot;</span>)]</span>
+<span id="cb46-16"><a href="introduction-to-r-programming.html#cb46-16" aria-hidden="true" tabindex="-1"></a>soil_data[, <span class="fu">c</span>(<span class="st">&quot;ph&quot;</span>,<span class="st">&quot;clay_content&quot;</span>,<span class="st">&quot;soil_type&quot;</span>)]</span>
 <span id="cb46-17"><a href="introduction-to-r-programming.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows by index: keep first 2 records in the data frame</span></span>
 <span id="cb46-18"><a href="introduction-to-r-programming.html#cb46-18" aria-hidden="true" tabindex="-1"></a>soil_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),]</span>
 <span id="cb46-19"><a href="introduction-to-r-programming.html#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-20"><a href="introduction-to-r-programming.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows by index: keep texture properties for the first 100 records in the data frame</span></span>
-<span id="cb46-21"><a href="introduction-to-r-programming.html#cb46-21" aria-hidden="true" tabindex="-1"></a>soil_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>), <span class="fu">c</span>(<span class="st">&quot;clay&quot;</span>,<span class="st">&quot;silt&quot;</span>,<span class="st">&quot;sand&quot;</span>)]</span>
+<span id="cb46-21"><a href="introduction-to-r-programming.html#cb46-21" aria-hidden="true" tabindex="-1"></a>soil_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>), <span class="fu">c</span>(<span class="st">&quot;ph&quot;</span>,<span class="st">&quot;clay_content&quot;</span>,<span class="st">&quot;soil_type&quot;</span>)]</span>
 <span id="cb46-22"><a href="introduction-to-r-programming.html#cb46-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-23"><a href="introduction-to-r-programming.html#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows based on conditions</span></span>
 <span id="cb46-24"><a href="introduction-to-r-programming.html#cb46-24" aria-hidden="true" tabindex="-1"></a>high_ph <span class="ot">&lt;-</span> soil_data[soil_data<span class="sc">$</span>ph <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span>
@@ -1285,7 +1298,7 @@ You can still use <code>return()</code> when you want to exit early or make the 
 <span id="cb46-31"><a href="introduction-to-r-programming.html#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns by index: Show second column</span></span>
 <span id="cb46-32"><a href="introduction-to-r-programming.html#cb46-32" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> soil_data[, <span class="dv">2</span>]</span>
 <span id="cb46-33"><a href="introduction-to-r-programming.html#cb46-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Select several columns by index</span></span>
-<span id="cb46-34"><a href="introduction-to-r-programming.html#cb46-34" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> soil_data[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb46-34"><a href="introduction-to-r-programming.html#cb46-34" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> soil_data[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]</span>
 <span id="cb46-35"><a href="introduction-to-r-programming.html#cb46-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-36"><a href="introduction-to-r-programming.html#cb46-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Select by name</span></span>
 <span id="cb46-37"><a href="introduction-to-r-programming.html#cb46-37" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> soil_data[, <span class="fu">c</span>(<span class="st">&quot;plot_id&quot;</span>, <span class="st">&quot;ph&quot;</span>, <span class="st">&quot;soil_type&quot;</span>)]</span>
@@ -1306,19 +1319,28 @@ You can still use <code>return()</code> when you want to exit early or make the 
 <span id="cb47-10"><a href="introduction-to-r-programming.html#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-11"><a href="introduction-to-r-programming.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete one column by name</span></span>
 <span id="cb47-12"><a href="introduction-to-r-programming.html#cb47-12" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Clay <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb47-13"><a href="introduction-to-r-programming.html#cb47-13" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Clay <span class="ot">&lt;-</span> <span class="fu">c</span>() <span class="co"># Empty vector</span></span>
+<span id="cb47-13"><a href="introduction-to-r-programming.html#cb47-13" aria-hidden="true" tabindex="-1"></a>data</span>
 <span id="cb47-14"><a href="introduction-to-r-programming.html#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-15"><a href="introduction-to-r-programming.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete multiple columns by name</span></span>
 <span id="cb47-16"><a href="introduction-to-r-programming.html#cb47-16" aria-hidden="true" tabindex="-1"></a>data[, <span class="fu">c</span>(<span class="st">&quot;Silt&quot;</span>, <span class="st">&quot;pH&quot;</span>)] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb47-17"><a href="introduction-to-r-programming.html#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="introduction-to-r-programming.html#cb47-17" aria-hidden="true" tabindex="-1"></a>data</span>
 <span id="cb47-18"><a href="introduction-to-r-programming.html#cb47-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-19"><a href="introduction-to-r-programming.html#cb47-19" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Delete rows ---</span></span>
 <span id="cb47-20"><a href="introduction-to-r-programming.html#cb47-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-21"><a href="introduction-to-r-programming.html#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete a row by index (e.g., remove the 2nd row)</span></span>
 <span id="cb47-22"><a href="introduction-to-r-programming.html#cb47-22" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[<span class="sc">-</span><span class="dv">2</span>, ]</span>
-<span id="cb47-23"><a href="introduction-to-r-programming.html#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-24"><a href="introduction-to-r-programming.html#cb47-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete rows based on a condition (e.g., remove rows with pH &lt; 6)</span></span>
-<span id="cb47-25"><a href="introduction-to-r-programming.html#cb47-25" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[data<span class="sc">$</span>pH <span class="sc">&gt;=</span> <span class="dv">6</span>, ]</span></code></pre></div>
+<span id="cb47-23"><a href="introduction-to-r-programming.html#cb47-23" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb47-24"><a href="introduction-to-r-programming.html#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-25"><a href="introduction-to-r-programming.html#cb47-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete rows based on a condition (e.g., remove rows with pH &lt; 6)</span></span>
+<span id="cb47-26"><a href="introduction-to-r-programming.html#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebuild the dataframe</span></span>
+<span id="cb47-27"><a href="introduction-to-r-programming.html#cb47-27" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb47-28"><a href="introduction-to-r-programming.html#cb47-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">Plot =</span> <span class="fu">c</span>(<span class="st">&quot;P001&quot;</span>, <span class="st">&quot;P002&quot;</span>, <span class="st">&quot;P003&quot;</span>),</span>
+<span id="cb47-29"><a href="introduction-to-r-programming.html#cb47-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">Clay =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">18</span>),</span>
+<span id="cb47-30"><a href="introduction-to-r-programming.html#cb47-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">Silt =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">52</span>),</span>
+<span id="cb47-31"><a href="introduction-to-r-programming.html#cb47-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">pH   =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.5</span>, <span class="fl">7.1</span>)</span>
+<span id="cb47-32"><a href="introduction-to-r-programming.html#cb47-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb47-33"><a href="introduction-to-r-programming.html#cb47-33" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[data<span class="sc">$</span>pH <span class="sc">&gt;=</span> <span class="dv">6</span>, ]</span>
+<span id="cb47-34"><a href="introduction-to-r-programming.html#cb47-34" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
 <div class="highlights">
 <ul>
 <li><p>To delete columns, use NULL (recommended) or an empty vector.</p></li>
@@ -1341,15 +1363,29 @@ You can still use <code>return()</code> when you want to exit early or make the 
 <div id="aggregate-rows" class="section level3 hasAnchor" number="1.9.4">
 <h3><span class="header-section-number">1.9.4</span> Aggregating Data<a href="introduction-to-r-programming.html#aggregate-rows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Aggregation means computing summary statistics by group, such as mean pH per soil type.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-r-programming.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean pH by soil type</span></span>
-<span id="cb49-2"><a href="introduction-to-r-programming.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(ph <span class="sc">~</span> soil_type, <span class="at">data =</span> soil_data, <span class="at">FUN =</span> mean)</span>
-<span id="cb49-3"><a href="introduction-to-r-programming.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="introduction-to-r-programming.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple summary values by group (mean and standard deviation of pH by soil_type)</span></span>
-<span id="cb49-5"><a href="introduction-to-r-programming.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(</span>
-<span id="cb49-6"><a href="introduction-to-r-programming.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  ph <span class="sc">~</span> soil_type,</span>
-<span id="cb49-7"><a href="introduction-to-r-programming.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> soil_data,</span>
-<span id="cb49-8"><a href="introduction-to-r-programming.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
-<span id="cb49-9"><a href="introduction-to-r-programming.html#cb49-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-r-programming.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example data frame with repeated soil_type groups</span></span>
+<span id="cb49-2"><a href="introduction-to-r-programming.html#cb49-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb49-3"><a href="introduction-to-r-programming.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot_id =</span> <span class="fu">paste0</span>(<span class="st">&quot;P&quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%03d&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)),</span>
+<span id="cb49-4"><a href="introduction-to-r-programming.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">latitude =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.25</span>, <span class="sc">-</span><span class="fl">1.26</span>, <span class="sc">-</span><span class="fl">1.27</span>, <span class="sc">-</span><span class="fl">1.28</span>, <span class="sc">-</span><span class="fl">1.23</span>, <span class="sc">-</span><span class="fl">1.24</span>, <span class="sc">-</span><span class="fl">1.22</span>, <span class="sc">-</span><span class="fl">1.21</span>, <span class="sc">-</span><span class="fl">1.29</span>, <span class="sc">-</span><span class="fl">1.30</span>, <span class="sc">-</span><span class="fl">1.31</span>, <span class="sc">-</span><span class="fl">1.32</span>),</span>
+<span id="cb49-5"><a href="introduction-to-r-programming.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">longitude =</span> <span class="fu">c</span>(<span class="fl">36.85</span>, <span class="fl">36.86</span>, <span class="fl">36.83</span>, <span class="fl">36.84</span>, <span class="fl">36.87</span>, <span class="fl">36.88</span>, <span class="fl">36.82</span>, <span class="fl">36.81</span>, <span class="fl">36.84</span>, <span class="fl">36.83</span>, <span class="fl">36.86</span>, <span class="fl">36.85</span>),</span>
+<span id="cb49-6"><a href="introduction-to-r-programming.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ph =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">5.6</span>, <span class="fl">6.5</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">5.8</span>, <span class="fl">6.0</span>, <span class="fl">6.9</span>, <span class="fl">6.7</span>, <span class="fl">5.4</span>, <span class="fl">5.1</span>),</span>
+<span id="cb49-7"><a href="introduction-to-r-programming.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">clay_content =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">26</span>),</span>
+<span id="cb49-8"><a href="introduction-to-r-programming.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">soil_type =</span> <span class="fu">c</span>(</span>
+<span id="cb49-9"><a href="introduction-to-r-programming.html#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Acrisol&quot;</span>,<span class="st">&quot;Acrisol&quot;</span>,</span>
+<span id="cb49-10"><a href="introduction-to-r-programming.html#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Ferralsol&quot;</span>,<span class="st">&quot;Ferralsol&quot;</span>,</span>
+<span id="cb49-11"><a href="introduction-to-r-programming.html#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Vertisol&quot;</span>,<span class="st">&quot;Vertisol&quot;</span>,</span>
+<span id="cb49-12"><a href="introduction-to-r-programming.html#cb49-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Andosol&quot;</span>,<span class="st">&quot;Andosol&quot;</span>,</span>
+<span id="cb49-13"><a href="introduction-to-r-programming.html#cb49-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Cambisol&quot;</span>,<span class="st">&quot;Cambisol&quot;</span>,</span>
+<span id="cb49-14"><a href="introduction-to-r-programming.html#cb49-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Acrisol&quot;</span>,<span class="st">&quot;Acrisol&quot;</span></span>
+<span id="cb49-15"><a href="introduction-to-r-programming.html#cb49-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-16"><a href="introduction-to-r-programming.html#cb49-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb49-17"><a href="introduction-to-r-programming.html#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="introduction-to-r-programming.html#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple summary values aggregated by group (mean and standard deviation of pH by soil_type)</span></span>
+<span id="cb49-19"><a href="introduction-to-r-programming.html#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb49-20"><a href="introduction-to-r-programming.html#cb49-20" aria-hidden="true" tabindex="-1"></a>  ph <span class="sc">~</span> soil_type,</span>
+<span id="cb49-21"><a href="introduction-to-r-programming.html#cb49-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> soil_data,</span>
+<span id="cb49-22"><a href="introduction-to-r-programming.html#cb49-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb49-23"><a href="introduction-to-r-programming.html#cb49-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="warning-box">
 <ul>
 <li>When using <code>aggregate()</code>, make sure the grouping variable (here <code>soil_type</code>) is correctly imported as character or factor, and that the summarized variable (here <code>ph</code>) is numeric.</li>
@@ -1381,34 +1417,32 @@ Key packages include:</p>
 <div id="tidyverse-tibbles" class="section level3 hasAnchor" number="1.10.2">
 <h3><span class="header-section-number">1.10.2</span> Tibbles: Modern Data Frames<a href="introduction-to-r-programming.html#tidyverse-tibbles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A <strong>tibble</strong> is the tidyverse’s modern version of a data frame. It behaves like a regular data frame, but it prints in a cleaner way and is generally more user-friendly. For example, tibbles show only the first rows by default, keep long text from cluttering your console, and display column types so you can quickly confirm how R has interpreted your data. Tibbles also avoid some older base R behaviors (such as automatically converting text to factors in older R versions), which makes them a reliable default for data analysis workflows.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-r-programming.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame to tibble</span></span>
-<span id="cb51-2"><a href="introduction-to-r-programming.html#cb51-2" aria-hidden="true" tabindex="-1"></a>soil_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(soil_data)</span>
-<span id="cb51-3"><a href="introduction-to-r-programming.html#cb51-3" aria-hidden="true" tabindex="-1"></a>soil_tbl</span>
-<span id="cb51-4"><a href="introduction-to-r-programming.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="introduction-to-r-programming.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tibble directly</span></span>
-<span id="cb51-6"><a href="introduction-to-r-programming.html#cb51-6" aria-hidden="true" tabindex="-1"></a>soil_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb51-7"><a href="introduction-to-r-programming.html#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot_id =</span> <span class="fu">c</span>(<span class="st">&quot;P001&quot;</span>, <span class="st">&quot;P002&quot;</span>, <span class="st">&quot;P003&quot;</span>),</span>
-<span id="cb51-8"><a href="introduction-to-r-programming.html#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ph =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.5</span>, <span class="fl">7.1</span>),</span>
-<span id="cb51-9"><a href="introduction-to-r-programming.html#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">clay =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">18</span>)</span>
-<span id="cb51-10"><a href="introduction-to-r-programming.html#cb51-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-r-programming.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tibble directly</span></span>
+<span id="cb51-2"><a href="introduction-to-r-programming.html#cb51-2" aria-hidden="true" tabindex="-1"></a>soil_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb51-3"><a href="introduction-to-r-programming.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot_id =</span> <span class="fu">c</span>(<span class="st">&quot;P001&quot;</span>, <span class="st">&quot;P002&quot;</span>, <span class="st">&quot;P003&quot;</span>),</span>
+<span id="cb51-4"><a href="introduction-to-r-programming.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ph =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.5</span>, <span class="fl">7.1</span>),</span>
+<span id="cb51-5"><a href="introduction-to-r-programming.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">clay =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">18</span>)</span>
+<span id="cb51-6"><a href="introduction-to-r-programming.html#cb51-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-7"><a href="introduction-to-r-programming.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame to tibble</span></span>
+<span id="cb51-8"><a href="introduction-to-r-programming.html#cb51-8" aria-hidden="true" tabindex="-1"></a>soil_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(soil_data)</span>
+<span id="cb51-9"><a href="introduction-to-r-programming.html#cb51-9" aria-hidden="true" tabindex="-1"></a>soil_tbl</span></code></pre></div>
 </div>
 <div id="tidyverse-pipe" class="section level3 hasAnchor" number="1.10.3">
 <h3><span class="header-section-number">1.10.3</span> The Pipe Operator: <code>%&gt;%</code><a href="introduction-to-r-programming.html#tidyverse-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The pipe operator <code>%&gt;%</code> (from <code>{magrittr}</code> package, loaded with <code>{tidyverse}</code>) helps you write code as a clear sequence of chained operations. Instead of nesting functions inside each other, you send (“pipe”) the output of one step into the next. This makes workflows easier to read and debug—especially when you are cleaning soil datasets where you often need to filter rows, select variables, create new columns, and then summarize or sort results.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-r-programming.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without pipe (nested functions)</span></span>
-<span id="cb52-2"><a href="introduction-to-r-programming.html#cb52-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(soil_data<span class="sc">$</span>ph), <span class="dv">2</span>)</span>
+<span id="cb52-2"><a href="introduction-to-r-programming.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(soil_data<span class="sc">$</span>ph), <span class="dv">2</span>)</span>
 <span id="cb52-3"><a href="introduction-to-r-programming.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-4"><a href="introduction-to-r-programming.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With pipe (sequential operations)</span></span>
-<span id="cb52-5"><a href="introduction-to-r-programming.html#cb52-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> soil_data<span class="sc">$</span>ph <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href="introduction-to-r-programming.html#cb52-5" aria-hidden="true" tabindex="-1"></a>soil_data<span class="sc">$</span>ph <span class="sc">%&gt;%</span></span>
 <span id="cb52-6"><a href="introduction-to-r-programming.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb52-7"><a href="introduction-to-r-programming.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb52-8"><a href="introduction-to-r-programming.html#cb52-8" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb52-9"><a href="introduction-to-r-programming.html#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="introduction-to-r-programming.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co"># More complex example</span></span>
-<span id="cb52-11"><a href="introduction-to-r-programming.html#cb52-11" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
-<span id="cb52-12"><a href="introduction-to-r-programming.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ph <span class="sc">&gt;</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-13"><a href="introduction-to-r-programming.html#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot_id, ph, soil_type) <span class="sc">%&gt;%</span></span>
-<span id="cb52-14"><a href="introduction-to-r-programming.html#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ph))</span></code></pre></div>
+<span id="cb52-8"><a href="introduction-to-r-programming.html#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="introduction-to-r-programming.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># More complex example</span></span>
+<span id="cb52-10"><a href="introduction-to-r-programming.html#cb52-10" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
+<span id="cb52-11"><a href="introduction-to-r-programming.html#cb52-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ph <span class="sc">&gt;</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-12"><a href="introduction-to-r-programming.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot_id, ph, soil_type) <span class="sc">%&gt;%</span></span>
+<span id="cb52-13"><a href="introduction-to-r-programming.html#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ph))</span></code></pre></div>
 <div class="highlights">
 <p><strong>Key pipe benefits</strong>:</p>
 <ul>
@@ -1473,10 +1507,10 @@ The syntax is <code>new_name = old_name</code>.</p>
 <span id="cb55-5"><a href="introduction-to-r-programming.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You can rename multiple columns at once</span></span>
 <span id="cb55-6"><a href="introduction-to-r-programming.html#cb55-6" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
 <span id="cb55-7"><a href="introduction-to-r-programming.html#cb55-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">rename</span>(</span>
-<span id="cb55-8"><a href="introduction-to-r-programming.html#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">location =</span> site,</span>
-<span id="cb55-9"><a href="introduction-to-r-programming.html#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">acidity =</span> pH,</span>
-<span id="cb55-10"><a href="introduction-to-r-programming.html#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">carbon_content =</span> organic_carbon</span>
-<span id="cb55-11"><a href="introduction-to-r-programming.html#cb55-11" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<span id="cb55-8"><a href="introduction-to-r-programming.html#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">location =</span> plot_id,</span>
+<span id="cb55-9"><a href="introduction-to-r-programming.html#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">acidity =</span> ph,</span>
+<span id="cb55-10"><a href="introduction-to-r-programming.html#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">clay_percent =</span> clay_content</span>
+<span id="cb55-11"><a href="introduction-to-r-programming.html#cb55-11" aria-hidden="true" tabindex="-1"></a> ) </span></code></pre></div>
 <div id="dplyr-mutate" class="section level4 hasAnchor" number="1.10.5.1">
 <h4><span class="header-section-number">1.10.5.1</span> Creating/Modifying Columns with <code>mutate()</code><a href="introduction-to-r-programming.html#dplyr-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use <code>mutate()</code> to add new variables or update existing ones. This is where you typically compute derived soil indicators (classes, ratios, unit conversions) while keeping the original dataset intact.</p>
@@ -1484,7 +1518,7 @@ The syntax is <code>new_name = old_name</code>.</p>
 <span id="cb56-2"><a href="introduction-to-r-programming.html#cb56-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
 <span id="cb56-3"><a href="introduction-to-r-programming.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb56-4"><a href="introduction-to-r-programming.html#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ph_class =</span> <span class="fu">ifelse</span>(ph <span class="sc">&gt;</span> <span class="dv">7</span>, <span class="st">&quot;Alkaline&quot;</span>, <span class="st">&quot;Acidic&quot;</span>),</span>
-<span id="cb56-5"><a href="introduction-to-r-programming.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">clay_percent =</span> clay_content <span class="sc">/</span> <span class="dv">10</span></span>
+<span id="cb56-5"><a href="introduction-to-r-programming.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">clay_gr_kg =</span> clay_content <span class="sc">*</span> <span class="dv">10</span></span>
 <span id="cb56-6"><a href="introduction-to-r-programming.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb56-7"><a href="introduction-to-r-programming.html#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-8"><a href="introduction-to-r-programming.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify existing columns</span></span>
@@ -1540,24 +1574,18 @@ Combined with <code>group_by()</code>, it becomes a powerful way to calculate me
 <span id="cb58-23"><a href="introduction-to-r-programming.html#cb58-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ph =</span> <span class="fu">mean</span>(pH),</span>
 <span id="cb58-24"><a href="introduction-to-r-programming.html#cb58-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_soc =</span> <span class="fu">mean</span>(organic_carbon), <span class="co"># Average organic carbon</span></span>
 <span id="cb58-25"><a href="introduction-to-r-programming.html#cb58-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(),  </span>
-<span id="cb58-26"><a href="introduction-to-r-programming.html#cb58-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>            <span class="co"># Remove grouping</span></span>
+<span id="cb58-26"><a href="introduction-to-r-programming.html#cb58-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>                   <span class="co"># Remove grouping</span></span>
 <span id="cb58-27"><a href="introduction-to-r-programming.html#cb58-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>An alternative function to create quick grouped summaries is <code>count()</code></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-to-r-programming.html#cb59-1" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb59-2"><a href="introduction-to-r-programming.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="at">site =</span> <span class="fu">c</span>(<span class="st">&quot;Forest_A&quot;</span>, <span class="st">&quot;Forest_B&quot;</span>, <span class="st">&quot;Grassland_A&quot;</span>, <span class="st">&quot;Grassland_B&quot;</span>, <span class="st">&quot;Urban_A&quot;</span>, <span class="st">&quot;Urban_B&quot;</span>),</span>
-<span id="cb59-3"><a href="introduction-to-r-programming.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="at">ecosystem =</span> <span class="fu">c</span>(<span class="st">&quot;Forest&quot;</span>, <span class="st">&quot;Forest&quot;</span>, <span class="st">&quot;Grassland&quot;</span>, <span class="st">&quot;Grassland&quot;</span>, <span class="st">&quot;Urban&quot;</span>, <span class="st">&quot;Urban&quot;</span>),</span>
-<span id="cb59-4"><a href="introduction-to-r-programming.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="at">pH =</span> <span class="fu">c</span>(<span class="fl">6.2</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">5.8</span>, <span class="fl">6.0</span>),</span>
-<span id="cb59-5"><a href="introduction-to-r-programming.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="at">organic_carbon =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">2.8</span>, <span class="fl">2.1</span>, <span class="fl">2.4</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>)</span>
-<span id="cb59-6"><a href="introduction-to-r-programming.html#cb59-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb59-7"><a href="introduction-to-r-programming.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Count observations by group</span></span>
-<span id="cb59-8"><a href="introduction-to-r-programming.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(soil_data, ecosystem)</span>
-<span id="cb59-9"><a href="introduction-to-r-programming.html#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-10"><a href="introduction-to-r-programming.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Count by multiple groups</span></span>
-<span id="cb59-11"><a href="introduction-to-r-programming.html#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(soil_data, ecosystem, site)</span>
-<span id="cb59-12"><a href="introduction-to-r-programming.html#cb59-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-13"><a href="introduction-to-r-programming.html#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Count with weights of a column (sum of carbon instead of count)</span></span>
-<span id="cb59-14"><a href="introduction-to-r-programming.html#cb59-14" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
-<span id="cb59-15"><a href="introduction-to-r-programming.html#cb59-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">count</span>(ecosystem, <span class="at">wt =</span> organic_carbon, <span class="at">name =</span> <span class="st">&quot;total SOC&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-to-r-programming.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count observations by group</span></span>
+<span id="cb59-2"><a href="introduction-to-r-programming.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(soil_data, ecosystem)</span>
+<span id="cb59-3"><a href="introduction-to-r-programming.html#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="introduction-to-r-programming.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count by multiple groups</span></span>
+<span id="cb59-5"><a href="introduction-to-r-programming.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(soil_data, ecosystem, site)</span>
+<span id="cb59-6"><a href="introduction-to-r-programming.html#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="introduction-to-r-programming.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Count with weights of a column (sum of carbon instead of count)</span></span>
+<span id="cb59-8"><a href="introduction-to-r-programming.html#cb59-8" aria-hidden="true" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
+<span id="cb59-9"><a href="introduction-to-r-programming.html#cb59-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">count</span>(ecosystem, <span class="at">wt =</span> organic_carbon, <span class="at">name =</span> <span class="st">&quot;total SOC&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="dplyr-join" class="section level2 hasAnchor" number="1.11">
@@ -1782,7 +1810,7 @@ Before running summaries, models, or maps, it is important to identify where val
 <span id="cb70-7"><a href="introduction-to-r-programming.html#cb70-7" aria-hidden="true" tabindex="-1"></a> <span class="at">carbon =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">2.1</span>, <span class="fl">1.5</span>),</span>
 <span id="cb70-8"><a href="introduction-to-r-programming.html#cb70-8" aria-hidden="true" tabindex="-1"></a> <span class="at">nitrogen =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.18</span>, <span class="fl">0.12</span>)</span>
 <span id="cb70-9"><a href="introduction-to-r-programming.html#cb70-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb70-10"><a href="introduction-to-r-programming.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(wide_soil)</span></code></pre></div>
+<span id="cb70-10"><a href="introduction-to-r-programming.html#cb70-10" aria-hidden="true" tabindex="-1"></a>wide_soil</span></code></pre></div>
 <pre><code>##   site ecosystem  pH carbon nitrogen
 ## 1    A    Forest 6.2    3.2     0.25
 ## 2    B Grassland 7.1    2.1     0.18
@@ -1945,7 +1973,7 @@ RStudio also provides a menu option: <code>Session → Set Working Directory</co
 <p><strong>Best practice:</strong> Use an RStudio Project (<code>.Rproj</code>) to avoid hard-coded paths.</p>
 <ul>
 <li><p><code>File → New Project</code> creates an <code>.Rproj</code> file.</p></li>
-<li><p>Keep your data inside the project folder and use relative paths (e.g., <code>"data/KSSL_data.csv"</code>).</p></li>
+<li><p>Keep your data inside the project folder and use relative paths (e.g., <code>"01_data/module1/kssl/KSSL_data.csv"</code>).</p></li>
 <li><p>If you prefer, you can also set the working directory to the active script location:</p>
 <p><code>setwd(dirname(rstudioapi::getActiveDocumentContext()$path))</code></p></li>
 </ul>
@@ -1969,22 +1997,18 @@ RStudio also provides a menu option: <code>Session → Set Working Directory</co
 <p>CSV (comma-separated values) and plain text (<code>.txt</code>) files are widely used for exchanging tabular data. In base R, you can import them with <code>read.csv()</code> or the more general <code>read.table()</code> (both from <code>{utils}</code>).
 These functions assumes the separator is a comma (,) and by default use <code>header = TRUE</code>, meaning the first row is treated as column names.
 The output is a <code>data.frame</code>.
-For larger files, you can use <code>read_csv()</code>, from <code>{readr}</code> which is usually faster and often does a better job of parsing column types.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="introduction-to-r-programming.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
+For larger files, you can use <code>read_csv()</code>, from <code>{readr}</code> (included in <code>tidyverse</code>) which is usually faster and often does a better job of parsing column types.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="introduction-to-r-programming.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a CSV file (generic syntax)</span></span>
 <span id="cb86-2"><a href="introduction-to-r-programming.html#cb86-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;path/to/soil_data.csv&quot;</span>)</span>
 <span id="cb86-3"><a href="introduction-to-r-programming.html#cb86-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-4"><a href="introduction-to-r-programming.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure</span></span>
-<span id="cb86-5"><a href="introduction-to-r-programming.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil_data)</span>
-<span id="cb86-6"><a href="introduction-to-r-programming.html#cb86-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-7"><a href="introduction-to-r-programming.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first rows</span></span>
-<span id="cb86-8"><a href="introduction-to-r-programming.html#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_data)</span>
-<span id="cb86-9"><a href="introduction-to-r-programming.html#cb86-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-10"><a href="introduction-to-r-programming.html#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="co"># If CSV uses different separator (semicolon, tab)</span></span>
-<span id="cb86-11"><a href="introduction-to-r-programming.html#cb86-11" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;path/to/file.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb86-12"><a href="introduction-to-r-programming.html#cb86-12" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;path/to/file.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
+<span id="cb86-4"><a href="introduction-to-r-programming.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If CSV uses different separator (semicolon, tab) (generic syntax)</span></span>
+<span id="cb86-5"><a href="introduction-to-r-programming.html#cb86-5" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;path/to/file.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb86-6"><a href="introduction-to-r-programming.html#cb86-6" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;path/to/file.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb86-7"><a href="introduction-to-r-programming.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a CSV file using the `readr::read_csv` in tidyverse  (generic syntax)</span></span>
+<span id="cb86-8"><a href="introduction-to-r-programming.html#cb86-8" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;path/to/file.txt&quot;</span>)</span></code></pre></div>
 <p>If you are using an RStudio Project and the dataset is stored inside your project, you can use a relative path. For example, for the Kansas soil profiles dataset in this project:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="introduction-to-r-programming.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
-<span id="cb87-2"><a href="introduction-to-r-programming.html#cb87-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;01_data/module1/KSSL_data.csv&quot;</span>)</span>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="introduction-to-r-programming.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the KSSL data from a CSV file</span></span>
+<span id="cb87-2"><a href="introduction-to-r-programming.html#cb87-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;01_data/module1/kssl/KSSL_data.csv&quot;</span>)</span>
 <span id="cb87-3"><a href="introduction-to-r-programming.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-4"><a href="introduction-to-r-programming.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure</span></span>
 <span id="cb87-5"><a href="introduction-to-r-programming.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil_data)</span>
@@ -1992,7 +2016,7 @@ For larger files, you can use <code>read_csv()</code>, from <code>{readr}</code>
 <span id="cb87-7"><a href="introduction-to-r-programming.html#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first rows</span></span>
 <span id="cb87-8"><a href="introduction-to-r-programming.html#cb87-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_data)</span></code></pre></div>
 <div class="highlights">
-<p>When possible, prefer project-relative paths like <code>"01_data/module1/KSSL_data.csv"</code>.
+<p>When possible, prefer project-relative paths like <code>"01_data/module1/kssl/KSSL_data.csv"</code>.
 They are easier to read and less likely to break if you reorganize folders.</p>
 </div>
 </div>
@@ -2000,10 +2024,10 @@ They are easier to read and less likely to break if you reorganize folders.</p>
 <h4><span class="header-section-number">1.15.3.2</span> Reading Excel Files<a href="introduction-to-r-programming.html#read-excel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To read Excel files, use <code>read_excel()</code> from the <code>{readxl}</code> package:</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="introduction-to-r-programming.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Excel file</span></span>
-<span id="cb88-2"><a href="introduction-to-r-programming.html#cb88-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;01_data/module1/KSSL_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>) </span>
+<span id="cb88-2"><a href="introduction-to-r-programming.html#cb88-2" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;01_data/module1/kssl/KSSL_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>) </span>
 <span id="cb88-3"><a href="introduction-to-r-programming.html#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb88-4"><a href="introduction-to-r-programming.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or read a specific sheet by name</span></span>
-<span id="cb88-5"><a href="introduction-to-r-programming.html#cb88-5" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;01_data/module1/KSSL_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;SoilData&quot;</span>)</span></code></pre></div>
+<span id="cb88-5"><a href="introduction-to-r-programming.html#cb88-5" aria-hidden="true" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;01_data/module1/kssl/KSSL_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;SoilData&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="data-exploration" class="section level3 hasAnchor" number="1.15.4">

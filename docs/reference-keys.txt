@@ -197,7 +197,7 @@ site-data-preparation
 adding-a-unique-row-identifier
 extracting-and-standardizing-column-names-for-sites
 creating-unique-profile-identifiers
-remove-exact-duplicate-site-records
+remove-duplicate-site-records
 coordinate-validation
 check-1-missing-coordinates
 check-2-valid-coordinate-ranges

@@ -309,7 +309,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#adding-a-unique-row-identifier"><i class="fa fa-check"></i><b>2.3.1</b> Adding a unique row identifier</a></li>
 <li class="chapter" data-level="2.3.2" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#extracting-and-standardizing-column-names-for-sites"><i class="fa fa-check"></i><b>2.3.2</b> Extracting and standardizing column names for sites</a></li>
 <li class="chapter" data-level="2.3.3" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#creating-unique-profile-identifiers"><i class="fa fa-check"></i><b>2.3.3</b> Creating unique profile identifiers</a></li>
-<li class="chapter" data-level="2.3.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-exact-duplicate-site-records"><i class="fa fa-check"></i><b>2.3.4</b> Remove exact duplicate site records</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#remove-duplicate-site-records"><i class="fa fa-check"></i><b>2.3.4</b> Remove duplicate site records</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="data-preparation-for-digital-soil-mapping-in-r.html"><a href="data-preparation-for-digital-soil-mapping-in-r.html#coordinate-validation"><i class="fa fa-check"></i><b>2.4</b> Coordinate validation and correction</a>
 <ul>
@@ -877,7 +877,7 @@ Bicarbonate extraction for alkaline soils
 <li><strong>Selectively measured properties</strong> (40-94% complete) reflect analyses performed when specific conditions warrant: bulk density, nitrogen, potassium, and calcium carbonate</li>
 <li><strong>Conditionally measured properties</strong> (&lt;40% complete) are performed only when needed</li>
 </ul>
-<p><strong>2) Dry chemistry data (<code>KSSL_spec.xlsx</code> &amp; <code>KSSL_spec.csv</code>)</strong>: This file includes replicates of mid-infrared reflectance data (identified by <code>scan_path_name</code>) for each soil sample (linked via the <code>join_key</code> variable). Multiple spectral scans per horizon enable:</p>
+<p><strong>2) Dry chemistry data (<code>MIR_KANSAS_data.xlsx</code>)</strong>: This file includes replicates of mid-infrared reflectance data (identified by <code>scan_path_name</code>) for each soil sample (linked via the <code>join_key</code> variable). It is available to download from the <a href="https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21?usp=drive_link">shared folder</a> in this manual. Multiple spectral scans per horizon enable:</p>
 <ul>
 <li>Quality control through spectral replicates</li>
 <li>Training spectroscopy-based prediction models</li>
@@ -967,9 +967,7 @@ Demonstrates configuring web map servers for interactive soil data visualization
 <ul>
 <li>Raster covariates and maps<br />
 </li>
-<li>Large spectral datasets<br />
-</li>
-<li>Other supporting input data used in selected modules</li>
+<li>KSSL spectral dataset (<code>MIR_KANSAS_data.xlsx</code>)</li>
 </ul>
 <p>Download the data from:<br />
 <a href="https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu?usp=drive_link">https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu</a></p>
@@ -1024,24 +1022,30 @@ Demonstrates configuring web map servers for interactive soil data visualization
 <h4>Step 4: Place Google Drive files into the correct module folders<a href="presentation-and-basics.html#step-4-place-google-drive-files-into-the-correct-module-folders" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
 <li><p>Locate the downloaded Google Drive data on your computer.</p></li>
-<li><p>Copy the entire <code>rasters/</code> folder into:</p>
-<p>01_data/module2/</p></li>
-<li><p>Copy the file <code>MIR_KANSAS_data.xlsx</code> into:</p>
-<p>01_data/module3/</p></li>
+<li><p>Copy the files in the <code>GEE_export</code> folder into:</p>
+<p>01_data/module1/training_data</p></li>
 <li><p>Confirm that the folders now resemble:</p></li>
 </ol>
 <pre class="text"><code>   01_data/  
-   ├── module2/  
-   │   ├── shapes/  
-   │   ├── rasters/  
-   │   └── README.md  
-   ├── module3/  
-   │   ├── MIR_KANSAS_data.xlsx  
+   ├── module1/  
+   │   ├── kssl/
+   │   │          ├── KSSL_data.csv
+   │   │          ├── KSSL_data.xlsx
+   │   │          ├── property_thresholds.csv
+   │   ├── shapes/
+   │   │          ├── Tiger_2020_Counties.shp
+   │   │          ├── .... 
+   │   ├── training_data/  
+   │   │                ├── TerraClimate_Precip_1981_2023_KANSAS.tif  
+   │   │                ├── TerraClimate_PET_1981_2023_KANSAS.tif
+   │   │                ├── TerraClimate_AvgTemp_1981_2023_KANSAS.tif  
+   │   │                ├── ....tif  
+   │   │                ├── MIR_KANSAS_data.xlsx  
    │   └── README.md  </code></pre>
 <div class="warning-box">
 <ul>
-<li>All Google Drive files must be placed <em>inside</em> the appropriate <code>01_data/moduleX/</code> folders.<br />
-</li>
+<li>All files downloaded from the Google Drive folder must be placed <em>inside</em> the <code>01_data/module1/training_data</code> folder.</li>
+<li>All code in the manual that uses these files reference that folder.</li>
 <li>Scripts rely on relative paths and will not run correctly if files are stored elsewhere.</li>
 </ul>
 </div>
