@@ -15,11 +15,11 @@ library(terra)            # Manipulation of Raster Data
 
 # training_folder <- "../SoilFER-Training-Resources/"
 # output_dir <- paste0(training_folder,"03_outputs/module1/")
-# raw_data <- read_excel(paste0(training_folder,"01_data/module1/KSSL_data.xlsx"), sheet = 1) 
-# property_thresholds <- read_csv(paste0(training_folder,"01_data/module1/property_thresholds.csv"))
+# raw_data <- read_excel(paste0(training_folder,"01_data/module1/kssl/KSSL_data.xlsx"), sheet = 1) 
+# property_thresholds <- read_csv(paste0(training_folder,"01_data/module1/kssl/property_thresholds.csv"))
 # kdata <- read.csv (paste0(output_dir,"KSSL_DSM_0-30.csv"))
 # soil_sf <- st_read(paste0(output_dir,"soil_profiles.shp"))
-# admin <- st_read(paste0(training_folder,"01_data/module1/Tiger_2020_Counties.shp"))
+# admin <- st_read(paste0(training_folder,"01_data/module1/shapes/Tiger_2020_Counties.shp"))
 #save.image("SoilFER-Training-Resources/01_outputs/module1.RData")
 load("SoilFER-Training-Resources/01_outputs/module1.RData")
 
@@ -80,7 +80,7 @@ library(terra)            # Manipulation of Raster Data
 setwd( "../SoilFER-Training-Resources")
 
 # Read Excel file containing raw soil data
-raw_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = 1) 
+raw_data <- read_excel("01_data/module1/kssl/KSSL_data.xlsx", sheet = 1) 
 
 # Define the folder to store the results of the exercise
 output_dir <-"03_outputs/module1/"
@@ -93,7 +93,7 @@ if (!file.exists(output_dir)){
 
 str(raw_data) # Examine the structure of the data
 head(raw_data, 10) # Show the first 10 rows
-summary(raw_data[,1:25]) # Summarize the data in 25 first columns
+summary(raw_data) # Summarize the data
 
 ```
 
@@ -192,12 +192,12 @@ site <- site %>%
 
 After this step, horizons from the same location share a common `ProfID`, while those from different locations receive distinct `ProfID` values. When unique profile IDs are not available in the raw data, this method reconstructs profile identity using the geographic position of the samples.
 
-### Remove exact duplicate site records
+### Remove duplicate site records
 
 Multiple site records may correspond to identical observations (i.e., the same location and depth). In this dataset, spectroscopic measurements were performed four times per sample, resulting in duplicate entries. Remove duplicates and retain a single record to prevent redundancy and double counting in subsequent analyses.
 
 ```{r duplicates, eval=FALSE}
-# Remove exact duplicate rows
+# Remove duplicate rows
 site <- site %>%
   distinct(across(-rowID), .keep_all = TRUE)
 ```
@@ -440,13 +440,13 @@ Soil properties have physically and analytically plausible bounds. Values outsid
 
 #### Load property thresholds
 
-Thresholds are stored in a configuration file (`property_thresholds.csv`) to ensure transparency and reproducibility.
+Thresholds are stored in a CSV file (`property_thresholds.csv`) to ensure transparency and reproducibility.
 
 ```{r thresholds-lab, eval=FALSE}
-# Load valid ranges for soil properties
+# Load thresholds for analytical soil properties
 # NOTE: These thresholds are based on global soil datasets and literature and using the same measurement units as the KSSL dataset
 #       Adjust for your specific region and soil types and units.
-property_thresholds <- read_csv("01_data/module1/property_thresholds.csv")
+property_thresholds <- read_csv("01_data/module1/kssl/property_thresholds.csv")
 ```
 
 The values of the analytical thresholds for the KSSL dataset are shown in Table \@ref(tab:thresholds-print).
@@ -974,7 +974,8 @@ library(aqp)
 standard_depths <- c(0, 30, 60)  # 0-30, 30-60 cm
 
 # Select properties to standardize
-properties_to_standardize <- names(site_lab)[!names(site_lab) %in% c("rowID","ProfID","HorID","lon","lat","top","bottom","texture_sum","texture_valid")]
+properties_to_standardize <- c("SOC","Carbon_Total","Bulk.Density_1_3.BAR","Bulk.Density_ovendry","Sand","Silt","Clay",
+                               "pH","CEC","Nitrogen_Total","Phosphorus_Mehlich3","Phosphorus_Olsen","Potassium","Calcium_Carbonate_equivalent")
 
 # Prepare data for aqp
 
@@ -1079,7 +1080,7 @@ For the Digital Soil Modelling exercise in this tutorial, we will work with a su
 
 ```{r subset-dsm, eval=FALSE}
 # Keep only 0-30 cm depth and select relevant columns (Clay, Silt, Sand, SOC & pH)
-subset_data <- data %>%
+subset_data <- KSSL_standardized %>%
   filter(top == 0 & bottom == 30) %>%
   select(
     ProfID,
@@ -1123,7 +1124,7 @@ Use a `left join` to preserve the cleaned horizon dataset as the reference. This
 
 ```{r sectral-results, eval=FALSE}
 # Read and subset spectral data from the original dataset
-raw_data <- read_excel("../../01_data/module1/MIR_KANSAS_data.xlsx", sheet = 1) 
+raw_data <- read_excel("../../01_data/module1/training_data/MIR_KANSAS_data.xlsx", sheet = 1) 
 spec <- raw_data[,-c(1,2,4:22)]
 
 # Merge site_lab data to the original Spectral data by their common IDs
@@ -1330,6 +1331,7 @@ Since importing a `.csv` file in R typically produces a data frame, the workflow
 
 ```{r csv-to-sf, echo=TRUE, eval=FALSE}
 # Import the previously standardized dataset for 0-30 cm depth 
+output_dir <-"03_outputs/module1/"
 kdata <- read.csv (paste0(output_dir,"KSSL_DSM_0-30.csv"))
 # Convert to sf: create POINT geometry from lon/lat, set CRS = WGS84 (EPSG:4326)
 soil_sf <- st_as_sf(kdata, coords = c("lon", "lat"), crs = 4326)
@@ -1542,7 +1544,7 @@ In this example, we clip KSSL sampling points to Riley County. The steps are:
 
 ```{r vector-clip, echo=TRUE, eval=FALSE}
 # Read administrative boundaries (example file)
-admin <- st_read("01_data/module1/Tiger_2020_Counties.shp")
+admin <- st_read("01_data/module1/shapes/Tiger_2020_Counties.shp")
 # Ensure both layers share the same CRS
 admin <- st_transform(admin, st_crs(soil_sf))
 # Example: select one unit (replace with your column/value)
@@ -1794,7 +1796,7 @@ Data in this folder includes:
  - [**TerraClimate_AvgTemp_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1TyyErHkQeNW9Q_wchW9Fa_0UpdaWS_-_/view?usp=drive_link) (17.7 mb). 100 m TerraClimate monthly averaged Temperature rasters from 1981-2023.
  - [**TerraClimate_PET_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1b9wM3zwggBFS98pFEyWUFtpKN9ORq9we/view?usp=drive_link) (17.2 mb). 100 m TerraClimate monthly averaged Potential Evapotranspiration rasters from 1981-2023.
  - [**TerraClimate_Precip_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb).  100 m TerraClimate monthly accumulated mean Precipitation rasters from 1981-2023.
- - [**sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif**][@gupta_zenodo_2019](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link).  250-meter resolution geospatial raster dataset representing the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
+ - [**sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif**][@gupta_zenodo_2019](https://drive.google.com/file/d/1nG0yCr-tNPzeeEvzcGrtdQxRHnQ6NMH5/view?usp=drive_link).  250-meter resolution geospatial raster dataset representing the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
  - [**ESA_WorldCover_2021_KANSAS**][@zanaga2022_worldcover2021_v200](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb). 10 m resolution rasters of landcover types from the European Space Agency WorldCover,  based on Sentinel-1 and Sentinel-2 data.
  
  
@@ -1819,23 +1821,31 @@ Data in this folder includes:
  
 The data can also be generated directly using Google Earth Engine (GEE). GEE provides direct access to many environmental datasets through a unified interface, allowing analysts to extract, compute, and export ready-to-use covariate stacks for any region of interest using a single script.
 
-The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform.
+The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform. 
 
+The data has been already processed for this training and is available to download from this [link](https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21). Place these files into the `training_data` folder within `01_data/module1`and set the path for the covariate rasters and spectral data:
+
+```{r rasters_dir, echo=TRUE, eval=FALSE}
+# Define the relative path to the folder with the downloaded covariates
+# NOTE: Adapt this path to your project structure
+  rasters_dir <-"01_data/module1/training_data"
+```
+  
 The files `Cropland_Mask_KANSAS.tif` and `ESA_WorldCover_2021_KANSAS` be split into two adjacent tiff files ([`Cropland_Mask_KANSAS-0000000000-0000000000.tif` , `Cropland_Mask_KANSAS-0000000000-0000023296.tif`] and [`ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif`,`ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif` ]) that must be merged using this R script, and already presented in section `Spatial Operations on Rasters` as an example to merge rasters.
 
 ```{r merge-gee-crops, echo=TRUE, eval=FALSE}
 library(terra)
 # Merge Crop mask rasters (two adjacent tiles)
 # Read input rasters
-r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
-r2 <- rast("Cropland_Mask_KANSAS-0000000000-0000023296.tif")
+r1 <- rast(paste0(rasters_dir,"Cropland_Mask_KANSAS-0000000000-0000000000.tif"))
+r2 <- rast(paste0(rasters_dir,"Cropland_Mask_KANSAS-0000000000-0000023296.tif"))
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
 # Cast to integer to optimize file size
 # This ensures the output is written as integer values (1 and NA),
 m <- as.int(m)
 # Write output with compression to reduce file size
-writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
+writeRaster(m,"03_outputs/module1/Cropland_Mask_KANSAS.tif", overwrite = TRUE,
   wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
     gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
   )
@@ -1843,15 +1853,15 @@ writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
 
 # Merge ESA rasters (two adjacent tiles)
 # Read input rasters
-r1 <- rast("ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif")
-r2 <- rast("ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif")
+r1 <- rast(paste0(rasters_dir,"ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif"))
+r2 <- rast(paste0(rasters_dir,"ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif"))
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
 # Cast to integer to optimize file size
 # This ensures the output is written as integer values
 m <- as.int(m)
 # Write output with compression to reduce file size
-writeRaster(m,"ESA_WorldCover_2021_KANSAS.tif", overwrite = TRUE,
+writeRaster(m,"03_outputs/module1/ESA_WorldCover_2021_KANSAS.tif", overwrite = TRUE,
   wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
     gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
   )
@@ -1896,9 +1906,9 @@ Raster files are commonly distributed as GeoTIFFs (.tif). The function `rast()` 
 ```{r read-raster, echo=TRUE, eval=FALSE}
 library(terra)
 # Read a single-layer raster (e.g., cropland mask or DEM)
-crops <- rast("Cropland_Mask_KANSAS.tif")
+crops <- rast(paste0(rasters_dir,"Cropland_Mask_KANSAS.tif"))
 # Read a multi-layer raster (e.g., environmental covariates stack)
-covs <- rast("Env_Cov_250m_KANSAS.tif")
+covs <- rast(paste0(rasters_dir,"Environmental_Covariates_250m_KANSAS.tif"))
 ```
 
 
@@ -1906,7 +1916,7 @@ To save raster data to disk use `writeRaster`:
 
 ```{r write-raster, echo=TRUE, eval=FALSE}
 # Export a raster as GeoTIFF
-writeRaster(crops, "Cropland_Mask_KANSAS_copy.tif", overwrite = TRUE) # overwrites tif
+writeRaster(crops, "03_outputs/module1/Cropland_Mask_KANSAS.tif", overwrite = TRUE) # overwrites tif
 ```
 
 #### Inspecting and Exploring `SpatRaster` Objects
@@ -2016,14 +2026,14 @@ Adjacent raster tiles can be merged into a single, continuous layer using `mosai
 
 ```{r raster-mosaic, echo=TRUE, eval=FALSE}
 # Read input rasters (adjacent tiles)
-r1 <- rast("Cropland_Mask_KANSAS-0000000000-0000000000.tif")
-r2 <- rast("Cropland_Mask_KANSAS-0000000000-0000023296.tif")
+r1 <- rast(paste0(rasters_dir,"Cropland_Mask_KANSAS-0000000000-0000000000.tif"))
+r2 <- rast(paste0(rasters_dir,"Cropland_Mask_KANSAS-0000000000-0000023296.tif"))
 # Mosaic into a single raster
 m <- mosaic(r1, r2, fun = "max")
 # Cast to integer to optimize file size (not valid for non-integer continuous data)
 m <- as.int(m)
 # Write output with compression to reduce file size
-writeRaster(m,"Cropland_Mask_KANSAS.tif", overwrite = TRUE,
+writeRaster(m,"03_outputs/module1/Cropland_Mask_KANSAS.tif", overwrite = TRUE,
   wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
     gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
   )
@@ -2174,7 +2184,7 @@ The Newhall Simulation Model requires several raster layers as inputs:
 
  * Elevation (DEM): to account for altitude-related effects on temperature (and therefore evapotranspiration and soil temperature patterns).
 
- * Available Water Capacity (AWC): to represent how much water the soil can store (typically for a reference depth, e.g., 0–200 cm), which controls how quickly soils dry after rainfall.
+ * Available Water Capacity (AWC): to represent, in mm, how much water the soil can store (typically for a reference depth, e.g., 0–200 cm), which controls how quickly soils dry after rainfall.
 
  * Longitude and latitude: to provide each grid cell’s geographic position, supporting calculations that depend on seasonal timing and and solar geometry (e.g., daylength patterns and the timing of solstices used in some Newhall metrics such as 'days after summer solstice' or 'after winter solstice').
  
@@ -2191,10 +2201,6 @@ library(sf)
 library(dplyr)
 library(jNSMR)
 
-# Paths (adapt to your project structure)
-raster.path <- "rasters/" # Path to your raster covariates 
-shp.path    <- "shapes/" # Path to your shapefiles 
-
 # Target CRS for the workflow (use a projected CRS for analysis)
 epsg <- "EPSG:3857"   # Web Mercator (meters). Replace if needed.
 agg.factor <- 1       # Optional aggregation to speed up Newhall calculations (1 = no aggregation)
@@ -2207,7 +2213,7 @@ TerraClimate files contains large time series (1981-2020) of climatic records. M
 
 ```{r newhall-t-p-avg, echo=TRUE, eval=FALSE}
 # Monthly temperature time series (multi-year, monthly layers)
-tmp <- rast(file.path(raster.path, "GEE_Exports/TerraClimate_AvgTemp_1981_2023_KANSAS.tif"))
+tmp <- rast(paste0(rasters_dir,"TerraClimate_AvgTemp_1981_2023_KANSAS.tif"))
 
 # Number of years in the stack (assuming complete years)
 nyears <- nlyr(tmp) / 12
@@ -2227,11 +2233,11 @@ for(i in 1:12){
 # Convert to stack
 Temp_Stack <- rast(temp_list) * 0.1  # convert scaled values to °C (×0.1)
 # Write to disk
-writeRaster(Temp_Stack, file.path(raster.path, "Temp_Stack_monthlyMean.tif"), overwrite = TRUE)
+writeRaster(Temp_Stack, "03_outputs/module1/Temp_Stack_monthlyMean.tif", overwrite = TRUE)
 
 
 # Monthly precipitation time series (multi-year, monthly layers)
-prec_mm <- rast(file.path(raster.path, "GEE_Exports/TerraClimate_Precip_1981_2023_KANSAS.tif"))
+prec_mm <- rast(paste0(rasters_dir,"TerraClimate_Precip_1981_2023_KANSAS.tif"))
 # Number of years in the stack (assuming complete years
 nyears <- nlyr(prec_mm) / 12
 # Monthly means across all years
@@ -2249,7 +2255,7 @@ for(i in 1:12){
 # Convert to stack
 Prec_Stack <- rast(prec_list)
 # Write to disk
-writeRaster(Prec_Stack, file.path(raster.path, "Prec_Stack_monthlyMean.tif"), overwrite = TRUE)
+writeRaster(Prec_Stack, "03_outputs/module1/Prec_Stack_monthlyMean.tif", overwrite = TRUE)
 ```
 
 #### Prepare monthly average stack of climatic data
@@ -2257,15 +2263,16 @@ writeRaster(Prec_Stack, file.path(raster.path, "Prec_Stack_monthlyMean.tif"), ov
 NSM expects monthly precipitation and temperature layers with specific, predefined layer names.
 
 ```{r newhall-stack, echo=TRUE, eval=FALSE}
-# Load outputs (or reuse objects from above)
-Prec_Stack <- rast(file.path(raster.path, "Prec_Stack_monthlyMean.tif"))
-Temp_Stack <- rast(file.path(raster.path, "Temp_Stack_monthlyMean.tif"))
+# Load outputs (reuse objects from above)
+Prec_Stack <- rast("03_outputs/module1/Prec_Stack_monthlyMean.tif")
+Temp_Stack <- rast("03_outputs/module1/Temp_Stack_monthlyMean.tif")
+
 
 names(Prec_Stack) <- c("pJan","pFeb","pMar","pApr","pMay","pJun","pJul","pAug","pSep","pOct","pNov","pDec")
 names(Temp_Stack) <- c("tJan","tFeb","tMar","tApr","tMay","tJun","tJul","tAug","tSep","tOct","tNov","tDec")
 
 combined_stack <- c(Prec_Stack, Temp_Stack)
-writeRaster(combined_stack, file.path(raster.path, "climate_vars.tif"), overwrite = TRUE)
+writeRaster(combined_stack, "03_outputs/module1/climate_vars.tif", overwrite = TRUE)
 ````
 
 
@@ -2283,27 +2290,17 @@ In addition to monthly precipitation and temperature, NSM uses a number of site 
  
  
 ```{r newhall-resample, echo=TRUE, eval=FALSE}
-# ROI boundary
-# Read ROI from chapefile
-roi <- st_read(file.path(shp.path, "roi_kansas_us_epsg_4326.shp"), quiet = TRUE)
-# Align CRS to the common EPSG
-if(st_crs(roi)$wkt != st_crs(epsg)$wkt) roi <- st_transform(roi, epsg)
-
 # DEM
-# Define path to raster
-elev_file <- list.files(raster.path, pattern = "DEM_KANSAS.tif$", recursive = TRUE, full.names = TRUE)
 # Read raster
-elev <- rast(elev_file)
+elev <- rast(paste0(rasters_dir,"DEM_KANSAS.tif"))
 # Align CRS to the common EPSG
 if(crs(elev) != epsg) elev <- project(elev, epsg, method = "near")
 
-# AWC (0–200 cm)
-# Define path to raster
-awc <- rast(file.path(raster.path, "sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif"))
+# AWC (0–200 cm, in mm)
+# Read raster
+awc <- rast(paste0(rasters_dir,"awc_KANSAS.tif"))
 # Align CRS to the common EPSG
 if(crs(awc) != epsg) awc <- project(awc, epsg, method = "near")
-# Crop raster to the limits of the Region-on-Interest
-awc <- crop(awc, vect(roi))
 # Align geometries with the DEM raster
 awc <- resample(awc, elev)
 # Define name
@@ -2311,7 +2308,7 @@ names(awc) <- "awc"
 
 # Temperature and Precipitation
 # Read climate stack
-newhall <- rast(file.path(raster.path, "climate_vars.tif"))
+newhall <- rast("03_outputs/module1/climate_vars.tif")
 # Align CRS to the common EPSG
 if(crs(newhall) != epsg) newhall <- project(newhall, epsg, method = "near")
 # Align geometries with the DEM raster
@@ -2328,7 +2325,7 @@ newhall$awc  <- awc
 newhall$elev <- elev
 
 # Save full NSM input stack
-writeRaster(newhall, file.path(raster.path, "climate_newhall_vars.tif"), overwrite = TRUE)
+writeRaster(newhall, "03_outputs/module1/climate_newhall_vars.tif", overwrite = TRUE)
 ```
 
 #### Calculate NSM outputs
@@ -2337,7 +2334,7 @@ Depending on resolution and extent, the calculation of the NSM can take hours. T
 
 ```{r newhall-compute, echo=TRUE, eval=FALSE}
 # Read the full Newhall input stack
-newhall <- rast(file.path(raster.path, "climate_newhall_vars.tif"))
+newhall <- rast("03_outputs/module1/cclimate_newhall_vars.tif")
 
 # Optional: aggregate to speed up (e.g., fact = 2, 3, ...)
 # newhall <- aggregate(newhall, fact = agg.factor)
@@ -2356,14 +2353,14 @@ mask_valid <- newhall_results$annualRainfall * 0 + 1
 
 # Apply mask and export
 results <- mask(newhall_results, mask_valid)
-writeRaster(results, file.path(raster.path, "newhall.tif"), overwrite = TRUE)
+writeRaster(results, "03_outputs/module1/newhall.tif", overwrite = TRUE)
 
 # Optional compact integer exports (×10 preserves 1 decimal place)
 results_climate_int <- app(newhall,  function(x) as.integer(x * 10))
-writeRaster(results_climate_int, file.path(raster.path, "climate_intx10.tif"), overwrite = TRUE)
+writeRaster(results_climate_int, "03_outputs/module1/climate_intx10.tif", overwrite = TRUE)
 
 results_newhall_int <- app(results, function(x) as.integer(x * 10))
-writeRaster(results_newhall_int, file.path(raster.path, "newhall_intx10.tif"), overwrite = TRUE)
+writeRaster(results_newhall_int, "03_outputs/module1/newhall_intx10.tif", overwrite = TRUE)
 ```
 
 The raster stack `newhall_results` contains the NSM outputs that can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.

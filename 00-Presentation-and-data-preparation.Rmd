@@ -145,7 +145,7 @@ Some properties show strategic missing data patterns reflecting standard laborat
 - **Selectively measured properties** (40-94% complete) reflect analyses performed when specific conditions warrant: bulk density, nitrogen, potassium, and calcium carbonate
 - **Conditionally measured properties** (<40% complete) are performed only when needed
 
-**2) Dry chemistry data (`KSSL_spec.xlsx` & `KSSL_spec.csv`)**: This file includes replicates of mid-infrared reflectance data (identified by `scan_path_name`) for each soil sample (linked via the `join_key` variable). Multiple spectral scans per horizon enable:
+**2) Dry chemistry data (`MIR_KANSAS_data.xlsx`)**: This file includes replicates of mid-infrared reflectance data (identified by `scan_path_name`) for each soil sample (linked via the `join_key` variable). It is available to download from the [shared folder](https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21?usp=drive_link) in this manual. Multiple spectral scans per horizon enable:
 
 - Quality control through spectral replicates
 - Training spectroscopy-based prediction models
@@ -231,7 +231,6 @@ Introduces ISO 19115/19139 standards for creating spatial metadata that enables 
 Demonstrates configuring web map servers for interactive soil data visualization and publishing datasets. The session provides practical training in establishing complete data sharing infrastructure, from database configuration through web service endpoints, ensuring participants can make their soil information FAIR (Findable, Accessible, Interoperable, Reusable) and contribute to global soil information systems while maintaining data quality and provenance.
 
 
-
 ## Required downloads {-}
 
 All training materials are distributed across **two complementary sources**.
@@ -252,11 +251,11 @@ Download the repository as a ZIP file from:
 The Google Drive folder contains files that are too large to be hosted on GitHub, including:
 
 - Raster covariates and maps  
-- Large spectral datasets  
-- Other supporting input data used in selected modules  
+- KSSL spectral dataset (`MIR_KANSAS_data.xlsx`)
 
 Download the data from:  
 [https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu](https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu?usp=drive_link)
+
 
 ### Step-by-step setup instructions {-}
 
@@ -302,30 +301,35 @@ Verify that each subfolder under `01_data/` corresponds to a module in this manu
 
 1. Locate the downloaded Google Drive data on your computer.
 
-2. Copy the entire `rasters/` folder into:
+2. Copy the files in the `GEE_export` folder into:
 
-   01_data/module2/
+   01_data/module1/training_data
 
-3. Copy the file `MIR_KANSAS_data.xlsx` into:
-
-   01_data/module3/
-
-4. Confirm that the folders now resemble:
+3. Confirm that the folders now resemble:
 ```text
    01_data/  
-   ├── module2/  
-   │   ├── shapes/  
-   │   ├── rasters/  
-   │   └── README.md  
-   ├── module3/  
-   │   ├── MIR_KANSAS_data.xlsx  
+   ├── module1/  
+   │   ├── kssl/
+   │   │          ├── KSSL_data.csv
+   │   │          ├── KSSL_data.xlsx
+   │   │          ├── property_thresholds.csv
+   │   ├── shapes/
+   │   │          ├── Tiger_2020_Counties.shp
+   │   │          ├── .... 
+   │   ├── training_data/  
+   │   │                ├── TerraClimate_Precip_1981_2023_KANSAS.tif  
+   │   │                ├── TerraClimate_PET_1981_2023_KANSAS.tif
+   │   │                ├── TerraClimate_AvgTemp_1981_2023_KANSAS.tif  
+   │   │                ├── ....tif  
+   │   │                ├── MIR_KANSAS_data.xlsx  
    │   └── README.md  
 ```
 
 ::: warning-box
- - All Google Drive files must be placed *inside* the appropriate `01_data/moduleX/` folders.  
+ - All files downloaded from the Google Drive folder must be placed *inside* the `01_data/module1/training_data` folder. 
+ - All code in the manual that uses these files reference that folder.
  - Scripts rely on relative paths and will not run correctly if files are stored elsewhere.
- 
+
 :::
 
 
@@ -800,9 +804,14 @@ However, the preferred and most common assignment operator is `<-` while `=` is 
 ```{r variable-assignment, echo=TRUE, eval=FALSE}
 # Assign a value to a variable
 soil_depth <- 30
+# View the content of soil_depth
+soil_depth
 
 # Assignment `<-` to objects and `=` to function arguments
-soil_depth <- mean(x = ph_values, na.rm = TRUE)
+soil_depth <- c(10,20,30)
+mean_soil_depth <- mean(x = soil_depth, na.rm = TRUE)
+# View the content of mean_soil_depth
+mean_soil_depth
 
 ```
 
@@ -829,6 +838,7 @@ plotID <- "P001"       # camelCase (alternative)
 **Avoid:**
 
 ```{r naming-bad, echo=TRUE, eval=FALSE}
+# Bad naming practices — too short, too long, unclear
 # Too short, unclear
 x <- 6.5
 a <- 2.1
@@ -894,6 +904,7 @@ Dates often are imported as character strings, but it is better to convert them 
 ```{r date-type, echo=TRUE, eval=FALSE}
 # ISO 8601 date format, YYYY-MM-DD
 sampling_date <- "2024-03-12"
+# Convert to date (%Y = 4-digit year; %y = 2-digit year)
 sampling_date <- as.Date(sampling_date, format = "%Y-%m-%d")
 class(sampling_date)
 ```
@@ -912,6 +923,7 @@ class(soil_type)  # "character"
 class(is_valid)   # "logical"
 
 # Check the internal storage type
+typeof(sample_count)
 typeof(ph_value)
 
 # Helpful checks
@@ -961,14 +973,15 @@ A **vector** is the simplest data structure - a one-dimensional sequence of elem
 # Create a numeric vector using c() (combine)
 ph_values <- c(5.2, 6.5, 7.1, 5.8, 6.9)
 print(ph_values)
+ph_values # Equivalent to print(ph_values)
 
 # Character vector
 soil_types <- c("Acrisol", "Ferralsol", "Vertisol", "Andosol", "Cambisol")
-print(soil_types)
+soil_types
 
 # Logical vector
 valid_samples <- c(TRUE, TRUE, FALSE, TRUE, TRUE)
-print(valid_samples)
+valid_samples
 
 # Create sequences
 depths <- 0:100                    # Integers from 0 to 100
@@ -988,12 +1001,17 @@ median(ph_values)
 sd(ph_values)        # standard deviation
 min(ph_values)
 max(ph_values)
+# NAs affect the statistic results
+mean(c(ph_values,NA))
+mean(c(ph_values,NA), na.rm=TRUE) # Remove NAs from calculations
+
 ```
 
 #### Accessing Vector Elements {#element-vector}
 
 ```{r vector-access, echo=TRUE, eval=FALSE}
 # Access by index (position)
+ph_values           # Complete data
 ph_values[1]        # First element
 ph_values[3]        # Third element
 
@@ -1016,7 +1034,7 @@ They store values as levels (categories).
 ```{r factor-type, echo=TRUE, eval=FALSE}
 # Create a factor from character vector
 soil_class <- factor(c("Clay", "Loam", "Sand", "Clay", "Loam"))
-print(soil_class)
+soil_class
 
 # Check levels
 levels(soil_class)
@@ -1030,7 +1048,7 @@ texture_class <- factor(
   levels = c("Coarse", "Medium", "Fine"),
   ordered = TRUE
 )
-print(texture_class)
+texture_class
 ```
 
 ### Matrices {#matrix-data}
@@ -1080,15 +1098,15 @@ soil_data <- data.frame(
 )
 
 # View the data frame
-print(soil_data)
+soil_data
 
 # View structure
 str(soil_data)
 
-# View first few rows
+# View first rows
 head(soil_data)
 
-# View last few rows
+# View last rows
 tail(soil_data)
 
 # Get dimensions
@@ -1154,8 +1172,8 @@ str(soil_analysis)
 
 # Access list elements
 soil_analysis$site_name
-soil_analysis[[1]]           # First element
-soil_analysis[["measurements"]]  # measurements data frame
+soil_analysis[[1]]                # First element
+soil_analysis[["measurements"]]   # View measurements data frame
 ```
 
 
@@ -1389,7 +1407,7 @@ sqrt(16)
 log(10)
 exp(2)
 abs(-5)
-round(3.14159, 2)
+round(pi, 2)
 ```
 
 ::: highlights
@@ -1481,14 +1499,14 @@ soil_data <- data.frame(
 # Select column by index: Show second column
 soil_data[, 2]
 # Select column by index: Show first and third columns
-soil_data[, c(1,3]
+soil_data[, c(1,3)]
 # Select column  by name: Show texture columns
-soil_data[, c("clay","silt","sand")]
+soil_data[, c("ph","clay_content","soil_type")]
 # Filter rows by index: keep first 2 records in the data frame
 soil_data[c(1:2),]
 
 # Filter rows by index: keep texture properties for the first 100 records in the data frame
-soil_data[c(1:2), c("clay","silt","sand")]
+soil_data[c(1:2), c("ph","clay_content","soil_type")]
 
 # Filter rows based on conditions
 high_ph <- soil_data[soil_data$ph > 6, ]
@@ -1501,7 +1519,7 @@ high_ph_clay
 # Select columns by index: Show second column
 subset_data <- soil_data[, 2]
 # Select several columns by index
-subset_data <- soil_data[, c(1:3]
+subset_data <- soil_data[, c(1:3)]
 
 # Select by name
 subset_data <- soil_data[, c("plot_id", "ph", "soil_type")]
@@ -1526,20 +1544,28 @@ data <- data.frame(
 
 # Delete one column by name
 data$Clay <- NULL
-data$Clay <- c() # Empty vector
+data
 
 # Delete multiple columns by name
 data[, c("Silt", "pH")] <- NULL
-
+data
 
 # --- Delete rows ---
 
 # Delete a row by index (e.g., remove the 2nd row)
 data <- data[-2, ]
+data
 
 # Delete rows based on a condition (e.g., remove rows with pH < 6)
+# Rebuild the dataframe
+data <- data.frame(
+  Plot = c("P001", "P002", "P003"),
+  Clay = c(25, 30, 18),
+  Silt = c(40, 35, 52),
+  pH   = c(5.2, 6.5, 7.1)
+)
 data <- data[data$pH >= 6, ]
-
+data
 
 ```
 
@@ -1572,15 +1598,30 @@ soil_data[order(soil_data$soil_type, soil_data$ph), ]
 Aggregation means computing summary statistics by group, such as mean pH per soil type.
 
 ```{r aggregating-data, echo=TRUE, eval=FALSE}
-# Mean pH by soil type
-aggregate(ph ~ soil_type, data = soil_data, FUN = mean)
+# Example data frame with repeated soil_type groups
+soil_data <- data.frame(
+  plot_id = paste0("P", sprintf("%03d", 1:12)),
+  latitude = c(-1.25, -1.26, -1.27, -1.28, -1.23, -1.24, -1.22, -1.21, -1.29, -1.30, -1.31, -1.32),
+  longitude = c(36.85, 36.86, 36.83, 36.84, 36.87, 36.88, 36.82, 36.81, 36.84, 36.83, 36.86, 36.85),
+  ph = c(5.2, 5.6, 6.5, 6.2, 7.1, 6.9, 5.8, 6.0, 6.9, 6.7, 5.4, 5.1),
+  clay_content = c(25, 28, 30, 33, 18, 20, 42, 40, 35, 34, 27, 26),
+  soil_type = c(
+    "Acrisol","Acrisol",
+    "Ferralsol","Ferralsol",
+    "Vertisol","Vertisol",
+    "Andosol","Andosol",
+    "Cambisol","Cambisol",
+    "Acrisol","Acrisol"
+  )
+)
 
-# Multiple summary values by group (mean and standard deviation of pH by soil_type)
+# Multiple summary values aggregated by group (mean and standard deviation of pH by soil_type)
 aggregate(
   ph ~ soil_type,
   data = soil_data,
   FUN = function(x) c(mean = mean(x), sd = sd(x))
 )
+
 ```
 
 ::: warning-box
@@ -1622,16 +1663,16 @@ library(tidyverse)
 A **tibble** is the tidyverse’s modern version of a data frame. It behaves like a regular data frame, but it prints in a cleaner way and is generally more user-friendly. For example, tibbles show only the first rows by default, keep long text from cluttering your console, and display column types so you can quickly confirm how R has interpreted your data. Tibbles also avoid some older base R behaviors (such as automatically converting text to factors in older R versions), which makes them a reliable default for data analysis workflows.
 
 ```{r tibble, echo=TRUE, eval=FALSE}
-# Convert data frame to tibble
-soil_tbl <- as_tibble(soil_data)
-soil_tbl
-
 # Create tibble directly
 soil_tbl <- tibble(
   plot_id = c("P001", "P002", "P003"),
   ph = c(5.2, 6.5, 7.1),
   clay = c(25, 30, 18)
 )
+# Convert data frame to tibble
+soil_tbl <- as_tibble(soil_data)
+soil_tbl
+
 ```
 
 ### The Pipe Operator: `%>%` {#tidyverse-pipe}
@@ -1641,13 +1682,12 @@ The pipe operator `%>%` (from `{magrittr}` package, loaded with `{tidyverse}`) h
 
 ```{r pipe, echo=TRUE, eval=FALSE}
 # Without pipe (nested functions)
-result <- round(mean(soil_data$ph), 2)
+round(mean(soil_data$ph), 2)
 
 # With pipe (sequential operations)
-result <- soil_data$ph %>%
+soil_data$ph %>%
   mean() %>%
   round(2)
-result
 
 # More complex example
 soil_data %>%
@@ -1732,10 +1772,10 @@ rename(soil_data,
 # You can rename multiple columns at once
 soil_data %>%
  rename(
-  location = site,
-  acidity = pH,
-  carbon_content = organic_carbon
- )
+  location = plot_id,
+  acidity = ph,
+  clay_percent = clay_content
+ ) 
 ```
 
 
@@ -1748,7 +1788,7 @@ Use `mutate()` to add new variables or update existing ones. This is where you t
 soil_data %>%
   mutate(
     ph_class = ifelse(ph > 7, "Alkaline", "Acidic"),
-    clay_percent = clay_content / 10
+    clay_gr_kg = clay_content * 10
   )
 
 # Modify existing columns
@@ -1810,19 +1850,13 @@ soil_data %>%
     mean_ph = mean(pH),
     mean_soc = mean(organic_carbon), # Average organic carbon
     count = n(),  
-  .groups = "drop"            # Remove grouping
+  .groups = "drop"                   # Remove grouping
 )
 ```
 
 An alternative function to create quick grouped summaries is `count()`
 
 ```{r count-example, echo=TRUE, eval=FALSE}
-soil_data <- data.frame(
-site = c("Forest_A", "Forest_B", "Grassland_A", "Grassland_B", "Urban_A", "Urban_B"),
-ecosystem = c("Forest", "Forest", "Grassland", "Grassland", "Urban", "Urban"),
-pH = c(6.2, 6.8, 7.1, 6.9, 5.8, 6.0),
-organic_carbon = c(3.2, 2.8, 2.1, 2.4, 1.5, 1.8)
-)
 # Count observations by group
 count(soil_data, ecosystem)
 
@@ -2055,7 +2089,7 @@ wide_soil <- data.frame(
  carbon = c(3.2, 2.1, 1.5),
  nitrogen = c(0.25, 0.18, 0.12)
 )
-print(wide_soil)
+wide_soil
 
 # Convert to long format
 long_soil <- wide_soil %>%
@@ -2210,7 +2244,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
  - `File → New Project` creates an `.Rproj` file.
 
- - Keep your data inside the project folder and use relative paths (e.g., `"data/KSSL_data.csv"`).
+ - Keep your data inside the project folder and use relative paths (e.g., `"01_data/module1/kssl/KSSL_data.csv"`).
 
  - If you prefer, you can also set the working directory to the active script location:
  
@@ -2239,28 +2273,24 @@ Most soil science projects use data from external sources (field surveys, lab re
 CSV (comma-separated values) and plain text (`.txt`) files are widely used for exchanging tabular data. In base R, you can import them with `read.csv()` or the more general `read.table()` (both from `{utils}`).
 These functions assumes the separator is a comma (,) and by default use `header = TRUE`, meaning the first row is treated as column names.
 The output is a `data.frame`.
-For larger files, you can use `read_csv()`, from `{readr}` which is usually faster and often does a better job of parsing column types.
+For larger files, you can use `read_csv()`, from `{readr}` (included in `tidyverse`) which is usually faster and often does a better job of parsing column types.
 
 ```{r read-csv, echo=TRUE, eval=FALSE}
-# Read CSV file
+# Read a CSV file (generic syntax)
 soil_data <- read.csv("path/to/soil_data.csv")
 
-# View structure
-str(soil_data)
-
-# View first rows
-head(soil_data)
-
-# If CSV uses different separator (semicolon, tab)
+# If CSV uses different separator (semicolon, tab) (generic syntax)
 soil_data <- read.csv("path/to/file.csv", sep = ";")
 soil_data <- read.delim("path/to/file.txt", sep = "\t")
+# Read a CSV file using the `readr::read_csv` in tidyverse  (generic syntax)
+soil_data <- read_csv("path/to/file.txt")
 ```
 
 If you are using an RStudio Project and the dataset is stored inside your project, you can use a relative path. For example, for the Kansas soil profiles dataset in this project:
 
 ```{r read_kssl-csv, echo=TRUE, eval=FALSE}
-# Read CSV file
-soil_data <- read_csv("01_data/module1/KSSL_data.csv")
+# Read the KSSL data from a CSV file
+soil_data <- read_csv("01_data/module1/kssl/KSSL_data.csv")
 
 # View structure
 str(soil_data)
@@ -2271,7 +2301,7 @@ head(soil_data)
 ```
 
 ::: highlights
-When possible, prefer project-relative paths like `"01_data/module1/KSSL_data.csv"`.
+When possible, prefer project-relative paths like `"01_data/module1/kssl/KSSL_data.csv"`.
 They are easier to read and less likely to break if you reorganize folders.
 
 :::
@@ -2284,10 +2314,10 @@ To read Excel files, use `read_excel()` from the `{readxl}` package:
 ```{r read-excel, echo=TRUE, eval=FALSE}
 
 # Read Excel file
-soil_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = 1) 
+soil_data <- read_excel("01_data/module1/kssl/KSSL_data.xlsx", sheet = 1) 
 
 # Or read a specific sheet by name
-soil_data <- read_excel("01_data/module1/KSSL_data.xlsx", sheet = "SoilData")
+soil_data <- read_excel("01_data/module1/kssl/KSSL_data.xlsx", sheet = "SoilData")
 
 ```
 
