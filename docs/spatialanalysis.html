@@ -678,16 +678,22 @@ To perform this conversion, users must specify the columns containing the coordi
 <span id="cb127-9"><a href="spatialanalysis.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(soil_sf)</span></code></pre></div>
 <p>The Coordinate Reference System (CRS) has been provided as an argument within the <code>st_as_sf()</code> function. Users can visualize CRS of sf objects with <code>st_crs()</code>. the sf object can be transformed to shapefile with <code>st_write</code>.</p>
 </div>
-<div id="importing-shapefiles" class="section level4 hasAnchor" number="3.3.1.2">
-<h4><span class="header-section-number">3.3.1.2</span> Importing Shapefiles<a href="spatialanalysis.html#importing-shapefiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="exporting-sf-objects" class="section level4 hasAnchor" number="3.3.1.2">
+<h4><span class="header-section-number">3.3.1.2</span> Exporting sf objects<a href="spatialanalysis.html#exporting-sf-objects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Simple features objects can be saved to files or databases using the <code>st_write()</code> function.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatialanalysis.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export as shapefile</span></span>
+<span id="cb128-2"><a href="spatialanalysis.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(soil_sf, <span class="fu">paste0</span>(output_dir,<span class="st">&quot;soil_profiles.shp&quot;</span>), <span class="at">delete_layer =</span> <span class="cn">TRUE</span>) <span class="co"># overwrites shp</span></span></code></pre></div>
+</div>
+<div id="importing-shapefiles" class="section level4 hasAnchor" number="3.3.1.3">
+<h4><span class="header-section-number">3.3.1.3</span> Importing Shapefiles<a href="spatialanalysis.html#importing-shapefiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Shapefiles can be directly imported into R using the <code>st_read()</code> function. You can also import most other vector formats with the same command, because <code>{sf}</code> automatically detects the file type.</p>
 <p>The following chunk imports the soil sampling locations from the cleaned KSSL dataset. This layer represents individual soil pits or auger locations, with coordinates and measured properties stored in the attribute table. The chunk also plots pH values for a quick visual check of the spatial distribution of the data.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatialanalysis.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the previously created shapefile containing soil profile points</span></span>
-<span id="cb128-2"><a href="spatialanalysis.html#cb128-2" aria-hidden="true" tabindex="-1"></a>soil_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">paste0</span>(output_dir,<span class="st">&quot;soil_profiles.shp&quot;</span>))</span>
-<span id="cb128-3"><a href="spatialanalysis.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first rows</span></span>
-<span id="cb128-4"><a href="spatialanalysis.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_sf)</span>
-<span id="cb128-5"><a href="spatialanalysis.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick visualization</span></span>
-<span id="cb128-6"><a href="spatialanalysis.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soil_sf[<span class="st">&quot;pH&quot;</span>], <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">key.pos =</span> <span class="dv">1</span>)  <span class="co"># key.pos controls legend position</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="spatialanalysis.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the previously created shapefile containing soil profile points</span></span>
+<span id="cb129-2"><a href="spatialanalysis.html#cb129-2" aria-hidden="true" tabindex="-1"></a>soil_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">paste0</span>(output_dir,<span class="st">&quot;soil_profiles.shp&quot;</span>))</span>
+<span id="cb129-3"><a href="spatialanalysis.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first rows</span></span>
+<span id="cb129-4"><a href="spatialanalysis.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil_sf)</span>
+<span id="cb129-5"><a href="spatialanalysis.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick visualization</span></span>
+<span id="cb129-6"><a href="spatialanalysis.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soil_sf[<span class="st">&quot;pH&quot;</span>], <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">key.pos =</span> <span class="dv">1</span>)  <span class="co"># key.pos controls legend position</span></span></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 8 fields
 ## Geometry type: POINT
 ## Dimension:     XY
@@ -701,12 +707,6 @@ To perform this conversion, users must specify the columns containing the coordi
 ## 5 PROF0007   0     30 25.51856 54.2 20.3 1.6972 7.21  POINT (-101.7467 38.5798)
 ## 6 PROF0008   0     30 32.35233 57.7  9.9 1.4412 7.84 POINT (-101.7259 39.27917)</code></pre>
 <p><img src="SoilFER-Integrated-soil-information-for-decision-making_files/figure-html/shp-to-sf-hidden-1.png" width="960" /></p>
-</div>
-<div id="exporting-sf-objects" class="section level4 hasAnchor" number="3.3.1.3">
-<h4><span class="header-section-number">3.3.1.3</span> Exporting sf objects<a href="spatialanalysis.html#exporting-sf-objects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Simple features objects can be saved to files or databases using the <code>st_write()</code> function.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="spatialanalysis.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export as shapefile</span></span>
-<span id="cb130-2"><a href="spatialanalysis.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(soil_sf, <span class="fu">paste0</span>(output_dir,<span class="st">&quot;soil_profiles.shp&quot;</span>), <span class="at">delete_layer =</span> <span class="cn">TRUE</span>) <span class="co"># overwrites shp</span></span></code></pre></div>
 </div>
 </div>
 <div id="setting-and-reprojecting-crs-for-vector-data" class="section level3 hasAnchor" number="3.3.2">
@@ -1136,13 +1136,13 @@ Figure 3.6: Visualization of pH values with ggplot2
 <p>The data has been already processed for this training and is available to download from this <a href="https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21">link</a>. Place these files into the <code>training_data</code> folder within <code>01_data/module1</code>and set the path for the covariate rasters and spectral data:</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="spatialanalysis.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the relative path to the folder with the downloaded covariates</span></span>
 <span id="cb153-2"><a href="spatialanalysis.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Adapt this path to your project structure</span></span>
-<span id="cb153-3"><a href="spatialanalysis.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  rasters_dir <span class="ot">&lt;-</span><span class="st">&quot;01_data/module1/training_data&quot;</span></span></code></pre></div>
+<span id="cb153-3"><a href="spatialanalysis.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  training_dir <span class="ot">&lt;-</span><span class="st">&quot;01_data/module1/training_data&quot;</span></span></code></pre></div>
 <p>The files <code>Cropland_Mask_KANSAS.tif</code> and <code>ESA_WorldCover_2021_KANSAS</code> be split into two adjacent tiff files ([<code>Cropland_Mask_KANSAS-0000000000-0000000000.tif</code> , <code>Cropland_Mask_KANSAS-0000000000-0000023296.tif</code>] and [<code>ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif</code>,<code>ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif</code> ]) that must be merged using this R script, and already presented in section <code>Spatial Operations on Rasters</code> as an example to merge rasters.</p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="spatialanalysis.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb154-2"><a href="spatialanalysis.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge Crop mask rasters (two adjacent tiles)</span></span>
 <span id="cb154-3"><a href="spatialanalysis.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read input rasters</span></span>
-<span id="cb154-4"><a href="spatialanalysis.html#cb154-4" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
-<span id="cb154-5"><a href="spatialanalysis.html#cb154-5" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000023296.tif&quot;</span>))</span>
+<span id="cb154-4"><a href="spatialanalysis.html#cb154-4" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
+<span id="cb154-5"><a href="spatialanalysis.html#cb154-5" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000023296.tif&quot;</span>))</span>
 <span id="cb154-6"><a href="spatialanalysis.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Mosaic into a single raster</span></span>
 <span id="cb154-7"><a href="spatialanalysis.html#cb154-7" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mosaic</span>(r1, r2, <span class="at">fun =</span> <span class="st">&quot;max&quot;</span>)</span>
 <span id="cb154-8"><a href="spatialanalysis.html#cb154-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Cast to integer to optimize file size</span></span>
@@ -1157,8 +1157,8 @@ Figure 3.6: Visualization of pH values with ggplot2
 <span id="cb154-17"><a href="spatialanalysis.html#cb154-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb154-18"><a href="spatialanalysis.html#cb154-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge ESA rasters (two adjacent tiles)</span></span>
 <span id="cb154-19"><a href="spatialanalysis.html#cb154-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Read input rasters</span></span>
-<span id="cb154-20"><a href="spatialanalysis.html#cb154-20" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
-<span id="cb154-21"><a href="spatialanalysis.html#cb154-21" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif&quot;</span>))</span>
+<span id="cb154-20"><a href="spatialanalysis.html#cb154-20" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
+<span id="cb154-21"><a href="spatialanalysis.html#cb154-21" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif&quot;</span>))</span>
 <span id="cb154-22"><a href="spatialanalysis.html#cb154-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Mosaic into a single raster</span></span>
 <span id="cb154-23"><a href="spatialanalysis.html#cb154-23" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mosaic</span>(r1, r2, <span class="at">fun =</span> <span class="st">&quot;max&quot;</span>)</span>
 <span id="cb154-24"><a href="spatialanalysis.html#cb154-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Cast to integer to optimize file size</span></span>
@@ -1195,9 +1195,9 @@ Figure 3.6: Visualization of pH values with ggplot2
 <p>Raster files are commonly distributed as GeoTIFFs (.tif). The function <code>rast()</code> reads both single-layer and multi-layer rasters. Rasters can be exported back to disk with <code>writeRaster()</code>.</p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="spatialanalysis.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb156-2"><a href="spatialanalysis.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a single-layer raster (e.g., cropland mask or DEM)</span></span>
-<span id="cb156-3"><a href="spatialanalysis.html#cb156-3" aria-hidden="true" tabindex="-1"></a>crops <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Cropland_Mask_KANSAS.tif&quot;</span>))</span>
+<span id="cb156-3"><a href="spatialanalysis.html#cb156-3" aria-hidden="true" tabindex="-1"></a>crops <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Cropland_Mask_KANSAS.tif&quot;</span>))</span>
 <span id="cb156-4"><a href="spatialanalysis.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a multi-layer raster (e.g., environmental covariates stack)</span></span>
-<span id="cb156-5"><a href="spatialanalysis.html#cb156-5" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Environmental_Covariates_250m_KANSAS.tif&quot;</span>))</span></code></pre></div>
+<span id="cb156-5"><a href="spatialanalysis.html#cb156-5" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Environmental_Covariates_250m_KANSAS.tif&quot;</span>))</span></code></pre></div>
 <p>To save raster data to disk use <code>writeRaster</code>:</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="spatialanalysis.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export a raster as GeoTIFF</span></span>
 <span id="cb157-2"><a href="spatialanalysis.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(crops, <span class="st">&quot;03_outputs/module1/Cropland_Mask_KANSAS.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>) <span class="co"># overwrites tif</span></span></code></pre></div>
@@ -1295,8 +1295,8 @@ Figure 3.10: Visualization of Elevation and Temperature
 <h5><span class="header-section-number">3.4.2.5.1</span> Merge rasters (mosaic)<a href="spatialanalysis.html#merge-rasters-mosaic" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Adjacent raster tiles can be merged into a single, continuous layer using <code>mosaic()</code>. This is common when rasters are exported as tiles (e.g., from Google Earth Engine). In the example below, two binary cropland mask tiles are mosaicked and written as a compact GeoTIFF.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="spatialanalysis.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read input rasters (adjacent tiles)</span></span>
-<span id="cb163-2"><a href="spatialanalysis.html#cb163-2" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
-<span id="cb163-3"><a href="spatialanalysis.html#cb163-3" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000023296.tif&quot;</span>))</span>
+<span id="cb163-2"><a href="spatialanalysis.html#cb163-2" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000000000.tif&quot;</span>))</span>
+<span id="cb163-3"><a href="spatialanalysis.html#cb163-3" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;Cropland_Mask_KANSAS-0000000000-0000023296.tif&quot;</span>))</span>
 <span id="cb163-4"><a href="spatialanalysis.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Mosaic into a single raster</span></span>
 <span id="cb163-5"><a href="spatialanalysis.html#cb163-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mosaic</span>(r1, r2, <span class="at">fun =</span> <span class="st">&quot;max&quot;</span>)</span>
 <span id="cb163-6"><a href="spatialanalysis.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Cast to integer to optimize file size (not valid for non-integer continuous data)</span></span>
@@ -1351,8 +1351,8 @@ Figure 3.11: Differences of Crop and Mask outputs in raster data
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="spatialanalysis.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Align raster of crops to the grid of covariates</span></span>
 <span id="cb165-2"><a href="spatialanalysis.html#cb165-2" aria-hidden="true" tabindex="-1"></a> crops_aligned <span class="ot">&lt;-</span> <span class="fu">resample</span>(crops, covs, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span>
 <span id="cb165-3"><a href="spatialanalysis.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial properties of aligned crops and covariates are equal</span></span>
-<span id="cb165-4"><a href="spatialanalysis.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(crops_aligned)</span>
-<span id="cb165-5"><a href="spatialanalysis.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(covs)</span>
+<span id="cb165-4"><a href="spatialanalysis.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(covs)</span>
+<span id="cb165-5"><a href="spatialanalysis.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(crops_aligned)</span>
 <span id="cb165-6"><a href="spatialanalysis.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(covs)</span>
 <span id="cb165-7"><a href="spatialanalysis.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(crops_aligned)</span></code></pre></div>
 <p>Other methods (e.g., “cubic”, “cubicspline”, “lanczos”) can produce smoother results for continuous surfaces, while summary methods such as “sum”, “min”, or “average” are useful when aggregating values from multiple input cells into larger output cells.</p>
@@ -1407,8 +1407,9 @@ Figure 3.12: Reclassification of raster values with map algebra
 </div>
 <div id="calculation-of-soilclimate-rasters-newhall-simulation-model" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Calculation of Soil–Climate Rasters (Newhall Simulation Model)<a href="spatialanalysis.html#calculation-of-soilclimate-rasters-newhall-simulation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.</p>
-<p>The Newhall Simulation Model requires several raster layers as inputs:</p>
+<p>The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics<span class="citation">(<a href="#ref-NewhallBerdanier1996" role="doc-biblioref">Newhall and Berdanier, 1996</a>)</span>. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.</p>
+<p>In this tutorial, we use the R implementation of the NSM available in the <code>{jNSMR}</code> package.</p>
+<p>The model requires several raster layers as inputs:</p>
 <ul>
 <li><p>Monthly precipitation (pJan … pDec): drives water inputs into the soil water balance.</p></li>
 <li><p>Monthly temperature (tJan … tDec): controls evapotranspiration demand and soil temperature dynamics.</p></li>
@@ -1437,7 +1438,7 @@ Figure 3.12: Reclassification of raster values with map algebra
 <h4><span class="header-section-number">3.4.3.2</span> Prepare monthly average rasters of climatic data<a href="spatialanalysis.html#prepare-monthly-average-rasters-of-climatic-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>TerraClimate files contains large time series (1981-2020) of climatic records. Monthly temperature and precipitation averages from these series must be calculated as independent raster files. Temperature in this dataset if scaled (e.g., ×10) to avoid decimal point data and save storage space this it has to be adjusted to real values. The following chunk computes the averages for every month across all years, producing a 12-layer raster stack of monthly averages.</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="spatialanalysis.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Monthly temperature time series (multi-year, monthly layers)</span></span>
-<span id="cb172-2"><a href="spatialanalysis.html#cb172-2" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;TerraClimate_AvgTemp_1981_2023_KANSAS.tif&quot;</span>))</span>
+<span id="cb172-2"><a href="spatialanalysis.html#cb172-2" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;TerraClimate_AvgTemp_1981_2023_KANSAS.tif&quot;</span>))</span>
 <span id="cb172-3"><a href="spatialanalysis.html#cb172-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb172-4"><a href="spatialanalysis.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of years in the stack (assuming complete years)</span></span>
 <span id="cb172-5"><a href="spatialanalysis.html#cb172-5" aria-hidden="true" tabindex="-1"></a>nyears <span class="ot">&lt;-</span> <span class="fu">nlyr</span>(tmp) <span class="sc">/</span> <span class="dv">12</span></span>
@@ -1461,7 +1462,7 @@ Figure 3.12: Reclassification of raster values with map algebra
 <span id="cb172-23"><a href="spatialanalysis.html#cb172-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb172-24"><a href="spatialanalysis.html#cb172-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb172-25"><a href="spatialanalysis.html#cb172-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Monthly precipitation time series (multi-year, monthly layers)</span></span>
-<span id="cb172-26"><a href="spatialanalysis.html#cb172-26" aria-hidden="true" tabindex="-1"></a>prec_mm <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;TerraClimate_Precip_1981_2023_KANSAS.tif&quot;</span>))</span>
+<span id="cb172-26"><a href="spatialanalysis.html#cb172-26" aria-hidden="true" tabindex="-1"></a>prec_mm <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;TerraClimate_Precip_1981_2023_KANSAS.tif&quot;</span>))</span>
 <span id="cb172-27"><a href="spatialanalysis.html#cb172-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of years in the stack (assuming complete years</span></span>
 <span id="cb172-28"><a href="spatialanalysis.html#cb172-28" aria-hidden="true" tabindex="-1"></a>nyears <span class="ot">&lt;-</span> <span class="fu">nlyr</span>(prec_mm) <span class="sc">/</span> <span class="dv">12</span></span>
 <span id="cb172-29"><a href="spatialanalysis.html#cb172-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Monthly means across all years</span></span>
@@ -1506,13 +1507,13 @@ Figure 3.12: Reclassification of raster values with map algebra
 <p>These raster layers are obtained from different sources thus their geometry have to be harmonized to create a unique raster stack for the calculations.</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="spatialanalysis.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DEM</span></span>
 <span id="cb174-2"><a href="spatialanalysis.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster</span></span>
-<span id="cb174-3"><a href="spatialanalysis.html#cb174-3" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;DEM_KANSAS.tif&quot;</span>))</span>
+<span id="cb174-3"><a href="spatialanalysis.html#cb174-3" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;DEM_KANSAS.tif&quot;</span>))</span>
 <span id="cb174-4"><a href="spatialanalysis.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Align CRS to the common EPSG</span></span>
 <span id="cb174-5"><a href="spatialanalysis.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">crs</span>(elev) <span class="sc">!=</span> epsg) elev <span class="ot">&lt;-</span> <span class="fu">project</span>(elev, epsg, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span>
 <span id="cb174-6"><a href="spatialanalysis.html#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb174-7"><a href="spatialanalysis.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="co"># AWC (0–200 cm, in mm)</span></span>
 <span id="cb174-8"><a href="spatialanalysis.html#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster</span></span>
-<span id="cb174-9"><a href="spatialanalysis.html#cb174-9" aria-hidden="true" tabindex="-1"></a>awc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(rasters_dir,<span class="st">&quot;awc_KANSAS.tif&quot;</span>))</span>
+<span id="cb174-9"><a href="spatialanalysis.html#cb174-9" aria-hidden="true" tabindex="-1"></a>awc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;awc_KANSAS.tif&quot;</span>))</span>
 <span id="cb174-10"><a href="spatialanalysis.html#cb174-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Align CRS to the common EPSG</span></span>
 <span id="cb174-11"><a href="spatialanalysis.html#cb174-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">crs</span>(awc) <span class="sc">!=</span> epsg) awc <span class="ot">&lt;-</span> <span class="fu">project</span>(awc, epsg, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span>
 <span id="cb174-12"><a href="spatialanalysis.html#cb174-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Align geometries with the DEM raster</span></span>
@@ -1556,20 +1557,139 @@ Figure 3.12: Reclassification of raster values with map algebra
 </div>
 <div id="inspect-and-export-results-compact-outputs" class="section level4 hasAnchor" number="3.4.3.6">
 <h4><span class="header-section-number">3.4.3.6</span> Inspect and export results (compact outputs)<a href="spatialanalysis.html#inspect-and-export-results-compact-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="spatialanalysis.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple validity mask</span></span>
-<span id="cb176-2"><a href="spatialanalysis.html#cb176-2" aria-hidden="true" tabindex="-1"></a>mask_valid <span class="ot">&lt;-</span> newhall_results<span class="sc">$</span>annualRainfall <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb176-3"><a href="spatialanalysis.html#cb176-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-4"><a href="spatialanalysis.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply mask and export</span></span>
-<span id="cb176-5"><a href="spatialanalysis.html#cb176-5" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mask</span>(newhall_results, mask_valid)</span>
-<span id="cb176-6"><a href="spatialanalysis.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(results, <span class="st">&quot;03_outputs/module1/newhall.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb176-7"><a href="spatialanalysis.html#cb176-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-8"><a href="spatialanalysis.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional compact integer exports (×10 preserves 1 decimal place)</span></span>
-<span id="cb176-9"><a href="spatialanalysis.html#cb176-9" aria-hidden="true" tabindex="-1"></a>results_climate_int <span class="ot">&lt;-</span> <span class="fu">app</span>(newhall,  <span class="cf">function</span>(x) <span class="fu">as.integer</span>(x <span class="sc">*</span> <span class="dv">10</span>))</span>
-<span id="cb176-10"><a href="spatialanalysis.html#cb176-10" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(results_climate_int, <span class="st">&quot;03_outputs/module1/climate_intx10.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb176-11"><a href="spatialanalysis.html#cb176-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-12"><a href="spatialanalysis.html#cb176-12" aria-hidden="true" tabindex="-1"></a>results_newhall_int <span class="ot">&lt;-</span> <span class="fu">app</span>(results, <span class="cf">function</span>(x) <span class="fu">as.integer</span>(x <span class="sc">*</span> <span class="dv">10</span>))</span>
-<span id="cb176-13"><a href="spatialanalysis.html#cb176-13" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(results_newhall_int, <span class="st">&quot;03_outputs/module1/newhall_intx10.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>The raster stack <code>newhall_results</code> contains the NSM outputs that can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.</p>
+<p>The NSM output includes the following layers:</p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="7%" />
+<col width="76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Layer</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">annualRainfall</td>
+<td align="left">mm/yr</td>
+<td align="left">Total precipitation accumulated over the year.</td>
+</tr>
+<tr class="even">
+<td align="left">waterHoldingCapacity</td>
+<td align="left">mm</td>
+<td align="left">Soil water-holding capacity used by the model (plant-available storage over the modeled profile/control section).</td>
+</tr>
+<tr class="odd">
+<td align="left">annualWaterBalance</td>
+<td align="left">mm/yr</td>
+<td align="left">Net annual water balance (precipitation − potential evapotranspiration) summed over the year; positive = surplus, negative = deficit.</td>
+</tr>
+<tr class="even">
+<td align="left">annualPotentialEvapotranspiration</td>
+<td align="left">mm/yr</td>
+<td align="left">Total annual potential evapotranspiration (atmospheric evaporative demand) summed over the year.</td>
+</tr>
+<tr class="odd">
+<td align="left">summerWaterBalance</td>
+<td align="left">mm (summer period)</td>
+<td align="left">Net water balance during the model’s summer period (precipitation − potential evapotranspiration) for that season.</td>
+</tr>
+<tr class="even">
+<td align="left">dryDaysAfterSummerSolstice</td>
+<td align="left">days</td>
+<td align="left">Number of days classified as dry after the summer solstice (indicator of summer dryness duration).</td>
+</tr>
+<tr class="odd">
+<td align="left">moistDaysAfterWinterSolstice</td>
+<td align="left">days</td>
+<td align="left">Number of days classified as moist after the winter solstice (indicator of post-winter moisture duration).</td>
+</tr>
+<tr class="even">
+<td align="left">numCumulativeDaysDry</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of dry days across the year (sum of days meeting the model’s dry condition).</td>
+</tr>
+<tr class="odd">
+<td align="left">numCumulativeDaysMoistDry</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of moist-dry (intermediate) days across the year.</td>
+</tr>
+<tr class="even">
+<td align="left">numCumulativeDaysMoist</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of moist days across the year.</td>
+</tr>
+<tr class="odd">
+<td align="left">numCumulativeDaysDryOver5C</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of dry days when temperature is &gt; 5 °C.</td>
+</tr>
+<tr class="even">
+<td align="left">numCumulativeDaysMoistDryOver5C</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of moist-dry days when temperature is &gt; 5 °C.</td>
+</tr>
+<tr class="odd">
+<td align="left">numCumulativeDaysMoistOver5C</td>
+<td align="left">days</td>
+<td align="left">Cumulative number of moist days when temperature is &gt; 5 °C.</td>
+</tr>
+<tr class="even">
+<td align="left">numConsecutiveDaysMoistInSomeParts</td>
+<td align="left">days</td>
+<td align="left">Consecutive days when the soil is moist in some part of the control section (persistence of partial-profile moisture).</td>
+</tr>
+<tr class="odd">
+<td align="left">numConsecutiveDaysMoistInSomePartsOver8C</td>
+<td align="left">days</td>
+<td align="left">Consecutive days when the soil is moist in some part of the control section and temperature is &gt; 8 °C.</td>
+</tr>
+<tr class="even">
+<td align="left">temperatureRegime</td>
+<td align="left">class</td>
+<td align="left">Categorical soil temperature regime output (e.g., mesic, thermic), derived from the model’s temperature criteria.</td>
+</tr>
+<tr class="odd">
+<td align="left">moistureRegime</td>
+<td align="left">class</td>
+<td align="left">Categorical soil moisture regime output (e.g., udic, ustic, xeric), derived from the model’s moisture criteria.</td>
+</tr>
+<tr class="even">
+<td align="left">regimeSubdivision1</td>
+<td align="left">class</td>
+<td align="left">Van Wambeke modifier (Part 1): a simple qualifier such as Wet/Dry/Typic/Weak/Extreme that refines the moisture regime.</td>
+</tr>
+<tr class="odd">
+<td align="left">regimeSubdivision2</td>
+<td align="left">class</td>
+<td align="left">Van Wambeke base term (Part 2): the main regime term (often Temp* or Trop* forms like Tempustic/Tropustic or Tempudic/Tropudic). Combine with Part 1 to get the full label (e.g., ‘Wet Tempustic’).</td>
+</tr>
+</tbody>
+</table>
+<p>The final step is to inspect, mask, and export NSM outputs for use in subsequent analyses.<br />
+We mask the model outputs using the annual rainfall layer as a validity template, which helps remove spurious values in areas where the climate inputs are undefined (e.g., open water or NoData zones in the precipitation surface).</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="spatialanalysis.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a validity mask from the precipitation layer</span></span>
+<span id="cb176-2"><a href="spatialanalysis.html#cb176-2" aria-hidden="true" tabindex="-1"></a>mask_valid <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(newhall_results<span class="sc">$</span>annualRainfall)</span>
+<span id="cb176-3"><a href="spatialanalysis.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the mask to all NSM layers</span></span>
+<span id="cb176-4"><a href="spatialanalysis.html#cb176-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mask</span>(newhall_results, mask_valid)</span>
+<span id="cb176-5"><a href="spatialanalysis.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick inspection</span></span>
+<span id="cb176-6"><a href="spatialanalysis.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------</span></span>
+<span id="cb176-7"><a href="spatialanalysis.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(results)</span>
+<span id="cb176-8"><a href="spatialanalysis.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(results[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
+<span id="cb176-9"><a href="spatialanalysis.html#cb176-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-10"><a href="spatialanalysis.html#cb176-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to GeoTIFF</span></span>
+<span id="cb176-11"><a href="spatialanalysis.html#cb176-11" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(results, <span class="st">&quot;03_outputs/module1/newhall.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb176-12"><a href="spatialanalysis.html#cb176-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-13"><a href="spatialanalysis.html#cb176-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: compact integer exports</span></span>
+<span id="cb176-14"><a href="spatialanalysis.html#cb176-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    Multiply by 10 to preserve 1 decimal place, then store as integer.</span></span>
+<span id="cb176-15"><a href="spatialanalysis.html#cb176-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    (Useful to reduce file size when decimals are not critical.)</span></span>
+<span id="cb176-16"><a href="spatialanalysis.html#cb176-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-17"><a href="spatialanalysis.html#cb176-17" aria-hidden="true" tabindex="-1"></a>results_intx10 <span class="ot">&lt;-</span> <span class="fu">app</span>(results, <span class="cf">function</span>(x) <span class="fu">as.integer</span>(<span class="fu">round</span>(x <span class="sc">*</span> <span class="dv">10</span>)))</span>
+<span id="cb176-18"><a href="spatialanalysis.html#cb176-18" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(results_intx10, <span class="st">&quot;03_outputs/module1/newhall_intx10.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The raster stack <code>newhall_results</code> contains the NSM outputs, which can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.</p>
 
 </div>
 </div>
@@ -1585,6 +1705,9 @@ Figure 3.12: Reclassification of raster values with map algebra
 </div>
 <div id="ref-jenny1941" class="csl-entry">
 <strong>Jenny, H.</strong> 1941 a. <em>Factors of soil formation. A system of quantitative pedology</em>. New York, McGraw-Hill.
+</div>
+<div id="ref-NewhallBerdanier1996" class="csl-entry">
+<strong>Newhall, F. &amp; Berdanier, C.R.</strong> 1996. Calculation of soil moisture regimes from the climatic record, p. 13. No. 46. Natural Resources Conservation Service.
 </div>
 <div id="ref-prieto2023" class="csl-entry">
 <strong>Prieto-Castrillo, F., Rodríguez-Rastrero, M., Yunta, F., Borondo, F. &amp; Borondo, J.</strong> 2023. Disentangling jenny’s equation by machine learning. <em>Scientific Reports</em>, 13(1): 20916. <a href="https://doi.org/10.1038/s41598-023-44171-x">https://doi.org/10.1038/s41598-023-44171-x</a>

@@ -243,8 +243,8 @@ installing-and-loading-spatial-packages
 spatialVector
 importing-and-exporting-vector-data
 creating-spatial-vector-objects-from-csv-files.
-importing-shapefiles
 exporting-sf-objects
+importing-shapefiles
 setting-and-reprojecting-crs-for-vector-data
 inspecting-and-manipulating-sf-object
 geometry-operations

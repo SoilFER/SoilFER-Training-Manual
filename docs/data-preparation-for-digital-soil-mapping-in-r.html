@@ -579,15 +579,18 @@ div.csl-indent {
 <span id="cb90-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the folder to store the results of the exercise</span></span>
 <span id="cb90-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-16" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span><span class="st">&quot;03_outputs/module1/&quot;</span></span>
 <span id="cb90-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the output directory if not existing</span></span>
-<span id="cb90-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(output_dir)){</span>
-<span id="cb90-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new sub directory inside the main path</span></span>
-<span id="cb90-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(output_dir)</span>
-<span id="cb90-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-24" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data) <span class="co"># Examine the structure of the data</span></span>
-<span id="cb90-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-25" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(raw_data, <span class="dv">10</span>) <span class="co"># Show the first 10 rows</span></span>
-<span id="cb90-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-26" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(raw_data) <span class="co"># Summarize the data</span></span></code></pre></div>
+<span id="cb90-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the relative path to the folder with the downloaded covariates and spectral data</span></span>
+<span id="cb90-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-19" aria-hidden="true" tabindex="-1"></a>training_dir <span class="ot">&lt;-</span><span class="st">&quot;01_data/module1/training_data&quot;</span></span>
+<span id="cb90-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the output directory if not existing</span></span>
+<span id="cb90-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(output_dir)){</span>
+<span id="cb90-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new sub directory inside the main path</span></span>
+<span id="cb90-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(output_dir)</span>
+<span id="cb90-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data) <span class="co"># Examine the structure of the data</span></span>
+<span id="cb90-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-28" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(raw_data, <span class="dv">10</span>) <span class="co"># Show the first 10 rows</span></span>
+<span id="cb90-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb90-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(raw_data) <span class="co"># Summarize the data</span></span></code></pre></div>
 <p>This dataset contains four types of information: <em>site</em> data (location and depth), <em>laboratory</em> data (measured soil properties), and <em>spectral</em> data (mid-infrared, MIR, reflectance). In addition, each row includes identifiers for the sample (<code>smp_id</code>), and other keys related to the spectral analyses (<code>join_key</code>, <code>scan_path_name</code>, <code>file_name</code>). In many cases, soil datasets do not include spectral data. Understanding these components will help you organize the cleaning process systematically.</p>
 </div>
 <div id="data-components-and-organization" class="section level3 hasAnchor" number="2.2.2">
@@ -1148,8 +1151,12 @@ Calcium Carbonate Equivalent
 <span id="cb104-31"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-31" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb104-32"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-32" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb104-33"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb104-34"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove temporary objects</span></span>
-<span id="cb104-35"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-35" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(i,idx,max_val,min_val, prop,prop_desc,x)</span></code></pre></div>
+<span id="cb104-34"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-35"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-35" aria-hidden="true" tabindex="-1"></a><span class="co"># We can easily detect potential issues with lab data</span></span>
+<span id="cb104-36"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-36" aria-hidden="true" tabindex="-1"></a>out_of_bounds_issues</span>
+<span id="cb104-37"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-38"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove temporary objects</span></span>
+<span id="cb104-39"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb104-39" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(i,idx,max_val,min_val, prop,prop_desc,x)</span></code></pre></div>
 </div>
 <div id="reporting-out-of-bounds-for-properties-and-audit-trail" class="section level4 hasAnchor" number="2.6.2.3">
 <h4><span class="header-section-number">2.6.2.3</span> Reporting out-of-bounds for properties and audit trail<a href="data-preparation-for-digital-soil-mapping-in-r.html#reporting-out-of-bounds-for-properties-and-audit-trail" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1368,7 +1375,9 @@ Calcium Carbonate Equivalent
 <span id="cb112-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb112-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all profiles presenting duplicate horizons</span></span>
 <span id="cb112-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-29" aria-hidden="true" tabindex="-1"></a>duplicates <span class="ot">&lt;-</span> site_lab <span class="sc">%&gt;%</span></span>
-<span id="cb112-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ProfID <span class="sc">%in%</span> duplicates<span class="sc">$</span>ProfID)</span></code></pre></div>
+<span id="cb112-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ProfID <span class="sc">%in%</span> duplicates<span class="sc">$</span>ProfID)</span>
+<span id="cb112-31"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore duplicates</span></span>
+<span id="cb112-32"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb112-32" aria-hidden="true" tabindex="-1"></a>duplicates</span></code></pre></div>
 </div>
 <div id="resolving-profile-duplicates" class="section level3 hasAnchor" number="2.7.4">
 <h3><span class="header-section-number">2.7.4</span> Resolving Profile Duplicates<a href="data-preparation-for-digital-soil-mapping-in-r.html#resolving-profile-duplicates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1397,7 +1406,10 @@ Calcium Carbonate Equivalent
 <span id="cb113-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb113-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
 <span id="cb113-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb113-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">names</span>(site_lab))   <span class="co"># &lt;- restores original column order</span></span></code></pre></div>
+<span id="cb113-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">names</span>(site_lab))   <span class="co"># &lt;- restores original column order</span></span>
+<span id="cb113-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore site_lab</span></span>
+<span id="cb113-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb113-21" aria-hidden="true" tabindex="-1"></a>site_lab</span></code></pre></div>
 <div class="key-concept">
 <p><strong>Note that:</strong></p>
 <ul>
@@ -1515,7 +1527,10 @@ Calcium Carbonate Equivalent
 <span id="cb118-7"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_max</span>(n_hz, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb118-8"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lon, lat, ProfID) <span class="sc">%&gt;%</span></span>
 <span id="cb118-9"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(site_lab, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;lon&quot;</span>, <span class="st">&quot;lat&quot;</span>, <span class="st">&quot;ProfID&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb118-10"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<span id="cb118-10"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb118-11"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-12"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Explore horizons</span></span>
+<span id="cb118-13"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb118-13" aria-hidden="true" tabindex="-1"></a>horizons</span></code></pre></div>
 <div class="key-concept">
 <p><strong>DSM requires one profile per location</strong></p>
 <ul>
@@ -1551,14 +1566,19 @@ Calcium Carbonate Equivalent
 <span id="cb119-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-21" aria-hidden="true" tabindex="-1"></a>fml <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(</span>
 <span id="cb119-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;ProfID ~&quot;</span>, <span class="fu">paste</span>(properties_to_standardize, <span class="at">collapse =</span> <span class="st">&quot; + &quot;</span>))</span>
 <span id="cb119-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb119-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply slab() to interpolate to standard depths</span></span>
-<span id="cb119-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-26" aria-hidden="true" tabindex="-1"></a>KSSL_standardized <span class="ot">&lt;-</span> <span class="fu">slab</span>(</span>
-<span id="cb119-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-27" aria-hidden="true" tabindex="-1"></a>  horizons,</span>
-<span id="cb119-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-28" aria-hidden="true" tabindex="-1"></a>  fml,</span>
-<span id="cb119-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">slab.structure =</span> standard_depths,  <span class="co"># Target standard depths</span></span>
-<span id="cb119-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                        <span class="co"># Ignore NA values in calculations</span></span>
-<span id="cb119-31"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-31" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb119-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-24" aria-hidden="true" tabindex="-1"></a><span class="co"># View formula</span></span>
+<span id="cb119-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-25" aria-hidden="true" tabindex="-1"></a>fml</span>
+<span id="cb119-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply slab() to interpolate to standard depths</span></span>
+<span id="cb119-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-28" aria-hidden="true" tabindex="-1"></a>KSSL_standardized <span class="ot">&lt;-</span> <span class="fu">slab</span>(</span>
+<span id="cb119-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-29" aria-hidden="true" tabindex="-1"></a>  horizons,</span>
+<span id="cb119-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-30" aria-hidden="true" tabindex="-1"></a>  fml,</span>
+<span id="cb119-31"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">slab.structure =</span> standard_depths,  <span class="co"># Target standard depths</span></span>
+<span id="cb119-32"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                        <span class="co"># Ignore NA values in calculations</span></span>
+<span id="cb119-33"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb119-34"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-35"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is in Long Format</span></span>
+<span id="cb119-36"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb119-36" aria-hidden="true" tabindex="-1"></a>KSSL_standardized </span></code></pre></div>
 <p>The <code>slab()</code> function produces output with: - <code>p.q5</code>: 5th percentile (lower confidence bound) - <code>p.q50</code>: Median estimate (best estimate) - <code>p.q95</code>: 95th percentile (upper confidence bound)</p>
 <p>The 5th to 95th percentile range provides a 90% confidence interval, quantifying uncertainty in the standardized estimates.</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Confidence Interval of the estimations (CI column)</span></span>
@@ -1572,7 +1592,10 @@ Calcium Carbonate Equivalent
 <span id="cb120-9"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;-&quot;</span>,</span>
 <span id="cb120-10"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">round</span>(p.q95, <span class="dv">3</span>)                 <span class="co"># Upper bound (95th percentile)</span></span>
 <span id="cb120-11"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb120-12"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb120-12"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb120-13"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-14"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is still in Long Format, only added the CI column</span></span>
+<span id="cb120-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb120-15" aria-hidden="true" tabindex="-1"></a>KSSL_standardized</span></code></pre></div>
 </div>
 <div id="processing-standardized-data" class="section level3 hasAnchor" number="2.8.2">
 <h3><span class="header-section-number">2.8.2</span> Processing standardized data<a href="data-preparation-for-digital-soil-mapping-in-r.html#processing-standardized-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1586,23 +1609,29 @@ Calcium Carbonate Equivalent
 <span id="cb121-7"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_glue =</span> <span class="st">&quot;{variable}_{.value}&quot;</span> <span class="co"># Create names like &quot;SOC_p.q50&quot;, &quot;SOC_CI&quot;</span></span>
 <span id="cb121-8"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb121-9"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-10"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add geographic coordinates back</span></span>
-<span id="cb121-11"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-11" aria-hidden="true" tabindex="-1"></a>KSSL_standardized <span class="ot">&lt;-</span> KSSL_standardized <span class="sc">%&gt;%</span></span>
-<span id="cb121-12"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get coordinates from original data (one per profile)</span></span>
-<span id="cb121-13"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
-<span id="cb121-14"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-14" aria-hidden="true" tabindex="-1"></a>    site_lab <span class="sc">%&gt;%</span></span>
-<span id="cb121-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">distinct</span>(ProfID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  <span class="co"># One row per profile</span></span>
-<span id="cb121-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(ProfID, lon, lat),</span>
-<span id="cb121-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">&quot;ProfID&quot;</span></span>
-<span id="cb121-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb121-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Move coordinates to front for readability</span></span>
-<span id="cb121-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(lon, lat, <span class="at">.after =</span> ProfID)</span>
-<span id="cb121-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Since ProfIDs are now unique at each location, remove tailings ProfID values</span></span>
-<span id="cb121-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-23" aria-hidden="true" tabindex="-1"></a>KSSL_standardized<span class="sc">$</span>ProfID <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;_[12]$&quot;</span>, <span class="st">&quot;&quot;</span>, KSSL_standardized<span class="sc">$</span>ProfID)</span>
+<span id="cb121-10"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is now in Wide Format</span></span>
+<span id="cb121-11"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-11" aria-hidden="true" tabindex="-1"></a>KSSL_standardized</span>
+<span id="cb121-12"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-13"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add geographic coordinates back</span></span>
+<span id="cb121-14"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-14" aria-hidden="true" tabindex="-1"></a>KSSL_standardized <span class="ot">&lt;-</span> KSSL_standardized <span class="sc">%&gt;%</span></span>
+<span id="cb121-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get coordinates from original data (one per profile)</span></span>
+<span id="cb121-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb121-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-17" aria-hidden="true" tabindex="-1"></a>    site_lab <span class="sc">%&gt;%</span></span>
+<span id="cb121-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">distinct</span>(ProfID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  <span class="co"># One row per profile</span></span>
+<span id="cb121-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(ProfID, lon, lat),</span>
+<span id="cb121-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">&quot;ProfID&quot;</span></span>
+<span id="cb121-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb121-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Move coordinates to front for readability</span></span>
+<span id="cb121-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(lon, lat, <span class="at">.after =</span> ProfID)</span>
 <span id="cb121-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Result: One row per profile-depth, with standardized soil properties</span></span>
-<span id="cb121-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(KSSL_standardized)</span></code></pre></div>
+<span id="cb121-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Registers have now coordinates</span></span>
+<span id="cb121-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-26" aria-hidden="true" tabindex="-1"></a>KSSL_standardized</span>
+<span id="cb121-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Since ProfIDs are now unique at each location, remove tailings ProfID values</span></span>
+<span id="cb121-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-29" aria-hidden="true" tabindex="-1"></a>KSSL_standardized<span class="sc">$</span>ProfID <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;_[12]$&quot;</span>, <span class="st">&quot;&quot;</span>, KSSL_standardized<span class="sc">$</span>ProfID)</span>
+<span id="cb121-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-31"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Result: One row per profile-depth, with standardized soil properties</span></span>
+<span id="cb121-32"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb121-32" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(KSSL_standardized)</span></code></pre></div>
 <p>The final step is to save this dataset with standardized soil properties at two depths.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to CSV</span></span>
 <span id="cb122-2"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb122-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(output_dir,<span class="st">&quot;KSSL_standardized.csv&quot;</span>)</span>
@@ -1631,19 +1660,21 @@ Calcium Carbonate Equivalent
 <span id="cb123-13"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SOC =</span> SOC_p.q50,</span>
 <span id="cb123-14"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pH =</span> pH_p.q50</span>
 <span id="cb123-15"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb123-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to CSV</span></span>
-<span id="cb123-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-18" aria-hidden="true" tabindex="-1"></a>output_csv <span class="ot">&lt;-</span> <span class="fu">paste0</span>(output_dir,<span class="st">&quot;KSSL_DSM_0-30.csv&quot;</span>)</span>
-<span id="cb123-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-19" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(subset_data, output_csv, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb123-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Saved to:&quot;</span>, output_csv, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb123-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to Excel</span></span>
-<span id="cb123-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-23" aria-hidden="true" tabindex="-1"></a>output_xlsx <span class="ot">&lt;-</span> <span class="fu">paste0</span>(output_dir,<span class="st">&quot;KSSL_DSM_0-30.xlsx&quot;</span>)</span>
-<span id="cb123-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-24" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(subset_data, output_xlsx)</span>
-<span id="cb123-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Saved to:&quot;</span>, output_xlsx, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb123-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Subset data ready for Digital Soil Mapping</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb123-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;  Output file: KSSL_DSM_0-30</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<span id="cb123-16"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Only mean values for Clay, Silt, Sand, SOC and pH for layer 0-30</span></span>
+<span id="cb123-17"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-17" aria-hidden="true" tabindex="-1"></a>subset_data</span>
+<span id="cb123-18"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-19"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to CSV</span></span>
+<span id="cb123-20"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-20" aria-hidden="true" tabindex="-1"></a>output_csv <span class="ot">&lt;-</span> <span class="fu">paste0</span>(output_dir,<span class="st">&quot;KSSL_DSM_0-30.csv&quot;</span>)</span>
+<span id="cb123-21"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-21" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(subset_data, output_csv, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb123-22"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Saved to:&quot;</span>, output_csv, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb123-23"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-24"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to Excel</span></span>
+<span id="cb123-25"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-25" aria-hidden="true" tabindex="-1"></a>output_xlsx <span class="ot">&lt;-</span> <span class="fu">paste0</span>(output_dir,<span class="st">&quot;KSSL_DSM_0-30.xlsx&quot;</span>)</span>
+<span id="cb123-26"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-26" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(subset_data, output_xlsx)</span>
+<span id="cb123-27"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Saved to:&quot;</span>, output_xlsx, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb123-28"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-29"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-29" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot; Subset data ready for Digital Soil Mapping</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb123-30"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb123-30" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;  Output file: KSSL_DSM_0-30</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="spectroscopy" class="section level2 hasAnchor" number="2.9">
@@ -1653,8 +1684,8 @@ Calcium Carbonate Equivalent
 <p>In this dataset, each soil sample/horizon was measured four times by spectroscopy. Therefore, after merging spectra to the cleaned horizon dataset, the resulting dataset is expected to contain approximately 4× more rows than the resulting cleaned dataset (subject to missing spectra or incomplete records).</p>
 <p>Use a <code>left join</code> to preserve the cleaned horizon dataset as the reference. This ensures that every cleaned horizon remains in the merged dataset (even if spectra are missing), and no spectral-only records are introduced without corresponding cleaned horizon metadata. The join key for this operation is <code>HorID</code> in the cleaned dataset and <code>smp_id</code> in the spectral dataset. Then save the results as <code>-csv</code>and <code>.xlsx</code> files.</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and subset spectral data from the original dataset</span></span>
-<span id="cb124-2"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-2" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;../../01_data/module1/training_data/MIR_KANSAS_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>) </span>
-<span id="cb124-3"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-3" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> raw_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">22</span>)]</span>
+<span id="cb124-2"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-2" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(training_dir,<span class="st">&quot;MIR_KANSAS_data.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="dv">1</span>) </span>
+<span id="cb124-3"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-3" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> raw_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">22</span>)]</span>
 <span id="cb124-4"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb124-5"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge site_lab data to the original Spectral data by their common IDs</span></span>
 <span id="cb124-6"><a href="data-preparation-for-digital-soil-mapping-in-r.html#cb124-6" aria-hidden="true" tabindex="-1"></a>site_lab_spec <span class="ot">&lt;-</span> <span class="fu">left_join</span> (site_lab,spec, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;HorID&quot;</span><span class="ot">=</span><span class="st">&quot;smp_id&quot;</span>) )</span>

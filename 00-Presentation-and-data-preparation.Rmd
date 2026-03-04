@@ -1767,7 +1767,7 @@ The syntax is `new_name = old_name`.
 ```{r dplyr-rename, echo=TRUE, eval=FALSE}
 # Rename columns for clarity
 rename(soil_data,
-    site_id = site)
+    site_id = plot_id)
 
 # You can rename multiple columns at once
 soil_data %>%
