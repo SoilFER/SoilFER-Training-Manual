@@ -291,7 +291,7 @@ Verify that each subfolder under `01_data/` corresponds to a module in this manu
 
 1. Locate the downloaded Google Drive data on your computer.
 
-2. Copy the files in the `GEE_export` folder into:
+2. Copy the files in the `rasters` folder and the file `MIR_KANSAS_data.xlsx` into:
 
    01_data/module1/training_data
 

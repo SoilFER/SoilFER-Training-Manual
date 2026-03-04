@@ -1806,8 +1806,8 @@ The preparation of covariates is a time-consuming task. Therefore this tutorial 
 
 #### Download Covariate Rasters
 
-A dedicate Google Drive folder has been created to store large raster files used in this tutorial. Users can obtain the data directly from the following link:
-[https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21](https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21)
+A dedicate Google Drive folder has been created to store large raster files used in this tutorial. Users can obtain the data directly from the folder `rasters` following link:
+[https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu](https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu)
 
 Data in this folder includes:
 
@@ -1847,7 +1847,7 @@ The data can also be generated directly using Google Earth Engine (GEE). GEE pro
 
 The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform. 
 
-The data has been already processed for this training and is available to download from this [link](https://drive.google.com/drive/folders/1qaD6-psvOH-Mmt3RvFIHnhV7vnr26z21). Place these files into the `training_data` folder within `01_data/module1`and set the path for the covariate rasters and spectral data:
+The data has been already processed for this training and is available to download from this [link](https://drive.google.com/drive/folders/1EGrkhbMTi2qglemuD_onegAqLWZb3BbT). Place these files into the `training_data` folder within `01_data/module1`and set the path for the covariate rasters and spectral data:
 
 ```{r training_dir, echo=TRUE, eval=FALSE}
 # Define the relative path to the folder with the downloaded covariates
@@ -1855,43 +1855,6 @@ The data has been already processed for this training and is available to downlo
   training_dir <-"01_data/module1/training_data"
 ```
   
-The files `Cropland_Mask_KANSAS.tif` and `ESA_WorldCover_2021_KANSAS` be split into two adjacent tiff files ([`Cropland_Mask_KANSAS-0000000000-0000000000.tif` , `Cropland_Mask_KANSAS-0000000000-0000023296.tif`] and [`ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif`,`ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif` ]) that must be merged using this R script, and already presented in section `Spatial Operations on Rasters` as an example to merge rasters.
-
-```{r merge-gee-crops, echo=TRUE, eval=FALSE}
-library(terra)
-# Merge Crop mask rasters (two adjacent tiles)
-# Read input rasters
-r1 <- rast(paste0(training_dir,"Cropland_Mask_KANSAS-0000000000-0000000000.tif"))
-r2 <- rast(paste0(training_dir,"Cropland_Mask_KANSAS-0000000000-0000023296.tif"))
-# Mosaic into a single raster
-m <- mosaic(r1, r2, fun = "max")
-# Cast to integer to optimize file size
-# This ensures the output is written as integer values (1 and NA),
-m <- as.int(m)
-# Write output with compression to reduce file size
-writeRaster(m,"03_outputs/module1/Cropland_Mask_KANSAS.tif", overwrite = TRUE,
-  wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
-    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
-  )
-)
-
-# Merge ESA rasters (two adjacent tiles)
-# Read input rasters
-r1 <- rast(paste0(training_dir,"ESA_WorldCover_2021_KANSAS-0000000000-0000000000.tif"))
-r2 <- rast(paste0(training_dir,"ESA_WorldCover_2021_KANSAS-0000000000-0000065536.tif"))
-# Mosaic into a single raster
-m <- mosaic(r1, r2, fun = "max")
-# Cast to integer to optimize file size
-# This ensures the output is written as integer values
-m <- as.int(m)
-# Write output with compression to reduce file size
-writeRaster(m,"03_outputs/module1/ESA_WorldCover_2021_KANSAS.tif", overwrite = TRUE,
-  wopt = list(datatype = "INT1U",  # Byte (0–255); NA retained as NoData
-    gdal = c("COMPRESS=DEFLATE", "PREDICTOR=2", "ZLEVEL=9", "TILED=YES")
-  )
-)
-
-```
 
 #### Running the GEE Script
 
