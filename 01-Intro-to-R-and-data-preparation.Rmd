@@ -456,9 +456,7 @@ The values of the analytical thresholds for the KSSL dataset are shown in Table 
 
 ```{r thresholds-print, eval=TRUE, echo=FALSE}
 # Print table
-library(kableExtra)
-knitr::kable(property_thresholds, caption = "Analytical property thresholds") |>
-  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
+knitr::kable(property_thresholds, caption = "Analytical property thresholds")
 
 ```
 
@@ -1417,7 +1415,7 @@ Example: Converting the sf object `soil_sf` from Geographic WGS84 (EPSG:4326) to
 sf_3857 <- st_transform(soil_sf, 3857)
 
 # Preview of the projected object
-sf_3857
+head(sf_3857)
 ```
 
 
@@ -1430,8 +1428,6 @@ Because `sf` objects inherit from the `data.frame` class, you can explore an sf 
 str(soil_sf)
 # Summary of attributes + geometry
 summary(soil_sf)
-# Extract the geometry column
-st_geometry(soil_sf)
 # Check the geometry type. Use head to avoid long printing
 head(st_geometry_type(soil_sf))
 # Check the CRS:
@@ -1451,7 +1447,7 @@ alkaline <- soil_sf %>%
   select(ProfID, pH) %>%
   mutate(alkaline = TRUE)
 # Preview alkaline data
-alkaline
+head(alkaline)
 ```
 
 
@@ -2303,7 +2299,7 @@ names(Temp_Stack) <- c("tJan","tFeb","tMar","tApr","tMay","tJun","tJul","tAug","
 
 combined_stack <- c(Prec_Stack, Temp_Stack)
 writeRaster(combined_stack, "03_outputs/module1/climate_vars.tif", overwrite = TRUE)
-````
+```
 
 
 #### Prepare site descriptors that influence soil water balance and seasonality

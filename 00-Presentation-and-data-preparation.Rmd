@@ -47,7 +47,6 @@ The wet chemistry analyses include 14 soil properties commonly measured in soil 
 
 ```{r table-properties, echo=FALSE, warning=FALSE, message=FALSE}
 library(knitr)
-library(kableExtra)
 
 # Create soil properties table
 soil_props <- data.frame(
@@ -120,23 +119,14 @@ soil_props <- data.frame(
 )
 
 # Create formatted table
-kable(soil_props,
-      col.names = c("Category", "Property", "Variable Name", "Units", "Complete (%)", "Notes"),
-      caption = "Soil properties available in the KSSL Kansas dataset",
-      booktabs = TRUE,
-      align = c("l", "l", "l", "l", "r", "l")) %>%
-  kable_styling(
-    latex_options = c("striped", "hold_position", "scale_down"),
-    font_size = 9,
-    full_width = FALSE
-  ) %>%
-  column_spec(1, bold = TRUE, width = "2.5cm") %>%
-  column_spec(2, width = "3cm") %>%
-  column_spec(3, width = "3cm", monospace = TRUE) %>%
-  column_spec(4, width = "2cm") %>%
-  column_spec(5, width = "1.5cm") %>%
-  column_spec(6, width = "5cm") %>%
-  collapse_rows(columns = 1, valign = "top", latex_hline = "major")
+knitr::kable(
+  soil_props,
+  col.names = c("Category", "Property", "Variable Name", "Units",
+                "Complete (%)", "Notes"),
+  caption = "Soil properties available in the KSSL Kansas dataset",
+  booktabs = TRUE,
+  align = c("l", "l", "l", "l", "r", "l")
+)
 ```
 
 Some properties show strategic missing data patterns reflecting standard laboratory protocols where not all tests are performed on every sample. The varying completeness percentages reflect typical soil laboratory operations rather than random missing data:

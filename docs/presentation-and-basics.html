@@ -51,10 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -567,307 +563,146 @@ div.csl-indent {
 <p>The original dataset has been split into two data files:</p>
 <p><strong>1) Site and wet chemistry data (<code>KSSL_data.xlsx</code> &amp; <code>KSSL_data.csv</code>)</strong>: This file includes soil location, sample identifiers, and analytical soil properties (wet chemistry).</p>
 <p>The wet chemistry analyses include 14 soil properties commonly measured in soil survey operations. Table <a href="sampling-design-for-soil-surveys.html#tab:soil-properties">4.2</a> presents the complete list of available properties, their measurement units, and data completeness.</p>
-<table class="table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:table-properties">Table 0.1: </span><span id="tab:table-properties">Table 0.2: </span>Soil properties available in the KSSL Kansas dataset
-</caption>
+<table>
+<caption><span id="tab:table-properties">Table 0.1: </span>Soil properties available in the KSSL Kansas dataset</caption>
+<colgroup>
+<col width="15%" />
+<col width="18%" />
+<col width="18%" />
+<col width="7%" />
+<col width="8%" />
+<col width="31%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Category
-</th>
-<th style="text-align:left;">
-Property
-</th>
-<th style="text-align:left;">
-Variable Name
-</th>
-<th style="text-align:left;">
-Units
-</th>
-<th style="text-align:right;">
-Complete (%)
-</th>
-<th style="text-align:left;">
-Notes
-</th>
+<tr class="header">
+<th align="left">Category</th>
+<th align="left">Property</th>
+<th align="left">Variable Name</th>
+<th align="left">Units</th>
+<th align="right">Complete (%)</th>
+<th align="left">Notes</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-Carbon &amp; Organic Matter
-</td>
-<td style="text-align:left;width: 3cm; ">
-Soil Organic Carbon
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-SOC
-</td>
-<td style="text-align:left;width: 2cm; ">
-% (w/w)
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-100.0
-</td>
-<td style="text-align:left;width: 5cm; ">
-Organic carbon only; excludes carbonates
-</td>
+<tr class="odd">
+<td align="left">Carbon &amp; Organic Matter</td>
+<td align="left">Soil Organic Carbon</td>
+<td align="left">SOC</td>
+<td align="left">% (w/w)</td>
+<td align="right">100.0</td>
+<td align="left">Organic carbon only; excludes carbonates</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-</td>
-<td style="text-align:left;width: 3cm; ">
-Total Carbon
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Carbon_Total
-</td>
-<td style="text-align:left;width: 2cm; ">
-% (w/w)
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-99.5
-</td>
-<td style="text-align:left;width: 5cm; ">
-Includes both organic and inorganic C
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Total Carbon</td>
+<td align="left">Carbon_Total</td>
+<td align="left">% (w/w)</td>
+<td align="right">99.5</td>
+<td align="left">Includes both organic and inorganic C</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-Physical Properties
-</td>
-<td style="text-align:left;width: 3cm; ">
-Bulk Density (1/3 bar)
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Bulk.Density_1_3.BAR
-</td>
-<td style="text-align:left;width: 2cm; ">
-g/cm^3
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-60.8
-</td>
-<td style="text-align:left;width: 5cm; ">
-Measured at field capacity (1/3 bar tension)
-</td>
+<tr class="odd">
+<td align="left">Physical Properties</td>
+<td align="left">Bulk Density (1/3 bar)</td>
+<td align="left">Bulk.Density_1_3.BAR</td>
+<td align="left">g/cm^3</td>
+<td align="right">60.8</td>
+<td align="left">Measured at field capacity (1/3 bar tension)</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;vertical-align: top !important;" rowspan="2">
-</td>
-<td style="text-align:left;width: 3cm; ">
-Bulk Density (oven-dry)
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Bulk.Density_ovendry
-</td>
-<td style="text-align:left;width: 2cm; ">
-g/cm^3
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-60.8
-</td>
-<td style="text-align:left;width: 5cm; ">
-Measured after oven drying at 105 degrees C
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Bulk Density (oven-dry)</td>
+<td align="left">Bulk.Density_ovendry</td>
+<td align="left">g/cm^3</td>
+<td align="right">60.8</td>
+<td align="left">Measured after oven drying at 105 degrees C</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 3cm; ">
-pH
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-pH
-</td>
-<td style="text-align:left;width: 2cm; ">
-unitless
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-98.9
-</td>
-<td style="text-align:left;width: 5cm; ">
-Standard soil pH (1:1 soil:water ratio)
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">pH</td>
+<td align="left">pH</td>
+<td align="left">unitless</td>
+<td align="right">98.9</td>
+<td align="left">Standard soil pH (1:1 soil:water ratio)</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-Texture
-</td>
-<td style="text-align:left;width: 3cm; ">
-Clay
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Clay
-</td>
-<td style="text-align:left;width: 2cm; ">
-%
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-99.1
-</td>
-<td style="text-align:left;width: 5cm; ">
-Particles &lt; 0.002 mm
-</td>
+<tr class="even">
+<td align="left">Texture</td>
+<td align="left">Clay</td>
+<td align="left">Clay</td>
+<td align="left">%</td>
+<td align="right">99.1</td>
+<td align="left">Particles &lt; 0.002 mm</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;vertical-align: top !important;" rowspan="2">
-</td>
-<td style="text-align:left;width: 3cm; ">
-Silt
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Silt
-</td>
-<td style="text-align:left;width: 2cm; ">
-%
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-99.1
-</td>
-<td style="text-align:left;width: 5cm; ">
-Particles 0.002-0.05 mm
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Silt</td>
+<td align="left">Silt</td>
+<td align="left">%</td>
+<td align="right">99.1</td>
+<td align="left">Particles 0.002-0.05 mm</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 3cm; ">
-Sand
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Sand
-</td>
-<td style="text-align:left;width: 2cm; ">
-%
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-99.1
-</td>
-<td style="text-align:left;width: 5cm; ">
-Particles 0.05-2.0 mm (note: sum should = 100%)
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Sand</td>
+<td align="left">Sand</td>
+<td align="left">%</td>
+<td align="right">99.1</td>
+<td align="left">Particles 0.05-2.0 mm (note: sum should = 100%)</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-Chemical Properties
-</td>
-<td style="text-align:left;width: 3cm; ">
-Cation Exchange Capacity
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-CEC
-</td>
-<td style="text-align:left;width: 2cm; ">
-cmol(+)/kg
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-97.1
-</td>
-<td style="text-align:left;width: 5cm; ">
-Nutrient retention capacity; also as meq/100g
-</td>
+<tr class="odd">
+<td align="left">Chemical Properties</td>
+<td align="left">Cation Exchange Capacity</td>
+<td align="left">CEC</td>
+<td align="left">cmol(+)/kg</td>
+<td align="right">97.1</td>
+<td align="left">Nutrient retention capacity; also as meq/100g</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;vertical-align: top !important;" rowspan="2">
-</td>
-<td style="text-align:left;width: 3cm; ">
-Calcium Carbonate Equivalent
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Calcium_Carbonate_equivalent
-</td>
-<td style="text-align:left;width: 2cm; ">
-%
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-39.6
-</td>
-<td style="text-align:left;width: 5cm; ">
-Inorganic carbon; high in western Kansas
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Calcium Carbonate Equivalent</td>
+<td align="left">Calcium_Carbonate_equivalent</td>
+<td align="left">%</td>
+<td align="right">39.6</td>
+<td align="left">Inorganic carbon; high in western Kansas</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 3cm; ">
-Potassium (exchangeable)
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Potassium
-</td>
-<td style="text-align:left;width: 2cm; ">
-cmol(+)/kg
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-85.3
-</td>
-<td style="text-align:left;width: 5cm; ">
-Also reported as mg/kg in some databases
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Potassium (exchangeable)</td>
+<td align="left">Potassium</td>
+<td align="left">cmol(+)/kg</td>
+<td align="right">85.3</td>
+<td align="left">Also reported as mg/kg in some databases</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;">
-Nutrients
-</td>
-<td style="text-align:left;width: 3cm; ">
-Total Nitrogen
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Nitrogen_Total
-</td>
-<td style="text-align:left;width: 2cm; ">
-% (w/w)
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-93.9
-</td>
-<td style="text-align:left;width: 5cm; ">
-Used to calculate C:N ratio
-</td>
+<tr class="even">
+<td align="left">Nutrients</td>
+<td align="left">Total Nitrogen</td>
+<td align="left">Nitrogen_Total</td>
+<td align="left">% (w/w)</td>
+<td align="right">93.9</td>
+<td align="left">Used to calculate C:N ratio</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 2.5cm; font-weight: bold;vertical-align: top !important;" rowspan="3">
-</td>
-<td style="text-align:left;width: 3cm; ">
-Phosphorus (Mehlich-3)
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Phosphorus_Mehlich3
-</td>
-<td style="text-align:left;width: 2cm; ">
-mg/kg
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-38.1
-</td>
-<td style="text-align:left;width: 5cm; ">
-Multi-element extraction; common in US
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Phosphorus (Mehlich-3)</td>
+<td align="left">Phosphorus_Mehlich3</td>
+<td align="left">mg/kg</td>
+<td align="right">38.1</td>
+<td align="left">Multi-element extraction; common in US</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 3cm; ">
-Phosphorus (Olsen)
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-Phosphorus_Olsen
-</td>
-<td style="text-align:left;width: 2cm; ">
-mg/kg
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-13.6
-</td>
-<td style="text-align:left;width: 5cm; ">
-Bicarbonate extraction for alkaline soils
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Phosphorus (Olsen)</td>
+<td align="left">Phosphorus_Olsen</td>
+<td align="left">mg/kg</td>
+<td align="right">13.6</td>
+<td align="left">Bicarbonate extraction for alkaline soils</td>
 </tr>
-<tr>
-<td style="text-align:left;width: 3cm; ">
-</td>
-<td style="text-align:left;width: 3cm; font-family: monospace;">
-</td>
-<td style="text-align:left;width: 2cm; ">
-</td>
-<td style="text-align:right;width: 1.5cm; ">
-</td>
-<td style="text-align:left;width: 5cm; ">
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
