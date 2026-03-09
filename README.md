@@ -8,9 +8,7 @@
 
 # \*\*Guided R tutorials covering the soil information and data lifecycle, from soil sampling design and mapping to data-driven decision-making\*\*
 
-# 
 
-# ---
 
 
 
