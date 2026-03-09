@@ -15,10 +15,10 @@ bookdown::gitbook:
   citation_package: none
   css: style.css
   pandoc_args: ["--csl", "food-and-agriculture-organization-of-the-united-nations.csl"]
-  toc_depth: 2
+  toc_depth: 4
   config:
     toc:
-      collapse: section
+      collapse: subsection
 bookdown::word_document2:
   toc: true
   fig_caption: true

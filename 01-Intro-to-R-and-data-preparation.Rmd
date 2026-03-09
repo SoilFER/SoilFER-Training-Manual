@@ -30,7 +30,7 @@ load("SoilFER-Training-Resources/01_outputs/module1.RData")
 ```
 
 
-## Introduction {#introduction-1}
+## Introduction
 
 Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps. 
 
@@ -50,7 +50,7 @@ Raw soil laboratory data commonly contains the following types of quality issues
 
 The KSSL dataset used throughout this section provides real-world examples of these issues, allowing you to practice identifying and correcting them systematically using reproducible R workflows. 
 
-:::warning-box
+::: {.warning-box}
 **Considerations**
 
   - Every soil dataset is unique and may have specific data-quality issues.
@@ -61,11 +61,14 @@ The KSSL dataset used throughout this section provides real-world examples of th
 
 :::
 
-## Loading and exploring raw soil data {#loading-data}
+## Preparing Soil Observations 
+
+
+### Loading and exploring raw soil data
 
 Before performing any data cleaning or validation, you must first understand the structure and content of your raw data. This exploratory phase reveals data types, identifies potential problems, and informs your validation strategy.
 
-### Basic data loading and structure
+#### Basic data loading and structure
 
 ```{r load-data, eval=FALSE}
 # Load libraries
@@ -74,7 +77,6 @@ library(readxl)           # Read Excel files
 library(writexl)          # Write Excel files
 library(knitr)            # For formatted tables
 library(sf)               # Manipulation of Vector Data
-library(terra)            # Manipulation of Raster Data
 
 # Set working directory to the training resources folder
 setwd( "../SoilFER-Training-Resources")
@@ -103,7 +105,7 @@ summary(raw_data) # Summarize the data
 This dataset contains four types of information: *site* data (location and depth), *laboratory* data (measured soil properties), and *spectral* data (mid-infrared, MIR, reflectance). In addition, each row includes identifiers for the sample (`smp_id`), and other keys related to the spectral analyses (`join_key`, `scan_path_name`, `file_name`). In many cases, soil datasets do not include spectral data. Understanding these components will help you organize the cleaning process systematically.
 
 
-### Data components and organization
+#### Data components and organization
 
 Typically, a raw soil dataset includes several types of information:
 
@@ -122,13 +124,13 @@ Typically, a raw soil dataset includes several types of information:
   - Used for predicting soil properties through spectroscopy
 
 
-## Preparing site data for analysis {#site-data-preparation}
+### Preparing site data for analysis
 
 Data cleaning involves extracting relevant information from raw data, standardizing column names, assigning unique identifiers, and validating data quality. To track changes through this process, we add a unique row identifier to the raw dataset before making any modifications.
 
 We operationally define a **site** as the set of horizons or layers that share the same geographic location (i.e., identical coordinates at the chosen precision). The site has information on location (lat and long coordinates), depth (upper and lower depth boundaries) and metadata-related information (horizon ID).
 
-### Adding a unique row identifier
+#### Adding a unique row identifier
 
 During data cleaning, some records may be removed, merged, or modified. Good practice is to add a unique sequential `rowID` to the raw (unchanged) dataset so you can track each original record throughout the entire workflow. This identifier allows you to trace any result back to its source data and understand which raw records were retained or excluded.
 
@@ -142,7 +144,7 @@ raw_data <- raw_data %>%
 The `rowID` column preserves the link between processed data and raw data, enabling full transparency and reproducibility in your cleaning workflow.
 
 
-### Extracting and standardizing column names for sites
+#### Extracting and standardizing column names for sites
 
 Raw soil data often uses inconsistent column naming conventions that vary between data sources, laboratories, and surveys. Standardizing these names prevents errors and makes your code more readable and reusable across different projects
 
@@ -173,7 +175,7 @@ site <- site %>%
 ```
 
 
-### Creating unique profile identifiers
+#### Creating unique profile identifiers
 
 Each unique geographic location represents a single soil profile. A profile may contain multiple horizons or layers sampled at different depths. We create a unique identifier `ProfID` for each location based on coordinates so that all horizons from the same location can be grouped together in the same profile.
 
@@ -195,7 +197,7 @@ site <- site %>%
 
 After this step, horizons from the same location share a common `ProfID`, while those from different locations receive distinct `ProfID` values. When unique profile IDs are not available in the raw data, this method reconstructs profile identity using the geographic position of the samples.
 
-### Remove duplicate site records
+#### Remove duplicate site records
 
 Multiple site records may correspond to identical observations (i.e., the same location and depth). In this dataset, spectroscopic measurements were performed four times per sample, resulting in duplicate entries. Remove duplicates and retain a single record to prevent redundancy and double counting in subsequent analyses.
 
@@ -206,7 +208,7 @@ site <- site %>%
 ```
 
 
-::: key-concept
+::: {.key-concept}
 **Standard column naming convention** ensures consistency across all your code and projects:
 
 - `ProfID`: Profile identifier
@@ -217,7 +219,9 @@ site <- site %>%
 
 - `top`,`bottom`: Depth boundaries in centimeters
 
-:::warning-box
+:::
+
+::: {.warning-box}
 
 **Adjust `ProfID` for locations with multiple profile descriptions** 
 
@@ -229,10 +233,7 @@ site <- site %>%
 
 :::
 
-:::
-
-
-## Coordinate validation and correction {#coordinate-validation}
+### Coordinate validation and correction
 
 Spatial coordinates form the basis of all spatial analyses. Invalid or inaccurate coordinates result in erroneous maps and unreliable spatial predictions. Systematic validation is therefore essential to identify and correct coordinate errors before they propagate through the analytical workflow.
 
@@ -244,7 +245,7 @@ Coordinates can be expressed in different coordinate reference systems (CRS):
 Any dataset should explicitly document which CRS is used. For Digital Soil Mapping workflows, it is recommended to standardize all coordinates to WGS84 (EPSG:4326) geographic coordinates (longitude and latitude) to ensure interoperability and consistency across projects.
 
 
-### Check 1: Missing coordinates
+#### Check 1: Missing coordinates
 
 Records lacking valid spatial coordinates cannot be georeferenced and must be excluded from spatial analyses. Check for missing or null values in both coordinate dimensions (e.g., latitude/longitude or projected X/Y) before proceeding.
 
@@ -256,7 +257,7 @@ Records lacking valid spatial coordinates cannot be georeferenced and must be ex
 ```
 
 
-### Check 2: Valid coordinate ranges
+#### Check 2: Valid coordinate ranges
 
 For geographic coordinates (longitude and latitude expressed in decimal degrees), values must fall within the following absolute ranges:
 
@@ -280,7 +281,7 @@ site <- site %>%
 If projected coordinates are used, valid ranges depend on the specific projection and the spatial extent of the study area. In such cases, define the expected bounds for the coordinate reference system (CRS) before performing range checks.
 
  
-:::warning-box
+::: {.warning-box}
 
 **Coordinate system considerations**: 
 
@@ -294,11 +295,11 @@ If projected coordinates are used, valid ranges depend on the specific projectio
 
 
 
-## Soil depth validation and correction {#depth-validation}
+### Soil depth validation and correction
 
 Depth intervals define the soil layer represented by each observation. Missing or inconsistent depth information prevents harmonization across profiles and can lead to incorrect interpretation of depth-dependent patterns and model outputs. This section describes a set of quality-control checks to validate and, where possible, correct depth interval data. The checks are applied sequentially, removing structurally invalid records before attempting logical corrections.
 
-::: key-concept
+::: {.key-concept}
 **Understanding depth conventions**
 
 Soil horizons (or layers) are represented as depth intervals with explicit upper and lower boundaries, typically recorded as top depth and bottom depth (e.g., “0–15 cm” indicates measurements from 0 to 15 cm below the soil surface). The following rules apply:
@@ -313,7 +314,7 @@ Soil horizons (or layers) are represented as depth intervals with explicit upper
 
 :::
 
-### Check 1: Missing depth boundaries
+#### Check 1: Missing depth boundaries
 
 Records with missing top or bottom depths cannot be assigned to a valid interval and should be excluded unless depth information can be recovered from the source.
 
@@ -324,7 +325,7 @@ site <- site %>%
 ```
 
 
-### Check 2: Negative depth values
+#### Check 2: Negative depth values
 
 Depth values must be non-negative. Negative depths indicate invalid input and should be removed unless the error can be corrected using metadata or original field notes.
 
@@ -335,7 +336,7 @@ Depth values must be non-negative. Negative depths indicate invalid input and sh
 ```
 
 
-### Check 3: Zero-thickness intervals
+#### Check 3: Zero-thickness intervals
 
 Horizons with top = bottom have zero thickness and do not represent a measurable soil layer. These records should be excluded from analysis unless the error can be corrected.
 
@@ -346,7 +347,7 @@ Horizons with top = bottom have zero thickness and do not represent a measurable
 ```
 
 
-### Check 4: Invalid depth logic
+#### Check 4: Invalid depth logic
 
 For a valid depth interval, bottom > top must hold. Violations typically indicate data entry errors (e.g., swapped boundaries or incorrect units).
 
@@ -357,7 +358,7 @@ site <- site %>%
 ```
 
 
-### Check 5: Profiles without a surface horizon (top > 0)
+#### Check 5: Profiles without a surface horizon (top > 0)
 
 Each profile should represent the complete soil column starting at surface. This is essential for depth harmonization in a later step for Digital Soil Mapping.
 
@@ -370,7 +371,7 @@ site <- site %>%
 
 ```
 
-:::warning-box
+::: {.warning-box}
 
 **Further checks for depth integrity required**
 
@@ -384,7 +385,7 @@ This staged approach prevents loss of valid measurements and ensures consistent 
 :::
 
 
-## Preparing lab data: harmonization and validation {#lab-validation}
+### Preparing lab data: harmonization and validation
 
 Laboratory analyses provide the soil property measurements used as soil property inputs for Digital Soil Mapping. Laboratory data must be quality-controlled to ensure completeness, plausible value ranges, and internal consistency (e.g., particle-size fractions summing to ~100%). This section describes standard extraction, harmonization, and validation checks.
 
@@ -395,7 +396,7 @@ Laboratory analyses provide the soil property measurements used as inputs for Di
 (iii) plausibility of measured values based on feasible analytical thresholds, and 
 (iv) traceable handling of potential errors (flagging, correction, or exclusion).
 
-### Prepare and standardize laboratory columns
+#### Prepare and standardize laboratory columns
 
 In this step, you will extract horizon-level laboratory results from the raw dataset, convert relevant fields to numeric, and retain only the records associated with the profiles preserved in the cleaned site dataset. Finally, you will merge the laboratory data back into the site dataset using `rowID` as the unique record identifier.
 
@@ -436,12 +437,12 @@ After preparing the laboratory dataset, the analytical results are validated thr
  - Check 3: Correction of out-of-bounds laboratory values — apply a proper correction strategy (targeted fixes where justified, or replacing suspect values with `NA`).
 
 
-### Check 1: Check each property against feasible analytical thresholds
+#### Check 1: Check each property against feasible analytical thresholds
 
 Soil properties have physically and analytically plausible bounds. Values outside these bounds typically indicate measurement issues, unit inconsistencies, or transcription/data entry errors. Thresholds should be defined a priori and documented (e.g., based on existing soil datasets or peer-reviewed literature), then adjusted as needed for the target region and soil types.
 
 
-#### Load property thresholds
+##### Load property thresholds
 
 Thresholds are stored in a CSV file (`property_thresholds.csv`) to ensure transparency and reproducibility.
 
@@ -460,7 +461,7 @@ knitr::kable(property_thresholds, caption = "Analytical property thresholds")
 
 ```
 
-#### Identify out-of-bounds values
+##### Identify out-of-bounds values
 
 Each soil analytical property is evaluated against its min/max thresholds. Out-of-bounds values are compiled into a structured issue log (`out_of_bounds_issues`) to support inspection, reporting, and correction.
 
@@ -508,7 +509,7 @@ rm(i,idx,max_val,min_val, prop,prop_desc,x)
 
 ```
 
-#### Reporting out-of-bounds for properties and audit trail
+##### Reporting out-of-bounds for properties and audit trail
 
 The following code generates an out-of-bounds summary by property, identify records with issues (often indicative of systematic errors), and export a full QC report for review and documentation. All issues identified in the dataset should be reviewed and, where necessary, corrected in the original input file. The `soil_property_validation_report.xlsx` file created serves as a guide to support and speed up this process.
 
@@ -574,7 +575,7 @@ if (length(out_of_bounds_issues) > 0) {
 
 
 
-### Check 2: Texture validation
+#### Check 2: Texture validation
 
 Particle-size fractions should sum to 100%. This check is used to flag potential inconsistencies (rounding, unit conversion issues, or data errors). The following code just flag  inconsistencies in Particle-size fractions. Values failing this check should be reviewed rather than automatically removed. 
 
@@ -600,7 +601,7 @@ if (nrow(texture_problems) > 0) {
 ```
 
 
-### Check 3: Correction of out-of-bounds laboratory values
+#### Check 3: Correction of out-of-bounds laboratory values
 
 Out-of-bounds values identified during validation should be handled systematically and transparently. Corrections must follow clearly defined rules to avoid introducing subjective bias or undocumented changes.
 
@@ -610,14 +611,14 @@ Two complementary approaches are recommended:
 
 **Option 2: replacement with `NA`**, when the true value cannot be reliably reconstructed. This preserves the observation while preventing propagation of erroneous measurements into subsequent analyses.
 
-:::warning-box
+::: {.warning-box}
 - **Option 1** requires a clear understanding of the relevant properties and thresholds to correctly identify errors, which can then be fixed with dedicated code.
 - **Option 2** is a more drastic approach, as it will automatically replace all potential mistakes with `NA`. This can result in a critical decrease in records for some measured properties.
 - Choosing between these options is a decision for the data manager. Handle both with care.
 :::
 
 
-#### Option 1: Targeted corrections (when error mechanism is known)
+##### Option 1: Targeted corrections (when error mechanism is known)
 
 Apply deterministic corrections only when the source of error is clearly understood and scientifically justified.
 
@@ -654,7 +655,7 @@ rm(idx, n_idx)
 ```
 
 
-#### Option 2: Replace out-of-bounds values with `NA`
+##### Option 2: Replace out-of-bounds values with `NA`
 
 When values cannot be corrected with confidence, replace only the problematic measurements with `NA` while retaining the rest of the record.
 
@@ -674,7 +675,7 @@ for (property in names(out_of_bounds_issues)) {
 
 
 
-## Resolving duplicated data in soil profiles {#duplicate-detection}
+### Resolving duplicated data in soil profiles
 
 Duplicate or repeated soil profile descriptions may occur when the same location is sampled or analysed multiple times. These situations can produce multiple horizon sequences under the same `ProfID`, resulting in inconsistent depth intervals, overlapping layers, or conflicting analytical values.
 
@@ -690,7 +691,7 @@ The objective of this section is to:
 
  -Retain only complete and internally consistent profiles
 
-### Why duplicates occur
+#### Why duplicates occur
 
 Duplicates typically arise from:
 
@@ -711,7 +712,7 @@ These situations may produce:
  - Ambiguity about which sequence should be used for modelling
  
 
-### Types of duplicate situations
+#### Types of duplicate situations
 
 It is important to distinguish between two fundamentally different cases:
  
@@ -736,7 +737,7 @@ It is important to distinguish between two fundamentally different cases:
   - *Action*: select one representative sequence
 
 
-### Check 1: Detect potential horizon duplicates within profiles
+#### Check 1: Detect potential horizon duplicates within profiles
 
 Profile identifiers `ProfID` have been previously constructed by grouping horizons with identical coordinates into the same profile. However, if multiple profile descriptions have been created at the same location, the `ProfID` will be the same. The objective now is to flag `ProfID` values that appear to contain more than one distinct depth sequence (i.e., multiple sets of horizon boundaries).
 
@@ -776,7 +777,7 @@ duplicates
 
 ```
 
-### Resolving Profile Duplicates
+#### Resolving Profile Duplicates
 
 Duplicate handling should follow the order below:
 
@@ -786,7 +787,7 @@ Duplicate handling should follow the order below:
 
 This order prevents premature data loss and preserves maximum analytical information.
 
-#### Check 1: Average duplicated horizons (same depth intervals)
+##### Check 1: Average duplicated horizons (same depth intervals)
 
 When multiple records share identical `ProfID`, `top`, and `bottom`, they represent repeated measurements of the same soil layer. These should be consolidated into a single horizon. Numeric properties are averaged and common identifiers are retained from the first occurrence. 
 
@@ -815,7 +816,7 @@ site_lab <- site_lab %>%
 site_lab
 ```
 
-::: key-concept
+::: {.key-concept}
 **Note that:**
 
  - Replicates increase measurement reliability.
@@ -825,7 +826,7 @@ site_lab
 :::
 
 
-#### Check 2: Resolve ProfID for multiple depth sequences
+##### Check 2: Resolve ProfID for multiple depth sequences
 
 Multiple independent profile descriptions likely exist in a single location. This data is valid and must remain in the dataset, but it has to be differentiated by its `ProfID`.
 
@@ -888,13 +889,13 @@ rm(corrected_profiles,chain_horizons)
 ```
 
 
-### Remove profiles not starting at the surface
+#### Remove profiles not starting at the surface
 
 Profiles whose shallowest horizon does not begin at 0 cm represent mistakes or incomplete descriptions and may bias depth harmonization and DSM modelling.
 
 Only profiles whose first horizon begins at the surface (top = 0 cm) should be retained for analyses requiring complete vertical representation.
 
-#### Check 1: Remove profiles with incomplete surface coverage
+##### Check 1: Remove profiles with incomplete surface coverage
 
 As a result of the previous steps, some horizons may remain without forming a continuous sequence within their profile. The objective here is to retain only those profiles whose shallowest recorded depth starts at 0 cm.
 
@@ -908,7 +909,7 @@ site_lab <- site_lab %>%
 ```
 
 
-### Result
+#### Result
 
 After this procedure, we obtain a clean horizon-level dataset containing validated site, analytical, and metadata information. The dataset contains:
 
@@ -932,7 +933,7 @@ write_xlsx(site_lab, output)
 ```
 
 
-## Harmonizing data for DSM {#harmonization}
+### Harmonizing data for DSM
 
 As shown in the previous step, the database produced can still present several alternative profiles coexisting at the same location. These profiles present different top-depth valid horizon sequences that must be retained in the soil database. When multiple valid profiles exist at the same coordinates, DSM requires a single profile description at each single location. There are different profile selection criteria based in the data available and/or modeling purpose. Select the option using one of these criteria: :   
 
@@ -961,7 +962,7 @@ horizons
 
 ```
 
-::: key-concept
+::: {.key-concept}
 **DSM requires one profile per location**
 
 - If no `Date`/`campaign` metadata exists → keep the most complete profile per location.
@@ -970,7 +971,7 @@ horizons
 :::
           
 
-### Depth standardization
+#### Depth standardization
 
 Finally, DSM requires analytical data calculated at standardized depth intervals (the same depths for every profile). The standard depths typically used are 0–30 cm (topsoil), 30–60 cm (subsoil), and 60–100 cm (deep subsoil). These represent meaningful soil zones in terms of soil fertility, root penetration, weathering, and soil formation. 
 
@@ -1041,7 +1042,7 @@ KSSL_standardized
 ```
 
 
-### Processing standardized data
+#### Processing standardized data
 
 The output of the `slab()` function is a data frame in long format, where soil properties are stored as rows and the estimated percentile values are stored as columns. Each record is identified by `ProfID`, `top`, `and bottom`. For most downstream analyses, the data must be reshaped to wide format (i.e., one row per depth interval, with properties as columns).
 
@@ -1095,7 +1096,7 @@ write_xlsx(KSSL_standardized, output)
 
 ```
 
-### Exporting standardized data for Digital Soil Mapping
+#### Exporting standardized data for Digital Soil Mapping
 
 At this stage, the dataset is standardized to one row per profile and standard depth interval. Soil properties at these depths are derived from the original horizon measurements using depth-weighted averaging, and the output includes the percentiles of the weighted estimates (e.g., p05, p50, p95).
 
@@ -1137,7 +1138,7 @@ cat("  Output file: KSSL_DSM_0-30\n")
 
 
 
-## Preparing data for spectroscopy analyses {#spectroscopy}
+### Preparing data for spectroscopy analyses
 
 The original KSSL dataset includes visible–near infrared (vis–NIR) spectral observations associated with each soil horizon. To support spectroscopy-based estimation of soil properties, spectral observations must be integrated with the cleaned horizon dataset (`site_lab`) that contains unique and consistent soil profiles (`ProfID`), validated and harmonized horizon depths (`top`, `bottom`), corrected laboratory measurements.
 
@@ -1170,7 +1171,7 @@ rm(spec)
 
 
 
-:::warning-box
+::: {.warning-box}
  **\ - Best practices and recommendations**
 
  - **Trust but verify**: Never assume data is correct. Always validate systematically.
@@ -1200,7 +1201,7 @@ rm(spec)
 
 :::
 
-## Summary of exported files {#exports}
+### Summary of exported files
 
 | File                           | Description                                                                 |
 |--------------------------------|-----------------------------------------------------------------------------|
@@ -1211,12 +1212,7 @@ rm(spec)
 | soil_property_validation_report| Detailed report of analytical properties outside valid ranges               |
 
 
-
-## References {.unnumbered}
-
-
-
-# Spatial Analysis in R  {#spatialanalysis}
+## Spatial Analysis in R
 
 Spatial data has become an essential component of modern soil science.\
 All steps of Digital Soil Mapping involve to work with spatial datasets.
@@ -1229,7 +1225,7 @@ This session introduces the fundamental concepts and tools needed to process, an
 The tutorial includes concepts as **vector** and **raster** spatial data **coordinate reference systems (CRS)**, spatial data operators for vector (buffer, intersection, union, spatial join) and raster (crop, mask, resample, raster algebra) data and translate raster informatio into vector structures such as soil sampling locations.
 
 
-## Spatial Data Concepts  {#spatialconcepts}
+### Spatial Data Concepts
 
 Spatial data refers to any information that includes a location on Earth, usually represented by coordinates. Unlike regular tabular data, spatial data allows us to study how patterns, processes, and relationships change across space.
 
@@ -1244,7 +1240,7 @@ These relationships have traditionally been used by soil scientists to infer the
 This deterministic perspective—linking environmental variation to soil variation—forms the basis of Digital Soil Mapping. In practice, soil properties measured at point locations (vector data) are related to environmental characteristics represented as raster covariates, and these relationships are used to fit statistical or machine learning models which can predict soil properties continuously across space using the available raster-based environmental information.
 
 
-### Spatial Data Types: Vector vs Raster Data  {#spatialtypes}
+### Spatial Data Types: Vector vs Raster Data
 
 Spatial data is commonly stored in two major formats: vector and raster (Fig. \@ref(fig:VectRast)) .
 
@@ -1287,7 +1283,7 @@ Examples of raster layers include:
 Both data structures are complementary, and both are required for the creation of digital soil maps.
 
 
-###  Coordinate Reference Systems (CRS) and Projections  {#spatialCRS}
+###  Coordinate Reference Systems (CRS) and Projections
 
 A Coordinate Reference System (CRS) defines how spatial coordinates relate to positions on Earth. Because Earth is curved, and maps are flat, different CRS systems use different mathematical models to translate the curved space to a planar surface.
 
@@ -1311,9 +1307,9 @@ To overcome these limitations, Projected Coordinate Systems (PCS) are designed t
 To find and compare appropriate CRS options for your data, you can explore available CRS definitions using [https://epsg.io](https://epsg.io/ "epsg.io: Coordinate Systems Worldwide").
 
 
-## Spatial Packages in R: `{sf}` and `{terra}`  {#spatialPackages}
+### Spatial Packages in R: `{sf}` and `{terra}`
 
-### Installing and Loading Spatial Packages
+#### Installing and Loading Spatial Packages
 
 `{sf}` and `{terra}` packages are available at CRAN and can be installed using the known `install.packages()` function.
 
@@ -1330,7 +1326,7 @@ Once the packages are installed, you must load them in your R session:
 ```
 
 
-## Working with Vector Data using `{sf}`  {#spatialVector}
+#### Working with Vector Data using `{sf}`
 
 The `{sf}` package implements the *Simple Features* standard for spatial vector data in R. A *simple feature* is a geometric object (point, line, polygon, etc.) linked to one or more **attributes** (e.g., soil type, pH, land use). 
 
@@ -1341,13 +1337,13 @@ In practice, an *`sf` object* is essentially a data frame that includes a geomet
 3.  **CRS** -- information about the coordinate system used (e.g., WGS84, UTM), as part of the object.\
 
 
-### Importing and Exporting Vector Data
+##### Importing and Exporting Vector Data
 
 Vector data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
 Vector data is typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files, but can also be stored in plain files with associated coordinates such as `CSV` files.
 
 
-#### Creating spatial vector objects from `CSV` files.
+##### Creating spatial vector objects from `CSV` files.
 
 Spatial point layers in R can be created directly from regular data frames using the `{sf}` package.
 The function `st_as_sf()` converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).
@@ -1370,7 +1366,7 @@ st_crs(soil_sf)
 The Coordinate Reference System (CRS) has been provided as an argument within the  `st_as_sf()` function. Users can visualize CRS of sf objects with `st_crs()`. the sf object can be transformed to shapefile with `st_write`.
 
 
-#### Exporting sf objects
+##### Exporting sf objects
 Simple features objects can be saved to files or databases using the `st_write()` function.
 
 ```{r sf-to-file, echo=TRUE, eval=FALSE}
@@ -1379,7 +1375,7 @@ st_write(soil_sf, paste0(output_dir,"soil_profiles.shp"), delete_layer = TRUE) #
 
 ```
 
-#### Importing Shapefiles
+##### Importing Shapefiles
 
 Shapefiles can be directly imported into R using the `st_read()` function. You can also import most other vector formats with the same command, because `{sf}` automatically detects the file type.
 
@@ -1403,7 +1399,7 @@ plot(soil_sf["pH"], pch = 16, cex = 0.6, key.pos = 1)  # key.pos controls legend
 ```
 
 
-### Setting and Reprojecting CRS for vector data
+#### Setting and Reprojecting CRS for vector data
 
 It is good practice to always confirm the Coordinate Reference System (CRS) of your spatial data. If the CRS is missing or incorrectly specified, spatial operations such as buffering, distance, and overlay may fail or return misleading results.
 
@@ -1419,7 +1415,7 @@ head(sf_3857)
 ```
 
 
-### Inspecting and manipulating `{sf}` Object
+#### Inspecting and manipulating `{sf}` Object
 
 Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`,`str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
 
@@ -1451,7 +1447,7 @@ head(alkaline)
 ```
 
 
-### Geometry Operations
+#### Geometry Operations
 
 Geometry operations help you **create new geometries** (e.g., buffers) and **combine layers** (e.g., clip points to a boundary). In soil science, they are often used to define sampling influence areas, restrict data to an administrative unit, or summarize results by region.
 
@@ -1461,7 +1457,7 @@ Before any geometry operation, make sure both layers are in the same CRS.
 :::
 
 
-#### Buffering Plots (Influence Area)
+##### Buffering Plots (Influence Area)
   
 Buffers are regions created at a fixed distance around geometries (points, lines, or polygons).\
 In soil applications, buffers can represent:
@@ -1539,7 +1535,7 @@ knitr::include_graphics("SoilFER-Training-Resources/01_outputs/buffer_samples.pn
 ```
 
 
-#### Clip Soil Data to Defined Boundaries
+##### Clip Soil Data to Defined Boundaries
 
 In soil data management workflows, it is common to restrict analyses to a defined study area (e.g., a county, district, watershed, or project boundary). This helps ensure that summaries, maps, and models are computed only for the relevant spatial extent.
 
@@ -1679,7 +1675,7 @@ knitr::include_graphics("SoilFER-Training-Resources/01_outputs/dissolve_before_a
 ```
 
 
-#### Spatial Relationships and Joins
+##### Spatial Relationships and Joins
 
 Spatial relationships help answer questions about how spatial features relate to one another (e.g., whether a point falls inside a polygon, or how far two features are apart).
 
@@ -1707,7 +1703,7 @@ head(alkaline_with_admin)
 ```
 
 
-### Visualizing `{sf}` Objects
+#### Visualizing `{sf}` Objects
   
 As shown previously, `{sf}` objects can be quickly visualized using the base R `plot()` function. This is convenient for fast checks (e.g., verifying geometry and extent), but it offers limited control over plot appearance and legend design.
 
@@ -1761,22 +1757,7 @@ The possibilities for visualization with `{ggplot2}` are extensive. For more exa
 
 ------------------------------------------------------------------------
 
-## Working with Raster Data using `{terra}`  {#spatialRaster}
-
-The `{terra}` package is the main framework for working with raster spatial data in R. A raster represents space as a regular grid of cells, where each cell stores a value (e.g., elevation, land cover class, rainfall, SOC prediction). Raster layers are widely used in Digital Soil Mapping both as covariates (environmental predictors) and as model outputs (predicted soil properties).
-
-In practice, a `terra::SpatRaster` object combines:
-
- * Cell values: the data stored in the grid cells (continuous values like temperature, or categorical values like land cover).
-
- * Spatial geometry: the grid definition given by the extent (spatial coverage) and resolution (cell size).
-
- * CRS: the coordinate reference system used (e.g., WGS84, UTM).
-
- * Layers: a raster can have one layer (e.g., DEM, SOC) or multiple layers (a covariate stack).
- 
- 
-### Preparing Covariates for Sampling Design and Digital Soil Mapping
+## Preparing Raster Covariates
 
 The workflows presented in this tutorial use environmental covariates as proxies to describe the spatial variation of soil properties. These covariates support two key steps:
 
@@ -1883,8 +1864,21 @@ Large exports, particularly **TerraClimate** time series and **Sentinel-2** laye
 
 Once all exports are complete, download the GeoTIFF files from Google Drive to your local working directory. In subsequent modules, these rasters will be loaded into R using the `terra` package and stacked into the covariate array used in the next modules.
 
-### Raster Data Management with `{terra}` 
+### Working with Raster Data using `{terra}`
 
+The `{terra}` package is the main framework for working with raster spatial data in R. A raster represents space as a regular grid of cells, where each cell stores a value (e.g., elevation, land cover class, rainfall, SOC prediction). Raster layers are widely used in Digital Soil Mapping both as covariates (environmental predictors) and as model outputs (predicted soil properties).
+
+In practice, a `terra::SpatRaster` object combines:
+
+ * Cell values: the data stored in the grid cells (continuous values like temperature, or categorical values like land cover).
+
+ * Spatial geometry: the grid definition given by the extent (spatial coverage) and resolution (cell size).
+
+ * CRS: the coordinate reference system used (e.g., WGS84, UTM).
+
+ * Layers: a raster can have one layer (e.g., DEM, SOC) or multiple layers (a covariate stack).
+ 
+ 
 #### Importing and Exporting Raster Data
 
 Raster files are commonly distributed as GeoTIFFs (.tif). The function `rast()` reads both single-layer and multi-layer rasters. Rasters can be exported back to disk with `writeRaster()`.
@@ -2400,5 +2394,6 @@ writeRaster(results_intx10, "03_outputs/module1/newhall_intx10.tif", overwrite =
 The raster stack `newhall_results` contains the NSM outputs, which can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.
  
 
+## References {-}
 
 
