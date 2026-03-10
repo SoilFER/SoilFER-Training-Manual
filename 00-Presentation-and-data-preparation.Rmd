@@ -9,13 +9,13 @@ The objectives of this manual are to:
 
 * Present harmonized approaches for soil sampling design used under the SoilFER programme
 
-* Provide guidance on the integration soil spectroscopy estimated soil parameters into the digital soil mapping process
-
 * Introduce best practices in soil data preparation and management, aligned with the Global Soil Information System (GloSIS)
 
 * Demonstrate methods for digital soil modeling and mapping, covering classical statistics, machine learning, and hybrid inference for both continuous and categorical soil properties. 
 
 * Explain how to generate functional soil information to support evidence-based decision-making. 
+
+* Provide guidance on the integration soil spectroscopy estimated soil parameters into the digital soil mapping process
 
 * Facilitate data sharing and dissemination, promoting open standards, metadata documentation, and web-based services. 
 
@@ -1940,7 +1940,7 @@ soil_basic %>%
 
 ### Stacking Data with `bind_rows()` {#dplyr-bind_rows}
 
-Sometimes datasets have the **same columns** but represent different campaigns (e.g., seasons, years, field visits). In that case, you combine them **vertically** (one under the other) using bind_rows():
+Sometimes datasets have the **same columns** but represent different campaigns (e.g., seasons, years, field visits). In that case, you combine them **vertically** (one under the other) using `bind_rows()`:
 
 
 ```{r bind-rows-example, echo=TRUE, eval=FALSE}
@@ -1976,7 +1976,7 @@ bind_rows(spring_data, summer_data)
 ## Missing Data {#NA}
 
 Soil datasets often contain missing values.
-Missing values in R are stored as `NA`. Many functions will return `NA` if missing values are present, unless you specify how to handle them (e.g., na.rm = TRUE).
+Missing values in R are stored as `NA`. Many functions will return `NA` if missing values are present, unless you specify how to handle them (e.g., `na.rm = TRUE`).
 Before running summaries, models, or maps, it is important to identify where values are missing and decide how to handle them.
 
 
@@ -2024,7 +2024,7 @@ soil_data_na
 ```
 
 
-If you are using the tidyverse, `{tidyr}` provides convenient helpers for handling missing data. For example, `drop_na()` removes rows with missing values (either across all columns or in selected columns), and r`eplace_na()` fills missing values with specified replacements.
+If you are using the tidyverse, `{tidyr}` provides convenient helpers for handling missing data. For example, `drop_na()` removes rows with missing values (either across all columns or in selected columns), and `replace_na()` fills missing values with specified replacements.
 
 
 ```{r missing-data-handle_tidyverse, echo=TRUE, eval=FALSE}
@@ -2350,7 +2350,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 [Predictive Soil Mapping with R](https://soilmapper.org/ "Predictive Soil Mapping with R") [@hengl2019]: An introduction to statistical and machine-learning methods for producing soil property and soil class maps, with workflows and code examples in R.
 
-[Statistics for Soil Survey (Soil Survey Staff, 2025)](https://ncss-tech.github.io/stats_for_soil_example/ "USDA Statistics for Soil Survey"): An open, R-based textbook covering core statistical methods for soil survey,  with practical examples and a strong focus on *Algorithms for Quantitative Pedology* using the`{aqp}` package.
+[Statistics for Soil Survey (Soil Survey Staff, 2025)](https://ncss-tech.github.io/stats_for_soil_example/ "USDA Statistics for Soil Survey"): An open, R-based textbook covering core statistical methods for soil survey,  with practical examples and a strong focus on *Algorithms for Quantitative Pedology* using the `{aqp}` package.
 
 [Spatial Data Science: With Applications in R](https://rspatial.org/ "https://r-spatial.org/book/")[@pebesma2023]: Book and online materials for spatial data analysis in R, with a focus on the `{sf}` package.
 
