@@ -401,31 +401,58 @@ Laboratory analyses provide the soil property measurements used as inputs for Di
 In this step, you will extract horizon-level laboratory results from the raw dataset, convert relevant fields to numeric, and retain only the records associated with the profiles preserved in the cleaned site dataset. Finally, you will merge the laboratory data back into the site dataset using `rowID` as the unique record identifier.
 
 ```{r lab-extract, eval=FALSE}
+# Add Row and Profile Identifiers
+site_lab <- raw_data %>%
+  mutate(rowID = row_number(), .before = 1) %>%
+  # Group all horizons at the same location
+  group_by(Long_Site, Lat_Site) %>%
+  mutate(HorID = smp_id, .before = 2) %>%
+  # Assign sequential ID to each unique Profile location (cur_group_id() returns group number)
+  mutate(ProfID = cur_group_id(), .before = 3) %>%
+  ungroup() %>%
+  # Format as standardized IDs: PROF0001, PROF0002, etc. with 4 digit resolution
+  mutate(ProfID = sprintf("PROF%04d", ProfID))
+
 # Extract laboratory columns with standardized names
-lab <- raw_data %>%
-  select(
-    rowID,
-    SOC, Carbon_Total,                                # Soil Organic Carbon and Total Carbon (%)                    
-    Bulk.Density_1_3.BAR, Bulk.Density_ovendry,       # Bulk density at 1.3 bar and oven dry (g/cm³)
-    Sand, Silt, Clay,                                 # Texture (%)
-    pH,                                               # pH H2O
-    CEC,                                              # CEC in cmol(+)/kg
-    Nitrogen_Total,                                   # Total nitrogen (%),
-    Phosphorus_Mehlich3, Phosphorus_Olsen, Potassium, # Available P (mg/kg), Exchangeable K (cmol(+)/kg)
-    Calcium_Carbonate_equivalent                      # CaCO3 equivalent (%)
-  )
+site_lab <- site_lab %>%
+    select(
+      rowID, ProfID, HorID, Lat_Site ,Long_Site, Top_depth_cm, Bottom_depth_cm,
+      `Estimated Organic Carbon`, `Carbon, Total`,                                     # Soil Organic Carbon and Total Carbon (%)                    
+      `Bulk Density, <2mm Fraction, 1/3 Bar`, `Bulk Density, <2mm Fraction, Ovendry`,  # Bulk density at 1.3 bar and oven dry (g/cm³)
+      `Sand, Total`, `Silt, Total`, `Clay`,                                            # Texture (%)
+      `pH, 1:1 Soil-Water Suspension`,                                                 # pH H2O
+      `CEC, NH4OAc, pH 7.0, 2M KCl displacement`,                                      # CEC in cmol(+)/kg
+      `Nitrogen, Total`,                                                               # Total nitrogen (%),
+      `Phosphorus, Mehlich3 Extractable`, `Phosphorus, Olsen Extractable`,             # Available P (mg/kg)
+      `Potassium, NH4OAc Extractable, 2M KCl displacement`,                            # Extractable K (cmol(+)/kg)
+      `Calcium, NH4OAc Extractable, 2M KCl displacement`                               # Extractable Ca (cmol(+)/kg)
+    )
 
   # Ensure numeric type for all analytical parameters (prevents issues if stored as text)
-  lab <- lab %>%
-  mutate(across(-rowID, as.numeric))
+  site_lab <- site_lab %>%
+    mutate(across(-c(rowID,ProfID, HorID), as.numeric))
+site_lab
 
-  # Keep only lab records that are present in the cleaned site dataset
-  lab <- lab %>%
-    filter(rowID %in% site$rowID)
-  
-  # Join both site and lab data by the common identifier 'rowID'
-  site_lab <- site %>%
-    left_join(lab, by = "rowID")
+  # Rename columns in site_lab
+  names(site_lab) <-
+  c("rowID", "ProfID", "HorID",      # Unique row and profile identifier
+  "lon", "lat",                      # Coordinates (WGS84)
+  "top", "bottom",                   # Depth boundaries (cm)
+  "SOC",                             # Soil Organic Carbon (%)
+  "Carbon_Total",                    # Total carbon (%)
+  "Bulk.Density_1_3.BAR",            # BD at 1.3 bar (g/cm³)
+  "Bulk.Density_ovendry",            # BD oven dry (g/cm³)
+  "Sand",                            # Sand content (%)
+  "Silt",                            # Silt content (%)
+  "Clay",                            # Clay content (%)
+  "pH",                              # Soil pH (H₂O)
+  "CEC",                             # Cation exchange capacity (cmol(+)/kg)
+  "Nitrogen_Total",                  # Total nitrogen (%)
+  "Phosphorus_Mehlich3",             # Available P (mg/kg)
+  "Phosphorus_Olsen",                # Available P (mg/kg)
+  "Potassium",                       # Exchangeable K (cmol(+)/kg)
+  "Calcium")                         # Extractable Ca (cmol(+)/kg)
+
 ```
 
 After preparing the laboratory dataset, the analytical results are validated through three quality-control checks:
@@ -596,6 +623,8 @@ if (nrow(texture_problems) > 0) {
   print(texture_problems %>%
           select(rowID, ProfID, Clay, Silt, Sand, texture_sum))
   # Flag for review (do not automatically remove)
+} else {
+  cat(" Texture problems not found")
 }
 
 ```
@@ -634,17 +663,10 @@ for (property in names(out_of_bounds_issues)){
 In the KSSL dataset provided, `SOC` is negative in 43 rows while `Phosphorus_Mehlich3` has wrong values in 1 row.
 
 Example corrections shown below assume:  
-- Negative `SOC` values arise from sign errors, and  
 - Extremely high `Phosphorus_Mehlich3` values arise from unit scaling (e.g., ppb recorded instead of mg/kg).
 
 
 ```{r correct-known-errors, eval=FALSE}
-# Correction: Negative SOC values
-idx <- !is.na(site_lab$SOC) & site_lab$SOC < 0
-if (any(idx)) site_lab$SOC[idx] <- abs(site_lab$SOC[idx])
-# Remove temporary objects
-rm(idx)
-
 # Correction: Phosphorus Mehlich 3 > 2000 mg/kg (likely 1000× error - ppb instead of ppm)
 idx <- !is.na(site_lab$Phosphorus_Mehlich3) & site_lab$Phosphorus_Mehlich3 > 2000
 n_idx <- sum(idx)
@@ -834,10 +856,37 @@ A `chain_horizons` function has been created to identify different sequences in 
 
 ```{r resolve-duplicates-a2, eval=FALSE}
 # Detect ProfID series with different top-bottom depth sequences
+# Remove layers with missing depth boundaries and invalid depth logic
 # 1. For each profile, check if all rows form ONE continuous depth sequence
 # 2. If YES → Single profile (done)
 # 3. If NO → Find the consecutive horizons that ARE continuous
 # 4. If we find blocks with no gaps → Split the series into subprofiles
+
+# 3.3.1  Check 1: Missing Depth Boundaries
+# -----------------------------------------------------------------------------
+
+# Keep records where `top` or `bottom` are not NA
+site_lab <- site_lab %>%
+  dplyr::filter(!is.na(top) & !is.na(bottom))
+
+# Keep records where `top` or `bottom` are positive
+site_lab <- site_lab %>%
+  filter(!(top < 0 | bottom < 0))
+
+# Remove zero-thickness horizons
+site_lab <- site_lab %>%
+  filter(!(bottom - top == 0))
+
+# Remove invalid depth logic
+site_lab <- site_lab %>%
+  filter(bottom > top)
+
+## Keep only profiles that start at the surface (min top == 0)
+site_lab <- site_lab %>%
+  dplyr::group_by(ProfID) %>%
+  dplyr::filter(!is.na(top) & min(top, na.rm = TRUE) == 0) %>%
+  dplyr::ungroup()
+
 
 # Create a function to identify sequences of horizons for each profile
 chain_horizons <- function(top, bottom) {
@@ -987,7 +1036,7 @@ standard_depths <- c(0, 30, 60)  # 0-30, 30-60 cm
 
 # Select properties to standardize
 properties_to_standardize <- c("SOC","Carbon_Total","Bulk.Density_1_3.BAR","Bulk.Density_ovendry","Sand","Silt","Clay",
-                               "pH","CEC","Nitrogen_Total","Phosphorus_Mehlich3","Phosphorus_Olsen","Potassium","Calcium_Carbonate_equivalent")
+                               "pH","CEC","Nitrogen_Total","Phosphorus_Mehlich3","Phosphorus_Olsen","Potassium","Calcium")
 
 # Prepare data for aqp
 
