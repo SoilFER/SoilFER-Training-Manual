@@ -483,7 +483,7 @@ All errors and warnings identified during the validation phases above are automa
 knitr::include_graphics("images/module4/etl_harmonization_QC1.png")
 ```
 
-If no issues were detected in the database and mapping, the QC section will display the message "Data Ready to Harmonize" (Figure \@ref(fig:etl-harmonization-QC2)), and users can proceed to include the Metadata information.
+If no issues were detected, the QC section will display the message "Data Ready to Harmonize" (Figure \@ref(fig:etl-harmonization-QC2)), and users can proceed to include the Metadata information.
 
 ```{r etl-harmonization-QC2, echo=FALSE, out.width="100%",fig.cap = "Step 3a: No errors identified in the dataset."}
 knitr::include_graphics("images/module4/etl_harmonization_QC2.png")
