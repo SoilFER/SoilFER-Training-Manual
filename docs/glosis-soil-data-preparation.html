@@ -839,17 +839,6 @@ Figure 5.8: Modules in the glosis-etl-js.
 <div id="installation-and-setup-of-the-glosis-etl-js" class="section level3 hasAnchor" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Installation and Setup of the glosis-etl-js<a href="glosis-soil-data-preparation.html#installation-and-setup-of-the-glosis-etl-js" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>glosis-etl-js</code> application is distributed as a set of Docker containers orchestrated by <strong>Docker Compose</strong>. This means users do not need to manually install PostgreSQL, R, or any other dependency, all software requirements are pre-configured inside the containers and managed automatically through the <code>docker-compose.yml</code>.</p>
-<p>Environment variables (database credentials, logging level, etc.) are read from the <code>.env</code> file in the project root. The <code>.env</code> file stores configuration values that are shared between the services. The available variables are:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb241-1"><a href="glosis-soil-data-preparation.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
-<span id="cb241-2"><a href="glosis-soil-data-preparation.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
-<span id="cb241-3"><a href="glosis-soil-data-preparation.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
-<span id="cb241-4"><a href="glosis-soil-data-preparation.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span></code></pre></div>
-<div class="warning-box">
-<p><strong>CAUTION:</strong>
-- ⚠️ Important: For local development or testing, as in this training, do not modify the <code>.env</code> file.
-- Only update these values when deploying to a production environment, especially the database password.
-- For production deployments, always change the default password (<code>glosis</code>) to a secure value.</p>
-</div>
 <p>The project consists of two main services, each running as an independent container:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong><code>glosis-db-js</code></strong> – A <strong>PostGIS-enabled PostgreSQL database</strong> (based on <code>postgis/postgis:17-3.5</code>) that stores soil data following the <strong>GloSIS / ISO 28258</strong> standard. It is automatically initialized with the GloSIS schema via SQL scripts bundled in the repository.</p></li>
@@ -879,21 +868,27 @@ Figure 5.9: Cloning the repository.
 </p>
 </div>
 <p>Alternatively, if you have Git installed, you can clone the repository:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="glosis-soil-data-preparation.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl-js.git</span></code></pre></div></li>
+<div class="sourceCode" id="cb242"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb242-1"><a href="glosis-soil-data-preparation.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl-js.git</span></code></pre></div></li>
 <li><p><strong>Extract the ZIP file</strong> (if downloaded) to a folder on your computer (e.g., the <code>Desktop</code> folder).</p></li>
-<li><p><strong>Configure the environment variables.</strong></p>
-<p>Inside the extracted folder you will find a file called <code>.env.example</code>. Copy it and rename the copy to <code>.env</code>:</p>
-<ul>
-<li><p><strong>Windows (Command Prompt):</strong></p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb244-1"><a href="glosis-soil-data-preparation.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="ex">copy</span> .env.example .env</span></code></pre></div></li>
-<li><p><strong>macOS / Linux:</strong></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="glosis-soil-data-preparation.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div></li>
-</ul>
-<p>The default values use <code>glosis</code> as the database name, user, and password. For production deployments, edit the <code>.env</code> file and change the <code>POSTGRES_PASSWORD</code> value.</p></li>
+<li><p><strong>Configure the environment variables (Oonly or production deployments).</strong>
+Environment variables (database credentials, logging level, etc.) are read from the <code>.env</code> file in the project root. The <code>.env</code> file stores configuration values that are shared between the services. The default variables are:</p></li>
+</ol>
+<div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="glosis-soil-data-preparation.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
+<span id="cb243-2"><a href="glosis-soil-data-preparation.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
+<span id="cb243-3"><a href="glosis-soil-data-preparation.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
+<span id="cb243-4"><a href="glosis-soil-data-preparation.html#cb243-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span></code></pre></div>
+<p>The default values use <code>glosis</code> as the database name, user, and password. For production deployments, edit the <code>.env</code> file and change the <code>POSTGRES_PASSWORD</code> value.</p>
+<div class="warning-box">
+<p><strong>CAUTION:</strong>
+- ⚠️ Important: For local development or testing, as in this training, do not modify the <code>.env</code> file.
+- Only update these values when deploying to a production environment, especially the database password.
+- For production deployments, always change the default password (<code>glosis</code>) to a secure value.</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
 <li><p><strong>Open a Terminal or Command Prompt</strong> and navigate to the extracted folder:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb246-1"><a href="glosis-soil-data-preparation.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl-js</span></code></pre></div></li>
+<div class="sourceCode" id="cb244"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb244-1"><a href="glosis-soil-data-preparation.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl-js</span></code></pre></div></li>
 <li><p><strong>Start the GloSIS services</strong> by running:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb247-1"><a href="glosis-soil-data-preparation.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="glosis-soil-data-preparation.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The <code>--build</code> flag is required the first time to build the <code>glosis-etl-js</code> image from the Dockerfile. Subsequent runs can omit it unless the application code has changed. The first build may take <strong>2–5 minutes</strong>.</p>
 </blockquote>
@@ -918,7 +913,7 @@ Figure 5.10: Docker Desktop showing running containers.
 <div id="using-the-terminal" class="section level4 hasAnchor" number="5.4.2.2">
 <h4><span class="header-section-number">5.4.2.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To manually check if the services are running, type:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb248-1"><a href="glosis-soil-data-preparation.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb246-1"><a href="glosis-soil-data-preparation.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
 <p>You should see an output similar to:</p>
 <pre><code>CONTAINER ID   IMAGE                          COMMAND                  CREATED        STATUS                  PORTS                    NAMES
 415f97d8a445   glosis-etl-js-glosis-etl-js    &quot;docker-entrypoint.s…&quot;   25 hours ago   Up 25 hours (healthy)   0.0.0.0:3000-&gt;3000/tcp   glosis-etl-js
@@ -928,7 +923,7 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <div id="stopping-the-services" class="section level4 hasAnchor" number="5.4.2.3">
 <h4><span class="header-section-number">5.4.2.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To stop the services at any time, use:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb250-1"><a href="glosis-soil-data-preparation.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb248-1"><a href="glosis-soil-data-preparation.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
 <p>This will stop and remove the containers, but your <strong>database data will remain intact</strong> in the Docker named volume <code>glosis-db-data</code>.</p>
 <blockquote>
 <p><strong>Tip:</strong> To completely reset the database (remove all data), run: <code>docker compose down -v</code>. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.</p>
@@ -938,7 +933,7 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <div id="pgadmin" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>docker-compose.yml</code> file includes an optional <strong>pgAdmin 4</strong> service for direct database management. To activate it, go to the installation folder and type:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb251-1"><a href="glosis-soil-data-preparation.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb249-1"><a href="glosis-soil-data-preparation.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
 <p>Once running, access pgAdmin at:</p>
 <pre><code>http://localhost:5050</code></pre>
 <p>Login credentials:</p>
@@ -1271,30 +1266,30 @@ Figure 5.26: Open Connection in DB Manager
 <li>Go to <strong>Database -&gt; SQL Window</strong>.</li>
 </ol>
 <p>In this window, type the query below and Execute the code:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb254-1"><a href="glosis-soil-data-preparation.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb254-2"><a href="glosis-soil-data-preparation.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  r.result_phys_chem_id <span class="kw">AS</span> gid,</span>
-<span id="cb254-3"><a href="glosis-soil-data-preparation.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  p.name,</span>
-<span id="cb254-4"><a href="glosis-soil-data-preparation.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  s.site_id,</span>
-<span id="cb254-5"><a href="glosis-soil-data-preparation.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  p3.profile_id, </span>
-<span id="cb254-6"><a href="glosis-soil-data-preparation.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  e.element_id,</span>
-<span id="cb254-7"><a href="glosis-soil-data-preparation.html#cb254-7" aria-hidden="true" tabindex="-1"></a>  e.upper_depth,</span>
-<span id="cb254-8"><a href="glosis-soil-data-preparation.html#cb254-8" aria-hidden="true" tabindex="-1"></a>  e.lower_depth,</span>
-<span id="cb254-9"><a href="glosis-soil-data-preparation.html#cb254-9" aria-hidden="true" tabindex="-1"></a>  r.specimen_id,</span>
-<span id="cb254-10"><a href="glosis-soil-data-preparation.html#cb254-10" aria-hidden="true" tabindex="-1"></a>  o.property_phys_chem_id,</span>
-<span id="cb254-11"><a href="glosis-soil-data-preparation.html#cb254-11" aria-hidden="true" tabindex="-1"></a>  o.procedure_phys_chem_id,</span>
-<span id="cb254-12"><a href="glosis-soil-data-preparation.html#cb254-12" aria-hidden="true" tabindex="-1"></a>  r.<span class="fu">value</span>,</span>
-<span id="cb254-13"><a href="glosis-soil-data-preparation.html#cb254-13" aria-hidden="true" tabindex="-1"></a>  o.unit_of_measure_id,</span>
-<span id="cb254-14"><a href="glosis-soil-data-preparation.html#cb254-14" aria-hidden="true" tabindex="-1"></a>  p2.<span class="ot">&quot;position&quot;</span> <span class="kw">AS</span> geom</span>
-<span id="cb254-15"><a href="glosis-soil-data-preparation.html#cb254-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> core.project p</span>
-<span id="cb254-16"><a href="glosis-soil-data-preparation.html#cb254-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site_project sp <span class="kw">ON</span> sp.project_id <span class="op">=</span> p.project_id</span>
-<span id="cb254-17"><a href="glosis-soil-data-preparation.html#cb254-17" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site s <span class="kw">ON</span> s.site_id <span class="op">=</span> sp.site_id</span>
-<span id="cb254-18"><a href="glosis-soil-data-preparation.html#cb254-18" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.plot p2 <span class="kw">ON</span> p2.site_id <span class="op">=</span> s.site_id</span>
-<span id="cb254-19"><a href="glosis-soil-data-preparation.html#cb254-19" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="kw">profile</span> p3 <span class="kw">ON</span> p3.plot_id <span class="op">=</span> p2.plot_id</span>
-<span id="cb254-20"><a href="glosis-soil-data-preparation.html#cb254-20" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="ot">&quot;element&quot;</span> e <span class="kw">ON</span> e.profile_id <span class="op">=</span> p3.profile_id</span>
-<span id="cb254-21"><a href="glosis-soil-data-preparation.html#cb254-21" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.specimen s2 <span class="kw">ON</span> s2.element_id <span class="op">=</span> e.element_id</span>
-<span id="cb254-22"><a href="glosis-soil-data-preparation.html#cb254-22" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.result_phys_chem r <span class="kw">ON</span> r.specimen_id <span class="op">=</span> s2.specimen_id</span>
-<span id="cb254-23"><a href="glosis-soil-data-preparation.html#cb254-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.observation_phys_chem o <span class="kw">ON</span> o.observation_phys_chem_id <span class="op">=</span> r.observation_phys_chem_id</span>
-<span id="cb254-24"><a href="glosis-soil-data-preparation.html#cb254-24" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb252-1"><a href="glosis-soil-data-preparation.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb252-2"><a href="glosis-soil-data-preparation.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  r.result_phys_chem_id <span class="kw">AS</span> gid,</span>
+<span id="cb252-3"><a href="glosis-soil-data-preparation.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  p.name,</span>
+<span id="cb252-4"><a href="glosis-soil-data-preparation.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  s.site_id,</span>
+<span id="cb252-5"><a href="glosis-soil-data-preparation.html#cb252-5" aria-hidden="true" tabindex="-1"></a>  p3.profile_id, </span>
+<span id="cb252-6"><a href="glosis-soil-data-preparation.html#cb252-6" aria-hidden="true" tabindex="-1"></a>  e.element_id,</span>
+<span id="cb252-7"><a href="glosis-soil-data-preparation.html#cb252-7" aria-hidden="true" tabindex="-1"></a>  e.upper_depth,</span>
+<span id="cb252-8"><a href="glosis-soil-data-preparation.html#cb252-8" aria-hidden="true" tabindex="-1"></a>  e.lower_depth,</span>
+<span id="cb252-9"><a href="glosis-soil-data-preparation.html#cb252-9" aria-hidden="true" tabindex="-1"></a>  r.specimen_id,</span>
+<span id="cb252-10"><a href="glosis-soil-data-preparation.html#cb252-10" aria-hidden="true" tabindex="-1"></a>  o.property_phys_chem_id,</span>
+<span id="cb252-11"><a href="glosis-soil-data-preparation.html#cb252-11" aria-hidden="true" tabindex="-1"></a>  o.procedure_phys_chem_id,</span>
+<span id="cb252-12"><a href="glosis-soil-data-preparation.html#cb252-12" aria-hidden="true" tabindex="-1"></a>  r.<span class="fu">value</span>,</span>
+<span id="cb252-13"><a href="glosis-soil-data-preparation.html#cb252-13" aria-hidden="true" tabindex="-1"></a>  o.unit_of_measure_id,</span>
+<span id="cb252-14"><a href="glosis-soil-data-preparation.html#cb252-14" aria-hidden="true" tabindex="-1"></a>  p2.<span class="ot">&quot;position&quot;</span> <span class="kw">AS</span> geom</span>
+<span id="cb252-15"><a href="glosis-soil-data-preparation.html#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> core.project p</span>
+<span id="cb252-16"><a href="glosis-soil-data-preparation.html#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site_project sp <span class="kw">ON</span> sp.project_id <span class="op">=</span> p.project_id</span>
+<span id="cb252-17"><a href="glosis-soil-data-preparation.html#cb252-17" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site s <span class="kw">ON</span> s.site_id <span class="op">=</span> sp.site_id</span>
+<span id="cb252-18"><a href="glosis-soil-data-preparation.html#cb252-18" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.plot p2 <span class="kw">ON</span> p2.site_id <span class="op">=</span> s.site_id</span>
+<span id="cb252-19"><a href="glosis-soil-data-preparation.html#cb252-19" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="kw">profile</span> p3 <span class="kw">ON</span> p3.plot_id <span class="op">=</span> p2.plot_id</span>
+<span id="cb252-20"><a href="glosis-soil-data-preparation.html#cb252-20" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="ot">&quot;element&quot;</span> e <span class="kw">ON</span> e.profile_id <span class="op">=</span> p3.profile_id</span>
+<span id="cb252-21"><a href="glosis-soil-data-preparation.html#cb252-21" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.specimen s2 <span class="kw">ON</span> s2.element_id <span class="op">=</span> e.element_id</span>
+<span id="cb252-22"><a href="glosis-soil-data-preparation.html#cb252-22" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.result_phys_chem r <span class="kw">ON</span> r.specimen_id <span class="op">=</span> s2.specimen_id</span>
+<span id="cb252-23"><a href="glosis-soil-data-preparation.html#cb252-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.observation_phys_chem o <span class="kw">ON</span> o.observation_phys_chem_id <span class="op">=</span> r.observation_phys_chem_id</span>
+<span id="cb252-24"><a href="glosis-soil-data-preparation.html#cb252-24" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;</span></code></pre></div>
 <p>Check on the mark on <code>Load as a New Layer</code> and click on the <code>Load</code> button (Figure <a href="glosis-soil-data-preparation.html#fig:qgis-dbquery">5.27</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:qgis-dbquery"></span>
 <img src="images/module4/qgis_dbquery.png" alt="Open Connection in DB Manager" width="100%" />
@@ -1322,7 +1317,7 @@ Figure 5.29: QueryLayer Table in long format
 <h3>References<a href="references-4.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body">
 <div id="ref-ARROUAYS20172" class="csl-entry">
-<strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., PÃ¡sztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., ConceiÃ§Ã£o GonÃ§alves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., KozÃ¡k, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
+<strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., Pasztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., Conceicao Gonsalves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., Kozak, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
 </div>
 <div id="ref-Medeiros24" class="csl-entry">
 <strong>Medeiros, B.M., Rossi, L.S., Caten, A.T., Pereira, G.E., Silva, E.B. &amp; U., Daboit.K.T.</strong> 2024. Soil legacy data: An opportunity for digital soil mapping. <em>Rev. Bras. Ciênc. Solo</em>, 48. <a href="https://doi.org/10.36783/18069657rbcs20230130">https://doi.org/10.36783/18069657rbcs20230130</a>

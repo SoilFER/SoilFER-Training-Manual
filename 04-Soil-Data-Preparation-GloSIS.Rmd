@@ -191,23 +191,6 @@ knitr::include_graphics("images/module4/etl_mainscreen.png")
 
 The `glosis-etl-js` application is distributed as a set of Docker containers orchestrated by **Docker Compose**. This means users do not need to manually install PostgreSQL, R, or any other dependency, all software requirements are pre-configured inside the containers and managed automatically through the `docker-compose.yml`.
 
-Environment variables (database credentials, logging level, etc.) are read from the `.env` file in the project root. The `.env` file stores configuration values that are shared between the services. The available variables are:
-
-``` bash
-# PostgreSQL Database Configuration
-POSTGRES_DB=glosis
-POSTGRES_USER=glosis
-POSTGRES_PASSWORD=glosis    # Change in production!
-
-```
-
-:::warning-box
-**CAUTION:**
-- ⚠️ Important: For local development or testing, as in this training, do not modify the `.env` file.
-- Only update these values when deploying to a production environment, especially the database password.
-- For production deployments, always change the default password (`glosis`) to a secure value.
-:::
-
 The project consists of two main services, each running as an independent container:
 
 1.  **`glosis-db-js`** -- A **PostGIS-enabled PostgreSQL database** (based on `postgis/postgis:17-3.5`) that stores soil data following the **GloSIS / ISO 28258** standard. It is automatically initialized with the GloSIS schema via SQL scripts bundled in the repository.
@@ -252,23 +235,26 @@ The easiest way to install the `glosis-etl-js` services is by downloading the re
 
 3.  **Extract the ZIP file** (if downloaded) to a folder on your computer (e.g., the `Desktop` folder).
 
-4.  **Configure the environment variables.**
+4.  **Configure the environment variables (Oonly or production deployments).**
+    Environment variables (database credentials, logging level, etc.) are read from the `.env` file in the project root. The `.env` file stores configuration values that are shared between the services. The default variables are:
 
-    Inside the extracted folder you will find a file called `.env.example`. Copy it and rename the copy to `.env`:
+``` bash
+# PostgreSQL Database Configuration
+POSTGRES_DB=glosis
+POSTGRES_USER=glosis
+POSTGRES_PASSWORD=glosis    # Change in production!
 
-    -   **Windows (Command Prompt):**
+```
 
-        ``` bash
-        copy .env.example .env
-        ```
+The default values use `glosis` as the database name, user, and password. For production deployments, edit the `.env` file and change the `POSTGRES_PASSWORD` value.
 
-    -   **macOS / Linux:**
+:::warning-box
+**CAUTION:**
+- ⚠️ Important: For local development or testing, as in this training, do not modify the `.env` file.
+- Only update these values when deploying to a production environment, especially the database password.
+- For production deployments, always change the default password (`glosis`) to a secure value.
+:::
 
-        ``` bash
-        cp .env.example .env
-        ```
-
-    The default values use `glosis` as the database name, user, and password. For production deployments, edit the `.env` file and change the `POSTGRES_PASSWORD` value.
 
 5.  **Open a Terminal or Command Prompt** and navigate to the extracted folder:
 
