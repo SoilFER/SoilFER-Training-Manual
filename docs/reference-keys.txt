@@ -373,7 +373,8 @@ data-standardization
 create-a-database-to-store-your-results
 inject-the-data-into-the-created-postgresql-database
 data-viewer
-connecting-to-qgis
+connecting-postgresql-to-qgis
+connecting-postgresql-to-r
 digital-soil-mapping-and-modeling
 fundamentals-of-digital-soil-mapping
 introduction-to-digital-soil-mapping
