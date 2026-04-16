@@ -86,7 +86,7 @@ knitr::opts_chunk$set(cache=F,fig.pos = 'H', fig.cap = T,dev = 'jpeg')
 
 
 ```{r, echo = F, eval = T, fig.cap = ""}
-knitr::include_graphics("images/frontcover.jpg")
+knitr::include_graphics("images/new_frontcover.png")
 ```
 
 # Licence {-}
