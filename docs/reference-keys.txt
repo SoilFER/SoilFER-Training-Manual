@@ -68,7 +68,7 @@ fig:etl-harmonization-metadata
 fig:etl-harmonization-download
 fig:etl-standardization
 fig:etl-injection
-fig:etl-viewer
+fig:etl-viewer1
 fig:etl-viewer2
 fig:qgis-connection
 fig:qgis-dbmanager

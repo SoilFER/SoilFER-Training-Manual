@@ -1224,20 +1224,21 @@ Figure 5.22: Standardization Upload and Injection tab.
 <div id="data-viewer" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> Data Viewer<a href="glosis-soil-data-preparation.html#data-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <a href="http://localhost:3000/dataviewer">Data Viewer</a> module provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
-<p>Open <a href="http://localhost:3000/dataviewer">Data Viewer</a> from the <a href="http://localhost:3000">ETL main menu</a>. Select an existing database from the list in the top right corner and click <code>Connect</code>. The Data Viewer will load the soil data, display the distribution of sampling sites on an interactive map, and preview harmonized records with filterable analytical columns. This allows users to explore the variation of soil properties with depth across soil profiles (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer">5.23</a>).</p>
-<div class="figure"><span style="display:block;" id="fig:etl-viewer"></span>
+<p>Open <a href="http://localhost:3000/dataviewer">Data Viewer</a> from the <a href="http://localhost:3000">ETL main menu</a>. Select an existing database from the list in the top right corner and click <code>Connect</code>. The Data Viewer will load the soil data, display the distribution of sampling sites on an interactive map, and preview harmonized records with filterable analytical columns. Soil property names include the analytical method and units of measurement. This barplot allows users to explore the variation of soil properties with depth across soil profiles (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer1">5.23</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:etl-viewer1"></span>
 <img src="images/module4/etl_viewer1.png" alt="Visualization of the KSSL data in this Manual" width="100%" />
 <p class="caption">
 Figure 5.23: Visualization of the KSSL data in this Manual
 </p>
 </div>
-<p>Users can also select a subset of soil locations, restricting the visualization to the chosen soil profiles (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer2">5.24</a>).</p>
+<p>Using the <code>-</code> button in the top right of the map, users can select a subset of soil locations, restricting the visualization to the chosen soil profiles (Figure <a href="glosis-soil-data-preparation.html#fig:etl-viewer2">5.24</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-viewer2"></span>
 <img src="images/module4/etl_viewer2.png" alt="Visualization of a subset of the KSSL data in this Manual" width="100%" />
 <p class="caption">
 Figure 5.24: Visualization of a subset of the KSSL data in this Manual
 </p>
 </div>
+<p>Finally, the <code>Export CSV</code> button allows users to export sampling point information, or a subset of it, to a .csv file for further analysis or visualization in other applications.</p>
 </div>
 </div>
 <div id="connecting-postgresql-to-qgis" class="section level2 hasAnchor" number="5.6">
