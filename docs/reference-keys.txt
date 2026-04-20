@@ -52,6 +52,7 @@ fig:specimen-tab
 fig:procedures-tab
 fig:metadata-tab
 fig:original-tab
+tab:table-soil-properties
 fig:glosis-etl
 fig:clone
 fig:docker-desktop

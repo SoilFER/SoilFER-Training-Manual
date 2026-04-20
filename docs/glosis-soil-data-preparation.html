@@ -806,7 +806,7 @@ Figure 5.7: Original Data Sheet.
 </div>
 <div id="glosis-methods-sheet" class="section level3 hasAnchor" number="5.3.8">
 <h3><span class="header-section-number">5.3.8</span> GloSIS Methods sheet<a href="glosis-soil-data-preparation.html#glosis-methods-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>GloSIS Methods</code> sheet is the reference table that defines which soil properties, analytical procedures, and units of measurement are accepted for loading data into the GloSIS database. It is used by the <code>Procedures</code> sheet (via drop-down lists) and by the <code>glosis-etl-js Harmonization</code> module to validate inputs and apply unit conversions consistently.</p>
+<p>The <code>GloSIS Methods</code> sheet is the reference table that includes the soil properties, analytical procedures, and units of measurement accepted in the GloSIS database. This list follows the codelist in the <a href="https://github.com/glosis-ld/glosis/blob/master/csv_codelists/glosis_procedure.csv">GLOSIS ontology network</a> and a summary of the main properties and units of measurement are shown in Table <a href="#tab:soil-props"><strong>??</strong></a>. The information in this sheet defines the options used by the <code>Procedures</code> sheet (via drop-down lists) and by the <code>glosis-etl-js Harmonization</code> module to validate inputs and apply unit conversions consistently.</p>
 <p>The main columns are:</p>
 <ul>
 <li><p><code>property_phys_chem_id</code>: The standardized GloSIS name for the soil property (e.g., Acidity – exchangeable).</p></li>
@@ -818,6 +818,233 @@ Figure 5.7: Original Data Sheet.
 <li><p><code>conversion_factors</code>: The factors applied to each unit listed in <code>common_input_units</code>, in the same order, to convert to the GloSIS unit.</p></li>
 <li><p><code>notes</code>: Additional clarifications (e.g., equivalences between units).</p></li>
 </ul>
+<table>
+<caption><span id="tab:table-soil-properties">Table 5.1: </span>Summary of soil properties and units of measurement in the GloSIS Onthology.</caption>
+<colgroup>
+<col width="42%" />
+<col width="44%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Category</th>
+<th align="left">Property</th>
+<th align="left">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Soil organic components</td>
+<td align="left">Organic carbon</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Soil organic components</td>
+<td align="left">Total carbon</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil organic components</td>
+<td align="left">Inorganic carbon</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Soil organic components</td>
+<td align="left">Organic matter</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil organic components</td>
+<td align="left">Total carbonate equivalent</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Nitrogen and major nutrients</td>
+<td align="left">Total nitrogen</td>
+<td align="left">g/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Nitrogen and major nutrients</td>
+<td align="left">Phosphorus</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Nitrogen and major nutrients</td>
+<td align="left">Potassium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Nitrogen and major nutrients</td>
+<td align="left">Phosphorus retention</td>
+<td align="left">g/hg</td>
+</tr>
+<tr class="even">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Calcium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Magnesium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Sodium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Potassium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Aluminium</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Hydrogen</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Exchangeable acidity</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Base saturation</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Exchangeable cations and acidity</td>
+<td align="left">Aluminium saturation</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil texture and coarse fraction</td>
+<td align="left">Sand</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Soil texture and coarse fraction</td>
+<td align="left">Silt</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil texture and coarse fraction</td>
+<td align="left">Clay</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Soil texture and coarse fraction</td>
+<td align="left">Coarse fragments</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Trace elements</td>
+<td align="left">Iron</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Trace elements</td>
+<td align="left">Manganese</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Trace elements</td>
+<td align="left">Copper</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Trace elements</td>
+<td align="left">Zinc</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Trace elements</td>
+<td align="left">Boron</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Trace elements</td>
+<td align="left">Sulfur</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Trace elements</td>
+<td align="left">Molybdenum</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">Trace elements</td>
+<td align="left">Cadmium</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil physical properties</td>
+<td align="left">Bulk density (fine earth)</td>
+<td align="left">kg/dm³</td>
+</tr>
+<tr class="even">
+<td align="left">Soil physical properties</td>
+<td align="left">Bulk density (whole soil)</td>
+<td align="left">kg/dm³</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil physical properties</td>
+<td align="left">Porosity</td>
+<td align="left">m³/100 m³</td>
+</tr>
+<tr class="even">
+<td align="left">Soil physical properties</td>
+<td align="left">Volumetric water content</td>
+<td align="left">m³/100 m³</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil physical properties</td>
+<td align="left">Hydraulic conductivity</td>
+<td align="left">cm/h</td>
+</tr>
+<tr class="even">
+<td align="left">Soil chemical properties</td>
+<td align="left">pH</td>
+<td align="left">pH</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil chemical properties</td>
+<td align="left">Electrical conductivity</td>
+<td align="left">dS/m</td>
+</tr>
+<tr class="even">
+<td align="left">Soil chemical properties</td>
+<td align="left">Soluble salts</td>
+<td align="left">cmol/L</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil chemical properties</td>
+<td align="left">Cation exchange capacity</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="even">
+<td align="left">Soil chemical properties</td>
+<td align="left">Effective cation exchange capacity</td>
+<td align="left">cmol/kg</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil chemical properties</td>
+<td align="left">Ca/N ratio</td>
+<td align="left">ratio</td>
+</tr>
+<tr class="even">
+<td align="left">Other soil constituents</td>
+<td align="left">Gypsum</td>
+<td align="left">%</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="the-glosis-etl-platform" class="section level2 hasAnchor" number="5.4">
@@ -949,9 +1176,9 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <li><strong>Database:</strong> <code>postgres</code></li>
 <li><strong>User / Password:</strong> <code>glosis</code> / <code>glosis</code></li>
 </ul>
-<p>All created GloSIS PostgreSQL databases are available for connection to external applications such as <strong>pgAdmin</strong>, <strong>DBeaver</strong>, <strong>QGIS</strong>, and <strong>R</strong>, using the parameters listed in Table <a href="glosis-soil-data-preparation.html#tab:db-connection">5.1</a>.</p>
+<p>All created GloSIS PostgreSQL databases are available for connection to external applications such as <strong>pgAdmin</strong>, <strong>DBeaver</strong>, <strong>QGIS</strong>, and <strong>R</strong>, using the parameters listed in Table <a href="glosis-soil-data-preparation.html#tab:db-connection">5.2</a>.</p>
 <table>
-<caption><span id="tab:db-connection">Table 5.1: </span>Database connection parameters.</caption>
+<caption><span id="tab:db-connection">Table 5.2: </span>Database connection parameters.</caption>
 <thead>
 <tr class="header">
 <th align="left">Parameter</th>

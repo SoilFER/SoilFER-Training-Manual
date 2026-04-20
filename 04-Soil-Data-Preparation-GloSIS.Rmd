@@ -50,7 +50,7 @@ The template contains multiple sheets, each corresponding to a specific feature 
 
 This organization can be done manually, by entering values directly into the template, or automatically using dedicated modules such as `glosis-etl-js Harmonization` introduced in the next section. In both cases, understanding the structure and purpose of the `XLSX template` is essential to ensure that data are prepared correctly.
 
-In addition to the feature-of-interest sheets, the template includes dedicated tabs for documenting analytical procedures (including methods and units of measurement), metadata, and original analytical values, supporting traceability when unit conversions to GloSIS standards are required.
+In addition to the feature-of-interest sheets, the template includes dedicated tabs for documenting analytical procedures (including methods and units of measurement), metadata, and original analytical values, supporting traceability when unit conversions to GloSIS standards are required. 
 
 The following sections provide a detailed overview of each sheet included in the `XLSX template`.
 
@@ -149,7 +149,7 @@ Values in the `Original Data` sheet can be linked (e.g., via formulas) to the `E
 
 ### GloSIS Methods sheet
 
-The `GloSIS Methods` sheet is the reference table that defines which soil properties, analytical procedures, and units of measurement are accepted for loading data into the GloSIS database. It is used by the `Procedures` sheet (via drop-down lists) and by the `glosis-etl-js Harmonization` module to validate inputs and apply unit conversions consistently.
+The `GloSIS Methods` sheet is the reference table that includes the soil properties, analytical procedures, and units of measurement accepted in the GloSIS database. This list follows the codelist in the [GLOSIS ontology network](https://github.com/glosis-ld/glosis/blob/master/csv_codelists/glosis_procedure.csv) and a summary of the main properties and units of measurement are shown in Table \@ref(tab:soil-props). The information in this sheet defines the options used by the `Procedures` sheet (via drop-down lists) and by the `glosis-etl-js Harmonization` module to validate inputs and apply unit conversions consistently.
 
 The main columns are:
 
@@ -168,6 +168,92 @@ The main columns are:
 -   `conversion_factors`: The factors applied to each unit listed in `common_input_units`, in the same order, to convert to the GloSIS unit.
 
 -   `notes`: Additional clarifications (e.g., equivalences between units).
+
+
+
+```{r table-soil-properties, echo=FALSE}
+soil_prop_table <- data.frame(
+  Category = c(
+    rep("Soil organic components", 5),
+    rep("Nitrogen and major nutrients", 4),
+    rep("Exchangeable cations and acidity", 9),
+    rep("Soil texture and coarse fraction", 4),
+    rep("Trace elements", 8),
+    rep("Soil physical properties", 5),
+    rep("Soil chemical properties", 6),
+    rep("Other soil constituents", 1)
+  ),
+  Property = c(
+    "Organic carbon",
+    "Total carbon",
+    "Inorganic carbon",
+    "Organic matter",
+    "Total carbonate equivalent",
+    
+    "Total nitrogen",
+    "Phosphorus",
+    "Potassium",
+    "Phosphorus retention",
+    
+    "Calcium",
+    "Magnesium",
+    "Sodium",
+    "Potassium",
+    "Aluminium",
+    "Hydrogen",
+    "Exchangeable acidity",
+    "Base saturation",
+    "Aluminium saturation",
+    
+    "Sand",
+    "Silt",
+    "Clay",
+    "Coarse fragments",
+    
+    "Iron",
+    "Manganese",
+    "Copper",
+    "Zinc",
+    "Boron",
+    "Sulfur",
+    "Molybdenum",
+    "Cadmium",
+    
+    "Bulk density (fine earth)",
+    "Bulk density (whole soil)",
+    "Porosity",
+    "Volumetric water content",
+    "Hydraulic conductivity",
+    
+    "pH",
+    "Electrical conductivity",
+    "Soluble salts",
+    "Cation exchange capacity",
+    "Effective cation exchange capacity",
+    "Ca/N ratio",
+    
+    "Gypsum"
+  ),
+  Unit = c(
+    "g/kg", "g/kg", "g/kg", "g/kg", "g/kg",
+    "g/kg", "%", "cmol/kg", "g/hg",
+    "cmol/kg", "cmol/kg", "cmol/kg", "cmol/kg", "cmol/kg", "cmol/kg", "cmol/kg", "%", "%",
+    "%", "%", "%", "%",
+    "%", "cmol/kg", "%", "%", "%", "%", "%", "%",
+    "kg/dm³", "kg/dm³", "m³/100 m³", "m³/100 m³", "cm/h",
+    "pH", "dS/m", "cmol/L", "cmol/kg", "cmol/kg", "ratio",
+    "%"
+  )
+)
+
+knitr::kable(
+  soil_prop_table,
+  caption = "Summary of soil properties and units of measurement in the GloSIS Onthology."
+)
+
+```
+
+
 
 ## The GloSIS ETL Platform
 
