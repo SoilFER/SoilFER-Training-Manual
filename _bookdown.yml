@@ -2,6 +2,6 @@
 book_filename: "SoilFER Integrated soil information for decision-making"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Module "
 delete_merged_file: true
 output_dir: "docs"

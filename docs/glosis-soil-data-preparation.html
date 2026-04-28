@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making </title>
+  <title>Module 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Module 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Module 5 GloSIS Soil Data Preparation | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -54,6 +54,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -127,6 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -676,11 +678,11 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="glosis-soil-data-preparation" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> GloSIS Soil Data Preparation<a href="glosis-soil-data-preparation.html#glosis-soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Module 5</span> GloSIS Soil Data Preparation<a href="glosis-soil-data-preparation.html#glosis-soil-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introduction-1" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Introduction<a href="glosis-soil-data-preparation.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172" role="doc-biblioref">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
-<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24" role="doc-biblioref">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realizing this potential requires solving the fragmentation problem through systematic standardization.</p>
+<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
+<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organizations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organized, and standardized, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realizing this potential requires solving the fragmentation problem through systematic standardization.</p>
 <p>In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralize all soil data into a single organization or location, GloSIS functions as a decentralized spatial data infrastructure that enables soil data management and sharing within a global harmonization framework. National soil institutes, research organizations, and other data holders maintain control of their data in their own systems, but contribute that data to the GloSIS platform following standardized formats and protocols for data preparaation and sharing.</p>
 <p>GloSIS makes data comparable across countries and regions. When data is submitted to GloSIS, it undergoes a standardization process that translates local data into a universally understood format, the PostgreSQL GloSIS database. This integration requires systematic preparation, validation, and standardization of individual datasets. This is where the technical infrastructure developed at FAO-GPS (the ETL system described in this manual) becomes essential. Before soil data can contribute meaningfully to global analysis, it must be carefully prepared, quality-checked, and transformed into the standardized format that GloSIS requires.</p>
 <p>In this section, we introduce the key concepts of data harmonization and standardization in line with GloSIS database requirements, and demonstrate how to use the <code>glosis-etl-js</code> a JavaScript set of modules to Extract (E) Transform (T) and load (L) soil data into the GloSIS database structure. The exercises use the soil legacy dataset provided in the training materials as a practical example.</p>
@@ -1096,15 +1098,15 @@ Figure 5.9: Cloning the repository.
 </p>
 </div>
 <p>Alternatively, if you have Git installed, you can clone the repository:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb242-1"><a href="glosis-soil-data-preparation.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl-js.git</span></code></pre></div></li>
+<div class="sourceCode" id="cb238"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb238-1"><a href="glosis-soil-data-preparation.html#cb238-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/FAO-SID/glosis-etl-js.git</span></code></pre></div></li>
 <li><p><strong>Extract the ZIP file</strong> (if downloaded) to a folder on your computer (e.g., the <code>Desktop</code> folder).</p></li>
 <li><p><strong>Configure the environment variables (Oonly or production deployments).</strong>
 Environment variables (database credentials, logging level, etc.) are read from the <code>.env</code> file in the project root. The <code>.env</code> file stores configuration values that are shared between the services. The default variables are:</p></li>
 </ol>
-<div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="glosis-soil-data-preparation.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
-<span id="cb243-2"><a href="glosis-soil-data-preparation.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
-<span id="cb243-3"><a href="glosis-soil-data-preparation.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
-<span id="cb243-4"><a href="glosis-soil-data-preparation.html#cb243-4" aria-hidden="true" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="glosis-soil-data-preparation.html#cb239-1" tabindex="-1"></a><span class="co"># PostgreSQL Database Configuration</span></span>
+<span id="cb239-2"><a href="glosis-soil-data-preparation.html#cb239-2" tabindex="-1"></a><span class="va">POSTGRES_DB</span><span class="op">=</span>glosis</span>
+<span id="cb239-3"><a href="glosis-soil-data-preparation.html#cb239-3" tabindex="-1"></a><span class="va">POSTGRES_USER</span><span class="op">=</span>glosis</span>
+<span id="cb239-4"><a href="glosis-soil-data-preparation.html#cb239-4" tabindex="-1"></a><span class="va">POSTGRES_PASSWORD</span><span class="op">=</span>glosis    <span class="co"># Change in production!</span></span></code></pre></div>
 <p>The default values use <code>glosis</code> as the database name, user, and password. For production deployments, edit the <code>.env</code> file and change the <code>POSTGRES_PASSWORD</code> value.</p>
 <div class="warning-box">
 <p><strong>CAUTION:</strong>
@@ -1114,9 +1116,9 @@ Environment variables (database credentials, logging level, etc.) are read from 
 </div>
 <ol start="5" style="list-style-type: decimal">
 <li><p><strong>Open a Terminal or Command Prompt</strong> and navigate to the extracted folder:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb244-1"><a href="glosis-soil-data-preparation.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl-js</span></code></pre></div></li>
+<div class="sourceCode" id="cb240"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb240-1"><a href="glosis-soil-data-preparation.html#cb240-1" tabindex="-1"></a><span class="bu">cd</span> Desktop/glosis-etl-js</span></code></pre></div></li>
 <li><p><strong>Start the GloSIS services</strong> by running:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="glosis-soil-data-preparation.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb241-1"><a href="glosis-soil-data-preparation.html#cb241-1" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The <code>--build</code> flag is required the first time to build the <code>glosis-etl-js</code> image from the Dockerfile. Subsequent runs can omit it unless the application code has changed. The first build may take <strong>2–5 minutes</strong>.</p>
 </blockquote>
@@ -1141,7 +1143,7 @@ Figure 5.10: Docker Desktop showing running containers.
 <div id="using-the-terminal" class="section level4 hasAnchor" number="5.4.2.2">
 <h4><span class="header-section-number">5.4.2.2</span> Using the Terminal<a href="glosis-soil-data-preparation.html#using-the-terminal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To manually check if the services are running, type:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb246-1"><a href="glosis-soil-data-preparation.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb242-1"><a href="glosis-soil-data-preparation.html#cb242-1" tabindex="-1"></a><span class="ex">docker</span> ps</span></code></pre></div>
 <p>You should see an output similar to:</p>
 <pre><code>CONTAINER ID   IMAGE                          COMMAND                  CREATED        STATUS                  PORTS                    NAMES
 415f97d8a445   glosis-etl-js-glosis-etl-js    &quot;docker-entrypoint.s…&quot;   25 hours ago   Up 25 hours (healthy)   0.0.0.0:3000-&gt;3000/tcp   glosis-etl-js
@@ -1151,7 +1153,7 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <div id="stopping-the-services" class="section level4 hasAnchor" number="5.4.2.3">
 <h4><span class="header-section-number">5.4.2.3</span> Stopping the Services<a href="glosis-soil-data-preparation.html#stopping-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To stop the services at any time, use:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb248-1"><a href="glosis-soil-data-preparation.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb244-1"><a href="glosis-soil-data-preparation.html#cb244-1" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div>
 <p>This will stop and remove the containers, but your <strong>database data will remain intact</strong> in the Docker named volume <code>glosis-db-data</code>.</p>
 <blockquote>
 <p><strong>Tip:</strong> To completely reset the database (remove all data), run: <code>docker compose down -v</code>. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.</p>
@@ -1161,7 +1163,7 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <div id="pgadmin" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Optional: pgAdmin Web Interface<a href="glosis-soil-data-preparation.html#pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>docker-compose.yml</code> file includes an optional <strong>pgAdmin 4</strong> service for direct database management. To activate it, go to the installation folder and type:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb249-1"><a href="glosis-soil-data-preparation.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="glosis-soil-data-preparation.html#cb245-1" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">--profile</span> admin up <span class="at">-d</span></span></code></pre></div>
 <p>Once running, access pgAdmin at:</p>
 <pre><code>http://localhost:5050</code></pre>
 <p>Login credentials:</p>
@@ -1495,30 +1497,30 @@ Figure 5.26: Open Connection in DB Manager
 <li>Go to <strong>Database -&gt; SQL Window</strong>.</li>
 </ol>
 <p>In this window, type the query below and Execute the code:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb252-1"><a href="glosis-soil-data-preparation.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb252-2"><a href="glosis-soil-data-preparation.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  r.result_phys_chem_id <span class="kw">AS</span> gid,</span>
-<span id="cb252-3"><a href="glosis-soil-data-preparation.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  p.name,</span>
-<span id="cb252-4"><a href="glosis-soil-data-preparation.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  s.site_id,</span>
-<span id="cb252-5"><a href="glosis-soil-data-preparation.html#cb252-5" aria-hidden="true" tabindex="-1"></a>  p3.profile_id, </span>
-<span id="cb252-6"><a href="glosis-soil-data-preparation.html#cb252-6" aria-hidden="true" tabindex="-1"></a>  e.element_id,</span>
-<span id="cb252-7"><a href="glosis-soil-data-preparation.html#cb252-7" aria-hidden="true" tabindex="-1"></a>  e.upper_depth,</span>
-<span id="cb252-8"><a href="glosis-soil-data-preparation.html#cb252-8" aria-hidden="true" tabindex="-1"></a>  e.lower_depth,</span>
-<span id="cb252-9"><a href="glosis-soil-data-preparation.html#cb252-9" aria-hidden="true" tabindex="-1"></a>  r.specimen_id,</span>
-<span id="cb252-10"><a href="glosis-soil-data-preparation.html#cb252-10" aria-hidden="true" tabindex="-1"></a>  o.property_phys_chem_id,</span>
-<span id="cb252-11"><a href="glosis-soil-data-preparation.html#cb252-11" aria-hidden="true" tabindex="-1"></a>  o.procedure_phys_chem_id,</span>
-<span id="cb252-12"><a href="glosis-soil-data-preparation.html#cb252-12" aria-hidden="true" tabindex="-1"></a>  r.<span class="fu">value</span>,</span>
-<span id="cb252-13"><a href="glosis-soil-data-preparation.html#cb252-13" aria-hidden="true" tabindex="-1"></a>  o.unit_of_measure_id,</span>
-<span id="cb252-14"><a href="glosis-soil-data-preparation.html#cb252-14" aria-hidden="true" tabindex="-1"></a>  p2.<span class="ot">&quot;position&quot;</span> <span class="kw">AS</span> geom</span>
-<span id="cb252-15"><a href="glosis-soil-data-preparation.html#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> core.project p</span>
-<span id="cb252-16"><a href="glosis-soil-data-preparation.html#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site_project sp <span class="kw">ON</span> sp.project_id <span class="op">=</span> p.project_id</span>
-<span id="cb252-17"><a href="glosis-soil-data-preparation.html#cb252-17" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site s <span class="kw">ON</span> s.site_id <span class="op">=</span> sp.site_id</span>
-<span id="cb252-18"><a href="glosis-soil-data-preparation.html#cb252-18" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.plot p2 <span class="kw">ON</span> p2.site_id <span class="op">=</span> s.site_id</span>
-<span id="cb252-19"><a href="glosis-soil-data-preparation.html#cb252-19" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="kw">profile</span> p3 <span class="kw">ON</span> p3.plot_id <span class="op">=</span> p2.plot_id</span>
-<span id="cb252-20"><a href="glosis-soil-data-preparation.html#cb252-20" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="ot">&quot;element&quot;</span> e <span class="kw">ON</span> e.profile_id <span class="op">=</span> p3.profile_id</span>
-<span id="cb252-21"><a href="glosis-soil-data-preparation.html#cb252-21" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.specimen s2 <span class="kw">ON</span> s2.element_id <span class="op">=</span> e.element_id</span>
-<span id="cb252-22"><a href="glosis-soil-data-preparation.html#cb252-22" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.result_phys_chem r <span class="kw">ON</span> r.specimen_id <span class="op">=</span> s2.specimen_id</span>
-<span id="cb252-23"><a href="glosis-soil-data-preparation.html#cb252-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.observation_phys_chem o <span class="kw">ON</span> o.observation_phys_chem_id <span class="op">=</span> r.observation_phys_chem_id</span>
-<span id="cb252-24"><a href="glosis-soil-data-preparation.html#cb252-24" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb248-1"><a href="glosis-soil-data-preparation.html#cb248-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb248-2"><a href="glosis-soil-data-preparation.html#cb248-2" tabindex="-1"></a>  r.result_phys_chem_id <span class="kw">AS</span> gid,</span>
+<span id="cb248-3"><a href="glosis-soil-data-preparation.html#cb248-3" tabindex="-1"></a>  p.name,</span>
+<span id="cb248-4"><a href="glosis-soil-data-preparation.html#cb248-4" tabindex="-1"></a>  s.site_id,</span>
+<span id="cb248-5"><a href="glosis-soil-data-preparation.html#cb248-5" tabindex="-1"></a>  p3.profile_id, </span>
+<span id="cb248-6"><a href="glosis-soil-data-preparation.html#cb248-6" tabindex="-1"></a>  e.element_id,</span>
+<span id="cb248-7"><a href="glosis-soil-data-preparation.html#cb248-7" tabindex="-1"></a>  e.upper_depth,</span>
+<span id="cb248-8"><a href="glosis-soil-data-preparation.html#cb248-8" tabindex="-1"></a>  e.lower_depth,</span>
+<span id="cb248-9"><a href="glosis-soil-data-preparation.html#cb248-9" tabindex="-1"></a>  r.specimen_id,</span>
+<span id="cb248-10"><a href="glosis-soil-data-preparation.html#cb248-10" tabindex="-1"></a>  o.property_phys_chem_id,</span>
+<span id="cb248-11"><a href="glosis-soil-data-preparation.html#cb248-11" tabindex="-1"></a>  o.procedure_phys_chem_id,</span>
+<span id="cb248-12"><a href="glosis-soil-data-preparation.html#cb248-12" tabindex="-1"></a>  r.<span class="fu">value</span>,</span>
+<span id="cb248-13"><a href="glosis-soil-data-preparation.html#cb248-13" tabindex="-1"></a>  o.unit_of_measure_id,</span>
+<span id="cb248-14"><a href="glosis-soil-data-preparation.html#cb248-14" tabindex="-1"></a>  p2.<span class="ot">&quot;position&quot;</span> <span class="kw">AS</span> geom</span>
+<span id="cb248-15"><a href="glosis-soil-data-preparation.html#cb248-15" tabindex="-1"></a><span class="kw">FROM</span> core.project p</span>
+<span id="cb248-16"><a href="glosis-soil-data-preparation.html#cb248-16" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site_project sp <span class="kw">ON</span> sp.project_id <span class="op">=</span> p.project_id</span>
+<span id="cb248-17"><a href="glosis-soil-data-preparation.html#cb248-17" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.site s <span class="kw">ON</span> s.site_id <span class="op">=</span> sp.site_id</span>
+<span id="cb248-18"><a href="glosis-soil-data-preparation.html#cb248-18" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.plot p2 <span class="kw">ON</span> p2.site_id <span class="op">=</span> s.site_id</span>
+<span id="cb248-19"><a href="glosis-soil-data-preparation.html#cb248-19" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="kw">profile</span> p3 <span class="kw">ON</span> p3.plot_id <span class="op">=</span> p2.plot_id</span>
+<span id="cb248-20"><a href="glosis-soil-data-preparation.html#cb248-20" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.<span class="ot">&quot;element&quot;</span> e <span class="kw">ON</span> e.profile_id <span class="op">=</span> p3.profile_id</span>
+<span id="cb248-21"><a href="glosis-soil-data-preparation.html#cb248-21" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.specimen s2 <span class="kw">ON</span> s2.element_id <span class="op">=</span> e.element_id</span>
+<span id="cb248-22"><a href="glosis-soil-data-preparation.html#cb248-22" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.result_phys_chem r <span class="kw">ON</span> r.specimen_id <span class="op">=</span> s2.specimen_id</span>
+<span id="cb248-23"><a href="glosis-soil-data-preparation.html#cb248-23" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> core.observation_phys_chem o <span class="kw">ON</span> o.observation_phys_chem_id <span class="op">=</span> r.observation_phys_chem_id</span>
+<span id="cb248-24"><a href="glosis-soil-data-preparation.html#cb248-24" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;</span></code></pre></div>
 <p>Check on the mark on <code>Load as a New Layer</code> and click on the <code>Load</code> button (Figure <a href="glosis-soil-data-preparation.html#fig:qgis-dbquery">5.27</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:qgis-dbquery"></span>
 <img src="images/module4/qgis_dbquery.png" alt="Open Connection in DB Manager" width="100%" />
@@ -1546,202 +1548,202 @@ Figure 5.29: QueryLayer Table in long format
 <p>The PostgreSQL GloSIS database can be connected to R using appropriate packages and SQL queries.</p>
 <p>In this section, the <code>kssl</code> database is accessed from R, and the results are exported as a GeoPackage. This format is used because it preserves full column names, allowing soil analytical properties and their units of measurement to remain clearly described in the output.</p>
 <p>The resulting file is saved in <code>03_outputs/module3/</code> and can be directly loaded into GIS software such as QGIS for further visualization and analysis.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="glosis-soil-data-preparation.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-2"><a href="glosis-soil-data-preparation.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
-<span id="cb253-3"><a href="glosis-soil-data-preparation.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-4"><a href="glosis-soil-data-preparation.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb253-5"><a href="glosis-soil-data-preparation.html#cb253-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
-<span id="cb253-6"><a href="glosis-soil-data-preparation.html#cb253-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb253-7"><a href="glosis-soil-data-preparation.html#cb253-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb253-8"><a href="glosis-soil-data-preparation.html#cb253-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb253-9"><a href="glosis-soil-data-preparation.html#cb253-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-10"><a href="glosis-soil-data-preparation.html#cb253-10" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-11"><a href="glosis-soil-data-preparation.html#cb253-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to the PostgreSQL database</span></span>
-<span id="cb253-12"><a href="glosis-soil-data-preparation.html#cb253-12" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-13"><a href="glosis-soil-data-preparation.html#cb253-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This connection uses the database exposed on localhost:5442,</span></span>
-<span id="cb253-14"><a href="glosis-soil-data-preparation.html#cb253-14" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the port mapped from the Docker PostgreSQL container.</span></span>
-<span id="cb253-15"><a href="glosis-soil-data-preparation.html#cb253-15" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb253-16"><a href="glosis-soil-data-preparation.html#cb253-16" aria-hidden="true" tabindex="-1"></a>  RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(),</span>
-<span id="cb253-17"><a href="glosis-soil-data-preparation.html#cb253-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname   =</span> <span class="st">&quot;kssl&quot;</span>,</span>
-<span id="cb253-18"><a href="glosis-soil-data-preparation.html#cb253-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">host     =</span> <span class="st">&quot;localhost&quot;</span>,</span>
-<span id="cb253-19"><a href="glosis-soil-data-preparation.html#cb253-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">port     =</span> <span class="dv">5442</span>,</span>
-<span id="cb253-20"><a href="glosis-soil-data-preparation.html#cb253-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">user     =</span> <span class="st">&quot;glosis&quot;</span>,</span>
-<span id="cb253-21"><a href="glosis-soil-data-preparation.html#cb253-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">&quot;glosis&quot;</span></span>
-<span id="cb253-22"><a href="glosis-soil-data-preparation.html#cb253-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb253-23"><a href="glosis-soil-data-preparation.html#cb253-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-24"><a href="glosis-soil-data-preparation.html#cb253-24" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-25"><a href="glosis-soil-data-preparation.html#cb253-25" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query 1: retrieve soil point / profile / horizon metadata</span></span>
-<span id="cb253-26"><a href="glosis-soil-data-preparation.html#cb253-26" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-27"><a href="glosis-soil-data-preparation.html#cb253-27" aria-hidden="true" tabindex="-1"></a><span class="co"># This query extracts the structural information for each soil specimen:</span></span>
-<span id="cb253-28"><a href="glosis-soil-data-preparation.html#cb253-28" aria-hidden="true" tabindex="-1"></a><span class="co"># - project and site identifiers</span></span>
-<span id="cb253-29"><a href="glosis-soil-data-preparation.html#cb253-29" aria-hidden="true" tabindex="-1"></a><span class="co"># - plot and profile identifiers</span></span>
-<span id="cb253-30"><a href="glosis-soil-data-preparation.html#cb253-30" aria-hidden="true" tabindex="-1"></a><span class="co"># - horizon/element depth information</span></span>
-<span id="cb253-31"><a href="glosis-soil-data-preparation.html#cb253-31" aria-hidden="true" tabindex="-1"></a><span class="co"># - specimen code</span></span>
-<span id="cb253-32"><a href="glosis-soil-data-preparation.html#cb253-32" aria-hidden="true" tabindex="-1"></a><span class="co"># - longitude and latitude from the plot geometry</span></span>
-<span id="cb253-33"><a href="glosis-soil-data-preparation.html#cb253-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-34"><a href="glosis-soil-data-preparation.html#cb253-34" aria-hidden="true" tabindex="-1"></a>query_points <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb253-35"><a href="glosis-soil-data-preparation.html#cb253-35" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
-<span id="cb253-36"><a href="glosis-soil-data-preparation.html#cb253-36" aria-hidden="true" tabindex="-1"></a><span class="st">  p.project_id,</span></span>
-<span id="cb253-37"><a href="glosis-soil-data-preparation.html#cb253-37" aria-hidden="true" tabindex="-1"></a><span class="st">  p.name AS project_name,</span></span>
-<span id="cb253-38"><a href="glosis-soil-data-preparation.html#cb253-38" aria-hidden="true" tabindex="-1"></a><span class="st">  s.site_id,</span></span>
-<span id="cb253-39"><a href="glosis-soil-data-preparation.html#cb253-39" aria-hidden="true" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
-<span id="cb253-40"><a href="glosis-soil-data-preparation.html#cb253-40" aria-hidden="true" tabindex="-1"></a><span class="st">  pl.plot_id,</span></span>
-<span id="cb253-41"><a href="glosis-soil-data-preparation.html#cb253-41" aria-hidden="true" tabindex="-1"></a><span class="st">  pf.profile_id,</span></span>
-<span id="cb253-42"><a href="glosis-soil-data-preparation.html#cb253-42" aria-hidden="true" tabindex="-1"></a><span class="st">  e.element_id,</span></span>
-<span id="cb253-43"><a href="glosis-soil-data-preparation.html#cb253-43" aria-hidden="true" tabindex="-1"></a><span class="st">  e.order_element,</span></span>
-<span id="cb253-44"><a href="glosis-soil-data-preparation.html#cb253-44" aria-hidden="true" tabindex="-1"></a><span class="st">  e.upper_depth,</span></span>
-<span id="cb253-45"><a href="glosis-soil-data-preparation.html#cb253-45" aria-hidden="true" tabindex="-1"></a><span class="st">  e.lower_depth,</span></span>
-<span id="cb253-46"><a href="glosis-soil-data-preparation.html#cb253-46" aria-hidden="true" tabindex="-1"></a><span class="st">  e.type,</span></span>
-<span id="cb253-47"><a href="glosis-soil-data-preparation.html#cb253-47" aria-hidden="true" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
-<span id="cb253-48"><a href="glosis-soil-data-preparation.html#cb253-48" aria-hidden="true" tabindex="-1"></a><span class="st">  sp.code AS specimen_code,</span></span>
-<span id="cb253-49"><a href="glosis-soil-data-preparation.html#cb253-49" aria-hidden="true" tabindex="-1"></a><span class="st">  ST_X(pl.position::geometry) AS longitude,</span></span>
-<span id="cb253-50"><a href="glosis-soil-data-preparation.html#cb253-50" aria-hidden="true" tabindex="-1"></a><span class="st">  ST_Y(pl.position::geometry) AS latitude</span></span>
-<span id="cb253-51"><a href="glosis-soil-data-preparation.html#cb253-51" aria-hidden="true" tabindex="-1"></a><span class="st">FROM core.project p</span></span>
-<span id="cb253-52"><a href="glosis-soil-data-preparation.html#cb253-52" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.project_site ps</span></span>
-<span id="cb253-53"><a href="glosis-soil-data-preparation.html#cb253-53" aria-hidden="true" tabindex="-1"></a><span class="st">  ON ps.project_id = p.project_id</span></span>
-<span id="cb253-54"><a href="glosis-soil-data-preparation.html#cb253-54" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.site s</span></span>
-<span id="cb253-55"><a href="glosis-soil-data-preparation.html#cb253-55" aria-hidden="true" tabindex="-1"></a><span class="st">  ON s.site_id = ps.site_id</span></span>
-<span id="cb253-56"><a href="glosis-soil-data-preparation.html#cb253-56" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.plot pl</span></span>
-<span id="cb253-57"><a href="glosis-soil-data-preparation.html#cb253-57" aria-hidden="true" tabindex="-1"></a><span class="st">  ON pl.site_id = s.site_id</span></span>
-<span id="cb253-58"><a href="glosis-soil-data-preparation.html#cb253-58" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.profile pf</span></span>
-<span id="cb253-59"><a href="glosis-soil-data-preparation.html#cb253-59" aria-hidden="true" tabindex="-1"></a><span class="st">  ON pf.plot_id = pl.plot_id</span></span>
-<span id="cb253-60"><a href="glosis-soil-data-preparation.html#cb253-60" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.element e</span></span>
-<span id="cb253-61"><a href="glosis-soil-data-preparation.html#cb253-61" aria-hidden="true" tabindex="-1"></a><span class="st">  ON e.profile_id = pf.profile_id</span></span>
-<span id="cb253-62"><a href="glosis-soil-data-preparation.html#cb253-62" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.specimen sp</span></span>
-<span id="cb253-63"><a href="glosis-soil-data-preparation.html#cb253-63" aria-hidden="true" tabindex="-1"></a><span class="st">  ON sp.element_id = e.element_id</span></span>
-<span id="cb253-64"><a href="glosis-soil-data-preparation.html#cb253-64" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY</span></span>
-<span id="cb253-65"><a href="glosis-soil-data-preparation.html#cb253-65" aria-hidden="true" tabindex="-1"></a><span class="st">  p.name,</span></span>
-<span id="cb253-66"><a href="glosis-soil-data-preparation.html#cb253-66" aria-hidden="true" tabindex="-1"></a><span class="st">  s.site_id,</span></span>
-<span id="cb253-67"><a href="glosis-soil-data-preparation.html#cb253-67" aria-hidden="true" tabindex="-1"></a><span class="st">  pf.profile_id,</span></span>
-<span id="cb253-68"><a href="glosis-soil-data-preparation.html#cb253-68" aria-hidden="true" tabindex="-1"></a><span class="st">  e.order_element,</span></span>
-<span id="cb253-69"><a href="glosis-soil-data-preparation.html#cb253-69" aria-hidden="true" tabindex="-1"></a><span class="st">  e.upper_depth</span></span>
-<span id="cb253-70"><a href="glosis-soil-data-preparation.html#cb253-70" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb253-71"><a href="glosis-soil-data-preparation.html#cb253-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-72"><a href="glosis-soil-data-preparation.html#cb253-72" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-73"><a href="glosis-soil-data-preparation.html#cb253-73" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query 2: retrieve laboratory soil properties</span></span>
-<span id="cb253-74"><a href="glosis-soil-data-preparation.html#cb253-74" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-75"><a href="glosis-soil-data-preparation.html#cb253-75" aria-hidden="true" tabindex="-1"></a><span class="co"># This query extracts the measured physico-chemical properties</span></span>
-<span id="cb253-76"><a href="glosis-soil-data-preparation.html#cb253-76" aria-hidden="true" tabindex="-1"></a><span class="co"># linked to each specimen, including:</span></span>
-<span id="cb253-77"><a href="glosis-soil-data-preparation.html#cb253-77" aria-hidden="true" tabindex="-1"></a><span class="co"># - property identifier</span></span>
-<span id="cb253-78"><a href="glosis-soil-data-preparation.html#cb253-78" aria-hidden="true" tabindex="-1"></a><span class="co"># - analytical procedure</span></span>
-<span id="cb253-79"><a href="glosis-soil-data-preparation.html#cb253-79" aria-hidden="true" tabindex="-1"></a><span class="co"># - unit of measure</span></span>
-<span id="cb253-80"><a href="glosis-soil-data-preparation.html#cb253-80" aria-hidden="true" tabindex="-1"></a><span class="co"># - observed value</span></span>
-<span id="cb253-81"><a href="glosis-soil-data-preparation.html#cb253-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-82"><a href="glosis-soil-data-preparation.html#cb253-82" aria-hidden="true" tabindex="-1"></a>query_properties <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb253-83"><a href="glosis-soil-data-preparation.html#cb253-83" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
-<span id="cb253-84"><a href="glosis-soil-data-preparation.html#cb253-84" aria-hidden="true" tabindex="-1"></a><span class="st">  p.name AS project_name,</span></span>
-<span id="cb253-85"><a href="glosis-soil-data-preparation.html#cb253-85" aria-hidden="true" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
-<span id="cb253-86"><a href="glosis-soil-data-preparation.html#cb253-86" aria-hidden="true" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
-<span id="cb253-87"><a href="glosis-soil-data-preparation.html#cb253-87" aria-hidden="true" tabindex="-1"></a><span class="st">  sp.code AS specimen_code,</span></span>
-<span id="cb253-88"><a href="glosis-soil-data-preparation.html#cb253-88" aria-hidden="true" tabindex="-1"></a><span class="st">  r.result_phys_chem_id,</span></span>
-<span id="cb253-89"><a href="glosis-soil-data-preparation.html#cb253-89" aria-hidden="true" tabindex="-1"></a><span class="st">  o.observation_phys_chem_id,</span></span>
-<span id="cb253-90"><a href="glosis-soil-data-preparation.html#cb253-90" aria-hidden="true" tabindex="-1"></a><span class="st">  o.property_phys_chem_id,</span></span>
-<span id="cb253-91"><a href="glosis-soil-data-preparation.html#cb253-91" aria-hidden="true" tabindex="-1"></a><span class="st">  o.procedure_phys_chem_id,</span></span>
-<span id="cb253-92"><a href="glosis-soil-data-preparation.html#cb253-92" aria-hidden="true" tabindex="-1"></a><span class="st">  o.unit_of_measure_id,</span></span>
-<span id="cb253-93"><a href="glosis-soil-data-preparation.html#cb253-93" aria-hidden="true" tabindex="-1"></a><span class="st">  r.value</span></span>
-<span id="cb253-94"><a href="glosis-soil-data-preparation.html#cb253-94" aria-hidden="true" tabindex="-1"></a><span class="st">FROM core.result_phys_chem r</span></span>
-<span id="cb253-95"><a href="glosis-soil-data-preparation.html#cb253-95" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.specimen sp</span></span>
-<span id="cb253-96"><a href="glosis-soil-data-preparation.html#cb253-96" aria-hidden="true" tabindex="-1"></a><span class="st">  ON r.specimen_id = sp.specimen_id</span></span>
-<span id="cb253-97"><a href="glosis-soil-data-preparation.html#cb253-97" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.element e</span></span>
-<span id="cb253-98"><a href="glosis-soil-data-preparation.html#cb253-98" aria-hidden="true" tabindex="-1"></a><span class="st">  ON sp.element_id = e.element_id</span></span>
-<span id="cb253-99"><a href="glosis-soil-data-preparation.html#cb253-99" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.profile pf</span></span>
-<span id="cb253-100"><a href="glosis-soil-data-preparation.html#cb253-100" aria-hidden="true" tabindex="-1"></a><span class="st">  ON e.profile_id = pf.profile_id</span></span>
-<span id="cb253-101"><a href="glosis-soil-data-preparation.html#cb253-101" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.plot pl</span></span>
-<span id="cb253-102"><a href="glosis-soil-data-preparation.html#cb253-102" aria-hidden="true" tabindex="-1"></a><span class="st">  ON pf.plot_id = pl.plot_id</span></span>
-<span id="cb253-103"><a href="glosis-soil-data-preparation.html#cb253-103" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.site s</span></span>
-<span id="cb253-104"><a href="glosis-soil-data-preparation.html#cb253-104" aria-hidden="true" tabindex="-1"></a><span class="st">  ON pl.site_id = s.site_id</span></span>
-<span id="cb253-105"><a href="glosis-soil-data-preparation.html#cb253-105" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.project_site ps</span></span>
-<span id="cb253-106"><a href="glosis-soil-data-preparation.html#cb253-106" aria-hidden="true" tabindex="-1"></a><span class="st">  ON s.site_id = ps.site_id</span></span>
-<span id="cb253-107"><a href="glosis-soil-data-preparation.html#cb253-107" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.project p</span></span>
-<span id="cb253-108"><a href="glosis-soil-data-preparation.html#cb253-108" aria-hidden="true" tabindex="-1"></a><span class="st">  ON ps.project_id = p.project_id</span></span>
-<span id="cb253-109"><a href="glosis-soil-data-preparation.html#cb253-109" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN core.observation_phys_chem o</span></span>
-<span id="cb253-110"><a href="glosis-soil-data-preparation.html#cb253-110" aria-hidden="true" tabindex="-1"></a><span class="st">  ON o.observation_phys_chem_id = r.observation_phys_chem_id</span></span>
-<span id="cb253-111"><a href="glosis-soil-data-preparation.html#cb253-111" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY</span></span>
-<span id="cb253-112"><a href="glosis-soil-data-preparation.html#cb253-112" aria-hidden="true" tabindex="-1"></a><span class="st">  p.name,</span></span>
-<span id="cb253-113"><a href="glosis-soil-data-preparation.html#cb253-113" aria-hidden="true" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
-<span id="cb253-114"><a href="glosis-soil-data-preparation.html#cb253-114" aria-hidden="true" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
-<span id="cb253-115"><a href="glosis-soil-data-preparation.html#cb253-115" aria-hidden="true" tabindex="-1"></a><span class="st">  o.property_phys_chem_id</span></span>
-<span id="cb253-116"><a href="glosis-soil-data-preparation.html#cb253-116" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb253-117"><a href="glosis-soil-data-preparation.html#cb253-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-118"><a href="glosis-soil-data-preparation.html#cb253-118" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-119"><a href="glosis-soil-data-preparation.html#cb253-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute the SQL queries and store results in R objects</span></span>
-<span id="cb253-120"><a href="glosis-soil-data-preparation.html#cb253-120" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-121"><a href="glosis-soil-data-preparation.html#cb253-121" aria-hidden="true" tabindex="-1"></a>soil_points <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_points)</span>
-<span id="cb253-122"><a href="glosis-soil-data-preparation.html#cb253-122" aria-hidden="true" tabindex="-1"></a>soil_properties <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_properties)</span>
-<span id="cb253-123"><a href="glosis-soil-data-preparation.html#cb253-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-124"><a href="glosis-soil-data-preparation.html#cb253-124" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-125"><a href="glosis-soil-data-preparation.html#cb253-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert soil properties from long to wide format</span></span>
-<span id="cb253-126"><a href="glosis-soil-data-preparation.html#cb253-126" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-127"><a href="glosis-soil-data-preparation.html#cb253-127" aria-hidden="true" tabindex="-1"></a><span class="co"># A new field called &#39;property_unit&#39; is created by concatenating:</span></span>
-<span id="cb253-128"><a href="glosis-soil-data-preparation.html#cb253-128" aria-hidden="true" tabindex="-1"></a><span class="co"># - property_phys_chem_id</span></span>
-<span id="cb253-129"><a href="glosis-soil-data-preparation.html#cb253-129" aria-hidden="true" tabindex="-1"></a><span class="co"># - unit_of_measure_id</span></span>
-<span id="cb253-130"><a href="glosis-soil-data-preparation.html#cb253-130" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb253-131"><a href="glosis-soil-data-preparation.html#cb253-131" aria-hidden="true" tabindex="-1"></a><span class="co"># This ensures that each output column clearly represents both</span></span>
-<span id="cb253-132"><a href="glosis-soil-data-preparation.html#cb253-132" aria-hidden="true" tabindex="-1"></a><span class="co"># the property and its measurement unit.</span></span>
-<span id="cb253-133"><a href="glosis-soil-data-preparation.html#cb253-133" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb253-134"><a href="glosis-soil-data-preparation.html#cb253-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Then the table is grouped by specimen and reshaped to wide format so that:</span></span>
-<span id="cb253-135"><a href="glosis-soil-data-preparation.html#cb253-135" aria-hidden="true" tabindex="-1"></a><span class="co"># - each row corresponds to one specimen</span></span>
-<span id="cb253-136"><a href="glosis-soil-data-preparation.html#cb253-136" aria-hidden="true" tabindex="-1"></a><span class="co"># - each property becomes a separate column</span></span>
-<span id="cb253-137"><a href="glosis-soil-data-preparation.html#cb253-137" aria-hidden="true" tabindex="-1"></a>soil_properties <span class="ot">&lt;-</span> soil_properties <span class="sc">%&gt;%</span></span>
-<span id="cb253-138"><a href="glosis-soil-data-preparation.html#cb253-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb253-139"><a href="glosis-soil-data-preparation.html#cb253-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">property_unit =</span> <span class="fu">paste0</span>(property_phys_chem_id, <span class="st">&quot;_&quot;</span>, unit_of_measure_id)</span>
-<span id="cb253-140"><a href="glosis-soil-data-preparation.html#cb253-140" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb253-141"><a href="glosis-soil-data-preparation.html#cb253-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_name, site_code, specimen_id, specimen_code, property_unit) <span class="sc">%&gt;%</span></span>
-<span id="cb253-142"><a href="glosis-soil-data-preparation.html#cb253-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">value =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb253-143"><a href="glosis-soil-data-preparation.html#cb253-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb253-144"><a href="glosis-soil-data-preparation.html#cb253-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> property_unit,</span>
-<span id="cb253-145"><a href="glosis-soil-data-preparation.html#cb253-145" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value</span>
-<span id="cb253-146"><a href="glosis-soil-data-preparation.html#cb253-146" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb253-147"><a href="glosis-soil-data-preparation.html#cb253-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-148"><a href="glosis-soil-data-preparation.html#cb253-148" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-149"><a href="glosis-soil-data-preparation.html#cb253-149" aria-hidden="true" tabindex="-1"></a><span class="co"># Join specimen metadata with laboratory properties</span></span>
-<span id="cb253-150"><a href="glosis-soil-data-preparation.html#cb253-150" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-151"><a href="glosis-soil-data-preparation.html#cb253-151" aria-hidden="true" tabindex="-1"></a><span class="co"># The project name is removed from the properties table before joining</span></span>
-<span id="cb253-152"><a href="glosis-soil-data-preparation.html#cb253-152" aria-hidden="true" tabindex="-1"></a><span class="co"># to avoid duplicated columns such as project_name.x / project_name.y.</span></span>
-<span id="cb253-153"><a href="glosis-soil-data-preparation.html#cb253-153" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb253-154"><a href="glosis-soil-data-preparation.html#cb253-154" aria-hidden="true" tabindex="-1"></a><span class="co"># The join is performed using:</span></span>
-<span id="cb253-155"><a href="glosis-soil-data-preparation.html#cb253-155" aria-hidden="true" tabindex="-1"></a><span class="co"># - site_code</span></span>
-<span id="cb253-156"><a href="glosis-soil-data-preparation.html#cb253-156" aria-hidden="true" tabindex="-1"></a><span class="co"># - specimen_id</span></span>
-<span id="cb253-157"><a href="glosis-soil-data-preparation.html#cb253-157" aria-hidden="true" tabindex="-1"></a><span class="co"># - specimen_code</span></span>
-<span id="cb253-158"><a href="glosis-soil-data-preparation.html#cb253-158" aria-hidden="true" tabindex="-1"></a>soil_points_with_properties <span class="ot">&lt;-</span> soil_points <span class="sc">%&gt;%</span></span>
-<span id="cb253-159"><a href="glosis-soil-data-preparation.html#cb253-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
-<span id="cb253-160"><a href="glosis-soil-data-preparation.html#cb253-160" aria-hidden="true" tabindex="-1"></a>    soil_properties <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>project_name),</span>
-<span id="cb253-161"><a href="glosis-soil-data-preparation.html#cb253-161" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site_code&quot;</span>, <span class="st">&quot;specimen_id&quot;</span>, <span class="st">&quot;specimen_code&quot;</span>)</span>
-<span id="cb253-162"><a href="glosis-soil-data-preparation.html#cb253-162" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb253-163"><a href="glosis-soil-data-preparation.html#cb253-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-164"><a href="glosis-soil-data-preparation.html#cb253-164" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-165"><a href="glosis-soil-data-preparation.html#cb253-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the final table to an sf spatial object</span></span>
-<span id="cb253-166"><a href="glosis-soil-data-preparation.html#cb253-166" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-167"><a href="glosis-soil-data-preparation.html#cb253-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Longitude and latitude are used to create point geometries.</span></span>
-<span id="cb253-168"><a href="glosis-soil-data-preparation.html#cb253-168" aria-hidden="true" tabindex="-1"></a><span class="co"># The coordinate reference system is WGS84 (EPSG:4326).</span></span>
-<span id="cb253-169"><a href="glosis-soil-data-preparation.html#cb253-169" aria-hidden="true" tabindex="-1"></a>soil_points_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(</span>
-<span id="cb253-170"><a href="glosis-soil-data-preparation.html#cb253-170" aria-hidden="true" tabindex="-1"></a>  soil_points_with_properties,</span>
-<span id="cb253-171"><a href="glosis-soil-data-preparation.html#cb253-171" aria-hidden="true" tabindex="-1"></a>  <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>),</span>
-<span id="cb253-172"><a href="glosis-soil-data-preparation.html#cb253-172" aria-hidden="true" tabindex="-1"></a>  <span class="at">crs =</span> <span class="dv">4326</span></span>
-<span id="cb253-173"><a href="glosis-soil-data-preparation.html#cb253-173" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb253-174"><a href="glosis-soil-data-preparation.html#cb253-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-175"><a href="glosis-soil-data-preparation.html#cb253-175" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-176"><a href="glosis-soil-data-preparation.html#cb253-176" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the spatial dataset to a GeoPackage file</span></span>
-<span id="cb253-177"><a href="glosis-soil-data-preparation.html#cb253-177" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-178"><a href="glosis-soil-data-preparation.html#cb253-178" aria-hidden="true" tabindex="-1"></a><span class="co"># GeoPackage is used instead of Shapefile because it preserves:</span></span>
-<span id="cb253-179"><a href="glosis-soil-data-preparation.html#cb253-179" aria-hidden="true" tabindex="-1"></a><span class="co"># - full column names</span></span>
-<span id="cb253-180"><a href="glosis-soil-data-preparation.html#cb253-180" aria-hidden="true" tabindex="-1"></a><span class="co"># - special characters</span></span>
-<span id="cb253-181"><a href="glosis-soil-data-preparation.html#cb253-181" aria-hidden="true" tabindex="-1"></a><span class="co"># - a larger number of fields</span></span>
-<span id="cb253-182"><a href="glosis-soil-data-preparation.html#cb253-182" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(</span>
-<span id="cb253-183"><a href="glosis-soil-data-preparation.html#cb253-183" aria-hidden="true" tabindex="-1"></a>  soil_points_sf,</span>
-<span id="cb253-184"><a href="glosis-soil-data-preparation.html#cb253-184" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;03_outputs/module3/kssl_points_with_properties.gpkg&quot;</span>,</span>
-<span id="cb253-185"><a href="glosis-soil-data-preparation.html#cb253-185" aria-hidden="true" tabindex="-1"></a>  <span class="at">delete_dsn =</span> <span class="cn">TRUE</span></span>
-<span id="cb253-186"><a href="glosis-soil-data-preparation.html#cb253-186" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb253-187"><a href="glosis-soil-data-preparation.html#cb253-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-188"><a href="glosis-soil-data-preparation.html#cb253-188" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-189"><a href="glosis-soil-data-preparation.html#cb253-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: close the database connection when finished</span></span>
-<span id="cb253-190"><a href="glosis-soil-data-preparation.html#cb253-190" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================================================</span></span>
-<span id="cb253-191"><a href="glosis-soil-data-preparation.html#cb253-191" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="glosis-soil-data-preparation.html#cb249-1" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-2"><a href="glosis-soil-data-preparation.html#cb249-2" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb249-3"><a href="glosis-soil-data-preparation.html#cb249-3" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-4"><a href="glosis-soil-data-preparation.html#cb249-4" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb249-5"><a href="glosis-soil-data-preparation.html#cb249-5" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb249-6"><a href="glosis-soil-data-preparation.html#cb249-6" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb249-7"><a href="glosis-soil-data-preparation.html#cb249-7" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb249-8"><a href="glosis-soil-data-preparation.html#cb249-8" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb249-9"><a href="glosis-soil-data-preparation.html#cb249-9" tabindex="-1"></a></span>
+<span id="cb249-10"><a href="glosis-soil-data-preparation.html#cb249-10" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-11"><a href="glosis-soil-data-preparation.html#cb249-11" tabindex="-1"></a><span class="co"># Connect to the PostgreSQL database</span></span>
+<span id="cb249-12"><a href="glosis-soil-data-preparation.html#cb249-12" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-13"><a href="glosis-soil-data-preparation.html#cb249-13" tabindex="-1"></a><span class="co"># This connection uses the database exposed on localhost:5442,</span></span>
+<span id="cb249-14"><a href="glosis-soil-data-preparation.html#cb249-14" tabindex="-1"></a><span class="co"># which is the port mapped from the Docker PostgreSQL container.</span></span>
+<span id="cb249-15"><a href="glosis-soil-data-preparation.html#cb249-15" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb249-16"><a href="glosis-soil-data-preparation.html#cb249-16" tabindex="-1"></a>  RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(),</span>
+<span id="cb249-17"><a href="glosis-soil-data-preparation.html#cb249-17" tabindex="-1"></a>  <span class="at">dbname   =</span> <span class="st">&quot;kssl&quot;</span>,</span>
+<span id="cb249-18"><a href="glosis-soil-data-preparation.html#cb249-18" tabindex="-1"></a>  <span class="at">host     =</span> <span class="st">&quot;localhost&quot;</span>,</span>
+<span id="cb249-19"><a href="glosis-soil-data-preparation.html#cb249-19" tabindex="-1"></a>  <span class="at">port     =</span> <span class="dv">5442</span>,</span>
+<span id="cb249-20"><a href="glosis-soil-data-preparation.html#cb249-20" tabindex="-1"></a>  <span class="at">user     =</span> <span class="st">&quot;glosis&quot;</span>,</span>
+<span id="cb249-21"><a href="glosis-soil-data-preparation.html#cb249-21" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">&quot;glosis&quot;</span></span>
+<span id="cb249-22"><a href="glosis-soil-data-preparation.html#cb249-22" tabindex="-1"></a>)</span>
+<span id="cb249-23"><a href="glosis-soil-data-preparation.html#cb249-23" tabindex="-1"></a></span>
+<span id="cb249-24"><a href="glosis-soil-data-preparation.html#cb249-24" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-25"><a href="glosis-soil-data-preparation.html#cb249-25" tabindex="-1"></a><span class="co"># SQL Query 1: retrieve soil point / profile / horizon metadata</span></span>
+<span id="cb249-26"><a href="glosis-soil-data-preparation.html#cb249-26" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-27"><a href="glosis-soil-data-preparation.html#cb249-27" tabindex="-1"></a><span class="co"># This query extracts the structural information for each soil specimen:</span></span>
+<span id="cb249-28"><a href="glosis-soil-data-preparation.html#cb249-28" tabindex="-1"></a><span class="co"># - project and site identifiers</span></span>
+<span id="cb249-29"><a href="glosis-soil-data-preparation.html#cb249-29" tabindex="-1"></a><span class="co"># - plot and profile identifiers</span></span>
+<span id="cb249-30"><a href="glosis-soil-data-preparation.html#cb249-30" tabindex="-1"></a><span class="co"># - horizon/element depth information</span></span>
+<span id="cb249-31"><a href="glosis-soil-data-preparation.html#cb249-31" tabindex="-1"></a><span class="co"># - specimen code</span></span>
+<span id="cb249-32"><a href="glosis-soil-data-preparation.html#cb249-32" tabindex="-1"></a><span class="co"># - longitude and latitude from the plot geometry</span></span>
+<span id="cb249-33"><a href="glosis-soil-data-preparation.html#cb249-33" tabindex="-1"></a></span>
+<span id="cb249-34"><a href="glosis-soil-data-preparation.html#cb249-34" tabindex="-1"></a>query_points <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb249-35"><a href="glosis-soil-data-preparation.html#cb249-35" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb249-36"><a href="glosis-soil-data-preparation.html#cb249-36" tabindex="-1"></a><span class="st">  p.project_id,</span></span>
+<span id="cb249-37"><a href="glosis-soil-data-preparation.html#cb249-37" tabindex="-1"></a><span class="st">  p.name AS project_name,</span></span>
+<span id="cb249-38"><a href="glosis-soil-data-preparation.html#cb249-38" tabindex="-1"></a><span class="st">  s.site_id,</span></span>
+<span id="cb249-39"><a href="glosis-soil-data-preparation.html#cb249-39" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
+<span id="cb249-40"><a href="glosis-soil-data-preparation.html#cb249-40" tabindex="-1"></a><span class="st">  pl.plot_id,</span></span>
+<span id="cb249-41"><a href="glosis-soil-data-preparation.html#cb249-41" tabindex="-1"></a><span class="st">  pf.profile_id,</span></span>
+<span id="cb249-42"><a href="glosis-soil-data-preparation.html#cb249-42" tabindex="-1"></a><span class="st">  e.element_id,</span></span>
+<span id="cb249-43"><a href="glosis-soil-data-preparation.html#cb249-43" tabindex="-1"></a><span class="st">  e.order_element,</span></span>
+<span id="cb249-44"><a href="glosis-soil-data-preparation.html#cb249-44" tabindex="-1"></a><span class="st">  e.upper_depth,</span></span>
+<span id="cb249-45"><a href="glosis-soil-data-preparation.html#cb249-45" tabindex="-1"></a><span class="st">  e.lower_depth,</span></span>
+<span id="cb249-46"><a href="glosis-soil-data-preparation.html#cb249-46" tabindex="-1"></a><span class="st">  e.type,</span></span>
+<span id="cb249-47"><a href="glosis-soil-data-preparation.html#cb249-47" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
+<span id="cb249-48"><a href="glosis-soil-data-preparation.html#cb249-48" tabindex="-1"></a><span class="st">  sp.code AS specimen_code,</span></span>
+<span id="cb249-49"><a href="glosis-soil-data-preparation.html#cb249-49" tabindex="-1"></a><span class="st">  ST_X(pl.position::geometry) AS longitude,</span></span>
+<span id="cb249-50"><a href="glosis-soil-data-preparation.html#cb249-50" tabindex="-1"></a><span class="st">  ST_Y(pl.position::geometry) AS latitude</span></span>
+<span id="cb249-51"><a href="glosis-soil-data-preparation.html#cb249-51" tabindex="-1"></a><span class="st">FROM core.project p</span></span>
+<span id="cb249-52"><a href="glosis-soil-data-preparation.html#cb249-52" tabindex="-1"></a><span class="st">JOIN core.project_site ps</span></span>
+<span id="cb249-53"><a href="glosis-soil-data-preparation.html#cb249-53" tabindex="-1"></a><span class="st">  ON ps.project_id = p.project_id</span></span>
+<span id="cb249-54"><a href="glosis-soil-data-preparation.html#cb249-54" tabindex="-1"></a><span class="st">JOIN core.site s</span></span>
+<span id="cb249-55"><a href="glosis-soil-data-preparation.html#cb249-55" tabindex="-1"></a><span class="st">  ON s.site_id = ps.site_id</span></span>
+<span id="cb249-56"><a href="glosis-soil-data-preparation.html#cb249-56" tabindex="-1"></a><span class="st">JOIN core.plot pl</span></span>
+<span id="cb249-57"><a href="glosis-soil-data-preparation.html#cb249-57" tabindex="-1"></a><span class="st">  ON pl.site_id = s.site_id</span></span>
+<span id="cb249-58"><a href="glosis-soil-data-preparation.html#cb249-58" tabindex="-1"></a><span class="st">JOIN core.profile pf</span></span>
+<span id="cb249-59"><a href="glosis-soil-data-preparation.html#cb249-59" tabindex="-1"></a><span class="st">  ON pf.plot_id = pl.plot_id</span></span>
+<span id="cb249-60"><a href="glosis-soil-data-preparation.html#cb249-60" tabindex="-1"></a><span class="st">JOIN core.element e</span></span>
+<span id="cb249-61"><a href="glosis-soil-data-preparation.html#cb249-61" tabindex="-1"></a><span class="st">  ON e.profile_id = pf.profile_id</span></span>
+<span id="cb249-62"><a href="glosis-soil-data-preparation.html#cb249-62" tabindex="-1"></a><span class="st">JOIN core.specimen sp</span></span>
+<span id="cb249-63"><a href="glosis-soil-data-preparation.html#cb249-63" tabindex="-1"></a><span class="st">  ON sp.element_id = e.element_id</span></span>
+<span id="cb249-64"><a href="glosis-soil-data-preparation.html#cb249-64" tabindex="-1"></a><span class="st">ORDER BY</span></span>
+<span id="cb249-65"><a href="glosis-soil-data-preparation.html#cb249-65" tabindex="-1"></a><span class="st">  p.name,</span></span>
+<span id="cb249-66"><a href="glosis-soil-data-preparation.html#cb249-66" tabindex="-1"></a><span class="st">  s.site_id,</span></span>
+<span id="cb249-67"><a href="glosis-soil-data-preparation.html#cb249-67" tabindex="-1"></a><span class="st">  pf.profile_id,</span></span>
+<span id="cb249-68"><a href="glosis-soil-data-preparation.html#cb249-68" tabindex="-1"></a><span class="st">  e.order_element,</span></span>
+<span id="cb249-69"><a href="glosis-soil-data-preparation.html#cb249-69" tabindex="-1"></a><span class="st">  e.upper_depth</span></span>
+<span id="cb249-70"><a href="glosis-soil-data-preparation.html#cb249-70" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb249-71"><a href="glosis-soil-data-preparation.html#cb249-71" tabindex="-1"></a></span>
+<span id="cb249-72"><a href="glosis-soil-data-preparation.html#cb249-72" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-73"><a href="glosis-soil-data-preparation.html#cb249-73" tabindex="-1"></a><span class="co"># SQL Query 2: retrieve laboratory soil properties</span></span>
+<span id="cb249-74"><a href="glosis-soil-data-preparation.html#cb249-74" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-75"><a href="glosis-soil-data-preparation.html#cb249-75" tabindex="-1"></a><span class="co"># This query extracts the measured physico-chemical properties</span></span>
+<span id="cb249-76"><a href="glosis-soil-data-preparation.html#cb249-76" tabindex="-1"></a><span class="co"># linked to each specimen, including:</span></span>
+<span id="cb249-77"><a href="glosis-soil-data-preparation.html#cb249-77" tabindex="-1"></a><span class="co"># - property identifier</span></span>
+<span id="cb249-78"><a href="glosis-soil-data-preparation.html#cb249-78" tabindex="-1"></a><span class="co"># - analytical procedure</span></span>
+<span id="cb249-79"><a href="glosis-soil-data-preparation.html#cb249-79" tabindex="-1"></a><span class="co"># - unit of measure</span></span>
+<span id="cb249-80"><a href="glosis-soil-data-preparation.html#cb249-80" tabindex="-1"></a><span class="co"># - observed value</span></span>
+<span id="cb249-81"><a href="glosis-soil-data-preparation.html#cb249-81" tabindex="-1"></a></span>
+<span id="cb249-82"><a href="glosis-soil-data-preparation.html#cb249-82" tabindex="-1"></a>query_properties <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb249-83"><a href="glosis-soil-data-preparation.html#cb249-83" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb249-84"><a href="glosis-soil-data-preparation.html#cb249-84" tabindex="-1"></a><span class="st">  p.name AS project_name,</span></span>
+<span id="cb249-85"><a href="glosis-soil-data-preparation.html#cb249-85" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
+<span id="cb249-86"><a href="glosis-soil-data-preparation.html#cb249-86" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
+<span id="cb249-87"><a href="glosis-soil-data-preparation.html#cb249-87" tabindex="-1"></a><span class="st">  sp.code AS specimen_code,</span></span>
+<span id="cb249-88"><a href="glosis-soil-data-preparation.html#cb249-88" tabindex="-1"></a><span class="st">  r.result_phys_chem_id,</span></span>
+<span id="cb249-89"><a href="glosis-soil-data-preparation.html#cb249-89" tabindex="-1"></a><span class="st">  o.observation_phys_chem_id,</span></span>
+<span id="cb249-90"><a href="glosis-soil-data-preparation.html#cb249-90" tabindex="-1"></a><span class="st">  o.property_phys_chem_id,</span></span>
+<span id="cb249-91"><a href="glosis-soil-data-preparation.html#cb249-91" tabindex="-1"></a><span class="st">  o.procedure_phys_chem_id,</span></span>
+<span id="cb249-92"><a href="glosis-soil-data-preparation.html#cb249-92" tabindex="-1"></a><span class="st">  o.unit_of_measure_id,</span></span>
+<span id="cb249-93"><a href="glosis-soil-data-preparation.html#cb249-93" tabindex="-1"></a><span class="st">  r.value</span></span>
+<span id="cb249-94"><a href="glosis-soil-data-preparation.html#cb249-94" tabindex="-1"></a><span class="st">FROM core.result_phys_chem r</span></span>
+<span id="cb249-95"><a href="glosis-soil-data-preparation.html#cb249-95" tabindex="-1"></a><span class="st">JOIN core.specimen sp</span></span>
+<span id="cb249-96"><a href="glosis-soil-data-preparation.html#cb249-96" tabindex="-1"></a><span class="st">  ON r.specimen_id = sp.specimen_id</span></span>
+<span id="cb249-97"><a href="glosis-soil-data-preparation.html#cb249-97" tabindex="-1"></a><span class="st">JOIN core.element e</span></span>
+<span id="cb249-98"><a href="glosis-soil-data-preparation.html#cb249-98" tabindex="-1"></a><span class="st">  ON sp.element_id = e.element_id</span></span>
+<span id="cb249-99"><a href="glosis-soil-data-preparation.html#cb249-99" tabindex="-1"></a><span class="st">JOIN core.profile pf</span></span>
+<span id="cb249-100"><a href="glosis-soil-data-preparation.html#cb249-100" tabindex="-1"></a><span class="st">  ON e.profile_id = pf.profile_id</span></span>
+<span id="cb249-101"><a href="glosis-soil-data-preparation.html#cb249-101" tabindex="-1"></a><span class="st">JOIN core.plot pl</span></span>
+<span id="cb249-102"><a href="glosis-soil-data-preparation.html#cb249-102" tabindex="-1"></a><span class="st">  ON pf.plot_id = pl.plot_id</span></span>
+<span id="cb249-103"><a href="glosis-soil-data-preparation.html#cb249-103" tabindex="-1"></a><span class="st">JOIN core.site s</span></span>
+<span id="cb249-104"><a href="glosis-soil-data-preparation.html#cb249-104" tabindex="-1"></a><span class="st">  ON pl.site_id = s.site_id</span></span>
+<span id="cb249-105"><a href="glosis-soil-data-preparation.html#cb249-105" tabindex="-1"></a><span class="st">JOIN core.project_site ps</span></span>
+<span id="cb249-106"><a href="glosis-soil-data-preparation.html#cb249-106" tabindex="-1"></a><span class="st">  ON s.site_id = ps.site_id</span></span>
+<span id="cb249-107"><a href="glosis-soil-data-preparation.html#cb249-107" tabindex="-1"></a><span class="st">JOIN core.project p</span></span>
+<span id="cb249-108"><a href="glosis-soil-data-preparation.html#cb249-108" tabindex="-1"></a><span class="st">  ON ps.project_id = p.project_id</span></span>
+<span id="cb249-109"><a href="glosis-soil-data-preparation.html#cb249-109" tabindex="-1"></a><span class="st">JOIN core.observation_phys_chem o</span></span>
+<span id="cb249-110"><a href="glosis-soil-data-preparation.html#cb249-110" tabindex="-1"></a><span class="st">  ON o.observation_phys_chem_id = r.observation_phys_chem_id</span></span>
+<span id="cb249-111"><a href="glosis-soil-data-preparation.html#cb249-111" tabindex="-1"></a><span class="st">ORDER BY</span></span>
+<span id="cb249-112"><a href="glosis-soil-data-preparation.html#cb249-112" tabindex="-1"></a><span class="st">  p.name,</span></span>
+<span id="cb249-113"><a href="glosis-soil-data-preparation.html#cb249-113" tabindex="-1"></a><span class="st">  s.site_code,</span></span>
+<span id="cb249-114"><a href="glosis-soil-data-preparation.html#cb249-114" tabindex="-1"></a><span class="st">  sp.specimen_id,</span></span>
+<span id="cb249-115"><a href="glosis-soil-data-preparation.html#cb249-115" tabindex="-1"></a><span class="st">  o.property_phys_chem_id</span></span>
+<span id="cb249-116"><a href="glosis-soil-data-preparation.html#cb249-116" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb249-117"><a href="glosis-soil-data-preparation.html#cb249-117" tabindex="-1"></a></span>
+<span id="cb249-118"><a href="glosis-soil-data-preparation.html#cb249-118" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-119"><a href="glosis-soil-data-preparation.html#cb249-119" tabindex="-1"></a><span class="co"># Execute the SQL queries and store results in R objects</span></span>
+<span id="cb249-120"><a href="glosis-soil-data-preparation.html#cb249-120" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-121"><a href="glosis-soil-data-preparation.html#cb249-121" tabindex="-1"></a>soil_points <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_points)</span>
+<span id="cb249-122"><a href="glosis-soil-data-preparation.html#cb249-122" tabindex="-1"></a>soil_properties <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_properties)</span>
+<span id="cb249-123"><a href="glosis-soil-data-preparation.html#cb249-123" tabindex="-1"></a></span>
+<span id="cb249-124"><a href="glosis-soil-data-preparation.html#cb249-124" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-125"><a href="glosis-soil-data-preparation.html#cb249-125" tabindex="-1"></a><span class="co"># Convert soil properties from long to wide format</span></span>
+<span id="cb249-126"><a href="glosis-soil-data-preparation.html#cb249-126" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-127"><a href="glosis-soil-data-preparation.html#cb249-127" tabindex="-1"></a><span class="co"># A new field called &#39;property_unit&#39; is created by concatenating:</span></span>
+<span id="cb249-128"><a href="glosis-soil-data-preparation.html#cb249-128" tabindex="-1"></a><span class="co"># - property_phys_chem_id</span></span>
+<span id="cb249-129"><a href="glosis-soil-data-preparation.html#cb249-129" tabindex="-1"></a><span class="co"># - unit_of_measure_id</span></span>
+<span id="cb249-130"><a href="glosis-soil-data-preparation.html#cb249-130" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb249-131"><a href="glosis-soil-data-preparation.html#cb249-131" tabindex="-1"></a><span class="co"># This ensures that each output column clearly represents both</span></span>
+<span id="cb249-132"><a href="glosis-soil-data-preparation.html#cb249-132" tabindex="-1"></a><span class="co"># the property and its measurement unit.</span></span>
+<span id="cb249-133"><a href="glosis-soil-data-preparation.html#cb249-133" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb249-134"><a href="glosis-soil-data-preparation.html#cb249-134" tabindex="-1"></a><span class="co"># Then the table is grouped by specimen and reshaped to wide format so that:</span></span>
+<span id="cb249-135"><a href="glosis-soil-data-preparation.html#cb249-135" tabindex="-1"></a><span class="co"># - each row corresponds to one specimen</span></span>
+<span id="cb249-136"><a href="glosis-soil-data-preparation.html#cb249-136" tabindex="-1"></a><span class="co"># - each property becomes a separate column</span></span>
+<span id="cb249-137"><a href="glosis-soil-data-preparation.html#cb249-137" tabindex="-1"></a>soil_properties <span class="ot">&lt;-</span> soil_properties <span class="sc">%&gt;%</span></span>
+<span id="cb249-138"><a href="glosis-soil-data-preparation.html#cb249-138" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb249-139"><a href="glosis-soil-data-preparation.html#cb249-139" tabindex="-1"></a>    <span class="at">property_unit =</span> <span class="fu">paste0</span>(property_phys_chem_id, <span class="st">&quot;_&quot;</span>, unit_of_measure_id)</span>
+<span id="cb249-140"><a href="glosis-soil-data-preparation.html#cb249-140" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb249-141"><a href="glosis-soil-data-preparation.html#cb249-141" tabindex="-1"></a>  <span class="fu">group_by</span>(project_name, site_code, specimen_id, specimen_code, property_unit) <span class="sc">%&gt;%</span></span>
+<span id="cb249-142"><a href="glosis-soil-data-preparation.html#cb249-142" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">value =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb249-143"><a href="glosis-soil-data-preparation.html#cb249-143" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb249-144"><a href="glosis-soil-data-preparation.html#cb249-144" tabindex="-1"></a>    <span class="at">names_from =</span> property_unit,</span>
+<span id="cb249-145"><a href="glosis-soil-data-preparation.html#cb249-145" tabindex="-1"></a>    <span class="at">values_from =</span> value</span>
+<span id="cb249-146"><a href="glosis-soil-data-preparation.html#cb249-146" tabindex="-1"></a>  )</span>
+<span id="cb249-147"><a href="glosis-soil-data-preparation.html#cb249-147" tabindex="-1"></a></span>
+<span id="cb249-148"><a href="glosis-soil-data-preparation.html#cb249-148" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-149"><a href="glosis-soil-data-preparation.html#cb249-149" tabindex="-1"></a><span class="co"># Join specimen metadata with laboratory properties</span></span>
+<span id="cb249-150"><a href="glosis-soil-data-preparation.html#cb249-150" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-151"><a href="glosis-soil-data-preparation.html#cb249-151" tabindex="-1"></a><span class="co"># The project name is removed from the properties table before joining</span></span>
+<span id="cb249-152"><a href="glosis-soil-data-preparation.html#cb249-152" tabindex="-1"></a><span class="co"># to avoid duplicated columns such as project_name.x / project_name.y.</span></span>
+<span id="cb249-153"><a href="glosis-soil-data-preparation.html#cb249-153" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb249-154"><a href="glosis-soil-data-preparation.html#cb249-154" tabindex="-1"></a><span class="co"># The join is performed using:</span></span>
+<span id="cb249-155"><a href="glosis-soil-data-preparation.html#cb249-155" tabindex="-1"></a><span class="co"># - site_code</span></span>
+<span id="cb249-156"><a href="glosis-soil-data-preparation.html#cb249-156" tabindex="-1"></a><span class="co"># - specimen_id</span></span>
+<span id="cb249-157"><a href="glosis-soil-data-preparation.html#cb249-157" tabindex="-1"></a><span class="co"># - specimen_code</span></span>
+<span id="cb249-158"><a href="glosis-soil-data-preparation.html#cb249-158" tabindex="-1"></a>soil_points_with_properties <span class="ot">&lt;-</span> soil_points <span class="sc">%&gt;%</span></span>
+<span id="cb249-159"><a href="glosis-soil-data-preparation.html#cb249-159" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb249-160"><a href="glosis-soil-data-preparation.html#cb249-160" tabindex="-1"></a>    soil_properties <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>project_name),</span>
+<span id="cb249-161"><a href="glosis-soil-data-preparation.html#cb249-161" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site_code&quot;</span>, <span class="st">&quot;specimen_id&quot;</span>, <span class="st">&quot;specimen_code&quot;</span>)</span>
+<span id="cb249-162"><a href="glosis-soil-data-preparation.html#cb249-162" tabindex="-1"></a>  )</span>
+<span id="cb249-163"><a href="glosis-soil-data-preparation.html#cb249-163" tabindex="-1"></a></span>
+<span id="cb249-164"><a href="glosis-soil-data-preparation.html#cb249-164" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-165"><a href="glosis-soil-data-preparation.html#cb249-165" tabindex="-1"></a><span class="co"># Convert the final table to an sf spatial object</span></span>
+<span id="cb249-166"><a href="glosis-soil-data-preparation.html#cb249-166" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-167"><a href="glosis-soil-data-preparation.html#cb249-167" tabindex="-1"></a><span class="co"># Longitude and latitude are used to create point geometries.</span></span>
+<span id="cb249-168"><a href="glosis-soil-data-preparation.html#cb249-168" tabindex="-1"></a><span class="co"># The coordinate reference system is WGS84 (EPSG:4326).</span></span>
+<span id="cb249-169"><a href="glosis-soil-data-preparation.html#cb249-169" tabindex="-1"></a>soil_points_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(</span>
+<span id="cb249-170"><a href="glosis-soil-data-preparation.html#cb249-170" tabindex="-1"></a>  soil_points_with_properties,</span>
+<span id="cb249-171"><a href="glosis-soil-data-preparation.html#cb249-171" tabindex="-1"></a>  <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>),</span>
+<span id="cb249-172"><a href="glosis-soil-data-preparation.html#cb249-172" tabindex="-1"></a>  <span class="at">crs =</span> <span class="dv">4326</span></span>
+<span id="cb249-173"><a href="glosis-soil-data-preparation.html#cb249-173" tabindex="-1"></a>)</span>
+<span id="cb249-174"><a href="glosis-soil-data-preparation.html#cb249-174" tabindex="-1"></a></span>
+<span id="cb249-175"><a href="glosis-soil-data-preparation.html#cb249-175" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-176"><a href="glosis-soil-data-preparation.html#cb249-176" tabindex="-1"></a><span class="co"># Export the spatial dataset to a GeoPackage file</span></span>
+<span id="cb249-177"><a href="glosis-soil-data-preparation.html#cb249-177" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-178"><a href="glosis-soil-data-preparation.html#cb249-178" tabindex="-1"></a><span class="co"># GeoPackage is used instead of Shapefile because it preserves:</span></span>
+<span id="cb249-179"><a href="glosis-soil-data-preparation.html#cb249-179" tabindex="-1"></a><span class="co"># - full column names</span></span>
+<span id="cb249-180"><a href="glosis-soil-data-preparation.html#cb249-180" tabindex="-1"></a><span class="co"># - special characters</span></span>
+<span id="cb249-181"><a href="glosis-soil-data-preparation.html#cb249-181" tabindex="-1"></a><span class="co"># - a larger number of fields</span></span>
+<span id="cb249-182"><a href="glosis-soil-data-preparation.html#cb249-182" tabindex="-1"></a><span class="fu">st_write</span>(</span>
+<span id="cb249-183"><a href="glosis-soil-data-preparation.html#cb249-183" tabindex="-1"></a>  soil_points_sf,</span>
+<span id="cb249-184"><a href="glosis-soil-data-preparation.html#cb249-184" tabindex="-1"></a>  <span class="st">&quot;03_outputs/module3/kssl_points_with_properties.gpkg&quot;</span>,</span>
+<span id="cb249-185"><a href="glosis-soil-data-preparation.html#cb249-185" tabindex="-1"></a>  <span class="at">delete_dsn =</span> <span class="cn">TRUE</span></span>
+<span id="cb249-186"><a href="glosis-soil-data-preparation.html#cb249-186" tabindex="-1"></a>)</span>
+<span id="cb249-187"><a href="glosis-soil-data-preparation.html#cb249-187" tabindex="-1"></a></span>
+<span id="cb249-188"><a href="glosis-soil-data-preparation.html#cb249-188" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-189"><a href="glosis-soil-data-preparation.html#cb249-189" tabindex="-1"></a><span class="co"># Optional: close the database connection when finished</span></span>
+<span id="cb249-190"><a href="glosis-soil-data-preparation.html#cb249-190" tabindex="-1"></a><span class="co"># =========================================================</span></span>
+<span id="cb249-191"><a href="glosis-soil-data-preparation.html#cb249-191" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 
 </div>
 </div>
 <h3>References<a href="references-4.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body">
+<div id="refs" class="references csl-bib-body" entry-spacing="0">
 <div id="ref-ARROUAYS20172" class="csl-entry">
 <strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., Pasztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., Conceicao Gonsalves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., Kozak, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Software installation | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Software installation | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
@@ -54,6 +54,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -127,6 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -732,11 +734,11 @@ This community continuously develops new tools and packages that extend R’s ca
 <li><p><strong>Files/Plots/Packages/Help</strong> (bottom right): File browser, plot viewer, package manager, and help documentation</p></li>
 </ul>
 <p>Try typing a simple command in the Console window:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="software-installation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple arithmetic</span></span>
-<span id="cb3-2"><a href="software-installation.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb3-3"><a href="software-installation.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="software-installation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check R version</span></span>
-<span id="cb3-5"><a href="software-installation.html#cb3-5" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="software-installation.html#cb3-1" tabindex="-1"></a><span class="co"># Simple arithmetic</span></span>
+<span id="cb3-2"><a href="software-installation.html#cb3-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="software-installation.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="software-installation.html#cb3-4" tabindex="-1"></a><span class="co"># Check R version</span></span>
+<span id="cb3-5"><a href="software-installation.html#cb3-5" tabindex="-1"></a>R.version.string</span></code></pre></div>
 <p>If you see the results, R and RStudio are properly installed in your system.</p>
 </div>
 </div>
@@ -866,21 +868,21 @@ Go to the <a href="https://qgis.org/download/">QGIS download page</a> and choose
 <ol style="list-style-type: decimal">
 <li>Open a terminal and run the following commands:</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="software-installation.html#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt update</span>
-<span id="cb5-2"><a href="software-installation.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
-<span id="cb5-3"><a href="software-installation.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> systemctl start docker</span>
-<span id="cb5-4"><a href="software-installation.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> systemctl enable docker</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="software-installation.html#cb5-1" tabindex="-1"></a>  <span class="fu">sudo</span> apt update</span>
+<span id="cb5-2"><a href="software-installation.html#cb5-2" tabindex="-1"></a>  <span class="fu">sudo</span> apt install docker.io docker-compose <span class="at">-y</span></span>
+<span id="cb5-3"><a href="software-installation.html#cb5-3" tabindex="-1"></a>  <span class="fu">sudo</span> systemctl start docker</span>
+<span id="cb5-4"><a href="software-installation.html#cb5-4" tabindex="-1"></a>  <span class="fu">sudo</span> systemctl enable docker</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Add your user to the Docker group (to run Docker without <code>sudo</code>):</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="software-installation.html#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="software-installation.html#cb6-1" tabindex="-1"></a>  <span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li><p><strong>Log out and log back in</strong> (or restart your computer) for the group change to take effect.</p></li>
 <li><p>Verify Docker is running:</p></li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="software-installation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="software-installation.html#cb7-1" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span></code></pre></div>
 <p>If the installation was successful, you should see output similar to:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="software-installation.html#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Docker</span> version 24.0.5, build 123456</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="software-installation.html#cb8-1" tabindex="-1"></a>  <span class="ex">Docker</span> version 24.0.5, build 123456</span></code></pre></div>
 </div>
 </div>
 </div>
