@@ -118,7 +118,6 @@ windows-1
 macos
 linux
 introduction-to-soil-data-preparation-spatial-data
-understanding-the-rstudio-interface
 r-packages-extending-rs-capabilities
 what-are-packages
 installing-packages
@@ -200,7 +199,6 @@ read-csv
 read-excel
 data-exploration
 r-resources
-data-preparation-for-digital-soil-mapping-in-r
 introduction
 preparing-soil-observations
 loading-and-exploring-raw-soil-data

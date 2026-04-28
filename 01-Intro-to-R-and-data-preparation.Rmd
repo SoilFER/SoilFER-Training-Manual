@@ -1,4 +1,5 @@
 #	Introduction to Soil Data Preparation & Spatial Data
+# (PART) PART ONE {-}
 
 ## Understanding the RStudio Interface
 
@@ -1769,8 +1770,8 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 ## References  {.unnumbered}
 
 
-
-# Data preparation for Digital Soil Mapping in R
+# (PART) PART TWO {-}
+## Data preparation for Digital Soil Mapping in R
 
 
 ```{r setup-ch1, include=FALSE, echo=FALSE, eval=TRUE}
