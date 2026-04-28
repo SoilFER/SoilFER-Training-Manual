@@ -117,7 +117,7 @@ macos-linux
 windows-1
 macos
 linux
-introduction-to-r-programming
+introduction-to-soil-data-preparation-spatial-data
 understanding-the-rstudio-interface
 r-packages-extending-rs-capabilities
 what-are-packages
