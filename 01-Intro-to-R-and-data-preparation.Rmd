@@ -1,6 +1,6 @@
 #	Introduction to Soil Data Preparation & Spatial Data
 
-##PART ONE: Introduction to R
+## PART ONE: Introduction to R
 ### Understanding the RStudio Interface
 
 **RStudio** provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. \@ref(fig:rstudio)):
@@ -1771,7 +1771,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 
 
-##PART TWO: Data preparation for Digital Soil Mapping in R
+## PART TWO: Data preparation for Digital Soil Mapping in R
 
 
 ```{r setup-ch1, include=FALSE, echo=FALSE, eval=TRUE}
