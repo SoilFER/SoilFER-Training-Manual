@@ -1,7 +1,8 @@
+# Soil Data Harmonization, Sharing & Dissemination
 
-# GloSIS Soil Data Preparation
+## GloSIS Soil Data Preparation
 
-## Introduction
+### Introduction
 
 For more than a century, tremendous resources and scientific effort have been invested in collecting and analyzing soil information across the globe [@ARROUAYS20172]. These data collection efforts---conducted through national soil surveys, research institutions, agricultural programs, and environmental monitoring initiatives---represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
 
@@ -13,7 +14,7 @@ GloSIS makes data comparable across countries and regions. When data is submitte
 
 In this section, we introduce the key concepts of data harmonization and standardization in line with GloSIS database requirements, and demonstrate how to use the `glosis-etl-js` a JavaScript set of modules to Extract (E) Transform (T) and load (L) soil data into the GloSIS database structure. The exercises use the soil legacy dataset provided in the training materials as a practical example.
 
-## The GloSIS ISO 28258 database
+### The GloSIS ISO 28258 database
 
 The GloSIS database is a PostgreSQL/PostGIS relational database that implements the GloSIS data model to store soil observations in a standardized, quality-controlled structure. It is aligned with the concepts for the digital exchange of soil-related data outlined in ISO 28258 and it is designed to make soil data consistent and comparable across countries and projects by enforcing common structures, controlled vocabularies, and validation rules. It serves as the central repository for harmonized soil data---linking spatial sampling locations, methods and procedures, and analytical results---so that datasets from different sources can be integrated and compared consistently worldwide.
 
@@ -42,7 +43,7 @@ The Glosis database organizes data into the five standard soil-related categorie
 
 Each of these 'features of interest' is represented by dedicated tables in the relational database. Because they describe different entities, they store different types of information and attributes. The challenge is to translate the raw soil data files into this structured database model.
 
-## Standardization with the XLSX Template
+###Standardization with the XLSX Template
 
 Preparing data for GloSIS begins with organizing soil information according to the features of interest used in the GloSIS database (Site, Plot, Profile, Element, and Specimen). To support this process, the GloSIS ETL uses an `XLSX template` that offers a user-friendly way to compile soil data in a structure that mirrors the relational tables of the PostgreSQL/PostGIS database. When completed correctly, this template is used by the `glosis-etl-js` Standardization module to translate the information into the PostgreSQL database structure.
 
@@ -54,7 +55,7 @@ In addition to the feature-of-interest sheets, the template includes dedicated t
 
 The following sections provide a detailed overview of each sheet included in the `XLSX template`.
 
-### Plot Data Sheet
+#### Plot Data Sheet
 
 The `Plot Data` sheet (Fig. \@ref(fig:plot-tab)) provides information about the sampling location. It includes identification of the project in which the sample was collected (`project_code`), identifiers for the sampling site (`site_code`), plot (`plot_code`), plot type (`plot_type`) and profile (`profile_code`). The `plot_type` specifies the sampling method: `Borehole` (auger sample), `TrialPit` (open profile excavation), or `Surface` (area-based description).
 
@@ -70,13 +71,13 @@ knitr::include_graphics("images/module4/template_plot.png")
 
 Finally, columns `N:BJ` describe the soil formation factors in the sampling plot following the FAO Guidelines for Soil Description 4th Ed. (2006) if available. These columns are optional and only can be updated manually directly on the `XLSX template`.
 
-### Profile Data Sheet
+#### Profile Data Sheet
 
 This sheet includes profile identification `profile_code` and profile descriptors (FAO and Soil USDA classification Systems and Soil Depth classes according to the 4th edition of the FAO Guidelines for Soil Description. The `profile_code` column act as the join parameter to link profiles to the information on the other sheets, thus it is important to ensure its consistency over the whole file tabs.
 
 This sheet records the profile identifier (`profile_code`) and key profile descriptors, including soil profile classification (FAO and USDA Soil Taxonomy) and soil depth classes following the 4th edition of the FAO Guidelines for Soil Description. The `profile_code` field serves as the main join key linking profile records to related information in the other sheets, so it is essential to keep it consistent across all sheets in the file.
 
-### Element Data Sheet
+#### Element Data Sheet
 
 An `Element` is a depth-based subdivision of a soil profile and can be described as either:
 
@@ -100,7 +101,7 @@ knitr::include_graphics("images/module4/template_element.png")
 ```
 
 
-### Specimen Data Sheet
+#### Specimen Data Sheet
 
 The main purpose of the `Specimen Data` is to store the laboratory analytical results for each horizon or layer registered in `Element Data`. It includes the identifiers needed to link analytical results to the corresponding profile and element (`profile_code`, `element_code`) and the laboratory sample label (`specimen_code`) in columns `A:C` (Fig. \@ref(fig:specimen-tab)). 
 
@@ -114,7 +115,7 @@ knitr::include_graphics("images/module4/template_specimen.png")
 
 ** Note that the values in this sheet are already converted to the corresponding GloSIS standard units of measurement. The original values remain as a backup in the sheet `Original Data`.
 
-### Procedures Sheet
+#### Procedures Sheet
 
 The `Procedures` sheet defines the relationship between the measured soil properties, their standardized GloSIS property names, the laboratory methods, and the units of measurement. This linkage is essential to ensure consistency and interoperability across datasets and to support correct ingestion into the GloSIS database.
 
@@ -127,7 +128,7 @@ knitr::include_graphics("images/module4/template_procedures.png")
 ```
 
 
-### Metadata Sheet
+#### Metadata Sheet
 
 It includes detailed metadata to identify the different data providers (Fig. \@ref(fig:metadata-tab)) .
 
@@ -136,7 +137,7 @@ knitr::include_graphics("images/module4/template_metadata.png")
 ```
 
 
-### Original Data Sheet
+#### Original Data Sheet
 
 The `Original Data` sheet  (Fig. \@ref(fig:original-tab)) stores the raw values from soil analyses and descriptions before any unit conversion. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.
 
@@ -147,7 +148,7 @@ knitr::include_graphics("images/module4/template_original.png")
 Values in the `Original Data` sheet can be linked (e.g., via formulas) to the `Element Data` sheet, allowing adjusted values to be transformed and transferred automatically while preserving the original records. This helps users track how each soil property was measured and in which units the results were reported. The original data are automatically preserved when using the `glosis-etl-js Harmonization` module.
 
 
-### GloSIS Methods sheet
+#### GloSIS Methods sheet
 
 The `GloSIS Methods` sheet is the reference table that includes the soil properties, analytical procedures, and units of measurement accepted in the GloSIS database. This list follows the codelist in the [GLOSIS ontology network](https://github.com/glosis-ld/glosis/blob/master/csv_codelists/glosis_procedure.csv) and a summary of the main properties and units of measurement are shown in Table \@ref(tab:soil-props). The information in this sheet defines the options used by the `Procedures` sheet (via drop-down lists) and by the `glosis-etl-js Harmonization` module to validate inputs and apply unit conversions consistently.
 
@@ -255,7 +256,7 @@ knitr::kable(
 
 
 
-## The GloSIS ETL Platform
+###The GloSIS ETL Platform
 
 Because the GloSIS database enforces a structured model, data cannot be loaded reliably as free-form from heterogeneous legacy information. The GloSIS ETL platform provides a practical workflow to harmonize, standardize, and load soil legacy data into the GloSIS PostgreSQL/PostGIS schema in a consistent and reproducible way. This platform has been developed in JavaScript and it is referenced as `glosis-etl-js` in this tutorial.
 
@@ -273,7 +274,7 @@ The platform includes three modules  (Figure \@ref(fig:glosis-etl)):
 knitr::include_graphics("images/module4/etl_mainscreen.png")
 ```
 
-### Installation and Setup of the glosis-etl-js
+#### Installation and Setup of the glosis-etl-js
 
 The `glosis-etl-js` application is distributed as a set of Docker containers orchestrated by **Docker Compose**. This means users do not need to manually install PostgreSQL, R, or any other dependency, all software requirements are pre-configured inside the containers and managed automatically through the `docker-compose.yml`.
 
@@ -358,9 +359,9 @@ The default values use `glosis` as the database name, user, and password. For pr
 
     > **Note:** On older systems you may need to use `docker-compose` (with a hyphen) instead of `docker compose`.
 
-### Verify Installation
+#### Verify Installation
 
-#### Using Docker Desktop
+##### Using Docker Desktop {-} 
 
 Open Docker Desktop and check if the containers are running (Figure \@ref(fig:docker-desktop)).
 
@@ -370,7 +371,7 @@ knitr::include_graphics("images/module4/docker_containers.png")
 
 If everything is working, the project and service icons should be **green**. If any service fails, the icon will appear \*\*orange\*.
 
-#### Using the Terminal
+##### Using the Terminal {-}
 
 To manually check if the services are running, type:
 
@@ -388,7 +389,7 @@ cb414728ebfd   postgis/postgis:17-3.5         "docker-entrypoint.s…"   7 days 
 
 Both containers should show a status of **(healthy)**.
 
-#### Stopping the Services
+##### Stopping the Services {-}
 
 To stop the services at any time, use:
 
@@ -400,7 +401,7 @@ This will stop and remove the containers, but your **database data will remain i
 
 > **Tip:** To completely reset the database (remove all data), run: `docker compose down -v`. This deletes the named volumes and the database will be re-initialized from the SQL scripts on the next start.
 
-### Optional: pgAdmin Web Interface {#pgadmin}
+#### Optional: pgAdmin Web Interface {#pgadmin}
 
 The `docker-compose.yml` file includes an optional **pgAdmin 4** service for direct database management. To activate it, go to the installation folder and type:
 
@@ -440,7 +441,7 @@ knitr::kable(db_params, caption = "Database connection parameters.")
 > **Note:** The port is 5442 (not the standard 5432) to avoid conflicts with any locally installed PostgreSQL server. Adjust the database name to match your actual database.
 
 
-## Running the GloSIS ETL
+###Running the GloSIS ETL
 
 To open the GloSIS ETL Platform, enter this address in your web browser:
 
@@ -463,7 +464,7 @@ Each module is accessible directly via its URL:
 | **Data Viewer**     | `http://localhost:3000/dataviewer`      | Explore and visualize stored soil data     |
 
 
-### Data Harmonization
+#### Data Harmonization
 
 The [Data Harmonization](http://localhost:3000/harmonization) module (Figure \@ref(fig:etl-harmonization)) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.
 
@@ -477,7 +478,7 @@ knitr::include_graphics("images/module4/etl_harmonization_steps.png")
 The module performs systematic data quality checks across three domains to produce a `XLSX` file following the GloSIS standards. This file, once correctly verified, will be used as input in the `GloSIS Data` standardization module to ingest soil data into the GloSIS database.
 
 
-#### Data Upload Interface: Upload
+##### Data Upload Interface: Upload {-}
 
 The first step of the harmonization process involves uploading soil datasets and configuring variable mappings to align with GloSIS standard data structure and naming conventions.
 
@@ -492,7 +493,7 @@ knitr::include_graphics("images/module4/etl_harmonization1.png")
 
 The example in this tutorial uses the file `KSSL_cleaned.csv`, produced as output during Session 3 of Module 1 – Soil Data Preparation, as input.
 
-#### Variable Mapping: Columns
+##### Variable Mapping: Columns{-}
 
 Once data is uploaded, users must systematically map their dataset columns to GloSIS standard variable names through an interactive menu. This section facilitates the mapping of Site and Plot features of interest and the identification of the analytical properties in the dataset. It provides dropdown selections for each variable and fuzzy matching to assist in finding correct mappings.
 
@@ -517,7 +518,7 @@ knitr::include_graphics("images/module4/etl_harmonization3.png")
 ```
 
 
-#### Variable Mapping: Properties
+##### Variable Mapping: Properties {-}
 
 Each of the selected analytical properties identified in the previous step are here presented to identify the correlative GloSIS standard nomenclature, the analytical methods used and the reporting units in the original database (Figure \@ref(fig:etl-harmonization-step2c)). If the reported soil units differ from GloSIS standard units, the module automatically applies conversion factors to satisfy GloSIS requirements.
 
@@ -526,14 +527,14 @@ Each of the selected analytical properties identified in the previous step are h
 knitr::include_graphics("images/module4/etl_harmonization_all.png")
 ```
 
-The 
-#### Data Quality Check and Quality Report Generation
+ 
+##### Data Quality Check and Quality Report Generation {-}
 
 The module analyses the data values, its integrity and coherence and identifies potential issues with the data. 
 
 The data validation in this step occurs at three stages, geographic (horizontal location), soil depth (vertical position) and Analytical integrity (missing values, non valid data, data outliers):
 
-##### Geographic Data Validation
+###### Geographic Data Validation {-}
 
 This validation phase ensures that every soil sample is correctly georeferenced with accurate spatial coordinates, maintaining the spatial integrity essential for the GloSIS database.
 
@@ -547,7 +548,7 @@ The module systematically checks for the following geographic data issues:
 
 **Duplicate Site Detection:** - Identifies potential duplicate sites (multiple profiles at identical coordinates)
 
-##### Soil Depth Validation
+###### Soil Depth Validation {-}
 
 All soil profiles must include both upper and lower depth measurements for each sampled layer. This step ensures that the vertical intervals for each soil sample are physically and logically possible, maintaining the integrity of soil profile structure.
 
@@ -557,7 +558,7 @@ The module checks for **Depth Completeness** and **Depth Logical Consistency**:
 -   Detects depth inversions where top depth ≥ bottom depth (physically impossible)
 -   Identifies soil profiles not starting at surface (top depth \> 0 cm when expected)
 
-##### Soil Properties Validation
+###### Soil Properties Validation {-}
 
 This final validation step involves screening analytical soil property values against scientifically established analytical thresholds to identify unrealistic or impossible values. Out-of-bounds values are commonly known as outliers.
 
@@ -576,7 +577,7 @@ knitr::include_graphics("images/module4/etl_harmonization_QC2.png")
 ```
 
 
-##### Data Correction and Resubmission
+###### Data Correction and Resubmission {-}
 
 If data quality issues identified in the Quality Check Report are to to incorrect mapping of soil properties method and units, corrections can be made in the same section once identified. If is related to the dataset itself, users must correct the original dataset and resubmit again for harmonization.
 
@@ -584,7 +585,7 @@ If data quality issues identified in the Quality Check Report are to to incorrec
 -   The `Procedures Reference` tab in the `public/glosis_template_v6.xlsx` and `public/glosis_procedures_v2.csv` files contain detailed information on the analytical procedures in GloSIS, including glosis units, method descriptions and unit conversion parameters.
 :::
 
-#### Metadata 
+##### Metadata {-}
 
 The metadata section provides a mechanism to include contact and organizational metadata (Figure \@ref(fig:etl-harmonization-metadata)). These values can be adjusted in the generated XLSX GloSIS template to reflect specific metadata associated with individual soil observations.
 
@@ -593,7 +594,7 @@ knitr::include_graphics("images/module4/etl_harmonization9.png")
 ```
 
 
-#### Generate and Download the Harmonized Data
+##### Generate and Download the Harmonized Data {-}
 
 Once all critical data quality issues have been resolved and the dataset passes validation, users can download the harmonized data in a GloSIS-standard format. Press the `Generate & Download` green button (Figure \@ref(fig:etl-harmonization-download)), and a file with the GloSIS harmonized data will be available in your computer.
 
@@ -631,13 +632,13 @@ The downloaded file follows the GloSIS standard format, with data organized acco
 -   Users must resolve all Critical Issues before proceeding to data download. Warning Issues should be carefully reviewed; users can override if values are scientifically justified.
 :::
 
-### Data Standardization
+#### Data Standardization
 
 The data injection of soil data into the Glosis database is performed thought a standardized Excel (`.xlsx`) template that serves as an intermediary format for structuring soil data before its integration into PostgreSQL. This template ensures that the data follows a predefined schema, aligning with the complex relational structure of the GloSIS database. The template consists of multiple sheets, each corresponding to a specific data entity, such as site information, soil horizons/layers, laboratory procedures, and analytical results structured in different sheets. Each column in these sheets is carefully labeled to match the expected database fields, reducing errors and ensuring data consistency. The structured nature of the template minimizes manual intervention and ensures that data is correctly mapped when it is processed by the `glosis-etl-js` module. It validates the input, identifies potential discrepancies, and harmonizes the dataset before transferring it into PostgreSQL, ultimately simplifying the data submission process while maintaining accuracy and comparability.
 
 Ensuring the correct creation of the template is essential for the successful execution of the data injection process. Proper adherence to the template structure guarantees data integrity, compatibility, and seamless integration into the PostgreSQL GloSIS Database.
 
-#### Create a database to store your results
+##### Create a database to store your results {-}
 
 Run the [Data Standardization](http://localhost:3000/standardization) module and move to the `Create New Database` box. Type the name in the box and press the button `+ Create` (Figure \@ref(fig:etl-standardization)).
 
@@ -656,7 +657,7 @@ The module will create that specific database with tables following the database
   c) If you want to create a new database named `glosis`, click the `+ Create` button to build it from scratch  
 :::
 
-#### Inject the data into the created PostgreSQL database
+##### Inject the data into the created PostgreSQL database {-}
 
 Once connected, click the red `Upload Data` button, to open the tab for uploading the `XLSX template` previously created using the [Data harmonization](http://localhost:3000/harmonization) module (Figure \@ref(fig:etl-harmonization-metadata)). 
 
@@ -670,7 +671,7 @@ knitr::include_graphics("images/module4/etl_injection3.png")
 ```
 
 
-### Data Viewer
+#### Data Viewer
 
 The [Data Viewer](http://localhost:3000/dataviewer) module provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.
 
@@ -690,7 +691,7 @@ knitr::include_graphics("images/module4/etl_viewer2.png")
 Finally, the `Export CSV` button allows users to export sampling point information, or a subset of it, to a .csv file for further analysis or visualization in other applications.
 
 
-## Connecting PostgreSQL to QGIS
+###Connecting PostgreSQL to QGIS
 
 The created PostgreSQL database can be easily connected to QGIS by following these steps:
 
@@ -757,7 +758,7 @@ This layer contains point data from the cleaned `kssl` database in *long* format
 knitr::include_graphics("images/module4/qgis_long.png")
 ```
 
-## Connecting PostgreSQL to R
+###Connecting PostgreSQL to R
 
 The PostgreSQL GloSIS database can be connected to R using appropriate packages and SQL queries.
 
@@ -958,3 +959,7 @@ st_write(
 # =========================================================
 dbDisconnect(con)
 ```
+
+## Data sharing and export formats
+##	Metadata
+##	Web Services
