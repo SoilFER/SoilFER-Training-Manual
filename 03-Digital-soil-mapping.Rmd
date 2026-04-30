@@ -16,10 +16,10 @@ RESOURCES_ROOT <- "../SoilFER-Training-Resources"
 # Convenience paths
 DATA_DIR    <- file.path(RESOURCES_ROOT, "01_data", "module5")
 SCRIPTS_DIR <- file.path(RESOURCES_ROOT, "02_scripts", "module5")
-OUTPUTS_DIR <- file.path(RESOURCES_ROOT, "03_outputs", "module5")
+OUTPUTS_DIR <- file.path(RESOURCES_ROOT, "03_outputs", "module3")
 
 # Figures are stored locally in the Manual repo so they render online (GitHub Pages)
-FIGURES_DIR <- "images/module5"
+FIGURES_DIR <- "images/module3"
 
 # ── terra temporary directory (avoid filling system drive) ──
 # Students on laptops with small C: drives can change this to a larger disk.
