@@ -591,7 +591,7 @@ div.csl-indent {
 <p><code>Date</code> stores the date when the survey was conducted. The date must follow ISO-8601 (“YYYY-MM-DD” format).</p>
 <p>The following columns capture the georeferencing of the sampling site (<code>latitude</code>, <code>longitude</code>, and <code>altitude</code>), together with supporting location metadata (<code>positional_accuracy</code> - accuracy estimate, <code>extent</code> - spatial extent of sampling area and <code>map_sheet_code</code> - reference map sheet identifier; all of them not mandatory). Coordinates must be recorded in decimal degrees using the <code>EPSG:4326 (WGS84)</code> coordinate reference system to ensure global consistency and interoperability within the GloSIS database.</p>
 <div class="figure"><span style="display:block;" id="fig:plot-tab"></span>
-<img src="images/module4/template_plot.png" alt="Plot Data Sheet." width="100%" />
+<img src="images/module5/template_plot.png" alt="Plot Data Sheet." width="100%" />
 <p class="caption">
 Figure 5.1: Plot Data Sheet.
 </p>
@@ -612,7 +612,7 @@ Figure 5.1: Plot Data Sheet.
 </ul>
 <p>Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:element-fig">5.2</a> illustrates the differences between these two element types.</p>
 <div class="figure"><span style="display:block;" id="fig:element-fig"></span>
-<img src="images/module4/element.png" alt="Horizon vs Layer en Element Features." width="100%" />
+<img src="images/module5/element.png" alt="Horizon vs Layer en Element Features." width="100%" />
 <p class="caption">
 Figure 5.2: Horizon vs Layer en Element Features.
 </p>
@@ -620,7 +620,7 @@ Figure 5.2: Horizon vs Layer en Element Features.
 <p>For each sampled horizon or layer, the <code>Element Data</code> sheet records the identifiers used to link the profile and the element (<code>profile_code</code>, <code>element_code</code>), and where applicable, the horizon classification identifier (<code>horizon_code</code>) features. It also specifies the <code>element_type</code> (<code>Horizon</code> or <code>Layer</code>) and the depth limits of the element (<code>upper_depth</code>, <code>lower_depth</code>)</p>
 <p>As in the <code>Profile Data</code> sheet, key morphological characteristics following the 4th edition of the FAO Guidelines for Soil Description can optionally be added manually in columns <code>H:CC</code> (Fig. <a href="soil-data-harmonization-sharing-dissemination.html#fig:element-tab">5.3</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:element-tab"></span>
-<img src="images/module4/template_element.png" alt="Element Data Sheet." width="100%" />
+<img src="images/module5/template_element.png" alt="Element Data Sheet." width="100%" />
 <p class="caption">
 Figure 5.3: Element Data Sheet.
 </p>
@@ -632,7 +632,7 @@ Figure 5.3: Element Data Sheet.
 <p>The subsequent columns contain the analytical values for each measured soil property.</p>
 <p>Because these values are loaded into the GloSIS database, all analytical results in this sheet <strong>must be expressed in the GloSIS standard units of measurement</strong>. If necessary, values should be converted to the required units prior to ingestion. These values are automatically transformed if the <code>glosis-etl-js Harmonization</code> module is used to create the template.</p>
 <div class="figure"><span style="display:block;" id="fig:specimen-tab"></span>
-<img src="images/module4/template_specimen.png" alt="Specimen Data Sheet." width="100%" />
+<img src="images/module5/template_specimen.png" alt="Specimen Data Sheet." width="100%" />
 <p class="caption">
 Figure 5.4: Specimen Data Sheet.
 </p>
@@ -645,7 +645,7 @@ Figure 5.4: Specimen Data Sheet.
 <p>The sheet is linked to the reference list provided in the <code>GloSIS Methods</code> sheet, which contains the approved set of standardized soil property names, analytical procedures, and measurement units. Only properties, methods, and units included in <code>GloSIS Methods</code> can be uploaded to the GloSIS database. Any measured property, method, or unit that is not present in this list cannot be ingested and must either be removed or replaced with an accepted equivalent. Missing procedures can be reported to the GloSIS Working Group for possible inclusion, together with documentation describing the soil property, the analytical method, and the unit of measurement. The reference list is maintained and updated over time to incorporate new analytical properties, methods, and units.</p>
 <p>In practical terms, this sheet links the analytical values in <code>Specimen Data</code> to their corresponding analytical metadata (Fig. <a href="soil-data-harmonization-sharing-dissemination.html#fig:procedures-tab">5.5</a>). The first column (<code>soil_property</code>) lists the soil properties included in <code>Specimen Data</code>, in the same order in which they appear. Columns <code>B–D</code> provide drop-down menus to select the corresponding standard GloSIS property name, analytical procedure, and unit of measurement. This sheet is automatically populated by the <code>glosis-etl-js Harmonization</code> module</p>
 <div class="figure"><span style="display:block;" id="fig:procedures-tab"></span>
-<img src="images/module4/template_procedures.png" alt="Procedures Sheet." width="100%" />
+<img src="images/module5/template_procedures.png" alt="Procedures Sheet." width="100%" />
 <p class="caption">
 Figure 5.5: Procedures Sheet.
 </p>
@@ -655,7 +655,7 @@ Figure 5.5: Procedures Sheet.
 <h4><span class="header-section-number">5.1.2.6</span> Metadata Sheet<a href="soil-data-harmonization-sharing-dissemination.html#metadata-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>It includes detailed metadata to identify the different data providers (Fig. <a href="soil-data-harmonization-sharing-dissemination.html#fig:metadata-tab">5.6</a>) .</p>
 <div class="figure"><span style="display:block;" id="fig:metadata-tab"></span>
-<img src="images/module4/template_metadata.png" alt="Metadata Sheet." width="100%" />
+<img src="images/module5/template_metadata.png" alt="Metadata Sheet." width="100%" />
 <p class="caption">
 Figure 5.6: Metadata Sheet.
 </p>
@@ -665,7 +665,7 @@ Figure 5.6: Metadata Sheet.
 <h4><span class="header-section-number">5.1.2.7</span> Original Data Sheet<a href="soil-data-harmonization-sharing-dissemination.html#original-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>Original Data</code> sheet (Fig. <a href="soil-data-harmonization-sharing-dissemination.html#fig:original-tab">5.7</a>) stores the raw values from soil analyses and descriptions before any unit conversion. Although optional, it is recommended for maintaining a record of the original measurements, especially when unit conversions or other transformations are required. Keeping these values supports traceability and good documentation practices.</p>
 <div class="figure"><span style="display:block;" id="fig:original-tab"></span>
-<img src="images/module4/template_original.png" alt="Original Data Sheet." width="100%" />
+<img src="images/module5/template_original.png" alt="Original Data Sheet." width="100%" />
 <p class="caption">
 Figure 5.7: Original Data Sheet.
 </p>
@@ -924,7 +924,7 @@ Figure 5.7: Original Data Sheet.
 <li><em>Viewer</em>: Allows users to explore and validate the standardized data before and/or after loading to confirm that records, attributes, and values were ingested correctly into the database.</li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:glosis-etl"></span>
-<img src="images/module4/etl_mainscreen.png" alt="Modules in the glosis-etl-js." width="100%" />
+<img src="images/module5/etl_mainscreen.png" alt="Modules in the glosis-etl-js." width="100%" />
 <p class="caption">
 Figure 5.8: Modules in the glosis-etl-js.
 </p>
@@ -956,7 +956,7 @@ Figure 5.8: Modules in the glosis-etl-js.
 <pre><code>https://github.com/FAO-SID/glosis-etl-js</code></pre>
 <p>Click the green <strong>“Code”</strong> button, then select <strong>Download ZIP</strong> (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:clone">5.9</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:clone"></span>
-<img src="images/module4/etl_clone.png" alt="Cloning the repository." width="100%" />
+<img src="images/module5/etl_clone.png" alt="Cloning the repository." width="100%" />
 <p class="caption">
 Figure 5.9: Cloning the repository.
 </p>
@@ -997,7 +997,7 @@ Environment variables (database credentials, logging level, etc.) are read from 
 <h5>Using Docker Desktop<a href="soil-data-harmonization-sharing-dissemination.html#using-docker-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Open Docker Desktop and check if the containers are running (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:docker-desktop">5.10</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:docker-desktop"></span>
-<img src="images/module4/docker_containers.png" alt="Docker Desktop showing running containers." width="100%" />
+<img src="images/module5/docker_containers.png" alt="Docker Desktop showing running containers." width="100%" />
 <p class="caption">
 Figure 5.10: Docker Desktop showing running containers.
 </p>
@@ -1082,7 +1082,7 @@ cb414728ebfd   postgis/postgis:17-3.5         &quot;docker-entrypoint.s…&quot;
 <pre><code>http://localhost:3000/</code></pre>
 <p>This will load the <strong>landing page</strong> with links to the three application modules (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization">5.11</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization"></span>
-<img src="images/module4/etl_mainscreen.png" alt="glosis-etl-js Harmonization module in first place." width="100%" />
+<img src="images/module5/etl_mainscreen.png" alt="glosis-etl-js Harmonization module in first place." width="100%" />
 <p class="caption">
 Figure 5.11: glosis-etl-js Harmonization module in first place.
 </p>
@@ -1125,7 +1125,7 @@ Figure 5.11: glosis-etl-js Harmonization module in first place.
 <p>The <a href="http://localhost:3000/harmonization">Data Harmonization</a> module (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization">5.11</a>) provides the foundation for preparation of a clean and documented dataset to be ingested in the GloSIS database.</p>
 <p>The preparation of the data follows a 3-step quality assurance procedure (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-steps">5.12</a>) comprehensive data validation at each stage.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-steps"></span>
-<img src="images/module4/etl_harmonization_steps.png" alt="glosis-etl-js Harmonization module." width="100%" />
+<img src="images/module5/etl_harmonization_steps.png" alt="glosis-etl-js Harmonization module." width="100%" />
 <p class="caption">
 Figure 5.12: glosis-etl-js Harmonization module.
 </p>
@@ -1140,7 +1140,7 @@ Figure 5.12: glosis-etl-js Harmonization module.
 <li>Text files (.txt)</li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step1"></span>
-<img src="images/module4/etl_harmonization1.png" alt="Step 1: Data upload section." width="100%" />
+<img src="images/module5/etl_harmonization1.png" alt="Step 1: Data upload section." width="100%" />
 <p class="caption">
 Figure 5.13: Step 1: Data upload section.
 </p>
@@ -1152,7 +1152,7 @@ Figure 5.13: Step 1: Data upload section.
 <p>Once data is uploaded, users must systematically map their dataset columns to GloSIS standard variable names through an interactive menu. This section facilitates the mapping of Site and Plot features of interest and the identification of the analytical properties in the dataset. It provides dropdown selections for each variable and fuzzy matching to assist in finding correct mappings.</p>
 <p>On top, the module displays a table with the first rows of the uploaded data (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-step2a">5.14</a>). This serves to identify the column that must be mapped to standard GloSIS nomenclature.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step2a"></span>
-<img src="images/module4/etl_harmonization2.png" alt="Step 2a: Parameter Mapping." width="100%" />
+<img src="images/module5/etl_harmonization2.png" alt="Step 2a: Parameter Mapping." width="100%" />
 <p class="caption">
 Figure 5.14: Step 2a: Parameter Mapping.
 </p>
@@ -1163,7 +1163,7 @@ Figure 5.14: Step 2a: Parameter Mapping.
 <p><strong>3) Soil Properties </strong> <em>Identification of the columns with analytical soil properties measured (Multi-selection):</em> - Each property must be selected to be then mapped to GloSIS standard nomenclature in the next section</p>
 <p>Column Mapping and Analytical Properties Identification in this section (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-step2b">5.15</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step2b"></span>
-<img src="images/module4/etl_harmonization3.png" alt="Step 2b: - Plot, Element and Analytical Mapping." width="100%" />
+<img src="images/module5/etl_harmonization3.png" alt="Step 2b: - Plot, Element and Analytical Mapping." width="100%" />
 <p class="caption">
 Figure 5.15: Step 2b: - Plot, Element and Analytical Mapping.
 </p>
@@ -1173,7 +1173,7 @@ Figure 5.15: Step 2b: - Plot, Element and Analytical Mapping.
 <h5>Variable Mapping: Properties<a href="soil-data-harmonization-sharing-dissemination.html#variable-mapping-properties" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Each of the selected analytical properties identified in the previous step are here presented to identify the correlative GloSIS standard nomenclature, the analytical methods used and the reporting units in the original database (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-step2c">5.16</a>). If the reported soil units differ from GloSIS standard units, the module automatically applies conversion factors to satisfy GloSIS requirements.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-step2c"></span>
-<img src="images/module4/etl_harmonization_all.png" alt="Step 2c: Mapping analytical procedures and units of measurement." width="100%" />
+<img src="images/module5/etl_harmonization_all.png" alt="Step 2c: Mapping analytical procedures and units of measurement." width="100%" />
 <p class="caption">
 Figure 5.16: Step 2c: Mapping analytical procedures and units of measurement.
 </p>
@@ -1208,14 +1208,14 @@ Figure 5.16: Step 2c: Mapping analytical procedures and units of measurement.
 <p>For each analytical property, the system validates that reported values fall within scientifically plausible ranges using a GloSIS lookup table with global soil data as a reference. The values for each soil property are compared with specific soil lower and upper thresholds and identified as potential out-of-bound values those out of the range of these thresholds</p>
 <p>All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. Quality check results are displayed in the bottom of the <code>Properties</code> Tab which displays detailed validation results organized by issue type. Users can download a comprehensive <code>Download QC Report (XLSX format)</code> for further analysis and data cleaning outside the module (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-QC1">5.17</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-QC1"></span>
-<img src="images/module4/etl_harmonization_QC1.png" alt="Step 3a: Reporting potential errors in the dataset." width="100%" />
+<img src="images/module5/etl_harmonization_QC1.png" alt="Step 3a: Reporting potential errors in the dataset." width="100%" />
 <p class="caption">
 Figure 5.17: Step 3a: Reporting potential errors in the dataset.
 </p>
 </div>
 <p>If no issues were detected, the QC section will display the message “Data Ready to Harmonize” (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-QC2">5.18</a>), and users can proceed to include the Metadata information.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-QC2"></span>
-<img src="images/module4/etl_harmonization_QC2.png" alt="Step 3a: No errors identified in the dataset." width="100%" />
+<img src="images/module5/etl_harmonization_QC2.png" alt="Step 3a: No errors identified in the dataset." width="100%" />
 <p class="caption">
 Figure 5.18: Step 3a: No errors identified in the dataset.
 </p>
@@ -1235,7 +1235,7 @@ Figure 5.18: Step 3a: No errors identified in the dataset.
 <h5>Metadata<a href="soil-data-harmonization-sharing-dissemination.html#metadata" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The metadata section provides a mechanism to include contact and organizational metadata (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-metadata">5.19</a>). These values can be adjusted in the generated XLSX GloSIS template to reflect specific metadata associated with individual soil observations.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-metadata"></span>
-<img src="images/module4/etl_harmonization9.png" alt="Metadata Tab." width="100%" />
+<img src="images/module5/etl_harmonization9.png" alt="Metadata Tab." width="100%" />
 <p class="caption">
 Figure 5.19: Metadata Tab.
 </p>
@@ -1245,7 +1245,7 @@ Figure 5.19: Metadata Tab.
 <h5>Generate and Download the Harmonized Data<a href="soil-data-harmonization-sharing-dissemination.html#generate-and-download-the-harmonized-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Once all critical data quality issues have been resolved and the dataset passes validation, users can download the harmonized data in a GloSIS-standard format. Press the <code>Generate &amp; Download</code> green button (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-harmonization-download">5.20</a>), and a file with the GloSIS harmonized data will be available in your computer.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-harmonization-download"></span>
-<img src="images/module4/etl_harmonization8.png" alt="Metadata Tab." width="100%" />
+<img src="images/module5/etl_harmonization8.png" alt="Metadata Tab." width="100%" />
 <p class="caption">
 Figure 5.20: Metadata Tab.
 </p>
@@ -1278,7 +1278,7 @@ Figure 5.20: Metadata Tab.
 <h5>Create a database to store your results<a href="soil-data-harmonization-sharing-dissemination.html#create-a-database-to-store-your-results" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Run the <a href="http://localhost:3000/standardization">Data Standardization</a> module and move to the <code>Create New Database</code> box. Type the name in the box and press the button <code>+ Create</code> (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-standardization">5.21</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-standardization"></span>
-<img src="images/module4/etl_injection1.png" alt="Metadata Tab." width="100%" />
+<img src="images/module5/etl_injection1.png" alt="Metadata Tab." width="100%" />
 <p class="caption">
 Figure 5.21: Metadata Tab.
 </p>
@@ -1306,7 +1306,7 @@ In this case:
 <p>Then, click the red <code>Inject Data</code> button. The module will transform the data from the Excel file into the structure of the GloSIS PostgreSQL database.</p>
 <p>You can explore the uploaded data in the <code>Data Viewer</code> tab within this module.</p>
 <div class="figure"><span style="display:block;" id="fig:etl-injection"></span>
-<img src="images/module4/etl_injection3.png" alt="Standardization Upload and Injection tab." width="100%" />
+<img src="images/module5/etl_injection3.png" alt="Standardization Upload and Injection tab." width="100%" />
 <p class="caption">
 Figure 5.22: Standardization Upload and Injection tab.
 </p>
@@ -1318,14 +1318,14 @@ Figure 5.22: Standardization Upload and Injection tab.
 <p>The <a href="http://localhost:3000/dataviewer">Data Viewer</a> module provides interactive visualization of soil databases stored in the system, enabling users to validate data integrity before and after database ingestion.</p>
 <p>Open <a href="http://localhost:3000/dataviewer">Data Viewer</a> from the <a href="http://localhost:3000">ETL main menu</a>. Select an existing database from the list in the top right corner and click <code>Connect</code>. The Data Viewer will load the soil data, display the distribution of sampling sites on an interactive map, and preview harmonized records with filterable analytical columns. Soil property names include the analytical method and units of measurement. This barplot allows users to explore the variation of soil properties with depth across soil profiles (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-viewer1">5.23</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-viewer1"></span>
-<img src="images/module4/etl_viewer1.png" alt="Visualization of the KSSL data in this Manual" width="100%" />
+<img src="images/module5/etl_viewer1.png" alt="Visualization of the KSSL data in this Manual" width="100%" />
 <p class="caption">
 Figure 5.23: Visualization of the KSSL data in this Manual
 </p>
 </div>
 <p>Using the <code>-</code> button in the top right of the map, users can select a subset of soil locations, restricting the visualization to the chosen soil profiles (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:etl-viewer2">5.24</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:etl-viewer2"></span>
-<img src="images/module4/etl_viewer2.png" alt="Visualization of a subset of the KSSL data in this Manual" width="100%" />
+<img src="images/module5/etl_viewer2.png" alt="Visualization of a subset of the KSSL data in this Manual" width="100%" />
 <p class="caption">
 Figure 5.24: Visualization of a subset of the KSSL data in this Manual
 </p>
@@ -1339,7 +1339,7 @@ Figure 5.24: Visualization of a subset of the KSSL data in this Manual
 <li>Set the Connection information in the New PostGIS Connection (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:qgis-connection">5.25</a>):</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:qgis-connection"></span>
-<img src="images/module4/qgis_connection.png" alt="Connection information in the New PostGIS Connection" width="50%" />
+<img src="images/module5/qgis_connection.png" alt="Connection information in the New PostGIS Connection" width="50%" />
 <p class="caption">
 Figure 5.25: Connection information in the New PostGIS Connection
 </p>
@@ -1348,7 +1348,7 @@ Figure 5.25: Connection information in the New PostGIS Connection
 <li>Open the database connection in the <strong>Database Manager</strong> by going to <strong>Database -&gt; Database Manager -&gt; Providers -&gt; PostGIS -&gt; etl-js</strong> and double-click to connect (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:qgis-dbmanager">5.26</a>).</li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:qgis-dbmanager"></span>
-<img src="images/module4/qgis_dbmanager.png" alt="Open Connection in DB Manager" width="100%" />
+<img src="images/module5/qgis_dbmanager.png" alt="Open Connection in DB Manager" width="100%" />
 <p class="caption">
 Figure 5.26: Open Connection in DB Manager
 </p>
@@ -1383,21 +1383,21 @@ Figure 5.26: Open Connection in DB Manager
 <span id="cb297-24"><a href="soil-data-harmonization-sharing-dissemination.html#cb297-24" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;</span></code></pre></div>
 <p>Check on the mark on <code>Load as a New Layer</code> and click on the <code>Load</code> button (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:qgis-dbquery">5.27</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:qgis-dbquery"></span>
-<img src="images/module4/qgis_dbquery.png" alt="Open Connection in DB Manager" width="100%" />
+<img src="images/module5/qgis_dbquery.png" alt="Open Connection in DB Manager" width="100%" />
 <p class="caption">
 Figure 5.27: Open Connection in DB Manager
 </p>
 </div>
 <p>A layer named <code>QueryLayer</code> will appear in the Layers Panel in QGIS (Figure <a href="soil-data-harmonization-sharing-dissemination.html#fig:qgis-querylayer">5.28</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:qgis-querylayer"></span>
-<img src="images/module4/qgis_out.png" alt="Sampling Points in QueryLayer" width="100%" />
+<img src="images/module5/qgis_out.png" alt="Sampling Points in QueryLayer" width="100%" />
 <p class="caption">
 Figure 5.28: Sampling Points in QueryLayer
 </p>
 </div>
 <p>This layer contains point data from the cleaned <code>kssl</code> database in <em>long</em> format, where each row represents a single observation of a soil property measured at a specific site, profile, depth interval, and specimen. The columns describe the context of each observation (e.g., site, profile, element, and depth), along with the measured property, the analytical method used, the observed value, and its unit of measurement.</p>
 <div class="figure"><span style="display:block;" id="fig:qgis-long"></span>
-<img src="images/module4/qgis_long.png" alt="QueryLayer Table in long format" width="100%" />
+<img src="images/module5/qgis_long.png" alt="QueryLayer Table in long format" width="100%" />
 <p class="caption">
 Figure 5.29: QueryLayer Table in long format
 </p>
