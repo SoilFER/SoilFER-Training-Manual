@@ -276,8 +276,7 @@ SoilFER-Training-Resources/
 │   ├── module2/
 │   ├── module3/
 │   ├── module4/
-│   ├── module5/
-│   └── module6/
+│   └── module5/
 ├── 02_scripts/
 ├── 03_outputs/
 ├── 04_assignments/
