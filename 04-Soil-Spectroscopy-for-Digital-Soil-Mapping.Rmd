@@ -567,7 +567,7 @@ dat_cal$SOC_sdRF <- SOC_sdRF
 
 Figure \@ref(fig:fig-val-plot) shows the validation plot of predicted SOC values against laboratory reference measurements. Error bars represent the prediction standard deviation for each sample, providing a visual representation of the uncertainty associated with each prediction. 
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r fig-val-plot, echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
 xy_lims <- range(dat_cal$SOC_predRF, dat_cal$SOC)
 # Validation plot
 plot(
