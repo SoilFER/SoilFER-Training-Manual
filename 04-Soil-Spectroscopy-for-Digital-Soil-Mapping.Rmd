@@ -1070,7 +1070,14 @@ plot(soc_map_aug, main = "SOC map (DRS-augmented dataset)", range = c(0, 4))
 The difference between the augmented and baseline SOC maps can be visualized to identify areas where the inclusion of DRS-based predictions has a notable impact on the spatial predictions. This is done by simply subtracting the baseline map from the augmented map:
 
 ```{r}
-plot(soc_map_aug - soc_map_ref, main = "Difference (augmented - baseline)")
+diff_map <- soc_map_aug - soc_map_ref
+
+plot(
+  diff_map,
+  main   = "Difference (augmented - baseline)",
+  col    = rev(hcl.colors(100, "RdBu")),
+  range = c(-0.9, 0.9)
+)
 ```
 
 Figure \@ref(fig:fig-dsm-ref-aug) presents the three maps side by side for direct comparison. The left panel shows the baseline SOC predictions based on laboratory observations only, the middle panel shows the SOC predictions from the DRS-augmented model, and the right panel shows the difference between the two (augmented minus baseline). All maps use the same color scale to facilitate visual comparison.
