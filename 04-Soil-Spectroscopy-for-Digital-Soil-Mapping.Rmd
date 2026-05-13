@@ -1510,7 +1510,7 @@ grid(lty = 1, col = rgb(0.8, 0.8, 0.8, 0.5))
 
 The exercises below suggest directions for independent investigation. Each is self-contained and can be attempted in any order.
 
-- Try different spectral preprocessing combinations (difficulty: low). The workflow used a Savitzky–Golay first derivative followed by SNV. Other combinations — smoothing only, SNV without derivative, multiplicative scatter correction — may perform better or worse depending on the dataset. Apply alternative preprocessing sequences and compare DRS model RMSE and final SOC map accuracy.
+- Try different spectral preprocessing combinations (difficulty: low). The workflow used a Savitzky–Golay first derivative followed by SNV. Other combinations (smoothing only, SNV without derivative, multiplicative scatter correction) may perform better or worse depending on the dataset. Apply alternative preprocessing sequences and compare DRS model RMSE and final SOC map accuracy.
 
 - Vary the calibration set size (difficulty: low). The mapping exercise used 85 profiles. Based on the MSD analysis, a smaller set of around 60 profiles may be sufficient. Try different calibration set sizes and examine how the choice affects DRS model performance and the spatial patterns in the predicted SOC maps.
 
