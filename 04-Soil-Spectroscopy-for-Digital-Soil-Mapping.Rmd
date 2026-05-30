@@ -441,6 +441,8 @@ Spectra can also be affected by variation in instrument response, sample present
 
 Derivatives should be used with caution because they can also amplify noise. The choice of preprocessing method should therefore depend on the spectral region, the quality of the measurements, and the modeling objective.
 
+Please see the [`prospectr` package vignettes](https://CRAN.R-project.org/package=prospectr) for additional examples on prepossessing methods for DRS.
+
 > <span  style="font-weight:700;">NOTE:</span> _Scatter correction methods may sometimes appear to reduce model accuracy during internal validation, especially when calibration and validation samples come from the same instrument, preparation protocol, and measurement conditions. In such cases, raw or lightly smoothed spectra may preserve dataset-specific variation that improves apparent performance. However, this variation may not be chemically meaningful and can make the model more sensitive to changes in particle size, packing density, sample presentation, instrument response, or acquisition conditions. Carefully selected scatter correction methods, such as SNV or MSC, may therefore produce models that are slightly less accurate in the short term but more robust when applied to new samples, instruments, or measurement settings. For this reason, scatter correction should be evaluated not only in terms of cross-validation accuracy, but also in terms of expected model transferability and long-term stability._
 
 In this example, we first apply a Savitzky–Golay first derivative to reduce baseline effects and enhance spectral features, followed by standard normal variate (SNV) correction to reduce multiplicative scatter effects. Let's first look in detail what these two pretreatments would do to a single spectrum. In `savitzkyGolay()`, `m = 1` specifies the first derivative, `p = 1` sets the polynomial order used within the moving window, and `w = 25` defines the window size in spectral variables. The optimal preprocessing strategy should, however, be evaluated for each dataset. Let's take the very first spectrum (Figure \@ref(fig:fig-first-spectrum))  in our dataset and see what happen step-by-step:
@@ -592,6 +594,7 @@ for (i in seq_along(ss)) {
 par(mfrow = c(1, 1))
 ```
 
+Please see the [`prospectr` package vignettes](https://CRAN.R-project.org/package=prospectr) for additional examples of calibration sample selection for DRS.
 
 
 #### Select a representative subset of calibration samples for model fitting
