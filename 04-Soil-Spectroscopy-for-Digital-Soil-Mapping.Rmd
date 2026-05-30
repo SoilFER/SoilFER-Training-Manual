@@ -110,7 +110,7 @@ ggplot(df, aes(x = x, y = density, colour = method, fill = method)) +
     linetype = "dashed", linewidth = 0.7, show.legend = FALSE
   ) +
   
-  # sigma_DRS arrow — placed low, well left of the wet-chem peak
+  # sigma_DRS arrow (placed low, well left of the wet-chem peak)
   annotate(
     "segment",
     x = spec_mean - spec_sd, xend = spec_mean + spec_sd,
@@ -125,7 +125,7 @@ ggplot(df, aes(x = x, y = density, colour = method, fill = method)) +
     colour = col_spec, size = 4.2, hjust = 1
   ) +
   
-  # sigma_wet arrow — placed high, anchored right of its own peak
+  # sigma_wet arrow (placed high, anchored right of its own peak)
   annotate(
     "segment",
     x = wet_mean - wet_sd, xend = wet_mean + wet_sd,
@@ -265,7 +265,7 @@ library(dplyr)
 
 # Read MIR spectral dataset (Kansas example)
 original_dat <- read_excel(
-  "01_data/module1/training_data/data/MIR_KANSAS_data.xlsx",
+  "../SoilFER-Training-Resources/01_data/module1/training_data/MIR_KANSAS_data.xlsx",
   .name_repair = "minimal",
   na = c("", "NA", "N/A", "NaN"),
   progress = FALSE
@@ -709,9 +709,9 @@ dat_augmented$SOC_sd[-kms_samples] <- dat_pred$SOC_sdRF
 
 The SOC concentrations in the dataset used here were determined by high-temperature dry combustion, one of the most precise laboratory approaches for SOC quantification and the standard reference method for this property.
 
-Quantifying laboratory measurement uncertainty in the absence of replicate measurements requires an external reference. @stevens2013prediction assessed the reproducibility of dry combustion SOC analysis across a large harmonised European soil survey and reported a standard error of laboratory (SEL) of approximately 2 g C kg⁻¹ for mineral soils overall — equivalent to 0.2% SOC. This value reflects intermediate precision under standardised conditions in an accredited laboratory and represents a realistic but optimistic estimate of the analytical component of uncertainty, excluding sampling and preparation variability.
+Quantifying laboratory measurement uncertainty in the absence of replicate measurements requires an external reference. @stevens2013prediction assessed the reproducibility of dry combustion SOC analysis across a large harmonised European soil survey and reported a standard error of laboratory (SEL) of approximately 2 g C kg⁻¹ for mineral soils overall (equivalent to 0.2% SOC). This value reflects intermediate precision under standardised conditions in an accredited laboratory and represents a realistic but optimistic estimate of the analytical component of uncertainty, excluding sampling and preparation variability.
 
-For this dataset, which was similarly analysed under standardised laboratory conditions [@dangal2019accurate], we adopt a constant absolute uncertainty of $\sigma_{\text{lab}} = 0.15$% SOC as a pragmatic approximation consistent with the published literature. A constant rather than proportional error model is used here because a proportional formulation — where $\sigma = CV \times y_i$ — causes low-SOC observations to receive disproportionately high weights during model calibration, irrespective of their actual reliability. In practical applications, laboratory-specific replicate measurements should be used to derive empirical uncertainty estimates.
+For this dataset, which was similarly analysed under standardised laboratory conditions [@dangal2019accurate], we adopt a constant absolute uncertainty of $\sigma_{\text{lab}} = 0.15$% SOC as a pragmatic approximation consistent with the published literature. A constant rather than proportional error model is used here because a proportional formulation (where $\sigma = CV \times y_i$) causes low-SOC observations to receive disproportionately high weights during model calibration, irrespective of their actual reliability. In practical applications, laboratory-specific replicate measurements should be used to derive empirical uncertainty estimates.
 
 ```{r message=FALSE, warning=FALSE, eval=TRUE}
 # Constant absolute laboratory uncertainty: 0.15% SOC
@@ -785,7 +785,7 @@ head(soc_ref_0_30_xy)
 
 ### Augmented dataset
 
-The augmented dataset combines laboratory measurements with DRS-based predictions. The single `SOC_sd` column carries the appropriate uncertainty for each observation — laboratory analytical error for reference samples, RF prediction uncertainty for DRS-predicted samples — so the same function applies without modification:
+The augmented dataset combines laboratory measurements with DRS-based predictions. The single `SOC_sd` column carries the appropriate uncertainty for each observation (laboratory analytical error for reference samples, RF prediction uncertainty for DRS-predicted samples) so the same function applies without modification:
 
 ```{r dh-aug, message=FALSE, warning=FALSE, eval=TRUE}
 soc_mean_aug <- profileApply(
@@ -931,7 +931,7 @@ This produces a spatial dataset in which each soil observation is associated wit
 library(terra)
 # Load environmental covariates
 covs <- rast(
-  "01_data/module1/training_data/data/Environmental_Covariates_250m_KANSAS.tif"
+  "../SoilFER-Training-Resources/01_data/module1/training_data/Environmental_Covariates_250m_KANSAS.tif"
 )
 cov_names <- names(covs)
 
@@ -1639,7 +1639,7 @@ To enable a fair comparison of DSM accuracy across calibration set sizes, a fixe
 
 This approach differs from the cross-validation used in the main workflow. There, cross-validation was applied separately to the reference and augmented datasets as an internal diagnostic (a reasonable consistency check for each model on its own training data). However, because the two datasets differ in composition (i.e. one contains only laboratory observations, while the other combines laboratory and DRS-derived observations with different weights), the resulting weighted metrics are not strictly comparable between the two models. For the sensitivity analysis presented here, where the goal is to compare DSM accuracy across five calibration scenarios, a single fixed held-out set evaluated with the same unweighted metrics is the only approach that ensures comparability.
 
-We can use `soil_df_ref` directly for this purpose, since it already contains depth-harmonized SOC values derived exclusively from laboratory measurements—the same dataset used to fit the baseline DSM model. We simply sample a subset of its profiles as the held-out validation set.
+We can use `soil_df_ref` directly for this purpose, since it already contains depth-harmonized SOC values derived exclusively from laboratory measurements (the same dataset used to fit the baseline DSM model). We simply sample a subset of its profiles as the held-out validation set.
 
 
 ```{r drs4dsm-hold-out, message=FALSE, warning=FALSE, eval=TRUE, results='hide'}
