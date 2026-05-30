@@ -265,7 +265,7 @@ library(dplyr)
 
 # Read MIR spectral dataset (Kansas example)
 original_dat <- read_excel(
-  "01_data/module1/training_data/data/MIR_KANSAS_data.xlsx",
+  "../SoilFER-Training-Resources/01_data/module1/training_data/MIR_KANSAS_data.xlsx",
   .name_repair = "minimal",
   na = c("", "NA", "N/A", "NaN"),
   progress = FALSE
@@ -931,7 +931,7 @@ This produces a spatial dataset in which each soil observation is associated wit
 library(terra)
 # Load environmental covariates
 covs <- rast(
-  "01_data/module1/training_data/data/Environmental_Covariates_250m_KANSAS.tif"
+  "../SoilFER-Training-Resources/01_data/module1/training_data/Environmental_Covariates_250m_KANSAS.tif"
 )
 cov_names <- names(covs)
 

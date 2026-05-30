@@ -1794,7 +1794,7 @@ library(terra)            # Manipulation of Raster Data
 # soil_sf <- st_read(paste0(output_dir,"soil_profiles.shp"))
 # admin <- st_read(paste0(training_folder,"01_data/module1/shapes/Tiger_2020_Counties.shp"))
 #save.image("SoilFER-Training-Resources/01_outputs/module1.RData")
-load("SoilFER-Training-Resources/01_outputs/module1.RData")
+load("SoilFER-Training-Resources/03_outputs/module1.RData")
 
 #training_rasters <- "../SoilFER-Rasters/"
 #crops  <- rast(paste0(training_rasters,"Cropland_Mask_KANSAS.tif"))
