@@ -50,6 +50,8 @@ There is broad consensus that DRS complements rather than replaces soil laborato
 
 The use of DRS-inferred soil properties offers a cost- and time-efficient pathway to substantially increase the number of observations available for DSM model calibration [@ramirez2019robust]. This directly supports the collection of spatially dense datasets at field to regional scales. By augmenting conventional laboratory datasets with larger volumes of DRS-inferred observations, DSM workflows can benefit from more input data, which may improve map accuracy at lower overall cost.
 
+> <span style="font-weight:700;">Cost perspective:</span> DRS reduces costs mainly by lowering the marginal cost of additional soil observations. Laboratory analyses are still needed for calibration and validation, but once reliable models are available, each new spectrum can provide predictions for one or several soil properties. In repeated large-scale soil monitoring, the cost benefit depends on whether prediction errors are acceptable for the intended decision. For example, @breure2026evaluating assessed VNIRS for SOC prediction in a repeated European soil survey and showed that, under favourable assumptions, replacing (most of the) dry-combustion measurements with VNIRS in a second survey campaign could reduce analytical costs. This makes DRS especially useful in DSM workflows, where increasing sampling density and monitoring frequency can be more important than analysing every sample only by conventional methods, as also shown by @malone2022digital.
+
 ### Including Spectroscopic Predictions in Digital Soil Mapping
 
 In DSM workflows that incorporate DRS, spectroscopically derived soil property estimates should be treated as model-based predictions with associated uncertainty, rather than as error-free measurements. Unlike conventional laboratory analyses, spectroscopy does not directly measure soil properties; it generates predictions from statistical models calibrated to capture relationships between spectral responses and reference measurements. Consequently, each DRS estimate is associated with uncertainty that is usually larger than that of conventional laboratory measurements. When DRS-inferred data are incorporated into DSM workflows, this additional source of uncertainty should therefore be explicitly acknowledged [@takoutsing2022accounting]. Treating DRS predictions as error-free observations may lead to biased spatial models, propagation of systematic spectroscopic errors, and overconfident DSM predictions [@van2022measurement].
@@ -248,6 +250,28 @@ For DSM applications, these outputs can be treated similarly to laboratory obser
 
 In the following subsections, we demonstrate how to (i) import and visualize the spectral data, (ii) apply basic spectral preprocessing, (iii) build a spectroscopic prediction model with uncertainty, (iv) define laboratory measurement uncertainty, and (v) harmonize soil property predictions and uncertainties to a standard depth interval.
 
+### How to get the data
+
+This module uses two input files, both of which are distributed via the Google Drive folder described in Section \@ref(required-downloads):
+
+- `MIR_KANSAS_data.xlsx`: an excel spreadsheet containing mid-infrared (MIR) spectra and associated soil reference measurements for soil samples collected across Kansas, USA. This file is loaded as the primary analytical dataset for spectral modelling and soil property prediction.
+
+- `Environmental_Covariates_250m_KANSAS.tif`: a multi-band raster file containing environmental covariates at 250 m spatial resolution derived from remote sensing and climate products. These covariates follow the SCORPAN framework and are used as predictors for digital soil mapping across the Kansas study area.
+
+Both files must be placed in the `01_data/module1/training_data/` folder of the project directory before running any code in this module, as all scripts reference that location via relative paths. Refer to Section \@ref(required-downloads) for step-by-step download and setup instructions.
+
+### Main R package sused here
+
+The main R packages used in this section are:
+
+* `prospectr`: used for handling and preprocessing the DRS spectra to enhance their quality. This package is also used for representative sample selection.
+
+* `ranger`: used to fit random forest and quantile regression forest models. In this section, it is used both to predict SOC from DRS spectra and to estimate prediction uncertainty.
+
+* `aqp`: used to represent soil profiles and horizons in a structured way, allowing SOC values and their uncertainties to be harmonized to a standard depth interval.
+
+* `terra`: used to handle spatial raster data, including environmental covariates, extraction of covariate values at soil sampling locations, and prediction of SOC maps.
+
 ### Load and plot the DRS data
 
 First, we import the DRS dataset and prepare it for analysis. This dataset contains absorbance measurements collected in the mid-infrared (MIR) region of the electromagnetic spectrum, over the wavenumber range starting from apprximately 4000 cm$^{-1}$ up to apprximately 400 cm$^{-1}$ at an approximated resolution of 1.93 cm$^{-1}$. This resulted in 1764 spectral variables. Note that this region corresponds to wavelengths of approximately 2500–25000 nm. These measurements were collected under laboratory conditions using air-dried soil samples. Additional details on the DRS measurements are provided in @dangal2019accurate.
@@ -290,7 +314,11 @@ We use this pattern to separate the spectral variables from the remaining soil d
 # Identify spectral columns
 # Spectral variables start with "X" followed by at least three digits.
 spc_cols <- grep("^X[0-9]{3,}", colnames(original_dat))
+```
 
+In the above code, the regular expression `^X[0-9]{3,}` selects columns whose names start with `X` followed by at least three digits. In this dataset, those columns correspond to MIR absorbance values measured at different wavenumbers. We use that to extract the spectral matrix and convert the column names to numeric wavenumber values:
+
+```{r message=FALSE, warning=FALSE, eval=TRUE}
 # Extract the spectral matrix
 spc_original <- original_dat[, spc_cols]
 
@@ -305,6 +333,12 @@ range(original_wavs)
 ```
 
 Because the spectra are recorded at high spectral resolution, the spectral matrix contains many highly correlated variables. Before modeling, we therefore resample the spectra to a coarser wavenumber grid. This reduces computational demand while preserving the main absorption features. In this case, we resample the spectra to a resolution of 8 cm$^{-1}$ using `prospectr::resample()`. Since the original spectra do not extend exactly to 4000 cm$^{-1}$, we avoid extrapolation (highly recommended for all cases) and resample only up to 3992 cm$^{-1}$. This results in a new spectral matrix with 425 spectral variables, which is more manageable for modeling while still capturing the key spectral information:
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# In case you do not have the prospectr ackage alerady installed
+# please run the following line
+install.packages("prospectr")
+```
 
 ```{r message=FALSE, warning=FALSE, eval=TRUE}
 library(prospectr)
@@ -400,14 +434,87 @@ A first step is always to inspect the spectra visually. This helps identify evid
 Spectra can also be affected by variation in instrument response, sample presentation, particle size, packing density, and measurement conditions. These effects may introduce additive or multiplicative changes in the spectra, even when the same sample is measured more than once. Common preprocessing methods used to reduce these effects include:
 
 - **Smoothing**, such as moving average or Savitzky–Golay filtering, to reduce high-frequency noise.
+
 - **Scatter correction**, such as standard normal variate (SNV) or multiplicative scatter correction (MSC), to reduce multiplicative effects.
+
 - **Derivatives**, often combined with smoothing, to reduce baseline effects and enhance spectral features.
 
 Derivatives should be used with caution because they can also amplify noise. The choice of preprocessing method should therefore depend on the spectral region, the quality of the measurements, and the modeling objective.
 
+Please see the [`prospectr` package vignettes](https://CRAN.R-project.org/package=prospectr) for additional examples on prepossessing methods for DRS.
+
 > <span  style="font-weight:700;">NOTE:</span> _Scatter correction methods may sometimes appear to reduce model accuracy during internal validation, especially when calibration and validation samples come from the same instrument, preparation protocol, and measurement conditions. In such cases, raw or lightly smoothed spectra may preserve dataset-specific variation that improves apparent performance. However, this variation may not be chemically meaningful and can make the model more sensitive to changes in particle size, packing density, sample presentation, instrument response, or acquisition conditions. Carefully selected scatter correction methods, such as SNV or MSC, may therefore produce models that are slightly less accurate in the short term but more robust when applied to new samples, instruments, or measurement settings. For this reason, scatter correction should be evaluated not only in terms of cross-validation accuracy, but also in terms of expected model transferability and long-term stability._
 
-In this example, we first apply a Savitzky–Golay first derivative to reduce baseline effects and enhance spectral features, followed by standard normal variate (SNV) correction to reduce multiplicative scatter effects. In `savitzkyGolay()`, `m = 1` specifies the first derivative, `p = 1` sets the polynomial order used within the moving window, and `w = 25` defines the window size in spectral variables. The optimal preprocessing strategy should, however, be evaluated for each dataset.
+In this example, we first apply a Savitzky–Golay first derivative to reduce baseline effects and enhance spectral features, followed by standard normal variate (SNV) correction to reduce multiplicative scatter effects. Let's first look in detail what these two pretreatments would do to a single spectrum. In `savitzkyGolay()`, `m = 1` specifies the first derivative, `p = 1` sets the polynomial order used within the moving window, and `w = 25` defines the window size in spectral variables. The optimal preprocessing strategy should, however, be evaluated for each dataset. Let's take the very first spectrum (Figure \@ref(fig:fig-first-spectrum))  in our dataset and see what happen step-by-step:
+
+```{r fig-first-spectrum, message=FALSE, warning=FALSE, eval =TRUE, fig.cap = "The first spectrum in the dataset before preprocessing."}
+# apply standard normal variate (SNV) correction followed by 
+# a Savitzky–Golay first derivative
+a_spectrum  <- dat$spc[1, ]
+plot(
+  wavs,
+  a_spectrum,
+  type = "l",
+  lty = 1,
+  xlim = c(4000, 500),
+  xlab = expression(Wavenumber~(cm^{-1})),
+  ylab = "Absorbance", 
+  col = rgb(0.3, 0, 0.8)
+)
+```
+Then let's see what happen when the first derivative spectrum (Figure \@ref(fig:fig-first-spectrum-der) using the Savitzky–Golay method) is applied to the same spectrum:
+
+```{r fig-first-spectrum-der, message=FALSE, warning=FALSE, eval =TRUE, fig.cap = "The first spectrum after applying Savitzky–Golay first derivative transformation."}
+# apply standard normal variate (SNV) correction followed by 
+# a Savitzky–Golay first derivative
+a_spectrum_first_der  <- prospectr::savitzkyGolay(
+  a_spectrum, # the spectrum
+  m = 1, # the derivative order 
+  p = 1, # the polynomial order used within the moving window 
+  w = 25 # the window size in spectral variables
+)
+# the wavenumber values for the first derivative spectrum are trimmed as a 
+# result of the moving window. We can get the wavenumber values for the first 
+# derivative spectrum as follows:
+der_wavs <- as.numeric(names(a_spectrum_first_der))
+plot(
+  der_wavs,
+  a_spectrum_first_der,
+  type = "l",
+  lty = 1,
+  xlim = c(4000, 500),
+  xlab = expression(Wavenumber~(cm^{-1})),
+  ylab = "First derivative absorbance"
+  col = rgb(0, 0.3, 0.8)
+)
+```
+
+A first derivative describes how quickly the spectral signal changes from one wavenumber to the next. Instead of working with the original absorbance values, it highlights the local slope of the spectrum, which can help reduce baseline effects and make spectral features more visible. The Savitzky--Golay method estimates this slope using a small moving window rather than a simple point-to-point subtraction, making the derivative less sensitive to noise. In `savitzkyGolay()`, `w = 25` defines the window size, `p = 1` fits a straight line within each window, and `m = 1` requests the first derivative. Because the window cannot be centered at the edges of the spectrum, some variables are lost at both ends; this is why we extract the new wavenumber values after applying the derivative. We can see in Figure \@ref(fig:fig-first-spectrum-der) that the first derivative spectrum has a different shape than the original spectrum, with enhanced peaks and reduced baseline effects. 
+
+Finally, let's see what happen when we apply SNV correction to the first derivative spectrum (Figure \@ref(fig:fig-first-spectrum-der-snv)): 
+
+```{r fig-first-spectrum-der-snv, message=FALSE, warning=FALSE, eval =TRUE, fig.cap = "The first spectrum after applying Savitzky–Golay first derivative and standard normal variate (SNV) correction."}
+# apply standard normal variate (SNV) correction followed by 
+# a Savitzky–Golay first derivative
+a_spectrum_first_der_snv  <- prospectr::standardNormalVariate(
+  t(a_spectrum_first_der
+)
+
+plot(
+  der_wavs,
+  a_spectrum_first_der_snv,
+  type = "l",
+  lty = 1,
+  xlim = c(4000, 500),
+  xlab = expression(Wavenumber~(cm^{-1})),
+  ylab = "SNV of first derivative absorbance",
+  col = rgb(0.8, 0.3, 0)
+)
+```
+
+SNV correction standardizes each spectrum individually. It subtracts the average value of the spectrum and divides by its standard deviation, so the transformed spectrum is centered around zero and expressed on a comparable scale. In Figure @ref(fig:fig-first-spectrum-der-snv), the main shape of the derivative spectrum is preserved, but the vertical scale changes. This is expected: SNV does not create new spectral features; it mainly reduces differences caused by overall signal intensity, sample packing, particle size, or other multiplicative effects. After SNV, the y-axis no longer represents absorbance directly, but standardized derivative values.
+
+Now that we have seen what the pretreatments do, lets aply them to the entire spectra:
 
 ```{r message=FALSE, warning=FALSE, eval =TRUE}
 # apply standard normal variate (SNV) correction followed by 
@@ -421,7 +528,7 @@ wavs_processed <- as.numeric(colnames(dat$spc_processed))
 ```
 
 
-Now let's visualise the processed spectra(Figure \@ref(fig:fig-spectra-processed)) that we have so far:
+Now let's visualise the processed spectra (Figure \@ref(fig:fig-spectra-processed)) that we have so far:
 ```{r fig-spectra-processed, message=FALSE, warning=FALSE, eval=TRUE, out.width="80%", fig.cap = "Processed MIR spectra after standard normal variate correction and Savitzky–Golay first-derivative transformation."}
 matplot(
   wavs_processed,
@@ -442,7 +549,55 @@ This basic exploratory step helps verify that the spectra have been imported and
 
 ### SOC prediction from DRS spectra with uncertainty estimation
 
-#### Select a subset of calibration samples for model fitting
+#### A quick note on calibration sampling
+
+Calibration sampling refers to the process of selecting the samples that will be used to build a  calibration model. This step is important because the model can only learn from the samples included in the calibration set. If these samples cover the main types of spectra present in the dataset, the model is more likely to work well on new samples.
+
+A common strategy is therefore to select samples that are spectrally representative of the full dataset. This means selecting samples that cover the main patterns of spectral variation, rather than choosing many samples that look very similar to each other. One method for doing this is $k$-means sampling, also known as the Næs approach. This method divides the spectral space into $k$ groups, or clusters, and selects the sample closest to the center of each cluster. In this way, the selected samples are spread across the main regions of the dataset.
+
+Figure @ref(fig:fig-cal-sampling) illustrates this idea using a simple synthetic dataset with two dimensions. In this example, the points can be imagined as samples distributed across a two-dimensional space (X and Y coordinates). The full dataset contains 900 points, and the task is to select representative subsets of different sizes. The figure shows the samples selected by $k$-means sampling when the target is to select 9, 45, 81, 117, 153, 189, 225, 261, and 297 samples. The red points indicate the samples selected for calibration.
+
+This example shows how $k$-means sampling helps distribute the calibration samples across the dataset. In DRS, the same idea is applied to spectral data: the selected samples should cover the main spectral diversity, which can help produce calibration models that are more robust and more useful for prediction.
+
+
+```{r fig-cal-sampling, echo = FALSE, message=FALSE, warning=FALSE, eval=TRUE, fig.cap = "Example of $k$-means sampling for spectroscopic data. The plot shows the distribution of samples in the space of the first two principal components of the processed spectra. The red points indicate the samples selected for calibration using $k$-means sampling with $k = 85$ cluster centres."}}
+library(prospectr)
+
+# Synthetic grid dataset with jitter
+set.seed(1002)
+grid_xy <- expand.grid(x1 = 1:30, x2 = 1:30)
+X_synthetic <- data.frame(
+  x1 = grid_xy$x1 + rnorm(nrow(grid_xy), 0, 0.3),
+  x2 = grid_xy$x2 + rnorm(nrow(grid_xy), 0, 0.3)
+)
+
+ss <- seq(9, 300, by = 36)
+kms_synthetic <- NULL
+for (i in ss) {
+  kms_synthetic[[which(ss == i)]] <- naes(X = X_synthetic, k = i, iter.max = 100)
+}
+
+par(mfrow = c(3, 3), mar = c(2, 2, 2, 1))
+
+for (i in seq_along(ss)) {
+  plot(
+    X_synthetic,
+    col  = rgb(0, 0, 0, 0.3), pch = 19, cex = 0.5,
+    main = paste0("seed = ", ss[i]),
+    xlab = "", ylab = ""
+  )
+  grid()
+  points(X_synthetic[kms_synthetic[[i]]$model, ],
+         col = "red", pch = 19, cex = 0.7)
+}
+
+par(mfrow = c(1, 1))
+```
+
+Please see the [`prospectr` package vignettes](https://CRAN.R-project.org/package=prospectr) for additional examples of calibration sample selection for DRS.
+
+
+#### Select a representative subset of calibration samples for model fitting
 
 The objective is to use a small but representative subset of samples to calibrate a DRS model for predicting SOC. The remaining samples are then treated as if their SOC content were unknown and predicted using the calibrated model. This simulates a practical scenario in which conventional laboratory analysis is performed on a limited subset, while DRS extends soil property information to a larger number of samples.
 
@@ -451,6 +606,9 @@ The objective is to use a small but representative subset of samples to calibrat
 Here, approximately 20% of the dataset is used for calibration. The calibration subset was selected using the $k$-means sampling algorithm for spectroscopic data [@naes1987design], implemented in the `naes()` function of the `prospectr` package. This method partitions the spectral space into $k$ clusters and selects the sample closest to each cluster centroid, ensuring that the selected subset is well distributed across the main axes of spectral variation. Such a strategy has been shown to provide representative calibration sets that reduce generalization error [@ramirez2014sampling].
 
 The selection operates at the individual sample level using the first 10 principal components of the processed spectra. Once the $k$ samples are selected, all remaining horizon samples belonging to the same soil profiles as the selected samples are also included in the calibration set. This profile-completion step serves two purposes: it avoids splitting a soil profile between calibration and prediction subsets, which would constitute information leakage, and it naturally increases the calibration set size beyond $k$ since profiles typically contain multiple horizons. The target of $k = 85$ cluster centres was chosen so that the resulting profile-completed calibration set contains approximately 20% of the total samples.
+
+
+
 
 ```{r message=FALSE, warning=FALSE, eval=TRUE}
 # Target number of cluster centres
@@ -483,15 +641,68 @@ dat_pred <- dat[-kms_samples, ]
 
 #### Model calibration
 
-In this section, we calibrate a random forest (RF) model to predict SOC from DRS spectra. The RF algorithm used is the _quantile regression forest_, which provides a prediction distribution for each sample rather than only a single point estimate. This allows us to obtain both the predicted SOC value and an associated uncertainty estimate, expressed here as the prediction standard deviation. 
+In DRS, a model can be seen as a "translator" that converts spectral data into something more meaningful to a soil scientist, such as a soil property value, for example soil organic carbon or organic matter content. This translation is usually done with a statistical model. In general terms, this can be written as:
 
-For the RF modeling setp, we use the `ranger` package [@wright2017ranger].
+$$
+\text{soil property value} = f(\text{DRS spectrum}) + \epsilon
+$$
+
+where $f$ is the model that links the spectrum to the soil property, and $\epsilon$ represents the prediction error. In other words, the model tries to learn how changes in the spectrum are related to changes in the soil property of interest.
+
+Different statistical and machine-learning approaches can be used to build this translator. Some of the most common are:
+
+- Partial least squares (PLS) regression: This is one of the standard methods used to calibrate DRS models. PLS is useful because spectra contain many highly correlated variables. For example, a spectrum is a continuous signal, so the absorbance at one wavelength or wavenumber is usually very similar to the absorbance at neighboring positions. This high redundancy can be difficult for some statistical methods. PLS handles this by summarizing the original spectral variables into a smaller set of new, uncorrelated variables that capture the main spectral variation relevant for prediction.
+
+- Neural networks: These are non-linear machine-learning models that can capture complex relationships between spectra and soil properties. They can be very powerful, especially when the relationship is not well described by a linear model. However, they usually require larger datasets and careful tuning to avoid overfitting.
+
+- Random forests: This is an ensemble learning method that builds many decision trees and averages their predictions. Random forests can capture non-linear relationships and interactions between spectral variables. They are often robust and flexible, although they are usually less common than PLS in traditional soil spectroscopy workflows.
+
+In this section, we calibrate a random forest (RF) model to predict SOC from DRS spectra. Specifically, we use a *quantile regression forest* because it provides a prediction distribution for each sample, rather than only a single point estimate. This allows us to obtain both the predicted SOC value and an associated uncertainty estimate, expressed here as the prediction standard deviation. This uncertainty is needed because the DRS-derived predictions will later be used as weighted observations in the DSM workflow.
+
+> <span style="font-weight:700;">Why quantile regression forests?</span>
+A standard random forest gives one predicted SOC value for each spectrum. Here, however, we also need to know how uncertain that prediction is, because DRS-derived values will later be combined with laboratory measurements in the DSM model. Quantile regression forests are useful because they provide a range of possible SOC values for each sample and indicate which values are more or less likely. From this range, we calculate the average prediction and its prediction standard deviation. This allows less certain DRS predictions to receive lower weight during spatial modelling.
+
+
+For the RF modeling step, we use the `ranger` package [@wright2017ranger].
 
 Prediction uncertainty is quantified by the model using the conditional distribution of the predictions. This approach is described in detail for soil DRS data by @wadoux2025uncertainty. From this model distribution, a mean predicted value, a prediction variance, and a prediction standard deviation are calculated for each soil sample. These quantities represent the required outputs of the DRS modeling step for DSM.
 
 To obtain an assessment of model performance, cross-validation is done at the soil profile level. This avoids using horizons from the same profile in both training and testing subsets. For each validation fold, the model is trained on a subset of profiles and used to predict SOC for the remaining profiles.
 
-Model performance is evaluated using cross-validation at the soil profile level. All horizons from the same profile are assigned to the same fold, so that horizons from one profile are never split between calibration and validation subsets. In each iteration, one fold of profiles is left out, the RF model is calibrated using the remaining profiles, and SOC is predicted for the excluded profiles. This avoids pseudo-replication and provides a more realistic assessment of model performance. The predicted SOC values are then compared with the laboratory reference values to compute performance metrics such as bias, RMSE, and $R^2$. The validation results are visualized by plotting predicted SOC values against the corresponding laboratory reference measurements, with error bars indicating the prediction standard deviation for each sample.
+Model performance is evaluated using cross-validation at the soil profile level. All horizons from the same profile are assigned to the same fold, so that horizons from one profile are never split between calibration and validation subsets. In each iteration, one fold of profiles is left out, the RF model is calibrated using the remaining profiles, and SOC is predicted for the excluded profiles. This avoids pseudo-replication and provides a more realistic assessment of model performance. The predicted SOC values are then compared with the laboratory reference values to compute performance metrics such as bias, root mean squared error (RMSE), and $R^2$. The validation results are visualized by plotting predicted SOC values against the corresponding laboratory reference measurements, with error bars indicating the prediction standard deviation for each sample.
+
+
+
+Table \@ref(tab:tab-model-metrics) summarises the metrics used in this section to evaluate DRS predictions and digital soil mapping (DSM) models.
+
+
+```{r tab-model-metrics, echo=FALSE}
+metrics <- data.frame(
+  Metric = c("Bias", "RMSE", "$R^2$", "NSE", "wNSE", "DRS prediction uncertainty"),
+  `What it tells you` = c(
+    "Average tendency to over- or under-predict",
+    "Typical prediction error, expressed in the units of the soil property",
+    "Proportion of variation in the reference data explained by the model",
+    "Predictive performance relative to simply using the mean of the observations as a baseline",
+    "Weighted version of NSE that accounts for differences in observation uncertainty",
+    "Uncertainty associated with each spectroscopic prediction, expressed here as a prediction standard deviation"
+  ),
+  `How to interpret it` = c(
+    "Values close to 0 are preferred. Positive values indicate over-prediction; negative values indicate under-prediction.",
+    "Lower values indicate better accuracy. RMSE should be interpreted relative to the range and practical relevance of the soil property. Note that this should not be interpreted as the maximal error you can expect.",
+    "Higher values indicate stronger agreement, but a high $R^2$ does not necessarily imply low prediction error.",
+    "Values close to 1 indicate good predictive performance. Values near 0 indicate performance similar to using the mean. Values below 0 indicate poor performance.",
+    "Values close to 1 are preferred. More reliable observations contribute more strongly to the assessment.",
+    "Larger values indicate less confident DRS predictions and can be used to down-weight observations in DSM."
+  ),
+  check.names = FALSE
+)
+knitr::kable(
+  metrics,
+  caption = "Summary of model performance and uncertainty metrics used to evaluate DRS predictions and DSM models.",
+  escape = FALSE
+)
+```
 
 Let's first define the fold structure for cross-validation. We assign folds at the profile level to ensure that all horizons from the same soil profile are kept together in either the training or test set, preventing information leakage and providing a more realistic evaluation of model performance.
 
