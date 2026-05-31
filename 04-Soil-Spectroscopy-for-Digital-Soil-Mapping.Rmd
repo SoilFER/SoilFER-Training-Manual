@@ -497,7 +497,7 @@ Finally, let's see what happen when we apply SNV correction to the first derivat
 # apply standard normal variate (SNV) correction followed by 
 # a Savitzky–Golay first derivative
 a_spectrum_first_der_snv  <- prospectr::standardNormalVariate(
-  t(a_spectrum_first_der
+  a_spectrum_first_der
 )
 
 plot(
