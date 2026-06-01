@@ -484,7 +484,7 @@ plot(
   lty = 1,
   xlim = c(4000, 500),
   xlab = expression(Wavenumber~(cm^{-1})),
-  ylab = "First derivative absorbance"
+  ylab = "First derivative absorbance",
   col = rgb(0, 0.3, 0.8)
 )
 ```
@@ -496,8 +496,8 @@ Finally, let's see what happen when we apply SNV correction to the first derivat
 ```{r fig-first-spectrum-der-snv, message=FALSE, warning=FALSE, eval =TRUE, fig.cap = "The first spectrum after applying Savitzky–Golay first derivative and standard normal variate (SNV) correction."}
 # apply standard normal variate (SNV) correction followed by 
 # a Savitzky–Golay first derivative
-a_spectrum_first_der_snv  <- prospectr::standardNormalVariate(
-  a_spectrum_first_der
+a_spectrum_first_der_snv <- prospectr::standardNormalVariate(
+  matrix(a_spectrum_first_der, nrow = 1)
 )
 
 plot(
@@ -560,7 +560,7 @@ Figure @ref(fig:fig-cal-sampling) illustrates this idea using a simple synthetic
 This example shows how $k$-means sampling helps distribute the calibration samples across the dataset. In DRS, the same idea is applied to spectral data: the selected samples should cover the main spectral diversity, which can help produce calibration models that are more robust and more useful for prediction.
 
 
-```{r fig-cal-sampling, echo = FALSE, message=FALSE, warning=FALSE, eval=TRUE, fig.cap = "Example of $k$-means sampling for spectroscopic data. The plot shows the distribution of samples in the space of the first two principal components of the processed spectra. The red points indicate the samples selected for calibration using $k$-means sampling with $k = 85$ cluster centres."}}
+```{r fig-cal-sampling, echo = FALSE, message=FALSE, warning=FALSE, eval=TRUE, fig.cap = "Example of $k$-means sampling for spectroscopic data. The plot shows the distribution of samples in the space of the first two principal components of the processed spectra. The red points indicate the samples selected for calibration using $k$-means sampling with $k = 85$ cluster centres."}
 library(prospectr)
 
 # Synthetic grid dataset with jitter
@@ -1453,7 +1453,7 @@ $$\text{msd} = \frac{1}{k} \sum_{j=1}^{k} \int_a^b \left( P_p(x_j) - P_s(x_j \in
 
 where $P_p(x_j)$ is the density of the $j$th principal component in the full population, $P_s(x_j \in cs)$ is the density in the calibration subset, and $k$ is the number of retained components. As the calibration set size increases, the MSD decreases and eventually stabilises (the point of stabilisation indicates the minimum number of samples needed to adequately represent the spectral population). This approach requires no reference measurements and can be applied directly to the scanned spectra before any laboratory analysis is carried out.
 
-The workflow for identifiying the optimal calibratin set size is illustrated in \@ref(fig:fig-msd-workflow). 
+The workflow for identifying the optimal calibration set size is illustrated in \@ref(fig:fig-msd-workflow). 
 
 ```{r fig-msd-workflow, echo=FALSE, message=FALSE, warning=FALSE, out.width="50%", eval=TRUE, fig.cap="Workflow for identifying the optimal calibration set size using the mean squared distance between spectral density estimates."}
 library(DiagrammeR)

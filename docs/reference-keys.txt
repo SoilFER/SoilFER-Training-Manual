@@ -54,7 +54,11 @@ fig:tile1-sd
 fig:fig-uncertainty
 fig:fig-dsm-workflow
 fig:fig-spectra
+fig:fig-first-spectrum
+fig:fig-first-spectrum-der
+fig:fig-first-spectrum-der-snv
 fig:fig-spectra-processed
+fig:fig-cal-sampling
 fig:fig-val-plot
 fig:fig-soc-distributions
 fig:fig-dsm-ref-aug
@@ -253,10 +257,13 @@ rationale
 including-spectroscopic-predictions-in-digital-soil-mapping
 workflow-overview
 generating-drs-derived-soil-property-observations-for-dsm
+how-to-get-the-data
+main-r-package-sused-here
 load-and-plot-the-drs-data
 preprocessing-of-the-soil-spectra
 soc-prediction-from-drs-spectra-with-uncertainty-estimation
-select-a-subset-of-calibration-samples-for-model-fitting
+a-quick-note-on-calibration-sampling
+select-a-representative-subset-of-calibration-samples-for-model-fitting
 model-calibration
 drs-based-prediction-and-uncertainty-estimation-for-non-calibration-samples
 assembling-the-augmented-dataset-of-laboratory-measurements-and-drs-based-predictions
@@ -311,3 +318,5 @@ data-viewer
 data-sharing-and-export-formats
 metadata-1
 web-services
+how-to-add-your-draft
+files-in-progress
