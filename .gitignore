@@ -1,6 +1,5 @@
 .Rproj.user
 .Rhistory
-.RData
 .Ruserdata
 .DS_Store
 
@@ -19,5 +18,7 @@
 *.csv
 *.xlsx
 *.xls
+
+!SoilFER-Training-Resources/03_outputs/module1.RData
 
 /SoilFER\ Integrated\ soil\ information\ for\ decision-making.Rmd
