@@ -3002,6 +3002,5 @@ kable(acronyms, caption = "List of acronyms and abbreviations used in this manua
 
 *For questions, technical support, or to report issues, please visit the [SoilFER GitHub repository](https://github.com/SoilFER/SoilFER-Training-Manual) or contact the SoilFER team at FAO.*
 
-## References {.unnumbered}
 
 

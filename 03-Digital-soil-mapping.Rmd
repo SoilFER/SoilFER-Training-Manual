@@ -832,6 +832,3 @@ plot(pred_sd,   main = paste("SD",   target), col = hcl.colors(100, "Inferno"))
 > **What you have produced:** at the end of this workflow you have two wall-to-wall rasters covering the study area — a map of predicted SOC (g/kg) and a map of its uncertainty (SD, g/kg). Together they constitute a complete DSM output ready for agronomic interpretation, soil carbon stock estimation, or as a baseline for monitoring change over time.
 
 
-
-
-### References {-}

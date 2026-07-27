@@ -340,7 +340,6 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.4.1" data-path="introduction-to-soil-data-preparation-spatial-data.html"><a href="introduction-to-soil-data-preparation-spatial-data.html#working-with-raster-data-using-terra"><i class="fa fa-check"></i><b>1.2.4.1</b> Working with Raster Data using <code>{terra}</code></a></li>
 <li class="chapter" data-level="1.2.4.2" data-path="introduction-to-soil-data-preparation-spatial-data.html"><a href="introduction-to-soil-data-preparation-spatial-data.html#calculation-of-soilclimate-rasters-newhall-simulation-model"><i class="fa fa-check"></i><b>1.2.4.2</b> Calculation of Soil–Climate Rasters (Newhall Simulation Model)</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="introduction-to-soil-data-preparation-spatial-data.html"><a href="introduction-to-soil-data-preparation-spatial-data.html#references-1"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html"><i class="fa fa-check"></i><b>2</b> Sampling design for soil surveys</a>
@@ -417,7 +416,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#appendix-c-acronyms-and-abbreviations"><i class="fa fa-check"></i>Appendix C: Acronyms and Abbreviations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="sampling-design-for-soil-surveys.html"><a href="sampling-design-for-soil-surveys.html#references-2"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="digital-soil-mapping.html"><a href="digital-soil-mapping.html"><i class="fa fa-check"></i><b>3</b> Digital Soil Mapping</a>
 <ul>
@@ -469,7 +467,6 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.10.4" data-path="digital-soil-mapping.html"><a href="digital-soil-mapping.html#prediction-at-all-tiles"><i class="fa fa-check"></i><b>3.2.10.4</b> Prediction at all tiles</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2.11" data-path="digital-soil-mapping.html"><a href="digital-soil-mapping.html#mosaic-tiles-into-final-maps"><i class="fa fa-check"></i><b>3.2.11</b> Mosaic tiles into final maps</a></li>
-<li class="chapter" data-level="" data-path="digital-soil-mapping.html"><a href="digital-soil-mapping.html#references-3"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="soil-spectroscopy-for-digital-soil-mapping.html"><a href="soil-spectroscopy-for-digital-soil-mapping.html"><i class="fa fa-check"></i><b>4</b> Soil Spectroscopy for Digital Soil Mapping</a>
@@ -591,7 +588,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.11" data-path="soil-data-sharing-and-dissemination.html"><a href="soil-data-sharing-and-dissemination.html#dashboard"><i class="fa fa-check"></i><b>5.11</b> Dashboard</a></li>
 <li class="chapter" data-level="5.12" data-path="soil-data-sharing-and-dissemination.html"><a href="soil-data-sharing-and-dissemination.html#summary-1"><i class="fa fa-check"></i><b>5.12</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references-4.html"><a href="references-4.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -4417,16 +4414,13 @@ We mask the model outputs using the annual rainfall layer as a validity template
 <span id="cb172-17"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb172-17" tabindex="-1"></a>results_intx10 <span class="ot">&lt;-</span> <span class="fu">app</span>(results, <span class="cf">function</span>(x) <span class="fu">as.integer</span>(<span class="fu">round</span>(x <span class="sc">*</span> <span class="dv">10</span>)))</span>
 <span id="cb172-18"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb172-18" tabindex="-1"></a><span class="fu">writeRaster</span>(results_intx10, <span class="st">&quot;03_outputs/module1/newhall_intx10.tif&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>The raster stack <code>newhall_results</code> contains the NSM outputs, which can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.</p>
-</div>
-</div>
-</div>
-<div id="references-1" class="section level3 unnumbered hasAnchor">
-<h3>References<a href="introduction-to-soil-data-preparation-spatial-data.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
 </div>
-<h3>References<a href="references-4.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<h3>References<a href="references-1.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="0">
 <div id="ref-amatulli2020_geomorpho90m" class="csl-entry">
 <strong>Amatulli, Gi., McInerney, D., Sethi, T., Strobl, P. &amp; Domisch, S.</strong> 2020. Geomorpho90m - global high-resolution geomorphometry layers. OpenTopography. <a href="https://doi.org/10.5069/G91R6NPX">https://doi.org/10.5069/G91R6NPX</a>

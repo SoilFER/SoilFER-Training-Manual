@@ -4215,7 +4215,3 @@ writeRaster(results_intx10, "03_outputs/module1/newhall_intx10.tif", overwrite =
 
 The raster stack `newhall_results` contains the NSM outputs, which can be used as covariates in both the Sampling Design and Digital Soil Mapping workflows.
  
-
-### References {-}
-
-
