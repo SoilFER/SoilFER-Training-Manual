@@ -302,8 +302,9 @@ introduction-2
 the-soil-information-system-sis
 what-is-a-spatial-data-infrastructure
 what-the-sis-lets-you-do
-standardisation
 glosis-node
+standardisation-of-soil-point-data-the-glosis-iso-28258-database
+standardisation-of-soil-raster-data
 getting-started-accessing-the-sis
 the-map-viewer
 the-admin-panel

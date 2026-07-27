@@ -2,33 +2,33 @@
 
 ## Introduction
 
-For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe [@ARROUAYS20172]. These data collection efforts---conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives---represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
+For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe [@ARROUAYS20172]. These data collection efforts, conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives, represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
 
 However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organisations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organised, and standardised, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities [@Medeiros24]. However, realising this potential requires solving the fragmentation problem through systematic standardisation.
 
-In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems, but contribute that data following standardised formats and protocols for data preparation and sharing.
+In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network of Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems, but contribute that data following standardised formats and protocols for data preparation and sharing.
 
-Making soil data usable, however, is not only about preparing it once. It is about keeping it **online, discoverable, and ready to use** by others---both the point observations gathered in the field and laboratory, and the maps derived from them. This is the role of a **Soil Information System (SIS)**: a web-based platform that allows soil scientists to publish their own data on the internet, describe it properly so that others can find and trust it, and visualise it together with data from other providers.
+Making soil data usable, however, is not only about preparing it once. It is about keeping it **online, discoverable, and ready to use** by others. This included all types of soil data information, from point observations gathered in the field and laboratory, existing soil maps and soi property maps derived from Digital Soil Mapping. This is the role of a **Soil Information System (SIS)**: a web-based platform that allows soil scientists to publish their own data on the internet, describe it properly so that others can find and trust it, and visualise it together with data from other providers.
 
-In this module we focus on the SIS from the point of view of a soil scientist who has data to share. You will learn what the SIS is, how it standardises and shares your data so that it can take part in the wider GloSIS federation, and---step by step---how to use the SIS web application to:
+In this module we focus on the SIS from the point of view of a soil scientist who has data to share. You will learn what the SIS is, how it standardises and shares your data so that it can take part in the wider GloSIS federation. The module introduces how to use the SIS web application to:
 
-- publish **soil profile (point) data** from a CSV file;
-- publish the **raster maps** you produce from soil observations and environmental covariates (the production of these maps is covered in the Digital Soil Mapping module);
+- publish **soil profile/layer (point) data** stored as CSV files;
+- publish the **raster maps** you produce from soil observations and environmental covariates (the production of these maps is covered in the module 3 - **Digital Soil Mapping**);
 - explore your data in the built-in map viewer;
 - combine existing maps into new ones with the **Raster Calculator**.
 
-No programming is required to use the SIS---it is operated entirely through a web browser.
+Designed for ease of use, the SIS operates fully within your web browser with no coding required.
 
 ## The Soil Information System (SIS)
 
 ### What is a Spatial Data Infrastructure?
 
-A **Spatial Data Infrastructure (SDI)** is the combination of technology, standards, and agreements that lets people *share geographic data over the internet* in a consistent way. Instead of e-mailing files back and forth, an SDI publishes data through standard web services, so that any compatible application---a web map, a desktop GIS such as QGIS, or another institution's platform---can connect to the same data and use it directly.
+A **Spatial Data Infrastructure (SDI)** is the combination of technology, standards, and agreements that lets people *share geographic data over the internet* in a consistent way. Instead of e-mailing files back and forth, an SDI publishes data through standard web services, so that any compatible application (a web map, a desktop GIS such as QGIS, or another institution's platform) can connect to the same data and use it directly.
 
 The SIS is an SDI specialised for soil information. It brings together, in one place and in a comparable form, the two kinds of products soil scientists generate:
 
-- **Soil profiles (point data)** --- georeferenced observations of soil properties measured at specific sampling locations and depths.
-- **Raster maps (gridded data)** --- continuous surfaces, typically produced by Digital Soil Mapping, that predict a soil property across an area from soil observations and environmental covariates.
+- **Soil profiles (point data)**: georeferenced observations of soil properties measured at specific sampling locations and depths.
+- **Raster maps (gridded data)**: continuous surfaces, typically produced by Digital Soil Mapping, that predict a soil property across an area from soil observations and environmental covariates.
 
 ### What the SIS lets you do
 
@@ -40,20 +40,6 @@ As a soil scientist, the SIS gives you a place to:
 - **Control** what is shared---each dataset can be kept private or published, and sensitive sampling coordinates can be slightly blurred to protect data providers;
 - **Reuse** the data through open standards, both inside the SIS and from external GIS software.
 
-### Standardisation
-
-When you publish data, the SIS **standardises** it---it makes sure that every soil property and every laboratory procedure is referred to by the right, internationally agreed name. As you describe your data, you point each measured property and method to an entry in the **GloSIS codelists**, the shared vocabularies for soil properties and laboratory procedures.
-
-For example, a column of pH measured in water is linked to the codelist entry that identifies it precisely as *pH in water*, distinct from *pH in KCl*. The SIS does not alter your measurements; it ensures they are labelled correctly. Because every dataset in the SIS is described with these same terms, data from different providers and different countries can be compared directly and combined with confidence.
-
-> The GloSIS codelists for soil properties and laboratory procedures are published openly at <https://github.com/glosis-ld/glosis>.
-
-::: {.highlights}
-- You publish soil **profiles (points)** and **maps (rasters)**.
-- The SIS keeps them online, described, and ready to be reused.
-- Everything is done from a web browser---no installation, no code.
-:::
-
 ## A node in the GloSIS federation {#glosis-node}
 
 The SIS is not meant to be an island. It is designed to act as a **node** in **GloSIS**, the Global Soil Information System---a *federation* in which each participating institution or country runs its own SIS and keeps full control of its own data, while all nodes can still be searched and used together as if they were one. Your data stays with you; what is shared is access to it, in a common form.
@@ -64,6 +50,87 @@ Two things make this federation possible, and both happen automatically when you
 - **Common ways of sharing.** The SIS publishes data through open standards from the **Open Geospatial Consortium (OGC)**: maps are served so they can be **viewed** anywhere (Web Map Service, WMS), datasets are described so they can be **discovered** (Catalog Service for the Web, CSW), and soil profiles are **served** through the SIS data service. Any compatible system---another SIS node, or standard GIS software---can connect to that data without special arrangements.
 
 You do not need to operate any of this yourself. Simply by publishing your profiles and maps as described below, you make your data ready to take its place in the wider GloSIS federation.
+
+## Standardisation of soil point data: The GloSIS ISO 28258 database
+
+Most existing soil observations are documented as point descriptions within technical and scientific publications, comprising profile descriptions and horizon-level analytical measurements. While highly valuable, these datasets lack the harmonized and standardized structure required for comprehensive analysis and cross-project insights before its publication.
+
+The International Organization for Standardization established **ISO 28258** ("Soil quality—Digital exchange of information on soil and soil-related data") as the international benchmark for digital soil data representation and exchange. ISO 28258 establishes the logical data organization and hierarchical relationships connecting soil observations, definitions of soil concepts following international conventions, metadata requirements and quality assurance procedures.
+
+Module 1 demonstrated how to clean and harmonize raw soil measurements—validating coordinates, depth intervals, missing values, and out-of-range lab data—resulting in the exported 'KSSL_clean.csv' file. While this dataset is clean and structured, it requires a final standardization step before it can be loaded into a standard database.
+
+When publishing data in the Soil Information System (SIS), the integrated SIS-ETL module automatically standardizes it according to ISO 28258 specifications. By adhering to this standard, the GloSIS database provides the necessary infrastructure for global soil data integration and interoperability.
+
+Technically, the GloSIS database is a PostgreSQL/PostGIS relational database implementing the GloSIS data model. It stores soil observations in a harmonized, standardized, and quality-controlled format. By enforcing common database structures, controlled vocabularies, and validation rules aligned with ISO 28258, it ensures soil datasets remain consistent and comparable across different countries and projects. Ultimately, it serves as a central repository that seamlessly connects spatial sampling locations, analytical methods, and laboratory results worldwide.
+
+The GloSIS database organizes data into the five standard soil-related categories, known as "features of interest", each with specific subcategories:
+
+-   `Site`: Represents the broader environment where soil investigations occur, capturing context such as terrain, climate, and land-use.
+
+-   `Plot`: A specific location for soil investigation where profiles and samples are collected. It is further classified into:
+
+    -   `Surface`: A polygonal area where soil properties are assumed to be relatively homogeneous.
+    -   `TrialPit`: A manually excavated pit for detailed soil examination.
+    -   `Borehole`: A drilled hole for subsurface soil sampling.
+
+-   `Profile`: A vertical sequence of soil horizons or layers at a given location (referred to as `ProfileElement` in ISO 28258). This feature included the general descriptive information at profile level.
+
+-   `Element` -- Subdivisions of a profile based on depth, further categorized as:
+
+    -   `Horizon` -- A natural, homogeneous soil layer formed by pedogenesis.
+    -   `Layer` -- An arbitrarily defined soil section for analysis at fixed depths.
+
+-   `Specimen` -- A physical sample extracted at a defined depth, typically analysed in laboratories for chemical and physical properties (referred to as `SoilSpecimen` in ISO 28258).
+
+Each of these "features of interest" is represented by a dedicated table in the relational database. Because they describe distinct real-world entities, they store different types of attributes and metadata. The core challenge is translating raw soil data files into this structured database model as GloSIS. This process is facilitated by an ETL (Extract, Transform, Load) module integrated into the Soil Information System presented here.
+
+The data ingestion into the database has several mandatory fields. Some of them are related to the position and date of the observations and others to the analytical data:
+
+-   `Profile Code`, it identifies each unique profile in the database. 
+-   `Longitude` and `Latitude` store the geographic location of the observations. Each horizon/layer within a profile has to have the same coordinates. The default coordinate system is EPSG:4326. Other coordinate systems can be used but must be properly defined during the standardisation process in the ETL. 
+-   `Sampling date` stores the date when the survey was conducted. The date must follow ISO-8601 ("YYYY-MM-DD" format).
+-   `Upper` and `Lower` depths. They serve to identify the upper and bottom boundaries of each soil horizon/layer.
+-   `Soil property`, which identify the name of each of the soil properties analysed within every soil horizon/layer, the measurement method utilized and the measurement units. When properly defined, the values of each parameter can be automatically transformed to the standard units of measurement in the GloSIS database.
+
+Regarding the analytical data, each measured property and method has to be compliant with an entry in the **GloSIS codelists**, the shared vocabularies for soil properties and laboratory procedures.This ensures that every soil property and every laboratory procedure is referred to by the right, internationally agreed name as established within GloSIS. For example, a column of pH measured in water is linked to the **codelist** entry that identifies it precisely as *pH in water*, distinct from *pH in KCl*. The SIS does not alter your measurements; it ensures they are labelled correctly. Because every dataset in the SIS is described with these same terms, data from different providers and different countries can be compared directly and combined with confidence.
+
+> The GloSIS codelists for soil properties and laboratory procedures are published openly at <https://github.com/glosis-ld/glosis>.
+
+A final feature of the ETL pipeline is automated data quality control (QC). It validates the input, identifies potential discrepancies in the dataset before transferring it into PostgreSQL, ultimately simplifying the data submission process while maintaining accuracy and comparability. The data validation in this step occurs at three stages, geographic (horizontal location), temporal (Sampling date), soil depth (vertical position) and analytical integrity (non valid data and data outliers). Analytical soil property values that fall outside feasible ranges are automatically detected and flagged for manual review and correction. All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface. 
+
+All mandatory fields and QC issues must be properly mapped or resolved during the ETL standardization process; otherwise, data ingestion into the database will fail. A detailed procedure on how to use the ETL is covered in the "Publishing soil profile data from a CSV" section below.
+
+::: {.highlights}
+
+-  The GloSIS database uses the international ISO 28258 standard to transform unstructured point soil observations into a globally consistent, comparable, and quality-controlled format.
+
+-  Data is organized into 5 core "features of interest" (Site, Plot, Profile, Element, and Specimen), allowing complex field and lab data to be accurately mapped into dedicated relational tables.
+
+- Successful data ingestion requires essential metadata (Profile Code, coordinates, ISO 8601 sampling dates, and horizon depths) along with mapping to official GloSIS codelists to ensure accurate measurement labeling and automatic unit standardization.
+
+- An integrated ETL pipeline automatically detects out-of-range analytical values and enforces data validation—all QC issues and mandatory fields must be resolved before data can be loaded into the central database.
+:::
+
+
+## Standardisation of soil raster data
+
+Raster soil property maps are the primary output of the Digital Soil Mapping (DSM) workflow. By interpolating and modeling soil point observations, these continuous gridded surfaces generalize point-level analytical information across the entire area of interest.  To serve as reliable inputs for decision-making, spatial analyses, and cross-project comparisons, these raster maps must be standardized before being published and distributed through the Soil Information System (SIS). Standardization ensures that continuous spatial predictions are correctly georeferenced, attributed with standard units, and enriched with complete metadata.  When publishing raster soil maps in the SIS, datasets undergo a structured standardization process through the following metadata requirements:
+
+-  File Format & Georeferencing: Maps must be uploaded as a single, properly georeferenced GeoTIFF file (.tif / .tiff). The SIS automatically extracts the spatial extent and coordinate reference system directly from the raster file.  
+
+-  Administrative & Project Alignment: Each map is linked to its target Country and parent Project to organize spatial data infrastructure systematically.
+
+-  Property & Unit Standardization: The raster must be mapped to an agreed soil property (e.g., Soil Organic Carbon). Standard units of measurement are assigned automatically based on the property to guarantee consistency across different maps.
+
+-  Temporal, Spatial & Statistical Metadata: To provide accurate context, maps require explicitly defined parameters:
+
+  -  Temporal context: The map creation date (YYYY-MM-DD) and the date range (Period start / Period end) of the input data used.  
+  -  Vertical context: The upper and lower soil depth interval boundaries (in cm).
+  -  Statistical interpretation: Clear specification of pixel values—whether they represent a point prediction (MEAN), standard deviation (SDEV), or uncertainty (UNCT).
+
+-  Governance & Cataloging: Authorship, organizational roles, and licensing are documented. Maps can be published directly to the central catalogue, enabling seamless discovery, visualization, and interoperability across the SIS map viewer and the broader GloSIS federation.
+
+Detailed instructions for uploading and cataloging raster property maps are detailed in the "Publishing raster maps" section below.
 
 ## Getting started: accessing the SIS
 
@@ -159,8 +226,8 @@ The workflow has five steps, all on the same page.
 
 In the **Soil profiles** tab, open the **Upload CSV** section, click the file selector, choose your `.csv` file, and press **Upload CSV** (Figure \@ref(fig:sis-profile-upload)). The file is uploaded to a temporary working area; nothing is published yet.
 
-```{r sis-profile-upload, echo=FALSE, out.width="100%", fig.cap="Step 1: Selecting and uploading the CSV file."}
-knitr::include_graphics("images/module5/sis_profile_upload.png")
+```{r sis-profile-upload1, echo=FALSE, out.width="100%", fig.cap="Step 1: Selecting and uploading the CSV file."}
+knitr::include_graphics("images/module5/01_sis_profile_upload.png")
 ```
 
 ### Step 2 --- Preview the data
@@ -221,6 +288,21 @@ knitr::include_graphics("images/module5/sis_profile_validate.png")
 - Each upload is tagged with the source file name, so a dataset can be re-uploaded or removed cleanly later.
 :::
 
+Once the data has been validated, the Validation status appears in the dataset list (Figure \@ref(fig:sis-profile-validated)).
+
+```{r sis-profile-validated, echo=FALSE, out.width="100%", fig.cap="Step 5: Status of the validation."}
+knitr::include_graphics("images/module5/01_sis_profile_validated.png")
+```
+
+Now, the data is standardized and ready for ingestion into the Postgres database using the 'Ingest' button. Once ingested, the new status and data details will appear in the dataset list (Figure \@ref(fig:sis-profile-ingested)).
+
+```{r sis-profile-ingested, echo=FALSE, out.width="100%", fig.cap="Step 5: Status of the ingestion"}
+knitr::include_graphics("images/module5/sis_profile_ingested.png")
+```
+
+The data is now properly stored in the Postgres database and is ready for visualization on the SIS main page. 
+
+
 ## Publishing raster maps
 
 Raster maps---the gridded predictions you produce by Digital Soil Mapping---are published from the **Rasters** tab of the Admin Panel. The SIS accepts a single **GeoTIFF** file (`.tif` / `.tiff`) per upload and publishes it so that it can be viewed in the SIS (and in standard GIS software) and, if you wish, described in the catalogue so others can find it.
@@ -248,6 +330,7 @@ Document the temporal and vertical context of the map:
 - **Depth** --- the soil depth interval the map refers to (upper and lower, in cm).
 - **Statistics** --- what the pixel values represent: **MEAN** (the prediction), **SDEV** (its standard deviation), or **UNCT** (uncertainty).
 
+
 ### Step 5 --- Licence, catalogue and authors
 
 Choose a **licence** for the map, decide whether to **publish it to the catalogue** (the checkbox is ticked by default, so the map can be found by others), and list the **authors** (organisation, person, and role), exactly as for profile data.
@@ -260,19 +343,36 @@ The form shows a preview of the **generated file name** that the map will be sto
 knitr::include_graphics("images/module5/sis_raster_form.png")
 ```
 
+::: {.warning-box}
+- Although the SIS accepts raster property maps with different raster definitions, some features (such as the 'Raster Calculator' and 'Recipe creation') require rasters to have the exact same definition.
+- It is highly recommended to align your rasters prior to uploading them to the SIS.
+:::
+
 ::: {.highlights}
 Once uploaded, your map can be **viewed** in the SIS (and in any compatible GIS) and, if you ticked *Publish to catalogue*, can also be **discovered** by others---in your own SIS and across the GloSIS federation.
 :::
 
+
 ## The Raster Calculator
 
-The **Raster Calculator** (found under the **Raster calculator** tab of the Admin Panel) lets you create a **new map by combining existing ones**, without leaving the SIS. It is well suited to rule-based analyses such as land **suitability**: for example, combining maps of pH, organic carbon, and depth into a single suitability map.
+The **Raster Calculator** (located under the **Raster Calculator** tab in the Admin Panel) allows you to create new maps by combining existing ones directly within the SIS. It is highly suited for rule-based analyses, such as determining land suitability—for example, combining maps of pH, organic carbon, and depth into a single suitability map.
 
-The calculator works with **recipes**. A recipe is a saved set of rules that takes one or more published rasters as input and produces a new raster as output. Each input is scored using a simple **threshold rule**, and the scores are combined into the result.
+The calculator operates using **recipes** A recipe is a saved set of rules that takes one or more published rasters as inputs and produces a new raster as an output. Each input is scored using a simple **threshold rule**, and the scores are aggregated into the final result.
 
 ### Creating a recipe
 
-In the **Raster calculator** tab, the existing recipes are listed with their status and last run. Click **+ New Recipe** to open the editor (Figure \@ref(fig:sis-raster-calculator-recipe)). Choose the **Project** (default *DST*) and the **mapped property** of the output (default *SUITABILITY*), or add new ones inline. The SIS proposes a recipe identifier and description automatically.
+Recipes function as formulas that calculate secondary rasters based on reclassified combinations of existing ones. They allow you to combine binary-classified soil property layers using specific threshold values defined in the recipe. This process produces a new raster that summarizes the combined, reclassified original data.
+
+For example, You can generate composite soil threat maps using individual sensitive soil raster maps (e.g., acidification, erosion, compaction, and sealing). By setting threshold values for each individual threat, the recipe produces a categorical map indicating the total number of soil threats occurring at any given location.
+
+How to create a new recipe:
+
+- Navigate to the *Raster calculator* tab to view existing recipes, their statuses, and their last run times.
+- Click **+ New Recipe** to open the editor ((Figure \@ref(fig:sis-raster-calculator-recipe)).
+- Choose the *Project* (defaults to *DST*) and the *mapped property* for the output (defaults to *SUITABILITY*), or add new ones inline.
+- Review the recipe identifier and description, which the SIS will propose automatically.
+
+In this example, we will generate a new raster (KSSL threats) for the KANSAS project, that combines the pH, organic carbon, bulk density, and sand content layers. Each input raster is first reclassified into a binary (0-1) map based on the thresholds defined in the table. Finally, these binary layers are summed to produce the overall threat map.
 
 ### Adding input layers and thresholds
 
@@ -294,11 +394,13 @@ knitr::include_graphics("images/module5/sis_raster_calculator_recipe.png")
 
 ### Inspecting the result
 
-Once the recipe has run, open the resulting map in the **map viewer** (see Section \@ref(explore-viewer)) and click any pixel to see how its value was built up (Figure \@ref(fig:sis-raster-calculator-result)). For that location, the SIS shows the **original value** of each input layer, the **score** each one received after being reclassified by its threshold, and the **sum** of those scores---the value of the resulting map. This makes the calculation fully transparent and easy to check.
+Once the recipe has run, open the resulting map in the **map viewer** (see Section \@ref(explore-viewer)) and click any pixel to see how its value was built up (Figure \@ref(fig:sis-raster-calculator-result)). For each location, the SIS shows the **original value** of each input layer, the **score** each one received after being reclassified by its threshold, and the **sum** of those scores---the value of the resulting map. This makes the calculation fully transparent and easy to check.
 
 ```{r sis-raster-calculator-result, echo=FALSE, out.width="100%", fig.cap="Inspecting a pixel of the resulting map: each input layer's original value, its score after reclassification, and the sum that forms the result."}
 knitr::include_graphics("images/module5/sis_raster_calculator_result.png")
 ```
+
+This recipe approach allows us to generate secondary data that identifies where multiple critical soil properties co-occur, helping us better understand the joint limitations of the soil at each location.
 
 ::: {.highlights}
 - Inputs are **published rasters**; the output is a **new raster** you can view, share, or reuse.
@@ -322,9 +424,13 @@ Once data has been published, return to the map viewer to explore it (Figure \@r
 
 This makes the viewer a quick way to **validate** what you have just published---confirming that points landed where expected and that maps display with sensible values---before sharing the SIS address with colleagues.
 
+
+Clicking the 'Data' button in the soil profiles banner will display detailed information about the on-screen profiles and layers in both a table and a bar chart. This chart allows users to explore how soil properties vary with depth across different soil profiles.
+
 ```{r sis-explore, echo=FALSE, out.width="100%", fig.cap="Exploring published profiles and maps in the SIS viewer."}
 knitr::include_graphics("images/module5/sis_explore.png")
 ```
+
 
 ## Dashboard
 
@@ -334,6 +440,9 @@ The **Dashboard** tab gives an at-a-glance overview of everything held on the no
 knitr::include_graphics("images/module5/sis_dashboard.png")
 ```
 
+
 ## Summary
 
-In this module you have seen how the Soil Information System turns isolated soil data into a shared, discoverable, and reusable resource. As a soil scientist you can, entirely from a web browser, publish your **soil profile points** from a CSV file and your **raster maps** as GeoTIFFs, describe them with proper metadata, explore them in the map viewer, and derive new maps with the Raster Calculator. As you publish, the SIS standardises your data against the GloSIS codelists and shares it through open standards---so that the data you contribute is not only available in your own SIS, but ready to take its place as a node in the wider GloSIS federation.
+In this module you have seen how the Soil Information System turns isolated soil data into a shared, discoverable, and reusable resource. As a soil scientist you can, entirely from a web browser, publish your **soil profile points** from a CSV file and your **raster maps** as GeoTIFFs, describe them with proper metadata, explore them in the map viewer, and derive new maps using recipes within the Raster Calculator. As you publish, the SIS standardises your data against the **GloSIS codelists** and shares it through open standards---so that the data you contribute is not only available in your own SIS, but ready to take its place as a node in the wider GloSIS federation.
+
+## References {.unnumbered}

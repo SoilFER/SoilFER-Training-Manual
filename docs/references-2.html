@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making </title>
+  <title>References | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="References | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="References | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="soil-spectroscopy-for-digital-soil-mapping.html"/>
-<link rel="next" href="references-2.html"/>
+<link rel="prev" href="soil-data-sharing-and-dissemination.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -609,448 +609,238 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="soil-data-sharing-and-dissemination" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Module 5</span> Soil Data Sharing and Dissemination<a href="soil-data-sharing-and-dissemination.html#soil-data-sharing-and-dissemination" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-2" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Introduction<a href="soil-data-sharing-and-dissemination.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts, conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives, represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
-<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organisations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organised, and standardised, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realising this potential requires solving the fragmentation problem through systematic standardisation.</p>
-<p>In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network of Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems, but contribute that data following standardised formats and protocols for data preparation and sharing.</p>
-<p>Making soil data usable, however, is not only about preparing it once. It is about keeping it <strong>online, discoverable, and ready to use</strong> by others. This included all types of soil data information, from point observations gathered in the field and laboratory, existing soil maps and soi property maps derived from Digital Soil Mapping. This is the role of a <strong>Soil Information System (SIS)</strong>: a web-based platform that allows soil scientists to publish their own data on the internet, describe it properly so that others can find and trust it, and visualise it together with data from other providers.</p>
-<p>In this module we focus on the SIS from the point of view of a soil scientist who has data to share. You will learn what the SIS is, how it standardises and shares your data so that it can take part in the wider GloSIS federation. The module introduces how to use the SIS web application to:</p>
-<ul>
-<li>publish <strong>soil profile/layer (point) data</strong> stored as CSV files;</li>
-<li>publish the <strong>raster maps</strong> you produce from soil observations and environmental covariates (the production of these maps is covered in the module 3 - <strong>Digital Soil Mapping</strong>);</li>
-<li>explore your data in the built-in map viewer;</li>
-<li>combine existing maps into new ones with the <strong>Raster Calculator</strong>.</li>
-</ul>
-<p>Designed for ease of use, the SIS operates fully within your web browser with no coding required.</p>
-</div>
-<div id="the-soil-information-system-sis" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> The Soil Information System (SIS)<a href="soil-data-sharing-and-dissemination.html#the-soil-information-system-sis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="what-is-a-spatial-data-infrastructure" class="section level3 hasAnchor" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> What is a Spatial Data Infrastructure?<a href="soil-data-sharing-and-dissemination.html#what-is-a-spatial-data-infrastructure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A <strong>Spatial Data Infrastructure (SDI)</strong> is the combination of technology, standards, and agreements that lets people <em>share geographic data over the internet</em> in a consistent way. Instead of e-mailing files back and forth, an SDI publishes data through standard web services, so that any compatible application (a web map, a desktop GIS such as QGIS, or another institution’s platform) can connect to the same data and use it directly.</p>
-<p>The SIS is an SDI specialised for soil information. It brings together, in one place and in a comparable form, the two kinds of products soil scientists generate:</p>
-<ul>
-<li><strong>Soil profiles (point data)</strong>: georeferenced observations of soil properties measured at specific sampling locations and depths.</li>
-<li><strong>Raster maps (gridded data)</strong>: continuous surfaces, typically produced by Digital Soil Mapping, that predict a soil property across an area from soil observations and environmental covariates.</li>
-</ul>
-</div>
-<div id="what-the-sis-lets-you-do" class="section level3 hasAnchor" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> What the SIS lets you do<a href="soil-data-sharing-and-dissemination.html#what-the-sis-lets-you-do" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As a soil scientist, the SIS gives you a place to:</p>
-<ul>
-<li><strong>Publish</strong> your soil profiles and maps online, with a few clicks and without writing any code;</li>
-<li><strong>Describe</strong> each dataset with proper metadata (who produced it, when, under which licence, covering which area and period) so that others can find it and cite it correctly;</li>
-<li><strong>Visualise</strong> your data on an interactive map, together with data from other providers;</li>
-<li><strong>Control</strong> what is shared—each dataset can be kept private or published, and sensitive sampling coordinates can be slightly blurred to protect data providers;</li>
-<li><strong>Reuse</strong> the data through open standards, both inside the SIS and from external GIS software.</li>
-</ul>
-</div>
-</div>
-<div id="glosis-node" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> A node in the GloSIS federation<a href="soil-data-sharing-and-dissemination.html#glosis-node" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The SIS is not meant to be an island. It is designed to act as a <strong>node</strong> in <strong>GloSIS</strong>, the Global Soil Information System—a <em>federation</em> in which each participating institution or country runs its own SIS and keeps full control of its own data, while all nodes can still be searched and used together as if they were one. Your data stays with you; what is shared is access to it, in a common form.</p>
-<p>Two things make this federation possible, and both happen automatically when you publish your data:</p>
-<ul>
-<li><strong>A common vocabulary.</strong> Because every SIS describes soil data using the same GloSIS codelists for soil properties and laboratory procedures, a value published in one node means exactly the same thing in every other node.</li>
-<li><strong>Common ways of sharing.</strong> The SIS publishes data through open standards from the <strong>Open Geospatial Consortium (OGC)</strong>: maps are served so they can be <strong>viewed</strong> anywhere (Web Map Service, WMS), datasets are described so they can be <strong>discovered</strong> (Catalog Service for the Web, CSW), and soil profiles are <strong>served</strong> through the SIS data service. Any compatible system—another SIS node, or standard GIS software—can connect to that data without special arrangements.</li>
-</ul>
-<p>You do not need to operate any of this yourself. Simply by publishing your profiles and maps as described below, you make your data ready to take its place in the wider GloSIS federation.</p>
-</div>
-<div id="standardisation-of-soil-point-data-the-glosis-iso-28258-database" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Standardisation of soil point data: The GloSIS ISO 28258 database<a href="soil-data-sharing-and-dissemination.html#standardisation-of-soil-point-data-the-glosis-iso-28258-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Most existing soil observations are documented as point descriptions within technical and scientific publications, comprising profile descriptions and horizon-level analytical measurements. While highly valuable, these datasets lack the harmonized and standardized structure required for comprehensive analysis and cross-project insights before its publication.</p>
-<p>The International Organization for Standardization established <strong>ISO 28258</strong> (“Soil quality—Digital exchange of information on soil and soil-related data”) as the international benchmark for digital soil data representation and exchange. ISO 28258 establishes the logical data organization and hierarchical relationships connecting soil observations, definitions of soil concepts following international conventions, metadata requirements and quality assurance procedures.</p>
-<p>Module 1 demonstrated how to clean and harmonize raw soil measurements—validating coordinates, depth intervals, missing values, and out-of-range lab data—resulting in the exported ‘KSSL_clean.csv’ file. While this dataset is clean and structured, it requires a final standardization step before it can be loaded into a standard database.</p>
-<p>When publishing data in the Soil Information System (SIS), the integrated SIS-ETL module automatically standardizes it according to ISO 28258 specifications. By adhering to this standard, the GloSIS database provides the necessary infrastructure for global soil data integration and interoperability.</p>
-<p>Technically, the GloSIS database is a PostgreSQL/PostGIS relational database implementing the GloSIS data model. It stores soil observations in a harmonized, standardized, and quality-controlled format. By enforcing common database structures, controlled vocabularies, and validation rules aligned with ISO 28258, it ensures soil datasets remain consistent and comparable across different countries and projects. Ultimately, it serves as a central repository that seamlessly connects spatial sampling locations, analytical methods, and laboratory results worldwide.</p>
-<p>The GloSIS database organizes data into the five standard soil-related categories, known as “features of interest”, each with specific subcategories:</p>
-<ul>
-<li><p><code>Site</code>: Represents the broader environment where soil investigations occur, capturing context such as terrain, climate, and land-use.</p></li>
-<li><p><code>Plot</code>: A specific location for soil investigation where profiles and samples are collected. It is further classified into:</p>
-<ul>
-<li><code>Surface</code>: A polygonal area where soil properties are assumed to be relatively homogeneous.</li>
-<li><code>TrialPit</code>: A manually excavated pit for detailed soil examination.</li>
-<li><code>Borehole</code>: A drilled hole for subsurface soil sampling.</li>
-</ul></li>
-<li><p><code>Profile</code>: A vertical sequence of soil horizons or layers at a given location (referred to as <code>ProfileElement</code> in ISO 28258). This feature included the general descriptive information at profile level.</p></li>
-<li><p><code>Element</code> – Subdivisions of a profile based on depth, further categorized as:</p>
-<ul>
-<li><code>Horizon</code> – A natural, homogeneous soil layer formed by pedogenesis.</li>
-<li><code>Layer</code> – An arbitrarily defined soil section for analysis at fixed depths.</li>
-</ul></li>
-<li><p><code>Specimen</code> – A physical sample extracted at a defined depth, typically analysed in laboratories for chemical and physical properties (referred to as <code>SoilSpecimen</code> in ISO 28258).</p></li>
-</ul>
-<p>Each of these “features of interest” is represented by a dedicated table in the relational database. Because they describe distinct real-world entities, they store different types of attributes and metadata. The core challenge is translating raw soil data files into this structured database model as GloSIS. This process is facilitated by an ETL (Extract, Transform, Load) module integrated into the Soil Information System presented here.</p>
-<p>The data ingestion into the database has several mandatory fields. Some of them are related to the position and date of the observations and others to the analytical data:</p>
-<ul>
-<li><code>Profile Code</code>, it identifies each unique profile in the database.</li>
-<li><code>Longitude</code> and <code>Latitude</code> store the geographic location of the observations. Each horizon/layer within a profile has to have the same coordinates. The default coordinate system is EPSG:4326. Other coordinate systems can be used but must be properly defined during the standardisation process in the ETL.</li>
-<li><code>Sampling date</code> stores the date when the survey was conducted. The date must follow ISO-8601 (“YYYY-MM-DD” format).</li>
-<li><code>Upper</code> and <code>Lower</code> depths. They serve to identify the upper and bottom boundaries of each soil horizon/layer.</li>
-<li><code>Soil property</code>, which identify the name of each of the soil properties analysed within every soil horizon/layer, the measurement method utilized and the measurement units. When properly defined, the values of each parameter can be automatically transformed to the standard units of measurement in the GloSIS database.</li>
-</ul>
-<p>Regarding the analytical data, each measured property and method has to be compliant with an entry in the <strong>GloSIS codelists</strong>, the shared vocabularies for soil properties and laboratory procedures.This ensures that every soil property and every laboratory procedure is referred to by the right, internationally agreed name as established within GloSIS. For example, a column of pH measured in water is linked to the <strong>codelist</strong> entry that identifies it precisely as <em>pH in water</em>, distinct from <em>pH in KCl</em>. The SIS does not alter your measurements; it ensures they are labelled correctly. Because every dataset in the SIS is described with these same terms, data from different providers and different countries can be compared directly and combined with confidence.</p>
-<blockquote>
-<p>The GloSIS codelists for soil properties and laboratory procedures are published openly at <a href="https://github.com/glosis-ld/glosis" class="uri">https://github.com/glosis-ld/glosis</a>.</p>
-</blockquote>
-<p>A final feature of the ETL pipeline is automated data quality control (QC). It validates the input, identifies potential discrepancies in the dataset before transferring it into PostgreSQL, ultimately simplifying the data submission process while maintaining accuracy and comparability. The data validation in this step occurs at three stages, geographic (horizontal location), temporal (Sampling date), soil depth (vertical position) and analytical integrity (non valid data and data outliers). Analytical soil property values that fall outside feasible ranges are automatically detected and flagged for manual review and correction. All errors and warnings identified during the validation phases above are automatically compiled and reported in the main interface.</p>
-<p>All mandatory fields and QC issues must be properly mapped or resolved during the ETL standardization process; otherwise, data ingestion into the database will fail. A detailed procedure on how to use the ETL is covered in the “Publishing soil profile data from a CSV” section below.</p>
-<div class="highlights">
-<ul>
-<li><p>The GloSIS database uses the international ISO 28258 standard to transform unstructured point soil observations into a globally consistent, comparable, and quality-controlled format.</p></li>
-<li><p>Data is organized into 5 core “features of interest” (Site, Plot, Profile, Element, and Specimen), allowing complex field and lab data to be accurately mapped into dedicated relational tables.</p></li>
-<li><p>Successful data ingestion requires essential metadata (Profile Code, coordinates, ISO 8601 sampling dates, and horizon depths) along with mapping to official GloSIS codelists to ensure accurate measurement labeling and automatic unit standardization.</p></li>
-<li><p>An integrated ETL pipeline automatically detects out-of-range analytical values and enforces data validation—all QC issues and mandatory fields must be resolved before data can be loaded into the central database.</p></li>
-</ul>
-</div>
-</div>
-<div id="standardisation-of-soil-raster-data" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Standardisation of soil raster data<a href="soil-data-sharing-and-dissemination.html#standardisation-of-soil-raster-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Raster soil property maps are the primary output of the Digital Soil Mapping (DSM) workflow. By interpolating and modeling soil point observations, these continuous gridded surfaces generalize point-level analytical information across the entire area of interest. To serve as reliable inputs for decision-making, spatial analyses, and cross-project comparisons, these raster maps must be standardized before being published and distributed through the Soil Information System (SIS). Standardization ensures that continuous spatial predictions are correctly georeferenced, attributed with standard units, and enriched with complete metadata. When publishing raster soil maps in the SIS, datasets undergo a structured standardization process through the following metadata requirements:</p>
-<ul>
-<li><p>File Format &amp; Georeferencing: Maps must be uploaded as a single, properly georeferenced GeoTIFF file (.tif / .tiff). The SIS automatically extracts the spatial extent and coordinate reference system directly from the raster file.</p></li>
-<li><p>Administrative &amp; Project Alignment: Each map is linked to its target Country and parent Project to organize spatial data infrastructure systematically.</p></li>
-<li><p>Property &amp; Unit Standardization: The raster must be mapped to an agreed soil property (e.g., Soil Organic Carbon). Standard units of measurement are assigned automatically based on the property to guarantee consistency across different maps.</p></li>
-<li><p>Temporal, Spatial &amp; Statistical Metadata: To provide accurate context, maps require explicitly defined parameters:</p></li>
-<li><p>Temporal context: The map creation date (YYYY-MM-DD) and the date range (Period start / Period end) of the input data used.<br />
-</p></li>
-<li><p>Vertical context: The upper and lower soil depth interval boundaries (in cm).</p></li>
-<li><p>Statistical interpretation: Clear specification of pixel values—whether they represent a point prediction (MEAN), standard deviation (SDEV), or uncertainty (UNCT).</p></li>
-<li><p>Governance &amp; Cataloging: Authorship, organizational roles, and licensing are documented. Maps can be published directly to the central catalogue, enabling seamless discovery, visualization, and interoperability across the SIS map viewer and the broader GloSIS federation.</p></li>
-</ul>
-<p>Detailed instructions for uploading and cataloging raster property maps are detailed in the “Publishing raster maps” section below.</p>
-</div>
-<div id="getting-started-accessing-the-sis" class="section level2 hasAnchor" number="5.6">
-<h2><span class="header-section-number">5.6</span> Getting started: accessing the SIS<a href="soil-data-sharing-and-dissemination.html#getting-started-accessing-the-sis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="the-map-viewer" class="section level3 hasAnchor" number="5.6.1">
-<h3><span class="header-section-number">5.6.1</span> The map viewer<a href="soil-data-sharing-and-dissemination.html#the-map-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The map viewer (Figure <a href="#fig:sis-viewer"><strong>??</strong></a>) displays the published soil data on an interactive map: soil profiles appear as points (grouped into clusters when you zoom out), and raster maps appear as image layers you can switch on and off. From here you can pan and zoom, choose a base map, change layer transparency, click a profile to see its details, or click a raster to read the predicted value at that location.</p>
-</div>
-<div id="the-admin-panel" class="section level3 hasAnchor" number="5.6.2">
-<h3><span class="header-section-number">5.6.2</span> The Admin Panel<a href="soil-data-sharing-and-dissemination.html#the-admin-panel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Publishing data is done from the <strong>Login/Admin Panel</strong>. Click the <strong>Login/Admin Panel</strong> button on the map viewer and sign in with the credentials provided by your administrator (Figure <a href="#fig:sis-admin-login"><strong>??</strong></a>).</p>
-<p>The Admin Panel is organised into six tabs:</p>
-<table>
-<colgroup>
-<col width="28%" />
-<col width="71%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Tab</th>
-<th align="left">What it is for</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>My account</strong></td>
-<td align="left">Change your own username and password</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Administration</strong></td>
-<td align="left">Manage the node itself (administrators only)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Soil profiles</strong></td>
-<td align="left">Upload and publish soil profile (point) data from a CSV file</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Rasters</strong></td>
-<td align="left">Upload and publish raster maps (GeoTIFF)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Raster calculator</strong></td>
-<td align="left">Combine existing rasters into new maps</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Dashboard</strong></td>
-<td align="left">An overview of the data held on the node</td>
-</tr>
-</tbody>
-</table>
-<p>The following sections describe each of these tabs in turn. The <strong>Administration</strong> tab is only visible to users with administrator rights (see <em>Administration</em>).</p>
-</div>
-</div>
-<div id="my-account" class="section level2 hasAnchor" number="5.7">
-<h2><span class="header-section-number">5.7</span> My account<a href="soil-data-sharing-and-dissemination.html#my-account" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>My account</strong> tab lets you manage your own sign-in details (Figure <a href="#fig:sis-account"><strong>??</strong></a>). You can change your <strong>username</strong> and <strong>password</strong>; your current password is always required to confirm a change, and any field left blank is kept unchanged.</p>
-</div>
-<div id="administration" class="section level2 hasAnchor" number="5.8">
-<h2><span class="header-section-number">5.8</span> Administration<a href="soil-data-sharing-and-dissemination.html#administration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>Administration</strong> tab is available only to users with <strong>administrator</strong> rights, and is where the SIS node itself—rather than the data in it—is managed. It brings together four areas: <strong>Settings</strong>, <strong>Users</strong>, <strong>Software update</strong>, and <strong>GloSIS Federation</strong>.</p>
-<div id="settings" class="section level3 hasAnchor" number="5.8.1">
-<h3><span class="header-section-number">5.8.1</span> Settings<a href="soil-data-sharing-and-dissemination.html#settings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong>Settings</strong> area holds the node-wide options that control how the SIS looks and behaves, shown as a simple table of keys and values. From here an administrator can, for example, set the <strong>default map view</strong>—the area and zoom level the map viewer opens on—using the accompanying map. A change made here takes effect for everyone who uses the node.</p>
-</div>
-<div id="users" class="section level3 hasAnchor" number="5.8.2">
-<h3><span class="header-section-number">5.8.2</span> Users<a href="soil-data-sharing-and-dissemination.html#users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong>Users</strong> area manages the accounts that can sign in to the Admin Panel. The table lists each user—username, whether they are an <strong>administrator</strong>, whether the account is <strong>active</strong>, and the dates created and last logged in. An administrator can <strong>add a user</strong> (username and password, optionally with administrator rights) and edit or deactivate existing accounts. Only administrators can see this area or grant administrator rights to others.</p>
-</div>
-<div id="software-update" class="section level3 hasAnchor" number="5.8.3">
-<h3><span class="header-section-number">5.8.3</span> Software update<a href="soil-data-sharing-and-dissemination.html#software-update" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong>Software update</strong> area shows the <strong>installed version</strong> of the SIS and lets an administrator <strong>check for updates</strong> against the project’s software repository. It is purely informational: it tells you whether a newer release is available but does not change anything—applying an update is done on the server by whoever maintains the installation, not from the web interface.</p>
-</div>
-<div id="glosis-federation" class="section level3 hasAnchor" number="5.8.4">
-<h3><span class="header-section-number">5.8.4</span> GloSIS Federation<a href="soil-data-sharing-and-dissemination.html#glosis-federation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Taking part in the federation through common vocabularies and standards (see Section <a href="soil-data-sharing-and-dissemination.html#glosis-node">5.3</a>) happens automatically as you publish. Connecting your node to the <em>global</em> GloSIS Federation—so that the GloSIS Discovery Hub and other nodes can find and query it—is a deliberate, one-time step carried out by the node administrator. It is <strong>switched off by default</strong>: a node never exposes itself to the federation until someone chooses to.</p>
-<p>To enable it:</p>
-<ol style="list-style-type: decimal">
-<li>Sign in to the SIS as an <strong>administrator</strong>.</li>
-<li>Open <strong>Administration → GloSIS Federation</strong> (Figure <a href="#fig:sis-glosis-federation"><strong>??</strong></a>).</li>
-<li>Click <strong>Enable</strong>. The node issues a <strong>federation token</strong> (shown on the same panel) and opens a small set of <strong>read-only</strong> endpoints—a <em>manifest</em> of what the node holds, its <em>soil profiles</em>, and their <em>observations</em>.</li>
-<li>Provide that token and the endpoint addresses to the <strong>GloSIS Discovery Hub</strong>, which registers your node as part of the federation.</li>
-</ol>
-<p>What is shared is exactly the <strong>soil profiles currently published</strong> on your node (those visible under <em>Layers → Soil profiles</em>)—nothing else can be read, and nothing can be written. Your <strong>raster maps</strong> are not part of this feed; they are already shared separately through the metadata catalogue and the map service.</p>
-<p>You can click <strong>Disable</strong> at any time to stop sharing while keeping the token, or <strong>Disable &amp; delete token</strong> to revoke access entirely and force a new token the next time federation is enabled.</p>
-<div class="highlights">
-<ul>
-<li>Federation access is <strong>opt-in</strong> and <strong>read-only</strong>—you stay in full control of your data.</li>
-<li>Only your <strong>published soil profiles</strong> are exposed; rasters are shared via the catalogue and map service.</li>
-<li>Enabling it registers your SIS as a node that others can discover and query through the GloSIS Discovery Hub.</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="publishing-soil-profile-data-from-a-csv" class="section level2 hasAnchor" number="5.9">
-<h2><span class="header-section-number">5.9</span> Publishing soil profile data from a CSV<a href="soil-data-sharing-and-dissemination.html#publishing-soil-profile-data-from-a-csv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Soil profile data is published from the <strong>Soil profiles</strong> tab of the Admin Panel. The SIS reads a single <strong>CSV file</strong> in which each row is a soil sample (a depth layer of a profile) and each column is an attribute—an identifier, a coordinate, a depth, or a measured property. A good starting point is the cleaned dataset produced earlier in this manual (for example, the <code>KSSL_cleaned.csv</code> file from the Soil Data Preparation module).</p>
-<div class="warning-box">
-<p>The CSV can contain up to <strong>200,000 data rows</strong> and be at most <strong>50 MB</strong>. Larger datasets should be split before uploading.</p>
-</div>
-<p>The workflow has five steps, all on the same page.</p>
-<div id="step-1-upload-the-csv-file" class="section level3 hasAnchor" number="5.9.1">
-<h3><span class="header-section-number">5.9.1</span> Step 1 — Upload the CSV file<a href="soil-data-sharing-and-dissemination.html#step-1-upload-the-csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the <strong>Soil profiles</strong> tab, open the <strong>Upload CSV</strong> section, click the file selector, choose your <code>.csv</code> file, and press <strong>Upload CSV</strong> (Figure <a href="#fig:sis-profile-upload"><strong>??</strong></a>). The file is uploaded to a temporary working area; nothing is published yet.</p>
-</div>
-<div id="step-2-preview-the-data" class="section level3 hasAnchor" number="5.9.2">
-<h3><span class="header-section-number">5.9.2</span> Step 2 — Preview the data<a href="soil-data-sharing-and-dissemination.html#step-2-preview-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once uploaded, expand the <strong>preview</strong> to check that the file was read correctly—that columns are separated properly and values look as expected (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>). Use the <strong>Previous</strong> / <strong>Next</strong> buttons to page through the rows. This is the moment to catch obvious problems (wrong separator, shifted columns) before going further.</p>
-</div>
-<div id="step-3-describe-the-dataset-metadata" class="section level3 hasAnchor" number="5.9.3">
-<h3><span class="header-section-number">5.9.3</span> Step 3 — Describe the dataset (metadata)<a href="soil-data-sharing-and-dissemination.html#step-3-describe-the-dataset-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Next, describe the dataset so that others can understand and cite it (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>):</p>
-<ul>
-<li><strong>Project</strong> — select the project this data belongs to, or create one with <strong>+ Add new project…</strong>.</li>
-<li><strong>Abstract</strong> — a short description of the dataset.</li>
-<li><strong>Licence</strong> — the terms under which you share the data (e.g. CC BY, CC BY-SA, CC BY-NC, CC0).</li>
-<li><strong>EPSG code</strong> — the coordinate reference system of your coordinates. The default is <strong>4326</strong> (WGS84, decimal degrees), which is recommended.</li>
-<li><strong>Authors</strong> — the organisation(s) and people responsible, with their role. You can add new organisations and individuals inline.</li>
-</ul>
-</div>
-<div id="step-4-standardise-your-columns" class="section level3 hasAnchor" number="5.9.4">
-<h3><span class="header-section-number">5.9.4</span> Step 4 — Standardise your columns<a href="soil-data-sharing-and-dissemination.html#step-4-standardise-your-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The SIS now needs to know <strong>what each column of your CSV means</strong>. In the <strong>standardisation</strong> table, each row corresponds to one column of your file, and you assign it a <strong>destination</strong> in the soil data model (Figure <a href="#fig:sis-profile-standardisation"><strong>??</strong></a>). The essential destinations are:</p>
-<table>
-<colgroup>
-<col width="28%" />
-<col width="33%" />
-<col width="38%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Your column holds…</th>
-<th align="left">Destination</th>
-<th align="left">Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Profile / sample identifier</td>
-<td align="left">Profile code</td>
-<td align="left">Rows sharing a code are merged into one profile</td>
-</tr>
-<tr class="even">
-<td align="left">Longitude (X)</td>
-<td align="left">Coordinate</td>
-<td align="left">Decimal degrees, −180 to 180</td>
-</tr>
-<tr class="odd">
-<td align="left">Latitude (Y)</td>
-<td align="left">Coordinate</td>
-<td align="left">Decimal degrees, −90 to 90</td>
-</tr>
-<tr class="even">
-<td align="left">Sampling date</td>
-<td align="left">Sampling date</td>
-<td align="left">Format <code>YYYY-MM-DD</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Upper depth</td>
-<td align="left">Element upper depth</td>
-<td align="left">Whole cm, top of the layer</td>
-</tr>
-<tr class="even">
-<td align="left">Lower depth</td>
-<td align="left">Element lower depth</td>
-<td align="left">Whole cm, must be greater than the upper depth</td>
-</tr>
-<tr class="odd">
-<td align="left">A measured soil property</td>
-<td align="left">Result value</td>
-<td align="left">Choose the property, analytical procedure and unit</td>
-</tr>
-</tbody>
-</table>
-<p>For each measured property, you also indicate its <strong>GloSIS property, analytical procedure, and unit of measurement</strong>. If your values are reported in a different unit, the SIS converts them to the standard unit automatically. Optional destinations include plot type (e.g. <em>TrialPit</em>, <em>Borehole</em>), altitude, positional accuracy, and horizon designation.</p>
-</div>
-<div id="step-5-validate-and-ingest" class="section level3 hasAnchor" number="5.9.5">
-<h3><span class="header-section-number">5.9.5</span> Step 5 — Validate and ingest<a href="soil-data-sharing-and-dissemination.html#step-5-validate-and-ingest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Before the data is stored, press <strong>Validate</strong>. The SIS runs a series of quality checks and reports any problems per column (Figure <a href="#fig:sis-profile-validate"><strong>??</strong></a>):</p>
-<ul>
-<li><strong>Coordinates</strong> fall within valid ranges, and at least 95% of the points lie within the expected country boundary;</li>
-<li><strong>Depths</strong> are whole numbers, the upper depth is smaller than the lower depth, and layers within a profile are contiguous;</li>
-<li><strong>Property values</strong> fall within scientifically plausible ranges for each property (out-of-range values are flagged as potential outliers).</li>
-</ul>
-<p>Use <strong>Save</strong> to keep your metadata and standardisation settings. When validation passes, <strong>ingest</strong> the data: the SIS writes the profiles, elements (layers), and measured results into the database, and your points become available in the map viewer.</p>
-<div class="warning-box">
-<ul>
-<li>Correct any <strong>critical issues</strong> (invalid coordinates, impossible depths) before ingesting.</li>
-<li><strong>Warnings</strong> (e.g. unusual property values) should be reviewed; you may proceed if the values are scientifically justified.</li>
-<li>Each upload is tagged with the source file name, so a dataset can be re-uploaded or removed cleanly later.</li>
-</ul>
-</div>
-<p>Once the data has been validated, the Validation status appears in the dataset list (Figure <a href="#fig:sis-profile-validated"><strong>??</strong></a>).</p>
-<p>Now, the data is standardized and ready for ingestion into the Postgres database using the ‘Ingest’ button. Once ingested, the new status and data details will appear in the dataset list (Figure <a href="#fig:sis-profile-ingested"><strong>??</strong></a>).</p>
-<p>The data is now properly stored in the Postgres database and is ready for visualization on the SIS main page.</p>
-</div>
-</div>
-<div id="publishing-raster-maps" class="section level2 hasAnchor" number="5.10">
-<h2><span class="header-section-number">5.10</span> Publishing raster maps<a href="soil-data-sharing-and-dissemination.html#publishing-raster-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Raster maps—the gridded predictions you produce by Digital Soil Mapping—are published from the <strong>Rasters</strong> tab of the Admin Panel. The SIS accepts a single <strong>GeoTIFF</strong> file (<code>.tif</code> / <code>.tiff</code>) per upload and publishes it so that it can be viewed in the SIS (and in standard GIS software) and, if you wish, described in the catalogue so others can find it.</p>
-<p>Open the <strong>Upload GeoTIFF</strong> section and complete the form (the steps below correspond to the sections of that form).</p>
-<div id="step-1-select-the-geotiff" class="section level3 hasAnchor" number="5.10.1">
-<h3><span class="header-section-number">5.10.1</span> Step 1 — Select the GeoTIFF<a href="soil-data-sharing-and-dissemination.html#step-1-select-the-geotiff" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Choose your <code>.tif</code> or <code>.tiff</code> file. The raster must be properly georeferenced; the SIS reads its spatial extent and coordinate system directly from the file. The whole upload form is shown in Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>.</p>
-</div>
-<div id="step-2-location-and-project" class="section level3 hasAnchor" number="5.10.2">
-<h3><span class="header-section-number">5.10.2</span> Step 2 — Location and project<a href="soil-data-sharing-and-dissemination.html#step-2-location-and-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Select the <strong>Country</strong> the map covers and the <strong>Project</strong> it belongs to (or create a new project inline; a new project needs a short ID, a name, and a description).</p>
-</div>
-<div id="step-3-soil-property-and-units" class="section level3 hasAnchor" number="5.10.3">
-<h3><span class="header-section-number">5.10.3</span> Step 3 — Soil property and units<a href="soil-data-sharing-and-dissemination.html#step-3-soil-property-and-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indicate which <strong>soil property</strong> the map represents (for example, soil organic carbon), choosing from the list or adding a new property. The <strong>unit of measurement</strong> is offered automatically based on the property. This is what allows the map to be compared and combined with others consistently.</p>
-</div>
-<div id="step-4-dates-depth-and-statistics" class="section level3 hasAnchor" number="5.10.4">
-<h3><span class="header-section-number">5.10.4</span> Step 4 — Dates, depth and statistics<a href="soil-data-sharing-and-dissemination.html#step-4-dates-depth-and-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Document the temporal and vertical context of the map:</p>
-<ul>
-<li><strong>Created on</strong> — the date the map was produced (<code>YYYY-MM-DD</code>).</li>
-<li><strong>Period start</strong> / <strong>Period end</strong> — the oldest and most recent dates of the data used to produce the map.</li>
-<li><strong>Depth</strong> — the soil depth interval the map refers to (upper and lower, in cm).</li>
-<li><strong>Statistics</strong> — what the pixel values represent: <strong>MEAN</strong> (the prediction), <strong>SDEV</strong> (its standard deviation), or <strong>UNCT</strong> (uncertainty).</li>
-</ul>
-</div>
-<div id="step-5-licence-catalogue-and-authors" class="section level3 hasAnchor" number="5.10.5">
-<h3><span class="header-section-number">5.10.5</span> Step 5 — Licence, catalogue and authors<a href="soil-data-sharing-and-dissemination.html#step-5-licence-catalogue-and-authors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Choose a <strong>licence</strong> for the map, decide whether to <strong>publish it to the catalogue</strong> (the checkbox is ticked by default, so the map can be found by others), and list the <strong>authors</strong> (organisation, person, and role), exactly as for profile data.</p>
-</div>
-<div id="step-6-review-and-upload" class="section level3 hasAnchor" number="5.10.6">
-<h3><span class="header-section-number">5.10.6</span> Step 6 — Review and upload<a href="soil-data-sharing-and-dissemination.html#step-6-review-and-upload" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The form shows a preview of the <strong>generated file name</strong> that the map will be stored under, built from the information you provided. Review the entries and press <strong>Upload</strong> (Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you chose to, as a record in the catalogue.</p>
-<div class="warning-box">
-<ul>
-<li>Although the SIS accepts raster property maps with different raster definitions, some features (such as the ‘Raster Calculator’ and ‘Recipe creation’) require rasters to have the exact same definition.</li>
-<li>It is highly recommended to align your rasters prior to uploading them to the SIS.</li>
-</ul>
-</div>
-<div class="highlights">
-<p>Once uploaded, your map can be <strong>viewed</strong> in the SIS (and in any compatible GIS) and, if you ticked <em>Publish to catalogue</em>, can also be <strong>discovered</strong> by others—in your own SIS and across the GloSIS federation.</p>
-</div>
-</div>
-</div>
-<div id="the-raster-calculator" class="section level2 hasAnchor" number="5.11">
-<h2><span class="header-section-number">5.11</span> The Raster Calculator<a href="soil-data-sharing-and-dissemination.html#the-raster-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>Raster Calculator</strong> (located under the <strong>Raster Calculator</strong> tab in the Admin Panel) allows you to create new maps by combining existing ones directly within the SIS. It is highly suited for rule-based analyses, such as determining land suitability—for example, combining maps of pH, organic carbon, and depth into a single suitability map.</p>
-<p>The calculator operates using <strong>recipes</strong> A recipe is a saved set of rules that takes one or more published rasters as inputs and produces a new raster as an output. Each input is scored using a simple <strong>threshold rule</strong>, and the scores are aggregated into the final result.</p>
-<div id="creating-a-recipe" class="section level3 hasAnchor" number="5.11.1">
-<h3><span class="header-section-number">5.11.1</span> Creating a recipe<a href="soil-data-sharing-and-dissemination.html#creating-a-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Recipes function as formulas that calculate secondary rasters based on reclassified combinations of existing ones. They allow you to combine binary-classified soil property layers using specific threshold values defined in the recipe. This process produces a new raster that summarizes the combined, reclassified original data.</p>
-<p>For example, You can generate composite soil threat maps using individual sensitive soil raster maps (e.g., acidification, erosion, compaction, and sealing). By setting threshold values for each individual threat, the recipe produces a categorical map indicating the total number of soil threats occurring at any given location.</p>
-<p>How to create a new recipe:</p>
-<ul>
-<li>Navigate to the <em>Raster calculator</em> tab to view existing recipes, their statuses, and their last run times.</li>
-<li>Click <strong>+ New Recipe</strong> to open the editor ((Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>).</li>
-<li>Choose the <em>Project</em> (defaults to <em>DST</em>) and the <em>mapped property</em> for the output (defaults to <em>SUITABILITY</em>), or add new ones inline.</li>
-<li>Review the recipe identifier and description, which the SIS will propose automatically.</li>
-</ul>
-<p>In this example, we will generate a new raster (KSSL threats) for the KANSAS project, that combines the pH, organic carbon, bulk density, and sand content layers. Each input raster is first reclassified into a binary (0-1) map based on the thresholds defined in the table. Finally, these binary layers are summed to produce the overall threat map.</p>
-</div>
-<div id="adding-input-layers-and-thresholds" class="section level3 hasAnchor" number="5.11.2">
-<h3><span class="header-section-number">5.11.2</span> Adding input layers and thresholds<a href="soil-data-sharing-and-dissemination.html#adding-input-layers-and-thresholds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Click <strong>+ Add layer</strong> to add an input row, then for each row (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>):</p>
-<ul>
-<li>pick a <strong>Layer</strong> from the published rasters (its <strong>Min</strong> and <strong>Max</strong> are shown to guide you);</li>
-<li>set a <strong>Threshold</strong>—the cut-off value that splits the layer;</li>
-<li>set the <strong>Above</strong> score (given to pixels at or above the threshold) and the <strong>Below</strong> score (given to pixels below it). The defaults are <strong>1</strong> and <strong>0</strong>, which you can change for custom scoring.</li>
-</ul>
-<p>In other words, each input map is reclassified into scores by its threshold, and the SIS then aggregates the scored inputs into the output map. Add as many input layers as your rule requires; remove a row with its delete button.</p>
-</div>
-<div id="running-the-recipe" class="section level3 hasAnchor" number="5.11.3">
-<h3><span class="header-section-number">5.11.3</span> Running the recipe<a href="soil-data-sharing-and-dissemination.html#running-the-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Press <strong>Run</strong> to execute the recipe (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>). The calculation runs in the background; the recipe list shows its status (queued, running, completed, or failed) and the time of the last run. When it completes, the result is registered as a <strong>new raster layer</strong>—available in the map viewer just like any uploaded map, and ready to be combined again in further recipes.</p>
-</div>
-<div id="inspecting-the-result" class="section level3 hasAnchor" number="5.11.4">
-<h3><span class="header-section-number">5.11.4</span> Inspecting the result<a href="soil-data-sharing-and-dissemination.html#inspecting-the-result" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the recipe has run, open the resulting map in the <strong>map viewer</strong> (see Section <a href="soil-data-sharing-and-dissemination.html#explore-viewer">5.12</a>) and click any pixel to see how its value was built up (Figure <a href="#fig:sis-raster-calculator-result"><strong>??</strong></a>). For each location, the SIS shows the <strong>original value</strong> of each input layer, the <strong>score</strong> each one received after being reclassified by its threshold, and the <strong>sum</strong> of those scores—the value of the resulting map. This makes the calculation fully transparent and easy to check.</p>
-<p>This recipe approach allows us to generate secondary data that identifies where multiple critical soil properties co-occur, helping us better understand the joint limitations of the soil at each location.</p>
-<div class="highlights">
-<ul>
-<li>Inputs are <strong>published rasters</strong>; the output is a <strong>new raster</strong> you can view, share, or reuse.</li>
-<li>Each input is split by a <strong>threshold</strong> into <em>above</em> / <em>below</em> scores, then the scores are combined.</li>
-<li>Recipes are <strong>saved and re-runnable</strong>, so an analysis can be repeated as the underlying maps are updated.</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="explore-viewer" class="section level2 hasAnchor" number="5.12">
-<h2><span class="header-section-number">5.12</span> Exploring data in the map viewer<a href="soil-data-sharing-and-dissemination.html#explore-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Once data has been published, return to the map viewer to explore it (Figure <a href="#fig:sis-explore"><strong>??</strong></a>). From the viewer you can:</p>
-<ul>
-<li><strong>Toggle layers</strong> on and off to control what is shown;</li>
-<li><strong>Change the base layer</strong>—the background map, such as a street map, satellite imagery, or terrain;</li>
-<li><strong>Adjust transparency</strong> of a raster to see what lies beneath it;</li>
-<li><strong>Filter the raster layers</strong> by <strong>keywords</strong> drawn from each layer’s metadata, to quickly find the maps you are interested in;</li>
-<li><strong>Click a soil profile</strong> to inspect its <strong>attribute data</strong>—location, depths, and the analytical soil properties measured for each layer; the <strong>Data/Hide</strong> button shows or hides this attribute table;</li>
-<li><strong>Click a raster</strong> to read the predicted value at that point;</li>
-<li><strong>Download a layer</strong>—both raster maps and soil profile (point) datasets can be downloaded for use in other software;</li>
-<li><strong>View a dataset’s metadata</strong> (raster or point), presented in the standard spatial format (ISO 19115/19139), so its origin, authors, licence, spatial extent and date are clear;</li>
-<li><strong>Zoom</strong> to spread out clustered points and inspect individual profiles.</li>
-</ul>
-<p>This makes the viewer a quick way to <strong>validate</strong> what you have just published—confirming that points landed where expected and that maps display with sensible values—before sharing the SIS address with colleagues.</p>
-<p>Clicking the ‘Data’ button in the soil profiles banner will display detailed information about the on-screen profiles and layers in both a table and a bar chart. This chart allows users to explore how soil properties vary with depth across different soil profiles.</p>
-</div>
-<div id="dashboard" class="section level2 hasAnchor" number="5.13">
-<h2><span class="header-section-number">5.13</span> Dashboard<a href="soil-data-sharing-and-dissemination.html#dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>Dashboard</strong> tab gives an at-a-glance overview of everything held on the node (Figure <a href="#fig:sis-dashboard"><strong>??</strong></a>). Summary cards show the totals—such as the number of soil profiles, rasters and projects—alongside charts that summarise the data: profiles and rasters per project, the most frequently measured soil properties, profiles sampled per year, the distribution of sampling depths, and the range of values recorded for each property. It is a quick way to understand what a node contains and to spot gaps or anomalies.</p>
-</div>
-<div id="summary-1" class="section level2 hasAnchor" number="5.14">
-<h2><span class="header-section-number">5.14</span> Summary<a href="soil-data-sharing-and-dissemination.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this module you have seen how the Soil Information System turns isolated soil data into a shared, discoverable, and reusable resource. As a soil scientist you can, entirely from a web browser, publish your <strong>soil profile points</strong> from a CSV file and your <strong>raster maps</strong> as GeoTIFFs, describe them with proper metadata, explore them in the map viewer, and derive new maps using recipes within the Raster Calculator. As you publish, the SIS standardises your data against the <strong>GloSIS codelists</strong> and shares it through open standards—so that the data you contribute is not only available in your own SIS, but ready to take its place as a node in the wider GloSIS federation.</p>
-</div>
-<div id="references-1" class="section level2 unnumbered hasAnchor">
-<h2>References<a href="soil-data-sharing-and-dissemination.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="references-2" class="section level1 unnumbered hasAnchor">
+<h1>References<a href="references-2.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
-</div>
-</div>
-<h3>References<a href="references-2.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="0">
-<div id="ref-ARROUAYS20172" class="csl-entry">
+<div class="csl-entry">
+<strong>Amatulli, Gi., McInerney, D., Sethi, T., Strobl, P. &amp; Domisch, S.</strong> 2020. Geomorpho90m - global high-resolution geomorphometry layers. OpenTopography. <a href="https://doi.org/10.5069/G91R6NPX">https://doi.org/10.5069/G91R6NPX</a>
+</div>
+<div class="csl-entry">
 <strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., Pasztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., Conceicao Gonsalves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., Kozak, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
 </div>
-<div id="ref-Medeiros24" class="csl-entry">
+<div class="csl-entry">
+<strong>Bishop, T.F.A., McBratney, A.B. &amp; Laslett, G.M.</strong> 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. <a href="https://doi.org/10.1016/s0016-7061(99)00003-8">https://doi.org/10.1016/s0016-7061(99)00003-8</a>
+</div>
+<div class="csl-entry">
+<strong>Borden, K.A., Thomas, J.E. &amp; Rivard, C.</strong> 2020. Evaluation of diverse cover crop mixtures for use in semi-arid irrigated production systems. <em>Renewable Agriculture and Food Systems</em>, 35(3): 286–296. <a href="https://doi.org/10.1017/S1742170518000509">https://doi.org/10.1017/S1742170518000509</a>
+</div>
+<div class="csl-entry">
+<strong>Breiman, L., Friedman, J.H., Olshen, R.A. &amp; Stone, C.J.</strong> 1984. <em>Classification and regression trees</em>. Belmont, CA, Wadsworth.
+</div>
+<div class="csl-entry">
+<strong>Breure, T., Jones, A. &amp; Panagos, P.</strong> 2026. Evaluating visible near-infrared spectroscopy in context of a repeated sampling survey across the european union. <em>Geoderma</em>, 465: 117647.
+</div>
+<div class="csl-entry">
+<strong>Brevik, E.C., Calzolari, C., Miller, B.A., Pereira, P., Kabala, C., Baumgarten, A. &amp; Jordán, A.</strong> 2016. Soil mapping, classification, and pedologic modeling: History and future directions. <em>Geoderma</em>, 264: 256–274. <a href="https://doi.org/10.1016/j.geoderma.2015.05.017">https://doi.org/10.1016/j.geoderma.2015.05.017</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J.</strong> 2022 b. Sampling for digital soil mapping: A tutorial supported by <span>R</span> scripts. <em>Geoderma</em>, 338: 464–480. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J.</strong> 2022 a. <em>Spatial sampling with r</em>. Boca Raton, FL, Chapman &amp; Hall/CRC Press.
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J., Kempen, B. &amp; Heuvelink, G.B.M.</strong> 2011 b. Sampling for validation of digital soil maps. <em>European Journal of Soil Science</em>, 62(3): 394–407. <a href="https://doi.org/10.1111/j.1365-2389.2011.01364.x">https://doi.org/10.1111/j.1365-2389.2011.01364.x</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J., Kempen, B. &amp; Heuvelink, G.B.M.</strong> 2011 a. Sampling for digital soil mapping: A tutorial supported by <span>R</span> scripts. <em>Geoderma</em>, 338: 464–480. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>
+</div>
+<div class="csl-entry">
+<strong>Bui, E.</strong> 2020. Soil survey as a knowledge system. <em>Geoderma</em>, 359: 113948. <a href="https://doi.org/10.1016/j.geoderma.2019.113948">https://doi.org/10.1016/j.geoderma.2019.113948</a>
+</div>
+<div class="csl-entry">
+<strong>Chen, S., Saby, N.P.A., Martin, M.P., Barthes, B.G., Gomez, C., Shi, Z. &amp; Arrouays, D.</strong> 2023. Integrating additional spectroscopically inferred soil data improves the accuracy of digital soil mapping. <em>Geoderma</em>, 433: 116467.
+</div>
+<div class="csl-entry">
+<strong>Clay, D.E., Chang, J., Malo, D.D., Carlson, C.G., Reese, C., Clay, S.A., Ellsbury, M. &amp; Berg, B.</strong> 2001. Factors influencing spatial variability of soil apparent electrical conductivity. <em>Communications in Soil Science and Plant Analysis</em>, 32(19-20): 2993–3008. <a href="https://doi.org/10.1081/CSS-120001104">https://doi.org/10.1081/CSS-120001104</a>
+</div>
+<div class="csl-entry">
+<strong>Dangal, S.R., Sanderman, J., Wills, S. &amp; Ramirez-Lopez, L.</strong> 2019. Accurate and precise prediction of soil properties from a large mid-infrared spectral library. <em>Soil Systems</em>, 3(1): 11.
+</div>
+<div class="csl-entry">
+<strong>Gobin, A., Campling, P. &amp; Feyen, J.</strong> 2001. Soil-landscape modelling to quantify spatial variability of soil texture. <em>Physics and Chemistry of the Earth, Part B: Hydrology, Oceans and Atmosphere</em>, 26(1): 41–45. <a href="https://doi.org/10.1016/S1464-1909(01)85011-7">https://doi.org/10.1016/S1464-1909(01)85011-7</a>
+</div>
+<div class="csl-entry">
+<strong>Gruijter, J.J. de, Brus, D.J., Bierkens, M.F.P. &amp; Knotters, M.</strong> 2006. <em><a href="https://doi.org/10.1007/3-540-33161-1">Sampling for natural resource monitoring</a></em>. Berlin, Springer.
+</div>
+<div class="csl-entry">
+<strong>Gupta, S. &amp; Hengl, T.</strong> 2019. Soil available water capacity in mm derived for 5 standard layers (0-10, 10-30, 30-60, 60-100 and 100-200 cm) at 250 m resolution. Zenodo. <a href="https://doi.org/10.5281/zenodo.2629148">https://doi.org/10.5281/zenodo.2629148</a>
+</div>
+<div class="csl-entry">
+<strong>Hengl, T., Heuvelink, G.B.M. &amp; Rossiter, D.G.</strong> 2007. About regression-kriging: From equations to case studies. <em>Computers &amp; Geosciences</em>, 33: 1301–1315. <a href="https://doi.org/10.1016/j.cageo.2007.05.001">https://doi.org/10.1016/j.cageo.2007.05.001</a>
+</div>
+<div class="csl-entry">
+<strong>Hengl, T. &amp; MacMillan, R.A.</strong> 2019. <em>Predictive soil mapping with r</em>. Wageningen, the Netherlands, OpenGeoHub foundation. (also available at <a href="https://soilmapper.org/">https://soilmapper.org/</a>).
+</div>
+<div class="csl-entry">
+<strong>Hengl, T., Nussbaum, M., Wright, M.N., Heuvelink, G.B. &amp; Gräler, B.</strong> 2018. Random forest as a generic framework for predictive modeling of spatial and spatio-temporal variables. <em>PeerJ</em>, 6: e5518.
+</div>
+<div class="csl-entry">
+<strong>Heuvelink, G.B.M., Kros, J., Reinds, G.J. &amp; De Vries, W.</strong> 2016. Geostatistical prediction and simulation of european soil property maps. <em>Geoderma Regional</em>, 7: 201–215. <a href="https://doi.org/10.1016/j.geodrs.2016.04.002">https://doi.org/10.1016/j.geodrs.2016.04.002</a>
+</div>
+<div class="csl-entry">
+<strong>Heuvelink, G.B.M. &amp; Webster, R.</strong> 2001. Modelling soil variation: Past, present, and future. <em>Geoderma</em>, 100: 269–301. <a href="https://doi.org/10.1016/S0016-7061(01)00025-8">https://doi.org/10.1016/S0016-7061(01)00025-8</a>
+</div>
+<div class="csl-entry">
+<strong>Jenny, H.</strong> 1941 b. A system of quantitative pedology. In <span>“factors of soil formation”</span>. McGraw Hill: New York.
+</div>
+<div class="csl-entry">
+<strong>Jenny, H.</strong> 1941 a. <em>Factors of soil formation. A system of quantitative pedology</em>. New York, McGraw-Hill.
+</div>
+<div class="csl-entry">
+<strong>Kempen, B., Brus, D.J., Heuvelink, G.B.M. &amp; Stoorvogel, J.J.</strong> 2009. Updating the 1:50,000 dutch soil map using legacy soil data: A multinomial logistic regression approach. <em>Geoderma</em>, 151: 311–326. <a href="https://doi.org/10.1016/j.geoderma.2009.04.023">https://doi.org/10.1016/j.geoderma.2009.04.023</a>
+</div>
+<div class="csl-entry">
+<strong>Lagacherie, P.</strong> 2008. Digital soil mapping: A state of the art. <em>In</em> A.E. Hartemink, A.B. McBratney &amp; M.L. Mendonça-Santos, eds. <em>Digital soil mapping with limited data</em>, pp. 3–14. Dordrecht, Springer.
+</div>
+<div class="csl-entry">
+<strong>Lagacherie, P. &amp; McBratney, A.B.</strong> 2006. Spatial soil information systems and spatial soil inference systems: Perspectives for digital soil mapping. <em>In</em> P. Lagacherie, A.B. McBratney &amp; M. Voltz, eds. <em>Digital soil mapping: An introductory perspective</em>, pp. 3–22. Amsterdam, Elsevier.
+</div>
+<div class="csl-entry">
+<strong>Ma, Y., Minasny, B., Weerts, A., Poggio, L., Malone, B. &amp; McBratney, A.</strong> 2020. Comparison of conditioned <span>Latin</span> hypercube and feature space coverage sampling for predicting soil classes using simulation from soil maps. <em>Geoderma</em>, 370: 114366. <a href="https://doi.org/10.1016/j.geoderma.2020.114366">https://doi.org/10.1016/j.geoderma.2020.114366</a>
+</div>
+<div class="csl-entry">
+<strong>Malone, B., Stockmann, U., Glover, M., McLachlan, G., Engelhardt, S. &amp; Tuomi, S.</strong> 2022. Digital soil survey and mapping underpinning inherent and dynamic soil attribute condition assessments. <em>Soil Security</em>, 6: 100048.
+</div>
+<div class="csl-entry">
+<strong>McBratney, A.B., Mendonça Santos, M.L. &amp; Minasny, B.</strong> 2003. On digital soil mapping. <em>Geoderma</em>, 117: 3–52. <a href="https://doi.org/10.1016/S0016-7061(03)00223-4">https://doi.org/10.1016/S0016-7061(03)00223-4</a>
+</div>
+<div class="csl-entry">
 <strong>Medeiros, B.M., Rossi, L.S., Caten, A.T., Pereira, G.E., Silva, E.B. &amp; U., Daboit.K.T.</strong> 2024. Soil legacy data: An opportunity for digital soil mapping. <em>Rev. Bras. Ciênc. Solo</em>, 48. <a href="https://doi.org/10.36783/18069657rbcs20230130">https://doi.org/10.36783/18069657rbcs20230130</a>
 </div>
+<div class="csl-entry">
+<strong>Milne, G.</strong> 1936. Normal erosion as a factor in soil profile development. <em>Nature</em>, 138: 548–549. <a href="https://doi.org/10.1038/138548c0">https://doi.org/10.1038/138548c0</a>
 </div>
+<div class="csl-entry">
+<strong>Minasny, B. &amp; McBratney, A.B.</strong> 2006. A conditioned <span>Latin</span> hypercube method for sampling in the presence of ancillary information. <em>Computers &amp; Geosciences</em>, 32(9): 1378–1388. <a href="https://doi.org/10.1016/j.cageo.2005.12.009">https://doi.org/10.1016/j.cageo.2005.12.009</a>
+</div>
+<div class="csl-entry">
+<strong>Minasny, B. &amp; McBratney, A.B.</strong> 2016. Digital soil mapping: A brief history and some lessons. <em>Geoderma</em>, 264: 301–311. <a href="https://doi.org/10.1016/j.geoderma.2015.07.017">https://doi.org/10.1016/j.geoderma.2015.07.017</a>
+</div>
+<div class="csl-entry">
+<strong>Morton, P.A. &amp; Heinemeyer, O.</strong> 2000. Soil sampling and preparation. <em>Methods in Ecosystem Science</em>: 85–94.
+</div>
+<div class="csl-entry">
+<strong>Næs, T.</strong> 1987. The design of calibration in near infra-red reflectance analysis by clustering. <em>Journal of chemometrics</em>, 1(2): 121–134.
+</div>
+<div class="csl-entry">
+<strong>Newhall, F. &amp; Berdanier, C.R.</strong> 1996. Calculation of soil moisture regimes from the climatic record, p. 13. No. 46. Natural Resources Conservation Service.
+</div>
+<div class="csl-entry">
+<strong>Norris, C.E., Quideau, S.A., Landhausser, S.M., Bernard, G.M. &amp; Wasylishen, R.E.</strong> 2013. Tracking stable isotope enrichment in tree seedlings with solid-state <span><span class="math inline">\(^{15}\)</span>N</span> <span>NMR</span> spectroscopy. <em>Biogeosciences</em>, 10: 3433–3445. <a href="https://doi.org/10.5194/bg-10-3433-2013">https://doi.org/10.5194/bg-10-3433-2013</a>
+</div>
+<div class="csl-entry">
+<strong>Odeh, I.O.A., McBratney, A.B. &amp; Chittleborough, D.J.</strong> 1995. Further results on prediction of soil properties from terrain attributes: Heterotopic cokriging and regression-kriging. <em>Geoderma</em>, 67: 215–226. <a href="https://doi.org/10.1016/0016-7061(95)00007-B">https://doi.org/10.1016/0016-7061(95)00007-B</a>
+</div>
+<div class="csl-entry">
+<strong>Odgers, N.P., McBratney, A.B. &amp; Minasny, B.</strong> 2011. Bottom-up digital soil mapping. <span>I</span>. <span>S</span>oil layer classes. <em>Geoderma</em>, 163: 38–44. <a href="https://doi.org/10.1016/j.geoderma.2011.03.014">https://doi.org/10.1016/j.geoderma.2011.03.014</a>
+</div>
+<div class="csl-entry">
+<strong>Orton, T.G., Pringle, M.J., Page, K.L., Dalal, R.C. &amp; Bishop, T.F.A.</strong> 2014. Spatial prediction of soil organic carbon stock using a linear model of coregionalisation. <em>Geoderma</em>, 230–231: 119–130. <a href="https://doi.org/10.1016/j.geoderma.2014.04.016">https://doi.org/10.1016/j.geoderma.2014.04.016</a>
+</div>
+<div class="csl-entry">
+<strong>Padarian, J. &amp; McBratney, A.B.</strong> 2023. <span>QuadMap</span>: Variable resolution maps to communicate uncertainty. <em>Computers and Geosciences</em>, 181: 105480. <a href="https://doi.org/10.1016/j.cageo.2023.105480">https://doi.org/10.1016/j.cageo.2023.105480</a>
+</div>
+<div class="csl-entry">
+<strong>Pebesma, E. &amp; Bivand, R.</strong> 2021. Spatial data science with applications in r. <em>Methods in Ecology and Evolution</em>, 12: 1620–1633. <a href="https://doi.org/10.1111/2041-210X.13650">https://doi.org/10.1111/2041-210X.13650</a>
+</div>
+<div class="csl-entry">
+<strong><span class="nocase">Peng, Y., Ben-Dor, E., Biswas, A., Chabrillat, S., Demattê, J.A., Ge, Y., Gholizadeh, A., Gomez, C., Guerrero, C., Herrick, J. &amp; others</span></strong>. 2025. Spectroscopic solutions for generating new global soil information. <em>The Innovation</em>, 6(5).
+</div>
+<div class="csl-entry">
+<strong>Prieto-Castrillo, F., Rodríguez-Rastrero, M., Yunta, F., Borondo, F. &amp; Borondo, J.</strong> 2023. Disentangling jenny’s equation by machine learning. <em>Scientific Reports</em>, 13(1): 20916. <a href="https://doi.org/10.1038/s41598-023-44171-x">https://doi.org/10.1038/s41598-023-44171-x</a>
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Metz, M., Lesnoff, M., Orellano, C., Perez-Fernandez, E., Plans, M., Breure, T., Behrens, T., Viscarra Rossel, R. &amp; Peng, Y.</strong> 2026. Rethinking local spectral modelling: From per-query refitting to model libraries. <em>Analytica Chimica Acta</em>.
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Schmidt, K., Behrens, T., Van Wesemael, B., Demattê, J.A. &amp; Scholten, T.</strong> 2014. Sampling optimal calibration sets in soil infrared spectroscopy. <em>Geoderma</em>, 226: 140–150.
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Wadoux, A.-C., Franceschini, M.H., Terra, F., Marques, K.P.P., Sayão, V.M. &amp; Demattê, J.A.M.</strong> 2019. Robust soil mapping at the farm scale with vis–NIR spectroscopy. <em>European Journal of Soil Science</em>, 70(2): 378–393.
+</div>
+<div class="csl-entry">
+<strong>Robertson, B.L., Brown, J.A., McDonald, T. &amp; Jaksons, P.</strong> 2013. <span>BAS</span>: Balanced acceptance sampling of natural resources. <em>Biometrics</em>, 69(3): 776–784. <a href="https://doi.org/10.1111/biom.12059">https://doi.org/10.1111/biom.12059</a>
+</div>
+<div class="csl-entry">
+<strong>Safanelli, J.L., Hengl, T., Parente, L.L., Minarik, R., Bloom, D.E., Todd-Brown, K., Gholizadeh, A., Mendes, W. de S. &amp; Sanderman, J.</strong> 2025. Open soil spectral library (OSSL): Building reproducible soil calibration models through open development and community engagement. <em>PloS one</em>, 20(1): e0296545.
+</div>
+<div class="csl-entry">
+<strong>Saurette, D.D., Berg, A., Laamrani, A., Heck, R.J., Gillespie, A.W. &amp; Biswas, A.</strong> 2023. Determining optimal sample size for soil spectroscopy applications: Learning curves and model validation. <em>Soil Science Society of America Journal</em>, 87(6): 1557–1572. <a href="https://doi.org/10.1002/saj2.20608">https://doi.org/10.1002/saj2.20608</a>
+</div>
+<div class="csl-entry">
+<strong>Schmidinger, J., Heuvelink, G.B.M. &amp; Brus, D.J.</strong> 2024. Sampling design optimization for soil mapping with random forest. <em>Geoderma</em>, 444: 116849. <a href="https://doi.org/10.1016/j.geoderma.2024.116849">https://doi.org/10.1016/j.geoderma.2024.116849</a>
+</div>
+<div class="csl-entry">
+<strong>Stevens, A., Nocita, M., Tóth, G., Montanarella, L. &amp; Wesemael, B. van</strong>. 2013. Prediction of soil organic carbon at the european scale by visible and near infrared reflectance spectroscopy. <em>PloS one</em>, 8(6): e66409.
+</div>
+<div class="csl-entry">
+<strong>Stevens, D.L. &amp; Olsen, A.R.</strong> 2004. Spatially balanced sampling of natural resources. <em>Journal of the American Statistical Association</em>, 99(465): 262–278. <a href="https://doi.org/10.1198/016214504000000250">https://doi.org/10.1198/016214504000000250</a>
+</div>
+<div class="csl-entry">
+<strong>Styc, Q. &amp; Lagacherie, P.</strong> 2021. Combining spatial-environmental covariates and soil input data types to predict soil available water holding capacity. <em>Geoderma</em>, 401: 115171. <a href="https://doi.org/10.1016/j.geoderma.2021.115171">https://doi.org/10.1016/j.geoderma.2021.115171</a>
+</div>
+<div class="csl-entry">
+<strong>Takoutsing, B., Heuvelink, G.B., Stoorvogel, J.J., Shepherd, K.D. &amp; Aynekulu, E.</strong> 2022. Accounting for analytical and proximal soil sensing errors in digital soil mapping. <em>European Journal of Soil Science</em>, 73(2): e13226.
+</div>
+<div class="csl-entry">
+<strong><span class="nocase">Viscarra Rossel, R.A., Behrens, T., Ben-Dor, E., Chabrillat, S., Demattê, J.A.M., Ge, Y., Gomez, C., Guerrero, C., Peng, Y., Ramirez-Lopez, L. &amp; others</span></strong>. 2022. Diffuse reflectance spectroscopy for estimating soil properties: A technology for the 21st century. <em>European Journal of Soil Science</em>, 73(4): e13271.
+</div>
+<div class="csl-entry">
+<strong>Viscarra Rossel, R., Chappell, A., De Caritat, P. &amp; McKenzie, N.</strong> 2011. On the soil information content of visible–near infrared reflectance spectra. <em>European Journal of Soil Science</em>, 62(3): 442–453.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.-C. &amp; Ramirez-Lopez, L.</strong> 2025. Uncertainty of predictions in absorption spectroscopy: Modelling with quantile regression forest. <em>Chemometrics and Intelligent Laboratory Systems</em>, 265: 105473.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Heuvelink, G.B.M., Bruin, S. de &amp; Brus, D.J.</strong> 2021. Spatial cross-validation is not the right way to evaluate map accuracy, 457: 109692. <a href="https://doi.org/10.1016/j.ecolmodel.2021.109692">https://doi.org/10.1016/j.ecolmodel.2021.109692</a>
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Minasny, B. &amp; McBratney, A.B.</strong> 2021. Machine learning for digital soil mapping: Applications, challenges and suggested solutions. <em>Earth-Science Reviews</em>, 210: 103359. <a href="https://doi.org/10.1016/j.earscirev.2020.103359">https://doi.org/10.1016/j.earscirev.2020.103359</a>
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Padarian, J. &amp; Minasny, B.</strong> 2019. Multi-source data integration for soil mapping using deep learning. <em>Soil</em>, 5(1): 107–119.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Ramirez-Lopez, L., Ge, Y., Barra, I. &amp; Peng, Y.</strong> 2025. <em>A course on applied data analytics for soil analysis with infrared spectroscopy – soil spectroscopy training manual 2</em>. Rome, Italy, Food; Agriculture Organization of the United Nations (FAO).
+</div>
+<div class="csl-entry">
+<strong>Webster, R., Lessells, C.M. &amp; Hodgson, J.M.</strong> 1979. A reconnaissance soil survey of the ivybridge area of south devon. <em>Soil Survey Technical Monograph</em>, 12.
+</div>
+<div class="csl-entry">
+<strong>Webster, R. &amp; Oliver, M.A.</strong> 2007. <em>Geostatistics for environmental scientists</em>. 2nd edition. Chichester, John Wiley &amp; Sons.
+</div>
+<div class="csl-entry">
+<strong>Westhuizen, S. van der, Heuvelink, G.B.M., Hofmeyr, D.P. &amp; Poggio, L.</strong> 2022. Measurement error-filtered machine learning in digital soil mapping. <em>Spatial Statistics</em>, 47: 100572.
+</div>
+<div class="csl-entry">
+<strong>Wright, M.N. &amp; Ziegler, A.</strong> 2017. Ranger: A fast implementation of random forests for high dimensional data in c++ and r. <em>Journal of statistical software</em>, 77: 1–17.
+</div>
+<div class="csl-entry">
+<strong>Wu, C.-Y., Wu, P.-H. &amp; Hseu, Z.-Y.</strong> 2025. Assessing the robustness of VIS-NIR spectroscopy-based soil organic carbon prediction against four wet chemistry methods. <em>Carbon Management</em>, 16(1): 2511337.
+</div>
+<div class="csl-entry">
+<strong>Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W., Brockmann, C., Kirches, G., Wevers, J., Cartus, O., Santoro, M., Fritz, S., Lesiv, M., Herold, M., Tsendbazar, N.-E., Xu, P., Ramoino, F. &amp; Arino, O.</strong> 2022. ESA WorldCover 10 m 2021 v200. Zenodo. <a href="https://doi.org/10.5281/zenodo.7254221">https://doi.org/10.5281/zenodo.7254221</a>
+</div>
+<div class="csl-entry">
+<strong>Zhang, L., Heuvelink, G.B.M., Mulder, V.L., Chen, S., Deng, X. &amp; Yang, L.</strong> 2024. Using process-oriented model output to enhance machine learning-based soil organic carbon prediction in space and time. <em>Science of the Total Environment</em>, 922: 170778. <a href="https://doi.org/10.1016/j.scitotenv.2024.170778">https://doi.org/10.1016/j.scitotenv.2024.170778</a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="soil-spectroscopy-for-digital-soil-mapping.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="soil-data-sharing-and-dissemination.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
