@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Contributors and reviewers | DRAFT - Integrated soil information for decision-making </title>
+  <title>Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Contributors and reviewers | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Contributors and reviewers | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="Module 5 Soil Data Sharing and Dissemination | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="abbreviations-and-acronyms.html"/>
-<link rel="next" href="presentation-and-basics.html"/>
+<link rel="prev" href="soil-spectroscopy-for-digital-soil-mapping.html"/>
+<link rel="next" href="references-4.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -610,17 +610,376 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="contributors-and-reviewers" class="section level1 unnumbered hasAnchor">
-<h1>Contributors and reviewers<a href="contributors-and-reviewers.html#contributors-and-reviewers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="soil-data-sharing-and-dissemination" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Module 5</span> Soil Data Sharing and Dissemination<a href="soil-data-sharing-and-dissemination.html#soil-data-sharing-and-dissemination" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-2" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction<a href="soil-data-sharing-and-dissemination.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe <span class="citation">(<a href="#ref-ARROUAYS20172">Arrouays <em>et al.</em>, 2017</a>)</span>. These data collection efforts—conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives—represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.</p>
+<p>However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organisations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organised, and standardised, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities <span class="citation">(<a href="#ref-Medeiros24">Medeiros <em>et al.</em>, 2024</a>)</span>. However, realising this potential requires solving the fragmentation problem through systematic standardisation.</p>
+<p>In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network for Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems, but contribute that data following standardised formats and protocols for data preparation and sharing.</p>
+<p>Making soil data usable, however, is not only about preparing it once. It is about keeping it <strong>online, discoverable, and ready to use</strong> by others—both the point observations gathered in the field and laboratory, and the maps derived from them. This is the role of a <strong>Soil Information System (SIS)</strong>: a web-based platform that allows soil scientists to publish their own data on the internet, describe it properly so that others can find and trust it, and visualise it together with data from other providers.</p>
+<p>In this module we focus on the SIS from the point of view of a soil scientist who has data to share. You will learn what the SIS is, how it standardises and shares your data so that it can take part in the wider GloSIS federation, and—step by step—how to use the SIS web application to:</p>
+<ul>
+<li>publish <strong>soil profile (point) data</strong> from a CSV file;</li>
+<li>publish the <strong>raster maps</strong> you produce from soil observations and environmental covariates (the production of these maps is covered in the Digital Soil Mapping module);</li>
+<li>explore your data in the built-in map viewer;</li>
+<li>combine existing maps into new ones with the <strong>Raster Calculator</strong>.</li>
+</ul>
+<p>No programming is required to use the SIS—it is operated entirely through a web browser.</p>
+</div>
+<div id="the-soil-information-system-sis" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> The Soil Information System (SIS)<a href="soil-data-sharing-and-dissemination.html#the-soil-information-system-sis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-a-spatial-data-infrastructure" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> What is a Spatial Data Infrastructure?<a href="soil-data-sharing-and-dissemination.html#what-is-a-spatial-data-infrastructure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>Spatial Data Infrastructure (SDI)</strong> is the combination of technology, standards, and agreements that lets people <em>share geographic data over the internet</em> in a consistent way. Instead of e-mailing files back and forth, an SDI publishes data through standard web services, so that any compatible application—a web map, a desktop GIS such as QGIS, or another institution’s platform—can connect to the same data and use it directly.</p>
+<p>The SIS is an SDI specialised for soil information. It brings together, in one place and in a comparable form, the two kinds of products soil scientists generate:</p>
+<ul>
+<li><strong>Soil profiles (point data)</strong> — georeferenced observations of soil properties measured at specific sampling locations and depths.</li>
+<li><strong>Raster maps (gridded data)</strong> — continuous surfaces, typically produced by Digital Soil Mapping, that predict a soil property across an area from soil observations and environmental covariates.</li>
+</ul>
+</div>
+<div id="what-the-sis-lets-you-do" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> What the SIS lets you do<a href="soil-data-sharing-and-dissemination.html#what-the-sis-lets-you-do" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As a soil scientist, the SIS gives you a place to:</p>
+<ul>
+<li><strong>Publish</strong> your soil profiles and maps online, with a few clicks and without writing any code;</li>
+<li><strong>Describe</strong> each dataset with proper metadata (who produced it, when, under which licence, covering which area and period) so that others can find it and cite it correctly;</li>
+<li><strong>Visualise</strong> your data on an interactive map, together with data from other providers;</li>
+<li><strong>Control</strong> what is shared—each dataset can be kept private or published, and sensitive sampling coordinates can be slightly blurred to protect data providers;</li>
+<li><strong>Reuse</strong> the data through open standards, both inside the SIS and from external GIS software.</li>
+</ul>
+</div>
+<div id="standardisation" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Standardisation<a href="soil-data-sharing-and-dissemination.html#standardisation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you publish data, the SIS <strong>standardises</strong> it—it makes sure that every soil property and every laboratory procedure is referred to by the right, internationally agreed name. As you describe your data, you point each measured property and method to an entry in the <strong>GloSIS codelists</strong>, the shared vocabularies for soil properties and laboratory procedures.</p>
+<p>For example, a column of pH measured in water is linked to the codelist entry that identifies it precisely as <em>pH in water</em>, distinct from <em>pH in KCl</em>. The SIS does not alter your measurements; it ensures they are labelled correctly. Because every dataset in the SIS is described with these same terms, data from different providers and different countries can be compared directly and combined with confidence.</p>
+<blockquote>
+<p>The GloSIS codelists for soil properties and laboratory procedures are published openly at <a href="https://github.com/glosis-ld/glosis" class="uri">https://github.com/glosis-ld/glosis</a>.</p>
+</blockquote>
+<div class="highlights">
+<ul>
+<li>You publish soil <strong>profiles (points)</strong> and <strong>maps (rasters)</strong>.</li>
+<li>The SIS keeps them online, described, and ready to be reused.</li>
+<li>Everything is done from a web browser—no installation, no code.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="glosis-node" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> A node in the GloSIS federation<a href="soil-data-sharing-and-dissemination.html#glosis-node" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The SIS is not meant to be an island. It is designed to act as a <strong>node</strong> in <strong>GloSIS</strong>, the Global Soil Information System—a <em>federation</em> in which each participating institution or country runs its own SIS and keeps full control of its own data, while all nodes can still be searched and used together as if they were one. Your data stays with you; what is shared is access to it, in a common form.</p>
+<p>Two things make this federation possible, and both happen automatically when you publish your data:</p>
+<ul>
+<li><strong>A common vocabulary.</strong> Because every SIS describes soil data using the same GloSIS codelists for soil properties and laboratory procedures, a value published in one node means exactly the same thing in every other node.</li>
+<li><strong>Common ways of sharing.</strong> The SIS publishes data through open standards from the <strong>Open Geospatial Consortium (OGC)</strong>: maps are served so they can be <strong>viewed</strong> anywhere (Web Map Service, WMS), datasets are described so they can be <strong>discovered</strong> (Catalog Service for the Web, CSW), and soil profiles are <strong>served</strong> through the SIS data service. Any compatible system—another SIS node, or standard GIS software—can connect to that data without special arrangements.</li>
+</ul>
+<p>You do not need to operate any of this yourself. Simply by publishing your profiles and maps as described below, you make your data ready to take its place in the wider GloSIS federation.</p>
+</div>
+<div id="getting-started-accessing-the-sis" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Getting started: accessing the SIS<a href="soil-data-sharing-and-dissemination.html#getting-started-accessing-the-sis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-map-viewer" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> The map viewer<a href="soil-data-sharing-and-dissemination.html#the-map-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The map viewer (Figure <a href="#fig:sis-viewer"><strong>??</strong></a>) displays the published soil data on an interactive map: soil profiles appear as points (grouped into clusters when you zoom out), and raster maps appear as image layers you can switch on and off. From here you can pan and zoom, choose a base map, change layer transparency, click a profile to see its details, or click a raster to read the predicted value at that location.</p>
+</div>
+<div id="the-admin-panel" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> The Admin Panel<a href="soil-data-sharing-and-dissemination.html#the-admin-panel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Publishing data is done from the <strong>Login/Admin Panel</strong>. Click the <strong>Login/Admin Panel</strong> button on the map viewer and sign in with the credentials provided by your administrator (Figure <a href="#fig:sis-admin-login"><strong>??</strong></a>).</p>
+<p>The Admin Panel is organised into six tabs:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Tab</th>
+<th align="left">What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>My account</strong></td>
+<td align="left">Change your own username and password</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Administration</strong></td>
+<td align="left">Manage the node itself (administrators only)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Soil profiles</strong></td>
+<td align="left">Upload and publish soil profile (point) data from a CSV file</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Rasters</strong></td>
+<td align="left">Upload and publish raster maps (GeoTIFF)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Raster calculator</strong></td>
+<td align="left">Combine existing rasters into new maps</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Dashboard</strong></td>
+<td align="left">An overview of the data held on the node</td>
+</tr>
+</tbody>
+</table>
+<p>The following sections describe each of these tabs in turn. The <strong>Administration</strong> tab is only visible to users with administrator rights (see <em>Administration</em>).</p>
+</div>
+</div>
+<div id="my-account" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> My account<a href="soil-data-sharing-and-dissemination.html#my-account" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>My account</strong> tab lets you manage your own sign-in details (Figure <a href="#fig:sis-account"><strong>??</strong></a>). You can change your <strong>username</strong> and <strong>password</strong>; your current password is always required to confirm a change, and any field left blank is kept unchanged.</p>
+</div>
+<div id="administration" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Administration<a href="soil-data-sharing-and-dissemination.html#administration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>Administration</strong> tab is available only to users with <strong>administrator</strong> rights, and is where the SIS node itself—rather than the data in it—is managed. It brings together four areas: <strong>Settings</strong>, <strong>Users</strong>, <strong>Software update</strong>, and <strong>GloSIS Federation</strong>.</p>
+<div id="settings" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Settings<a href="soil-data-sharing-and-dissemination.html#settings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>Settings</strong> area holds the node-wide options that control how the SIS looks and behaves, shown as a simple table of keys and values. From here an administrator can, for example, set the <strong>default map view</strong>—the area and zoom level the map viewer opens on—using the accompanying map. A change made here takes effect for everyone who uses the node.</p>
+</div>
+<div id="users" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Users<a href="soil-data-sharing-and-dissemination.html#users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>Users</strong> area manages the accounts that can sign in to the Admin Panel. The table lists each user—username, whether they are an <strong>administrator</strong>, whether the account is <strong>active</strong>, and the dates created and last logged in. An administrator can <strong>add a user</strong> (username and password, optionally with administrator rights) and edit or deactivate existing accounts. Only administrators can see this area or grant administrator rights to others.</p>
+</div>
+<div id="software-update" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Software update<a href="soil-data-sharing-and-dissemination.html#software-update" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>Software update</strong> area shows the <strong>installed version</strong> of the SIS and lets an administrator <strong>check for updates</strong> against the project’s software repository. It is purely informational: it tells you whether a newer release is available but does not change anything—applying an update is done on the server by whoever maintains the installation, not from the web interface.</p>
+</div>
+<div id="glosis-federation" class="section level3 hasAnchor" number="5.6.4">
+<h3><span class="header-section-number">5.6.4</span> GloSIS Federation<a href="soil-data-sharing-and-dissemination.html#glosis-federation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Taking part in the federation through common vocabularies and standards (see Section <a href="soil-data-sharing-and-dissemination.html#glosis-node">5.3</a>) happens automatically as you publish. Connecting your node to the <em>global</em> GloSIS Federation—so that the GloSIS Discovery Hub and other nodes can find and query it—is a deliberate, one-time step carried out by the node administrator. It is <strong>switched off by default</strong>: a node never exposes itself to the federation until someone chooses to.</p>
+<p>To enable it:</p>
+<ol style="list-style-type: decimal">
+<li>Sign in to the SIS as an <strong>administrator</strong>.</li>
+<li>Open <strong>Administration → GloSIS Federation</strong> (Figure <a href="#fig:sis-glosis-federation"><strong>??</strong></a>).</li>
+<li>Click <strong>Enable</strong>. The node issues a <strong>federation token</strong> (shown on the same panel) and opens a small set of <strong>read-only</strong> endpoints—a <em>manifest</em> of what the node holds, its <em>soil profiles</em>, and their <em>observations</em>.</li>
+<li>Provide that token and the endpoint addresses to the <strong>GloSIS Discovery Hub</strong>, which registers your node as part of the federation.</li>
+</ol>
+<p>What is shared is exactly the <strong>soil profiles currently published</strong> on your node (those visible under <em>Layers → Soil profiles</em>)—nothing else can be read, and nothing can be written. Your <strong>raster maps</strong> are not part of this feed; they are already shared separately through the metadata catalogue and the map service.</p>
+<p>You can click <strong>Disable</strong> at any time to stop sharing while keeping the token, or <strong>Disable &amp; delete token</strong> to revoke access entirely and force a new token the next time federation is enabled.</p>
+<div class="highlights">
+<ul>
+<li>Federation access is <strong>opt-in</strong> and <strong>read-only</strong>—you stay in full control of your data.</li>
+<li>Only your <strong>published soil profiles</strong> are exposed; rasters are shared via the catalogue and map service.</li>
+<li>Enabling it registers your SIS as a node that others can discover and query through the GloSIS Discovery Hub.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="publishing-soil-profile-data-from-a-csv" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Publishing soil profile data from a CSV<a href="soil-data-sharing-and-dissemination.html#publishing-soil-profile-data-from-a-csv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Soil profile data is published from the <strong>Soil profiles</strong> tab of the Admin Panel. The SIS reads a single <strong>CSV file</strong> in which each row is a soil sample (a depth layer of a profile) and each column is an attribute—an identifier, a coordinate, a depth, or a measured property. A good starting point is the cleaned dataset produced earlier in this manual (for example, the <code>KSSL_cleaned.csv</code> file from the Soil Data Preparation module).</p>
+<div class="warning-box">
+<p>The CSV can contain up to <strong>200,000 data rows</strong> and be at most <strong>50 MB</strong>. Larger datasets should be split before uploading.</p>
+</div>
+<p>The workflow has five steps, all on the same page.</p>
+<div id="step-1-upload-the-csv-file" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> Step 1 — Upload the CSV file<a href="soil-data-sharing-and-dissemination.html#step-1-upload-the-csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the <strong>Soil profiles</strong> tab, open the <strong>Upload CSV</strong> section, click the file selector, choose your <code>.csv</code> file, and press <strong>Upload CSV</strong> (Figure <a href="#fig:sis-profile-upload"><strong>??</strong></a>). The file is uploaded to a temporary working area; nothing is published yet.</p>
+</div>
+<div id="step-2-preview-the-data" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Step 2 — Preview the data<a href="soil-data-sharing-and-dissemination.html#step-2-preview-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once uploaded, expand the <strong>preview</strong> to check that the file was read correctly—that columns are separated properly and values look as expected (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>). Use the <strong>Previous</strong> / <strong>Next</strong> buttons to page through the rows. This is the moment to catch obvious problems (wrong separator, shifted columns) before going further.</p>
+</div>
+<div id="step-3-describe-the-dataset-metadata" class="section level3 hasAnchor" number="5.7.3">
+<h3><span class="header-section-number">5.7.3</span> Step 3 — Describe the dataset (metadata)<a href="soil-data-sharing-and-dissemination.html#step-3-describe-the-dataset-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Next, describe the dataset so that others can understand and cite it (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>):</p>
+<ul>
+<li><strong>Project</strong> — select the project this data belongs to, or create one with <strong>+ Add new project…</strong>.</li>
+<li><strong>Abstract</strong> — a short description of the dataset.</li>
+<li><strong>Licence</strong> — the terms under which you share the data (e.g. CC BY, CC BY-SA, CC BY-NC, CC0).</li>
+<li><strong>EPSG code</strong> — the coordinate reference system of your coordinates. The default is <strong>4326</strong> (WGS84, decimal degrees), which is recommended.</li>
+<li><strong>Authors</strong> — the organisation(s) and people responsible, with their role. You can add new organisations and individuals inline.</li>
+</ul>
+</div>
+<div id="step-4-standardise-your-columns" class="section level3 hasAnchor" number="5.7.4">
+<h3><span class="header-section-number">5.7.4</span> Step 4 — Standardise your columns<a href="soil-data-sharing-and-dissemination.html#step-4-standardise-your-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The SIS now needs to know <strong>what each column of your CSV means</strong>. In the <strong>standardisation</strong> table, each row corresponds to one column of your file, and you assign it a <strong>destination</strong> in the soil data model (Figure <a href="#fig:sis-profile-standardisation"><strong>??</strong></a>). The essential destinations are:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="33%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Your column holds…</th>
+<th align="left">Destination</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Profile / sample identifier</td>
+<td align="left">Profile code</td>
+<td align="left">Rows sharing a code are merged into one profile</td>
+</tr>
+<tr class="even">
+<td align="left">Longitude (X)</td>
+<td align="left">Coordinate</td>
+<td align="left">Decimal degrees, −180 to 180</td>
+</tr>
+<tr class="odd">
+<td align="left">Latitude (Y)</td>
+<td align="left">Coordinate</td>
+<td align="left">Decimal degrees, −90 to 90</td>
+</tr>
+<tr class="even">
+<td align="left">Sampling date</td>
+<td align="left">Sampling date</td>
+<td align="left">Format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Upper depth</td>
+<td align="left">Element upper depth</td>
+<td align="left">Whole cm, top of the layer</td>
+</tr>
+<tr class="even">
+<td align="left">Lower depth</td>
+<td align="left">Element lower depth</td>
+<td align="left">Whole cm, must be greater than the upper depth</td>
+</tr>
+<tr class="odd">
+<td align="left">A measured soil property</td>
+<td align="left">Result value</td>
+<td align="left">Choose the property, analytical procedure and unit</td>
+</tr>
+</tbody>
+</table>
+<p>For each measured property, you also indicate its <strong>GloSIS property, analytical procedure, and unit of measurement</strong>. If your values are reported in a different unit, the SIS converts them to the standard unit automatically. Optional destinations include plot type (e.g. <em>TrialPit</em>, <em>Borehole</em>), altitude, positional accuracy, and horizon designation.</p>
+</div>
+<div id="step-5-validate-and-ingest" class="section level3 hasAnchor" number="5.7.5">
+<h3><span class="header-section-number">5.7.5</span> Step 5 — Validate and ingest<a href="soil-data-sharing-and-dissemination.html#step-5-validate-and-ingest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before the data is stored, press <strong>Validate</strong>. The SIS runs a series of quality checks and reports any problems per column (Figure <a href="#fig:sis-profile-validate"><strong>??</strong></a>):</p>
+<ul>
+<li><strong>Coordinates</strong> fall within valid ranges, and at least 95% of the points lie within the expected country boundary;</li>
+<li><strong>Depths</strong> are whole numbers, the upper depth is smaller than the lower depth, and layers within a profile are contiguous;</li>
+<li><strong>Property values</strong> fall within scientifically plausible ranges for each property (out-of-range values are flagged as potential outliers).</li>
+</ul>
+<p>Use <strong>Save</strong> to keep your metadata and standardisation settings. When validation passes, <strong>ingest</strong> the data: the SIS writes the profiles, elements (layers), and measured results into the database, and your points become available in the map viewer.</p>
+<div class="warning-box">
+<ul>
+<li>Correct any <strong>critical issues</strong> (invalid coordinates, impossible depths) before ingesting.</li>
+<li><strong>Warnings</strong> (e.g. unusual property values) should be reviewed; you may proceed if the values are scientifically justified.</li>
+<li>Each upload is tagged with the source file name, so a dataset can be re-uploaded or removed cleanly later.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="publishing-raster-maps" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Publishing raster maps<a href="soil-data-sharing-and-dissemination.html#publishing-raster-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Raster maps—the gridded predictions you produce by Digital Soil Mapping—are published from the <strong>Rasters</strong> tab of the Admin Panel. The SIS accepts a single <strong>GeoTIFF</strong> file (<code>.tif</code> / <code>.tiff</code>) per upload and publishes it so that it can be viewed in the SIS (and in standard GIS software) and, if you wish, described in the catalogue so others can find it.</p>
+<p>Open the <strong>Upload GeoTIFF</strong> section and complete the form (the steps below correspond to the sections of that form).</p>
+<div id="step-1-select-the-geotiff" class="section level3 hasAnchor" number="5.8.1">
+<h3><span class="header-section-number">5.8.1</span> Step 1 — Select the GeoTIFF<a href="soil-data-sharing-and-dissemination.html#step-1-select-the-geotiff" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Choose your <code>.tif</code> or <code>.tiff</code> file. The raster must be properly georeferenced; the SIS reads its spatial extent and coordinate system directly from the file. The whole upload form is shown in Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>.</p>
+</div>
+<div id="step-2-location-and-project" class="section level3 hasAnchor" number="5.8.2">
+<h3><span class="header-section-number">5.8.2</span> Step 2 — Location and project<a href="soil-data-sharing-and-dissemination.html#step-2-location-and-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Select the <strong>Country</strong> the map covers and the <strong>Project</strong> it belongs to (or create a new project inline; a new project needs a short ID, a name, and a description).</p>
+</div>
+<div id="step-3-soil-property-and-units" class="section level3 hasAnchor" number="5.8.3">
+<h3><span class="header-section-number">5.8.3</span> Step 3 — Soil property and units<a href="soil-data-sharing-and-dissemination.html#step-3-soil-property-and-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Indicate which <strong>soil property</strong> the map represents (for example, soil organic carbon), choosing from the list or adding a new property. The <strong>unit of measurement</strong> is offered automatically based on the property. This is what allows the map to be compared and combined with others consistently.</p>
+</div>
+<div id="step-4-dates-depth-and-statistics" class="section level3 hasAnchor" number="5.8.4">
+<h3><span class="header-section-number">5.8.4</span> Step 4 — Dates, depth and statistics<a href="soil-data-sharing-and-dissemination.html#step-4-dates-depth-and-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Document the temporal and vertical context of the map:</p>
+<ul>
+<li><strong>Created on</strong> — the date the map was produced (<code>YYYY-MM-DD</code>).</li>
+<li><strong>Period start</strong> / <strong>Period end</strong> — the oldest and most recent dates of the data used to produce the map.</li>
+<li><strong>Depth</strong> — the soil depth interval the map refers to (upper and lower, in cm).</li>
+<li><strong>Statistics</strong> — what the pixel values represent: <strong>MEAN</strong> (the prediction), <strong>SDEV</strong> (its standard deviation), or <strong>UNCT</strong> (uncertainty).</li>
+</ul>
+</div>
+<div id="step-5-licence-catalogue-and-authors" class="section level3 hasAnchor" number="5.8.5">
+<h3><span class="header-section-number">5.8.5</span> Step 5 — Licence, catalogue and authors<a href="soil-data-sharing-and-dissemination.html#step-5-licence-catalogue-and-authors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Choose a <strong>licence</strong> for the map, decide whether to <strong>publish it to the catalogue</strong> (the checkbox is ticked by default, so the map can be found by others), and list the <strong>authors</strong> (organisation, person, and role), exactly as for profile data.</p>
+</div>
+<div id="step-6-review-and-upload" class="section level3 hasAnchor" number="5.8.6">
+<h3><span class="header-section-number">5.8.6</span> Step 6 — Review and upload<a href="soil-data-sharing-and-dissemination.html#step-6-review-and-upload" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The form shows a preview of the <strong>generated file name</strong> that the map will be stored under, built from the information you provided. Review the entries and press <strong>Upload</strong> (Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you chose to, as a record in the catalogue.</p>
+<div class="highlights">
+<p>Once uploaded, your map can be <strong>viewed</strong> in the SIS (and in any compatible GIS) and, if you ticked <em>Publish to catalogue</em>, can also be <strong>discovered</strong> by others—in your own SIS and across the GloSIS federation.</p>
+</div>
+</div>
+</div>
+<div id="the-raster-calculator" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> The Raster Calculator<a href="soil-data-sharing-and-dissemination.html#the-raster-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>Raster Calculator</strong> (found under the <strong>Raster calculator</strong> tab of the Admin Panel) lets you create a <strong>new map by combining existing ones</strong>, without leaving the SIS. It is well suited to rule-based analyses such as land <strong>suitability</strong>: for example, combining maps of pH, organic carbon, and depth into a single suitability map.</p>
+<p>The calculator works with <strong>recipes</strong>. A recipe is a saved set of rules that takes one or more published rasters as input and produces a new raster as output. Each input is scored using a simple <strong>threshold rule</strong>, and the scores are combined into the result.</p>
+<div id="creating-a-recipe" class="section level3 hasAnchor" number="5.9.1">
+<h3><span class="header-section-number">5.9.1</span> Creating a recipe<a href="soil-data-sharing-and-dissemination.html#creating-a-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the <strong>Raster calculator</strong> tab, the existing recipes are listed with their status and last run. Click <strong>+ New Recipe</strong> to open the editor (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>). Choose the <strong>Project</strong> (default <em>DST</em>) and the <strong>mapped property</strong> of the output (default <em>SUITABILITY</em>), or add new ones inline. The SIS proposes a recipe identifier and description automatically.</p>
+</div>
+<div id="adding-input-layers-and-thresholds" class="section level3 hasAnchor" number="5.9.2">
+<h3><span class="header-section-number">5.9.2</span> Adding input layers and thresholds<a href="soil-data-sharing-and-dissemination.html#adding-input-layers-and-thresholds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Click <strong>+ Add layer</strong> to add an input row, then for each row (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>):</p>
+<ul>
+<li>pick a <strong>Layer</strong> from the published rasters (its <strong>Min</strong> and <strong>Max</strong> are shown to guide you);</li>
+<li>set a <strong>Threshold</strong>—the cut-off value that splits the layer;</li>
+<li>set the <strong>Above</strong> score (given to pixels at or above the threshold) and the <strong>Below</strong> score (given to pixels below it). The defaults are <strong>1</strong> and <strong>0</strong>, which you can change for custom scoring.</li>
+</ul>
+<p>In other words, each input map is reclassified into scores by its threshold, and the SIS then aggregates the scored inputs into the output map. Add as many input layers as your rule requires; remove a row with its delete button.</p>
+</div>
+<div id="running-the-recipe" class="section level3 hasAnchor" number="5.9.3">
+<h3><span class="header-section-number">5.9.3</span> Running the recipe<a href="soil-data-sharing-and-dissemination.html#running-the-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Press <strong>Run</strong> to execute the recipe (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>). The calculation runs in the background; the recipe list shows its status (queued, running, completed, or failed) and the time of the last run. When it completes, the result is registered as a <strong>new raster layer</strong>—available in the map viewer just like any uploaded map, and ready to be combined again in further recipes.</p>
+</div>
+<div id="inspecting-the-result" class="section level3 hasAnchor" number="5.9.4">
+<h3><span class="header-section-number">5.9.4</span> Inspecting the result<a href="soil-data-sharing-and-dissemination.html#inspecting-the-result" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once the recipe has run, open the resulting map in the <strong>map viewer</strong> (see Section <a href="soil-data-sharing-and-dissemination.html#explore-viewer">5.10</a>) and click any pixel to see how its value was built up (Figure <a href="#fig:sis-raster-calculator-result"><strong>??</strong></a>). For that location, the SIS shows the <strong>original value</strong> of each input layer, the <strong>score</strong> each one received after being reclassified by its threshold, and the <strong>sum</strong> of those scores—the value of the resulting map. This makes the calculation fully transparent and easy to check.</p>
+<div class="highlights">
+<ul>
+<li>Inputs are <strong>published rasters</strong>; the output is a <strong>new raster</strong> you can view, share, or reuse.</li>
+<li>Each input is split by a <strong>threshold</strong> into <em>above</em> / <em>below</em> scores, then the scores are combined.</li>
+<li>Recipes are <strong>saved and re-runnable</strong>, so an analysis can be repeated as the underlying maps are updated.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="explore-viewer" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Exploring data in the map viewer<a href="soil-data-sharing-and-dissemination.html#explore-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once data has been published, return to the map viewer to explore it (Figure <a href="#fig:sis-explore"><strong>??</strong></a>). From the viewer you can:</p>
+<ul>
+<li><strong>Toggle layers</strong> on and off to control what is shown;</li>
+<li><strong>Change the base layer</strong>—the background map, such as a street map, satellite imagery, or terrain;</li>
+<li><strong>Adjust transparency</strong> of a raster to see what lies beneath it;</li>
+<li><strong>Filter the raster layers</strong> by <strong>keywords</strong> drawn from each layer’s metadata, to quickly find the maps you are interested in;</li>
+<li><strong>Click a soil profile</strong> to inspect its <strong>attribute data</strong>—location, depths, and the analytical soil properties measured for each layer; the <strong>Data/Hide</strong> button shows or hides this attribute table;</li>
+<li><strong>Click a raster</strong> to read the predicted value at that point;</li>
+<li><strong>Download a layer</strong>—both raster maps and soil profile (point) datasets can be downloaded for use in other software;</li>
+<li><strong>View a dataset’s metadata</strong> (raster or point), presented in the standard spatial format (ISO 19115/19139), so its origin, authors, licence, spatial extent and date are clear;</li>
+<li><strong>Zoom</strong> to spread out clustered points and inspect individual profiles.</li>
+</ul>
+<p>This makes the viewer a quick way to <strong>validate</strong> what you have just published—confirming that points landed where expected and that maps display with sensible values—before sharing the SIS address with colleagues.</p>
+</div>
+<div id="dashboard" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Dashboard<a href="soil-data-sharing-and-dissemination.html#dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>Dashboard</strong> tab gives an at-a-glance overview of everything held on the node (Figure <a href="#fig:sis-dashboard"><strong>??</strong></a>). Summary cards show the totals—such as the number of soil profiles, rasters and projects—alongside charts that summarise the data: profiles and rasters per project, the most frequently measured soil properties, profiles sampled per year, the distribution of sampling depths, and the range of values recorded for each property. It is a quick way to understand what a node contains and to spot gaps or anomalies.</p>
+</div>
+<div id="summary-1" class="section level2 hasAnchor" number="5.12">
+<h2><span class="header-section-number">5.12</span> Summary<a href="soil-data-sharing-and-dissemination.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this module you have seen how the Soil Information System turns isolated soil data into a shared, discoverable, and reusable resource. As a soil scientist you can, entirely from a web browser, publish your <strong>soil profile points</strong> from a CSV file and your <strong>raster maps</strong> as GeoTIFFs, describe them with proper metadata, explore them in the map viewer, and derive new maps with the Raster Calculator. As you publish, the SIS standardises your data against the GloSIS codelists and shares it through open standards—so that the data you contribute is not only available in your own SIS, but ready to take its place as a node in the wider GloSIS federation.</p>
 
+</div>
+</div>
+<h3>References<a href="references-4.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="0">
+<div id="ref-ARROUAYS20172" class="csl-entry">
+<strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., Pasztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., Conceicao Gonsalves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., Kozak, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
+</div>
+<div id="ref-Medeiros24" class="csl-entry">
+<strong>Medeiros, B.M., Rossi, L.S., Caten, A.T., Pereira, G.E., Silva, E.B. &amp; U., Daboit.K.T.</strong> 2024. Soil legacy data: An opportunity for digital soil mapping. <em>Rev. Bras. Ciênc. Solo</em>, 48. <a href="https://doi.org/10.36783/18069657rbcs20230130">https://doi.org/10.36783/18069657rbcs20230130</a>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="abbreviations-and-acronyms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="presentation-and-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="soil-spectroscopy-for-digital-soil-mapping.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
