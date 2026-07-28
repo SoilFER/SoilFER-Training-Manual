@@ -727,11 +727,23 @@ div.csl-indent {
 <h2><span class="header-section-number">5.6</span> Getting started: accessing the SIS<a href="soil-data-sharing-and-dissemination.html#getting-started-accessing-the-sis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="the-map-viewer" class="section level3 hasAnchor" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> The map viewer<a href="soil-data-sharing-and-dissemination.html#the-map-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The map viewer (Figure <a href="#fig:sis-viewer"><strong>??</strong></a>) displays the published soil data on an interactive map: soil profiles appear as points (grouped into clusters when you zoom out), and raster maps appear as image layers you can switch on and off. From here you can pan and zoom, choose a base map, change layer transparency, click a profile to see its details, or click a raster to read the predicted value at that location.</p>
+<p>The map viewer (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-viewer">5.1</a>) displays the published soil data on an interactive map: soil profiles appear as points (grouped into clusters when you zoom out), and raster maps appear as image layers you can switch on and off. From here you can pan and zoom, choose a base map, change layer transparency, click a profile to see its details, or click a raster to read the predicted value at that location.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-viewer"></span>
+<img src="images/module5/sis_viewer.png" alt="The SIS map viewer, showing soil profiles and a raster layer." width="100%" />
+<p class="caption">
+Figure 5.1: The SIS map viewer, showing soil profiles and a raster layer.
+</p>
+</div>
 </div>
 <div id="the-admin-panel" class="section level3 hasAnchor" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> The Admin Panel<a href="soil-data-sharing-and-dissemination.html#the-admin-panel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Publishing data is done from the <strong>Login/Admin Panel</strong>. Click the <strong>Login/Admin Panel</strong> button on the map viewer and sign in with the credentials provided by your administrator (Figure <a href="#fig:sis-admin-login"><strong>??</strong></a>).</p>
+<p>Publishing data is done from the <strong>Login/Admin Panel</strong>. Click the <strong>Login/Admin Panel</strong> button on the map viewer and sign in with the credentials provided by your administrator (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-admin-login">5.2</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-admin-login"></span>
+<img src="images/module5/sis_admin_login.png" alt="Accessing the Admin Panel." width="100%" />
+<p class="caption">
+Figure 5.2: Accessing the Admin Panel.
+</p>
+</div>
 <p>The Admin Panel is organised into six tabs:</p>
 <table>
 <colgroup>
@@ -776,7 +788,13 @@ div.csl-indent {
 </div>
 <div id="my-account" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> My account<a href="soil-data-sharing-and-dissemination.html#my-account" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>My account</strong> tab lets you manage your own sign-in details (Figure <a href="#fig:sis-account"><strong>??</strong></a>). You can change your <strong>username</strong> and <strong>password</strong>; your current password is always required to confirm a change, and any field left blank is kept unchanged.</p>
+<p>The <strong>My account</strong> tab lets you manage your own sign-in details (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-account">5.3</a>). You can change your <strong>username</strong> and <strong>password</strong>; your current password is always required to confirm a change, and any field left blank is kept unchanged.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-account"></span>
+<img src="images/module5/sis_account.png" alt="The My account tab, for changing your username and password." width="100%" />
+<p class="caption">
+Figure 5.3: The My account tab, for changing your username and password.
+</p>
+</div>
 </div>
 <div id="administration" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Administration<a href="soil-data-sharing-and-dissemination.html#administration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -799,10 +817,16 @@ div.csl-indent {
 <p>To enable it:</p>
 <ol style="list-style-type: decimal">
 <li>Sign in to the SIS as an <strong>administrator</strong>.</li>
-<li>Open <strong>Administration → GloSIS Federation</strong> (Figure <a href="#fig:sis-glosis-federation"><strong>??</strong></a>).</li>
+<li>Open <strong>Administration → GloSIS Federation</strong> (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-glosis-federation">5.4</a>).</li>
 <li>Click <strong>Enable</strong>. The node issues a <strong>federation token</strong> (shown on the same panel) and opens a small set of <strong>read-only</strong> endpoints—a <em>manifest</em> of what the node holds, its <em>soil profiles</em>, and their <em>observations</em>.</li>
 <li>Provide that token and the endpoint addresses to the <strong>GloSIS Discovery Hub</strong>, which registers your node as part of the federation.</li>
 </ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-glosis-federation"></span>
+<img src="images/module5/sis_glosis_federation.png" alt="The Administration → GloSIS Federation panel, where federation access is enabled and the federation token is shown." width="100%" />
+<p class="caption">
+Figure 5.4: The Administration → GloSIS Federation panel, where federation access is enabled and the federation token is shown.
+</p>
+</div>
 <p>What is shared is exactly the <strong>soil profiles currently published</strong> on your node (those visible under <em>Layers → Soil profiles</em>)—nothing else can be read, and nothing can be written. Your <strong>raster maps</strong> are not part of this feed; they are already shared separately through the metadata catalogue and the map service.</p>
 <p>You can click <strong>Disable</strong> at any time to stop sharing while keeping the token, or <strong>Disable &amp; delete token</strong> to revoke access entirely and force a new token the next time federation is enabled.</p>
 <div class="highlights">
@@ -823,15 +847,21 @@ div.csl-indent {
 <p>The workflow has five steps, all on the same page.</p>
 <div id="step-1-upload-the-csv-file" class="section level3 hasAnchor" number="5.9.1">
 <h3><span class="header-section-number">5.9.1</span> Step 1 — Upload the CSV file<a href="soil-data-sharing-and-dissemination.html#step-1-upload-the-csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the <strong>Soil profiles</strong> tab, open the <strong>Upload CSV</strong> section, click the file selector, choose your <code>.csv</code> file, and press <strong>Upload CSV</strong> (Figure <a href="#fig:sis-profile-upload"><strong>??</strong></a>). The file is uploaded to a temporary working area; nothing is published yet.</p>
+<p>In the <strong>Soil profiles</strong> tab, open the <strong>Upload CSV</strong> section, click the file selector, choose your <code>.csv</code> file, and press <strong>Upload CSV</strong> (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-upload">5.5</a>). The file is uploaded to a temporary working area; nothing is published yet.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-upload"></span>
+<img src="images/module5/01_sis_profile_upload.png" alt="Step 1: Selecting and uploading the CSV file." width="100%" />
+<p class="caption">
+Figure 5.5: Step 1: Selecting and uploading the CSV file.
+</p>
+</div>
 </div>
 <div id="step-2-preview-the-data" class="section level3 hasAnchor" number="5.9.2">
 <h3><span class="header-section-number">5.9.2</span> Step 2 — Preview the data<a href="soil-data-sharing-and-dissemination.html#step-2-preview-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once uploaded, expand the <strong>preview</strong> to check that the file was read correctly—that columns are separated properly and values look as expected (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>). Use the <strong>Previous</strong> / <strong>Next</strong> buttons to page through the rows. This is the moment to catch obvious problems (wrong separator, shifted columns) before going further.</p>
+<p>Once uploaded, expand the <strong>preview</strong> to check that the file was read correctly—that columns are separated properly and values look as expected (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-preview-metadata">5.6</a>). Use the <strong>Previous</strong> / <strong>Next</strong> buttons to page through the rows. This is the moment to catch obvious problems (wrong separator, shifted columns) before going further.</p>
 </div>
 <div id="step-3-describe-the-dataset-metadata" class="section level3 hasAnchor" number="5.9.3">
 <h3><span class="header-section-number">5.9.3</span> Step 3 — Describe the dataset (metadata)<a href="soil-data-sharing-and-dissemination.html#step-3-describe-the-dataset-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Next, describe the dataset so that others can understand and cite it (Figure <a href="#fig:sis-profile-preview-metadata"><strong>??</strong></a>):</p>
+<p>Next, describe the dataset so that others can understand and cite it (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-preview-metadata">5.6</a>):</p>
 <ul>
 <li><strong>Project</strong> — select the project this data belongs to, or create one with <strong>+ Add new project…</strong>.</li>
 <li><strong>Abstract</strong> — a short description of the dataset.</li>
@@ -839,10 +869,16 @@ div.csl-indent {
 <li><strong>EPSG code</strong> — the coordinate reference system of your coordinates. The default is <strong>4326</strong> (WGS84, decimal degrees), which is recommended.</li>
 <li><strong>Authors</strong> — the organisation(s) and people responsible, with their role. You can add new organisations and individuals inline.</li>
 </ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-preview-metadata"></span>
+<img src="images/module5/sis_profile_preview_metadata.png" alt="Steps 2 and 3: previewing the uploaded data and describing it with metadata." width="100%" />
+<p class="caption">
+Figure 5.6: Steps 2 and 3: previewing the uploaded data and describing it with metadata.
+</p>
+</div>
 </div>
 <div id="step-4-standardise-your-columns" class="section level3 hasAnchor" number="5.9.4">
 <h3><span class="header-section-number">5.9.4</span> Step 4 — Standardise your columns<a href="soil-data-sharing-and-dissemination.html#step-4-standardise-your-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The SIS now needs to know <strong>what each column of your CSV means</strong>. In the <strong>standardisation</strong> table, each row corresponds to one column of your file, and you assign it a <strong>destination</strong> in the soil data model (Figure <a href="#fig:sis-profile-standardisation"><strong>??</strong></a>). The essential destinations are:</p>
+<p>The SIS now needs to know <strong>what each column of your CSV means</strong>. In the <strong>standardisation</strong> table, each row corresponds to one column of your file, and you assign it a <strong>destination</strong> in the soil data model (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-standardisation">5.7</a>). The essential destinations are:</p>
 <table>
 <colgroup>
 <col width="28%" />
@@ -895,16 +931,28 @@ div.csl-indent {
 </tbody>
 </table>
 <p>For each measured property, you also indicate its <strong>GloSIS property, analytical procedure, and unit of measurement</strong>. If your values are reported in a different unit, the SIS converts them to the standard unit automatically. Optional destinations include plot type (e.g. <em>TrialPit</em>, <em>Borehole</em>), altitude, positional accuracy, and horizon designation.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-standardisation"></span>
+<img src="images/module5/sis_profile_standardisation.png" alt="Step 4: standardising the CSV columns against the soil data model." width="100%" />
+<p class="caption">
+Figure 5.7: Step 4: standardising the CSV columns against the soil data model.
+</p>
+</div>
 </div>
 <div id="step-5-validate-and-ingest" class="section level3 hasAnchor" number="5.9.5">
 <h3><span class="header-section-number">5.9.5</span> Step 5 — Validate and ingest<a href="soil-data-sharing-and-dissemination.html#step-5-validate-and-ingest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Before the data is stored, press <strong>Validate</strong>. The SIS runs a series of quality checks and reports any problems per column (Figure <a href="#fig:sis-profile-validate"><strong>??</strong></a>):</p>
+<p>Before the data is stored, press <strong>Validate</strong>. The SIS runs a series of quality checks and reports any problems per column (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-validate">5.8</a>):</p>
 <ul>
 <li><strong>Coordinates</strong> fall within valid ranges, and at least 95% of the points lie within the expected country boundary;</li>
 <li><strong>Depths</strong> are whole numbers, the upper depth is smaller than the lower depth, and layers within a profile are contiguous;</li>
 <li><strong>Property values</strong> fall within scientifically plausible ranges for each property (out-of-range values are flagged as potential outliers).</li>
 </ul>
 <p>Use <strong>Save</strong> to keep your metadata and standardisation settings. When validation passes, <strong>ingest</strong> the data: the SIS writes the profiles, elements (layers), and measured results into the database, and your points become available in the map viewer.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-validate"></span>
+<img src="images/module5/sis_profile_validate.png" alt="Step 5: Validation report before ingestion." width="100%" />
+<p class="caption">
+Figure 5.8: Step 5: Validation report before ingestion.
+</p>
+</div>
 <div class="warning-box">
 <ul>
 <li>Correct any <strong>critical issues</strong> (invalid coordinates, impossible depths) before ingesting.</li>
@@ -912,8 +960,20 @@ div.csl-indent {
 <li>Each upload is tagged with the source file name, so a dataset can be re-uploaded or removed cleanly later.</li>
 </ul>
 </div>
-<p>Once the data has been validated, the Validation status appears in the dataset list (Figure <a href="#fig:sis-profile-validated"><strong>??</strong></a>).</p>
-<p>Now, the data is standardized and ready for ingestion into the Postgres database using the ‘Ingest’ button. Once ingested, the new status and data details will appear in the dataset list (Figure <a href="#fig:sis-profile-ingested"><strong>??</strong></a>).</p>
+<p>Once the data has been validated, the Validation status appears in the dataset list (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-validated">5.9</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-validated"></span>
+<img src="images/module5/01_sis_profile_validated.png" alt="Step 5: Status of the validation." width="100%" />
+<p class="caption">
+Figure 5.9: Step 5: Status of the validation.
+</p>
+</div>
+<p>Now, the data is standardized and ready for ingestion into the Postgres database using the ‘Ingest’ button. Once ingested, the new status and data details will appear in the dataset list (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-profile-ingested">5.10</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-profile-ingested"></span>
+<img src="images/module5/sis_profile_ingested.png" alt="Step 5: Status of the ingestion" width="100%" />
+<p class="caption">
+Figure 5.10: Step 5: Status of the ingestion
+</p>
+</div>
 <p>The data is now properly stored in the Postgres database and is ready for visualization on the SIS main page.</p>
 </div>
 </div>
@@ -923,7 +983,7 @@ div.csl-indent {
 <p>Open the <strong>Upload GeoTIFF</strong> section and complete the form (the steps below correspond to the sections of that form).</p>
 <div id="step-1-select-the-geotiff" class="section level3 hasAnchor" number="5.10.1">
 <h3><span class="header-section-number">5.10.1</span> Step 1 — Select the GeoTIFF<a href="soil-data-sharing-and-dissemination.html#step-1-select-the-geotiff" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Choose your <code>.tif</code> or <code>.tiff</code> file. The raster must be properly georeferenced; the SIS reads its spatial extent and coordinate system directly from the file. The whole upload form is shown in Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>.</p>
+<p>Choose your <code>.tif</code> or <code>.tiff</code> file. The raster must be properly georeferenced; the SIS reads its spatial extent and coordinate system directly from the file. The whole upload form is shown in Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-form">5.11</a>.</p>
 </div>
 <div id="step-2-location-and-project" class="section level3 hasAnchor" number="5.10.2">
 <h3><span class="header-section-number">5.10.2</span> Step 2 — Location and project<a href="soil-data-sharing-and-dissemination.html#step-2-location-and-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -949,7 +1009,13 @@ div.csl-indent {
 </div>
 <div id="step-6-review-and-upload" class="section level3 hasAnchor" number="5.10.6">
 <h3><span class="header-section-number">5.10.6</span> Step 6 — Review and upload<a href="soil-data-sharing-and-dissemination.html#step-6-review-and-upload" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The form shows a preview of the <strong>generated file name</strong> that the map will be stored under, built from the information you provided. Review the entries and press <strong>Upload</strong> (Figure <a href="#fig:sis-raster-form"><strong>??</strong></a>). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you chose to, as a record in the catalogue.</p>
+<p>The form shows a preview of the <strong>generated file name</strong> that the map will be stored under, built from the information you provided. Review the entries and press <strong>Upload</strong> (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-form">5.11</a>). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you chose to, as a record in the catalogue.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-raster-form"></span>
+<img src="images/module5/sis_raster_form.png" alt="The Upload GeoTIFF form, where the raster map and its metadata are entered together." width="100%" />
+<p class="caption">
+Figure 5.11: The Upload GeoTIFF form, where the raster map and its metadata are entered together.
+</p>
+</div>
 <div class="warning-box">
 <ul>
 <li>Although the SIS accepts raster property maps with different raster definitions, some features (such as the ‘Raster Calculator’ and ‘Recipe creation’) require rasters to have the exact same definition.</li>
@@ -972,7 +1038,7 @@ div.csl-indent {
 <p>How to create a new recipe:</p>
 <ul>
 <li>Navigate to the <em>Raster calculator</em> tab to view existing recipes, their statuses, and their last run times.</li>
-<li>Click <strong>+ New Recipe</strong> to open the editor ((Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>).</li>
+<li>Click <strong>+ New Recipe</strong> to open the editor ((Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-calculator-recipe">5.12</a>).</li>
 <li>Choose the <em>Project</em> (defaults to <em>DST</em>) and the <em>mapped property</em> for the output (defaults to <em>SUITABILITY</em>), or add new ones inline.</li>
 <li>Review the recipe identifier and description, which the SIS will propose automatically.</li>
 </ul>
@@ -980,7 +1046,7 @@ div.csl-indent {
 </div>
 <div id="adding-input-layers-and-thresholds" class="section level3 hasAnchor" number="5.11.2">
 <h3><span class="header-section-number">5.11.2</span> Adding input layers and thresholds<a href="soil-data-sharing-and-dissemination.html#adding-input-layers-and-thresholds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Click <strong>+ Add layer</strong> to add an input row, then for each row (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>):</p>
+<p>Click <strong>+ Add layer</strong> to add an input row, then for each row (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-calculator-recipe">5.12</a>):</p>
 <ul>
 <li>pick a <strong>Layer</strong> from the published rasters (its <strong>Min</strong> and <strong>Max</strong> are shown to guide you);</li>
 <li>set a <strong>Threshold</strong>—the cut-off value that splits the layer;</li>
@@ -990,11 +1056,23 @@ div.csl-indent {
 </div>
 <div id="running-the-recipe" class="section level3 hasAnchor" number="5.11.3">
 <h3><span class="header-section-number">5.11.3</span> Running the recipe<a href="soil-data-sharing-and-dissemination.html#running-the-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Press <strong>Run</strong> to execute the recipe (Figure <a href="#fig:sis-raster-calculator-recipe"><strong>??</strong></a>). The calculation runs in the background; the recipe list shows its status (queued, running, completed, or failed) and the time of the last run. When it completes, the result is registered as a <strong>new raster layer</strong>—available in the map viewer just like any uploaded map, and ready to be combined again in further recipes.</p>
+<p>Press <strong>Run</strong> to execute the recipe (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-calculator-recipe">5.12</a>). The calculation runs in the background; the recipe list shows its status (queued, running, completed, or failed) and the time of the last run. When it completes, the result is registered as a <strong>new raster layer</strong>—available in the map viewer just like any uploaded map, and ready to be combined again in further recipes.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-raster-calculator-recipe"></span>
+<img src="images/module5/sis_raster_calculator_recipe.png" alt="The Raster Calculator recipe screen: the output project and property, the input-layer table with thresholds and scores, and the recipe list with its Run button and status." width="100%" />
+<p class="caption">
+Figure 5.12: The Raster Calculator recipe screen: the output project and property, the input-layer table with thresholds and scores, and the recipe list with its Run button and status.
+</p>
+</div>
 </div>
 <div id="inspecting-the-result" class="section level3 hasAnchor" number="5.11.4">
 <h3><span class="header-section-number">5.11.4</span> Inspecting the result<a href="soil-data-sharing-and-dissemination.html#inspecting-the-result" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the recipe has run, open the resulting map in the <strong>map viewer</strong> (see Section <a href="soil-data-sharing-and-dissemination.html#explore-viewer">5.12</a>) and click any pixel to see how its value was built up (Figure <a href="#fig:sis-raster-calculator-result"><strong>??</strong></a>). For each location, the SIS shows the <strong>original value</strong> of each input layer, the <strong>score</strong> each one received after being reclassified by its threshold, and the <strong>sum</strong> of those scores—the value of the resulting map. This makes the calculation fully transparent and easy to check.</p>
+<p>Once the recipe has run, open the resulting map in the <strong>map viewer</strong> (see Section <a href="soil-data-sharing-and-dissemination.html#explore-viewer">5.12</a>) and click any pixel to see how its value was built up (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-raster-calculator-result">5.13</a>). For each location, the SIS shows the <strong>original value</strong> of each input layer, the <strong>score</strong> each one received after being reclassified by its threshold, and the <strong>sum</strong> of those scores—the value of the resulting map. This makes the calculation fully transparent and easy to check.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-raster-calculator-result"></span>
+<img src="images/module5/sis_raster_calculator_result.png" alt="Inspecting a pixel of the resulting map: each input layer's original value, its score after reclassification, and the sum that forms the result." width="100%" />
+<p class="caption">
+Figure 5.13: Inspecting a pixel of the resulting map: each input layer’s original value, its score after reclassification, and the sum that forms the result.
+</p>
+</div>
 <p>This recipe approach allows us to generate secondary data that identifies where multiple critical soil properties co-occur, helping us better understand the joint limitations of the soil at each location.</p>
 <div class="highlights">
 <ul>
@@ -1007,7 +1085,7 @@ div.csl-indent {
 </div>
 <div id="explore-viewer" class="section level2 hasAnchor" number="5.12">
 <h2><span class="header-section-number">5.12</span> Exploring data in the map viewer<a href="soil-data-sharing-and-dissemination.html#explore-viewer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Once data has been published, return to the map viewer to explore it (Figure <a href="#fig:sis-explore"><strong>??</strong></a>). From the viewer you can:</p>
+<p>Once data has been published, return to the map viewer to explore it (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-explore">5.14</a>). From the viewer you can:</p>
 <ul>
 <li><strong>Toggle layers</strong> on and off to control what is shown;</li>
 <li><strong>Change the base layer</strong>—the background map, such as a street map, satellite imagery, or terrain;</li>
@@ -1021,10 +1099,22 @@ div.csl-indent {
 </ul>
 <p>This makes the viewer a quick way to <strong>validate</strong> what you have just published—confirming that points landed where expected and that maps display with sensible values—before sharing the SIS address with colleagues.</p>
 <p>Clicking the ‘Data’ button in the soil profiles banner will display detailed information about the on-screen profiles and layers in both a table and a bar chart. This chart allows users to explore how soil properties vary with depth across different soil profiles.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-explore"></span>
+<img src="images/module5/sis_explore.png" alt="Exploring published profiles and maps in the SIS viewer." width="100%" />
+<p class="caption">
+Figure 5.14: Exploring published profiles and maps in the SIS viewer.
+</p>
+</div>
 </div>
 <div id="dashboard" class="section level2 hasAnchor" number="5.13">
 <h2><span class="header-section-number">5.13</span> Dashboard<a href="soil-data-sharing-and-dissemination.html#dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>Dashboard</strong> tab gives an at-a-glance overview of everything held on the node (Figure <a href="#fig:sis-dashboard"><strong>??</strong></a>). Summary cards show the totals—such as the number of soil profiles, rasters and projects—alongside charts that summarise the data: profiles and rasters per project, the most frequently measured soil properties, profiles sampled per year, the distribution of sampling depths, and the range of values recorded for each property. It is a quick way to understand what a node contains and to spot gaps or anomalies.</p>
+<p>The <strong>Dashboard</strong> tab gives an at-a-glance overview of everything held on the node (Figure <a href="soil-data-sharing-and-dissemination.html#fig:sis-dashboard">5.15</a>). Summary cards show the totals—such as the number of soil profiles, rasters and projects—alongside charts that summarise the data: profiles and rasters per project, the most frequently measured soil properties, profiles sampled per year, the distribution of sampling depths, and the range of values recorded for each property. It is a quick way to understand what a node contains and to spot gaps or anomalies.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sis-dashboard"></span>
+<img src="images/module5/sis_dashboard.png" alt="The Dashboard, summarising the soil profiles and maps held on the node." width="100%" />
+<p class="caption">
+Figure 5.15: The Dashboard, summarising the soil profiles and maps held on the node.
+</p>
+</div>
 </div>
 <div id="summary-1" class="section level2 hasAnchor" number="5.14">
 <h2><span class="header-section-number">5.14</span> Summary<a href="soil-data-sharing-and-dissemination.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>

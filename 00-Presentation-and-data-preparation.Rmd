@@ -210,7 +210,7 @@ Introduces ISO 19115/19139 standards for creating spatial metadata that enables 
 Demonstrates configuring web map servers for interactive soil data visualization and publishing datasets. The session provides practical training in establishing complete data sharing infrastructure, from database configuration through web service endpoints, ensuring participants can make their soil information FAIR (Findable, Accessible, Interoperable, Reusable) and contribute to global soil information systems while maintaining data quality and provenance.
 
 
-## Required downloads {-}
+## Required downloads {- #required-downloads}
 
 All training materials are distributed across **two complementary sources**.
 

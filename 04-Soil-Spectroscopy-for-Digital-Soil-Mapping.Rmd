@@ -252,13 +252,13 @@ In the following subsections, we demonstrate how to (i) import and visualize the
 
 ### How to get the data
 
-This module uses two input files, both of which are distributed via the Google Drive folder described in Section \@ref(required-downloads):
+This module uses two input files, both of which are distributed via the Google Drive folder described in [Required downloads](#required-downloads):
 
 - `MIR_KANSAS_data.xlsx`: an excel spreadsheet containing mid-infrared (MIR) spectra and associated soil reference measurements for soil samples collected across Kansas, USA. This file is loaded as the primary analytical dataset for spectral modelling and soil property prediction.
 
 - `Environmental_Covariates_250m_KANSAS.tif`: a multi-band raster file containing environmental covariates at 250 m spatial resolution derived from remote sensing and climate products. These covariates follow the SCORPAN framework and are used as predictors for digital soil mapping across the Kansas study area.
 
-Both files must be placed in the `01_data/module1/training_data/` folder of the project directory before running any code in this module, as all scripts reference that location via relative paths. Refer to Section \@ref(required-downloads) for step-by-step download and setup instructions.
+Both files must be placed in the `01_data/module1/training_data/` folder of the project directory before running any code in this module, as all scripts reference that location via relative paths. Refer to  [Required downloads](#required-downloads) for step-by-step download and setup instructions.
 
 ### Main R package sused here
 
@@ -512,7 +512,7 @@ plot(
 )
 ```
 
-SNV correction standardizes each spectrum individually. It subtracts the average value of the spectrum and divides by its standard deviation, so the transformed spectrum is centered around zero and expressed on a comparable scale. In Figure @ref(fig:fig-first-spectrum-der-snv), the main shape of the derivative spectrum is preserved, but the vertical scale changes. This is expected: SNV does not create new spectral features; it mainly reduces differences caused by overall signal intensity, sample packing, particle size, or other multiplicative effects. After SNV, the y-axis no longer represents absorbance directly, but standardized derivative values.
+SNV correction standardizes each spectrum individually. It subtracts the average value of the spectrum and divides by its standard deviation, so the transformed spectrum is centered around zero and expressed on a comparable scale. In Figure \@ref(fig:fig-first-spectrum-der-snv), the main shape of the derivative spectrum is preserved, but the vertical scale changes. This is expected: SNV does not create new spectral features; it mainly reduces differences caused by overall signal intensity, sample packing, particle size, or other multiplicative effects. After SNV, the y-axis no longer represents absorbance directly, but standardized derivative values.
 
 Now that we have seen what the pretreatments do, lets aply them to the entire spectra:
 
@@ -555,7 +555,7 @@ Calibration sampling refers to the process of selecting the samples that will be
 
 A common strategy is therefore to select samples that are spectrally representative of the full dataset. This means selecting samples that cover the main patterns of spectral variation, rather than choosing many samples that look very similar to each other. One method for doing this is $k$-means sampling, also known as the Næs approach. This method divides the spectral space into $k$ groups, or clusters, and selects the sample closest to the center of each cluster. In this way, the selected samples are spread across the main regions of the dataset.
 
-Figure @ref(fig:fig-cal-sampling) illustrates this idea using a simple synthetic dataset with two dimensions. In this example, the points can be imagined as samples distributed across a two-dimensional space (X and Y coordinates). The full dataset contains 900 points, and the task is to select representative subsets of different sizes. The figure shows the samples selected by $k$-means sampling when the target is to select 9, 45, 81, 117, 153, 189, 225, 261, and 297 samples. The red points indicate the samples selected for calibration.
+Figure\@ref(fig:fig-cal-sampling) illustrates this idea using a simple synthetic dataset with two dimensions. In this example, the points can be imagined as samples distributed across a two-dimensional space (X and Y coordinates). The full dataset contains 900 points, and the task is to select representative subsets of different sizes. The figure shows the samples selected by $k$-means sampling when the target is to select 9, 45, 81, 117, 153, 189, 225, 261, and 297 samples. The red points indicate the samples selected for calibration.
 
 This example shows how $k$-means sampling helps distribute the calibration samples across the dataset. In DRS, the same idea is applied to spectral data: the selected samples should cover the main spectral diversity, which can help produce calibration models that are more robust and more useful for prediction.
 
@@ -676,7 +676,7 @@ Model performance is evaluated using cross-validation at the soil profile level.
 Table \@ref(tab:tab-model-metrics) summarises the metrics used in this section to evaluate DRS predictions and digital soil mapping (DSM) models.
 
 
-```{r tab-model-metrics, echo=FALSE}
+```{r tab-model-metrics, echo=FALSE, eval=TRUE}
 metrics <- data.frame(
   Metric = c("Bias", "RMSE", "$R^2$", "NSE", "wNSE", "DRS prediction uncertainty"),
   `What it tells you` = c(
@@ -1211,7 +1211,7 @@ summary(soil_pts_aug$weight)
 
 Before integrating DRS-derived information, we first fit a baseline DSM model using laboratory SOC observations only. Environmental covariates representing soil-forming factors are used as predictors in a random forest model. This provides a reference spatial prediction of SOC across the study area, against which models incorporating spectroscopic data can be compared. The resulting baseline SOC map is shown in Figure \@ref(fig:fig-mod-baseline) and was generated using the following code:
 
-```{r mod-baseline, message=FALSE, warning=FALSE, eval=TRUE, results='hide'}
+```{r mod-baseline-fit, message=FALSE, warning=FALSE, eval=TRUE, results='hide'}
 library(ranger)
 
 # Prepare modeling table
@@ -1239,8 +1239,7 @@ mod_ref <- ranger(
 soc_map_ref <- predict(covs, mod_ref, na.rm = TRUE)
 ```
 
-```{r}
-# Plot baseline SOC map
+```{r fig-mod-baseline, echo=FALSE, eval=TRUE, fig.cap="Baseline SOC map predicted using laboratory observations only."}
 plot(soc_map_ref, main = "Baseline SOC map (laboratory observations only)", range = c(0, 4))
 ```
 
@@ -1250,7 +1249,7 @@ plot(soc_map_ref, main = "Baseline SOC map (laboratory observations only)", rang
 
 The augmented dataset combines laboratory SOC measurements with DRS-based predictions, increasing the number of observations available for model calibration. The modeling procedure follows the same structure as the baseline, with one difference: observation weights derived from the unified `SOC_sd` column are passed to the model, so that laboratory measurements and DRS predictions contribute proportionally to their respective uncertainties. The resulting SOC map is shown in Figure \@ref(fig:fig-mod-augmented) and was generated using the following code:
 
-```{r mod-augmented, message=FALSE, warning=FALSE, eval=TRUE, results='hide'}
+```{r mod-augmented-fit, message=FALSE, warning=FALSE, eval=TRUE, results='hide'}
 # Prepare modeling table
 soil_df_aug <- as.data.frame(soil_pts_aug, geom = "XY")[,
   c("x", "y", "SOC_0_30", "SOC_sd_0_30", "weight", cov_names)
@@ -1274,8 +1273,7 @@ mod_aug <- ranger(
 soc_map_aug <- predict(covs, mod_aug, na.rm = TRUE)
 ```
 
-```{r}
-# Plot augmented SOC map
+```{r fig-mod-augmented, echo=FALSE, eval=TRUE, fig.cap="SOC map predicted using the DRS-augmented dataset."}
 plot(soc_map_aug, main = "SOC map (DRS-augmented dataset)", range = c(0, 4))
 ```
 
@@ -1631,7 +1629,7 @@ msd_sd <- apply(msd_matrix, 1, sd)
 
 #### Step 4: Visualising distributional convergence
 
-Figure @ref(fig:msd-plot-density) illustrates the convergence of the calibration subset distribution toward the full population distribution, shown here for the first principal component as a representative example. The MSD curve in Figure @ref(fig:msd-plot-curve) integrates this comparison across all 10 retained components, each contributing equally to the average since the scores are scaled to unit variance.
+Figure \@ref(fig:msd-plot-density) illustrates the convergence of the calibration subset distribution toward the full population distribution, shown here for the first principal component as a representative example. The MSD curve in Figure \@ref(fig:msd-plot-curve) integrates this comparison across all 10 retained components, each contributing equally to the average since the scores are scaled to unit variance.
 
 ```{r msd-plot-density, message=FALSE, warning=FALSE, eval=TRUE, fig.cap="Empirical distributions of the first principal component of the processed MIR spectra. The solid black line shows the full population; semi-transparent blue lines show calibration subsets of increasing size."}
 plot(

@@ -1,5 +1,7 @@
 # Soil Data Sharing and Dissemination
-
+```{r reset-eval-module5, include=FALSE, eval=TRUE}
+knitr::opts_chunk$set(eval = TRUE)
+```
 ## Introduction
 
 For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe [@ARROUAYS20172]. These data collection efforts, conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives, represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
@@ -226,7 +228,7 @@ The workflow has five steps, all on the same page.
 
 In the **Soil profiles** tab, open the **Upload CSV** section, click the file selector, choose your `.csv` file, and press **Upload CSV** (Figure \@ref(fig:sis-profile-upload)). The file is uploaded to a temporary working area; nothing is published yet.
 
-```{r sis-profile-upload1, echo=FALSE, out.width="100%", fig.cap="Step 1: Selecting and uploading the CSV file."}
+```{r sis-profile-upload, echo=FALSE, out.width="100%", fig.cap="Step 1: Selecting and uploading the CSV file."}
 knitr::include_graphics("images/module5/01_sis_profile_upload.png")
 ```
 
