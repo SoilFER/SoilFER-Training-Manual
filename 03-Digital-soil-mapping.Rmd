@@ -32,7 +32,7 @@ The success of DSM in the early 2000s resulted from several factors: increased a
 
 Today, DSM is defined as the creation of spatial soil information systems using field and laboratory observations combined with spatial inference methods [@Lagacherie2006]. The theoretical framework for DSM was formalised in 2003, establishing the conceptual basis that guides current practice.
 
-### The SCORPAN Framework
+### The SCORPAN Framework {- #SCORPAN-Framework}
 
 The conceptual and methodological foundations of DSM were formalised by the *scorpan* framework [@McBratney2003]. This model represents a quantitative expansion of the classical factors of soil formation originally proposed by Dokuchaev in 1883 and later refined by @Jenny1941. While Jenny's *clorpt* model (climate, organisms, relief, parent material, time) was developed to explain soil genesis, the *scorpan* framework transforms this explanatory approach into an empirical predictive tool for spatial mapping.
 
@@ -457,7 +457,7 @@ selected_features <- getSelectedAttributes(boruta_result, withTentative = TRUE)
 
 `getSelectedAttributes()` returns the names of confirmed predictors. Setting `withTentative = TRUE` also includes tentative ones — a conservative choice that avoids discarding potentially useful variables.
 
-> **Feature selection in DSM: two schools of thought.** The field is divided on how to approach predictor selection. One tradition favours *expert-guided selection*: the practitioner chooses covariates based on known soil-forming processes, keeping the predictor set small, interpretable, and grounded in pedological theory. The opposing view argues for *data-driven inclusion*: feed all available covariates to the model and let the algorithm determine relevance — a pragmatic position when the environmental drivers of a given soil property are poorly understood or when the goal is purely predictive accuracy. Boruta sits between these extremes: it is automated and data-driven, but its output can still be audited against expert knowledge (e.g. rejecting a confirmed variable that has no plausible mechanistic link to the target, or overriding a rejection for a variable known to be important). In practice, the best approach depends on the study objective, the quality of the covariates, and the sample size available for model training.
+> **Feature selection in DSM: two schools of thought.** The field is divided on how to approach predictor selection. One tradition favours *expert-guided selection*: the practitioner chooses covariates based on known soil-forming processes, keeping the predictor set small, interpretable, and grounded in pedological theory. The opposing view argues for *data-driven inclusion*: feed all available covariates to the model and let the algorithm determine relevance — a pragmatic position when the environmental drivers of a given soil property are poorly understood or when the goal is purely predictive accuracy. Boruta sits between these extremes: it is automated and data-driven, but its output can still be audited against expert knowledge (e.g. rejecting a confirmed variable that has no plausible mechanistic link to the target or overriding a rejection for a variable known to be important). In practice, the best approach depends on the study objective, the quality of the covariates, and the sample size available for model training.
 
 
 ---
@@ -472,7 +472,7 @@ A standard Random Forest predicts the **expected value** (the mean) of the targe
 
 In practice, this means QRF can produce **prediction intervals**. Rather than saying "SOC here is 25 g kg⁻¹", the model can say "SOC here is 25 g kg⁻¹, and there is a 90% probability it falls between 18 and 34 g kg⁻¹". A narrow interval signals high confidence; a wide interval is the model's way of saying, transparently, that the environmental conditions at that location are poorly represented in the training data or that the local signal is inherently noisy.
 
-Applied across the entire study area, this produces two complementary maps: a **mean prediction map** (the best estimate of SOC) and an **uncertainty map** (the conditional standard deviation, σ). Together they operationalise the Universal Model of Soil Variation introduced in Part I: ẑ(s) = m(s) ± σ(s). The uncertainty map is not a by-product — it is a primary output that guides interpretation, identifies where additional sampling is most needed, and supports risk-aware decision making.
+Applied across the entire study area, this produces two complementary maps: a **mean prediction map** (the best estimate of SOC) and an **uncertainty map** (the conditional standard deviation, σ). Together they operationalise the Universal Model of Soil Variation introduced in Part I: ẑ(s) = m(s) ± σ(s). The uncertainty map is not a by-product — it is a primary output that guides interpretation, identifies where additional sampling is most needed, and supports risk-aware decision-making.
 
 The `ranger` package makes QRF computationally feasible at the scale of regional DSM studies. Enabling it requires a single argument: `quantreg = TRUE`.
 
@@ -491,7 +491,7 @@ cv_control <- trainControl(
 
 `savePredictions = TRUE` stores the out-of-fold predictions for every hyperparameter combination, which we will use in Section 7 to compute validation metrics without re-running the model.
 
-> **Limitation: standard CV assumes spatial independence.** Random fold assignment means a training fold and its test fold may contain samples that are geographically close, allowing the model to exploit spatial autocorrelation. This leads to over-optimistic accuracy estimates. Spatial cross-validation (e.g. `CAST::CreateSpacetimeFolds()`) addresses this by grouping spatially proximate samples into the same fold. For this training exercise we use standard CV; keep this limitation in mind when interpreting results.
+> **Limitation: standard CV assumes spatial independence.** Random fold assignment means a training fold and its test fold may contain samples that are geographically close, allowing the model to exploit spatial autocorrelation. This leads to over-optimistic accuracy estimates. Spatial cross-validation (e.g. `CAST::CreateSpacetimeFolds()`) addresses this by grouping spatially proximate samples into the same fold. For this training exercise, we use standard CV; keep this limitation in mind when interpreting results.
 
 #### Hyperparameter grid 
 
@@ -578,7 +578,7 @@ if (file.exists(acc_path)) {
 
 $$ME = \frac{1}{n}\sum_{i=1}^{n}(\hat{z}_i - z_i)$$
 
-A positive ME means the model systematically over-predicts; a negative ME means it under-predicts. Values near zero are desirable, but ME alone can be misleading: large positive and negative errors can cancel out.
+A positive ME means the model systematically over-predicts; a negative ME means it under-predicts. Values near zero are desirable, but ME alone can be misleading: large positive and negative errors can cancel each other out.
 
 **Mean Absolute Error (MAE)** avoids cancellation by averaging the absolute deviations:
 

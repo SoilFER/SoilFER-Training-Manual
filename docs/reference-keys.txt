@@ -99,11 +99,8 @@ lower-section-the-interactive-map
 step-5-prepare-your-google-drive-export-folder
 windows
 macos-linux
-windows-1
-macos
-linux
 introduction-to-soil-data-preparation-spatial-data
-part-one-introduction-to-r
+introduction-to-r
 understanding-the-rstudio-interface
 r-packages-extending-rs-capabilities
 what-are-packages
@@ -161,7 +158,7 @@ load-packages
 import-files
 data-exploration
 r-resources
-part-two-data-preparation-for-digital-soil-mapping-in-r
+data-preparation-for-digital-soil-mapping-in-r
 introduction
 preparing-soil-observations
 loading-and-exploring-raw-soil-data
@@ -236,7 +233,6 @@ field-protocol
 digital-soil-mapping
 fundamentals-of-digital-soil-mapping
 introduction-to-digital-soil-mapping
-the-scorpan-framework
 statistical-theory-for-predictive-soil-mapping
 mechanistic-versus-empirical-approaches
 sources-of-residual-variance
@@ -276,7 +272,7 @@ including-spectroscopic-predictions-in-digital-soil-mapping
 workflow-overview
 generating-drs-derived-soil-property-observations-for-dsm
 how-to-get-the-data
-main-r-package-sused-here
+main-r-packages-used-here
 load-and-plot-the-drs-data
 preprocessing-of-the-soil-spectra
 soc-prediction-from-drs-spectra-with-uncertainty-estimation

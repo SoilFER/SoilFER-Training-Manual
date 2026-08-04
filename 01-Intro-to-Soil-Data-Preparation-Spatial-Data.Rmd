@@ -1,6 +1,6 @@
 #	Introduction to Soil Data Preparation & Spatial Data
 
-## PART ONE: Introduction to R
+## Introduction to R
 ### Understanding the RStudio Interface
 
 **RStudio** provides an integrated environment that simplifies working with R. The interface is divided into four main panes (Fig. \@ref(fig:rstudio)):
@@ -28,7 +28,7 @@ Working in the **Code Editor** also makes it easier to organize code for later u
 ::: highlights
 -   Code can be written and executed directly in the **Console**.\
 -   Using  the **Code Editor** is more convenient for organizing and reusing code.\
--   Send a line or block of code to the console with `Ctrl + Enter` (Windows(), `Cmd + Enter` (macOS), or the equivalent shortcut in Linux.\
+-   Send a line or block of code to the console with `Ctrl + Enter` (Windows), `Cmd + Enter` (macOS), or the equivalent shortcut in Linux.\
 -   You can also run code by clicking the **Run** button in the script editor.\
 
 **Creating a new script:**
@@ -81,7 +81,7 @@ For soil science work, key packages include:
 
 -   `{aqp}`: Algorithms for Quantitative Pedology (soil profile data)
 
--   `{ggplot2}` : Advanced data visualization (part of tidyverse)
+-   `{ggplot2}`: Advanced data visualization (part of tidyverse)
 
 
 #### Installing Packages
@@ -108,7 +108,7 @@ installed.packages()
 
 ##### Install Packages from GitHub or Other Sources{-}
 
-Some *{packages}* are not yet available on CRAN or you may want a newer development versions from GitHub, Gitlab, bitbucket, or an URL.
+Some *{packages}* are not yet available on CRAN or you may want newer development versions from GitHub, Gitlab, bitbucket, or an URL.
 In these cases, you can use the `remotes` or `devtools` *{packages}*, with the functions `install_github()`, `install_gitlab()`, `install_bitbucket()` or `install_url()`:
 
 ```{r remotes-installation, echo=TRUE, eval=FALSE}
@@ -123,7 +123,7 @@ This is useful for accessing cutting-edge versions, experimental features, or to
 
 ##### Manual Installation of R Packages{-}
 
-You may need to install R *{packages}* manually especially when working in environments without internet access or when using custom-built *{packages}*.
+You may need to install R *{packages}* manually, especially when working in environments without internet access or when using custom-built *{packages}*.
 
 There are two common methods:
 
@@ -763,7 +763,7 @@ for (i in 1:length(ph_values)) {
 
 #### While Loops {#while-loop}
 
-A `while` loop repeats as long as a condition is `TRUE`. It is useful when you do not know in advance how many iterations you will need.
+A `while` loop repeats as long as a given condition is `TRUE`. It is useful when you do not know in advance how many iterations you will need.
 
 ```{r while-loops, echo=TRUE, eval=FALSE}
 # While loop continues until condition is FALSE
@@ -1117,7 +1117,7 @@ The `{dplyr}` package provides a clear set of 'data verbs' for manipulating tabu
 
 ##### Selecting Columns {#dplyr-select} {-}
 
-Use `select()` to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the chance of mistakes when working with wide datasets (many columns).
+Use `select()` to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the likelihood of making mistakes when working with wide datasets (many columns).
 
 ```{r dplyr-select, echo=TRUE, eval=FALSE}
 # Select specific columns
@@ -1221,8 +1221,8 @@ soil_data %>%
 
 #### Grouping and Summarizing Data by columns {#dplyr-group}
 
-`group_by()` creates invisible groups in your data using common values on one or more columns, while `summarise()` calculates compute summary statistics.
-Combined with `group_by()`, it becomes a powerful way to calculate metrics by soil type, site, land use, horizon, or any other grouping variable.
+`group_by()` creates invisible groups in your data using common values on one or more columns, while `summarise()` calculates summary statistics.
+Combining both data verbs is a powerful way to calculate metrics by soil type, site, land use, horizon, or any other grouping variable.
 
 ```{r dplyr-summarize, echo=TRUE, eval=FALSE}
 # Create example dataset
@@ -1458,7 +1458,7 @@ soil_data_na %>%
  
  - Replacing missing values (imputation) can change your results and should be done carefully.
 
- - Always document the method you used and consider whether missingness might be informative (e.g., values missing due to sampling or lab issues).
+ - Always document the method you use and consider whether missingness might be informative (e.g., values missing due to sampling or lab issues).
 
 :::
 
@@ -1598,7 +1598,7 @@ soil_lab
 
 - *Censored-data methods (recommended for inference):*
   - *Kaplan–Meier (KM)* (e.g., with the `{NADA}` package): estimates summary statistics without assuming substituted values by treating BDL results as left-censored.
-  - *ROS (Regression on Order Statistics)** (e.g., with the `{NADA}` package): commonly used for environmental data and often a good default when there are multiple detection limits.
+  - *ROS (Regression on Order Statistics)* (e.g., with the `{NADA}` package): commonly used for environmental data and often a good default when there are multiple detection limits.
 
 - *Censored regression (e.g., Tobit):* useful for modeling relationships while accounting for censoring.
 
@@ -1671,7 +1671,7 @@ Most soil science projects use data from external sources (field surveys, lab re
 ##### Reading CSV Files {#read-csv} {-}
 
 CSV (comma-separated values) and plain text (`.txt`) files are widely used for exchanging tabular data. In base R, you can import them with `read.csv()` or the more general `read.table()` (both from `{utils}`).
-These functions assumes the separator is a comma (,) and by default use `header = TRUE`, meaning the first row is treated as column names.
+These functions assume the separator is a comma (,) and by default use `header = TRUE`, meaning the first row is treated as column names.
 The output is a `data.frame`.
 For larger files, you can use `read_csv()`, from `{readr}` (included in `tidyverse`) which is usually faster and often does a better job of parsing column types.
 
@@ -1701,7 +1701,7 @@ head(soil_data)
 ```
 
 ::: highlights
-When possible, prefer project-relative paths like `"01_data/module1/kssl/KSSL_data.csv"`.
+Whenever possible, prefer project-relative paths like `"01_data/module1/kssl/KSSL_data.csv"`.
 They are easier to read and less likely to break if you reorganize folders.
 
 :::
@@ -1752,7 +1752,7 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 ### Additional resources {#r-resources}
 
-[R for Data Science (Grolemund & Wickham, 2017)](https://r4ds.had.co.nz/ "R for Data Science") : A free, beginner-friendly guide to doing data science with R, emphasizing best practices for reproducible and efficient analysis.
+[R for Data Science (Grolemund & Wickham, 2017)](https://r4ds.had.co.nz/ "R for Data Science"): A free, beginner-friendly guide to doing data science with R, emphasizing best practices for reproducible and efficient analysis.
 
 [Spatial Sampling with R](https://dickbrus.github.io/SpatialSamplingwithR/ "Spatial Sampling with R")[@brus2022b]: A practical guide to designing and analyzing spatial surveys in R, with examples and exercises for environmental and natural resource studies.
 
@@ -1767,11 +1767,9 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 [What They Forgot to Teach You About R](https://rstats.wtf/): A short, practical guide with tips and workflows for working effectively in R.
 
 
-### References  {.unnumbered}
 
 
-
-## PART TWO: Data preparation for Digital Soil Mapping in R
+## Data preparation for Digital Soil Mapping in R
 
 
 ```{r setup-ch1, include=FALSE, echo=FALSE, eval=TRUE}
@@ -1807,13 +1805,13 @@ load("SoilFER-Training-Resources/03_outputs/module1.RData")
 
 Data preparation is one of the most critical and time-consuming steps in Digital Soil Mapping (DSM). Raw soil laboratory data typically contains numerous inconsistencies, errors, and redundancies that must be systematically identified and resolved before use in modeling. Poor data quality at this stage directly translates to poor prediction models and unreliable soil property maps. 
 
-This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the Kansas **KSSL dataset** as a practical example. The training dataset as well as a tutorial on how to download it can be found in the section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
+This section demonstrates systematic approaches to soil data validation, cleaning, and harmonization using the Kansas **KSSL dataset** as a practical example. The training dataset, as well as a tutorial on how to download it, can be found in the section [How to use this book](#how-to-use) of this Technical Manual. The goal is to transform raw soil measurements into clean, consistent data ready for Digital Soil Mapping analysis and modeling.
 
 Raw soil laboratory data commonly contains the following types of quality issues:
 
 -   **Geographic errors**: Missing or out-of-bounds coordinates, coordinate swaps, and unit inconsistencies
 
--   **Depth inconsistencies**: Missing soil depths, zero-thickness horizons ((bottom = top), invalid depth logic (bottom \< top), overlapping intervals, and duplicate measurements 
+-   **Depth inconsistencies**: Missing soil depths, zero-thickness horizons (bottom = top), invalid depth logic (bottom \< top), overlapping intervals, and duplicate measurements 
 
 -   **Laboratory data problems**: Missing values, out-of-range soil properties, texture validation failures (clay+silt+sand $\neq$ 100%)
 
@@ -2162,7 +2160,7 @@ This staged approach prevents loss of valid measurements and ensures consistent 
 
 Laboratory analyses provide the soil property measurements used as soil property inputs for Digital Soil Mapping. Laboratory data must be quality-controlled to ensure completeness, plausible value ranges, and internal consistency (e.g., particle-size fractions summing to ~100%). This section describes standard extraction, harmonization, and validation checks.
 
-Laboratory analyses provide the soil property measurements used as inputs for Digital Soil Mapping. Prior to modelling, laboratory data must be quality-controlled to ensure: 
+Laboratory analyses provide soil property measurements used as inputs for Digital Soil Mapping. Prior to modelling, laboratory data must be quality-controlled to ensure: 
 
 (i) completeness of critical variables,
 (ii) numeric data types for analytical parameters,
@@ -2234,7 +2232,7 @@ After preparing the laboratory dataset, the analytical results are validated thr
 
  - Check 2: Texture validation — verify that sand, silt, and clay values are internally consistent (e.g., within expected limits and summing appropriately when expressed as percentages).
 
- - Check 3: Correction of out-of-bounds laboratory values — apply a proper correction strategy (targeted fixes where justified, or replacing suspect values with `NA`).
+ - Check 3: Correction of out-of-bounds laboratory values — apply a proper correction strategy (targeted fixes where justified or replacing suspect values with `NA`).
 
 
 ##### Check 1: Check each property against feasible analytical thresholds {-}
@@ -2311,7 +2309,7 @@ rm(i,idx,max_val,min_val, prop,prop_desc,x)
 
 ###### Reporting out-of-bounds for properties and audit trail {-}
 
-The following code generates an out-of-bounds summary by property, identify records with issues (often indicative of systematic errors), and export a full QC report for review and documentation. All issues identified in the dataset should be reviewed and, where necessary, corrected in the original input file. The `soil_property_validation_report.xlsx` file created serves as a guide to support and speed up this process.
+The following code generates an out-of-bounds summary by property, identifies records with issues (often indicative of systematic errors), and exports a full QC report for review and documentation. All issues identified in the dataset should be reviewed and, where necessary, corrected in the original input file. The `soil_property_validation_report.xlsx` file created serves as a guide to support and speed up this process.
 
 
 ```{r check1-report-lab, eval=FALSE}
@@ -2478,13 +2476,13 @@ Such inconsistencies must be resolved before depth harmonization and Digital Soi
 
 The objective of this section is to:
 
- -Detect duplicated or overlapping depth descriptions
+  - Detect duplicated or overlapping depth descriptions
+  
+  - Merge replicated analytical measurements when appropriate
 
- -Merge replicated analytical measurements when appropriate
+  - Separate or select among competing depth sequences
 
-- Separate or select among competing depth sequences
-
- -Retain only complete and internally consistent profiles
+  - Retain only complete and internally consistent profiles
 
 ##### Why duplicates occur {-}
 
@@ -2623,7 +2621,7 @@ site_lab
 
 ###### Check 2: Resolve ProfID for multiple depth sequences {-}
 
-Multiple independent profile descriptions likely exist in a single location. This data is valid and must remain in the dataset, but it has to be differentiated by its `ProfID`.
+Multiple independent profile descriptions likely exist in a single location. This data is valid and must remain in the dataset, but it must be differentiated by its `ProfID`.
 
 A `chain_horizons` function has been created to identify different sequences in horizons within each profile.
 
@@ -2757,14 +2755,14 @@ write_xlsx(site_lab, output)
 
 #### Harmonizing data for DSM
 
-As shown in the previous step, the database produced can still present several alternative profiles coexisting at the same location. These profiles present different top-depth valid horizon sequences that must be retained in the soil database. When multiple valid profiles exist at the same coordinates, DSM requires a single profile description at each single location. There are different profile selection criteria based in the data available and/or modeling purpose. Select the option using one of these criteria: :   
+As shown in the previous step, the database produced can still present several alternative profiles coexisting at the same location. These profiles present different top-depth valid horizon sequences that must be retained in the soil database. When multiple valid profiles exist at the same coordinates, DSM requires a single profile description at each single location. There are different profile selection criteria based on the data available and/or modeling purpose. Select the option using one of these criteria:   
+  
+  -   **Most complete**: Keep sequence with most horizons (more depth detail)
+  -   **Best coverage**: Keep sequence extending deepest (most information)
+  -   **Best quality** : Keep sequence with fewest missing values
+  -   **Monitoring**   : Keep sequence analyzed at the period of interest (requires `Date` information)
 
-          -   **Most complete**: Keep sequence with most horizons (more depth detail)
-          -   **Best coverage**: Keep sequence extending deepest (most information)
-          -   **Best quality** : Keep sequence with fewest missing values
-          -   **Monitoring**   : Keep sequence analyzed at the period of interest (requires `Date` information)
-
-In general, for monitoring activities, profiles can be selected upon a time key (e.g., `Date`, `campaign_id`) and treat profiles as separate observations information. This will allow to model temporal trends, or time-specific DSM surfaces. When sampling dates or campaign metadata are unavailable, the **most complete** (more depth detail) sequence is typically safest.
+In general, for monitoring activities, profiles can be selected upon a time key (e.g., `Date`, `campaign_id`) and be treated as separate observations. This will enable modeling temporal trends, or time-specific DSM surfaces. When sampling dates or campaign metadata are unavailable, the **most complete** (more depth detail) sequence is typically safest.
 
 
 ```{r select-most-complete-profile-per-location, eval=FALSE}
@@ -2962,11 +2960,11 @@ cat("  Output file: KSSL_DSM_0-30\n")
 
 #### Preparing data for spectroscopy analyses
 
-The original KSSL dataset includes visible–near infrared (vis–NIR) spectral observations associated with each soil horizon. To support spectroscopy-based estimation of soil properties, spectral observations must be integrated with the cleaned horizon dataset (`site_lab`) that contains unique and consistent soil profiles (`ProfID`), validated and harmonized horizon depths (`top`, `bottom`), corrected laboratory measurements.
+The original KSSL dataset includes visible–near infrared (vis–NIR) spectral observations associated with each soil horizon. To support spectroscopy-based estimation of soil properties, spectral observations must be integrated with the cleaned horizon dataset (`site_lab`) that contains unique and consistent soil profiles (`ProfID`), validated and harmonized horizon depths (`top`, `bottom`) and corrected laboratory measurements.
 
 Depth-consistent and quality-controlled reference data are essential for building robust spectral calibration models and avoiding bias introduced by duplicated horizons or invalid analytical values.
 
-In this dataset, each soil sample/horizon was measured four times by spectroscopy. Therefore, after merging spectra to the cleaned horizon dataset, the resulting dataset is expected to contain approximately 4× more rows than the resulting cleaned dataset (subject to missing spectra or incomplete records).
+In this dataset, each soil sample/horizon was measured four times by spectroscopy. Therefore, after merging spectra into the cleaned horizon dataset, the resulting dataset is expected to contain approximately 4× more rows than the resulting cleaned dataset (subject to missing spectra or incomplete records).
 
 Use a `left join` to preserve the cleaned horizon dataset as the reference. This ensures that every cleaned horizon remains in the merged dataset (even if spectra are missing), and no spectral-only records are introduced without corresponding cleaned horizon metadata. The join key for this operation is `HorID` in the cleaned dataset and `smp_id` in the spectral dataset. Then save the results as `-csv`and `.xlsx` files.
 
@@ -2994,7 +2992,7 @@ rm(spec)
 
 
 ::: {.warning-box}
- **\ - Best practices and recommendations**
+ \ - **Best practices and recommendations**
 
  - **Trust but verify**: Never assume data is correct. Always validate systematically.
 
@@ -3010,7 +3008,7 @@ rm(spec)
 
 \
 
-**\ - Common pitfalls to avoid**
+\ - **Common pitfalls to avoid**
 
 | Pitfall                  | Problem                             | Prevention                        |
 |-----------------------|-----------------------|---------------------------|
@@ -3037,14 +3035,14 @@ rm(spec)
 ### Spatial Analysis in R
 
 Spatial data has become an essential component of modern soil science.\
-All steps of Digital Soil Mapping involve to work with spatial datasets.
+All steps of Digital Soil Mapping involve working with spatial datasets.
 
 This session introduces the fundamental concepts and tools needed to process, analyze, and visualize spatial data within R, using the most complete spatial packages available:
   
   -   **`{sf}`** for vector data (points, lines, polygons), and\
   -   **`{terra}`** for raster data (continuous surfaces, grids, remote sensing products).
 
-The tutorial includes concepts as **vector** and **raster** spatial data **coordinate reference systems (CRS)**, spatial data operators for vector (buffer, intersection, union, spatial join) and raster (crop, mask, resample, raster algebra) data and translate raster informatio into vector structures such as soil sampling locations.
+The tutorial includes concepts such as **vector** and **raster** spatial data **coordinate reference systems (CRS)**, spatial data operators for vector (buffer, intersection, union, spatial join) and raster (crop, mask, resample, raster algebra) data and translate raster information into vector structures such as soil sampling locations.
 
 
 #### Spatial Data Concepts
@@ -3064,7 +3062,7 @@ This deterministic perspective—linking environmental variation to soil variati
 
 #### Spatial Data Types: Vector vs Raster Data
 
-Spatial data is commonly stored in two major formats: vector and raster (Fig. \@ref(fig:VectRast)) .
+Spatial data is commonly stored in two major formats: vector and raster (Fig. \@ref(fig:VectRast)).
 
    - Vector data (points, lines, polygons) for discrete objects.
   
@@ -3088,7 +3086,7 @@ knitr::include_graphics("images/module1/vectorVSraster.png")
 | Land units, physiographic regions | POLYGON  |
 
 
-**Raster data** represents the landscape as a grid of equally sized cells, each storing a numeric value representing an area defined by the spatial resolution of the raster layer. Raster layers are ideal for continuous spatial phenomena such as soil properties in Digital Soil Mapping .
+**Raster data** represents the landscape as a grid of equal sized cells, each storing a numeric value representing an area defined by the spatial resolution of the raster layer. Raster layers are ideal for continuous spatial phenomena such as soil properties in Digital Soil Mapping.
 
 Examples of raster layers include:
 
@@ -3111,7 +3109,7 @@ A Coordinate Reference System (CRS) defines how spatial coordinates relate to po
 
 The choice of CRS has a major impact on the accuracy of distances, areas, buffer operations, overlays between layers, and spatial modelling outputs.
 
-All spatial objects must should include a CRS as part of their metadata. Many common spatial errors come from mixing layers with different or missing CRS.
+All spatial objects must include a CRS as part of their metadata. Many common spatial errors come from mixing layers with different or missing CRS.
 
 
 ##### Geographic vs projected coordinate systems {-} 
@@ -3124,7 +3122,7 @@ Geographic Coordinate Systems are suitable for storing global data, but they are
 knitr::include_graphics("images/module1/degreeEq.png")
 ```
 
-To overcome these limitations, Projected Coordinate Systems (PCS) are designed to reduce distortion over a specific region by transforming the curved surface of the Earth onto a flat plane. In a PCS, coordinates are expressed in linear units (usually meters), which makes them suitable for accurate geometric operations such as distance, area, and buffering. Typical examples include UTM zones (e.g., `EPSG:32614`, `EPSG:32632`), national grid systems, and local projections optimized for area-specific precision. 
+To overcome these limitations, Projected Coordinate Systems (PCS) are designed to reduce distortion over a specific region by transforming the curved surface of the Earth into a flat plane. In a PCS, coordinates are expressed in linear units (usually meters), which makes them suitable for accurate geometric operations such as distance, area, and buffering. Typical examples include UTM zones (e.g., `EPSG:32614`, `EPSG:32632`), national grid systems, and local projections optimized for area-specific precision. 
 
 To find and compare appropriate CRS options for your data, you can explore available CRS definitions using [https://epsg.io](https://epsg.io/ "epsg.io: Coordinate Systems Worldwide").
 
@@ -3161,7 +3159,7 @@ In practice, an *`sf` object* is essentially a data frame that includes a geomet
 
 ###### Importing and Exporting Vector Data {-}
 
-Vector data represent discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
+Vector data represents discrete geographic features such as soil profile locations, field plots, administrative boundaries, roads, or land units.
 Vector data is typically stored in formats such as Shapefile, GeoPackage, GeoJSON, or other OGC-compliant files, but can also be stored in plain files with associated coordinates such as `CSV` files.
 
 
@@ -3169,7 +3167,7 @@ Vector data is typically stored in formats such as Shapefile, GeoPackage, GeoJSO
 
 Spatial point layers in R can be created directly from regular data frames using the `{sf}` package.
 The function `st_as_sf()` converts a data frame into a spatial (vector) object, as long as the data frame contains coordinate columns (e.g., longitude and latitude or projected X/Y coordinates).
-To perform this conversion, users must specify the columns containing the coordinates. Even if not mandatory, it is highly recommended also to set the coordinate reference system:
+To perform this conversion, users must specify the columns containing the coordinates. Even if not mandatory, it is also highly recommended to set the coordinate reference system:
 
 Since importing a `.csv` file in R typically produces a data frame, the workflow is essentially the same as in the previous example. Once the table is loaded and includes coordinate columns (e.g., X and Y in longitude/latitude), it can be converted to an sf object using `st_as_sf()` by specifying the coordinate columns and the CRS.
 
@@ -3239,7 +3237,7 @@ head(sf_3857)
 
 ##### Inspecting and manipulating `{sf}` Object {-}
 
-Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`,`str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
+Because `sf` objects inherit from the `data.frame` class, you can explore an sf object with the same tools as data frames (`class()`, `str()`, `summary()`), plus a few `{sf}` helpers (`st_geometry_type()`).
 
 ```{r vector-geom, echo=TRUE, eval=TRUE}
 # Check structure
@@ -3256,7 +3254,7 @@ st_bbox(soil_sf)
 
 
 `{sf}` objects can be manipulated in the same way as standard data frames while retaining all spatial information.
-Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be directly applied on `sf` objects .
+Base R and `{dplyr}` verbs such as `filter()`, `select()`, `mutate()`, can be directly applied on `sf` objects.
 
 ```{r vector-dplyr, echo=TRUE, eval=TRUE}
 # Subset sf rows and columns using the pipping (%>%) operator with {dplyr}
@@ -3363,7 +3361,7 @@ In soil data management workflows, it is common to restrict analyses to a define
 
 Two core operations are used repeatedly in Soil Data Management and Digital Soil Mapping:
 
-* **Clip / subset by boundary** (`st_intersection()`): keeps only the features (or parts of features) that fall inside a target boundary.
+* **Clip/subset by boundary** (`st_intersection()`): keeps only the features (or parts of features) that fall inside a target boundary.
 
 * **Dissolve boundaries** (`st_union()`): merges multiple polygons into a single boundary by removing internal borders.
 
@@ -3585,9 +3583,9 @@ The workflows presented in this tutorial use environmental covariates as proxies
 
 - **Sampling design**: covariates are used to identify environmental clusters that should be sampled, helping maximize the representation of soil variability while optimizing sampling effort.
 
-- **Digital Soil Mapping**: soil properties measured at known point locations (vector data) are related to environmental characteristics (raster covariates) to train statistical or machine learning models that predict soil properties continuously across space.
+- **Digital Soil Mapping (DSM)**: soil properties measured at known point locations (vector data) are related to environmental characteristics (raster covariates) to train statistical or machine learning models that predict soil properties continuously across space.The foundations of DSM were defined by the *scorpan* framework, which transforms explanatory factors of soil genesis to provide an empirical predictive tool for spatial mapping (further explained in [The SCORPAN Framework](#SCORPAN-Framework))
 
-The preparation of covariates is a time-consuming task. Therefore this tutorial uses a pre-compiled set of environmental covariates to fulfil these tasks. It assembles five categories of environmental covariates cloud-optimized GeoTIFF files.
+The preparation of covariates is a time-consuming task. Therefore, this tutorial uses a pre-compiled set of environmental covariates to fulfil these tasks. It assembles five categories of environmental covariates cloud-optimized GeoTIFF files.
 
 **Climate data** is sourced from two complementary products. 
 
@@ -3599,7 +3597,7 @@ The preparation of covariates is a time-consuming task. Therefore this tutorial 
 
 **Vegetation and soil indices** are computed from Sentinel-2 Surface Reflectance imagery (Copernicus/S2\_SR\_HARMONIZED), filtered to scenes with less than 10% cloud cover and cloud-masked using the QA60 quality band. The script computes the Normalized Difference Vegetation Index (NDVI), Enhanced Vegetation Index (EVI), Normalized Difference Bareness and Soil Index (NDBSI), Redness Index, Brightness Index, NBR+, and the Visible-Near-Short-wave Infrared Index (VNSIR). Seasonal vegetation dynamics are additionally captured through MODIS FPAR mean and standard deviation layers for four three-month periods covering the full annual cycle.
 
-**Soil Available Water Content** represent the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
+**Soil Available Water Content** represents the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
 
 **Land cover** is represented by the ESA WorldCover 2021 product at 10 m resolution, from which a cropland mask is derived by isolating the cropland class (value 40) for use in masking or stratified analyses.
 
@@ -3609,22 +3607,22 @@ The preparation of covariates is a time-consuming task. Therefore this tutorial 
 
 ##### Download Covariate Rasters {-}
 
-A dedicate Google Drive folder has been created to store large raster files used in this tutorial. Users can obtain the data directly from the folder `rasters` following link:
+A dedicated Google Drive folder has been created to store large raster files used in this tutorial. Users can obtain the data directly from the folder `rasters` following link:
 [https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu](https://drive.google.com/drive/folders/1K7tq9zX5HsqbqWcNoT27WtfPtehcKBCu)
 
 Data in this folder includes:
 
- - [**Cropland_Mask_KANSAS.tif**](https://drive.google.com/file/d/1wh6xSW03YKrCHScJJa0c_cSA1XZ8tYY-/view?usp=drive_link) (22.5 mb): Binary raster with presence (1) and absence (NA) of crops in Kansas at 20 meter resolution. This file is used as a mask to avoid non-cropped areas in the analyses. 
- - [**Environmental_Covariates_250m_KANSAS.tif**](https://drive.google.com/file/d/1wURPmPLi2LdYq6zBhZN1e91EiiZsk8oX/view?usp=drive_link) (203.2 mb): Multi-layer raster stack with climatic, remote sensing, topographic information at 250 meter resolution.
- - [**HighRes_Covariates_100m_Kansas.tif**](https://drive.google.com/file/d/1xf89gn4pBKsb5ynVIfKZd4MbT3ZL1Nf2/view?usp=drive_link) (535.6 mb). 100 m resolution rasters with remote sensing derived information.
- - [**DEM_KANSAS.tif**](https://drive.google.com/file/d/14KmmjjTfVD7jTEuQqCLkfcQmXy0VBDkA/view?usp=drive_link) (21.4 mb). 100 m resolution rasters with remote sensing derived information.
- - [**Slope_KANSAS.tif**](https://drive.google.com/file/d/1rESziVFlEvEEmrKacb88R1pKZxbrU7qS/view?usp=drive_link) (61.2 mb). 100 m resolution rasters with remote sensing derived information.
- - [**Geomorphon_Landforms_KANSAS**][@amatulli2020_geomorpho90m](https://drive.google.com/file/d/1E03U42UPl9SKMfUGZZ8qDCno2H_kPxUB/view?usp=drive_link) (14.9 mb). 90 m resolution raster of geomorphological types from Geomorpho90m – Global High-Resolution Geomorphometry Layers.
+ - [**Cropland_Mask_KANSAS.tif**](https://drive.google.com/file/d/1wh6xSW03YKrCHScJJa0c_cSA1XZ8tYY-/view?usp=drive_link) (22.5 mb): Binary raster with presence (1) and absence (NA) of crops in Kansas at 20-meter resolution. This file is used as a mask to avoid non-cropped areas in the analyses. 
+ - [**Environmental_Covariates_250m_KANSAS.tif**](https://drive.google.com/file/d/1wURPmPLi2LdYq6zBhZN1e91EiiZsk8oX/view?usp=drive_link) (203.2 mb): Multi-layer raster stack with climatic, remote sensing, topographic information at 250-meter resolution.
+ - [**HighRes_Covariates_100m_Kansas.tif**](https://drive.google.com/file/d/1xf89gn4pBKsb5ynVIfKZd4MbT3ZL1Nf2/view?usp=drive_link) (535.6 mb). 100-meter resolution rasters with remote sensing derived information.
+ - [**DEM_KANSAS.tif**](https://drive.google.com/file/d/14KmmjjTfVD7jTEuQqCLkfcQmXy0VBDkA/view?usp=drive_link) (21.4 mb). 100-meter resolution rasters with remote sensing derived information.
+ - [**Slope_KANSAS.tif**](https://drive.google.com/file/d/1rESziVFlEvEEmrKacb88R1pKZxbrU7qS/view?usp=drive_link) (61.2 mb). 100-meter resolution rasters with remote sensing derived information.
+ - [**Geomorphon_Landforms_KANSAS**][@amatulli2020_geomorpho90m](https://drive.google.com/file/d/1E03U42UPl9SKMfUGZZ8qDCno2H_kPxUB/view?usp=drive_link) (14.9 mb). 90-meter resolution raster of geomorphological types from Geomorpho90m – Global High-Resolution Geomorphometry Layers.
  - [**TerraClimate_AvgTemp_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1TyyErHkQeNW9Q_wchW9Fa_0UpdaWS_-_/view?usp=drive_link) (17.7 mb). 100 m TerraClimate monthly averaged Temperature rasters from 1981-2023.
  - [**TerraClimate_PET_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1b9wM3zwggBFS98pFEyWUFtpKN9ORq9we/view?usp=drive_link) (17.2 mb). 100 m TerraClimate monthly averaged Potential Evapotranspiration rasters from 1981-2023.
  - [**TerraClimate_Precip_1981_2023_KANSAS.tif**](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb).  100 m TerraClimate monthly accumulated mean Precipitation rasters from 1981-2023.
  - [**sol_available.water.capacity_usda.mm_m_250m_0..200cm_1950..2017_v0.1.tif**][@gupta_zenodo_2019](https://drive.google.com/file/d/1nG0yCr-tNPzeeEvzcGrtdQxRHnQ6NMH5/view?usp=drive_link).  250-meter resolution geospatial raster dataset representing the mean available water capacity (AWC - in mm) of soil from 0 to 200 cm depth.
- - [**ESA_WorldCover_2021_KANSAS**][@zanaga2022_worldcover2021_v200](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb). 10 m resolution rasters of landcover types from the European Space Agency WorldCover,  based on Sentinel-1 and Sentinel-2 data.
+ - [**ESA_WorldCover_2021_KANSAS**][@zanaga2022_worldcover2021_v200](https://drive.google.com/file/d/1xq6y8jNUjDbipXHQE1w67f_vxQeXACkH/view?usp=drive_link) (11.9 mb). 10-meter resolution rasters of landcover types from the European Space Agency WorldCover,  based on Sentinel-1 and Sentinel-2 data.
  
  
 *Table. ESA WorldCover (global land cover) legend, the class codes and color in the Map band.*
@@ -3650,7 +3648,7 @@ The data can also be generated directly using Google Earth Engine (GEE). GEE pro
 
 The script provided with this training (`02_scripts/module1/1_gee_soilfer_env_covariates.txt`) contains step-by-step instructions to download the covariate data from the GEE platform. 
 
-The data has been already processed for this training and is available to download from this [link](https://drive.google.com/drive/folders/1EGrkhbMTi2qglemuD_onegAqLWZb3BbT). Place these files into the `training_data` folder within `01_data/module1`and set the path for the covariate rasters and spectral data:
+The data has already been processed for this training and is available to download from this [link](https://drive.google.com/drive/folders/1EGrkhbMTi2qglemuD_onegAqLWZb3BbT). Place these files into the `training_data` folder within `01_data/module1` and set the path for the covariate rasters and spectral data:
 
 ```{r training_dir, echo=TRUE, eval=FALSE}
 # Define the relative path to the folder with the downloaded covariates
@@ -3953,7 +3951,7 @@ knitr::include_graphics("SoilFER-Training-Resources/01_outputs/high_temp.png")
 
 ###### Combining environmental (Raster) and soil (Vector) information {-}
 
-In Digital Soil Mapping, the calibration of statistical model need to link the analytical properties of soils with the environmental covariates. This is done by their overlapping position. To link soil observations (points) with environmental covariates (rasters), extract raster values at sample locations using `extract()`.
+In Digital Soil Mapping, the calibration of statistical models need to link the analytical properties of soils with the environmental covariates. This is done by their overlapping position. To link soil observations (points) with environmental covariates (rasters), extract raster values at sample locations using `extract()`.
 
 ```{r raster-extract, echo=TRUE, eval=FALSE}
 # Extract covariate values at point locations (soils_sf)
@@ -3974,7 +3972,7 @@ This dataset contains all the information to be used in further analyses of Samp
 
 #### Calculation of Soil–Climate Rasters (Newhall Simulation Model)
 
-The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics[@NewhallBerdanier1996]. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.
+The Newhall Simulation Model (NSM) is a water-balance–based model originally developed to estimate soil moisture and soil temperature regimes from climate and site characteristics [@NewhallBerdanier1996]. It simulates the seasonal dynamics of soil water storage and temperature using monthly climate inputs and simple soil physical assumptions. The resulting regime classes (e.g., ustic, udic, xeric; and temperature regimes such as mesic or thermic) are widely used in soil survey and soil classification contexts, and they are also useful as environmental descriptors in DSM workflows.
 
 In this tutorial, we use the R implementation of the NSM available in the `{jNSMR}` package.
 
@@ -3991,7 +3989,7 @@ The model requires several raster layers as inputs:
 
  * Available Water Capacity (AWC): to represent, in mm, how much water the soil can store (typically for a reference depth, e.g., 0–200 cm), which controls how quickly soils dry after rainfall.
 
- * Longitude and latitude: to provide each grid cell’s geographic position, supporting calculations that depend on seasonal timing and and solar geometry (e.g., daylength patterns and the timing of solstices used in some Newhall metrics such as 'days after summer solstice' or 'after winter solstice').
+ * Longitude and latitude: to provide each grid cell’s geographic position, supporting calculations that depend on seasonal timing and solar geometry (e.g., daylength patterns and the timing of solstices used in some Newhall metrics such as 'days after summer solstice' or 'after winter solstice').
  
 This workflow processes monthly temperature and precipitation data from large time series (1981--2023), computes long-term monthly averages, and prepares all the above described rasters in a stack to run the Newhall soil–climate model (via `{jNSMR}`). The output includes soil-climate diagnostics and regime classifications (e.g., temperature and moisture regimes), which can be used as covariates in Sampling Design and Digital Soil Mapping.
 
@@ -4014,7 +4012,7 @@ agg.factor <- 1       # Optional aggregation to speed up Newhall calculations (1
 
 ##### Prepare monthly average rasters of climatic data {-}
 
-TerraClimate files contains large time series (1981-2020) of climatic records. Monthly temperature and precipitation averages from these series must be calculated as independent raster files. Temperature in this dataset if scaled (e.g., ×10) to avoid decimal point data and save storage space this it has to be adjusted to real values. The following chunk computes the averages for every month across all years, producing a 12-layer raster stack of monthly averages.
+TerraClimate files contain large time series (1981-2020) of climatic records. Monthly temperature and precipitation averages from these series must be calculated as independent raster files. Temperature in this dataset if scaled (e.g., ×10) to avoid decimal point data and save storage space this it has to be adjusted to real values. The following chunk computes the averages for every month across all years, producing a 12-layer raster stack of monthly averages.
 
 ```{r newhall-t-p-avg, echo=TRUE, eval=FALSE}
 # Monthly temperature time series (multi-year, monthly layers)
@@ -4091,7 +4089,7 @@ In addition to monthly precipitation and temperature, NSM uses a number of site 
 
  - Longitude and latitude.
  
- These raster layers are obtained from different sources thus their geometry have to be harmonized to create a unique raster stack for the calculations. 
+These raster layers are obtained from different sources thus, their geometry has to be harmonized to create a unique raster stack for the calculations. 
  
  
 ```{r newhall-resample, echo=TRUE, eval=FALSE}

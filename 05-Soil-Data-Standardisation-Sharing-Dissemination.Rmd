@@ -4,18 +4,18 @@ knitr::opts_chunk$set(eval = TRUE)
 ```
 ## Introduction
 
-For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe [@ARROUAYS20172]. These data collection efforts, conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives, represent one of the most comprehensive scientific data compilation worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
+For more than a century, tremendous resources and scientific effort have been invested in collecting and analysing soil information across the globe [@ARROUAYS20172]. These data collection efforts, conducted through national soil surveys, research institutions, agricultural programmes, and environmental monitoring initiatives, represent one of the most comprehensive scientific data compilations worldwide. This data, often referred to as legacy data, holds extraordinary potential with applications spanning food security, climate change mitigation, land degradation assessment, and sustainable land management.
 
 However, this accumulated soil knowledge remains largely inaccessible and unusable for integrated local, regional or global analyses. The challenge is its fragmentation into thousands of isolated data repositories, each maintained independently by different organisations using their own formats, naming conventions, units of measurement, and analytical procedures. When properly compiled, organised, and standardised, historical soil surveys can serve as basic input or validation data for Digital Soil Mapping activities [@Medeiros24]. However, realising this potential requires solving the fragmentation problem through systematic standardisation.
 
-In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network of Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems, but contribute that data following standardised formats and protocols for data preparation and sharing.
+In 2012, FAO formally established the Global Soil Partnership (GSP) to coordinate international efforts in soil governance and soil science. Within this framework, GSP mandated the International Network of Soil Information Institutions (INSII) to develop and implement GloSIS, the Global Soil Information System. Rather than attempting to centralise all soil data into a single organisation or location, GloSIS functions as a decentralised spatial data infrastructure that enables soil data management and sharing within a global standardisation framework. National soil institutes, research organisations, and other data holders maintain control of their data in their own systems but contribute that data following standardised formats and protocols for data preparation and sharing.
 
 Making soil data usable, however, is not only about preparing it once. It is about keeping it **online, discoverable, and ready to use** by others. This included all types of soil data information, from point observations gathered in the field and laboratory, existing soil maps and soi property maps derived from Digital Soil Mapping. This is the role of a **Soil Information System (SIS)**: a web-based platform that allows soil scientists to publish their own data on the internet, describe it properly so that others can find and trust it, and visualise it together with data from other providers.
 
 In this module we focus on the SIS from the point of view of a soil scientist who has data to share. You will learn what the SIS is, how it standardises and shares your data so that it can take part in the wider GloSIS federation. The module introduces how to use the SIS web application to:
 
 - publish **soil profile/layer (point) data** stored as CSV files;
-- publish the **raster maps** you produce from soil observations and environmental covariates (the production of these maps is covered in the module 3 - **Digital Soil Mapping**);
+- publish the **raster maps** you produce from soil observations and environmental covariates (the production of these maps is covered in module 3 - **Digital Soil Mapping**);
 - explore your data in the built-in map viewer;
 - combine existing maps into new ones with the **Raster Calculator**.
 
@@ -27,7 +27,7 @@ Designed for ease of use, the SIS operates fully within your web browser with no
 
 A **Spatial Data Infrastructure (SDI)** is the combination of technology, standards, and agreements that lets people *share geographic data over the internet* in a consistent way. Instead of e-mailing files back and forth, an SDI publishes data through standard web services, so that any compatible application (a web map, a desktop GIS such as QGIS, or another institution's platform) can connect to the same data and use it directly.
 
-The SIS is an SDI specialised for soil information. It brings together, in one place and in a comparable form, the two kinds of products soil scientists generate:
+The SIS is an SDI specialised on soil information. It brings together, in one place and in a comparable form, the two kinds of products soil scientists generate:
 
 - **Soil profiles (point data)**: georeferenced observations of soil properties measured at specific sampling locations and depths.
 - **Raster maps (gridded data)**: continuous surfaces, typically produced by Digital Soil Mapping, that predict a soil property across an area from soil observations and environmental covariates.
@@ -175,7 +175,7 @@ knitr::include_graphics("images/module5/sis_account.png")
 
 ## Administration
 
-The **Administration** tab is available only to users with **administrator** rights, and is where the SIS node itself---rather than the data in it---is managed. It brings together four areas: **Settings**, **Users**, **Software update**, and **GloSIS Federation**.
+The **Administration** tab is available only to users with **administrator** rights and is where the SIS node itself---rather than the data in it---is managed. It brings together four areas: **Settings**, **Users**, **Software update**, and **GloSIS Federation**.
 
 ### Settings
 
@@ -339,7 +339,7 @@ Choose a **licence** for the map, decide whether to **publish it to the catalogu
 
 ### Step 6 --- Review and upload
 
-The form shows a preview of the **generated file name** that the map will be stored under, built from the information you provided. Review the entries and press **Upload** (Figure \@ref(fig:sis-raster-form)). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you chose to, as a record in the catalogue.
+The form shows a preview of the **generated file name** that the map will be stored under, built from the information you provided. Review the entries and press **Upload** (Figure \@ref(fig:sis-raster-form)). The SIS first inspects the GeoTIFF to confirm it is valid, then registers and publishes it. Once finished, the map is available as a layer in the map viewer and, if you choose to, as a record in the catalogue.
 
 ```{r sis-raster-form, echo=FALSE, out.width="100%", fig.cap="The Upload GeoTIFF form, where the raster map and its metadata are entered together."}
 knitr::include_graphics("images/module5/sis_raster_form.png")
@@ -365,7 +365,7 @@ The calculator operates using **recipes** A recipe is a saved set of rules that 
 
 Recipes function as formulas that calculate secondary rasters based on reclassified combinations of existing ones. They allow you to combine binary-classified soil property layers using specific threshold values defined in the recipe. This process produces a new raster that summarizes the combined, reclassified original data.
 
-For example, You can generate composite soil threat maps using individual sensitive soil raster maps (e.g., acidification, erosion, compaction, and sealing). By setting threshold values for each individual threat, the recipe produces a categorical map indicating the total number of soil threats occurring at any given location.
+For example, you can generate composite soil threat maps using individual sensitive soil raster maps (e.g., acidification, erosion, compaction, and sealing). By setting threshold values for each individual threat, the recipe produces a categorical map indicating the total number of soil threats occurring at any given location.
 
 How to create a new recipe:
 
@@ -374,7 +374,7 @@ How to create a new recipe:
 - Choose the *Project* (defaults to *DST*) and the *mapped property* for the output (defaults to *SUITABILITY*), or add new ones inline.
 - Review the recipe identifier and description, which the SIS will propose automatically.
 
-In this example, we will generate a new raster (KSSL threats) for the KANSAS project, that combines the pH, organic carbon, bulk density, and sand content layers. Each input raster is first reclassified into a binary (0-1) map based on the thresholds defined in the table. Finally, these binary layers are summed to produce the overall threat map.
+In this example, we will generate a new raster (KSSL threats) for the KANSAS project, which combines the pH, organic carbon, bulk density, and sand content layers. Each input raster is first reclassified into a binary (0-1) map based on the thresholds defined in the table. Finally, these binary layers are summed up to produce the overall threat map.
 
 ### Adding input layers and thresholds
 

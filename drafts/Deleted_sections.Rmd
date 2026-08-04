@@ -1,0 +1,73 @@
+---
+title: "Deleted sections"
+output: html_document
+date: "2026-08-04"
+---
+## Installation of Docker Desktop and Docker Compose {-}
+
+Docker is an open-source platform that lets you build, deploy, and run applications inside lightweight, portable units called containers. A container bundles the code, runtime, libraries, and configuration into a single package, so the application behaves identically on any machine – Windows, macOS, or Linux.
+
+The `GloSIS-ETL` application used in module 4 is delivered as a set of 2 Docker containers that run and are orchestrated simultaneously with a single command. **Docker Desktop** is the GUI tool that manages containers on your local machine. It provides the Docker engine, a graphical interface to manage running containers and images, and bundles Docker Compose as an integrated component, so no separate installation of Compose is required.
+
+**Docker Compose** is a tool used to define and run multi-container Docker applications. Rather than starting each container individually, Compose reads a single configuration file (`docker-compose.yml`) that describes all the services, their dependencies, and how they connect to each other, then starts everything with a single command. The key benefits of this approach include:
+
+-   **Simplified Deployment**: Automatically pulls and runs multiple containers with a single command.
+-   **Predefined Configuration**: Ensures all services are correctly configured and work together.
+-   **Portability**: The same configuration runs on Windows, macOS, and Linux without modification.
+
+Installing **Docker Desktop** is the only prerequisite to deploy the `GloSIS-ETL`.
+
+### Windows
+
+**System requirements**: Windows 10 (build 19041 or later) or Windows 11, with hardware virtualization enabled. On most modern machines this is already active, but if Docker fails to start, check your BIOS settings and enable virtualization manually. See Enable [Virtualization on Windows](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) for guidance.
+
+**Installation steps**:
+    1. **Check that Hyper-V is enabled**. Open the Start menu, type Turn Windows features on or off, and press Enter. In the list that appears, verify that Hyper-V and Hyper-V Module for Windows PowerShell are both checked. If they are not, enable them and restart your computer before continuing. The Docker Desktop installer will attempt to enable Hyper-V automatically in most cases, but verifying this beforehand avoids installation failures. For manual installation instructions see [Install Hyper-V on Windows](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V). 
+    
+    2. **Download Docker Desktop** from the [official website](https://docs.docker.com/desktop/install/windows-install/) and run the installer. 
+    
+    3. **Follow the installation prompts**, accepting the default settings. When asked, enable **WSL 2** (Windows Subsystem for Linux), which is required for running Linux containers on Windows. 
+    
+    4. **Restart your computer** once the installation completes. 
+    
+    5. **Launch Docker Desktop** from the Start menu. Wait until the whale icon in the system tray turns green, which confirms the Docker engine is running and the application is ready to use.
+    
+
+### macOS
+
+1.  Download **Docker Desktop for Mac** from the [official website](https://docs.docker.com/desktop/install/mac-install/). Choose the correct version for your processor (**Apple Silicon** or **Intel**).
+2.  Open the `.dmg` file and drag **Docker** into the Applications folder.
+3.  Start **Docker Desktop** and allow any requested system permissions.
+
+### Linux
+
+1.  Open a terminal and run the following commands:
+
+``` bash
+  sudo apt update
+  sudo apt install docker.io docker-compose -y
+  sudo systemctl start docker
+  sudo systemctl enable docker
+```
+
+2.  Add your user to the Docker group (to run Docker without `sudo`):
+
+``` bash
+  sudo usermod -aG docker $USER
+```
+
+3.  **Log out and log back in** (or restart your computer) for the group change to take effect.
+
+4.  Verify Docker is running:
+
+``` bash
+docker --version
+```
+
+If the installation was successful, you should see output similar to:
+
+``` bash
+  Docker version 24.0.5, build 123456
+```
+
+
