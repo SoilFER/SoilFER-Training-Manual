@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Software installation | DRAFT - Integrated soil information for decision-making </title>
+  <title>References | DRAFT - Integrated soil information for decision-making </title>
   <meta name="description" content="SoilFER SID Technical Manual" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Software installation | DRAFT - Integrated soil information for decision-making " />
+  <meta property="og:title" content="References | DRAFT - Integrated soil information for decision-making " />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="SoilFER SID Technical Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Software installation | DRAFT - Integrated soil information for decision-making " />
+  <meta name="twitter:title" content="References | DRAFT - Integrated soil information for decision-making " />
   
   <meta name="twitter:description" content="SoilFER SID Technical Manual" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="presentation-and-basics.html"/>
-<link rel="next" href="introduction-to-soil-data-preparation-spatial-data.html"/>
+<link rel="prev" href="soil-data-sharing-and-dissemination.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -600,169 +600,238 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="software-installation" class="section level1 unnumbered hasAnchor">
-<h1>Software installation<a href="software-installation.html#software-installation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="installing-r-and-rstudio" class="section level2 unnumbered hasAnchor">
-<h2>Installing R and RStudio<a href="software-installation.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>R is a programming language and software environment designed for statistical computing, data analysis, and visualization.
-It was created in the early 1990s by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and has since grown into one of the most widely used tools in data science, particularly for statistical modeling.</p>
-<p>R is open-source, meaning it is freely available and supported by a large global community of users and developers.
-This community continuously develops new tools and packages that extend R’s capabilities, making it highly adaptable to diverse fields such as ecology, genetics, economics, social sciences and, as in this case, soil science.</p>
-<p>R is particularly well-suited for soil science applications because it offers comprehensive tools for:</p>
-<ul>
-<li><p><em>Data management</em>: Efficiently handle, clean, and transform large soil datasets</p></li>
-<li><p><em>Statistical analysis</em>: Perform descriptive and inferential statistics, ANOVA, regression models, and more</p></li>
-<li><p><em>Spatial analysis</em>: Work with geographic data using packages like <code>{terra}</code> and <code>{sf}</code></p></li>
-<li><p><em>Digital Soil Mapping</em>: Apply machine learning algorithms for predictive soil mapping</p></li>
-<li><p><em>Visualization</em>: Create publication-quality maps, charts, and graphs using <code>{ggplot2}</code> and other visualization tools</p></li>
-<li><p><em>Reproducibility</em>: Share analyses through scripts that others can replicate and verify</p></li>
-</ul>
-<p>In the context of SoilFER, the FAO Global Soil Partnership (GSP) and Digital Soil Mapping initiatives, R provides standardized workflows that promote collaboration, transparency, and scientific rigor.</p>
-<p>To start using R, you need two main components:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>R</strong>: The core programming language and computational engine</p></li>
-<li><p><strong>RStudio</strong>: An integrated development environment (IDE) that makes working with R easier</p></li>
-</ol>
-<div id="installing-r" class="section level3 hasAnchor" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Installing R<a href="software-installation.html#installing-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Step 1</strong>: Visit the Comprehensive R Archive Network (CRAN): <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
-<p><strong>Step 2</strong>: Choose your operating system:</p>
-<ul>
-<li><p><strong>Windows</strong>: Click “Download R for Windows” → “base” → “Download R-4.x.x for Windows”</p></li>
-<li><p><strong>macOS</strong>: Click “Download R for macOS” → Select the appropriate <code>.pkg</code> file for your macOS version</p></li>
-<li><p><strong>Linux</strong>: Follow the distribution-specific instructions</p></li>
-</ul>
-<p><strong>Step 3</strong>: Run the installer and follow the prompts. Accept the default settings unless you have specific preferences.</p>
-</div>
-<div id="installing-rstudio" class="section level3 hasAnchor" number="0.0.2">
-<h3><span class="header-section-number">0.0.2</span> Installing RStudio<a href="software-installation.html#installing-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Step 1</strong>: Visit RStudio’s website: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
-<p><strong>Step 2</strong>: Download the free RStudio Desktop version for your operating system</p>
-<p><strong>Step 3</strong>: Install RStudio by running the installer</p>
-<p>Once installed, R provides the underlying engine for data analysis but working directly in base R can be challenging due to its command-line interface.</p>
-<div class="warning-box">
-<p><strong>Important</strong></p>
-<ul>
-<li>Install R before installing RStudio, as RStudio requires R to function.</li>
-</ul>
-</div>
-</div>
-<div id="verifying-installation" class="section level3 hasAnchor" number="0.0.3">
-<h3><span class="header-section-number">0.0.3</span> Verifying Installation<a href="software-installation.html#verifying-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>After installation, open RStudio. You should see a window with several panes:</p>
-<ul>
-<li><p><strong>Console</strong> (bottom left): Where R commands are executed</p></li>
-<li><p><strong>Source</strong> (top left): Where you write and edit scripts</p></li>
-<li><p><strong>Environment/History</strong> (top right): Shows variables and command history</p></li>
-<li><p><strong>Files/Plots/Packages/Help</strong> (bottom right): File browser, plot viewer, package manager, and help documentation</p></li>
-</ul>
-<p>Try typing a simple command in the Console window:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="software-installation.html#cb3-1" tabindex="-1"></a><span class="co"># Simple arithmetic</span></span>
-<span id="cb3-2"><a href="software-installation.html#cb3-2" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb3-3"><a href="software-installation.html#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="software-installation.html#cb3-4" tabindex="-1"></a><span class="co"># Check R version</span></span>
-<span id="cb3-5"><a href="software-installation.html#cb3-5" tabindex="-1"></a>R.version.string</span></code></pre></div>
-<p>If you see the results, R and RStudio are properly installed in your system.</p>
-</div>
-</div>
-<div id="setting-up-google-earth-engine" class="section level2 unnumbered hasAnchor">
-<h2>Setting Up Google Earth Engine<a href="software-installation.html#setting-up-google-earth-engine" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Google Earth Engine (GEE) is a cloud-based geospatial analysis platform that provides access to an extensive catalog of satellite imagery and geospatial datasets alongside the computational infrastructure needed to process them at planetary scale. Launched by Google in 2010 and made available to the research community in 2012, GEE has fundamentally changed how scientists approach large-scale environmental and geospatial analysis by eliminating the need to download and manage terabytes of raw imagery locally.</p>
-<p>In this manual, GEE is used to access the different soil covariates that are used to:</p>
-<ul>
-<li>Create a robust soil sampling design based on the SCORPAN framework</li>
-<li>Predict soil properties in the Digital Soil Mapping workflow.</li>
-</ul>
-<div id="step-1-create-a-google-account" class="section level3 hasAnchor" number="0.0.4">
-<h3><span class="header-section-number">0.0.4</span> Step 1: Create a Google Account<a href="software-installation.html#step-1-create-a-google-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>GEE requires a Google account. If you do not already have one, create a free account at <a href="https://accounts.google.com">https://accounts.google.com</a>. Use an institutional address (university or research organization) if possible, as this can facilitate the approval process.</p>
-</div>
-<div id="step-2-register-for-a-gee-account" class="section level3 hasAnchor" number="0.0.5">
-<h3><span class="header-section-number">0.0.5</span> Step 2: Register for a GEE Account<a href="software-installation.html#step-2-register-for-a-gee-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>GEE access requires prior registration. Navigate to the Earth Engine registration page:</p>
-<p><a href="https://earthengine.google.com/register">https://earthengine.google.com/register</a></p>
-<p>Select <strong>Register a Noncommercial or Commercial Cloud project</strong>. On the next screen, choose <strong>Unpaid usage</strong> and then select the project type that best describes your work (e.g., <em>Academia &amp; Research</em>).</p>
-<div class="warning-box">
-<p><strong>Note on Account Approval</strong></p>
-<p>GEE registration is subject to manual review by Google. Approval typically takes between a few hours and two business days. You will receive a confirmation email once your account is activated. Register well in advance of any practical session that requires GEE access.</p>
-</div>
-</div>
-<div id="step-3-create-or-select-a-google-cloud-project" class="section level3 hasAnchor" number="0.0.6">
-<h3><span class="header-section-number">0.0.6</span> Step 3: Create or Select a Google Cloud Project<a href="software-installation.html#step-3-create-or-select-a-google-cloud-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>GEE now operates within the Google Cloud infrastructure. During registration you will be prompted to either create a new Google Cloud project or link an existing one. For training purposes, create a new project with a descriptive name such as <code>soilfer-training</code>. Note the <strong>Project ID</strong>, as you will need it when initializing GEE from Python or when sharing scripts with colleagues.</p>
-</div>
-<div id="step-4-access-the-gee-code-editor" class="section level3 hasAnchor" number="0.0.7">
-<h3><span class="header-section-number">0.0.7</span> Step 4: Access the GEE Code Editor<a href="software-installation.html#step-4-access-the-gee-code-editor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once your account is approved, open the JavaScript-based Code Editor at:</p>
-<p><a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a></p>
-<p>The GEE Code Editor (<a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>) is a browser-based integrated development environment (IDE) designed specifically for writing, testing, and running Earth Engine scripts in JavaScript. It requires no local software installation beyond a modern web browser and provides immediate access to the full GEE API and data catalog. Figure <a href="software-installation.html#fig:gee-editor">0.1</a> shows a schematic of the interface layout.</p>
-<div class="figure"><span style="display:block;" id="fig:gee-editor"></span>
-<img src="images/module1/gee_editor.png" alt="Layout of the Google Earth Engine Code Editor interface." width="100%" />
-<p class="caption">
-Figure 0.1: Layout of the Google Earth Engine Code Editor interface.
-</p>
-</div>
-<p>The interface is organized into four functional zones: a left panel with navigation and data discovery tools, a central code editing area, a right panel for output inspection and task management, and a lower interactive map.</p>
-<div id="left-panel-scripts-assets-and-documentation" class="section level4 hasAnchor" number="0.0.7.1">
-<h4><span class="header-section-number">0.0.7.1</span> Left Panel: Scripts, Assets, and Documentation<a href="software-installation.html#left-panel-scripts-assets-and-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The left panel is divided into three tabs. The <strong>Scripts</strong> tab provides a personal repository for saving and organizing your GEE scripts, organized into folders. Scripts can be shared with other GEE users by generating a link, which is useful for collaborative training exercises. A <strong>Reader</strong> and <strong>Writer</strong> permission system controls who can view or edit shared scripts. The <strong>Examples</strong> folder within the Scripts tab contains a large collection of community-contributed scripts covering common use cases, which serve as an excellent learning resource.</p>
-<p>The <strong>Assets</strong> tab allows you to upload and manage personal geospatial assets — raster images, vector feature collections, or tables — that can then be loaded into scripts using <code>ee.Image()</code> or <code>ee.FeatureCollection()</code> calls. The FAO GSP shared assets used in this training (e.g., CHELSA climate layers and OpenLandMap terrain derivatives) are hosted in a shared project asset folder (<code>projects/digital-soil-mapping-gsp-fao</code>) that your account must be authorized to access.</p>
-<p>The <strong>Docs</strong> tab provides a searchable, offline-accessible reference for the entire JavaScript GEE API. Every function, data type, and parameter is documented here with descriptions and usage examples. When you are uncertain about a function’s arguments or return type, searching Docs is usually faster than consulting external documentation.</p>
-</div>
-<div id="central-panel-the-code-editor" class="section level4 hasAnchor" number="0.0.7.2">
-<h4><span class="header-section-number">0.0.7.2</span> Central Panel: The Code Editor<a href="software-installation.html#central-panel-the-code-editor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The central panel is where scripts are written and executed. It provides syntax highlighting for JavaScript, basic autocompletion for GEE API methods, and inline error indicators. Scripts are saved automatically to your personal repository. The toolbar above the editor contains several important controls:</p>
-<p>The <strong>Run</strong> button (or <code>Ctrl+Enter</code> / <code>Cmd+Enter</code>) executes the entire script. GEE processes the script server-side, so execution does not transfer data to your browser — only the final computed outputs and any <code>print()</code> statements are returned. This means that even very large computations feel responsive in the editor, as you are only waiting for metadata and visualization tiles rather than raw data downloads.</p>
-<p>The <strong>Save</strong> button commits the current script state to your repository. It is good practice to save frequently and to use the <strong>Get Link</strong> button to generate a shareable URL that encodes the current script state. This URL is particularly useful for sharing reproducible workflows in a training context.</p>
-<p>The <strong>Reset</strong> button clears all layers from the map and resets the console, without deleting your script. Use this when you want to re-run a script cleanly after making changes.</p>
-<p>The <strong>Apps</strong> button allows you to publish a script as a standalone GEE application with a simplified user interface, which is useful for sharing tools with non-technical audiences.</p>
-</div>
-<div id="right-panel-console-inspector-and-tasks" class="section level4 hasAnchor" number="0.0.7.3">
-<h4><span class="header-section-number">0.0.7.3</span> Right Panel: Console, Inspector, and Tasks<a href="software-installation.html#right-panel-console-inspector-and-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The right panel has three tabs that serve distinct purposes during script development and execution.</p>
-<p>The <strong>Console</strong> tab displays the output of <code>print()</code> statements in your script. Printing an Earth Engine object such as an image collection or feature collection shows its metadata: the number of elements, band names, projection, spatial extent, and property dictionary. This is the primary tool for debugging scripts and verifying that filtering and processing steps are producing the expected results. For example, printing the Sentinel-2 collection after applying cloud filters confirms how many scenes are available before computing the median composite.</p>
-<p>The <strong>Inspector</strong> tab activates a point-query tool. When active, clicking any location on the map returns the pixel values of all currently displayed layers at that point, along with their band names and data types. This is particularly useful to quickly check that computed indices or terrain derivatives have realistic values across the study area without exporting the full raster.</p>
-<p>The <strong>Tasks</strong> tab is essential for managing data exports. GEE does not automatically execute export operations when a script is run — instead, exports are queued as tasks that must be submitted manually. After running a script that contains <code>Export.image.toDrive()</code> calls, pending tasks appear in this tab with a yellow <strong>Run</strong> button. Clicking <strong>Run</strong> for each task opens a dialog where you can confirm or modify the export parameters (description, folder, scale, CRS) before submission. Once submitted, tasks progress through <em>READY</em>, <em>RUNNING</em>, and <em>COMPLETED</em> states. Completed exports appear in the designated Google Drive folder as GeoTIFF files. Failed tasks display an error message that can help diagnose issues related to computation limits, memory, or invalid geometries.</p>
-</div>
-<div id="lower-section-the-interactive-map" class="section level4 hasAnchor" number="0.0.7.4">
-<h4><span class="header-section-number">0.0.7.4</span> Lower Section: The Interactive Map<a href="software-installation.html#lower-section-the-interactive-map" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The lower section of the Code Editor is an interactive map, similar in functionality to Google Maps, onto which computed layers are rendered as tiled overlays. Layers are added using <code>Map.addLayer()</code>, which accepts an Earth Engine image or feature collection, a visualization parameter dictionary specifying band names, color palettes, and value ranges, and an optional display name.</p>
-<p>The map toolbar provides tools for navigating (pan and zoom), measuring distances, and drawing geometries. The geometry drawing tools — point, line, polygon, and rectangle — allow you to define regions of interest directly on the map and reference them as variables in your script. This is a convenient way to quickly define a custom study area without needing to upload a vector file. Drawn geometries are automatically added to the <strong>Geometry Imports</strong> section at the top of the script.</p>
-<p>The layer manager in the upper right corner of the map lists all currently added layers with toggle controls for visibility and opacity sliders. Each layer can be independently shown or hidden, making it easy to compare multiple products — for instance, toggling between the ESA WorldCover land cover and the Sentinel-2 RGB composite to verify that the cropland mask aligns with visible agricultural patterns.</p>
-<div class="warning-box">
-<p><strong>Browser Compatibility</strong></p>
-<p>The GEE Code Editor is optimized for Google Chrome. While it functions in other modern browsers (Firefox, Edge), some features such as autocompletion and the geometry import panel may behave differently. For the best experience during training sessions, use an up-to-date version of Google Chrome.</p>
-</div>
-</div>
-</div>
-<div id="step-5-prepare-your-google-drive-export-folder" class="section level3 hasAnchor" number="0.0.8">
-<h3><span class="header-section-number">0.0.8</span> Step 5: Prepare Your Google Drive Export Folder<a href="software-installation.html#step-5-prepare-your-google-drive-export-folder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The SoilFER covariate extraction script exports raster files directly to your Google Drive. Before running the script, create a folder named <code>GEE_Exports</code> in the root of your Google Drive at <a href="https://drive.google.com">https://drive.google.com</a>. This folder name is referenced explicitly in the export configuration of the script (see the <code>exportFolder</code> variable in Section 1 of the script). If you prefer a different folder name, update this variable accordingly before running.</p>
-</div>
-</div>
-<div id="installation-of-qgis" class="section level2 unnumbered hasAnchor">
-<h2>Installation of QGIS<a href="software-installation.html#installation-of-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>QGIS is a free and open-source desktop GIS application used to visualise and inspect spatial datasets. The Long-Term Release (LTR) version is recommended for stability.
-Go to the <a href="https://qgis.org/download/">QGIS download page</a> and choose your installation:</p>
-<div id="windows" class="section level3 hasAnchor" number="0.0.9">
-<h3><span class="header-section-number">0.0.9</span> Windows<a href="software-installation.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>• Use the OSGeo4W installer.</p>
-<p>• Choose “Express Install” and select either QGIS (latest) or QGIS LTR (stable long-term support).</p>
-</div>
-<div id="macos-linux" class="section level3 hasAnchor" number="0.0.10">
-<h3><span class="header-section-number">0.0.10</span> macOS / Linux<a href="software-installation.html#macos-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>• Use the installers or package-manager instructions shown on the QGIS download page for your operating system.</p>
+<div id="references" class="section level1 unnumbered hasAnchor">
+<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
+<div id="refs" class="references csl-bib-body" entry-spacing="0">
+<div class="csl-entry">
+<strong>Amatulli, Gi., McInerney, D., Sethi, T., Strobl, P. &amp; Domisch, S.</strong> 2020. Geomorpho90m - global high-resolution geomorphometry layers. OpenTopography. <a href="https://doi.org/10.5069/G91R6NPX">https://doi.org/10.5069/G91R6NPX</a>
+</div>
+<div class="csl-entry">
+<strong>Arrouays, D., Leenaars, J.G.B., Richer-de-Forges, A.C., Adhikari, K., Ballabio, C., Greve, M., Grundy, M., Guerrero, E., Hempel, J., Hengl, T., Heuvelink, G., Batjes, N., Carvalho, E., Hartemink, A., Hewitt, A., Hong, S.-Y., Krasilnikov, P., Lagacherie, P., Lelyk, G., Libohova, Z., Lilly, A., McBratney, A., McKenzie, N., Vasquez, G.M., Mulder, V.L., Minasny, B., Montanarella, L., Odeh, I., Padarian, J., Poggio, L., Roudier, P., Saby, N., Savin, I., Searle, R., Solbovoy, V., Thompson, J., Smith, S., Sulaeman, Y., Vintila, R., Rossel, R.V., Wilson, P., Zhang, G.-L., Swerts, M., Oorts, K., Karklins, A., Feng, L., Ibelles Navarro, A.R., Levin, A., Laktionova, T., Dell’Acqua, M., Suvannang, N., Ruam, W., Prasad, J., Patil, N., Husnjak, S., Pasztor, L., Okx, J., Hallett, S., Keay, C., Farewell, T., Lilja, H., Juilleret, J., Marx, S., Takata, Y., Kazuyuki, Y., Mansuy, N., Panagos, P., Van Liedekerke, M., Skalsky, R., Sobocka, J., Kobza, J., Eftekhari, K., Alavipanah, S.K., Moussadek, R., Badraoui, M., Da Silva, M., Paterson, G., Conceicao Gonsalves, M. da, Theocharopoulos, S., Yemefack, M., Tedou, S., Vrscaj, B., Grob, U., Kozak, J., Boruvka, L., Dobos, E., Taboada, M., Moretti, L. &amp; Rodriguez, D.</strong> 2017. Soil legacy data rescue via GlobalSoilMap and other international and national initiatives. <em>GeoResJ</em>, 14: 1–19. https://doi.org/<a href="https://doi.org/10.1016/j.grj.2017.06.001">https://doi.org/10.1016/j.grj.2017.06.001</a>
+</div>
+<div class="csl-entry">
+<strong>Bishop, T.F.A., McBratney, A.B. &amp; Laslett, G.M.</strong> 1999. Modelling soil attribute depth functions with equal-area quadratic smoothing splines, 91: 27–45. <a href="https://doi.org/10.1016/s0016-7061(99)00003-8">https://doi.org/10.1016/s0016-7061(99)00003-8</a>
+</div>
+<div class="csl-entry">
+<strong>Borden, K.A., Thomas, J.E. &amp; Rivard, C.</strong> 2020. Evaluation of diverse cover crop mixtures for use in semi-arid irrigated production systems. <em>Renewable Agriculture and Food Systems</em>, 35(3): 286–296. <a href="https://doi.org/10.1017/S1742170518000509">https://doi.org/10.1017/S1742170518000509</a>
+</div>
+<div class="csl-entry">
+<strong>Breiman, L., Friedman, J.H., Olshen, R.A. &amp; Stone, C.J.</strong> 1984. <em>Classification and regression trees</em>. Belmont, CA, Wadsworth.
+</div>
+<div class="csl-entry">
+<strong>Breure, T., Jones, A. &amp; Panagos, P.</strong> 2026. Evaluating visible near-infrared spectroscopy in context of a repeated sampling survey across the european union. <em>Geoderma</em>, 465: 117647.
+</div>
+<div class="csl-entry">
+<strong>Brevik, E.C., Calzolari, C., Miller, B.A., Pereira, P., Kabala, C., Baumgarten, A. &amp; Jordán, A.</strong> 2016. Soil mapping, classification, and pedologic modeling: History and future directions. <em>Geoderma</em>, 264: 256–274. <a href="https://doi.org/10.1016/j.geoderma.2015.05.017">https://doi.org/10.1016/j.geoderma.2015.05.017</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J.</strong> 2022 b. Sampling for digital soil mapping: A tutorial supported by <span>R</span> scripts. <em>Geoderma</em>, 338: 464–480. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J.</strong> 2022 a. <em>Spatial sampling with r</em>. Boca Raton, FL, Chapman &amp; Hall/CRC Press.
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J., Kempen, B. &amp; Heuvelink, G.B.M.</strong> 2011 b. Sampling for validation of digital soil maps. <em>European Journal of Soil Science</em>, 62(3): 394–407. <a href="https://doi.org/10.1111/j.1365-2389.2011.01364.x">https://doi.org/10.1111/j.1365-2389.2011.01364.x</a>
+</div>
+<div class="csl-entry">
+<strong>Brus, D.J., Kempen, B. &amp; Heuvelink, G.B.M.</strong> 2011 a. Sampling for digital soil mapping: A tutorial supported by <span>R</span> scripts. <em>Geoderma</em>, 338: 464–480. <a href="https://doi.org/10.1016/j.geoderma.2018.07.036">https://doi.org/10.1016/j.geoderma.2018.07.036</a>
+</div>
+<div class="csl-entry">
+<strong>Bui, E.</strong> 2020. Soil survey as a knowledge system. <em>Geoderma</em>, 359: 113948. <a href="https://doi.org/10.1016/j.geoderma.2019.113948">https://doi.org/10.1016/j.geoderma.2019.113948</a>
+</div>
+<div class="csl-entry">
+<strong>Chen, S., Saby, N.P.A., Martin, M.P., Barthes, B.G., Gomez, C., Shi, Z. &amp; Arrouays, D.</strong> 2023. Integrating additional spectroscopically inferred soil data improves the accuracy of digital soil mapping. <em>Geoderma</em>, 433: 116467.
+</div>
+<div class="csl-entry">
+<strong>Clay, D.E., Chang, J., Malo, D.D., Carlson, C.G., Reese, C., Clay, S.A., Ellsbury, M. &amp; Berg, B.</strong> 2001. Factors influencing spatial variability of soil apparent electrical conductivity. <em>Communications in Soil Science and Plant Analysis</em>, 32(19-20): 2993–3008. <a href="https://doi.org/10.1081/CSS-120001104">https://doi.org/10.1081/CSS-120001104</a>
+</div>
+<div class="csl-entry">
+<strong>Dangal, S.R., Sanderman, J., Wills, S. &amp; Ramirez-Lopez, L.</strong> 2019. Accurate and precise prediction of soil properties from a large mid-infrared spectral library. <em>Soil Systems</em>, 3(1): 11.
+</div>
+<div class="csl-entry">
+<strong>Gobin, A., Campling, P. &amp; Feyen, J.</strong> 2001. Soil-landscape modelling to quantify spatial variability of soil texture. <em>Physics and Chemistry of the Earth, Part B: Hydrology, Oceans and Atmosphere</em>, 26(1): 41–45. <a href="https://doi.org/10.1016/S1464-1909(01)85011-7">https://doi.org/10.1016/S1464-1909(01)85011-7</a>
+</div>
+<div class="csl-entry">
+<strong>Gruijter, J.J. de, Brus, D.J., Bierkens, M.F.P. &amp; Knotters, M.</strong> 2006. <em><a href="https://doi.org/10.1007/3-540-33161-1">Sampling for natural resource monitoring</a></em>. Berlin, Springer.
+</div>
+<div class="csl-entry">
+<strong>Gupta, S. &amp; Hengl, T.</strong> 2019. Soil available water capacity in mm derived for 5 standard layers (0-10, 10-30, 30-60, 60-100 and 100-200 cm) at 250 m resolution. Zenodo. <a href="https://doi.org/10.5281/zenodo.2629148">https://doi.org/10.5281/zenodo.2629148</a>
+</div>
+<div class="csl-entry">
+<strong>Hengl, T., Heuvelink, G.B.M. &amp; Rossiter, D.G.</strong> 2007. About regression-kriging: From equations to case studies. <em>Computers &amp; Geosciences</em>, 33: 1301–1315. <a href="https://doi.org/10.1016/j.cageo.2007.05.001">https://doi.org/10.1016/j.cageo.2007.05.001</a>
+</div>
+<div class="csl-entry">
+<strong>Hengl, T. &amp; MacMillan, R.A.</strong> 2019. <em>Predictive soil mapping with r</em>. Wageningen, the Netherlands, OpenGeoHub foundation. (also available at <a href="https://soilmapper.org/">https://soilmapper.org/</a>).
+</div>
+<div class="csl-entry">
+<strong>Hengl, T., Nussbaum, M., Wright, M.N., Heuvelink, G.B. &amp; Gräler, B.</strong> 2018. Random forest as a generic framework for predictive modeling of spatial and spatio-temporal variables. <em>PeerJ</em>, 6: e5518.
+</div>
+<div class="csl-entry">
+<strong>Heuvelink, G.B.M., Kros, J., Reinds, G.J. &amp; De Vries, W.</strong> 2016. Geostatistical prediction and simulation of european soil property maps. <em>Geoderma Regional</em>, 7: 201–215. <a href="https://doi.org/10.1016/j.geodrs.2016.04.002">https://doi.org/10.1016/j.geodrs.2016.04.002</a>
+</div>
+<div class="csl-entry">
+<strong>Heuvelink, G.B.M. &amp; Webster, R.</strong> 2001. Modelling soil variation: Past, present, and future. <em>Geoderma</em>, 100: 269–301. <a href="https://doi.org/10.1016/S0016-7061(01)00025-8">https://doi.org/10.1016/S0016-7061(01)00025-8</a>
+</div>
+<div class="csl-entry">
+<strong>Jenny, H.</strong> 1941 b. A system of quantitative pedology. In <span>“factors of soil formation”</span>. McGraw Hill: New York.
+</div>
+<div class="csl-entry">
+<strong>Jenny, H.</strong> 1941 a. <em>Factors of soil formation. A system of quantitative pedology</em>. New York, McGraw-Hill.
+</div>
+<div class="csl-entry">
+<strong>Kempen, B., Brus, D.J., Heuvelink, G.B.M. &amp; Stoorvogel, J.J.</strong> 2009. Updating the 1:50,000 dutch soil map using legacy soil data: A multinomial logistic regression approach. <em>Geoderma</em>, 151: 311–326. <a href="https://doi.org/10.1016/j.geoderma.2009.04.023">https://doi.org/10.1016/j.geoderma.2009.04.023</a>
+</div>
+<div class="csl-entry">
+<strong>Lagacherie, P.</strong> 2008. Digital soil mapping: A state of the art. <em>In</em> A.E. Hartemink, A.B. McBratney &amp; M.L. Mendonça-Santos, eds. <em>Digital soil mapping with limited data</em>, pp. 3–14. Dordrecht, Springer.
+</div>
+<div class="csl-entry">
+<strong>Lagacherie, P. &amp; McBratney, A.B.</strong> 2006. Spatial soil information systems and spatial soil inference systems: Perspectives for digital soil mapping. <em>In</em> P. Lagacherie, A.B. McBratney &amp; M. Voltz, eds. <em>Digital soil mapping: An introductory perspective</em>, pp. 3–22. Amsterdam, Elsevier.
+</div>
+<div class="csl-entry">
+<strong>Ma, Y., Minasny, B., Weerts, A., Poggio, L., Malone, B. &amp; McBratney, A.</strong> 2020. Comparison of conditioned <span>Latin</span> hypercube and feature space coverage sampling for predicting soil classes using simulation from soil maps. <em>Geoderma</em>, 370: 114366. <a href="https://doi.org/10.1016/j.geoderma.2020.114366">https://doi.org/10.1016/j.geoderma.2020.114366</a>
+</div>
+<div class="csl-entry">
+<strong>Malone, B., Stockmann, U., Glover, M., McLachlan, G., Engelhardt, S. &amp; Tuomi, S.</strong> 2022. Digital soil survey and mapping underpinning inherent and dynamic soil attribute condition assessments. <em>Soil Security</em>, 6: 100048.
+</div>
+<div class="csl-entry">
+<strong>McBratney, A.B., Mendonça Santos, M.L. &amp; Minasny, B.</strong> 2003. On digital soil mapping. <em>Geoderma</em>, 117: 3–52. <a href="https://doi.org/10.1016/S0016-7061(03)00223-4">https://doi.org/10.1016/S0016-7061(03)00223-4</a>
+</div>
+<div class="csl-entry">
+<strong>Medeiros, B.M., Rossi, L.S., Caten, A.T., Pereira, G.E., Silva, E.B. &amp; U., Daboit.K.T.</strong> 2024. Soil legacy data: An opportunity for digital soil mapping. <em>Rev. Bras. Ciênc. Solo</em>, 48. <a href="https://doi.org/10.36783/18069657rbcs20230130">https://doi.org/10.36783/18069657rbcs20230130</a>
+</div>
+<div class="csl-entry">
+<strong>Milne, G.</strong> 1936. Normal erosion as a factor in soil profile development. <em>Nature</em>, 138: 548–549. <a href="https://doi.org/10.1038/138548c0">https://doi.org/10.1038/138548c0</a>
+</div>
+<div class="csl-entry">
+<strong>Minasny, B. &amp; McBratney, A.B.</strong> 2006. A conditioned <span>Latin</span> hypercube method for sampling in the presence of ancillary information. <em>Computers &amp; Geosciences</em>, 32(9): 1378–1388. <a href="https://doi.org/10.1016/j.cageo.2005.12.009">https://doi.org/10.1016/j.cageo.2005.12.009</a>
+</div>
+<div class="csl-entry">
+<strong>Minasny, B. &amp; McBratney, A.B.</strong> 2016. Digital soil mapping: A brief history and some lessons. <em>Geoderma</em>, 264: 301–311. <a href="https://doi.org/10.1016/j.geoderma.2015.07.017">https://doi.org/10.1016/j.geoderma.2015.07.017</a>
+</div>
+<div class="csl-entry">
+<strong>Morton, P.A. &amp; Heinemeyer, O.</strong> 2000. Soil sampling and preparation. <em>Methods in Ecosystem Science</em>: 85–94.
+</div>
+<div class="csl-entry">
+<strong>Næs, T.</strong> 1987. The design of calibration in near infra-red reflectance analysis by clustering. <em>Journal of chemometrics</em>, 1(2): 121–134.
+</div>
+<div class="csl-entry">
+<strong>Newhall, F. &amp; Berdanier, C.R.</strong> 1996. Calculation of soil moisture regimes from the climatic record, p. 13. No. 46. Natural Resources Conservation Service.
+</div>
+<div class="csl-entry">
+<strong>Norris, C.E., Quideau, S.A., Landhausser, S.M., Bernard, G.M. &amp; Wasylishen, R.E.</strong> 2013. Tracking stable isotope enrichment in tree seedlings with solid-state <span><span class="math inline">\(^{15}\)</span>N</span> <span>NMR</span> spectroscopy. <em>Biogeosciences</em>, 10: 3433–3445. <a href="https://doi.org/10.5194/bg-10-3433-2013">https://doi.org/10.5194/bg-10-3433-2013</a>
+</div>
+<div class="csl-entry">
+<strong>Odeh, I.O.A., McBratney, A.B. &amp; Chittleborough, D.J.</strong> 1995. Further results on prediction of soil properties from terrain attributes: Heterotopic cokriging and regression-kriging. <em>Geoderma</em>, 67: 215–226. <a href="https://doi.org/10.1016/0016-7061(95)00007-B">https://doi.org/10.1016/0016-7061(95)00007-B</a>
+</div>
+<div class="csl-entry">
+<strong>Odgers, N.P., McBratney, A.B. &amp; Minasny, B.</strong> 2011. Bottom-up digital soil mapping. <span>I</span>. <span>S</span>oil layer classes. <em>Geoderma</em>, 163: 38–44. <a href="https://doi.org/10.1016/j.geoderma.2011.03.014">https://doi.org/10.1016/j.geoderma.2011.03.014</a>
+</div>
+<div class="csl-entry">
+<strong>Orton, T.G., Pringle, M.J., Page, K.L., Dalal, R.C. &amp; Bishop, T.F.A.</strong> 2014. Spatial prediction of soil organic carbon stock using a linear model of coregionalisation. <em>Geoderma</em>, 230–231: 119–130. <a href="https://doi.org/10.1016/j.geoderma.2014.04.016">https://doi.org/10.1016/j.geoderma.2014.04.016</a>
+</div>
+<div class="csl-entry">
+<strong>Padarian, J. &amp; McBratney, A.B.</strong> 2023. <span>QuadMap</span>: Variable resolution maps to communicate uncertainty. <em>Computers and Geosciences</em>, 181: 105480. <a href="https://doi.org/10.1016/j.cageo.2023.105480">https://doi.org/10.1016/j.cageo.2023.105480</a>
+</div>
+<div class="csl-entry">
+<strong>Pebesma, E. &amp; Bivand, R.</strong> 2021. Spatial data science with applications in r. <em>Methods in Ecology and Evolution</em>, 12: 1620–1633. <a href="https://doi.org/10.1111/2041-210X.13650">https://doi.org/10.1111/2041-210X.13650</a>
+</div>
+<div class="csl-entry">
+<strong>Peng, Y., Ben-Dor, E., Biswas, A., Chabrillat, S., Demattê, J.A., Ge, Y., Gholizadeh, A., Gomez, C., Guerrero, C., Herrick, J. &amp; others</strong>. 2025. Spectroscopic solutions for generating new global soil information. <em>The Innovation</em>, 6(5).
+</div>
+<div class="csl-entry">
+<strong>Prieto-Castrillo, F., Rodríguez-Rastrero, M., Yunta, F., Borondo, F. &amp; Borondo, J.</strong> 2023. Disentangling jenny’s equation by machine learning. <em>Scientific Reports</em>, 13(1): 20916. <a href="https://doi.org/10.1038/s41598-023-44171-x">https://doi.org/10.1038/s41598-023-44171-x</a>
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Metz, M., Lesnoff, M., Orellano, C., Perez-Fernandez, E., Plans, M., Breure, T., Behrens, T., Viscarra Rossel, R. &amp; Peng, Y.</strong> 2026. Rethinking local spectral modelling: From per-query refitting to model libraries. <em>Analytica Chimica Acta</em>.
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Schmidt, K., Behrens, T., Van Wesemael, B., Demattê, J.A. &amp; Scholten, T.</strong> 2014. Sampling optimal calibration sets in soil infrared spectroscopy. <em>Geoderma</em>, 226: 140–150.
+</div>
+<div class="csl-entry">
+<strong>Ramirez-Lopez, L., Wadoux, A.-C., Franceschini, M.H., Terra, F., Marques, K.P.P., Sayão, V.M. &amp; Demattê, J.A.M.</strong> 2019. Robust soil mapping at the farm scale with vis–NIR spectroscopy. <em>European Journal of Soil Science</em>, 70(2): 378–393.
+</div>
+<div class="csl-entry">
+<strong>Robertson, B.L., Brown, J.A., McDonald, T. &amp; Jaksons, P.</strong> 2013. <span>BAS</span>: Balanced acceptance sampling of natural resources. <em>Biometrics</em>, 69(3): 776–784. <a href="https://doi.org/10.1111/biom.12059">https://doi.org/10.1111/biom.12059</a>
+</div>
+<div class="csl-entry">
+<strong>Safanelli, J.L., Hengl, T., Parente, L.L., Minarik, R., Bloom, D.E., Todd-Brown, K., Gholizadeh, A., Mendes, W. de S. &amp; Sanderman, J.</strong> 2025. Open soil spectral library (OSSL): Building reproducible soil calibration models through open development and community engagement. <em>PloS one</em>, 20(1): e0296545.
+</div>
+<div class="csl-entry">
+<strong>Saurette, D.D., Berg, A., Laamrani, A., Heck, R.J., Gillespie, A.W. &amp; Biswas, A.</strong> 2023. Determining optimal sample size for soil spectroscopy applications: Learning curves and model validation. <em>Soil Science Society of America Journal</em>, 87(6): 1557–1572. <a href="https://doi.org/10.1002/saj2.20608">https://doi.org/10.1002/saj2.20608</a>
+</div>
+<div class="csl-entry">
+<strong>Schmidinger, J., Heuvelink, G.B.M. &amp; Brus, D.J.</strong> 2024. Sampling design optimization for soil mapping with random forest. <em>Geoderma</em>, 444: 116849. <a href="https://doi.org/10.1016/j.geoderma.2024.116849">https://doi.org/10.1016/j.geoderma.2024.116849</a>
+</div>
+<div class="csl-entry">
+<strong>Stevens, A., Nocita, M., Tóth, G., Montanarella, L. &amp; Wesemael, B. van</strong>. 2013. Prediction of soil organic carbon at the european scale by visible and near infrared reflectance spectroscopy. <em>PloS one</em>, 8(6): e66409.
+</div>
+<div class="csl-entry">
+<strong>Stevens, D.L. &amp; Olsen, A.R.</strong> 2004. Spatially balanced sampling of natural resources. <em>Journal of the American Statistical Association</em>, 99(465): 262–278. <a href="https://doi.org/10.1198/016214504000000250">https://doi.org/10.1198/016214504000000250</a>
+</div>
+<div class="csl-entry">
+<strong>Styc, Q. &amp; Lagacherie, P.</strong> 2021. Combining spatial-environmental covariates and soil input data types to predict soil available water holding capacity. <em>Geoderma</em>, 401: 115171. <a href="https://doi.org/10.1016/j.geoderma.2021.115171">https://doi.org/10.1016/j.geoderma.2021.115171</a>
+</div>
+<div class="csl-entry">
+<strong>Takoutsing, B., Heuvelink, G.B., Stoorvogel, J.J., Shepherd, K.D. &amp; Aynekulu, E.</strong> 2022. Accounting for analytical and proximal soil sensing errors in digital soil mapping. <em>European Journal of Soil Science</em>, 73(2): e13226.
+</div>
+<div class="csl-entry">
+<strong>Viscarra Rossel, R.A., Behrens, T., Ben-Dor, E., Chabrillat, S., Demattê, J.A.M., Ge, Y., Gomez, C., Guerrero, C., Peng, Y., Ramirez-Lopez, L. &amp; others</strong>. 2022. Diffuse reflectance spectroscopy for estimating soil properties: A technology for the 21st century. <em>European Journal of Soil Science</em>, 73(4): e13271.
+</div>
+<div class="csl-entry">
+<strong>Viscarra Rossel, R., Chappell, A., De Caritat, P. &amp; McKenzie, N.</strong> 2011. On the soil information content of visible–near infrared reflectance spectra. <em>European Journal of Soil Science</em>, 62(3): 442–453.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.-C. &amp; Ramirez-Lopez, L.</strong> 2025. Uncertainty of predictions in absorption spectroscopy: Modelling with quantile regression forest. <em>Chemometrics and Intelligent Laboratory Systems</em>, 265: 105473.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Heuvelink, G.B.M., Bruin, S. de &amp; Brus, D.J.</strong> 2021. Spatial cross-validation is not the right way to evaluate map accuracy, 457: 109692. <a href="https://doi.org/10.1016/j.ecolmodel.2021.109692">https://doi.org/10.1016/j.ecolmodel.2021.109692</a>
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Minasny, B. &amp; McBratney, A.B.</strong> 2021. Machine learning for digital soil mapping: Applications, challenges and suggested solutions. <em>Earth-Science Reviews</em>, 210: 103359. <a href="https://doi.org/10.1016/j.earscirev.2020.103359">https://doi.org/10.1016/j.earscirev.2020.103359</a>
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Padarian, J. &amp; Minasny, B.</strong> 2019. Multi-source data integration for soil mapping using deep learning. <em>Soil</em>, 5(1): 107–119.
+</div>
+<div class="csl-entry">
+<strong>Wadoux, A.M.J.-C., Ramirez-Lopez, L., Ge, Y., Barra, I. &amp; Peng, Y.</strong> 2025. <em>A course on applied data analytics for soil analysis with infrared spectroscopy – soil spectroscopy training manual 2</em>. Rome, Italy, Food; Agriculture Organization of the United Nations (FAO).
+</div>
+<div class="csl-entry">
+<strong>Webster, R., Lessells, C.M. &amp; Hodgson, J.M.</strong> 1979. A reconnaissance soil survey of the ivybridge area of south devon. <em>Soil Survey Technical Monograph</em>, 12.
+</div>
+<div class="csl-entry">
+<strong>Webster, R. &amp; Oliver, M.A.</strong> 2007. <em>Geostatistics for environmental scientists</em>. 2nd edition. Chichester, John Wiley &amp; Sons.
+</div>
+<div class="csl-entry">
+<strong>Westhuizen, S. van der, Heuvelink, G.B.M., Hofmeyr, D.P. &amp; Poggio, L.</strong> 2022. Measurement error-filtered machine learning in digital soil mapping. <em>Spatial Statistics</em>, 47: 100572.
+</div>
+<div class="csl-entry">
+<strong>Wright, M.N. &amp; Ziegler, A.</strong> 2017. Ranger: A fast implementation of random forests for high dimensional data in c++ and r. <em>Journal of statistical software</em>, 77: 1–17.
+</div>
+<div class="csl-entry">
+<strong>Wu, C.-Y., Wu, P.-H. &amp; Hseu, Z.-Y.</strong> 2025. Assessing the robustness of VIS-NIR spectroscopy-based soil organic carbon prediction against four wet chemistry methods. <em>Carbon Management</em>, 16(1): 2511337.
+</div>
+<div class="csl-entry">
+<strong>Zanaga, D., Van De Kerchove, R., Daems, D., De Keersmaecker, W., Brockmann, C., Kirches, G., Wevers, J., Cartus, O., Santoro, M., Fritz, S., Lesiv, M., Herold, M., Tsendbazar, N.-E., Xu, P., Ramoino, F. &amp; Arino, O.</strong> 2022. ESA WorldCover 10 m 2021 v200. Zenodo. <a href="https://doi.org/10.5281/zenodo.7254221">https://doi.org/10.5281/zenodo.7254221</a>
+</div>
+<div class="csl-entry">
+<strong>Zhang, L., Heuvelink, G.B.M., Mulder, V.L., Chen, S., Deng, X. &amp; Yang, L.</strong> 2024. Using process-oriented model output to enhance machine learning-based soil organic carbon prediction in space and time. <em>Science of the Total Environment</em>, 922: 170778. <a href="https://doi.org/10.1016/j.scitotenv.2024.170778">https://doi.org/10.1016/j.scitotenv.2024.170778</a>
 </div>
 </div>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="presentation-and-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction-to-soil-data-preparation-spatial-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="soil-data-sharing-and-dissemination.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

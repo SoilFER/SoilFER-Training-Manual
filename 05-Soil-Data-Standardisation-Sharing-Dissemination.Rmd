@@ -447,4 +447,3 @@ knitr::include_graphics("images/module5/sis_dashboard.png")
 
 In this module you have seen how the Soil Information System turns isolated soil data into a shared, discoverable, and reusable resource. As a soil scientist you can, entirely from a web browser, publish your **soil profile points** from a CSV file and your **raster maps** as GeoTIFFs, describe them with proper metadata, explore them in the map viewer, and derive new maps using recipes within the Raster Calculator. As you publish, the SIS standardises your data against the **GloSIS codelists** and shares it through open standards---so that the data you contribute is not only available in your own SIS, but ready to take its place as a node in the wider GloSIS federation.
 
-## References {.unnumbered}
