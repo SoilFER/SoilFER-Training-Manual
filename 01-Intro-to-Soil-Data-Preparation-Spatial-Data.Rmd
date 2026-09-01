@@ -1768,7 +1768,6 @@ View(soil_data) # opens a spreadsheet-style viewer in RStudio
 
 
 
-
 ## Data preparation for Digital Soil Mapping in R
 
 
@@ -1884,6 +1883,7 @@ Typically, a raw soil dataset includes several types of information:
   - Geographic coordinates (longitude and latitude, often in WGS84 or X, Y in Cartesian projected systems)
   - Unique identifiers (profile ID, horizon ID, sample ID)
   - Depth boundaries (top and bottom depth of the analyzed horizons in each soil profile)
+  - Date (the sampling date is required in GloSIS database)
 
 - **Laboratory data** contains measured soil properties: 
   - Physical properties (texture: clay, silt, sand percentages)
@@ -1901,83 +1901,100 @@ Data cleaning involves extracting relevant information from raw data, standardiz
 
 We operationally define a **site** as the set of horizons or layers that share the same geographic location (i.e., identical coordinates at the chosen precision). The site has information on location (lat and long coordinates), depth (upper and lower depth boundaries) and metadata-related information (horizon ID).
 
-##### Adding a unique row identifier {-}
 
-During data cleaning, some records may be removed, merged, or modified. Good practice is to add a unique sequential `rowID` to the raw (unchanged) dataset so you can track each original record throughout the entire workflow. This identifier allows you to trace any result back to its source data and understand which raw records were retained or excluded.
+#####  Format Date to Standard: ISO 8601 (specifically mapped as YYYY-MM-DD)
 
-```{r add-rowID, eval=FALSE}
-# Add unique row identifier to track individual records through processing
+Sampling dates are required for standardizing soil data for the GloSIS database structure. In this dataset, the sampling date is recorded only as a year in the `fiscal_year` column. To ensure compatibility with the Soil Information System (SIS), this information is converted to an ISO 8601-compliant date (`YYYY-MM-DD`) by assigning January 1st as the reference date for each fiscal year.
+
+```{r add-date, eval=FALSE}
 raw_data <- raw_data %>%
-  mutate(rowID = row_number(), .before = 1)
+  mutate(date = as.Date(paste0(fiscal_year, "-01-01")), .before = 4)
 
 ```
 
-The `rowID` column preserves the link between processed data and raw data, enabling full transparency and reproducibility in your cleaning workflow.
+::: {.warning-box}
 
+**Adjust the sampling `date` for the observations** 
+
+   - The sampling date is a mandatory field in the data standardization process for the Soil Information System (Module 5 of this Manual). Ensure that the imported dataset contains a reference sampling date.
+   
+   - If a proper `date` field is not available, a predefined criterion can be used to assign a reference date. For example, January 1st of the corresponding year can be used. Keep in mind that this is an approximate reference date and does not represent the actual sampling date.
+   
+   - Whenever the actual sampling `date` is known, it should be used instead of an approximate reference date.
+   
+   - If the `date` field already exists in the dataset, this step should be skipped.
+
+:::
+
+##### Adding unique record and profile identifiers {-}
+
+During data cleaning, records may be removed, modified, or reorganized. It is therefore good practice to assign a unique sequential `rowID` to each record in the original imported dataset. This identifier should be created before any filtering or transformation that could change the number or order of records.
+
+The `rowID` allows each processed record to be traced back to its corresponding record in the original dataset. This improves transparency and reproducibility and makes it easier to identify which records were retained, modified, or excluded during the cleaning process.
+
+A second identifier, `ProfID`, is created to identify soil profiles. In this dataset, all horizons sharing the same longitude, latitude, and sampling date are initially assumed to belong to the same soil profile description. The identifier is created once at this stage and is preserved throughout the subsequent site and laboratory data-cleaning steps.
+
+```{r add-rowID, eval=FALSE}
+# Add row and profile identifiers
+raw_data <- raw_data %>%
+  # Assign a unique sequential identifier to each original record
+  mutate(rowID = row_number(), .before = 1) %>%
+  # Group horizons belonging to the same soil profile
+  group_by(Long_Site, Lat_Site, date) %>%
+  # Assign a sequential identifier to each unique profile
+  mutate(ProfID = cur_group_id(), .before = 2) %>%
+  ungroup() %>%
+  # Format profile identifiers as PROF0001, PROF0002, etc.
+  mutate(ProfID = sprintf("PROF%04d", ProfID))
+
+```
 
 ##### Extracting and standardizing column names for sites {-}
 
 Raw soil data often uses inconsistent column naming conventions that vary between data sources, laboratories, and surveys. Standardizing these names prevents errors and makes your code more readable and reusable across different projects
 
-The R object `site` will store the location, depth, and metadata from the full set of observations, including all sites and their associated horizons or layers in the database.
+The R object `site` will store the location, depth, and metadata from the full set of observations, including all sites and their associated horizons or layers in the database. All subsequent structural quality-control steps are applied to this object, which becomes the authoritative cleaned representation of profile and horizon structure.
 
 ```{r rename-columns, eval=FALSE}
 # Select only the columns needed for site data preparation
 site <- raw_data %>%
   select(
     rowID,
-    Long_Site.x,              # Raw column name for longitude
-    Lat_Site.x,               # Raw column name for latitude
-    smp_id,                   # Sample/horizon identifier
-    Top_depth_cm.x,           # Top depth in centimeters
-    Bottom_depth_cm.x         # Bottom depth in centimeters
+    ProfID,
+    date,
+    Long_Site,              # Raw column name for longitude
+    Lat_Site,               # Raw column name for latitude
+    smp_id,                 # Sample/horizon identifier
+    Top_depth_cm,           # Top depth in centimeters
+    Bottom_depth_cm         # Bottom depth in centimeters
   )
 
   # Rename columns to standard, consistent names
 site <- site %>%
   rename(
-    lon = Long_Site.x,
-    lat = Lat_Site.x,
+    lon = Long_Site,
+    lat = Lat_Site,
     HorID = smp_id,
-    top = Top_depth_cm.x,
-    bottom = Bottom_depth_cm.x
+    top = Top_depth_cm,
+    bottom = Bottom_depth_cm
   ) 
 
 ```
 
 
-##### Creating unique profile identifiers {-}
+After standardizing the column names, the `site` object preserves the `rowID` and `ProfID` created in `raw_data`. Each row therefore remains linked to the original record, while horizons belonging to the same initial profile share a common `ProfID`.
 
-Each unique geographic location represents a single soil profile. A profile may contain multiple horizons or layers sampled at different depths. We create a unique identifier `ProfID` for each location based on coordinates so that all horizons from the same location can be grouped together in the same profile.
-
-```{r profile-ids, eval=FALSE}
+```{r reorder-site-columns, eval=FALSE}
+# Reorder columns for clarity
 site <- site %>%
-  # Group all horizons at the same location
-  group_by(lon, lat) %>%
-  # Assign sequential ID to each unique location (cur_group_id() returns group number)
-  mutate(ProfID = cur_group_id()) %>%
-  ungroup() %>%
-  # Format as standardized IDs: PROF0001, PROF0002, etc. with 4 digit resolution
-  mutate(ProfID = sprintf("PROF%04d", ProfID))
-
-  # Reorder columns for clarity
-site <- site %>%
-  select(rowID, ProfID, HorID, lon, lat, top, bottom)
-
+  select(rowID, ProfID, HorID, date, lon, lat, top, bottom)
 ```
 
-After this step, horizons from the same location share a common `ProfID`, while those from different locations receive distinct `ProfID` values. When unique profile IDs are not available in the raw data, this method reconstructs profile identity using the geographic position of the samples.
+##### Retaining repeated horizon records until laboratory validation {-}
 
-##### Remove duplicate site records {-}
+Multiple records may correspond to the same location and depth. In this dataset, repeated records may arise from spectroscopic measurements, repeated laboratory analyses, or multiple profile descriptions. At this stage, these records are **retained** rather than removed.
 
-Multiple site records may correspond to identical observations (i.e., the same location and depth). In this dataset, spectroscopic measurements were performed four times per sample, resulting in duplicate entries. Remove duplicates and retain a single record to prevent redundancy and double counting in subsequent analyses.
-
-```{r duplicates, eval=FALSE}
-# Remove duplicate rows
-site <- site %>%
-  distinct(across(-rowID), .keep_all = TRUE)
-```
-
+This is important because repeated horizon records may contain complementary analytical measurements. They will be assessed after the laboratory variables have been attached and validated, when duplicated horizons and competing depth sequences can be resolved without unnecessary loss of information.
 
 ::: {.key-concept}
 **Standard column naming convention** ensures consistency across all your code and projects:
@@ -1996,9 +2013,9 @@ site <- site %>%
 
 **Adjust `ProfID` for locations with multiple profile descriptions** 
 
-  - Horizons or layers measured at different times or for different purposes may occur at the same location. If the `ProfID` is based only on spatial position, these observations may share the same identifier.
+  - In this workflow, `ProfID` is initially based on spatial position and sampling `date`, which separates observations collected at the same location on different dates. However, multiple independent profile descriptions may still occur at the same location and date.
   
-  - Identify these profiles and assign a unique `ProfID` to each one (see the procedure in Section 6 of this chapter).
+  - These cases are identified later from their depth sequences and assigned distinct `ProfID` values in the section **Detecting and resolving duplicate soil profiles**.
   
   - Proper identification of unique profiles is necessary to ensure consistent data management and reliable Digital Soil Mapping results.
 
@@ -2155,6 +2172,7 @@ Depth-sequence conflicts should therefore be resolved only after laboratory data
 This staged approach prevents loss of valid measurements and ensures consistent profile harmonization.
 :::
 
+At this stage, `site` contains the records that passed the coordinate and basic depth-structure checks. The next step does not reconstruct the profiles. Instead, it adds the corresponding analytical measurements to these already validated site records.
 
 #### Preparing lab data: harmonization and validation
 
@@ -2169,61 +2187,57 @@ Laboratory analyses provide soil property measurements used as inputs for Digita
 
 ##### Prepare and standardize laboratory columns {-}
 
-In this step, you will extract horizon-level laboratory results from the raw dataset, convert relevant fields to numeric, and retain only the records associated with the profiles preserved in the cleaned site dataset. Finally, you will merge the laboratory data back into the site dataset using `rowID` as the unique record identifier.
+At this point, the `site` object already contains the cleaned and validated profile structure. Therefore, the site preparation steps are **not repeated**. Instead, laboratory variables are extracted from `raw_data` using the original `rowID` and attached to the records that remain in `site`.
+
+This preserves the profile identifiers, coordinates, dates, and depth intervals already validated in the previous sections. The resulting `site_lab` object is therefore a direct continuation of `site`: it contains the cleaned site structure plus the laboratory measurements that will now be validated.
 
 ```{r lab-extract, eval=FALSE}
-# Add Row and Profile Identifiers
-site_lab <- raw_data %>%
-  mutate(rowID = row_number(), .before = 1) %>%
-  # Group all horizons at the same location
-  group_by(Long_Site, Lat_Site) %>%
-  mutate(HorID = smp_id, .before = 2) %>%
-  # Assign sequential ID to each unique Profile location (cur_group_id() returns group number)
-  mutate(ProfID = cur_group_id(), .before = 3) %>%
-  ungroup() %>%
-  # Format as standardized IDs: PROF0001, PROF0002, etc. with 4 digit resolution
-  mutate(ProfID = sprintf("PROF%04d", ProfID))
+# Extract laboratory measurements from the original data.
+# rowID provides the link back to the already cleaned site object.
+lab_data <- raw_data %>%
+  select(
+    rowID,
+    `Estimated Organic Carbon`, `Carbon, Total`,                                     # Soil Organic Carbon and Total Carbon (%)
+    `Bulk Density, <2mm Fraction, 1/3 Bar`, `Bulk Density, <2mm Fraction, Ovendry`,  # Bulk density at 1/3 bar and oven dry (g/cm³)
+    `Sand, Total`, `Silt, Total`, `Clay`,                                            # Texture (%)
+    `pH, 1:1 Soil-Water Suspension`,                                                 # pH H2O
+    `CEC, NH4OAc, pH 7.0, 2M KCl displacement`,                                      # CEC in cmol(+)/kg
+    `Nitrogen, Total`,                                                               # Total nitrogen (%)
+    `Phosphorus, Mehlich3 Extractable`, `Phosphorus, Olsen Extractable`,             # Available P (mg/kg)
+    `Potassium, NH4OAc Extractable, 2M KCl displacement`,                            # Extractable K (cmol(+)/kg)
+    `Calcium, NH4OAc Extractable, 2M KCl displacement`                               # Extractable Ca (cmol(+)/kg)
+  )
 
-# Extract laboratory columns with standardized names
-site_lab <- site_lab %>%
-    select(
-      rowID, ProfID, HorID, Lat_Site ,Long_Site, Top_depth_cm, Bottom_depth_cm,
-      `Estimated Organic Carbon`, `Carbon, Total`,                                     # Soil Organic Carbon and Total Carbon (%)                    
-      `Bulk Density, <2mm Fraction, 1/3 Bar`, `Bulk Density, <2mm Fraction, Ovendry`,  # Bulk density at 1.3 bar and oven dry (g/cm³)
-      `Sand, Total`, `Silt, Total`, `Clay`,                                            # Texture (%)
-      `pH, 1:1 Soil-Water Suspension`,                                                 # pH H2O
-      `CEC, NH4OAc, pH 7.0, 2M KCl displacement`,                                      # CEC in cmol(+)/kg
-      `Nitrogen, Total`,                                                               # Total nitrogen (%),
-      `Phosphorus, Mehlich3 Extractable`, `Phosphorus, Olsen Extractable`,             # Available P (mg/kg)
-      `Potassium, NH4OAc Extractable, 2M KCl displacement`,                            # Extractable K (cmol(+)/kg)
-      `Calcium, NH4OAc Extractable, 2M KCl displacement`                               # Extractable Ca (cmol(+)/kg)
-    )
-
-  # Ensure numeric type for all analytical parameters (prevents issues if stored as text)
-  site_lab <- site_lab %>%
-    mutate(across(-c(rowID,ProfID, HorID), as.numeric))
-site_lab
-
-  # Rename columns in site_lab
-  names(site_lab) <-
-  c("rowID", "ProfID", "HorID",      # Unique row and profile identifier
-  "lon", "lat",                      # Coordinates (WGS84)
-  "top", "bottom",                   # Depth boundaries (cm)
+# Rename laboratory columns to standard, consistent names
+names(lab_data) <- c(
+  "rowID",
   "SOC",                             # Soil Organic Carbon (%)
   "Carbon_Total",                    # Total carbon (%)
-  "Bulk.Density_1_3.BAR",            # BD at 1.3 bar (g/cm³)
-  "Bulk.Density_ovendry",            # BD oven dry (g/cm³)
+  "Bulk.Density_1_3.BAR",            # BD at 1/3 bar (g/cm³)
+  "Bulk.Density_ovendry",             # BD oven dry (g/cm³)
   "Sand",                            # Sand content (%)
   "Silt",                            # Silt content (%)
   "Clay",                            # Clay content (%)
-  "pH",                              # Soil pH (H₂O)
+  "pH",                              # Soil pH (H2O)
   "CEC",                             # Cation exchange capacity (cmol(+)/kg)
   "Nitrogen_Total",                  # Total nitrogen (%)
   "Phosphorus_Mehlich3",             # Available P (mg/kg)
   "Phosphorus_Olsen",                # Available P (mg/kg)
   "Potassium",                       # Exchangeable K (cmol(+)/kg)
-  "Calcium")                         # Extractable Ca (cmol(+)/kg)
+  "Calcium"                          # Extractable Ca (cmol(+)/kg)
+)
 
+# Ensure numeric type for all analytical parameters
+lab_data <- lab_data %>%
+  mutate(across(-rowID, as.numeric))
+
+# Attach laboratory measurements to the cleaned site records.
+# Only rows retained in `site` are carried forward.
+site_lab <- site %>%
+  left_join(lab_data, by = "rowID")
+
+# Explore the combined site + laboratory dataset
+site_lab
 ```
 
 After preparing the laboratory dataset, the analytical results are validated through three quality-control checks:
@@ -2594,7 +2608,7 @@ site_lab <- site_lab %>%
   group_by(ProfID, top, bottom) %>%
   summarise(
     # keep identifiers as the first value in each group
-    across(c(rowID, HorID, lon, lat), ~ first(.x)),
+    across(c(rowID, HorID, date, lon, lat), ~ first(.x)),
     
     # compute mean for all other numeric columns (NA-safe)
     across(
@@ -2627,37 +2641,13 @@ A `chain_horizons` function has been created to identify different sequences in 
 
 ```{r resolve-duplicates-a2, eval=FALSE}
 # Detect ProfID series with different top-bottom depth sequences
-# Remove layers with missing depth boundaries and invalid depth logic
-# 1. For each profile, check if all rows form ONE continuous depth sequence
+# The basic site checks (missing/negative depths, zero thickness, invalid
+# depth logic, and initial surface coverage) have already been applied to `site`
+# and inherited by `site_lab`.
+# 1. For each profile, check whether rows form one continuous depth sequence
 # 2. If YES → Single profile (done)
-# 3. If NO → Find the consecutive horizons that ARE continuous
-# 4. If we find blocks with no gaps → Split the series into subprofiles
-
-# 3.3.1  Check 1: Missing Depth Boundaries
-# -----------------------------------------------------------------------------
-
-# Keep records where `top` or `bottom` are not NA
-site_lab <- site_lab %>%
-  dplyr::filter(!is.na(top) & !is.na(bottom))
-
-# Keep records where `top` or `bottom` are positive
-site_lab <- site_lab %>%
-  filter(!(top < 0 | bottom < 0))
-
-# Remove zero-thickness horizons
-site_lab <- site_lab %>%
-  filter(!(bottom - top == 0))
-
-# Remove invalid depth logic
-site_lab <- site_lab %>%
-  filter(bottom > top)
-
-## Keep only profiles that start at the surface (min top == 0)
-site_lab <- site_lab %>%
-  dplyr::group_by(ProfID) %>%
-  dplyr::filter(!is.na(top) & min(top, na.rm = TRUE) == 0) %>%
-  dplyr::ungroup()
-
+# 3. If NO → Find the consecutive horizons that are continuous
+# 4. If we find separate blocks → Split the series into subprofiles
 
 # Create a function to identify sequences of horizons for each profile
 chain_horizons <- function(top, bottom) {
@@ -2704,7 +2694,8 @@ site_lab <- site_lab %>%
   select(-chain)
 
 # Delete temporary objects
-rm(corrected_profiles,chain_horizons)
+rm(chain_horizons)
+if (exists("corrected_profiles")) rm(corrected_profiles)
 
 ```
 
@@ -2717,7 +2708,7 @@ Only profiles whose first horizon begins at the surface (top = 0 cm) should be r
 
 ###### Check 1: Remove profiles with incomplete surface coverage {-}
 
-As a result of the previous steps, some horizons may remain without forming a continuous sequence within their profile. The objective here is to retain only those profiles whose shallowest recorded depth starts at 0 cm.
+After separating competing depth sequences, some newly identified sequences may begin below the soil surface even though the original grouped `ProfID` contained at least one surface horizon. For this reason, the surface check is repeated **only for the newly separated profile sequences**. The objective here is to retain only those profiles whose shallowest recorded depth starts at 0 cm.
 
 ```{r resolve-topsoil, eval=FALSE}
 site_lab <- site_lab %>%
@@ -2731,7 +2722,7 @@ site_lab <- site_lab %>%
 
 ##### Result {-}
 
-After this procedure, we obtain a clean horizon-level dataset containing validated site, analytical, and metadata information. The dataset contains:
+After this procedure, `site_lab` is the final clean horizon-level dataset derived sequentially from `site`. It contains validated site, analytical, and metadata information. The dataset contains:
 
   - One consistent depth sequence per `ProfID`  
   - No duplicated horizons
@@ -2971,7 +2962,7 @@ Use a `left join` to preserve the cleaned horizon dataset as the reference. This
 
 ```{r sectral-results, eval=FALSE}
 # Read and subset spectral data from the original dataset
-raw_data <- read_excel(paste0(training_dir,"MIR_KANSAS_data.xlsx"), sheet = 1) 
+raw_data <- read_excel(paste0(training_dir,"/MIR_KANSAS_data.xlsx"), sheet = 1) 
 spec <- raw_data[,-c(1,3:22)]
 
 # Merge site_lab data to the original Spectral data by their common IDs
