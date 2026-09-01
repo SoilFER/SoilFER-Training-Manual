@@ -164,11 +164,15 @@ preparing-soil-observations
 loading-and-exploring-raw-soil-data
 preparing-site-data-for-analysis
 format-date-to-standard-iso-8601-specifically-mapped-as-yyyy-mm-dd
+adding-unique-record-and-profile-identifiers
+extracting-and-standardizing-column-names-for-sites
+retaining-repeated-horizon-records-until-laboratory-validation
 coordinate-validation-and-correction
 soil-depth-validation-and-correction
 preparing-lab-data-harmonization-and-validation
 option-2-replace-out-of-bounds-values-with-na
 resolving-duplicated-data-in-soil-profiles
+result
 harmonizing-data-for-dsm
 preparing-data-for-spectroscopy-analyses
 summary-of-exported-files

@@ -1926,7 +1926,7 @@ raw_data <- raw_data %>%
 
 :::
 
-##### Adding unique record and profile identifiers {-}
+##### Adding unique record and profile identifiers
 
 During data cleaning, records may be removed, modified, or reorganized. It is therefore good practice to assign a unique sequential `rowID` to each record in the original imported dataset. This identifier should be created before any filtering or transformation that could change the number or order of records.
 
@@ -1949,7 +1949,7 @@ raw_data <- raw_data %>%
 
 ```
 
-##### Extracting and standardizing column names for sites {-}
+##### Extracting and standardizing column names for sites
 
 Raw soil data often uses inconsistent column naming conventions that vary between data sources, laboratories, and surveys. Standardizing these names prevents errors and makes your code more readable and reusable across different projects
 
@@ -1990,7 +1990,7 @@ site <- site %>%
   select(rowID, ProfID, HorID, date, lon, lat, top, bottom)
 ```
 
-##### Retaining repeated horizon records until laboratory validation {-}
+##### Retaining repeated horizon records until laboratory validation 
 
 Multiple records may correspond to the same location and depth. In this dataset, repeated records may arise from spectroscopic measurements, repeated laboratory analyses, or multiple profile descriptions. At this stage, these records are **retained** rather than removed.
 
@@ -2720,7 +2720,7 @@ site_lab <- site_lab %>%
 ```
 
 
-##### Result {-}
+##### Result 
 
 After this procedure, `site_lab` is the final clean horizon-level dataset derived sequentially from `site`. It contains validated site, analytical, and metadata information. The dataset contains:
 

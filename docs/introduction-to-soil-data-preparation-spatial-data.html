@@ -2235,8 +2235,8 @@ R provides several built-in functions to help you inspect the structure, preview
 </ul>
 </div>
 </div>
-<div id="adding-unique-record-and-profile-identifiers" class="section level5 unnumbered hasAnchor">
-<h5>Adding unique record and profile identifiers<a href="introduction-to-soil-data-preparation-spatial-data.html#adding-unique-record-and-profile-identifiers" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="adding-unique-record-and-profile-identifiers" class="section level5 hasAnchor" number="1.2.2.2.2">
+<h5><span class="header-section-number">1.2.2.2.2</span> Adding unique record and profile identifiers<a href="introduction-to-soil-data-preparation-spatial-data.html#adding-unique-record-and-profile-identifiers" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>During data cleaning, records may be removed, modified, or reorganized. It is therefore good practice to assign a unique sequential <code>rowID</code> to each record in the original imported dataset. This identifier should be created before any filtering or transformation that could change the number or order of records.</p>
 <p>The <code>rowID</code> allows each processed record to be traced back to its corresponding record in the original dataset. This improves transparency and reproducibility and makes it easier to identify which records were retained, modified, or excluded during the cleaning process.</p>
 <p>A second identifier, <code>ProfID</code>, is created to identify soil profiles. In this dataset, all horizons sharing the same longitude, latitude, and sampling date are initially assumed to belong to the same soil profile description. The identifier is created once at this stage and is preserved throughout the subsequent site and laboratory data-cleaning steps.</p>
@@ -2252,8 +2252,8 @@ R provides several built-in functions to help you inspect the structure, preview
 <span id="cb86-10"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb86-10" tabindex="-1"></a>  <span class="co"># Format profile identifiers as PROF0001, PROF0002, etc.</span></span>
 <span id="cb86-11"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb86-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ProfID =</span> <span class="fu">sprintf</span>(<span class="st">&quot;PROF%04d&quot;</span>, ProfID))</span></code></pre></div>
 </div>
-<div id="extracting-and-standardizing-column-names-for-sites" class="section level5 unnumbered hasAnchor">
-<h5>Extracting and standardizing column names for sites<a href="introduction-to-soil-data-preparation-spatial-data.html#extracting-and-standardizing-column-names-for-sites" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="extracting-and-standardizing-column-names-for-sites" class="section level5 hasAnchor" number="1.2.2.2.3">
+<h5><span class="header-section-number">1.2.2.2.3</span> Extracting and standardizing column names for sites<a href="introduction-to-soil-data-preparation-spatial-data.html#extracting-and-standardizing-column-names-for-sites" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Raw soil data often uses inconsistent column naming conventions that vary between data sources, laboratories, and surveys. Standardizing these names prevents errors and makes your code more readable and reusable across different projects</p>
 <p>The R object <code>site</code> will store the location, depth, and metadata from the full set of observations, including all sites and their associated horizons or layers in the database. All subsequent structural quality-control steps are applied to this object, which becomes the authoritative cleaned representation of profile and horizon structure.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb87-1" tabindex="-1"></a><span class="co"># Select only the columns needed for site data preparation</span></span>
@@ -2283,8 +2283,8 @@ R provides several built-in functions to help you inspect the structure, preview
 <span id="cb88-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb88-2" tabindex="-1"></a>site <span class="ot">&lt;-</span> site <span class="sc">%&gt;%</span></span>
 <span id="cb88-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb88-3" tabindex="-1"></a>  <span class="fu">select</span>(rowID, ProfID, HorID, date, lon, lat, top, bottom)</span></code></pre></div>
 </div>
-<div id="retaining-repeated-horizon-records-until-laboratory-validation" class="section level5 unnumbered hasAnchor">
-<h5>Retaining repeated horizon records until laboratory validation<a href="introduction-to-soil-data-preparation-spatial-data.html#retaining-repeated-horizon-records-until-laboratory-validation" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="retaining-repeated-horizon-records-until-laboratory-validation" class="section level5 hasAnchor" number="1.2.2.2.4">
+<h5><span class="header-section-number">1.2.2.2.4</span> Retaining repeated horizon records until laboratory validation<a href="introduction-to-soil-data-preparation-spatial-data.html#retaining-repeated-horizon-records-until-laboratory-validation" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Multiple records may correspond to the same location and depth. In this dataset, repeated records may arise from spectroscopic measurements, repeated laboratory analyses, or multiple profile descriptions. At this stage, these records are <strong>retained</strong> rather than removed.</p>
 <p>This is important because repeated horizon records may contain complementary analytical measurements. They will be assessed after the laboratory variables have been attached and validated, when duplicated horizons and competing depth sequences can be resolved without unnecessary loss of information.</p>
 <div class="key-concept">
@@ -2977,8 +2977,8 @@ R provides several built-in functions to help you inspect the structure, preview
 <span id="cb109-5"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb109-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
 </div>
-<div id="result" class="section level5 unnumbered hasAnchor">
-<h5>Result<a href="introduction-to-soil-data-preparation-spatial-data.html#result" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="result" class="section level5 hasAnchor" number="1.2.2.6.1">
+<h5><span class="header-section-number">1.2.2.6.1</span> Result<a href="introduction-to-soil-data-preparation-spatial-data.html#result" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>After this procedure, <code>site_lab</code> is the final clean horizon-level dataset derived sequentially from <code>site</code>. It contains validated site, analytical, and metadata information. The dataset contains:</p>
 <ul>
 <li>One consistent depth sequence per <code>ProfID</code><br />
