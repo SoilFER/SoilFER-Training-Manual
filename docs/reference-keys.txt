@@ -169,7 +169,7 @@ extracting-and-standardizing-column-names-for-sites
 retaining-repeated-horizon-records-until-laboratory-validation
 coordinate-validation-and-correction
 soil-depth-validation-and-correction
-preparing-lab-data-harmonization-and-validation
+preparing-lab-data-standardization-and-validation
 option-2-replace-out-of-bounds-values-with-na
 resolving-duplicated-data-in-soil-profiles
 result

@@ -2174,9 +2174,9 @@ This staged approach prevents loss of valid measurements and ensures consistent 
 
 At this stage, `site` contains the records that passed the coordinate and basic depth-structure checks. The next step does not reconstruct the profiles. Instead, it adds the corresponding analytical measurements to these already validated site records.
 
-#### Preparing lab data: harmonization and validation
+#### Preparing lab data: standardization and validation
 
-Laboratory analyses provide the soil property measurements used as soil property inputs for Digital Soil Mapping. Laboratory data must be quality-controlled to ensure completeness, plausible value ranges, and internal consistency (e.g., particle-size fractions summing to ~100%). This section describes standard extraction, harmonization, and validation checks.
+Laboratory analyses provide the soil property measurements used as soil property inputs for Digital Soil Mapping. Laboratory data must be quality-controlled to ensure completeness, plausible value ranges, and internal consistency (e.g., particle-size fractions summing to ~100%). This section describes extraction, standardization, and validation checks.
 
 Laboratory analyses provide soil property measurements used as inputs for Digital Soil Mapping. Prior to modelling, laboratory data must be quality-controlled to ensure: 
 
