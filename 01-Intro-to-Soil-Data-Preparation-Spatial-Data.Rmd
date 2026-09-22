@@ -255,7 +255,7 @@ Every object in R has a data type, which tells R what kind of information it con
 
 R has several basic data types:
 
-##### 1. Numeric (Numbers) {#numeric-data} {-}
+##### 1. Numeric (Numbers) {#numeric-data -}
 
 Numeric values store measurements that can include decimals (e.g., pH, clay %, temperature).
 
@@ -287,7 +287,7 @@ location <- "Kansas"
 notes <- "Sample collected from topsoil"
 ```
 
-##### 4. Logical (TRUE/FALSE) {#logical-data} {-}
+##### 4. Logical (TRUE/FALSE) {#logical-data -}
 
 Logical values represent yes/no conditions and are commonly used for filtering and decision-making.
 
@@ -297,7 +297,7 @@ is_valid <- TRUE
 has_missing_data <- FALSE
 ```
 
-##### 5. Dates {#dates-data} {-}
+##### 5. Dates {#dates-data -}
 
 Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.
 
@@ -367,7 +367,7 @@ R can store data in different structures, depending on how many values you have 
 
 A **vector** is the simplest data structure - a one-dimensional sequence of elements of the same type.
 
-##### Creating Vectors {#create-vector} {-}
+##### Creating Vectors {#create-vector-}
 
 ```{r vectors-create, echo=TRUE, eval=FALSE}
 # Create a numeric vector using c() (combine)
@@ -388,7 +388,7 @@ depths <- 0:100                    # Integers from 0 to 100
 depths_seq <- seq(0, 100, by=10)   # 0, 10, 20, ..., 100
 ```
 
-##### Vector Operations {#operate-vector} {-}
+##### Vector Operations {#operate-vector -}
 
 ```{r vector-operations, echo=TRUE, eval=FALSE}
 # Arithmetic on vectors (element-wise)
@@ -407,7 +407,7 @@ mean(c(ph_values,NA), na.rm=TRUE) # Remove NAs from calculations
 
 ```
 
-##### Accessing Vector Elements {#element-vector} {-}
+##### Accessing Vector Elements {#element-vector -}
 
 ```{r vector-access, echo=TRUE, eval=FALSE}
 # Access by index (position)
@@ -483,7 +483,7 @@ soil_matrix[, 2]         # All of column 2
 A **data frame** is the most commonly used structure for storing datasets.
 It's like a spreadsheet: rows represent observations, columns represent variables, and different columns can have different data types.
 
-##### Creating Data Frames {#dataframe-create} {-}
+##### Creating Data Frames {#dataframe-create -}
 
 ```{r dataframe-class, echo=TRUE, eval=FALSE}
 # Create a data frame
@@ -515,7 +515,7 @@ nrow(soil_data)        # number of rows
 ncol(soil_data)        # number of columns
 ```
 
-##### Accessing Data Frame Elements {#dataframe-access} {-}
+##### Accessing Data Frame Elements {#dataframe-access -}
 
 ```{r dataframes-access, echo=TRUE, eval=FALSE}
 # Access columns by name
@@ -538,7 +538,7 @@ soil_data[soil_data$ph > 6, ]              # Plots with pH > 6
 soil_data[soil_data$soil_type == "Acrisol", ]  # Only Acrisols
 ```
 
-##### Adding Columns {#dataframe-cols} {-}
+##### Adding Columns {#dataframe-cols -}
 
 ```{r dataframes-add, echo=TRUE, eval=FALSE}
 # Add a new column
@@ -1115,7 +1115,7 @@ soil_data %>%
 
 The `{dplyr}` package provides a clear set of 'data verbs' for manipulating tabular data. Its syntax is designed to be readable: you describe what you want to do (filter rows, select columns, create variables, summarize results) rather than how to do it step by step. This makes `{dplyr}` especially useful for soil datasets, where you often need to subset observations, compute derived indicators (e.g., pH classes), and summarize results by soil type, horizon, land use, or sampling site.
 
-##### Selecting Columns {#dplyr-select} {-}
+##### Selecting Columns {#dplyr-select -}
 
 Use `select()` to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the likelihood of making mistakes when working with wide datasets (many columns).
 
@@ -1137,7 +1137,7 @@ soil_data %>%
   select(contains("content"))
 ```
 
-##### Filtering Rows {#dplyr-filter} {-}
+##### Filtering Rows {#dplyr-filter -}
 
 Use `filter()` to keep only the rows that meet one or more conditions. This is commonly used to focus on samples within a range (e.g., pH > 6) or to extract specific soil classes or land uses.
 
@@ -1179,7 +1179,7 @@ soil_data %>%
 ```
 
 
-##### Creating/Modifying Columns  with `mutate()` {#dplyr-mutate} {-}
+##### Creating/Modifying Columns  with `mutate()` {#dplyr-mutate -}
 
 Use `mutate()` to add new variables or update existing ones. This is where you typically compute derived soil indicators (classes, ratios, unit conversions) while keeping the original dataset intact.
 
@@ -1199,7 +1199,7 @@ soil_data %>%
   )
 ```
 
-##### Arranging (Sorting) Data {#dplyr-arrange} {-}
+##### Arranging (Sorting) Data {#dplyr-arrange -}
 
 Use `arrange()` to sort rows by one or more column values. This is useful for quickly identifying extreme values (e.g., the highest pH) and for ordering results in tables and reports.
 Use `arrange(desc())` for descending order.
@@ -1280,7 +1280,7 @@ This is usually done by matching tables using a shared identifier (a **key**), s
 
 A **join** combines two data frames by matching values in one or more key columns. Each join type differs mainly in which rows (keys) are kept in the result.
 
-##### Join types {#join-types} {-}
+##### Join types {#join-types -}
 
 | Join                  | Keeps which keys?                             | Typical use                        |
 |-----------------------|-----------------------|---------------------------|
@@ -1303,7 +1303,7 @@ A **join** combines two data frames by matching values in one or more key column
  
 :::
 
-##### Example datasets and join operations {#dplyr-join-example} {-}
+##### Example datasets and join operations {#dplyr-join-example -}
 
 ```{r join-data, echo=TRUE, eval=FALSE}
 # Soil data example
@@ -1467,14 +1467,14 @@ soil_data_na %>%
 
 Soil datasets are often stored in different formats depending on how they were collected or produced. The `{tidyr}` package helps you reshape data—changing its layout without changing the information. This is especially useful when preparing data for plotting, reporting, modeling, or joining with other tables.
 
-##### Wide vs Long Data Format {#wide-long} {-}
+##### Wide vs Long Data Format {#wide-long -}
 
  - **Wide format**: each variable has its own column (common in spreadsheets and summary tables).
 
  - **Long format**: values are stored in a single column, with one or more columns describing what the values represent (common for tidy workflows and `ggplot2()`).
 
 
-##### `pivot_longer()`: Wide to Long {#pivot-long} {-}
+##### `pivot_longer()`: Wide to Long {#pivot-long -}
 
 Use `pivot_longer()` to turn several measurement columns (e.g., pH, carbon, nitrogen) into a tidy key–value structure.
 
@@ -1512,7 +1512,7 @@ long_soil
  
 :::
 
-##### `pivot_wider()`: Long to Wide {#pivot-wider} {-}
+##### `pivot_wider()`: Long to Wide {#pivot-wider -}
 
 Use `pivot_wider()` to spread a variable column back into multiple columns. This is helpful when you want a compact table for reporting or when a model expects predictors in separate columns.
 
@@ -1525,7 +1525,7 @@ long_soil %>%
  )
 ```
 
-##### Advanced Pivoting: Multiple Measurements per Site (Replicates) {#pivot-table} {-}
+##### Advanced Pivoting: Multiple Measurements per Site (Replicates) {#pivot-table -}
 
 In real datasets, you may have repeated measurements (e.g., replicate samples). In that case, keep replicate identifiers as separate columns and pivot the measurement names into columns.
 
@@ -1668,7 +1668,7 @@ library(tidyverse)        # Data manipulation and visualization
 
 Most soil science projects use data from external sources (field surveys, lab results, sensors, or remote sensing). These datasets are commonly stored as CSV or Excel files, but they can also come from databases, spatial formats (e.g., GeoPackages/shapefiles), or web APIs. R provides tools to import, clean, and analyze these data. In this tutorial, we focus on CSV (`.csv`) and Excel (`.xlsx`) because they are the most widely used formats in soil science workflows.
 
-##### Reading CSV Files {#read-csv} {-}
+##### Reading CSV Files {#read-csv -}
 
 CSV (comma-separated values) and plain text (`.txt`) files are widely used for exchanging tabular data. In base R, you can import them with `read.csv()` or the more general `read.table()` (both from `{utils}`).
 These functions assume the separator is a comma (,) and by default use `header = TRUE`, meaning the first row is treated as column names.
@@ -1706,7 +1706,7 @@ They are easier to read and less likely to break if you reorganize folders.
 
 :::
 
-##### Reading Excel Files {#read-excel} {-}
+##### Reading Excel Files {#read-excel -}
 
 To read Excel files, use `read_excel()` from the `{readxl}` package:
 

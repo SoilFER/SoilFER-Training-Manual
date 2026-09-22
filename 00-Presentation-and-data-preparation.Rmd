@@ -22,6 +22,7 @@ The objectives of this manual are to:
 By integrating these components, the manual equips users to move from raw samples to reliable soil information products that inform policy, guide sustainable soil management, and strengthen food and nutrition security. 
 
 The SoilFER project is co-funded by the U.S. Department of State and the Ministry of Foreign Affairs of Japan.
+
 ## The Training Dataset {-}
 
 This manual uses the **KSSL (Kellogg Soil Survey Laboratory) soil dataset from Kansas, USA** as a comprehensive example for implementing the complete Digital Soil Mapping (DSM) workflow. The dataset provides a realistic foundation for learning DSM techniques, from inspection and cleaning of raw soil laboratory data to advanced spatial modeling and uncertainty assessment. It also demonstrates the integration of soil spectroscopy data and its application in operational DSM production.
@@ -189,14 +190,7 @@ The session provides hands-on experience building prediction models for three va
 
 
 #### **Module 4: Soil Spectroscopy** {-}
-
-This module introduces soil infrared spectroscopy as a rapid, cost-effective method for predicting soil properties and demonstrates its integration into DSM workflows.
-
-**Session 4.1 - Spectroscopy Fundamentals and Calibration**  
-The session introduces essential spectral data preprocessing techniques, quality control procedures and advanced chemometric modeling approaches for building spectral calibration models.
-
-**Session 4.2 - Practical Spectroscopy Workflows**  
-Provides hands-on experience processing raw spectral scans from the KSSL dataset, building calibration models for soil properties, and integrating spectral predictions into complete DSM workflows.
+This module introduces diffuse reflectance spectroscopy (DRS) as a complementary approach to conventional laboratory methods for estimating soil properties, with the aim of improving the time and cost efficiency of routine analysis. The focus is on the integration of DRS into DSM workflows. The essentials of DRS are presented, such as spectral data preprocessing techniques, quality control procedures and advanced chemometric modelling approaches for building models that translate DRS signals into values of relevant soil properties. A practical exercise then shows how DRS calibration models can be built from relatively small reference datasets to estimate soil organic carbon for samples with only DRS measurements available. Raw spectra from the KSSL dataset are used, and the resulting soil organic carbon predictions are then integrated into a complete DSM workflow. 
 
 
 #### **Module 5: Soil Data Standardisation, Sharing and Dissemination** {-}
