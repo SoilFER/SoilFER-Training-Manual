@@ -113,6 +113,7 @@ data-types
 check-data
 structure-data
 vector-data
+create-vector-
 factor-data
 matrix-data
 dataframe

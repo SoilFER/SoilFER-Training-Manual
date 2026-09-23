@@ -165,7 +165,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="contributors-and-reviewers.html"><a href="contributors-and-reviewers.html"><i class="fa fa-check"></i>Contributors and reviewers</a></li>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html"><i class="fa fa-check"></i>Presentation and basics</a>
 <ul>
-<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#background-and-objective"><i class="fa fa-check"></i>Background and Objective</a></li>
+<li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#the-training-dataset"><i class="fa fa-check"></i>The Training Dataset</a>
 <ul>
 <li class="chapter" data-level="" data-path="presentation-and-basics.html"><a href="presentation-and-basics.html#data-structure"><i class="fa fa-check"></i>Data Structure</a></li>
 </ul></li>
@@ -798,38 +799,38 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <h4><span class="header-section-number">1.1.3.2</span> Data Types in R<a href="introduction-to-soil-data-preparation-spatial-data.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Every object in R has a data type, which tells R what kind of information it contains and how it can be used (for example, whether you can do math with it or use it as text labels).</p>
 <p>R has several basic data types:</p>
-<div id="numeric-numbers-numeric-data" class="section level5 unnumbered hasAnchor">
-<h5>1. Numeric (Numbers) {#numeric-data}<a href="introduction-to-soil-data-preparation-spatial-data.html#numeric-numbers-numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="numeric-data" class="section level5 unnumbered hasAnchor">
+<h5>1. Numeric (Numbers)<a href="introduction-to-soil-data-preparation-spatial-data.html#numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Numeric values store measurements that can include decimals (e.g., pH, clay %, temperature).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb15-1" tabindex="-1"></a><span class="co"># Numeric values</span></span>
 <span id="cb15-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb15-2" tabindex="-1"></a>ph_value <span class="ot">&lt;-</span> <span class="fl">6.8</span></span>
 <span id="cb15-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb15-3" tabindex="-1"></a>clay_percent <span class="ot">&lt;-</span> <span class="fl">25.5</span></span>
 <span id="cb15-4"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb15-4" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fl">15.2</span></span></code></pre></div>
 </div>
-<div id="integer-whole-numbers-integer-data" class="section level5 unnumbered hasAnchor">
-<h5>2. Integer (Whole Numbers) {#integer-data}<a href="introduction-to-soil-data-preparation-spatial-data.html#integer-whole-numbers-integer-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="integer-data" class="section level5 unnumbered hasAnchor">
+<h5>2. Integer (Whole Numbers)<a href="introduction-to-soil-data-preparation-spatial-data.html#integer-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Integers are whole numbers. In R, you can create them explicitly using the L suffix.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb16-1" tabindex="-1"></a><span class="co"># Integer values (use L suffix)</span></span>
 <span id="cb16-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb16-2" tabindex="-1"></a>sample_count <span class="ot">&lt;-</span> <span class="dv">100</span><span class="dt">L</span></span>
 <span id="cb16-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb16-3" tabindex="-1"></a>plot_number <span class="ot">&lt;-</span> <span class="dv">5</span><span class="dt">L</span></span></code></pre></div>
 </div>
-<div id="character-text-strings-text-data" class="section level5 unnumbered hasAnchor">
-<h5>3. Character (Text Strings) {#text-data}<a href="introduction-to-soil-data-preparation-spatial-data.html#character-text-strings-text-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="text-data" class="section level5 unnumbered hasAnchor">
+<h5>3. Character (Text Strings)<a href="introduction-to-soil-data-preparation-spatial-data.html#text-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Character values store text (soil types, locations, notes). They must be written inside quotes.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb17-1" tabindex="-1"></a><span class="co"># Character values (use quotes)</span></span>
 <span id="cb17-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb17-2" tabindex="-1"></a>soil_type <span class="ot">&lt;-</span> <span class="st">&quot;Acrisol&quot;</span></span>
 <span id="cb17-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb17-3" tabindex="-1"></a>location <span class="ot">&lt;-</span> <span class="st">&quot;Kansas&quot;</span></span>
 <span id="cb17-4"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb17-4" tabindex="-1"></a>notes <span class="ot">&lt;-</span> <span class="st">&quot;Sample collected from topsoil&quot;</span></span></code></pre></div>
 </div>
-<div id="logical-truefalse-logical-data" class="section level5 unnumbered hasAnchor">
-<h5>4. Logical (TRUE/FALSE) {#logical-data}<a href="introduction-to-soil-data-preparation-spatial-data.html#logical-truefalse-logical-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="logical-data" class="section level5 unnumbered hasAnchor">
+<h5>4. Logical (TRUE/FALSE)<a href="introduction-to-soil-data-preparation-spatial-data.html#logical-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Logical values represent yes/no conditions and are commonly used for filtering and decision-making.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb18-1" tabindex="-1"></a><span class="co"># Logical values</span></span>
 <span id="cb18-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb18-2" tabindex="-1"></a>is_valid <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
 <span id="cb18-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb18-3" tabindex="-1"></a>has_missing_data <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span></code></pre></div>
 </div>
-<div id="dates-dates-data" class="section level5 unnumbered hasAnchor">
-<h5>5. Dates {#dates-data}<a href="introduction-to-soil-data-preparation-spatial-data.html#dates-dates-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dates-data" class="section level5 unnumbered hasAnchor">
+<h5>5. Dates<a href="introduction-to-soil-data-preparation-spatial-data.html#dates-data" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Dates often are imported as character strings, but it is better to convert them to the Date class for sorting, filtering, and plotting.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb19-1" tabindex="-1"></a><span class="co"># ISO 8601 date format, YYYY-MM-DD</span></span>
 <span id="cb19-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb19-2" tabindex="-1"></a>sampling_date <span class="ot">&lt;-</span> <span class="st">&quot;2024-03-12&quot;</span></span>
@@ -885,8 +886,8 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <div id="vector-data" class="section level4 hasAnchor" number="1.1.4.1">
 <h4><span class="header-section-number">1.1.4.1</span> Vectors<a href="introduction-to-soil-data-preparation-spatial-data.html#vector-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A <strong>vector</strong> is the simplest data structure - a one-dimensional sequence of elements of the same type.</p>
-<div id="creating-vectors-create-vector" class="section level5 unnumbered hasAnchor">
-<h5>Creating Vectors {#create-vector}<a href="introduction-to-soil-data-preparation-spatial-data.html#creating-vectors-create-vector" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="create-vector-" class="section level5 hasAnchor" number="1.1.4.1.1">
+<h5><span class="header-section-number">1.1.4.1.1</span> Creating Vectors<a href="introduction-to-soil-data-preparation-spatial-data.html#create-vector-" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb21-1" tabindex="-1"></a><span class="co"># Create a numeric vector using c() (combine)</span></span>
 <span id="cb21-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb21-2" tabindex="-1"></a>ph_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.5</span>, <span class="fl">7.1</span>, <span class="fl">5.8</span>, <span class="fl">6.9</span>)</span>
 <span id="cb21-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb21-3" tabindex="-1"></a><span class="fu">print</span>(ph_values)</span>
@@ -904,8 +905,8 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <span id="cb21-15"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb21-15" tabindex="-1"></a>depths <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>                    <span class="co"># Integers from 0 to 100</span></span>
 <span id="cb21-16"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb21-16" tabindex="-1"></a>depths_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)   <span class="co"># 0, 10, 20, ..., 100</span></span></code></pre></div>
 </div>
-<div id="vector-operations-operate-vector" class="section level5 unnumbered hasAnchor">
-<h5>Vector Operations {#operate-vector}<a href="introduction-to-soil-data-preparation-spatial-data.html#vector-operations-operate-vector" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="operate-vector" class="section level5 unnumbered hasAnchor">
+<h5>Vector Operations<a href="introduction-to-soil-data-preparation-spatial-data.html#operate-vector" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb22-1" tabindex="-1"></a><span class="co"># Arithmetic on vectors (element-wise)</span></span>
 <span id="cb22-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb22-2" tabindex="-1"></a>ph_values <span class="sc">*</span> <span class="dv">10</span></span>
 <span id="cb22-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb22-3" tabindex="-1"></a>ph_values <span class="sc">+</span> <span class="dv">1</span></span>
@@ -920,8 +921,8 @@ You can assign values to objects using either <code>&lt;-</code> or <code>=</cod
 <span id="cb22-12"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb22-12" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(ph_values,<span class="cn">NA</span>))</span>
 <span id="cb22-13"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb22-13" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(ph_values,<span class="cn">NA</span>), <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># Remove NAs from calculations</span></span></code></pre></div>
 </div>
-<div id="accessing-vector-elements-element-vector" class="section level5 unnumbered hasAnchor">
-<h5>Accessing Vector Elements {#element-vector}<a href="introduction-to-soil-data-preparation-spatial-data.html#accessing-vector-elements-element-vector" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="element-vector" class="section level5 unnumbered hasAnchor">
+<h5>Accessing Vector Elements<a href="introduction-to-soil-data-preparation-spatial-data.html#element-vector" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb23-1" tabindex="-1"></a><span class="co"># Access by index (position)</span></span>
 <span id="cb23-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb23-2" tabindex="-1"></a>ph_values           <span class="co"># Complete data</span></span>
 <span id="cb23-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb23-3" tabindex="-1"></a>ph_values[<span class="dv">1</span>]        <span class="co"># First element</span></span>
@@ -988,8 +989,8 @@ They store values as levels (categories).</p>
 <h4><span class="header-section-number">1.1.4.4</span> Data Frames<a href="introduction-to-soil-data-preparation-spatial-data.html#dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A <strong>data frame</strong> is the most commonly used structure for storing datasets.
 It’s like a spreadsheet: rows represent observations, columns represent variables, and different columns can have different data types.</p>
-<div id="creating-data-frames-dataframe-create" class="section level5 unnumbered hasAnchor">
-<h5>Creating Data Frames {#dataframe-create}<a href="introduction-to-soil-data-preparation-spatial-data.html#creating-data-frames-dataframe-create" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dataframe-create" class="section level5 unnumbered hasAnchor">
+<h5>Creating Data Frames<a href="introduction-to-soil-data-preparation-spatial-data.html#dataframe-create" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb26-1" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
 <span id="cb26-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb26-2" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb26-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb26-3" tabindex="-1"></a>  <span class="at">plot_id =</span> <span class="fu">c</span>(<span class="st">&quot;P001&quot;</span>, <span class="st">&quot;P002&quot;</span>, <span class="st">&quot;P003&quot;</span>, <span class="st">&quot;P004&quot;</span>, <span class="st">&quot;P005&quot;</span>),</span>
@@ -1018,8 +1019,8 @@ It’s like a spreadsheet: rows represent observations, columns represent variab
 <span id="cb26-26"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb26-26" tabindex="-1"></a><span class="fu">nrow</span>(soil_data)        <span class="co"># number of rows</span></span>
 <span id="cb26-27"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb26-27" tabindex="-1"></a><span class="fu">ncol</span>(soil_data)        <span class="co"># number of columns</span></span></code></pre></div>
 </div>
-<div id="accessing-data-frame-elements-dataframe-access" class="section level5 unnumbered hasAnchor">
-<h5>Accessing Data Frame Elements {#dataframe-access}<a href="introduction-to-soil-data-preparation-spatial-data.html#accessing-data-frame-elements-dataframe-access" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dataframe-access" class="section level5 unnumbered hasAnchor">
+<h5>Accessing Data Frame Elements<a href="introduction-to-soil-data-preparation-spatial-data.html#dataframe-access" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb27-1" tabindex="-1"></a><span class="co"># Access columns by name</span></span>
 <span id="cb27-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb27-2" tabindex="-1"></a>soil_data<span class="sc">$</span>ph</span>
 <span id="cb27-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb27-3" tabindex="-1"></a>soil_data<span class="sc">$</span>soil_type</span>
@@ -1039,8 +1040,8 @@ It’s like a spreadsheet: rows represent observations, columns represent variab
 <span id="cb27-17"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb27-17" tabindex="-1"></a>soil_data[soil_data<span class="sc">$</span>ph <span class="sc">&gt;</span> <span class="dv">6</span>, ]              <span class="co"># Plots with pH &gt; 6</span></span>
 <span id="cb27-18"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb27-18" tabindex="-1"></a>soil_data[soil_data<span class="sc">$</span>soil_type <span class="sc">==</span> <span class="st">&quot;Acrisol&quot;</span>, ]  <span class="co"># Only Acrisols</span></span></code></pre></div>
 </div>
-<div id="adding-columns-dataframe-cols" class="section level5 unnumbered hasAnchor">
-<h5>Adding Columns {#dataframe-cols}<a href="introduction-to-soil-data-preparation-spatial-data.html#adding-columns-dataframe-cols" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dataframe-cols" class="section level5 unnumbered hasAnchor">
+<h5>Adding Columns<a href="introduction-to-soil-data-preparation-spatial-data.html#dataframe-cols" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb28-1" tabindex="-1"></a><span class="co"># Add a new column</span></span>
 <span id="cb28-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb28-2" tabindex="-1"></a>soil_data<span class="sc">$</span>silt_content <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">52</span>, <span class="dv">23</span>, <span class="dv">30</span>)</span>
 <span id="cb28-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb28-3" tabindex="-1"></a></span>
@@ -1527,8 +1528,8 @@ Key packages include:</p>
 <div id="manipulation-dplyr" class="section level4 hasAnchor" number="1.1.10.4">
 <h4><span class="header-section-number">1.1.10.4</span> Data Manipulation with <code>{dplyr}</code><a href="introduction-to-soil-data-preparation-spatial-data.html#manipulation-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>{dplyr}</code> package provides a clear set of ‘data verbs’ for manipulating tabular data. Its syntax is designed to be readable: you describe what you want to do (filter rows, select columns, create variables, summarize results) rather than how to do it step by step. This makes <code>{dplyr}</code> especially useful for soil datasets, where you often need to subset observations, compute derived indicators (e.g., pH classes), and summarize results by soil type, horizon, land use, or sampling site.</p>
-<div id="selecting-columns-dplyr-select" class="section level5 unnumbered hasAnchor">
-<h5>Selecting Columns {#dplyr-select}<a href="introduction-to-soil-data-preparation-spatial-data.html#selecting-columns-dplyr-select" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dplyr-select" class="section level5 unnumbered hasAnchor">
+<h5>Selecting Columns<a href="introduction-to-soil-data-preparation-spatial-data.html#dplyr-select" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>select()</code> to choose the variables you need for analysis or reporting. This helps keep your workflow focused and reduces the likelihood of making mistakes when working with wide datasets (many columns).</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb48-1" tabindex="-1"></a><span class="co"># Select specific columns</span></span>
 <span id="cb48-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb48-2" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
@@ -1546,8 +1547,8 @@ Key packages include:</p>
 <span id="cb48-14"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb48-14" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
 <span id="cb48-15"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb48-15" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;content&quot;</span>))</span></code></pre></div>
 </div>
-<div id="filtering-rows-dplyr-filter" class="section level5 unnumbered hasAnchor">
-<h5>Filtering Rows {#dplyr-filter}<a href="introduction-to-soil-data-preparation-spatial-data.html#filtering-rows-dplyr-filter" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dplyr-filter" class="section level5 unnumbered hasAnchor">
+<h5>Filtering Rows<a href="introduction-to-soil-data-preparation-spatial-data.html#dplyr-filter" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>filter()</code> to keep only the rows that meet one or more conditions. This is commonly used to focus on samples within a range (e.g., pH &gt; 6) or to extract specific soil classes or land uses.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb49-1" tabindex="-1"></a><span class="co"># Filter rows based on condition</span></span>
 <span id="cb49-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb49-2" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
@@ -1581,8 +1582,8 @@ The syntax is <code>new_name = old_name</code>.</p>
 <span id="cb50-9"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb50-9" tabindex="-1"></a>  <span class="at">acidity =</span> ph,</span>
 <span id="cb50-10"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb50-10" tabindex="-1"></a>  <span class="at">clay_percent =</span> clay_content</span>
 <span id="cb50-11"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb50-11" tabindex="-1"></a> ) </span></code></pre></div>
-<div id="creatingmodifying-columns-with-mutate-dplyr-mutate" class="section level5 unnumbered hasAnchor">
-<h5>Creating/Modifying Columns with <code>mutate()</code> {#dplyr-mutate}<a href="introduction-to-soil-data-preparation-spatial-data.html#creatingmodifying-columns-with-mutate-dplyr-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dplyr-mutate" class="section level5 unnumbered hasAnchor">
+<h5>Creating/Modifying Columns with <code>mutate()</code><a href="introduction-to-soil-data-preparation-spatial-data.html#dplyr-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>mutate()</code> to add new variables or update existing ones. This is where you typically compute derived soil indicators (classes, ratios, unit conversions) while keeping the original dataset intact.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb51-1" tabindex="-1"></a><span class="co"># Create new columns</span></span>
 <span id="cb51-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb51-2" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
@@ -1598,8 +1599,8 @@ The syntax is <code>new_name = old_name</code>.</p>
 <span id="cb51-12"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb51-12" tabindex="-1"></a>    <span class="at">soil_type =</span> <span class="fu">toupper</span>(soil_type)</span>
 <span id="cb51-13"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb51-13" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
-<div id="arranging-sorting-data-dplyr-arrange" class="section level5 unnumbered hasAnchor">
-<h5>Arranging (Sorting) Data {#dplyr-arrange}<a href="introduction-to-soil-data-preparation-spatial-data.html#arranging-sorting-data-dplyr-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dplyr-arrange" class="section level5 unnumbered hasAnchor">
+<h5>Arranging (Sorting) Data<a href="introduction-to-soil-data-preparation-spatial-data.html#dplyr-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>arrange()</code> to sort rows by one or more column values. This is useful for quickly identifying extreme values (e.g., the highest pH) and for ordering results in tables and reports.
 Use <code>arrange(desc())</code> for descending order.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb52-1" tabindex="-1"></a><span class="co"># Sort ascending</span></span>
@@ -1665,8 +1666,8 @@ Combining both data verbs is a powerful way to calculate metrics by soil type, s
 <div id="understand-joins" class="section level4 hasAnchor" number="1.1.11.1">
 <h4><span class="header-section-number">1.1.11.1</span> Understanding Joins<a href="introduction-to-soil-data-preparation-spatial-data.html#understand-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A <strong>join</strong> combines two data frames by matching values in one or more key columns. Each join type differs mainly in which rows (keys) are kept in the result.</p>
-<div id="join-types-join-types" class="section level5 unnumbered hasAnchor">
-<h5>Join types {#join-types}<a href="introduction-to-soil-data-preparation-spatial-data.html#join-types-join-types" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="join-types" class="section level5 unnumbered hasAnchor">
+<h5>Join types<a href="introduction-to-soil-data-preparation-spatial-data.html#join-types" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <table>
 <colgroup>
 <col width="31%" />
@@ -1713,8 +1714,8 @@ Combining both data verbs is a powerful way to calculate metrics by soil type, s
 </ul>
 </div>
 </div>
-<div id="example-datasets-and-join-operations-dplyr-join-example" class="section level5 unnumbered hasAnchor">
-<h5>Example datasets and join operations {#dplyr-join-example}<a href="introduction-to-soil-data-preparation-spatial-data.html#example-datasets-and-join-operations-dplyr-join-example" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="dplyr-join-example" class="section level5 unnumbered hasAnchor">
+<h5>Example datasets and join operations<a href="introduction-to-soil-data-preparation-spatial-data.html#dplyr-join-example" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb55-1" tabindex="-1"></a><span class="co"># Soil data example</span></span>
 <span id="cb55-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb55-2" tabindex="-1"></a>soil_basic <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb55-3"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb55-3" tabindex="-1"></a> <span class="at">site_id =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
@@ -1849,15 +1850,15 @@ Before running summaries, models, or maps, it is important to identify where val
 <div id="pivoting" class="section level3 hasAnchor" number="1.1.13">
 <h3><span class="header-section-number">1.1.13</span> Data Reshaping with <code>{tidyr}</code> package: Pivoting<a href="introduction-to-soil-data-preparation-spatial-data.html#pivoting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Soil datasets are often stored in different formats depending on how they were collected or produced. The <code>{tidyr}</code> package helps you reshape data—changing its layout without changing the information. This is especially useful when preparing data for plotting, reporting, modeling, or joining with other tables.</p>
-<div id="wide-vs-long-data-format-wide-long" class="section level5 unnumbered hasAnchor">
-<h5>Wide vs Long Data Format {#wide-long}<a href="introduction-to-soil-data-preparation-spatial-data.html#wide-vs-long-data-format-wide-long" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="wide-long" class="section level5 unnumbered hasAnchor">
+<h5>Wide vs Long Data Format<a href="introduction-to-soil-data-preparation-spatial-data.html#wide-long" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li><p><strong>Wide format</strong>: each variable has its own column (common in spreadsheets and summary tables).</p></li>
 <li><p><strong>Long format</strong>: values are stored in a single column, with one or more columns describing what the values represent (common for tidy workflows and <code>ggplot2()</code>).</p></li>
 </ul>
 </div>
-<div id="pivot_longer-wide-to-long-pivot-long" class="section level5 unnumbered hasAnchor">
-<h5><code>pivot_longer()</code>: Wide to Long {#pivot-long}<a href="introduction-to-soil-data-preparation-spatial-data.html#pivot_longer-wide-to-long-pivot-long" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="pivot-long" class="section level5 unnumbered hasAnchor">
+<h5><code>pivot_longer()</code>: Wide to Long<a href="introduction-to-soil-data-preparation-spatial-data.html#pivot-long" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>pivot_longer()</code> to turn several measurement columns (e.g., pH, carbon, nitrogen) into a tidy key–value structure.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb60-1" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for piping %&gt;%</span></span></code></pre></div>
 <pre><code>## 
@@ -1911,8 +1912,8 @@ Before running summaries, models, or maps, it is important to identify where val
 </ul>
 </div>
 </div>
-<div id="pivot_wider-long-to-wide-pivot-wider" class="section level5 unnumbered hasAnchor">
-<h5><code>pivot_wider()</code>: Long to Wide {#pivot-wider}<a href="introduction-to-soil-data-preparation-spatial-data.html#pivot_wider-long-to-wide-pivot-wider" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="pivot-wider" class="section level5 unnumbered hasAnchor">
+<h5><code>pivot_wider()</code>: Long to Wide<a href="introduction-to-soil-data-preparation-spatial-data.html#pivot-wider" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Use <code>pivot_wider()</code> to spread a variable column back into multiple columns. This is helpful when you want a compact table for reporting or when a model expects predictors in separate columns.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb68-1" tabindex="-1"></a><span class="co"># Convert back to wide format</span></span>
 <span id="cb68-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb68-2" tabindex="-1"></a>long_soil <span class="sc">%&gt;%</span></span>
@@ -1927,8 +1928,8 @@ Before running summaries, models, or maps, it is important to identify where val
 ## 2 B     Grassland   7.1    2.1     0.18
 ## 3 C     Urban       5.8    1.5     0.12</code></pre>
 </div>
-<div id="advanced-pivoting-multiple-measurements-per-site-replicates-pivot-table" class="section level5 unnumbered hasAnchor">
-<h5>Advanced Pivoting: Multiple Measurements per Site (Replicates) {#pivot-table}<a href="introduction-to-soil-data-preparation-spatial-data.html#advanced-pivoting-multiple-measurements-per-site-replicates-pivot-table" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="pivot-table" class="section level5 unnumbered hasAnchor">
+<h5>Advanced Pivoting: Multiple Measurements per Site (Replicates)<a href="introduction-to-soil-data-preparation-spatial-data.html#pivot-table" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>In real datasets, you may have repeated measurements (e.g., replicate samples). In that case, keep replicate identifiers as separate columns and pivot the measurement names into columns.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb70-1" tabindex="-1"></a><span class="co"># More complex examples with multiple measurements per site</span></span>
 <span id="cb70-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb70-2" tabindex="-1"></a>field_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -2059,8 +2060,8 @@ RStudio also provides a menu option: <code>Session → Set Working Directory</co
 <div id="import-files" class="section level4 hasAnchor" number="1.1.15.3">
 <h4><span class="header-section-number">1.1.15.3</span> Importing Data from Files<a href="introduction-to-soil-data-preparation-spatial-data.html#import-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Most soil science projects use data from external sources (field surveys, lab results, sensors, or remote sensing). These datasets are commonly stored as CSV or Excel files, but they can also come from databases, spatial formats (e.g., GeoPackages/shapefiles), or web APIs. R provides tools to import, clean, and analyze these data. In this tutorial, we focus on CSV (<code>.csv</code>) and Excel (<code>.xlsx</code>) because they are the most widely used formats in soil science workflows.</p>
-<div id="reading-csv-files-read-csv" class="section level5 unnumbered hasAnchor">
-<h5>Reading CSV Files {#read-csv}<a href="introduction-to-soil-data-preparation-spatial-data.html#reading-csv-files-read-csv" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="read-csv" class="section level5 unnumbered hasAnchor">
+<h5>Reading CSV Files<a href="introduction-to-soil-data-preparation-spatial-data.html#read-csv" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>CSV (comma-separated values) and plain text (<code>.txt</code>) files are widely used for exchanging tabular data. In base R, you can import them with <code>read.csv()</code> or the more general <code>read.table()</code> (both from <code>{utils}</code>).
 These functions assume the separator is a comma (,) and by default use <code>header = TRUE</code>, meaning the first row is treated as column names.
 The output is a <code>data.frame</code>.
@@ -2087,8 +2088,8 @@ For larger files, you can use <code>read_csv()</code>, from <code>{readr}</code>
 They are easier to read and less likely to break if you reorganize folders.</p>
 </div>
 </div>
-<div id="reading-excel-files-read-excel" class="section level5 unnumbered hasAnchor">
-<h5>Reading Excel Files {#read-excel}<a href="introduction-to-soil-data-preparation-spatial-data.html#reading-excel-files-read-excel" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="read-excel" class="section level5 unnumbered hasAnchor">
+<h5>Reading Excel Files<a href="introduction-to-soil-data-preparation-spatial-data.html#read-excel" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>To read Excel files, use <code>read_excel()</code> from the <code>{readxl}</code> package:</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb82-1" tabindex="-1"></a><span class="co"># Read Excel file</span></span>
 <span id="cb82-2"><a href="introduction-to-soil-data-preparation-spatial-data.html#cb82-2" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;01_data/module1/kssl/KSSL_data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>) </span>

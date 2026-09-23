@@ -266,7 +266,7 @@ clay_percent <- 25.5
 temperature <- 15.2
 ```
 
-##### 2. Integer (Whole Numbers) {#integer-data}{-}
+##### 2. Integer (Whole Numbers) {#integer-data -}
 
 Integers are whole numbers. In R, you can create them explicitly using the L suffix.
 
@@ -276,7 +276,7 @@ sample_count <- 100L
 plot_number <- 5L
 ```
 
-##### 3. Character (Text Strings) {#text-data}{-}
+##### 3. Character (Text Strings) {#text-data -}
 
 Character values store text (soil types, locations, notes). They must be written inside quotes.
 
